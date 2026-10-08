@@ -1,5 +1,5 @@
 // Offline shell + cue cache. Bump VERSION when shipping changes.
-const VERSION = 'kumbha-v10';
+const VERSION = 'kumbha-v11';
 const SHELL = [
   './',
   'index.html',
@@ -48,8 +48,14 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
   const { request } = event;
   if (request.method !== 'GET') return;
+  // The server sends no Cache-Control, so the browser may treat old files as fresh: revalidate
+  // our own files on every load (a cheap 304 when unchanged). Versioned (?v=) audio and fonts
+  // can use the HTTP cache as is.
+  // (A navigation request can't be re-issued with options, so build a fresh one.)
+  const url = new URL(request.url);
+  const own = url.origin === self.location.origin && !url.searchParams.has('v');
   event.respondWith(
-    fetch(request)
+    fetch(own ? new Request(request.url, { cache: 'no-cache', credentials: 'same-origin' }) : request)
       .then((res) => {
         if (res.ok || res.type === 'opaque') {
           const copy = res.clone();

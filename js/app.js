@@ -20,11 +20,17 @@ const DEFAULTS = { look: 2, voice: true, speaker: 'tom', talk: 'guided', visual:
 let settings = load();
 function load() {
   try {
-    const s = { ...DEFAULTS, ...JSON.parse(localStorage.getItem('kumbha') || '{}') };
+    const stored = JSON.parse(localStorage.getItem('kumbha') || '{}');
+    const s = { ...DEFAULTS, ...stored };
     if (typeof s.intensity !== 'object') s.intensity = {}; // v1 stored one global string
     if ('ambience' in s) s.music = s.ambience;
-    if (s.explain === true && !localStorage.getItem('kumbha').includes('"talk"')) s.talk = 'full';
-    if ((s.look || 1) < 2) Object.assign(s, { look: 2, visual: 'contour' }); // the Contour redesign: its visual becomes the default once
+    if (s.explain === true && !('talk' in stored)) s.talk = 'full';
+    // The Contour redesign: its visual becomes everyone's default once (judged on what was
+    // stored, not the defaults), and is saved so a later choice of Bloom or Orb sticks.
+    if (!(stored.look >= 2)) {
+      Object.assign(s, { look: 2, visual: 'contour' });
+      if (Object.keys(stored).length) localStorage.setItem('kumbha', JSON.stringify(s));
+    }
     return s;
   } catch {
     return { ...DEFAULTS };
