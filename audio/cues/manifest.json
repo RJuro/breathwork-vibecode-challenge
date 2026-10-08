@@ -287,12 +287,6 @@
     "engine": "lux",
     "duration": 4.01
   },
-  "cool_science": {
-    "fp": "3a9a7c474480",
-    "voice": "tom",
-    "engine": "lux",
-    "duration": 8.23
-  },
   "deep_in": {
     "fp": "26324e84ccdf",
     "voice": "tom",
@@ -478,24 +472,6 @@
     "voice": "tom",
     "engine": "lux",
     "duration": 7.46
-  },
-  "hum_science": {
-    "fp": "5e063d3be4a0",
-    "voice": "tom",
-    "engine": "lux",
-    "duration": 10.54
-  },
-  "hum_space": {
-    "fp": "e2668352a6ae",
-    "voice": "tom",
-    "engine": "lux",
-    "duration": 6.02
-  },
-  "kox": {
-    "fp": "d47c58eea38e",
-    "voice": "tom",
-    "engine": "lux",
-    "duration": 14.11
   },
   "ladder_intro": {
     "fp": "5c34249a7314",
@@ -1144,12 +1120,6 @@
     "voice": "tom",
     "engine": "lux",
     "duration": 2.64
-  },
-  "nose_why": {
-    "fp": "c8520e9e88e7",
-    "voice": "tom",
-    "engine": "lux",
-    "duration": 5.81
   },
   "nt_a_light_stomach_it_also_makes_a_good_win_1ofg7hv": {
     "fp": "3c39310d1c9f",
@@ -1805,12 +1775,6 @@
     "engine": "lux",
     "duration": 0.77
   },
-  "r1_after": {
-    "fp": "b3c87d3f19a0",
-    "voice": "tom",
-    "engine": "lux",
-    "duration": 4.18
-  },
   "r1_intro": {
     "fp": "8315f92f0040",
     "voice": "tom",
@@ -1918,6 +1882,36 @@
     "voice": "tom",
     "engine": "lux",
     "duration": 4.8
+  },
+  "story_co2": {
+    "fp": "f41dfdd8d71f",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 33.19
+  },
+  "story_hum": {
+    "fp": "3fb81f560398",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 35.74
+  },
+  "story_kox": {
+    "fp": "eaffcdbf4edd",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 42.29
+  },
+  "story_nose": {
+    "fp": "087a66e3c1a7",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 26.38
+  },
+  "story_vagus": {
+    "fp": "312c5496c0ee",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 32.57
   },
   "t_anchor": {
     "fp": "5f3359d48afd",
