@@ -1,15 +1,18 @@
 #!/usr/bin/env node
 // Timing report with the recorded cue lengths: total per practice × intensity, any line
 // pushed late by the one before it, and any line still running when its segment ends.
+//   node scripts/check_timing.mjs [--pack gemini]   (another voice pack: only the practices it fully covers)
 import { readFileSync } from 'node:fs';
 import { FLOWS, INTENSITY, intensitiesOf } from '../js/flows/index.js';
 import { compile } from '../js/engine.js';
 
-const man = JSON.parse(readFileSync(new URL('../audio/cues/manifest.json', import.meta.url)));
+const pack = process.argv.includes('--pack') ? process.argv[process.argv.indexOf('--pack') + 1] : 'tom';
+const man = JSON.parse(readFileSync(new URL(`../audio/${pack === 'tom' ? 'cues' : `cues-${pack}`}/manifest.json`, import.meta.url)));
 const durs = Object.fromEntries(Object.entries(man).map(([k, v]) => [k, v.duration]));
 const fmt = (s) => `${Math.floor(s / 60)}:${String(Math.round(s % 60)).padStart(2, '0')}`;
 let problems = 0;
 for (const flow of FLOWS) {
+  if (pack !== 'tom' && !intensitiesOf(flow).every((l) => compile(flow, durs, { ...INTENSITY[l], talk: 'full' }).voice.every((v) => durs[v.id]))) continue;
   for (const [level, talk] of intensitiesOf(flow).flatMap((l) => ['quiet', 'guided', 'full'].map((t) => [l, t]))) {
     const plan = compile(flow, durs, { ...INTENSITY[level], talk });
     const issues = [];

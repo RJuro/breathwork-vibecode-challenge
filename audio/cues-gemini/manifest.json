@@ -1,0 +1,422 @@
+{
+  "all_out": {
+    "fp": "5b791ee63fe1",
+    "voice": "Schedar",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 1.99,
+    "match": 1.0
+  },
+  "bandha": {
+    "fp": "02f4d4f8ab01",
+    "voice": "Schedar",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 11.04,
+    "match": 1.0
+  },
+  "bandha_short": {
+    "fp": "d01354656314",
+    "voice": "Schedar",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 4.75,
+    "match": 1.0
+  },
+  "breathe_now_ok": {
+    "fp": "d0c9ec50f19b",
+    "voice": "Schedar",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 10.2,
+    "match": 1.0
+  },
+  "checkin": {
+    "fp": "634cf8444d89",
+    "voice": "Schedar",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 9.17,
+    "match": 1.0
+  },
+  "close": {
+    "fp": "f8ee169b492a",
+    "voice": "Schedar",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 12.58,
+    "match": 1.0
+  },
+  "cool_intro": {
+    "fp": "41b7960e26fa",
+    "voice": "Schedar",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 8.59,
+    "match": 1.0
+  },
+  "cool_science": {
+    "fp": "794474a8cbf3",
+    "voice": "Schedar",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 10.66,
+    "match": 1.0
+  },
+  "deep_in": {
+    "fp": "d3c2481d8a7a",
+    "voice": "Schedar",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 2.45,
+    "match": 1.0
+  },
+  "full_science": {
+    "fp": "c250f4c2686d",
+    "voice": "Schedar",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 9.24,
+    "match": 1.0
+  },
+  "g_intro": {
+    "fp": "ed089b15eb18",
+    "voice": "Schedar",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 7.73,
+    "match": 1.0
+  },
+  "hum_again": {
+    "fp": "30a2c72d2660",
+    "voice": "Schedar",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 3.7,
+    "match": 1.0
+  },
+  "hum_intro": {
+    "fp": "b42172c29057",
+    "voice": "Schedar",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 11.69,
+    "match": 1.0
+  },
+  "hum_science": {
+    "fp": "be012cb9a0c0",
+    "voice": "Schedar",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 12.65,
+    "match": 0.964
+  },
+  "hum_space": {
+    "fp": "4d9c37c1a3e9",
+    "voice": "Schedar",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 7.13,
+    "match": 1.0
+  },
+  "kox": {
+    "fp": "0bb59b42cb00",
+    "voice": "Schedar",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 17.06,
+    "match": 1.0
+  },
+  "ladder_intro": {
+    "fp": "e1a2757d4b34",
+    "voice": "Schedar",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 10.82,
+    "match": 1.0
+  },
+  "ladder_up": {
+    "fp": "6b037cd90a6d",
+    "voice": "Schedar",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 3.14,
+    "match": 1.0
+  },
+  "ladder_up2": {
+    "fp": "e1c5d5d0ef9d",
+    "voice": "Schedar",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 6.26,
+    "match": 1.0
+  },
+  "n_breathe_in_all_the_way_to_the_top_and_hold_thirty_seconds": {
+    "fp": "5971e76fb7ee",
+    "voice": "Schedar",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 6.34,
+    "match": 1.0
+  },
+  "n_breathe_in_all_the_way_to_the_top_and_hold_twenty_five_secon": {
+    "fp": "952090334799",
+    "voice": "Schedar",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 6.58,
+    "match": 1.0
+  },
+  "n_breathe_in_all_the_way_to_the_top_and_hold_twenty_seconds": {
+    "fp": "3ea366ed8e68",
+    "voice": "Schedar",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 5.59,
+    "match": 0.917
+  },
+  "n_five_hums_in_for_four_then_hum_it_all_out": {
+    "fp": "e61eb5e1ce6e",
+    "voice": "Schedar",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 5.4,
+    "match": 1.0
+  },
+  "n_five_slow_breaths": {
+    "fp": "e5abcb667c70",
+    "voice": "Schedar",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 2.64,
+    "match": 1.0
+  },
+  "n_forty_five_quick_breaths_begin": {
+    "fp": "6df40434ce22",
+    "voice": "Schedar",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 3.05,
+    "match": 1.0
+  },
+  "n_forty_quick_breaths_begin": {
+    "fp": "9fac6649f598",
+    "voice": "Schedar",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 3.07,
+    "match": 1.0
+  },
+  "n_hold_lungs_empty_for_up_to_forty_five_seconds": {
+    "fp": "4d074d818508",
+    "voice": "Schedar",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 5.16,
+    "match": 1.0
+  },
+  "n_hold_lungs_empty_for_up_to_one_minute": {
+    "fp": "65824f8e1592",
+    "voice": "Schedar",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 3.7,
+    "match": 1.0
+  },
+  "n_hold_lungs_empty_for_up_to_one_minute_fifteen": {
+    "fp": "b7569294280c",
+    "voice": "Schedar",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 4.92,
+    "match": 1.0
+  },
+  "n_hold_lungs_empty_for_up_to_one_minute_forty": {
+    "fp": "549c90c455a7",
+    "voice": "Schedar",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 4.49,
+    "match": 1.0
+  },
+  "n_hold_lungs_empty_for_up_to_one_minute_twenty": {
+    "fp": "ab7927517725",
+    "voice": "Schedar",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 4.54,
+    "match": 1.0
+  },
+  "n_hold_lungs_empty_for_up_to_thirty_five_seconds": {
+    "fp": "36d6198e0826",
+    "voice": "Schedar",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 5.86,
+    "match": 1.0
+  },
+  "n_hold_lungs_empty_for_up_to_twenty_five_seconds": {
+    "fp": "a2e97ea883fa",
+    "voice": "Schedar",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 4.87,
+    "match": 1.0
+  },
+  "n_one_minute": {
+    "fp": "e8d14f036a79",
+    "voice": "Schedar",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 1.54,
+    "match": 1.0
+  },
+  "n_round_one_five_slow_breaths_then_rest": {
+    "fp": "cb898261422b",
+    "voice": "Schedar",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 4.8,
+    "match": 1.0
+  },
+  "n_round_three_five_slow_breaths_then_rest": {
+    "fp": "d04d24205532",
+    "voice": "Schedar",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 5.45,
+    "match": 1.0
+  },
+  "n_round_two_five_slow_breaths_then_rest": {
+    "fp": "414780430012",
+    "voice": "Schedar",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 5.18,
+    "match": 1.0
+  },
+  "n_ten_more_seconds": {
+    "fp": "25f70d97c95b",
+    "voice": "Schedar",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 1.39,
+    "match": 1.0
+  },
+  "n_thirty_quick_breaths_begin": {
+    "fp": "377a5d299849",
+    "voice": "Schedar",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 2.33,
+    "match": 1.0
+  },
+  "n_thirty_seconds": {
+    "fp": "cfe4758ce397",
+    "voice": "Schedar",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 1.63,
+    "match": 1.0
+  },
+  "nh_notice": {
+    "fp": "e2cf0d63e081",
+    "voice": "Schedar",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 5.95,
+    "match": 1.0
+  },
+  "nose_short": {
+    "fp": "9ab6a516c1c0",
+    "voice": "Schedar",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 4.68,
+    "match": 1.0
+  },
+  "nose_why": {
+    "fp": "de505b37e59e",
+    "voice": "Schedar",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 8.78,
+    "match": 1.0
+  },
+  "pump_last": {
+    "fp": "997bd474a952",
+    "voice": "Schedar",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 1.03,
+    "match": 1.0
+  },
+  "r1_after": {
+    "fp": "793d2d07264c",
+    "voice": "Schedar",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 5.59,
+    "match": 1.0
+  },
+  "r1_intro": {
+    "fp": "23c1b873cae5",
+    "voice": "Schedar",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 12.1,
+    "match": 0.957
+  },
+  "r1_permission": {
+    "fp": "361d1ea12c19",
+    "voice": "Schedar",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 8.42,
+    "match": 0.923
+  },
+  "r2_hunger": {
+    "fp": "d970dc5cd233",
+    "voice": "Schedar",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 7.8,
+    "match": 1.0
+  },
+  "r2_intro": {
+    "fp": "da31d16045c4",
+    "voice": "Schedar",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 9.1,
+    "match": 1.0
+  },
+  "r3_after": {
+    "fp": "424deaad84b5",
+    "voice": "Schedar",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 8.42,
+    "match": 1.0
+  },
+  "r3_intro": {
+    "fp": "537f24f09eac",
+    "voice": "Schedar",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 3.79,
+    "match": 1.0
+  },
+  "r3_still": {
+    "fp": "29253b905bdc",
+    "voice": "Schedar",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 5.3,
+    "match": 1.0
+  },
+  "release": {
+    "fp": "d256d29ab0cb",
+    "voice": "Schedar",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 3.96,
+    "match": 1.0
+  },
+  "ribs": {
+    "fp": "737cac5089b3",
+    "voice": "Schedar",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 11.98,
+    "match": 1.0
+  },
+  "t_belly_only": {
+    "fp": "afd5f5df207d",
+    "voice": "Schedar",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 4.94,
+    "match": 1.0
+  },
+  "t_first_breath": {
+    "fp": "55fe420a7090",
+    "voice": "Schedar",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 7.51,
+    "match": 1.0
+  },
+  "t_slower_fine": {
+    "fp": "115b11009ce7",
+    "voice": "Schedar",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 4.25,
+    "match": 1.0
+  },
+  "tide_t_easy_in": {
+    "fp": "8402e697df8e",
+    "voice": "Schedar",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 4.92,
+    "match": 1.0
+  },
+  "tide_t_hum": {
+    "fp": "9f3b1c91bbf6",
+    "voice": "Schedar",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 8.59,
+    "match": 1.0
+  },
+  "welcome": {
+    "fp": "52f1460ec4ad",
+    "voice": "Schedar",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 8.59,
+    "match": 1.0
+  }
+}

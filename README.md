@@ -64,6 +64,25 @@ The **Voice cues** GitHub workflow does both whenever `js/flows/**` changes (rep
 `QWEN_TTS_API_KEY` or `GATEWAY_API_KEY`) and commits the results. Lines without a recording
 fall back to the device's voice.
 
+### Gemini voice (preview)
+
+Turn the Tide is also recorded with **Gemini 3.8 Flash Lite TTS** (voice *Schedar*), in
+`audio/cues-gemini/`. The practice page shows a **Voice** switch wherever that pack covers
+every line the practice can speak, so voices never mix within a session.
+
+```sh
+export GEMINI_API_KEY=…
+python3 scripts/generate_cues_gemini.py --audition Schedar,Algieba,Sulafat,Vindemiatrix --line welcome
+python3 scripts/generate_cues_gemini.py --flow tide --voice Schedar
+```
+
+On 3.8 the request text is read verbatim, so the delivery goes in `speech_metadata.style`
+("calm, warm, soft, unhurried"), short and the same for every line, with a fixed seed. Each
+clip is transcribed with `gemini-3.5-transcribe` and checked for exact words, a sane length
+and no long internal pauses; failures get one retake with a new seed. A practice costs a few
+cents; the TTS models are reportedly capped at about 100 requests a day, and the script
+resumes where it stopped.
+
 ## Music
 
 Import a track (e.g. a Suno download) into a slot:

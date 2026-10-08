@@ -278,6 +278,7 @@ a.chip { text-decoration: none; }
 .outline .map { margin-top: 0; }
 .outline .map li:last-child { border-bottom: 0; }
 .cta .intensity-row { margin: 0 0 16px; }
+.speaker-row .intensity-note:empty { display: none; }
 .intensity-note { margin: 0; color: var(--muted); font-size: 14.5px; line-height: 1.45; min-height: 1.45em; }
 .play-error { margin: 12px 0 0; color: #ffb7a8; font-size: 14.5px; text-align: center; }
 .voice-note.warn { color: #f2c38b; }

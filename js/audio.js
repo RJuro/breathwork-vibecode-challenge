@@ -26,11 +26,23 @@ async function fetchJSON(url) {
   }
 }
 
+// Voice packs: Tom (LuxTTS, every line) and a Gemini TTS preview recorded per practice.
+export const PACKS = { tom: 'audio/cues', gemini: 'audio/cues-gemini' };
+
 let manifests = null;
-/** audio/cues/manifest.json (written by scripts/generate_cues.py) and audio/music/manifest.json. */
+/** Cue manifests per voice pack (written by scripts/generate_cues*.py) and audio/music/manifest.json.
+ *  `cues` is Tom's, kept for callers that only need estimated timings. */
 export function loadManifests() {
-  manifests ??= Promise.all([fetchJSON('audio/cues/manifest.json'), fetchJSON('audio/music/manifest.json')]).then(([cues, music]) => ({ cues, music }));
+  manifests ??= Promise.all([fetchJSON(`${PACKS.tom}/manifest.json`), fetchJSON(`${PACKS.gemini}/manifest.json`), fetchJSON('audio/music/manifest.json')]).then(
+    ([tom, gemini, music]) => ({ cues: tom, packs: { tom, gemini }, music })
+  );
   return manifests;
+}
+
+/** True when `pack` has a recording of every line in `ids`, so a session never mixes voices. */
+export async function packCovers(pack, ids) {
+  const { packs } = await loadManifests();
+  return !!packs[pack] && ids.every((id) => packs[pack][id]);
 }
 
 const decoded = new Map();
@@ -54,12 +66,13 @@ async function decodeUrl(url) {
 
 /** Decode the recorded lines among `ids`. Lines without a recording resolve to null and
  *  the app reads them with on-device speech, so a practice works before its cues exist. */
-export async function loadCues(ids) {
-  const { cues } = await loadManifests();
+export async function loadCues(ids, pack = 'tom') {
+  const { packs } = await loadManifests();
+  const cues = packs[pack] || {};
   const out = {};
   await Promise.all(
     ids.map(async (id) => {
-      out[id] = cues[id] ? await decodeUrl(`audio/cues/${id}.mp3?v=${cues[id].fp}`) : null;
+      out[id] = cues[id] ? await decodeUrl(`${PACKS[pack]}/${id}.mp3?v=${cues[id].fp}`) : null;
     })
   );
   return out;

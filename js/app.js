@@ -3,7 +3,7 @@ import { compile, stateAt, captionAt, exitOf, holdResults } from './engine.js';
 import { notesHtml } from './flows/lib.js';
 import { teacherTalk } from './flows/talk.js';
 import { Bloom } from './bloom.js';
-import { loadManifests, loadCues, loadMusic, renderSession } from './audio.js';
+import { loadManifests, loadCues, loadMusic, renderSession, packCovers } from './audio.js';
 
 const $ = (s) => document.querySelector(s);
 const $$ = (s) => document.querySelectorAll(s);
@@ -14,7 +14,7 @@ const fmt = (s) => {
 const minutes = (s) => `${Math.max(1, Math.round(s / 60))} min`;
 
 // ── Settings ───────────────────────────────────────────
-const DEFAULTS = { voice: true, talk: 'guided', visual: 'bloom', sounds: true, music: true, voiceVol: 1, bedVol: 1, safetyAck: false, intensity: {} };
+const DEFAULTS = { voice: true, speaker: 'tom', talk: 'guided', visual: 'bloom', sounds: true, music: true, voiceVol: 1, bedVol: 1, safetyAck: false, intensity: {} };
 let settings = load();
 function load() {
   try {
@@ -122,6 +122,15 @@ function syncIntensity() {
   $('#intensity-note').textContent = (flow.intensityNotes || {})[lv] || '';
 }
 
+function syncSpeaker(offer, gemini) {
+  $('#speaker-row').hidden = !offer;
+  if (!offer) return;
+  const name = Object.values(gemini)[0]?.voice || 'Gemini';
+  $('#speaker [data-v="gemini"]').textContent = `${name} · Gemini`;
+  $$('#speaker button').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.v === settings.speaker)));
+  $('#speaker-note').textContent = settings.speaker === 'gemini' ? 'Preview voice: Gemini 3.8 Flash Lite TTS.' : '';
+}
+
 function renderMap() {
   $('#d-eyebrow').textContent = `${flow.tag} · ${minutes(plan.total)}`;
   $('#outline-count').textContent = `${plan.sections.length} parts`;
@@ -151,13 +160,22 @@ async function prepare() {
   begin.disabled = true;
   $('#begin-sub').textContent = 'Preparing…';
 
-  // Draft with estimated timings to learn which lines this run needs, then decode them.
-  const { cues } = await loadManifests();
-  const est = Object.fromEntries(Object.entries(cues).map(([k, v]) => [k, v.duration]));
-  plan = compile(f, est, opts);
+  // Draft with estimated timings to learn which lines this run needs, then decode them in
+  // the chosen voice. The Gemini preview is offered only where it recorded every line.
+  const { packs } = await loadManifests();
+  const durOf = (m) => Object.fromEntries(Object.entries(m).map(([k, v]) => [k, v.duration]));
+  plan = compile(f, durOf(packs.tom), opts);
   renderMap();
-  const ids = [...new Set(plan.voice.map((v) => v.id))];
-  const [loaded, music] = await Promise.all([loadCues(ids), settings.music ? loadMusic(f.music) : null]);
+  let ids = [...new Set(plan.voice.map((v) => v.id))];
+  const offerGemini = await packCovers('gemini', ids);
+  if (token !== renderToken) return;
+  syncSpeaker(offerGemini, packs.gemini);
+  const pack = offerGemini && settings.speaker === 'gemini' ? 'gemini' : 'tom';
+  if (pack !== 'tom') {
+    plan = compile(f, durOf(packs[pack]), opts);
+    ids = [...new Set([...ids, ...plan.voice.map((v) => v.id)])];
+  }
+  const [loaded, music] = await Promise.all([loadCues(ids, pack), settings.music ? loadMusic(f.music) : null]);
   if (token !== renderToken) return;
   buffers = loaded;
   const durs = Object.fromEntries(Object.entries(buffers).filter(([, b]) => b).map(([k, b]) => [k, b.duration]));
@@ -432,6 +450,13 @@ function bindUI() {
     if (!b) return;
     save({ intensity: { ...settings.intensity, [flow.id]: b.dataset.v } });
     syncIntensity();
+    prepare();
+  });
+
+  $('#speaker').addEventListener('click', (e) => {
+    const b = e.target.closest('button[data-v]');
+    if (!b || b.dataset.v === settings.speaker) return;
+    save({ speaker: b.dataset.v });
     prepare();
   });
 
