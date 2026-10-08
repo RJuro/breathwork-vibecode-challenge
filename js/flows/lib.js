@@ -97,6 +97,7 @@ export function holdFull(seconds, cues = [], o = {}) {
       count: 1,
       style: 'slow',
       bell: 'low',
+      group: o.group,
       cues: [{ at: 0, say: say(`Breathe in, all the way to the top, and hold. ${dur(seconds)[0].toUpperCase()}${dur(seconds).slice(1)}.`) }],
     },
     { hold: 'full', seconds, tick: false, ...o, cues: [...cues, ...(seconds >= 40 ? [{ fromEnd: 11, say: L.tenMore }] : [])] },
@@ -107,8 +108,8 @@ export const SAFETY_HTML = `
 <h3>Safety</h3>
 <ul>
   <li>Only seated or lying down. Never in or near water, in the bath, or while driving. Blackouts after fast breathing or long holds come without warning.</li>
-  <li>Skip fast breathing and long holds if you are pregnant, have epilepsy, heart disease or high blood pressure, or have a fever.</li>
-  <li>Never force a hold. <em>Breathe now</em> is always there.</li>
+  <li>If you are pregnant, or have epilepsy, heart disease, high blood pressure or a fever, skip fast breathing and breath holds altogether: choose Resonance, Cyclic Sighing or Alternate Nostril, or a <em>No holds</em> option. A shorter hold is not the same as a safe one. Ask your doctor if unsure.</li>
+  <li>Stop whenever you like. If you feel dizzy or unwell, or the urge to breathe gets strong, breathe normally. <em>Breathe now</em> ends any hold.</li>
 </ul>
 <p class="muted">Not medical advice. Cues are written in the spirit of the teachers named, not in their words, and this app isn't affiliated with them.</p>`;
 

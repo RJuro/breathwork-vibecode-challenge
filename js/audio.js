@@ -225,7 +225,7 @@ function renderAtom(e) {
 
 /** Render a compiled plan to a WAV Blob. */
 export async function renderSession(plan, cues, opts = {}) {
-  const { breathSounds = true, ambience = true, music = null } = opts;
+  const { breathSounds = true, ambience = true, music = null, voiceGain = 1, bedGain = 1 } = opts;
   const total = plan.total + 1;
 
   // 1. Atoms.
@@ -273,7 +273,7 @@ export async function renderSession(plan, cues, opts = {}) {
     }
   };
 
-  const FX = 0.55;
+  const FX = 0.55 * bedGain;
   for (const [t, key] of placed) mix(clips.get(key), t, FX);
 
   if (drone) {
@@ -283,7 +283,7 @@ export async function renderSession(plan, cues, opts = {}) {
     const fade = PAD_LEN - PAD_STEP;
     for (let s = 0; s < total; s += PAD_STEP) {
       const rise = s === 0 ? fadeIn : fade;
-      mix(clips.get('pad'), s, 1, (t) => {
+      mix(clips.get('pad'), s, bedGain, (t) => {
         const x = t - s;
         const copy = x < rise ? x / rise : x > PAD_STEP ? Math.max(0, (PAD_LEN - x) / fade) : 1;
         return copy * Math.min(1, Math.max(0, (total - t) / fadeOut));
@@ -291,10 +291,10 @@ export async function renderSession(plan, cues, opts = {}) {
     }
   }
 
-  if (ambience && music) mixMusic(music, total, mix);
+  if (ambience && music) mixMusic(music, total, mix, bedGain);
 
   env.fill(1); // voice is not ducked
-  for (const v of plan.voice) if (cues[v.id]) mix(cues[v.id], v.t, 1);
+  for (const v of plan.voice) if (cues[v.id]) mix(cues[v.id], v.t, voiceGain);
 
   return toWav(out);
 }
@@ -303,7 +303,7 @@ export async function renderSession(plan, cues, opts = {}) {
 // same distance under the voice, looped with a long crossfade, faded in and out.
 const MUSIC_RMS = 0.035;
 const XFADE = 6;
-function mixMusic(buffer, total, mix) {
+function mixMusic(buffer, total, mix, level = 1) {
   const n = buffer.length;
   const mono = new Float32Array(n);
   for (let c = 0; c < buffer.numberOfChannels; c++) {
@@ -313,7 +313,7 @@ function mixMusic(buffer, total, mix) {
   let sum = 0;
   for (let i = 0; i < n; i += 4) sum += mono[i] * mono[i];
   const rms = Math.sqrt(sum / (n / 4)) || 1;
-  const gain = MUSIC_RMS / rms;
+  const gain = (MUSIC_RMS / rms) * level;
   const clip = { getChannelData: () => mono, length: n };
   const len = n / SR;
   const step = Math.max(10, len - XFADE);

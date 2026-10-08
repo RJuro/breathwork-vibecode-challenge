@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Collects every spoken line from every practice, at every intensity, into
+// Collects every spoken line from every practice, at every intensity (explanations on), into
 // flow/cues.json, the list scripts/generate_cues.py renders with TTS.
 //   node scripts/export_cues.mjs [--check]   (--check: fail if cues.json is stale)
 
@@ -12,7 +12,7 @@ const out = fileURLToPath(new URL('../flow/cues.json', import.meta.url));
 const lines = {};
 for (const flow of FLOWS) {
   for (const level of intensitiesOf(flow)) {
-    for (const v of compile(flow, {}, INTENSITY[level]).voice) {
+    for (const v of compile(flow, {}, { ...INTENSITY[level], explain: true }).voice) {
       const prev = lines[v.id];
       if (prev && prev.text !== v.text) throw new Error(`line id "${v.id}" has two texts:\n  ${prev.text}\n  ${v.text}`);
       lines[v.id] = { text: v.text, kind: v.kind };

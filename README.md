@@ -14,8 +14,8 @@ python3 -m http.server 8000   # then http://localhost:8000
 
 | Practice | Tag | What it is | Length |
 |---|---|---|---|
-| **Turn the Tide** | Getting sick | Dylan Werner-style wave: nasal ladder, humming, three kapalabhati rounds with lengthening holds, cool-down | 15 min |
-| **Clear Nose** | Getting sick | Breathe light, McKeown's pinch-and-nod nose-unblocking exercise (kept to moderate air hunger), five hums | 8 min |
+| **Turn the Tide** | Under the weather | Dylan Werner-style wave: nasal ladder, humming, three kapalabhati rounds with lengthening holds, cool-down | 15 min |
+| **Clear Nose** | Under the weather | Breathe light, McKeown's pinch-and-nod nose-unblocking exercise (kept to moderate air hunger), five hums | 8 min |
 | **Fire Wave** | Energy | Ujjayi warm-up, three short rounds of breath of fire sealed with full-lung holds and bandhas | 8 min |
 | **Hold Ladder** | Long holds | A freediver's dry CO₂ table: six holds of the same length, rests shrinking 1:30 → 0:15 | 12 min |
 | **Resonance** | Calm | Six light breaths a minute (4 in · 6 out), the best-studied calming practice | 9 min |
@@ -23,10 +23,13 @@ python3 -m http.server 8000   # then http://localhost:8000
 | **Alternate Nostril** | Calm | Nadi shodhana, 4:4 then 4:8, with the nostril shown on every phase | 9 min |
 | **Wind Down** | Sleep | Lengthening exhales, four rounds of Weil's 4-7-8, then drift | 7 min |
 
-Practices with holds offer **Gentle / Standard / Deeper** (Clear Nose: Gentle = no holds).
-Tom announces what's coming ("Forty quick breaths", "Hold, lungs empty, for up to one
-minute", "Rest, forty-five seconds") but never counts every breath. *Breathe now* ends any
-hold early. Each practice has a *How it works* page with evidence labels and sources.
+Practices with holds offer **Gentle / Standard / Deeper**; Turn the Tide and Clear Nose also
+have **No holds** (no fast breathing, no retention). Tom announces what's coming ("Forty quick
+breaths", "Hold, lungs empty, for up to one minute", "Rest, forty-five seconds") but never
+counts every breath. *Breathe now* ends any hold and skips the rest of that retention block
+into normal breathing. Spoken science notes are off by default (Settings → Explanations); every
+practice has a *How it works* page with evidence labels and sources. The summary shows
+*guided* hold time, worked out from the timeline, not a measurement of your breath.
 
 ## How it's built
 

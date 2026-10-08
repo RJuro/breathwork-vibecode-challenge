@@ -1,5 +1,5 @@
-import { FLOWS, INTENSITY, intensitiesOf } from './flows/index.js';
-import { compile, stateAt, captionAt } from './engine.js';
+import { FLOWS, INTENSITY, LEVEL_NAMES, intensitiesOf } from './flows/index.js';
+import { compile, stateAt, captionAt, exitOf, holdResults } from './engine.js';
 import { loadManifests, loadCues, loadMusic, renderSession } from './audio.js';
 
 const $ = (s) => document.querySelector(s);
@@ -11,7 +11,7 @@ const fmt = (s) => {
 const minutes = (s) => `${Math.max(1, Math.round(s / 60))} min`;
 
 // ── Settings ───────────────────────────────────────────
-const DEFAULTS = { voice: true, sounds: true, music: true, safetyAck: false, intensity: {} };
+const DEFAULTS = { voice: true, explain: false, sounds: true, music: true, voiceVol: 1, bedVol: 1, safetyAck: false, intensity: {} };
 let settings = load();
 function load() {
   try {
@@ -42,8 +42,8 @@ let trackUrl = null;
 let renderToken = 0;
 let raf = 0;
 let fired = new Set();
-let holds = [];
-let lastSeg = null;
+let skips = []; // [from, to] jumps made with "Breathe now"
+let announced = '';
 let wakeLock = null;
 const audio = $('#track');
 
@@ -77,7 +77,7 @@ async function renderShelf() {
     sec.className = 'group';
     sec.innerHTML = `<h2 class="group-title">${g}</h2>`;
     for (const f of FLOWS.filter((x) => x.tag === g)) {
-      const total = compile(f, durs, INTENSITY[levelOf(f)]).total;
+      const total = compile(f, durs, { ...INTENSITY[levelOf(f)], explain: settings.explain }).total;
       const a = document.createElement('a');
       a.className = 'card';
       a.href = `#/p/${f.id}`;
@@ -98,6 +98,7 @@ function openFlow(f) {
   $('#d-lede').textContent = f.lede;
   $('#learn-body').innerHTML = f.learn || '';
   $('#intensity-row').hidden = !f.intensity;
+  $('#outline').open = matchMedia('(min-height: 900px) and (min-width: 700px)').matches;
   syncIntensity();
   show('detail');
   prepare();
@@ -105,16 +106,16 @@ function openFlow(f) {
 
 function syncIntensity() {
   const lv = levelOf(flow);
-  const offered = intensitiesOf(flow);
-  $$('#intensity button').forEach((b) => {
-    b.hidden = !offered.includes(b.dataset.v);
-    b.setAttribute('aria-pressed', String(b.dataset.v === lv));
-  });
+  const seg = $('#intensity');
+  seg.innerHTML = intensitiesOf(flow)
+    .map((v) => `<button data-v="${v}" aria-pressed="${v === lv}">${LEVEL_NAMES[v]}</button>`)
+    .join('');
   $('#intensity-note').textContent = (flow.intensityNotes || {})[lv] || '';
 }
 
 function renderMap() {
   $('#d-eyebrow').textContent = `${flow.tag} · ${minutes(plan.total)}`;
+  $('#outline-count').textContent = `${plan.sections.length} parts`;
   const map = $('#map');
   map.innerHTML = '';
   for (const s of plan.sections) {
@@ -136,7 +137,7 @@ function renderMap() {
 async function prepare() {
   const token = ++renderToken;
   const f = flow;
-  const opts = INTENSITY[levelOf(f)];
+  const opts = { ...INTENSITY[levelOf(f)], explain: settings.explain };
   const begin = $('#begin');
   begin.disabled = true;
   $('#begin-sub').textContent = 'Preparing…';
@@ -155,11 +156,19 @@ async function prepare() {
   renderMap();
 
   const missing = ids.filter((id) => !buffers[id]).length;
-  $('#voice-note').textContent = !settings.voice || !missing ? '' : missing === ids.length ? 'Recorded voice not generated yet — your device’s voice will read the cues.' : `${missing} voice cues not recorded yet — your device’s voice fills in.`;
+  // Lines without a recording can only be read by the device while the screen is on.
+  $('#voice-note').textContent = !settings.voice || !missing ? '' : `Audio incomplete: ${missing} of ${ids.length} spoken cues aren't recorded yet. Your device reads those, but only while the screen stays on.`;
+  $('#voice-note').classList.toggle('warn', !!(settings.voice && missing));
 
   let blob;
   try {
-    blob = await renderSession(plan, settings.voice ? buffers : {}, { breathSounds: settings.sounds, ambience: settings.music, music });
+    blob = await renderSession(plan, settings.voice ? buffers : {}, {
+      breathSounds: settings.sounds,
+      ambience: settings.music,
+      music,
+      voiceGain: settings.voiceVol,
+      bedGain: settings.bedVol,
+    });
   } catch (e) {
     console.error(e);
     $('#begin-sub').textContent = 'Audio unavailable in this browser';
@@ -182,16 +191,20 @@ async function begin() {
   }
   if (!plan || $('#begin').disabled) return;
   fired = new Set();
-  holds = [];
-  lastSeg = null;
-  plan.segs.forEach((s) => delete s.recorded);
+  skips = [];
+  announced = '';
   audio.currentTime = 0;
-  show('session');
   try {
     await audio.play();
   } catch (e) {
     console.warn(e);
+    $('#begin-sub').textContent = 'Tap to retry';
+    $('#play-error').hidden = false;
+    return;
   }
+  $('#play-error').hidden = true;
+  $('#begin-sub').textContent = minutes(plan.total);
+  show('session');
   try {
     wakeLock = await navigator.wakeLock?.request('screen');
   } catch {}
@@ -214,14 +227,11 @@ function frame(t) {
   document.body.dataset.section = st.seg.section;
   $('#orb').style.setProperty('--s', st.scale.toFixed(4));
 
-  if (lastSeg && lastSeg !== st.seg) recordHold(lastSeg, Math.min(t, lastSeg.end));
-  lastSeg = st.seg;
-
   const phaseEl = $('#phase');
   const countEl = $('#count');
   if (st.seg.kind === 'hold') {
     phaseEl.textContent = st.label;
-    countEl.innerHTML = `<b>${fmt(st.elapsed)}</b>of ${fmt(st.target)}`;
+    countEl.innerHTML = `<b>${fmt(st.elapsed)}</b>Breathe whenever you need`;
     $('#ring-fill').style.strokeDashoffset = String(2 * Math.PI * 46 * (1 - st.p));
   } else if (st.seg.kind === 'pace') {
     phaseEl.textContent = st.label;
@@ -254,20 +264,26 @@ function frame(t) {
       }, 180);
     }
   }
-  if (settings.voice && !audio.paused) {
-    for (const v of plan.voice) {
-      if (v.t > t) break;
-      if (fired.has(v)) continue;
-      fired.add(v);
-      if (!buffers[v.id] && t - v.t < 1.5) speak(v.text);
-    }
+  // Screen readers hear phase changes only, not every timer tick.
+  const phaseText = st.seg.kind === 'pace' || st.seg.kind === 'hold' ? st.label : '';
+  const liveKey = `${st.seg.start}|${phaseText}`;
+  if (phaseText && liveKey !== announced) {
+    announced = liveKey;
+    $('#live').textContent = phaseText;
   }
+  voiceTick(t);
 }
 
-function recordHold(seg, endT) {
-  if (seg.kind !== 'hold' || !seg.record || seg.recorded) return;
-  seg.recorded = true;
-  holds.push(Math.max(0, endT - seg.start));
+/** On-device speech for lines without a recording. Also driven by `timeupdate`, so it
+ *  doesn't depend on animation frames (which stop in background tabs). */
+function voiceTick(t) {
+  if (!settings.voice || audio.paused || !plan) return;
+  for (const v of plan.voice) {
+    if (v.t > t) break;
+    if (fired.has(v)) continue;
+    fired.add(v);
+    if (!buffers[v.id] && t - v.t < 1.5) speak(v.text);
+  }
 }
 
 function speak(text) {
@@ -283,8 +299,10 @@ function speak(text) {
 function breatheNow() {
   const st = stateAt(plan, audio.currentTime);
   if (st.seg.kind !== 'hold') return;
-  recordHold(st.seg, audio.currentTime);
-  const target = st.seg.end + 0.01;
+  // Skip the rest of the retention block (e.g. an empty hold and the recovery hold after
+  // it), straight into normal breathing.
+  const target = exitOf(plan, st.seg) + 0.01;
+  skips.push([audio.currentTime, target]);
   for (const v of plan.voice) if (v.t < target) fired.add(v);
   window.speechSynthesis?.cancel();
   audio.currentTime = target;
@@ -309,8 +327,8 @@ function stopSession() {
 }
 
 function finish() {
-  if (lastSeg) recordHold(lastSeg, Math.min(audio.currentTime, lastSeg.end));
-  const played = audio.currentTime;
+  const played = audio.ended ? plan.total : audio.currentTime;
+  const holds = holdResults(plan, skips, played);
   stopSession();
 
   const list = $('#hold-list');
@@ -321,6 +339,7 @@ function finish() {
     list.appendChild(li);
   });
   list.hidden = holds.length === 0;
+  $('#hold-head').hidden = holds.length === 0;
   $('#after').innerHTML = (flow.after || []).map((x) => `<li>${x}</li>`).join('');
   $('#done-time').textContent = fmt(played);
   document.body.dataset.section = 'close';
@@ -361,20 +380,24 @@ function bindUI() {
     begin();
   });
 
-  $$('#intensity button').forEach((b) =>
-    b.addEventListener('click', () => {
-      save({ intensity: { ...settings.intensity, [flow.id]: b.dataset.v } });
-      syncIntensity();
-      prepare();
-    })
-  );
+  $('#intensity').addEventListener('click', (e) => {
+    const b = e.target.closest('button[data-v]');
+    if (!b) return;
+    save({ intensity: { ...settings.intensity, [flow.id]: b.dataset.v } });
+    syncIntensity();
+    prepare();
+  });
 
   $('#set-voice').checked = settings.voice;
+  $('#set-explain').checked = settings.explain;
   $('#set-sounds').checked = settings.sounds;
   $('#set-music').checked = settings.music;
+  $('#set-voice-vol').value = settings.voiceVol;
+  $('#set-bed-vol').value = settings.bedVol;
   let dirty = false;
   for (const [id, key] of [
     ['#set-voice', 'voice'],
+    ['#set-explain', 'explain'],
     ['#set-sounds', 'sounds'],
     ['#set-music', 'music'],
   ]) {
@@ -383,7 +406,17 @@ function bindUI() {
       dirty = true;
     });
   }
+  for (const [id, key] of [
+    ['#set-voice-vol', 'voiceVol'],
+    ['#set-bed-vol', 'bedVol'],
+  ]) {
+    $(id).addEventListener('change', (e) => {
+      save({ [key]: Number(e.target.value) });
+      dirty = true;
+    });
+  }
   $('#settings').addEventListener('close', () => {
+    if (dirty) renderShelf();
     if (dirty && flow) prepare();
     dirty = false;
   });
@@ -395,6 +428,7 @@ function bindUI() {
     location.hash = '#/';
   });
   audio.addEventListener('ended', finish);
+  audio.addEventListener('timeupdate', () => voiceTick(audio.currentTime));
   audio.addEventListener('play', () => ($('#pause-btn').innerHTML = ICON_PAUSE));
   audio.addEventListener('pause', () => ($('#pause-btn').innerHTML = ICON_PLAY));
   document.addEventListener('keydown', (e) => {

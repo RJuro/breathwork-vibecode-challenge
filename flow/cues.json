@@ -68,7 +68,7 @@
     "kind": "guide"
   },
   "close": {
-    "text": "That's your practice. Keep warm, have something hot to drink, and get to bed early. If a fever comes, rest instead, or choose the gentle version.",
+    "text": "That's your practice. Keep warm, have something hot to drink, and get to bed early. If a fever comes, rest instead, or choose no holds.",
     "kind": "guide"
   },
   "cn_close": {
@@ -91,8 +91,8 @@
     "text": "Now the nose-clearing exercise. After a small breath out, pinch your nose, and gently nod your head until you need to breathe.",
     "kind": "technique"
   },
-  "cn_hum": {
-    "text": "Five slow hums to finish. Humming vibrates the air in your sinuses. A few are plenty, more adds little.",
+  "cn_hum_why": {
+    "text": "Humming vibrates the air in your sinuses. A few hums are plenty; more adds little.",
     "kind": "science"
   },
   "cn_light": {
@@ -109,7 +109,7 @@
   },
   "cn_temp": {
     "text": "Relief is often temporary. Come back to this whenever you need it, rather than pushing harder.",
-    "kind": "science"
+    "kind": "guide"
   },
   "cn_welcome": {
     "text": "Sit tall. Breathe through your nose, or through whichever side is more open. If it's fully blocked, sip a little air through the corner of your mouth.",
@@ -168,8 +168,8 @@
     "kind": "science"
   },
   "fw_buzz": {
-    "text": "A gentle buzzing or warmth is normal. Quick breathing nudges your nervous system toward alert.",
-    "kind": "science"
+    "text": "If you feel dizzy, slow down, or stop and breathe normally.",
+    "kind": "guide"
   },
   "fw_close": {
     "text": "That's your practice. Notice the warmth, and the clear head. Take it into your day.",
@@ -212,8 +212,8 @@
     "kind": "guide"
   },
   "hl_contract": {
-    "text": "If your diaphragm starts to twitch, that is your body reacting to carbon dioxide, not running out of oxygen. Stay soft.",
-    "kind": "science"
+    "text": "If your diaphragm starts to twitch, you can end the hold right there. Just tap breathe now.",
+    "kind": "guide"
   },
   "hl_dive": {
     "text": "Your heart may slow during the hold. That's the diving reflex, built into every mammal.",
@@ -365,6 +365,10 @@
   },
   "n_five_slow_breaths": {
     "text": "Five slow breaths.",
+    "kind": "count"
+  },
+  "n_five_slow_hums_to_finish": {
+    "text": "Five slow hums to finish.",
     "kind": "count"
   },
   "n_forty_five_quick_breaths_begin": {
@@ -535,8 +539,20 @@
     "text": "Pinch, and nod. Let go at the first clear urge.",
     "kind": "count"
   },
+  "n_round_one_five_slow_breaths_then_rest": {
+    "text": "Round one. Five slow breaths, then rest.",
+    "kind": "count"
+  },
   "n_round_one_small_breath_in_small_breath_out": {
     "text": "Round one. Small breath in, small breath out.",
+    "kind": "count"
+  },
+  "n_round_three_five_slow_breaths_then_rest": {
+    "text": "Round three. Five slow breaths, then rest.",
+    "kind": "count"
+  },
+  "n_round_two_five_slow_breaths_then_rest": {
+    "text": "Round two. Five slow breaths, then rest.",
     "kind": "count"
   },
   "n_round_two_small_breath_in_small_breath_out_pinch_and_nod_unt": {
@@ -595,8 +611,16 @@
     "text": "Welcome. Lie down if you can, and let the bed take your weight. This is a wind-down, not a test.",
     "kind": "guide"
   },
-  "nose": {
-    "text": "Breathe only through your nose. It warms and filters the air, and it's where your sinuses add nitric oxide to every breath.",
+  "nh_notice": {
+    "text": "No hold this time. Breathe easily, and notice how you feel.",
+    "kind": "guide"
+  },
+  "nose_short": {
+    "text": "Breathe only through your nose, slow and quiet.",
+    "kind": "guide"
+  },
+  "nose_why": {
+    "text": "Your nose warms and filters the air, and it's where your sinuses add nitric oxide to every breath.",
     "kind": "science"
   },
   "pump_last": {
@@ -611,12 +635,12 @@
     "text": "Round one. Kapalabhati. Short, sharp exhales through the nose, pulled from the belly. The inhale takes care of itself. Keep your face soft.",
     "kind": "technique"
   },
-  "r1_tingle": {
-    "text": "Tingling or lightness is normal. The fast breathing lowered your carbon dioxide, and rising carbon dioxide is what makes you want to breathe. It's a signal, not an emergency.",
-    "kind": "science"
+  "r1_permission": {
+    "text": "If you feel dizzy, or the urge to breathe gets strong, breathe normally. You can end any round, any time.",
+    "kind": "guide"
   },
   "r2_hunger": {
-    "text": "Air hunger is just a sensation. Notice it without arguing with it. Soften your jaw, your eyes, your hands.",
+    "text": "Soften your jaw, your eyes, your hands. When you want to breathe, breathe.",
     "kind": "technique"
   },
   "r2_intro": {

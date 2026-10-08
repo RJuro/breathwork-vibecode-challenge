@@ -11,9 +11,10 @@ const K = {
   how: line('cn_how', 'Now the nose-clearing exercise. After a small breath out, pinch your nose, and gently nod your head until you need to breathe.', 'technique'),
   release: line('cn_release', 'Release. Breathe in gently through the nose, no big breath. Calm it down within a few breaths.'),
   co2: line('cn_co2', 'As carbon dioxide gently builds, the nose often opens for a while. A small study saw this, much like after exercise.', 'science'),
-  temp: line('cn_temp', 'Relief is often temporary. Come back to this whenever you need it, rather than pushing harder.', 'science'),
+  temp: line('cn_temp', 'Relief is often temporary. Come back to this whenever you need it, rather than pushing harder.'),
   gasp: line('cn_gasp', 'If your first breath after a hold is a gasp, the hold was too long. Next time, let go sooner.', 'technique'),
-  hum: line('cn_hum', 'Five slow hums to finish. Humming vibrates the air in your sinuses. A few are plenty, more adds little.', 'science'),
+  hum: line('cn_hum_why', 'Humming vibrates the air in your sinuses. A few hums are plenty; more adds little.', 'science'),
+  humCount: say('Five slow hums to finish.'),
   close: line('cn_close', 'Quiet, low, slow breathing through the nose. Come back to this whenever your nose closes up.'),
 };
 
@@ -24,16 +25,16 @@ export const clearNose = {
   id: 'clear-nose',
   title: 'Clear Nose',
   titleHtml: 'Clear <em>nose</em>',
-  tag: 'Getting sick',
+  tag: 'Under the weather',
   blurb: 'Breathe light, three gentle pinch-and-nod holds, five hums.',
   lede: "For a stuffy nose. Patrick McKeown's nose-unblocking exercise, kept gentle for a cold, then a few slow hums.",
   music: 'tide',
   accent: ['#cfe8ff', '#5b8fd6'],
   sky: 'clear',
-  intensity: ['gentle', 'standard'],
+  intensity: ['none', 'standard'],
   intensityNotes: {
-    gentle: 'No holds: breathe light and hum. For a fever, chest symptoms or feeling faint.',
-    standard: 'Three short holds, to moderate air hunger at most.',
+    none: 'No breath holds: breathe light, then hum.',
+    standard: 'Three short pinch-and-nod holds: let go at the first urge, moderate air hunger at most.',
   },
   after: ['Relief is usually temporary. Repeat whenever your nose closes up, rather than holding longer.', 'See a doctor for breathlessness, chest pain, high fever, severe facial pain, or symptoms past ten days.'],
   sections: (opts) => [
@@ -51,12 +52,12 @@ export const clearNose = {
       color: '#7fb0e6',
       steps: [
         { say: K.light },
-        opts.gentle
+        opts.noHolds
           ? { rest: 110, cues: [{ at: 15, say: K.cycle }, { at: 65, say: K.light2 }] }
           : { rest: 45, cues: [{ at: 15, say: K.cycle }] },
       ],
     },
-    ...(opts.gentle
+    ...(opts.noHolds
       ? []
       : [
           {
@@ -105,7 +106,7 @@ export const clearNose = {
       title: 'Hum',
       what: 'Five slow hums',
       color: '#b39cff',
-      steps: [{ say: K.hum, bell: 'bell', gap: 0.6 }, { pace: HUM, count: 5, style: 'hum' }],
+      steps: [{ say: K.hum, bell: 'bell' }, { say: K.humCount, gap: 0.6 }, { pace: HUM, count: 5, style: 'hum' }],
     },
     {
       id: 'calm-close',

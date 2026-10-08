@@ -40,9 +40,9 @@
           </div>
         </header>
         <section class="hero">
-          <p class="eyebrow">Pranayama · breath &amp; retention</p>
+          <p class="eyebrow">Guided pranayama</p>
           <h1>Breathe on <em>purpose</em></h1>
-          <p class="lede">Short guided practices, voiced and timed for you. Pick one for how you feel right now.</p>
+          <p class="lede">Short practices, voiced and timed for you. Pick one for how you feel right now. They're for calm, focus and comfort, not medical treatment.</p>
         </section>
         <div id="shelf" class="shelf"></div>
         <p class="hint">Headphones in. Sit or lie down. Never in water or while driving.</p>
@@ -72,21 +72,20 @@
           <p class="lede" id="d-lede"></p>
         </section>
 
-        <div class="intensity-row" id="intensity-row" hidden>
-          <div class="seg" id="intensity" role="group" aria-label="Intensity">
-            <button data-v="gentle">Gentle</button>
-            <button data-v="standard">Standard</button>
-            <button data-v="deeper">Deeper</button>
-          </div>
-          <small id="intensity-note"></small>
-        </div>
-
-        <ol class="map" id="map" aria-label="Session outline"></ol>
+        <details class="outline" id="outline">
+          <summary>Session outline <span class="muted" id="outline-count"></span></summary>
+          <ol class="map" id="map"></ol>
+        </details>
 
         <div class="cta">
+          <div class="intensity-row" id="intensity-row" hidden>
+            <div class="seg" id="intensity" role="group" aria-label="Intensity"></div>
+            <p class="intensity-note" id="intensity-note" aria-live="polite"></p>
+          </div>
           <button class="begin" id="begin" disabled>
             <span>Begin</span><span class="begin-sub" id="begin-sub">Loading…</span>
           </button>
+          <p class="play-error" id="play-error" role="alert" hidden>Audio couldn't start. Check that your phone isn't on silent, then tap Begin again.</p>
           <p class="hint">Headphones in. Sit or lie down. Never in water or while driving.</p>
           <p class="voice-note" id="voice-note"></p>
         </div>
@@ -94,7 +93,8 @@
     </section>
 
     <!-- Session -->
-    <section id="session" class="screen" data-phase="rest" aria-live="polite">
+    <section id="session" class="screen" data-phase="rest" aria-label="Practice in progress">
+      <p class="sr-only" id="live" aria-live="polite"></p>
       <div class="progress" id="progress" aria-hidden="true"></div>
       <div class="session-top">
         <span id="section-name"></span>
@@ -132,6 +132,7 @@
       <div class="wrap">
         <p class="eyebrow">Complete · <span id="done-time"></span></p>
         <h1>Rest <em>now.</em></h1>
+        <p class="hold-head" id="hold-head">Guided hold time <span>· the time each guided hold ran, not a measurement of your breath</span></p>
         <ul class="holds" id="hold-list"></ul>
         <ul class="after" id="after"></ul>
         <button class="primary" id="done-home">Done</button>
@@ -146,9 +147,9 @@
         <p>Some practices here use fast breathing and long breath holds. They can make you lightheaded, and in rare cases you can black out without warning.</p>
         <ul class="safety-list">
           <li><strong>Only seated or lying down.</strong> Never in or near water, in the bath, or while driving.</li>
-          <li><strong>Choose Gentle or a calm practice</strong> if you are pregnant, have epilepsy, heart disease or high blood pressure, or have a fever.</li>
-          <li>Tingling hands or face is common and passes. If you feel unwell, breathe normally and stop.</li>
-          <li>Never force a hold. Tap <em>Breathe now</em> whenever you need to.</li>
+          <li><strong>Skip fast breathing and breath holds altogether</strong> if you are pregnant, or have epilepsy, heart disease, high blood pressure or a fever. Choose Resonance, Cyclic Sighing or Alternate Nostril, or a <em>No holds</em> option instead.</li>
+          <li>Stop whenever you like. If you feel dizzy or unwell, or the urge to breathe gets strong, breathe normally.</li>
+          <li>There is no target to beat. <em>Breathe now</em> ends any hold.</li>
         </ul>
         <button class="primary" id="safety-ok">I understand, begin</button>
       </div>
@@ -166,12 +167,24 @@
           <input type="checkbox" class="switch" id="set-voice" />
         </label>
         <label class="setting">
+          <span>Explanations<small>Short notes on the science, spoken during the practice. Off: guidance only. Everything is always in <em>How it works</em>.</small></span>
+          <input type="checkbox" class="switch" id="set-explain" />
+        </label>
+        <label class="setting">
           <span>Breath sounds<small>Soft air sounds that pace each breath.</small></span>
           <input type="checkbox" class="switch" id="set-sounds" />
         </label>
         <label class="setting">
           <span>Music<small>A quiet bed under the practice: its own track if there is one, otherwise a low drone.</small></span>
           <input type="checkbox" class="switch" id="set-music" />
+        </label>
+        <label class="setting stack">
+          <span>Voice volume</span>
+          <input type="range" class="range" id="set-voice-vol" min="0.4" max="1.6" step="0.1" />
+        </label>
+        <label class="setting stack">
+          <span>Music &amp; sounds volume</span>
+          <input type="range" class="range" id="set-bed-vol" min="0" max="1.8" step="0.1" />
         </label>
       </div>
     </dialog>

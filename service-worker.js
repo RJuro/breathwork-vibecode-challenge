@@ -1,5 +1,5 @@
 // Offline shell + cue cache. Bump VERSION when shipping changes.
-const VERSION = 'kumbha-v3';
+const VERSION = 'kumbha-v4';
 const SHELL = [
   './',
   'index.html',

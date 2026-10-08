@@ -4,11 +4,12 @@
 // short kapalabhati bursts (he keeps fast-breathing rounds short to limit hypocapnia)
 // and holds that lengthen round by round.
 
-import { line, say, L, PUMP, HUM, Num, mmss, scaled, settle, holdEmpty, holdFull, SAFETY_HTML, ev } from './lib.js';
+import { line, say, L, PUMP, HUM, Num, num, mmss, scaled, settle, holdEmpty, holdFull, SAFETY_HTML, ev } from './lib.js';
 
 const T = {
   welcome: line('welcome', 'Welcome. Sit tall, or lie down. Let your eyes close, and let the day go quiet for a few minutes.'),
-  nose: line('nose', "Breathe only through your nose. It warms and filters the air, and it's where your sinuses add nitric oxide to every breath.", 'science'),
+  nose: line('nose_short', 'Breathe only through your nose, slow and quiet.'),
+  noseWhy: line('nose_why', "Your nose warms and filters the air, and it's where your sinuses add nitric oxide to every breath.", 'science'),
   ribs: line('ribs', 'Let the ribs widen to the sides, like a band stretching. Shoulders still, belly soft. Breathe in with no more effort than at rest.', 'technique'),
   ladderIntro: line('ladder_intro', "Now we lengthen the breath, one step at a time. Four counts in, four counts out. Follow the circle."),
   ladderUp: line('ladder_up', 'Five in, five out.'),
@@ -21,9 +22,10 @@ const T = {
   r2Intro: line('r2_intro', 'Round two. A few more breaths this time, and a longer hold. Many people find the second hold easier than the first.'),
   r3Intro: line('r3_intro', 'Last round. Let this be the easiest one.'),
   gIntro: line('g_intro', 'Slow, full breaths through the nose. Then a soft hold, with empty lungs.'),
-  r1Tingle: line('r1_tingle', "Tingling or lightness is normal. The fast breathing lowered your carbon dioxide, and rising carbon dioxide is what makes you want to breathe. It's a signal, not an emergency.", 'science'),
+  r1Permission: line('r1_permission', 'If you feel dizzy, or the urge to breathe gets strong, breathe normally. You can end any round, any time.'),
   r1After: line('r1_after', 'Notice the tingling settle, as your carbon dioxide comes back up.', 'science'),
-  r2Hunger: line('r2_hunger', 'Air hunger is just a sensation. Notice it without arguing with it. Soften your jaw, your eyes, your hands.', 'technique'),
+  r2Hunger: line('r2_hunger', 'Soften your jaw, your eyes, your hands. When you want to breathe, breathe.', 'technique'),
+  nhNotice: line('nh_notice', 'No hold this time. Breathe easily, and notice how you feel.'),
   r3Still: line('r3_still', 'Nothing to do. Just the stillness of an empty breath.'),
   r3After: line('r3_after', 'Three rounds done. Notice the warmth in your hands and face, and the quiet behind it.'),
   fullScience: line('full_science', "With full lungs, oxygen stays high while carbon dioxide slowly rises. That's where your tolerance is built.", 'science'),
@@ -32,12 +34,26 @@ const T = {
   coolScience: line('cool_science', "A long exhale turns up the vagus nerve, your body's brake pedal. Less stress is one of the few things linked to catching fewer colds.", 'science'),
   humAgain: line('hum_again', 'Three last hums. Long and low.'),
   checkin: line('checkin', 'Let the breath go. Notice how you feel. Warmth, quiet, whatever is here.'),
-  close: line('close', 'That\'s your practice. Keep warm, have something hot to drink, and get to bed early. If a fever comes, rest instead, or choose the gentle version.'),
+  close: line('close', "That's your practice. Keep warm, have something hot to drink, and get to bed early. If a fever comes, rest instead, or choose no holds."),
 };
 
 function round(n, o, opts) {
+  if (opts.noHolds) {
+    return {
+      id: `round${n}`,
+      title: `Round ${n}`,
+      color: '#ff9b6a',
+      what: '5 slow breaths · no holds',
+      steps: [
+        { say: say(`Round ${num(n)}. Five slow breaths, then rest.`), bell: 'bell', gap: 0.6 },
+        { pace: { inhale: 4, exhale: 6 }, count: 5, style: 'count' },
+        { rest: 20, cues: [{ at: 1, say: T.nhNotice }] },
+      ],
+    };
+  }
   const hold = scaled(o.hold, opts);
   const g = opts.gentle;
+  const group = `r${n}`;
   const breaths = g
     ? [{ say: say('Five slow breaths.'), gap: 0.6 }, { pace: { inhale: 4, exhale: 6 }, count: 5, style: 'count' }]
     : [
@@ -53,8 +69,8 @@ function round(n, o, opts) {
       { say: g ? (n === 3 ? T.r3Intro : T.gIntro) : o.intro, bell: 'bell' },
       ...breaths,
       settle(),
-      holdEmpty(hold, g ? o.gentleHoldCues : o.holdCues),
-      ...holdFull(o.full, g ? [{ at: 1, say: L.bandhaShort }] : o.fullCues),
+      holdEmpty(hold, g ? o.gentleHoldCues : o.holdCues, { group }),
+      ...holdFull(o.full, g ? [{ at: 1, say: L.bandhaShort }] : o.fullCues, { group }),
       { say: L.release },
       ...o.after,
     ],
@@ -65,21 +81,22 @@ export const tide = {
   id: 'tide',
   title: 'Turn the Tide',
   titleHtml: 'Turn the <em>tide</em>',
-  tag: 'Getting sick',
-  blurb: 'Humming, nasal breathing and three rounds of long, quiet holds.',
-  lede: "For the scratchy-throat day. Humming, nasal breathing and three rounds of long, quiet holds, in the spirit of Dylan Werner's pranayama.",
+  tag: 'Under the weather',
+  blurb: 'Humming and long, quiet holds for a scratchy-throat day. Comfort, not a cure.',
+  lede: "For the scratchy-throat day: humming, nasal breathing and three rounds of long, quiet holds, in the spirit of Dylan Werner's pranayama. A warming, settling practice. Humming raises nasal nitric oxide, but no study shows breathwork treats a cold.",
   music: 'tide',
-  intensity: true,
+  intensity: ['none', 'gentle', 'standard', 'deeper'],
   intensityNotes: {
-    gentle: 'No fast breathing, shorter holds. For a fever, or if holds are new to you.',
-    standard: 'Kapalabhati, then empty holds of up to 45 s, 1:00 and 1:15.',
-    deeper: 'Empty holds of up to 1:00, 1:20 and 1:40. Experienced practitioners only.',
+    none: 'No fast breathing and no breath holds: slow breathing and humming only.',
+    gentle: 'No fast breathing. Shorter holds: up to 25, 35 and 45 s on empty, then 20–30 s full.',
+    standard: '30–45 kapalabhati breaths, then holds of up to 45 s, 1:00 and 1:15 on empty, each followed by a 20–30 s full hold.',
+    deeper: 'As Standard, with empty holds of up to 1:00, 1:20 and 1:40. Experienced practitioners only.',
   },
   accent: ['#f6c48f', '#e0785a'],
   after: [
     'Warm drink, early night. Sleep is the best-supported thing you can do for a cold.',
     'A few slow hums through the day are a nice reminder. Space them out; they work best that way.',
-    'If a fever arrives, skip the rounds. Rest, or use the Gentle setting.',
+    'If a fever arrives, skip the rounds. Rest, or choose No holds.',
   ],
   sections: (opts) => [
     {
@@ -91,6 +108,7 @@ export const tide = {
         { say: T.welcome, bell: 'low', lead: 2.5 },
         { rest: 7 },
         { say: T.nose },
+        { say: T.noseWhy },
         { rest: 9 },
         { say: T.ribs },
         { rest: 9 },
@@ -118,7 +136,7 @@ export const tide = {
       hold: 45,
       full: 20,
       intro: T.r1Intro,
-      holdCues: [{ at: 4.5, say: L.breatheNow }, { at: 14, say: T.r1Tingle }],
+      holdCues: [{ at: 4.5, say: L.breatheNow }, { at: 14, say: T.r1Permission }],
       gentleHoldCues: [{ at: 4.5, say: L.breatheNow }],
       fullCues: [{ at: 1, say: L.bandha }],
       after: [{ rest: 12, cues: [{ at: 3, say: T.r1After }] }],
@@ -134,7 +152,7 @@ export const tide = {
         { at: 1, say: L.bandhaShort },
         { at: 7, say: T.fullScience },
       ],
-      after: [{ say: T.kox, lead: 2 }],
+      after: [{ say: T.kox, lead: 2, min: 12 }],
     }, opts),
     round(3, {
       pumps: 45,
@@ -172,7 +190,7 @@ export const tide = {
   <li><strong>The ladder</strong> (sama vritti): equal inhale and exhale, lengthened a second at a time, 4 → 5 → 6. It's his way of easing into a practice.</li>
   <li><strong>Humming</strong> (bhramari): a nasal inhale, then a hum through the whole exhale, lips closed.</li>
   <li><strong>Kapalabhati</strong>: short, sharp exhales driven from the belly; the inhale happens on its own. Werner keeps fast-breathing bursts short and follows them with a hold, to limit how far CO₂ drops.</li>
-  <li><strong>Holds</strong> (kumbhaka): first with empty lungs (<em>bahya</em>), then with full lungs (<em>antara</em>). On the full hold, gently engage the root lock (<em>mula bandha</em>, a light lift of the pelvic floor) and tuck the chin a little (<em>jalandhara</em>). Air hunger is a sensation, not a verdict. Notice it and soften around it.</li>
+  <li><strong>Holds</strong> (kumbhaka): first with empty lungs (<em>bahya</em>), then with full lungs (<em>antara</em>). On the full hold, gently engage the root lock (<em>mula bandha</em>, a light lift of the pelvic floor) and tuck the chin a little (<em>jalandhara</em>). Stay soft, and come out of the hold whenever you want to. There's no target to beat.</li>
   <li><strong>Cool-down</strong>: in for 4, out for 8, then three more hums and a minute of stillness.</li>
 </ul>
 
@@ -188,7 +206,7 @@ export const tide = {
   <li><strong>Meditation</strong> reduced the severity of winter respiratory illness in one trial; a larger follow-up wasn't conclusive ${ev.some}.</li>
 </ul>
 <p><strong>Bottom line:</strong> no trial has tested breathwork against a cold. Think of this as care, not cure. The best-supported moves are still sleep, fluids and rest.</p>
-<p class="muted">Patrick McKeown's own safety guidance advises against strong air hunger during an active cold or flu. Keep every hold comfortable, and once you're properly ill rather than just getting there, switch to Gentle or to Clear Nose.</p>
+<p class="muted">Patrick McKeown's own safety guidance advises against strong air hunger during an active cold or flu. Keep every hold comfortable, and once you're properly ill rather than just getting there, switch to No holds or to Clear Nose.</p>
 ${SAFETY_HTML}
 <h3>Sources</h3>
 <ul class="sources">

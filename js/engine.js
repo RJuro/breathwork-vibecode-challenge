@@ -19,8 +19,11 @@ export function compile(flow, durs = {}, opts = {}) {
   const sounds = [];
   let t = 0;
 
+  // Explanations (kind 'science') are opt-in; guidance plays either way.
+  const skip = (c) => c.kind === 'science' && !opts.explain;
   const speak = (c, at) => {
     if (!c || !c.id || !c.text) throw new Error(`bad spoken line: ${JSON.stringify(c)}`);
+    if (skip(c)) return 0;
     const d = durs[c.id] ?? estimateDur(c.text);
     voice.push({ id: c.id, t: at, dur: d, text: c.text, kind: c.kind || 'guide' });
     return d;
@@ -34,14 +37,20 @@ export function compile(flow, durs = {}, opts = {}) {
 
       if (step.bell) sounds.push({ t, type: step.bell });
 
-      if (step.say) {
+      if (step.say && skip(step.say)) {
+        // A skipped explanation leaves `min` seconds of easy breathing in its place.
+        if (step.min) {
+          t += step.min;
+          segs.push({ ...base, kind: 'rest', end: t, group: step.group });
+        }
+      } else if (step.say) {
         const d = speak(step.say, t + (step.lead ?? 0.3));
         t += (step.lead ?? 0.3) + d + (step.gap ?? 1.5);
-        segs.push({ ...base, kind: 'talk', end: t });
+        segs.push({ ...base, kind: 'talk', end: t, group: step.group });
       } else if (step.rest) {
         for (const c of step.cues || []) speak(c.say, start + c.at);
         t += step.rest;
-        segs.push({ ...base, kind: 'rest', end: t, label: step.label });
+        segs.push({ ...base, kind: 'rest', end: t, label: step.label, group: step.group });
       } else if (step.pace) {
         const p = step.pace;
         const phases = [];
@@ -73,19 +82,19 @@ export function compile(flow, durs = {}, opts = {}) {
           const at = c.breath != null ? breathStarts[Math.min(c.breath, step.count - 1)] : start + c.at;
           speak(c.say, at + (c.offset || 0));
         }
-        segs.push({ ...base, kind: 'pace', end: t, phases, style: step.style || 'slow', count: step.count, label: step.label });
+        segs.push({ ...base, kind: 'pace', end: t, phases, style: step.style || 'slow', count: step.count, label: step.label, group: step.group });
       } else if (step.hold) {
         const target = Math.round(step.seconds);
         const end = t + target;
         for (const c of step.cues || []) {
           const at = c.fromEnd != null ? end - c.fromEnd : start + c.at;
           // Drop mid-hold lines that would crowd a short hold.
-          if (at < start || at + lineDur(c.say) > end - 1.5) continue;
+          if (skip(c.say) || at < start || at + lineDur(c.say) > end - 1.5) continue;
           speak(c.say, at);
         }
         if (step.tick ?? target >= 30) sounds.push({ t: end - 10, type: 'tick' });
         t = end;
-        segs.push({ ...base, kind: 'hold', type: step.hold, end, target, record: !!step.record, label: step.label });
+        segs.push({ ...base, kind: 'hold', type: step.hold, end, target, record: !!step.record, label: step.label, group: step.group });
       }
     }
   }
@@ -108,6 +117,29 @@ export function compile(flow, durs = {}, opts = {}) {
   });
 
   return { segs, voice, sounds, sections, total: t };
+}
+
+/** End of the retention block a hold belongs to: "Breathe now" skips the rest of it
+ *  (e.g. an empty hold and the recovery hold after it) straight to normal breathing. */
+export function exitOf(plan, seg) {
+  const i = plan.segs.indexOf(seg);
+  let end = seg.end;
+  if (seg.group) for (let j = i + 1; j < plan.segs.length && plan.segs[j].group === seg.group; j++) end = plan.segs[j].end;
+  return end;
+}
+
+/** Guided hold time per recorded hold, from the timeline alone (no reliance on screen
+ *  frames, which stop in background tabs). `skips` are [from, to] jumps made with
+ *  "Breathe now"; `endT` is where playback stopped. */
+export function holdResults(plan, skips, endT) {
+  const out = [];
+  for (const s of plan.segs) {
+    if (s.kind !== 'hold' || !s.record || s.start >= endT) continue;
+    if (skips.some(([from, to]) => from < s.start && to >= s.end)) continue; // jumped over entirely
+    const jump = skips.find(([from]) => from >= s.start && from < s.end);
+    out.push(Math.max(0, Math.min(jump ? jump[0] : s.end, endT) - s.start));
+  }
+  return out;
 }
 
 const ease = (x) => 0.5 - Math.cos(Math.PI * Math.min(1, Math.max(0, x))) / 2;

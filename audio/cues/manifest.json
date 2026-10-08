@@ -102,10 +102,10 @@
     "duration": 4.51
   },
   "close": {
-    "fp": "167b0b698fb0",
+    "fp": "24d3fc291b62",
     "voice": "tom",
     "engine": "lux",
-    "duration": 8.9
+    "duration": 8.52
   },
   "cn_close": {
     "fp": "f9c7c9f64c5e",
@@ -137,11 +137,11 @@
     "engine": "lux",
     "duration": 7.8
   },
-  "cn_hum": {
-    "fp": "691ff9e3182d",
+  "cn_hum_why": {
+    "fp": "24b014be7e16",
     "voice": "tom",
     "engine": "lux",
-    "duration": 6.41
+    "duration": 5.11
   },
   "cn_light": {
     "fp": "a0c16f2d8ed4",
@@ -252,10 +252,10 @@
     "duration": 6.0
   },
   "fw_buzz": {
-    "fp": "168ad9d7a2cd",
+    "fp": "4fc00046120c",
     "voice": "tom",
     "engine": "lux",
-    "duration": 6.02
+    "duration": 3.6
   },
   "fw_close": {
     "fp": "99d52d5613cb",
@@ -318,10 +318,10 @@
     "duration": 5.66
   },
   "hl_contract": {
-    "fp": "5e9e78f40e58",
+    "fp": "63b6adb58119",
     "voice": "tom",
     "engine": "lux",
-    "duration": 8.06
+    "duration": 5.45
   },
   "hl_dive": {
     "fp": "07f589359678",
@@ -593,6 +593,12 @@
     "engine": "lux",
     "duration": 1.3
   },
+  "n_five_slow_hums_to_finish": {
+    "fp": "f7f2bde985fb",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 1.54
+  },
   "n_forty_five_quick_breaths_begin": {
     "fp": "8a83ad56c4a6",
     "voice": "tom",
@@ -845,11 +851,29 @@
     "engine": "lux",
     "duration": 3.1
   },
+  "n_round_one_five_slow_breaths_then_rest": {
+    "fp": "4c4938fc1244",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 2.47
+  },
   "n_round_one_small_breath_in_small_breath_out": {
     "fp": "d247f6560427",
     "voice": "tom",
     "engine": "lux",
     "duration": 2.86
+  },
+  "n_round_three_five_slow_breaths_then_rest": {
+    "fp": "954563ed04f8",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 2.71
+  },
+  "n_round_two_five_slow_breaths_then_rest": {
+    "fp": "49e0647d69b0",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 2.5
   },
   "n_round_two_small_breath_in_small_breath_out_pinch_and_nod_unt": {
     "fp": "737e13dde452",
@@ -893,11 +917,23 @@
     "engine": "lux",
     "duration": 1.63
   },
-  "nose": {
-    "fp": "aaefc825c110",
+  "nh_notice": {
+    "fp": "51a2cda871f3",
     "voice": "tom",
     "engine": "lux",
-    "duration": 7.1
+    "duration": 3.79
+  },
+  "nose_short": {
+    "fp": "97881deccc27",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 2.64
+  },
+  "nose_why": {
+    "fp": "c8520e9e88e7",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 5.81
   },
   "pump_last": {
     "fp": "bc8851e5c42b",
@@ -917,17 +953,17 @@
     "engine": "lux",
     "duration": 8.64
   },
-  "r1_tingle": {
-    "fp": "76f6a471217e",
+  "r1_permission": {
+    "fp": "ee3b8a0759a2",
     "voice": "tom",
     "engine": "lux",
-    "duration": 11.11
+    "duration": 6.62
   },
   "r2_hunger": {
-    "fp": "52207cf37125",
+    "fp": "8c7f264bfdc5",
     "voice": "tom",
     "engine": "lux",
-    "duration": 6.53
+    "duration": 3.91
   },
   "r2_intro": {
     "fp": "86554f2a7db7",

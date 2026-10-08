@@ -16,7 +16,7 @@ const F = {
   r2: line('fw_r2', 'Round two. A few more breaths, and a longer hold.'),
   r3: line('fw_r3', 'Last round. The longest hold. Stay soft inside it.'),
   urge: line('fw_urge', 'Lock and hold only until the first clear urge. Let the energy settle.', 'technique'),
-  buzz: line('fw_buzz', 'A gentle buzzing or warmth is normal. Quick breathing nudges your nervous system toward alert.', 'science'),
+  buzz: line('fw_buzz', 'If you feel dizzy, slow down, or stop and breathe normally.'),
   adrenaline: line('fw_adrenaline', 'In small studies, breathing like this raised adrenaline. Claims about the immune system are still early.', 'science'),
   rest: line('fw_rest', 'Breathe easy. Let your heart rate settle before the next round.'),
   cool: say('Six slow breaths. In for four, out for six.'),
@@ -122,7 +122,7 @@ const H = {
   inhale: say('Comfortably full breath in.'),
   soft: line('hl_soft', 'Soften the face. Shoulders down. Holding the breath is a relaxation skill.', 'technique'),
   dive: line('hl_dive', "Your heart may slow during the hold. That's the diving reflex, built into every mammal.", 'science'),
-  contract: line('hl_contract', 'If your diaphragm starts to twitch, that is your body reacting to carbon dioxide, not running out of oxygen. Stay soft.', 'science'),
+  contract: line('hl_contract', 'If your diaphragm starts to twitch, you can end the hold right there. Just tap breathe now.'),
   spleen: line('hl_spleen', 'Over a few holds, the spleen squeezes out a small reserve of red blood cells. A real effect, but a small one.', 'science'),
   last: line('hl_last', 'Last hold. Stay soft right to the end.'),
   rule: line('hl_rule', 'If a hold ever starts to feel like a maximum effort, end the table there. Training happens below your limit.', 'technique'),
@@ -201,7 +201,7 @@ export const holdLadder = {
   <li>The diving reflex: heart rate drops (around 14 beats a minute within 30 s in divers) and blood vessels in the limbs narrow ${ev.solid}.</li>
   <li>The spleen contracts by about a fifth, releasing a few percent more red blood cells over several holds; this fades within minutes ${ev.solid}.</li>
   <li>Two weeks of daily holds lengthened max holds by about 44 s in a small study ${ev.some}. Lasting changes in haemoglobin aren't proven ${ev.spec}.</li>
-  <li>Diaphragm contractions late in a hold are a CO₂ response, not a sign you're out of oxygen ${ev.solid}.</li>
+  <li>Diaphragm contractions late in a hold are a response to rising CO₂ ${ev.solid}. In this app they're a good moment to end the hold, not something to push through.</li>
 </ul>
 ${SAFETY_HTML}
 <h3>Sources</h3>
