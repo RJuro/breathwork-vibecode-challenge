@@ -82,6 +82,7 @@ function round(n, o, opts) {
 export const tide = {
   id: 'tide',
   title: 'Turn the Tide',
+  featured: true,
   titleHtml: 'Turn the <em>tide</em>',
   tag: 'Under the weather',
   blurb: 'Humming and long, quiet holds for a scratchy-throat day. Comfort, not a cure.',

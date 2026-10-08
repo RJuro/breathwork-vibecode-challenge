@@ -3,6 +3,8 @@ import { compile, stateAt, captionAt, exitOf, holdResults } from './engine.js';
 import { notesHtml } from './flows/lib.js';
 import { teacherTalk } from './flows/talk.js';
 import { Bloom } from './bloom.js';
+import { Contour, contourSvg } from './contour.js';
+import { motif } from './motifs.js';
 import { loadManifests, loadCues, loadMusic, renderSession, packCovers } from './audio.js';
 
 const $ = (s) => document.querySelector(s);
@@ -14,7 +16,7 @@ const fmt = (s) => {
 const minutes = (s) => `${Math.max(1, Math.round(s / 60))} min`;
 
 // ── Settings ───────────────────────────────────────────
-const DEFAULTS = { voice: true, speaker: 'tom', talk: 'guided', visual: 'bloom', sounds: true, music: true, voiceVol: 1, bedVol: 1, safetyAck: false, intensity: {} };
+const DEFAULTS = { look: 2, voice: true, speaker: 'tom', talk: 'guided', visual: 'contour', sounds: true, music: true, voiceVol: 1, bedVol: 1, safetyAck: false, intensity: {} };
 let settings = load();
 function load() {
   try {
@@ -22,6 +24,7 @@ function load() {
     if (typeof s.intensity !== 'object') s.intensity = {}; // v1 stored one global string
     if ('ambience' in s) s.music = s.ambience;
     if (s.explain === true && !localStorage.getItem('kumbha').includes('"talk"')) s.talk = 'full';
+    if ((s.look || 1) < 2) Object.assign(s, { look: 2, visual: 'contour' }); // the Contour redesign: its visual becomes the default once
     return s;
   } catch {
     return { ...DEFAULTS };
@@ -50,6 +53,7 @@ let skips = []; // [from, to] jumps made with "Breathe now"
 let announced = '';
 let wakeLock = null;
 let bloom = null;
+let contour = null;
 const audio = $('#track');
 
 // ── Routing: #/ library, #/p/<id> practice ─────────────
@@ -76,23 +80,25 @@ async function renderShelf() {
   const durs = Object.fromEntries(Object.entries(cues).map(([k, v]) => [k, v.duration]));
   const shelf = $('#shelf');
   shelf.innerHTML = '';
-  const groups = [...new Set(FLOWS.map((f) => f.tag))];
-  for (const g of groups) {
-    const sec = document.createElement('section');
-    sec.className = 'group';
-    sec.innerHTML = `<h2 class="group-title">${g}</h2>`;
-    for (const f of FLOWS.filter((x) => x.tag === g)) {
-      const total = compile(f, durs, { ...INTENSITY[levelOf(f)], talk: settings.talk }).total;
-      const a = document.createElement('a');
-      a.className = 'card';
-      a.href = `#/p/${f.id}`;
-      a.style.setProperty('--a1', f.accent[0]);
-      a.style.setProperty('--a2', f.accent[1]);
-      a.innerHTML = `<span class="card-orb" aria-hidden="true"></span><span class="card-text"><span class="card-title">${f.title}</span><span class="card-blurb">${f.blurb}</span></span><span class="card-len">${minutes(total)}</span>`;
-      sec.appendChild(a);
-    }
-    shelf.appendChild(sec);
+  // Turn the Tide leads as a wide tile; the rest follow in a two-column grid.
+  const order = [...FLOWS.filter((f) => f.featured), ...FLOWS.filter((f) => !f.featured)];
+  for (const f of order) {
+    const total = compile(f, durs, { ...INTENSITY[levelOf(f)], talk: settings.talk }).total;
+    const a = document.createElement('a');
+    a.className = f.featured ? 'tile wide' : 'tile';
+    a.href = `#/p/${f.id}`;
+    const meta = `<span class="tile-meta">${minutes(total)} · ${f.tag}</span>`;
+    a.innerHTML = f.featured
+      ? `<span class="tile-text">${meta}<span class="tile-title">${f.titleHtml || f.title}</span><span class="tile-blurb">${f.blurb}</span></span><span class="tile-art">${motif(f.id)}</span>`
+      : `<span class="tile-art">${motif(f.id)}</span><span class="tile-text"><span class="tile-title">${f.title}</span>${meta}</span>`;
+    shelf.appendChild(a);
   }
+}
+
+/** Contour art behind the library and practice headers (colours come from the section). */
+function renderTopo() {
+  $('#lib-topo').innerHTML = contourSvg({ w: 420, h: 340, cx: 318, cy: 112, s: 200, drift: 0.4 });
+  $('#detail-topo').innerHTML = contourSvg({ w: 420, h: 300, cx: 330, cy: 70, s: 170, drift: 1.7 });
 }
 
 // ── Practice detail ────────────────────────────────────
@@ -268,6 +274,9 @@ async function begin() {
   if (settings.visual === 'bloom') {
     bloom ??= new Bloom($('#bloom'));
     bloom.resize();
+  } else if (settings.visual === 'contour') {
+    contour ??= new Contour($('#contour'));
+    contour.resize();
   }
   try {
     wakeLock = await navigator.wakeLock?.request('screen');
@@ -289,7 +298,8 @@ function frame(t) {
   const st = stateAt(plan, t);
   $('#session').dataset.phase = st.phase;
   document.body.dataset.section = st.seg.section;
-  if (bloom && settings.visual === 'bloom') bloom.draw(st, t);
+  if (contour && settings.visual === 'contour') contour.draw(st, t);
+  else if (bloom && settings.visual === 'bloom') bloom.draw(st, t);
   else $('#orb').style.setProperty('--s', st.scale.toFixed(4));
 
   const phaseEl = $('#phase');
@@ -549,5 +559,6 @@ const ICON_PLAY = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v
 
 bindUI();
 renderShelf();
+renderTopo();
 route();
 if ('serviceWorker' in navigator) navigator.serviceWorker.register('service-worker.js').catch(() => {});

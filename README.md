@@ -46,10 +46,13 @@ practice has a *How it works* page with evidence labels and sources. The summary
 - `js/audio.js`: decodes Tom's cues and the practice's music, synthesises breath/hum/bell
   sounds, and mixes the whole session into **one WAV track** (keeps playing with the screen
   locked; the visuals follow its `currentTime`).
-- `js/bloom.js`: the session visual: two counter-rotating rings of edge-lit glass petals that
-  open on the in-breath and fold on the out-breath, blending additively with a short afterglow;
-  drifting motes show the breath's direction, holds shimmer, hums ripple, colour follows the phase.
-  The original orb is still available (Settings → Visual).
+- `js/contour.js`: the look and the session visual, *Contour*: nested contour lines, like a
+  topographic map, that widen on the in-breath and settle on the out-breath over two overlapping
+  washes of colour (a riso-style overprint, one ink pair per phase). Holds fill the rings from the
+  centre outward, hums send a ripple out. The same generator draws the art behind the library and
+  practice headers; `js/motifs.js` has the line drawings on the library tiles. Type: Cormorant
+  Garamond and Hanken Grotesk on warm graphite.
+- `js/bloom.js` (petals) and the original orb are still available (Settings → Visual).
 - `js/app.js`: library, practice page, session, settings.
 
 ## Voice cues (LuxTTS · tom)
