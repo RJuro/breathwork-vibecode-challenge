@@ -14,11 +14,11 @@ python3 -m http.server 8000   # then http://localhost:8000
 
 | Section | What happens | Time |
 |---|---|---|
-| Arrive | Nasal breathing cues; a sama-vritti ladder, 4:4 → 5:5 → 6:6 | 2:14 |
-| Hum | Five bhramari hums (nasal nitric oxide) | 1:54 |
-| Round 1 | 30 kapalabhati · 45 s hold out · 20 s hold in with root lock | 2:13 |
-| Round 2 | 40 kapalabhati · 1:00 hold out · 25 s hold in | 2:52 |
-| Round 3 | 45 kapalabhati · 1:15 hold out · 30 s hold in | 3:02 |
+| Arrive | Nasal breathing cues; a sama-vritti ladder, 4:4 → 5:5 → 6:6 | 2:13 |
+| Hum | Five bhramari hums (nasal nitric oxide) | 1:50 |
+| Round 1 | 30 kapalabhati · 45 s hold out · 20 s hold in with root lock | 2:15 |
+| Round 2 | 40 kapalabhati · 1:00 hold out · 25 s hold in | 2:46 |
+| Round 3 | 45 kapalabhati · 1:15 hold out · 30 s hold in | 3:04 |
 | Cool down | 4:8 breathing, three more hums (spaced, so NO has recovered), stillness | 2:46 |
 
 **Gentle** swaps the kapalabhati for slow breaths and shortens the empty holds (use it with
@@ -43,7 +43,8 @@ trial has tested breathwork against colds.
 
 Cues are generated through the [runpod-qwen-tts](https://github.com/RJuro/runpod-qwen-tts)
 gateway with `engine: "lux"`, `voice: "tom"`, then trimmed and loudness-normalised
-(−19 LUFS) with ffmpeg. Until they exist, the app reads cues with the device's own voice.
+(−19 LUFS) with ffmpeg; the files live in `audio/cues/`. Any cue missing from
+`audio/cues/manifest.json` falls back to the device's own voice.
 
 ```sh
 export QWEN_TTS_API_KEY=…            # the gateway's GATEWAY_API_KEY

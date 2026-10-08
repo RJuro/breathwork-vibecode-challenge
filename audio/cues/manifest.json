@@ -1,1 +1,188 @@
-{}
+{
+  "all_out": {
+    "fp": "770e1d7c5da7",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 1.03
+  },
+  "bandha": {
+    "fp": "61b360186387",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 6.46
+  },
+  "bandha_short": {
+    "fp": "287668f4b63a",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 2.3
+  },
+  "checkin": {
+    "fp": "26976485ae0e",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 4.51
+  },
+  "close": {
+    "fp": "167b0b698fb0",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 8.9
+  },
+  "cool_intro": {
+    "fp": "51e1ef33398e",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 4.03
+  },
+  "cool_science": {
+    "fp": "3a9a7c474480",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 8.23
+  },
+  "deep_in": {
+    "fp": "26324e84ccdf",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 1.49
+  },
+  "full_science": {
+    "fp": "39569b158635",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 6.91
+  },
+  "g_intro": {
+    "fp": "cd4899af5698",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 4.32
+  },
+  "hold_empty": {
+    "fp": "b455e7393a43",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 1.78
+  },
+  "hum_again": {
+    "fp": "420cf95810a5",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 1.87
+  },
+  "hum_intro": {
+    "fp": "31d6e1f9ac38",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 7.46
+  },
+  "hum_science": {
+    "fp": "5e063d3be4a0",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 10.54
+  },
+  "hum_space": {
+    "fp": "e2668352a6ae",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 6.02
+  },
+  "inhale_top": {
+    "fp": "64ac9b2dafa6",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 2.95
+  },
+  "kox": {
+    "fp": "d47c58eea38e",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 14.11
+  },
+  "ladder_intro": {
+    "fp": "9068ff37fc41",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 3.53
+  },
+  "ladder_up": {
+    "fp": "26363a019d7f",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 0.86
+  },
+  "ladder_up2": {
+    "fp": "4da295eaab56",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 2.18
+  },
+  "nose": {
+    "fp": "aaefc825c110",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 7.1
+  },
+  "pump_last": {
+    "fp": "bc8851e5c42b",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 0.77
+  },
+  "r1_intro": {
+    "fp": "8315f92f0040",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 8.64
+  },
+  "r1_tingle": {
+    "fp": "76f6a471217e",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 11.11
+  },
+  "r2_hunger": {
+    "fp": "52207cf37125",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 6.53
+  },
+  "r2_intro": {
+    "fp": "d33a312b4d53",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 3.6
+  },
+  "r3_intro": {
+    "fp": "2c88fa5b6d0e",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 2.62
+  },
+  "r3_still": {
+    "fp": "64413d826e12",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 2.93
+  },
+  "release": {
+    "fp": "a0c3d3028c07",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 2.11
+  },
+  "ribs": {
+    "fp": "ebafc17ed240",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 7.9
+  },
+  "welcome": {
+    "fp": "2a94baddcc83",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 6.41
+  }
+}

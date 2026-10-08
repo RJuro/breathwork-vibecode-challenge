@@ -40,7 +40,7 @@ export function compile(flow, cues, durs = {}, opts = {}) {
 
       if (step.say) {
         const d = say(step.say, t + (step.lead ?? 0.3));
-        t += (step.lead ?? 0.3) + d + (step.gap ?? 1.2);
+        t += (step.lead ?? 0.3) + d + (step.gap ?? 1.5);
         segs.push({ ...base, kind: 'talk', end: t });
       } else if (step.rest) {
         t += step.rest;
