@@ -1,6 +1,7 @@
 import { FLOWS, INTENSITY, LEVEL_NAMES, intensitiesOf } from './flows/index.js';
 import { compile, stateAt, captionAt, exitOf, holdResults } from './engine.js';
 import { notesHtml } from './flows/lib.js';
+import { teacherTalk } from './flows/talk.js';
 import { loadManifests, loadCues, loadMusic, renderSession } from './audio.js';
 
 const $ = (s) => document.querySelector(s);
@@ -12,13 +13,14 @@ const fmt = (s) => {
 const minutes = (s) => `${Math.max(1, Math.round(s / 60))} min`;
 
 // ── Settings ───────────────────────────────────────────
-const DEFAULTS = { voice: true, explain: false, sounds: true, music: true, voiceVol: 1, bedVol: 1, safetyAck: false, intensity: {} };
+const DEFAULTS = { voice: true, talk: 'guided', sounds: true, music: true, voiceVol: 1, bedVol: 1, safetyAck: false, intensity: {} };
 let settings = load();
 function load() {
   try {
     const s = { ...DEFAULTS, ...JSON.parse(localStorage.getItem('kumbha') || '{}') };
     if (typeof s.intensity !== 'object') s.intensity = {}; // v1 stored one global string
     if ('ambience' in s) s.music = s.ambience;
+    if (s.explain === true && !localStorage.getItem('kumbha').includes('"talk"')) s.talk = 'full';
     return s;
   } catch {
     return { ...DEFAULTS };
@@ -78,7 +80,7 @@ async function renderShelf() {
     sec.className = 'group';
     sec.innerHTML = `<h2 class="group-title">${g}</h2>`;
     for (const f of FLOWS.filter((x) => x.tag === g)) {
-      const total = compile(f, durs, { ...INTENSITY[levelOf(f)], explain: settings.explain }).total;
+      const total = compile(f, durs, { ...INTENSITY[levelOf(f)], talk: settings.talk }).total;
       const a = document.createElement('a');
       a.className = 'card';
       a.href = `#/p/${f.id}`;
@@ -100,6 +102,7 @@ function openFlow(f) {
   $('#learn-body').innerHTML = f.learn || '';
   $('#notes').hidden = !f.notes;
   $('#notes').open = false;
+  $('#notes-audio').pause();
   $('#notes-body').innerHTML = f.notes ? notesHtml(f.notes) : '';
   $('#intensity-row').hidden = !f.intensity;
   $('#outline').open = matchMedia('(min-height: 900px) and (min-width: 700px)').matches;
@@ -141,7 +144,7 @@ function renderMap() {
 async function prepare() {
   const token = ++renderToken;
   const f = flow;
-  const opts = { ...INTENSITY[levelOf(f)], explain: settings.explain };
+  const opts = { ...INTENSITY[levelOf(f)], talk: settings.talk };
   const begin = $('#begin');
   begin.disabled = true;
   $('#begin-sub').textContent = 'Preparing…';
@@ -185,6 +188,37 @@ async function prepare() {
   audio.load();
   begin.disabled = false;
   $('#begin-sub').textContent = minutes(plan.total);
+  if (talkFor !== f.id) prepareTalk(f);
+}
+
+// ── Teacher's notes, read aloud ────────────────────────
+// Rendered after the session track (so it never delays Begin), into its own player.
+let talkFor = null;
+let talkUrl = null;
+async function prepareTalk(f) {
+  talkFor = f.id;
+  const btn = $('#notes-listen');
+  const player = $('#notes-audio');
+  player.pause();
+  player.hidden = true;
+  btn.hidden = false;
+  btn.disabled = true;
+  btn.textContent = 'Preparing audio…';
+  const t = teacherTalk(f);
+  if (!t) return;
+  const { cues } = await loadManifests();
+  const est = Object.fromEntries(Object.entries(cues).map(([k, v]) => [k, v.duration]));
+  const ids = [...new Set(compile(t, est, { talk: 'full' }).voice.map((v) => v.id))];
+  const [loaded, music] = await Promise.all([loadCues(ids), settings.music ? loadMusic(f.music) : null]);
+  const durs = Object.fromEntries(Object.entries(loaded).filter(([, b]) => b).map(([k, b]) => [k, b.duration]));
+  const p = compile(t, durs, { talk: 'full' });
+  const blob = await renderSession(p, loaded, { breathSounds: false, ambience: settings.music, music, voiceGain: settings.voiceVol, bedGain: settings.bedVol * 0.8 });
+  if (talkFor !== f.id) return;
+  if (talkUrl) URL.revokeObjectURL(talkUrl);
+  talkUrl = URL.createObjectURL(blob);
+  player.src = talkUrl;
+  btn.disabled = false;
+  btn.textContent = `▶ Listen: Tom reads these notes · ${minutes(p.total)}`;
 }
 
 // ── Session ────────────────────────────────────────────
@@ -198,6 +232,7 @@ async function begin() {
   skips = [];
   announced = '';
   audio.currentTime = 0;
+  $('#notes-audio').pause();
   try {
     await audio.play();
   } catch (e) {
@@ -393,7 +428,8 @@ function bindUI() {
   });
 
   $('#set-voice').checked = settings.voice;
-  $('#set-explain').checked = settings.explain;
+  const syncTalk = () => $$('#set-talk button').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.v === settings.talk)));
+  syncTalk();
   $('#set-sounds').checked = settings.sounds;
   $('#set-music').checked = settings.music;
   $('#set-voice-vol').value = settings.voiceVol;
@@ -401,7 +437,6 @@ function bindUI() {
   let dirty = false;
   for (const [id, key] of [
     ['#set-voice', 'voice'],
-    ['#set-explain', 'explain'],
     ['#set-sounds', 'sounds'],
     ['#set-music', 'music'],
   ]) {
@@ -419,10 +454,26 @@ function bindUI() {
       dirty = true;
     });
   }
+  $('#set-talk').addEventListener('click', (e) => {
+    const b = e.target.closest('button[data-v]');
+    if (!b) return;
+    save({ talk: b.dataset.v });
+    syncTalk();
+    dirty = true;
+  });
   $('#settings').addEventListener('close', () => {
     if (dirty) renderShelf();
-    if (dirty && flow) prepare();
+    if (dirty && flow) {
+      talkFor = null; // re-render the notes track too (music/volume may have changed)
+      prepare();
+    }
     dirty = false;
+  });
+  $('#notes-listen').addEventListener('click', () => {
+    const player = $('#notes-audio');
+    $('#notes-listen').hidden = true;
+    player.hidden = false;
+    player.play().catch(() => {});
   });
 
   $('#pause-btn').addEventListener('click', togglePause);

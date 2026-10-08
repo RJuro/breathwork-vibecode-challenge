@@ -240,7 +240,7 @@ export async function renderSession(plan, cues, opts = {}) {
     const variant = e.dur < 1.5 ? (seen[base] = (seen[base] || 0) + 1) % 3 : 0;
     const key = atomKey(e, variant);
     if (!atoms.has(key)) atoms.set(key, renderAtom(e));
-    placed.push([e.t, key]);
+    placed.push([e.t, key, e.pan || 0]);
   }
   const drone = ambience && !music;
   if (drone) atoms.set('pad', renderAtom({ type: 'pad' }));
@@ -248,8 +248,12 @@ export async function renderSession(plan, cues, opts = {}) {
 
   // 2. Mix in plain JS. Scheduling hundreds of nodes in one long OfflineAudioContext is
   //    slow (every node is processed every quantum); adding samples directly is not.
+  // Stereo only when something is panned (e.g. alternate-nostril breath sounds), so
+  // most sessions stay mono and light on memory.
   const N = Math.ceil(total * SR);
+  const stereo = placed.some(([, , pan]) => pan);
   const out = new Float32Array(N);
+  const outR = stereo ? new Float32Array(N) : null;
 
   // Ducking envelope at 100 Hz: the sound bed dips under the voice.
   const CR = 100;
@@ -264,18 +268,25 @@ export async function renderSession(plan, cues, opts = {}) {
     env[i] = y;
   }
 
-  const mix = (buffer, t, gain, shape) => {
+  // pan -1 (left) … 1 (right); centre plays at full level in both ears.
+  const mix = (buffer, t, gain, shape, pan = 0) => {
     const d = buffer.getChannelData(0);
     const o = Math.round(t * SR);
     const n = Math.min(d.length, N - o);
+    const gl = Math.min(1, 1 - pan);
+    const gr = Math.min(1, 1 + pan);
     for (let i = Math.max(0, -o); i < n; i++) {
       const j = o + i;
-      out[j] += d[i] * gain * env[((j * CR) / SR) | 0] * (shape ? shape(j / SR) : 1);
+      const s = d[i] * gain * env[((j * CR) / SR) | 0] * (shape ? shape(j / SR) : 1);
+      if (outR) {
+        out[j] += s * gl;
+        outR[j] += s * gr;
+      } else out[j] += s;
     }
   };
 
   const FX = 0.55 * bedGain;
-  for (const [t, key] of placed) mix(clips.get(key), t, FX);
+  for (const [t, key, pan] of placed) mix(clips.get(key), t, FX, null, pan);
 
   if (drone) {
     // Overlapping, cross-faded copies of one pad clip, faded in and out with the session.
@@ -297,7 +308,7 @@ export async function renderSession(plan, cues, opts = {}) {
   env.fill(1); // voice is not ducked
   for (const v of plan.voice) if (cues[v.id]) mix(cues[v.id], v.t, voiceGain);
 
-  return toWav(out);
+  return toWav(out, outR);
 }
 
 // Background track: mixed to mono, levelled to a fixed loudness so any track sits the
@@ -329,31 +340,38 @@ function mixMusic(buffer, total, mix, level = 1) {
   }
 }
 
-function toWav(data) {
-  const n = data.length;
+function toWav(left, right = null) {
+  const n = left.length;
+  const ch = right ? 2 : 1;
   let peak = 0;
-  for (let i = 0; i < n; i++) peak = Math.max(peak, Math.abs(data[i]));
+  for (let i = 0; i < n; i++) peak = Math.max(peak, Math.abs(left[i]), right ? Math.abs(right[i]) : 0);
   const gain = peak > 0.97 ? 0.97 / peak : 1;
-  const ab = new ArrayBuffer(44 + n * 2);
+  const bytes = n * 2 * ch;
+  const ab = new ArrayBuffer(44 + bytes);
   const v = new DataView(ab);
   const str = (o, s) => [...s].forEach((c, i) => v.setUint8(o + i, c.charCodeAt(0)));
   str(0, 'RIFF');
-  v.setUint32(4, 36 + n * 2, true);
+  v.setUint32(4, 36 + bytes, true);
   str(8, 'WAVE');
   str(12, 'fmt ');
   v.setUint32(16, 16, true);
   v.setUint16(20, 1, true);
-  v.setUint16(22, 1, true);
+  v.setUint16(22, ch, true);
   v.setUint32(24, SR, true);
-  v.setUint32(28, SR * 2, true);
-  v.setUint16(32, 2, true);
+  v.setUint32(28, SR * 2 * ch, true);
+  v.setUint16(32, 2 * ch, true);
   v.setUint16(34, 16, true);
   str(36, 'data');
-  v.setUint32(40, n * 2, true);
+  v.setUint32(40, bytes, true);
   let o = 44;
-  for (let i = 0; i < n; i++, o += 2) {
-    const s = Math.max(-1, Math.min(1, data[i] * gain));
+  const put = (x) => {
+    const s = Math.max(-1, Math.min(1, x * gain));
     v.setInt16(o, s < 0 ? s * 0x8000 : s * 0x7fff, true);
+    o += 2;
+  };
+  for (let i = 0; i < n; i++) {
+    put(left[i]);
+    if (right) put(right[i]);
   }
   return new Blob([ab], { type: 'audio/wav' });
 }

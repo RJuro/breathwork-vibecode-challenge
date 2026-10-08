@@ -1,7 +1,7 @@
 // Clear Nose: Buteyko / Patrick McKeown's nose-unblocking exercise, kept to moderate air
 // hunger because his own guidance says strong air hunger isn't for an active cold.
 
-import { line, say, HUM, SAFETY_HTML, ev } from './lib.js';
+import { line, say, tip, HUM, SAFETY_HTML, ev } from './lib.js';
 
 const K = {
   welcome: line('cn_welcome', "Sit tall. Breathe through your nose, or through whichever side is more open. If it's fully blocked, sip a little air through the corner of your mouth."),
@@ -15,6 +15,8 @@ const K = {
   gasp: line('cn_gasp', 'If your first breath after a hold is a gasp, the hold was too long. Next time, let go sooner.', 'technique'),
   hum: line('cn_hum_why', 'Humming vibrates the air in your sinuses. A few hums are plenty; more adds little.', 'science'),
   humCount: say('Five slow hums to finish.'),
+  first: tip('cn_t_first', 'Notice the first breath after the hold. Gentle, through the nose. No gulp.'),
+  small: tip('cn_t_small', 'Hold after a small breath out, not after a big breath in. It works better, and it is gentler.'),
   close: line('cn_close', 'Quiet, low, slow breathing through the nose. Come back to this whenever your nose closes up.'),
 };
 
@@ -71,7 +73,7 @@ export const clearNose = {
               { pace: SMALL, count: 1, style: 'slow' },
               pinch(20, say('Pinch, and nod. Let go at the first clear urge.')),
               { say: K.release },
-              { rest: 40, cues: [{ at: 8, say: K.co2 }] },
+              { rest: 40, cues: [{ at: 8, say: K.co2 }, { at: 24, say: K.first }] },
             ],
           },
           {
@@ -84,7 +86,7 @@ export const clearNose = {
               { pace: SMALL, count: 1, style: 'slow' },
               pinch(30, say('Pinch, and nod.')),
               { say: K.release },
-              { rest: 50, cues: [{ at: 6, say: K.temp }] },
+              { rest: 50, cues: [{ at: 6, say: K.temp }, { at: 25, say: K.small }] },
             ],
           },
           {

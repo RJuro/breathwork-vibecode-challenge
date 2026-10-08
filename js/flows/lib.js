@@ -15,6 +15,8 @@
 // Any step can carry `bell: 'bell'|'low'` to ring as it starts.
 
 export const line = (id, text, kind = 'guide') => ({ id, text, kind });
+/** A teacher's tip: spoken at the Guided and Full voice levels, skipped at Quiet. */
+export const tip = (id, text) => line(id, text, 'tip');
 
 const slug = (s) =>
   s
@@ -42,6 +44,12 @@ export function dur(s) {
   if (r === 30) return m === 1 ? 'a minute and a half' : `${num(m)} and a half minutes`;
   return `${m === 1 ? 'one minute' : `${num(m)} minutes`} ${num(r)}`;
 }
+
+/** Spoken time markers for long holds, for practising with eyes closed. */
+export const milestones = (seconds) => [
+  ...(seconds >= 55 ? [{ at: 30, say: say('Thirty seconds.') }] : []),
+  ...(seconds >= 80 ? [{ at: 60, say: say('One minute.') }] : []),
+];
 
 /** Hold length for the chosen intensity, rounded to 5 s. */
 export const scaled = (s, opts) => Math.max(10, Math.round((s * (opts.holdScale ?? 1)) / 5) * 5);
@@ -115,7 +123,7 @@ export function holdEmpty(seconds, cues = [], o = {}) {
     record: true,
     tick: seconds < 40,
     ...o,
-    cues: [{ at: 0.3, say: announce }, ...cues, ...(seconds >= 40 ? [{ fromEnd: 11, say: L.tenMore }] : [])],
+    cues: [{ at: 0.3, say: announce }, ...cues, ...milestones(seconds), ...(seconds >= 40 ? [{ fromEnd: 11, say: L.tenMore }] : [])],
   };
 }
 
@@ -130,7 +138,7 @@ export function holdFull(seconds, cues = [], o = {}) {
       group: o.group,
       cues: [{ at: 0, say: say(`Breathe in, all the way to the top, and hold. ${dur(seconds)[0].toUpperCase()}${dur(seconds).slice(1)}.`) }],
     },
-    { hold: 'full', seconds, tick: false, ...o, cues: [...cues, ...(seconds >= 40 ? [{ fromEnd: 11, say: L.tenMore }] : [])] },
+    { hold: 'full', seconds, tick: false, ...o, cues: [...cues, ...milestones(seconds), ...(seconds >= 40 ? [{ fromEnd: 11, say: L.tenMore }] : [])] },
   ];
 }
 

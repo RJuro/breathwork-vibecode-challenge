@@ -1,6 +1,6 @@
 // Energy & long holds: a breath-of-fire wave with full-lung holds, and a dry CO2 table.
 
-import { line, say, L, T, Num, num, dur, mmss, scaled, holdFull, SAFETY_HTML, ev } from './lib.js';
+import { line, say, tip, L, T, Num, num, dur, mmss, scaled, holdFull, SAFETY_HTML, ev } from './lib.js';
 
 const cap = (s) => s[0].toUpperCase() + s.slice(1);
 
@@ -21,6 +21,9 @@ const F = {
   rest: line('fw_rest', 'Breathe easy. Let your heart rate settle before the next round.'),
   cool: say('Six slow breaths. In for four, out for six.'),
   close: line('fw_close', "That's your practice. Notice the warmth, and the clear head. Take it into your day."),
+  haaa: tip('fw_t_haaa', "Can't find the sound? Breathe out a whispered haaa through an open mouth, then close the lips and keep it."),
+  hand: tip('fw_t_hand', 'Next round, try a hand on the lower belly. Only that part should move.'),
+  snap: tip('fw_t_snap', 'Each time, snap out, then let go completely. The in-breath takes care of itself.'),
 };
 
 function fireRound(n, o, opts) {
@@ -68,14 +71,15 @@ export const fireWave = {
       steps: [
         { say: F.welcome, bell: 'low', lead: 2 },
         { say: F.ujjayi },
+        { say: F.haaa },
         { say: F.four, gap: 0.6 },
         { pace: { inhale: 4, exhale: 4 }, count: 3, style: 'count' },
         { pace: { inhale: 5, exhale: 5 }, count: 3, style: 'count', cues: [{ at: 0, say: F.five }] },
         { pace: { inhale: 6, exhale: 6 }, count: 2, style: 'count', cues: [{ at: 0, say: F.six }] },
       ],
     },
-    fireRound(1, { breaths: 30, gentleBreaths: 20, hold: 15, intro: F.r1, pumpCue: T.bellyOnly, holdCues: [{ at: 1, say: L.bandhaShort }, { at: 4.5, say: F.urge }], after: [{ rest: 25, cues: [{ at: 3, say: F.buzz }] }] }, opts),
-    fireRound(2, { breaths: 40, gentleBreaths: 25, hold: 30, intro: F.r2, pumpCue: T.slowerFine, holdCues: [{ at: 1, say: L.bandha }], after: [{ rest: 30, cues: [{ at: 3, say: F.adrenaline }] }] }, opts),
+    fireRound(1, { breaths: 30, gentleBreaths: 20, hold: 15, intro: F.r1, pumpCue: T.bellyOnly, holdCues: [{ at: 1, say: L.bandhaShort }, { at: 4.5, say: F.urge }], after: [{ rest: 25, cues: [{ at: 3, say: F.buzz }, { at: 12, say: F.hand }] }] }, opts),
+    fireRound(2, { breaths: 40, gentleBreaths: 25, hold: 30, intro: F.r2, pumpCue: T.slowerFine, holdCues: [{ at: 1, say: L.bandha }], after: [{ rest: 30, cues: [{ at: 3, say: F.adrenaline }, { at: 15, say: F.snap }] }] }, opts),
     fireRound(3, { breaths: 50, gentleBreaths: 30, hold: 45, intro: F.r3, holdCues: [{ at: 1, say: L.bandhaShort }, { at: 8, say: T.holdGuide }], after: [{ rest: 15, cues: [{ at: 3, say: F.rest }] }] }, opts),
     {
       id: 'calm-cool',
@@ -128,10 +132,12 @@ const H = {
   rests: line('hl_rests', 'In the rests, breathe slow and easy. No big breaths, no fast breathing.', 'technique'),
   why: line('hl_why', "The same hold with less rest each time lets carbon dioxide build a little more. That's what you're getting used to.", 'science'),
   close: line('hl_close', "That's the ladder. Breathe easy for a minute before you stand. Two or three times a week is plenty."),
+  scan: tip('hl_t_scan', 'In the next hold, scan the jaw, the shoulders, the hands and the hips. Let each one go.'),
+  small: tip('hl_t_small', 'Normal-size breaths in the rests. Nothing big, nothing fast.'),
 };
 const RESTS = [90, 75, 60, 45, 30, 15];
 const HOLD_CUES = [[{ at: 8, say: H.soft }], [{ at: 10, say: H.dive }], [{ at: 10, say: H.contract }], [{ at: 10, say: H.spleen }], [{ at: 8, say: T.holdGuide }], [{ at: 5, say: H.last }]];
-const REST_CUES = [[{ at: 5, say: H.rule }, { at: 15, say: T.firstBreath }, { at: 30, say: H.rests }], [{ at: 5, say: H.why }], [], [], [], []];
+const REST_CUES = [[{ at: 5, say: H.rule }, { at: 15, say: T.firstBreath }, { at: 30, say: H.rests }], [{ at: 5, say: H.why }], [{ at: 5, say: H.scan }], [{ at: 5, say: H.small }], [], []];
 
 export const holdLadder = {
   id: 'hold-ladder',

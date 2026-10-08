@@ -10,8 +10,8 @@ const durs = Object.fromEntries(Object.entries(man).map(([k, v]) => [k, v.durati
 const fmt = (s) => `${Math.floor(s / 60)}:${String(Math.round(s % 60)).padStart(2, '0')}`;
 let problems = 0;
 for (const flow of FLOWS) {
-  for (const [level, explain] of intensitiesOf(flow).flatMap((l) => [[l, false], [l, true]])) {
-    const plan = compile(flow, durs, { ...INTENSITY[level], explain });
+  for (const [level, talk] of intensitiesOf(flow).flatMap((l) => ['quiet', 'guided', 'full'].map((t) => [l, t]))) {
+    const plan = compile(flow, durs, { ...INTENSITY[level], talk });
     const issues = [];
     for (const v of plan.voice) {
       if (!durs[v.id]) issues.push(`unrecorded ${v.id}`);
@@ -20,7 +20,7 @@ for (const flow of FLOWS) {
       if (seg && seg.kind !== 'talk' && v.t + v.dur > seg.end + 0.6) issues.push(`spills ${(v.t + v.dur - seg.end).toFixed(1)}s past ${seg.kind} ${v.id}`);
     }
     problems += issues.length;
-    console.log(`${flow.id.padEnd(12)} ${level.padEnd(9)} ${explain ? '+why' : '    '} ${fmt(plan.total)}${issues.length ? '\n    ' + issues.join('\n    ') : ''}`);
+    console.log(`${flow.id.padEnd(12)} ${level.padEnd(9)} ${talk.padEnd(6)} ${fmt(plan.total)}${issues.length ? '\n    ' + issues.join('\n    ') : ''}`);
   }
 }
 process.exit(problems ? 1 : 0);

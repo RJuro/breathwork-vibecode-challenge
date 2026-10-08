@@ -23,6 +23,7 @@
 }
 
 * { box-sizing: border-box; }
+[hidden] { display: none !important; }
 html, body { margin: 0; height: 100%; }
 body {
   background: var(--bg);
@@ -295,3 +296,5 @@ a.chip { text-decoration: none; }
 .notes-body .fixes li:first-child { border-top: 0; }
 .notes-body .fixes em { color: var(--tide); font-style: normal; }
 .notes-body .fixes em::before { content: '→ '; }
+.listen-row { margin: 2px 0 6px; }
+.listen-row audio { width: 100%; height: 40px; margin-top: 4px; color-scheme: dark; }

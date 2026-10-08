@@ -4,7 +4,7 @@
 // short kapalabhati bursts (kept short to limit how far CO2 drops) and holds that
 // lengthen round by round.
 
-import { line, say, L, T as TL, PUMP, HUM, Num, num, mmss, scaled, settle, holdEmpty, holdFull, SAFETY_HTML, ev } from './lib.js';
+import { line, say, tip, L, T as TL, PUMP, HUM, Num, num, mmss, scaled, settle, holdEmpty, holdFull, SAFETY_HTML, ev } from './lib.js';
 
 const T = {
   welcome: line('welcome', 'Welcome. Sit tall, or lie down. Let your eyes close, and let the day go quiet for a few minutes.'),
@@ -16,6 +16,8 @@ const T = {
   ladderUp2: line('ladder_up2', 'Six in, six out. Smooth and even.'),
   humIntro: line('hum_intro', 'Humming breath. Breathe in through the nose, then hum the whole exhale, lips closed, jaw soft. Let the sound fill your head.', 'technique'),
   humCount: say('Five hums. In for four, then hum it all out.'),
+  humTip: tip('tide_t_hum', 'A low, quiet hum. Molars apart, lips touching lightly. Feel it buzz in your face.'),
+  easyIn: tip('tide_t_easy_in', 'Between rounds, breathe in with no more effort than at rest.'),
   humScience: line('hum_science', 'Humming makes the air in your sinuses vibrate. In studies, it raised nitric oxide in the nose about fifteen-fold. In the lab, nitric oxide slows cold viruses.', 'science'),
   humSpace: line('hum_space', "The first hum gives the biggest boost, so we'll hum again at the end, once your sinuses have refilled.", 'science'),
   r1Intro: line('r1_intro', 'Round one. Kapalabhati. Short, sharp exhales through the nose, pulled from the belly. The inhale takes care of itself. Keep your face soft.', 'technique'),
@@ -125,6 +127,7 @@ export const tide = {
       color: '#b39cff',
       steps: [
         { say: T.humIntro, bell: 'bell' },
+        { say: T.humTip },
         { say: T.humCount, gap: 0.6 },
         { pace: HUM, count: 5, style: 'hum' },
         { say: T.humScience, lead: 1 },
@@ -154,7 +157,7 @@ export const tide = {
         { at: 1, say: L.bandhaShort },
         { at: 7, say: T.fullScience },
       ],
-      after: [{ say: T.kox, lead: 2, min: 12 }],
+      after: [{ rest: 6, cues: [{ at: 0.5, say: T.easyIn }] }, { say: T.kox, lead: 1, min: 8 }],
     }, opts),
     round(3, {
       pumps: 45,

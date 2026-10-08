@@ -21,16 +21,19 @@ python3 -m http.server 8000   # then http://localhost:8000
 | **Resonance** | Calm | Six light breaths a minute (4 in · 6 out), the best-studied calming practice | 9 min |
 | **Cyclic Sighing** | Calm | Double inhale, long mouth exhale, five minutes (Balban et al. 2023) | 6 min |
 | **Alternate Nostril** | Calm | Nadi shodhana, 4:4 then 4:8, with the nostril shown on every phase | 9 min |
-| **Window Seat** | On the move | Silent, seated practice for a headache on a plane or train: soften jaw/brow/shoulders, 4:6 breathing, five soft pauses on two-thirds-full lungs (Plane ≤15 s, Train ≤25 s, or none) | 15 min |
+| **Window Seat** | On the move | Silent, seated practice for a headache on a plane or train: soften jaw/brow/shoulders, 4:6 breathing with journey cues, then five pauses: Plane 15 s on two-thirds-full lungs, Train growing 30 s → 1:00 comfortably full (or none) | 15–19 min |
 | **Wind Down** | Sleep | Lengthening exhales, four rounds of Weil's 4-7-8, then drift | 7 min |
 
 Practices with holds offer **Gentle / Standard / Deeper**; Turn the Tide and Clear Nose also
 have **No holds** (no fast breathing, no retention). Tom announces what's coming ("Forty quick
 breaths", "Hold, lungs empty, for up to one minute", "Rest, forty-five seconds") but never
-counts every breath, and adds a few teacher's cues (attention anchors, mind-wandering, a calm first
+counts every breath. **How much Tom says** is a setting: Quiet (instructions and counts), Guided
+(default: plus teacher's tips woven in), Full (plus the science). Long holds get spoken time markers,
+and Alternate Nostril pans the breath sound to the open side on headphones. He also adds a few teacher's cues (attention anchors, mind-wandering, a calm first
 breath after a hold). Each practice page has collapsible **Teacher's notes**: before you start,
 common slips with the cue that fixes them, what you might notice, going further, and when to
-skip (`js/flows/notes.js`). *Breathe now* ends any hold and skips the rest of that retention block
+skip (`js/flows/notes.js`), with a **Listen** button that plays Tom reading them plus the science
+(`js/flows/talk.js`), so the whole briefing works eyes-closed. *Breathe now* ends any hold and skips the rest of that retention block
 into normal breathing. Spoken science notes are off by default (Settings → Explanations); every
 practice has a *How it works* page with evidence labels and sources. The summary shows
 *guided* hold time, worked out from the timeline, not a measurement of your breath.

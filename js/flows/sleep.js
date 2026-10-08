@@ -1,6 +1,6 @@
 // Sleep: a wind-down built on a lengthening exhale and Andrew Weil's 4-7-8.
 
-import { line, say, T, SAFETY_HTML, ev } from './lib.js';
+import { line, say, tip, T, SAFETY_HTML, ev } from './lib.js';
 
 const W = {
   welcome: line('n478_welcome', 'Welcome. Lie down if you can, and let the bed take your weight. This is a wind-down, not a test.'),
@@ -13,6 +13,8 @@ const W = {
   ratio: line('n478_ratio', 'If the hold feels long, let it go early. The ratio matters more than the seconds.', 'technique'),
   drift: line('n478_drift', 'Let go of counting. Let the breath be as slow and as small as it wants.'),
   end: line('n478_end', 'Nothing more to do. Stay here as long as you like.'),
+  heavy: tip('n478_t_heavy', 'Let your body get a little heavier with every out-breath, sinking into the bed.'),
+  clouds: tip('n478_t_clouds', 'If thoughts come, let them drift past. No need to follow them.'),
 };
 
 export const windDown = {
@@ -41,7 +43,7 @@ export const windDown = {
       color: '#6e72d8',
       steps: [
         { say: W.six, gap: 0.6 },
-        { pace: { inhale: 4, exhale: 6 }, count: 6, style: 'count', cues: [{ breath: 2, say: W.exhale }] },
+        { pace: { inhale: 4, exhale: 6 }, count: 6, style: 'count', cues: [{ breath: 2, say: W.exhale }, { breath: 4, say: W.heavy }] },
         { say: W.eight, gap: 0.6 },
         { pace: { inhale: 4, exhale: 8 }, count: 8, style: 'count', cues: [{ breath: 3, say: W.mind }, { breath: 6, say: T.wander }] },
       ],
@@ -68,7 +70,7 @@ export const windDown = {
       title: 'Drift',
       what: 'No counting',
       color: '#3d3f9c',
-      steps: [{ say: W.drift, lead: 2 }, { rest: 50 }, { say: W.end }, { rest: 30 }],
+      steps: [{ say: W.drift, lead: 2 }, { rest: 50, cues: [{ at: 25, say: W.clouds }] }, { say: W.end }, { rest: 30 }],
     },
   ],
   learn: `

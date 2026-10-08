@@ -71,6 +71,30 @@
     "engine": "lux",
     "duration": 4.61
   },
+  "bal_t_ears": {
+    "fp": "86080fc0416f",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 4.51
+  },
+  "bal_t_pour": {
+    "fp": "bd3a4a5e036c",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 3.91
+  },
+  "bal_t_rest": {
+    "fp": "dcf9cd572888",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 4.34
+  },
+  "bal_t_track": {
+    "fp": "3c9ae63f7c37",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 3.82
+  },
   "bal_tradition": {
     "fp": "3b5f9d896cea",
     "voice": "tom",
@@ -167,6 +191,18 @@
     "engine": "lux",
     "duration": 5.74
   },
+  "cn_t_first": {
+    "fp": "2d5a639dd738",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 4.44
+  },
+  "cn_t_small": {
+    "fp": "1b8e5c4a10ca",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 5.9
+  },
   "cn_temp": {
     "fp": "da5013257da3",
     "voice": "tom",
@@ -214,6 +250,24 @@
     "voice": "tom",
     "engine": "lux",
     "duration": 7.27
+  },
+  "coh_t_belly": {
+    "fp": "0a4c9ecd433a",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 4.15
+  },
+  "coh_t_swell": {
+    "fp": "674528d0ec00",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 4.32
+  },
+  "coh_t_wave": {
+    "fp": "e407e58e2310",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 3.79
   },
   "coh_vagal": {
     "fp": "9d97a201ba96",
@@ -293,6 +347,24 @@
     "engine": "lux",
     "duration": 3.62
   },
+  "fw_t_haaa": {
+    "fp": "cb6612fddd86",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 6.31
+  },
+  "fw_t_hand": {
+    "fp": "f8374974787d",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 4.22
+  },
+  "fw_t_snap": {
+    "fp": "c166d99df0a1",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 4.97
+  },
   "fw_ujjayi": {
     "fp": "7fe2655a3b2a",
     "voice": "tom",
@@ -370,6 +442,18 @@
     "voice": "tom",
     "engine": "lux",
     "duration": 7.2
+  },
+  "hl_t_scan": {
+    "fp": "33dfe76adcc2",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 5.52
+  },
+  "hl_t_small": {
+    "fp": "ae24dad4eec4",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 3.43
   },
   "hl_welcome": {
     "fp": "1c6790da59cd",
@@ -461,6 +545,18 @@
     "engine": "lux",
     "duration": 5.06
   },
+  "n478_t_clouds": {
+    "fp": "18a67f8e5892",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 3.77
+  },
+  "n478_t_heavy": {
+    "fp": "1936554cb4a5",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 4.3
+  },
   "n478_tongue": {
     "fp": "7f8d91a92eaa",
     "voice": "tom",
@@ -485,11 +581,35 @@
     "engine": "lux",
     "duration": 1.39
   },
-  "n_and_pause_throat_soft": {
-    "fp": "a7c239a8bf07",
+  "n_and_pause_up_to_fifteen_seconds_throat_soft": {
+    "fp": "673bcbd7f1f6",
     "voice": "tom",
     "engine": "lux",
-    "duration": 1.34
+    "duration": 2.93
+  },
+  "n_and_pause_up_to_fifty_seconds_throat_soft": {
+    "fp": "44ef921f434f",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 2.9
+  },
+  "n_and_pause_up_to_forty_seconds_throat_soft": {
+    "fp": "79f1c7019a37",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 2.93
+  },
+  "n_and_pause_up_to_one_minute_throat_soft": {
+    "fp": "36f5d1af3d58",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 2.62
+  },
+  "n_and_pause_up_to_thirty_seconds_throat_soft": {
+    "fp": "6120d95c5204",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 2.81
   },
   "n_and_slowly_toward_the_left": {
     "fp": "a9297f5b8d1e",
@@ -563,6 +683,12 @@
     "engine": "lux",
     "duration": 3.86
   },
+  "n_breathe_in_comfortably_full_not_to_the_top": {
+    "fp": "49f111ecb723",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 2.71
+  },
   "n_breathe_rest_a_minute_and_a_half": {
     "fp": "42c1f1b32728",
     "voice": "tom",
@@ -629,17 +755,17 @@
     "engine": "lux",
     "duration": 3.41
   },
+  "n_five_pauses_growing_from_thirty_seconds_to_a_minute": {
+    "fp": "5e3000c1179e",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 2.98
+  },
   "n_five_pauses_of_up_to_fifteen_seconds": {
     "fp": "737cca8c0bd6",
     "voice": "tom",
     "engine": "lux",
     "duration": 2.21
-  },
-  "n_five_pauses_of_up_to_twenty_five_seconds": {
-    "fp": "cc76bcdb8134",
-    "voice": "tom",
-    "engine": "lux",
-    "duration": 2.26
   },
   "n_five_slow_breaths": {
     "fp": "ecdec28e9e7d",
@@ -905,6 +1031,12 @@
     "engine": "lux",
     "duration": 1.92
   },
+  "n_one_minute": {
+    "fp": "983d93bd803c",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 0.7
+  },
   "n_one_more_minute": {
     "fp": "78ac16ec6ecc",
     "voice": "tom",
@@ -983,6 +1115,12 @@
     "engine": "lux",
     "duration": 1.7
   },
+  "n_thirty_seconds": {
+    "fp": "4d5cd39fbcf2",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 0.94
+  },
   "n_twenty_five_quick_breaths_begin": {
     "fp": "00c0cdbc1f2f",
     "voice": "tom",
@@ -1012,6 +1150,654 @@
     "voice": "tom",
     "engine": "lux",
     "duration": 5.81
+  },
+  "nt_a_light_stomach_it_also_makes_a_good_win_1ofg7hv": {
+    "fp": "3c39310d1c9f",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 3.72
+  },
+  "nt_a_little_air_hunger_is_fine_warm_hands_y_fsfc1n": {
+    "fp": "f65d5a36c0df",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 4.97
+  },
+  "nt_a_racing_heart_jerky_breathing_or_breath_5vt4cu": {
+    "fp": "32b8b713d4fa",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 5.66
+  },
+  "nt_a_rolled_jumper_behind_your_lower_back_f_989s4b": {
+    "fp": "e3ace39b5711",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 5.45
+  },
+  "nt_a_throbbing_headache_or_migraine_aura_du_66uasx": {
+    "fp": "3932737ef621",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 7.68
+  },
+  "nt_a_warm_buzz_in_the_face_while_humming_is_1vxt0r4": {
+    "fp": "933eb1f1d2b5",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 2.57
+  },
+  "nt_add_about_five_seconds_a_week_and_only_i_1uccxuz": {
+    "fp": "6fe29eb18aa1",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 4.42
+  },
+  "nt_after_a_month_up_to_eight_rounds_of_4_7__1vhexjw": {
+    "fp": "bfdddb88bfea",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 3.17
+  },
+  "nt_arm_getting_tired_rest_the_hand_for_a_br_dicu8i": {
+    "fp": "a7515805494f",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 4.42
+  },
+  "nt_bearing_down_with_the_throat_a_soft_thro_1iinzst": {
+    "fp": "396955e88c6f",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 3.34
+  },
+  "nt_before_you_start_md11ht": {
+    "fp": "a3965b78b6c2",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 0.96
+  },
+  "nt_big_forced_in_breaths_breathe_in_with_no_1e45l5e": {
+    "fp": "85f06d635d03",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 3.91
+  },
+  "nt_big_or_fast_breaths_in_the_rests_normal__g1zeo7": {
+    "fp": "e2c72e4cffd9",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 4.46
+  },
+  "nt_breathe_in_through_the_nose_if_it_helps__329etg": {
+    "fp": "06a28e7b6176",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 5.06
+  },
+  "nt_breathe_through_the_more_open_side_or_si_1n8sgny": {
+    "fp": "531b52a8e9d2",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 4.99
+  },
+  "nt_breathing_big_because_the_pace_is_slow_s_1n4nz3s": {
+    "fp": "41281ba2d499",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 5.06
+  },
+  "nt_breathing_big_to_get_more_air_slower_not_1necm5v": {
+    "fp": "461d0979827f",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 2.83
+  },
+  "nt_breathing_in_through_the_mouth_in_throug_1sbctj3": {
+    "fp": "d5f0ac75ec56",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 5.28
+  },
+  "nt_brief_lightheadedness_early_on_is_common_n78612": {
+    "fp": "075a8b4c9bc5",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 2.16
+  },
+  "nt_can_t_find_ujjayi_breathe_out_a_whispere_l23k59": {
+    "fp": "a5dc648fb0b1",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 8.04
+  },
+  "nt_chest_and_shoulders_heaving_only_the_low_1nc5bdx": {
+    "fp": "8745ec9b00a0",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 3.29
+  },
+  "nt_chest_and_shoulders_lifting_let_the_bell_alpo8i": {
+    "fp": "2bf7f6d533d4",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 5.21
+  },
+  "nt_chin_poking_forward_let_the_back_of_the__1nl7tbo": {
+    "fp": "4accb420918d",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 2.98
+  },
+  "nt_common_slips_and_what_helps_14fhf2u": {
+    "fp": "ba50b8de34c8",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 1.8
+  },
+  "nt_diaphragm_contractions_late_in_a_hold_ar_d5ngxz": {
+    "fp": "185fd5bb157a",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 5.04
+  },
+  "nt_dizziness_nausea_or_anxiety_stop_breathe_1atvin8": {
+    "fp": "c10616355003",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 5.3
+  },
+  "nt_doing_lots_of_rounds_four_at_a_time_for__gx995s": {
+    "fp": "935e0f5c2ebd",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 4.56
+  },
+  "nt_dry_only_seated_or_lying_never_in_or_nea_49qrj1": {
+    "fp": "78e61473f33d",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 4.68
+  },
+  "nt_fever_chest_symptoms_breathlessness_preg_icgdb": {
+    "fp": "57d6d3d84db0",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 6.62
+  },
+  "nt_fever_chest_symptoms_pregnancy_epilepsy__168seus": {
+    "fp": "25a98d34183b",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 7.82
+  },
+  "nt_for_4_7_8_the_tongue_tip_rests_behind_th_uepscb": {
+    "fp": "3ae3b417b217",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 5.23
+  },
+  "nt_forcing_a_blocked_side_don_t_imagine_the_1vugdh9": {
+    "fp": "11e21e11822f",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 3.86
+  },
+  "nt_gasping_afterwards_first_breath_gentle_t_1q5is6p": {
+    "fp": "7063867b866e",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 5.69
+  },
+  "nt_gasping_on_the_first_breath_the_hold_was_a0iul4": {
+    "fp": "160e94cb1fe6",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 5.42
+  },
+  "nt_going_further_1ofsqcn": {
+    "fp": "bb15e91deaea",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 0.89
+  },
+  "nt_going_too_fast_rhythm_before_speed_slowe_1p76kzy": {
+    "fp": "c8a2475b0271",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 3.41
+  },
+  "nt_gulping_the_in_breaths_fill_the_belly_th_u6htzp": {
+    "fp": "c3d6f069905d",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 5.76
+  },
+  "nt_headphones_in_nothing_here_is_audible_to_15bh9o": {
+    "fp": "75137de7b68e",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 3.82
+  },
+  "nt_heart_or_lung_disease_high_blood_pressur_f7f4w2": {
+    "fp": "d71ce0c9f3b5",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 5.83
+  },
+  "nt_holding_after_a_big_breath_in_hold_after_1ln4nbe": {
+    "fp": "3c4c064a81ae",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 3.82
+  },
+  "nt_holding_hard_through_the_seven_let_go_ea_ishqgd": {
+    "fp": "045bc8580d25",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 5.33
+  },
+  "nt_humming_loud_with_a_tight_jaw_a_low_quie_16y0n3i": {
+    "fp": "1b56404e45f4",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 5.42
+  },
+  "nt_if_counting_keeps_you_alert_drop_it_and__1x3tfal": {
+    "fp": "6ea700abe407",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 4.49
+  },
+  "nt_if_focusing_on_the_breath_makes_you_anxi_zsih8z": {
+    "fp": "eeeface37973",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 6.22
+  },
+  "nt_if_it_feels_like_too_much_air_try_resona_xlnakf": {
+    "fp": "7c9221ad9948",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 3.1
+  },
+  "nt_if_the_throb_gets_worse_in_the_pauses_sk_1glunof": {
+    "fp": "159bd8dc2ee2",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 2.69
+  },
+  "nt_in_bed_lights_low_press_begin_then_put_t_1x9sh84": {
+    "fp": "3809926b2512",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 3.89
+  },
+  "nt_in_through_the_nose_out_through_the_mout_7sx87o": {
+    "fp": "6195449b752c",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 1.99
+  },
+  "nt_kapalabhati_from_the_chest_snap_the_lowe_xopbci": {
+    "fp": "30f7898ab5cd",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 4.42
+  },
+  "nt_keep_one_to_three_sighs_as_a_pocket_rese_uu9kka": {
+    "fp": "0812c1e45e56",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 3.43
+  },
+  "nt_keep_the_holds_comfortable_deeper_is_for_hmp3on": {
+    "fp": "9dbef942543d",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 4.99
+  },
+  "nt_locks_a_gentle_lift_of_the_pelvic_floor__zw73it": {
+    "fp": "683ad9baf407",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 8.11
+  },
+  "nt_losing_track_of_the_sides_breathe_in_on__1fovwsl": {
+    "fp": "24110a977945",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 4.08
+  },
+  "nt_many_people_feel_calmer_after_one_to_thr_rmrylm": {
+    "fp": "87d04a98acb7",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 2.74
+  },
+  "nt_mornings_on_an_empty_stomach_two_to_thre_vq4br4": {
+    "fp": "2cbe29326cba",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 3.07
+  },
+  "nt_nose_blocked_try_clear_nose_first_458p7i": {
+    "fp": "ee28555b4782",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 2.42
+  },
+  "nt_once_a_day_at_most_two_or_three_times_a__105zav8": {
+    "fp": "d4e082bf726e",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 2.95
+  },
+  "nt_one_side_often_flows_more_easily_that_is_uwk7un": {
+    "fp": "8f8340a0cbb0",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 4.15
+  },
+  "nt_over_weeks_lengthen_the_out_breath_furth_13ds9zr": {
+    "fp": "bc4c3a487ccc",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 6.65
+  },
+  "nt_over_weeks_more_breaths_per_round_before_ycgkft": {
+    "fp": "c926a1b2c9cb",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 3.14
+  },
+  "nt_panic_disorder_pregnancy_or_heart_diseas_17uct17": {
+    "fp": "6432bb1358a3",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 7.56
+  },
+  "nt_pausing_at_the_top_or_bottom_keep_it_one_b1oggs": {
+    "fp": "d8dac0a9b34c",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 4.18
+  },
+  "nt_pick_the_level_whose_hold_is_about_half__1vro6qz": {
+    "fp": "259b9ec2f000",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 4.51
+  },
+  "nt_practised_regularly_relaxation_may_reduc_vvtdk9": {
+    "fp": "7530fe04a5fc",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 6.89
+  },
+  "nt_pregnancy_epilepsy_high_blood_pressure_o_mgi260": {
+    "fp": "798ace848ebb",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 9.05
+  },
+  "nt_pressing_too_hard_a_feather_light_touch__jf4246": {
+    "fp": "48c1c8646d44",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 4.18
+  },
+  "nt_pulling_the_in_breath_in_snap_out_then_l_61atq1": {
+    "fp": "143c97614296",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 4.75
+  },
+  "nt_pushing_to_strong_air_hunger_with_a_cold_wxlgzx": {
+    "fp": "e403db536027",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 3.72
+  },
+  "nt_re_check_your_relaxed_maximum_every_week_6mvmux": {
+    "fp": "0c33caa43a32",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 2.9
+  },
+  "nt_repeat_whenever_you_need_it_rather_than__6cshdj": {
+    "fp": "e9ac918caa4e",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 2.88
+  },
+  "nt_rushing_the_out_breath_an_audible_unhurr_ti5suh": {
+    "fp": "e3c2db689882",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 5.21
+  },
+  "nt_seated_or_lying_five_minutes_ideally_dai_1hcx9q8": {
+    "fp": "c272efedfa80",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 4.61
+  },
+  "nt_seated_or_lying_kapalabhati_goes_best_on_pc7xzn": {
+    "fp": "a54bf4509e86",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 3.96
+  },
+  "nt_seated_with_your_back_supported_or_lying_1knquh7": {
+    "fp": "5d3ccac65f35",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 4.1
+  },
+  "nt_short_and_daily_beats_long_and_occasiona_yntvb6": {
+    "fp": "05ec92d889af",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 5.86
+  },
+  "nt_sit_tall_if_your_arm_tires_prop_the_righ_vagqad": {
+    "fp": "1ab2c058aba9",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 5.28
+  },
+  "nt_sit_upright_never_standing_a_hand_on_the_yo4wmk": {
+    "fp": "d866eb2a6ce6",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 4.2
+  },
+  "nt_sit_upright_not_straight_after_a_meal_1gi8ibf": {
+    "fp": "53448fa89202",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 2.33
+  },
+  "nt_skip_it_or_go_gentle_if_1qua4zg": {
+    "fp": "707040017468",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 1.85
+  },
+  "nt_some_relief_or_simply_feeling_calmer_is__1j46pwo": {
+    "fp": "802d65245387",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 3.65
+  },
+  "nt_speeding_up_slow_down_fast_sighing_turns_1g1p1x7": {
+    "fp": "f0107030c935",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 4.15
+  },
+  "nt_squeezing_the_throat_in_ujjayi_whisper_l_vsfjo0": {
+    "fp": "9fb0d423beee",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 4.51
+  },
+  "nt_stop_if_you_feel_breathless_lightheaded__yo2xq5": {
+    "fp": "f84026c69ea5",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 3.31
+  },
+  "nt_stop_if_you_feel_lightheaded_or_get_head_5f16j3": {
+    "fp": "d33c3e5a86a9",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 5.21
+  },
+  "nt_straining_in_the_holds_hold_as_if_the_br_163wko": {
+    "fp": "ba828a5e5687",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 4.22
+  },
+  "nt_straining_in_the_pauses_pause_rather_tha_13lftat": {
+    "fp": "b090bfb8f9a5",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 4.73
+  },
+  "nt_teacher_s_notes_for_alternate_nostril_1o2mrms": {
+    "fp": "3338a3c002cc",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 1.97
+  },
+  "nt_teacher_s_notes_for_clear_nose_1t32ggl": {
+    "fp": "911519b2f2b7",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 1.73
+  },
+  "nt_teacher_s_notes_for_cyclic_sighing_yo1nd": {
+    "fp": "517fba1c5bd0",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 1.92
+  },
+  "nt_teacher_s_notes_for_fire_wave_1hkjkqa": {
+    "fp": "745186ab3c3e",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 1.75
+  },
+  "nt_teacher_s_notes_for_hold_ladder_1vy04p8": {
+    "fp": "5a25ef6373f0",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 1.63
+  },
+  "nt_teacher_s_notes_for_resonance_1ih50pj": {
+    "fp": "78a46deb3ba9",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 1.58
+  },
+  "nt_teacher_s_notes_for_turn_the_tide_z3jop": {
+    "fp": "5505df3938b5",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 1.7
+  },
+  "nt_teacher_s_notes_for_wind_down_1sh3gj": {
+    "fp": "b462674288af",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 1.68
+  },
+  "nt_teacher_s_notes_for_window_seat_1wywnjy": {
+    "fp": "ce1cc0c97283",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 1.68
+  },
+  "nt_tensing_up_as_the_hold_goes_on_scan_the__o8xy80": {
+    "fp": "f0122a480ebe",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 5.81
+  },
+  "nt_that_s_everything_enjoy_the_practice_1tk5o0y": {
+    "fp": "c244f6a6ef13",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 2.14
+  },
+  "nt_the_holds_are_optional_switch_to_no_hold_1mjj253": {
+    "fp": "df1f16c610f0",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 6.07
+  },
+  "nt_the_nose_often_opens_for_a_few_minutes_t_16etayy": {
+    "fp": "ea9602852480",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 4.58
+  },
+  "nt_tingling_and_lightness_after_kapalabhati_1kz9oa9": {
+    "fp": "2f9af334a0da",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 4.94
+  },
+  "nt_tingling_dizziness_a_light_headache_or_t_mkl84y": {
+    "fp": "f953a778dfe8",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 5.93
+  },
+  "nt_tingling_or_lightness_slow_the_out_breat_1v4iitw": {
+    "fp": "3c387b947ae2",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 2.54
+  },
+  "nt_warmth_tingling_and_a_raised_heart_rate__14keom": {
+    "fp": "49af244b21de",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 4.68
+  },
+  "nt_water_within_reach_on_long_journeys_stan_l6bqfj": {
+    "fp": "d99fd8f2143b",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 5.5
+  },
+  "nt_what_the_research_says_156xzrp": {
+    "fp": "db01e3b897d2",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 1.27
+  },
+  "nt_what_you_might_notice_1kr4ekf": {
+    "fp": "d50d374f316d",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 0.98
+  },
+  "nt_when_4_in_6_out_feels_easy_simply_practi_1l7bwe4": {
+    "fp": "c86a013a5a1b",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 7.27
+  },
+  "nt_with_a_cold_or_a_blocked_nose_resonance__1f0esdf": {
+    "fp": "adf1d03afcba",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 4.37
   },
   "pump_last": {
     "fp": "bc8851e5c42b",
@@ -1109,6 +1895,24 @@
     "engine": "lux",
     "duration": 3.86
   },
+  "sigh_t_audible": {
+    "fp": "3c19aeb58f23",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 3.41
+  },
+  "sigh_t_shoulders": {
+    "fp": "7f9ce0fb0fb1",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 3.07
+  },
+  "sigh_t_twice": {
+    "fp": "9523713097e9",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 3.17
+  },
   "sigh_welcome": {
     "fp": "cb8bc7100986",
     "voice": "tom",
@@ -1163,6 +1967,18 @@
     "engine": "lux",
     "duration": 6.05
   },
+  "tide_t_easy_in": {
+    "fp": "89b8cc6bbf9f",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 3.29
+  },
+  "tide_t_hum": {
+    "fp": "e40c00cb2d3a",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 5.4
+  },
   "welcome": {
     "fp": "2a94baddcc83",
     "voice": "tom",
@@ -1192,6 +2008,36 @@
     "voice": "tom",
     "engine": "lux",
     "duration": 5.66
+  },
+  "ws_h_brow": {
+    "fp": "3211adde4382",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 2.4
+  },
+  "ws_h_hands": {
+    "fp": "1e1e39054d53",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 1.85
+  },
+  "ws_h_jaw": {
+    "fp": "9b0810ad1e53",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 2.28
+  },
+  "ws_h_last": {
+    "fp": "1f016ff8ad74",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 3.5
+  },
+  "ws_h_sway": {
+    "fp": "0c3e046e6782",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 5.59
   },
   "ws_jaw": {
     "fp": "9e6c264cc6a2",
@@ -1252,6 +2098,24 @@
     "voice": "tom",
     "engine": "lux",
     "duration": 9.72
+  },
+  "ws_t_shoulders": {
+    "fp": "860e6bc8dd8d",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 3.91
+  },
+  "ws_t_sounds": {
+    "fp": "489e5b1a21d8",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 6.6
+  },
+  "ws_t_window": {
+    "fp": "430c735204ca",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 5.74
   },
   "ws_vagal": {
     "fp": "dc6a37703f24",

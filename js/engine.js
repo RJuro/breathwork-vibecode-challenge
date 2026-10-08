@@ -19,8 +19,10 @@ export function compile(flow, durs = {}, opts = {}) {
   const sounds = [];
   let t = 0;
 
-  // Explanations (kind 'science') are opt-in; guidance plays either way.
-  const skip = (c) => c.kind === 'science' && !opts.explain;
+  // How much Tom says: quiet = instructions and counts; guided (default) adds the
+  // teacher's tips; full adds the science.
+  const talk = opts.talk || (opts.explain ? 'full' : 'guided');
+  const skip = (c) => (c.kind === 'science' && talk !== 'full') || (c.kind === 'tip' && talk === 'quiet');
   const speak = (c, at) => {
     if (!c || !c.id || !c.text) throw new Error(`bad spoken line: ${JSON.stringify(c)}`);
     if (skip(c)) return 0;
@@ -69,11 +71,12 @@ export function compile(flow, durs = {}, opts = {}) {
             if (!d) continue;
             const label = step.labels ? step.labels(phase, i) : undefined;
             phases.push({ phase, start: t, end: t + d, breath: i, label, split: !!p.inhale2 });
+            const pan = step.pan ? step.pan(phase, i) : 0; // -1 left … 1 right (headphones)
             if (phase === 'in' || phase === 'in2' || phase === 'out') {
               const level = phase === 'out' ? p.level ?? 0.5 : p.inLevel ?? p.level ?? 0.5;
-              sounds.push({ t, dur: d, type: phase === 'out' ? 'out' : 'in', level });
+              sounds.push({ t, dur: d, type: phase === 'out' ? 'out' : 'in', level, pan });
             } else if (phase === 'hum') {
-              sounds.push({ t, dur: d, type: 'hum' });
+              sounds.push({ t, dur: d, type: 'hum', pan });
             }
             t += d;
           }

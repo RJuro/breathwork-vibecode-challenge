@@ -7,12 +7,16 @@ import { readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { FLOWS, INTENSITY, intensitiesOf } from '../js/flows/index.js';
 import { compile } from '../js/engine.js';
+import { teacherTalk } from '../js/flows/talk.js';
 
 const out = fileURLToPath(new URL('../flow/cues.json', import.meta.url));
 const lines = {};
 for (const flow of FLOWS) {
-  for (const level of intensitiesOf(flow)) {
-    for (const v of compile(flow, {}, { ...INTENSITY[level], explain: true }).voice) {
+  const plans = intensitiesOf(flow).map((level) => compile(flow, {}, { ...INTENSITY[level], talk: 'full' }));
+  const talk = teacherTalk(flow);
+  if (talk) plans.push(compile(talk, {}, { talk: 'full' }));
+  for (const plan of plans) {
+    for (const v of plan.voice) {
       const prev = lines[v.id];
       if (prev && prev.text !== v.text) throw new Error(`line id "${v.id}" has two texts:\n  ${prev.text}\n  ${v.text}`);
       lines[v.id] = { text: v.text, kind: v.kind };

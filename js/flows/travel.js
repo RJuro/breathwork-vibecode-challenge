@@ -6,7 +6,7 @@
 // "holds" are soft pauses on two-thirds-full lungs, sized by where you are: Plane up to
 // 15 s, Train up to 25 s, or none at all. Nose only, no fast breathing, nothing audible.
 
-import { line, say, T, num, dur, scaled, SAFETY_HTML, ev } from './lib.js';
+import { line, say, tip, T, num, dur, scaled, milestones, L, SAFETY_HTML, ev } from './lib.js';
 
 const cap = (s) => s[0].toUpperCase() + s.slice(1);
 
@@ -30,6 +30,16 @@ const W = {
   pause: say('And pause. Throat soft.'),
   out: say('Let it out slowly.'),
   long: say('Instead of pausing, lengthen the out-breath. In for four, out for eight.'),
+  inTrain: say('Breathe in, comfortably full. Not to the top.'),
+  trainCount: say('Five pauses, growing from thirty seconds to a minute.'),
+  window: tip('ws_t_window', 'If your eyes are open, let them rest on the window. Let the view pass by, without following it.'),
+  sounds: tip('ws_t_sounds', 'Let the sounds around you, the engine, the voices, the rails, become part of the background. Nothing to fix.'),
+  shouldersAgain: tip('ws_t_shoulders', "Check the shoulders again. They've probably crept up. Let them drop."),
+  hJaw: tip('ws_h_jaw', 'Let the jaw hang soft. Teeth apart.'),
+  hHands: tip('ws_h_hands', 'Let your hands grow heavy in your lap.'),
+  hSway: tip('ws_h_sway', "If you're on a train, feel its sway. Let the movement rock you, rather than holding against it."),
+  hBrow: tip('ws_h_brow', 'Smooth the brow. Soften behind the eyes.'),
+  hLast: tip('ws_h_last', 'Last pause. Nothing to prove. Let go whenever you like.'),
   longWhy: line('ws_long_why', 'A longer out-breath gives the heart more time to slow, and the body more time to settle.', 'science'),
   release: say('Back to four in, six out.'),
   tiltR: say('Slowly let your head tip toward the right shoulder.'),
@@ -52,20 +62,37 @@ function pauses(opts) {
       ],
     };
   }
-  const hold = scaled(25, opts); // Plane 15 s, Train 25 s
+  // Plane: five 15 s pauses on two-thirds-full lungs (cabin air starts you lower).
+  // Train: five pauses growing from 30 s to a minute, comfortably full.
+  const plane = opts.gentle;
+  const holds = plane ? Array(5).fill(scaled(25, opts)) : [30, 40, 50, 60, 60];
+  const scan = [W.hJaw, W.hHands, W.hSway, W.hBrow, W.hLast];
   return {
     id: 'seat-holds',
-    title: 'Soft pauses',
-    what: `5 pauses of up to ${hold} s, two-thirds full`,
+    title: plane ? 'Soft pauses' : 'Long pauses',
+    what: plane ? `5 pauses of up to ${holds[0]} s, two-thirds full` : '5 pauses, 0:30 → 1:00, comfortably full',
     color: '#6f7fc7',
     steps: [
       { say: W.pauseIntro, bell: 'bell' },
       { say: W.skip },
-      { say: say(`${cap(num(5))} pauses of up to ${dur(hold)}.`), gap: 0.6 },
-      ...[0, 1, 2, 3, 4].flatMap((i) => [
-        { pace: { inhale: 4 }, count: 1, style: 'slow', group: `p${i}`, cues: [{ at: 0, say: W.in }] },
-        { hold: 'full', seconds: hold, label: 'Soft pause', record: true, tick: false, group: `p${i}`, cues: [{ at: 0.3, say: W.pause }] },
-        { pace: { inhale: 4, exhale: 6 }, count: 3, style: 'count', cues: [{ at: 0, say: W.out }] },
+      { say: plane ? say(`${cap(num(5))} pauses of up to ${dur(holds[0])}.`) : W.trainCount, gap: 0.6 },
+      ...holds.flatMap((h, i) => [
+        { pace: { inhale: 4 }, count: 1, style: 'slow', group: `p${i}`, bell: i ? 'low' : undefined, cues: [{ at: 0, say: plane ? W.in : W.inTrain }] },
+        {
+          hold: 'full',
+          seconds: h,
+          label: plane ? 'Soft pause' : 'Pause',
+          record: true,
+          tick: false,
+          group: `p${i}`,
+          cues: [
+            { at: 0.3, say: say(`And pause, up to ${dur(h)}. Throat soft.`) },
+            ...(plane ? [] : [{ at: 10, say: scan[i] }]),
+            ...milestones(h),
+            ...(h >= 40 ? [{ fromEnd: 11, say: L.tenMore }] : []),
+          ],
+        },
+        { pace: { inhale: 4, exhale: 6 }, count: plane ? 3 : 4, style: 'count', cues: [{ at: 0, say: W.out }] },
       ]),
     ],
   };
@@ -87,7 +114,7 @@ export const windowSeat = {
   intensityNotes: {
     none: 'No pauses: a long out-breath instead. Best if your headache throbs, or during descent.',
     gentle: 'Plane: five soft pauses of up to 15 s. Cabin air holds less oxygen, so they stay short.',
-    standard: 'Train or ground: five soft pauses of up to 25 s.',
+    standard: 'Train or ground: five pauses that grow from 30 s to a full minute, on comfortably full lungs.',
   },
   after: [
     'Drink some water. Cabin air is very dry.',
@@ -132,10 +159,13 @@ export const windowSeat = {
           style: 'count',
           cues: [
             { breath: 2, say: W.small },
+            { breath: 4, say: W.window },
             { breath: 6, say: W.pain },
             { breath: 9, say: T.anchor },
             { breath: 12, say: W.vagal },
             { breath: 15, say: T.wander },
+            { breath: 20, say: W.sounds },
+            { breath: 28, say: W.shouldersAgain },
             { breath: 18, say: W.stress },
             { breath: 23, say: W.twoMin },
           ],

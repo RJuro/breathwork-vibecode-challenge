@@ -1,6 +1,6 @@
 // Calm: resonance breathing, cyclic sighing, alternate-nostril breathing.
 
-import { line, say, T, SAFETY_HTML, ev } from './lib.js';
+import { line, say, tip, T, SAFETY_HTML, ev } from './lib.js';
 
 const oneMore = say('One more minute.');
 const halfway = say('Halfway.');
@@ -18,6 +18,9 @@ const R = {
   five: line('coh_five', 'Studies suggest even five minutes of slow breathing can shift the body toward its calm, vagal state.', 'science'),
   ret: line('coh_return', 'Let go of the count. Let the breath find its own rhythm.'),
   close: line('coh_close', "That's your practice. Stand up slowly, and take this pace with you."),
+  belly: tip('coh_t_belly', 'Let the belly and lower ribs do the moving. The chest stays quiet.'),
+  smooth: tip('coh_t_wave', 'Keep it one smooth wave, with no pause at the top or the bottom.'),
+  swell: tip('coh_t_swell', 'Let it feel like a slow swell on the sea. Rising, and falling away.'),
 };
 
 export const resonance = {
@@ -60,8 +63,11 @@ export const resonance = {
           cues: [
             { breath: 3, say: R.sync },
             { breath: 6, say: T.anchor },
+            { breath: 8, say: R.belly },
             { breath: 10, say: R.vagal },
+            { breath: 12, say: R.smooth },
             { breath: 14, say: R.dizzy },
+            { breath: 16, say: R.swell },
             { breath: 18, say: R.three },
             { breath: 23, say: R.five },
             { breath: 26, say: T.wander },
@@ -111,6 +117,9 @@ const C = {
   heart: line('sigh_heart', 'Your heart slows a little on every exhale. Making the exhale long leans the whole system toward calm.', 'science'),
   soft: line('sigh_soft', 'If you feel tingly, slow the exhale down. Calm, not forced.', 'technique'),
   close: line('sigh_close', 'Let your breath return to normal. One or two sighs, any time today, can be a small reminder of this.'),
+  shoulders: tip('sigh_t_shoulders', 'Shoulders heavy as you breathe in. Only the lungs fill.'),
+  twice: tip('sigh_t_twice', 'Let the out-breath last about twice as long as the in-breaths.'),
+  audible: tip('sigh_t_audible', 'An audible sigh is welcome. Let the sound leave with the air.'),
 };
 
 export const sighing = {
@@ -145,8 +154,11 @@ export const sighing = {
           style: 'slow',
           labels: (ph) => ({ in: 'In · nose', in2: 'Top up', out: 'Out · mouth' })[ph],
           cues: [
+            { breath: 2, say: C.shoulders },
             { breath: 4, say: C.science },
+            { breath: 7, say: C.twice },
             { breath: 10, say: C.heart },
+            { breath: 12, say: C.audible },
             { breath: 14, say: halfway },
             { breath: 17, say: C.soft },
             { breath: 19, say: T.wander },
@@ -190,6 +202,10 @@ const N = {
   rIn: line('bal_r_in', 'In through the right.'),
   lOut: line('bal_l_out', 'Switch. Out through the left.'),
   light: line('bal_light', 'Fingertips light, just enough to close one side.', 'technique'),
+  track: tip('bal_t_track', 'Lost track of the side? Breathe in on the side you just breathed out of.'),
+  rest: tip('bal_t_rest', 'If your arm tires, rest the hand for a breath or two. Nothing is lost.'),
+  pour: tip('bal_t_pour', 'Let the out-breath spill out slowly, like water poured from a jug.'),
+  ears: tip('bal_t_ears', 'With headphones, the breath sound follows the side: left ear, left nostril.'),
   rhythm: line('bal_rhythm', 'Switching sides slows the breath and gives your attention a steady rhythm to follow.', 'science'),
   long: say('Now four in, eight out. Ten rounds.'),
   bp: line('bal_bp', 'Small trials suggest regular practice may modestly lower blood pressure. Much of that is likely the slow breathing itself.', 'science'),
@@ -197,6 +213,13 @@ const N = {
   last: say('Last round.'),
   release: line('bal_release', 'Release the hand. Breathe through both nostrils, and notice how the breath feels now.'),
   close: line('bal_close', "That's your practice. Carry the steadiness with you."),
+};
+// Headphones: the breath sound sits on the side of the open nostril.
+const sidePan = (ph, i) => {
+  const left = i % 2 === 0;
+  if (ph === 'in') return left ? -0.75 : 0.75;
+  if (ph === 'out') return left ? 0.75 : -0.75;
+  return 0;
 };
 const sides = (ph, i) => {
   const left = i % 2 === 0;
@@ -235,13 +258,17 @@ export const balance = {
           count: 24,
           style: 'count',
           labels: sides,
+          pan: sidePan,
           cues: [
             { at: 0, say: N.lIn },
             { at: 4, say: N.rOut },
             { at: 8, say: N.rIn },
             { at: 12, say: N.lOut },
             { breath: 3, say: N.light },
+            { breath: 6, say: N.track },
+            { breath: 8, say: N.ears },
             { breath: 10, say: N.rhythm },
+            { breath: 14, say: N.rest },
             { breath: 18, say: T.wander },
           ],
         },
@@ -259,8 +286,10 @@ export const balance = {
           count: 20,
           style: 'count',
           labels: sides,
+          pan: sidePan,
           cues: [
             { breath: 4, say: N.bp },
+            { breath: 7, say: N.pour },
             { breath: 10, say: N.tradition },
             { breath: 18, say: N.last },
           ],

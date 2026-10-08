@@ -78,6 +78,10 @@
         </details>
         <details class="outline notes" id="notes" hidden>
           <summary>Teacher's notes <span class="muted">tips &amp; when to skip</span></summary>
+          <div class="listen-row">
+            <button class="chip" id="notes-listen" disabled>Preparing audio…</button>
+            <audio id="notes-audio" controls preload="auto" hidden></audio>
+          </div>
           <div class="notes-body" id="notes-body"></div>
         </details>
 
@@ -170,10 +174,14 @@
           <span>Voice guidance<small>Spoken cues and counts, voiced by Tom.</small></span>
           <input type="checkbox" class="switch" id="set-voice" />
         </label>
-        <label class="setting">
-          <span>Explanations<small>Short notes on the science, spoken during the practice. Off: guidance only. Everything is always in <em>How it works</em>.</small></span>
-          <input type="checkbox" class="switch" id="set-explain" />
-        </label>
+        <div class="setting stack">
+          <span>How much Tom says<small>Quiet: instructions and counts. Guided: plus the teacher's tips. Full: plus the science along the way.</small></span>
+          <div class="seg" id="set-talk" role="group" aria-label="How much Tom says">
+            <button data-v="quiet">Quiet</button>
+            <button data-v="guided">Guided</button>
+            <button data-v="full">Full</button>
+          </div>
+        </div>
         <label class="setting">
           <span>Breath sounds<small>Soft air sounds that pace each breath.</small></span>
           <input type="checkbox" class="switch" id="set-sounds" />
