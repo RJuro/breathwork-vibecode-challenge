@@ -65,10 +65,10 @@ export async function loadCues(ids) {
   return out;
 }
 
-/** A practice's background track, or null when none has been added yet. */
-export async function loadMusic(name) {
+/** A practice's background track: the first of `names` that has been added, or null. */
+export async function loadMusic(names) {
   const { music } = await loadManifests();
-  const m = name && music[name];
+  const m = [].concat(names || []).map((n) => music[n]).find(Boolean);
   return m ? decodeUrl(`audio/music/${m.file}?v=${m.v || 1}`) : null;
 }
 

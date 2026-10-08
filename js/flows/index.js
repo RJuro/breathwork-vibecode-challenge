@@ -4,8 +4,9 @@ import { clearNose } from './clear.js';
 import { fireWave, holdLadder } from './energy.js';
 import { resonance, sighing, balance } from './calm.js';
 import { windDown } from './sleep.js';
+import { windowSeat } from './travel.js';
 
-export const FLOWS = [resonance, sighing, balance, fireWave, holdLadder, tide, clearNose, windDown];
+export const FLOWS = [resonance, sighing, balance, fireWave, holdLadder, tide, clearNose, windowSeat, windDown];
 
 export const INTENSITY = {
   none: { holdScale: 0, gentle: true, noHolds: true },

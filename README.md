@@ -21,6 +21,7 @@ python3 -m http.server 8000   # then http://localhost:8000
 | **Resonance** | Calm | Six light breaths a minute (4 in · 6 out), the best-studied calming practice | 9 min |
 | **Cyclic Sighing** | Calm | Double inhale, long mouth exhale, five minutes (Balban et al. 2023) | 6 min |
 | **Alternate Nostril** | Calm | Nadi shodhana, 4:4 then 4:8, with the nostril shown on every phase | 9 min |
+| **Window Seat** | On the move | Silent, seated practice for a headache on a plane or train: soften jaw/brow/shoulders, 4:6 breathing, five soft pauses on two-thirds-full lungs (Plane ≤15 s, Train ≤25 s, or none) | 15 min |
 | **Wind Down** | Sleep | Lengthening exhales, four rounds of Weil's 4-7-8, then drift | 7 min |
 
 Practices with holds offer **Gentle / Standard / Deeper**; Turn the Tide and Clear Nose also
@@ -55,14 +56,16 @@ fall back to the device's voice.
 
 ## Music
 
-Drop instrumental tracks into `audio/music/` and list them in `audio/music/manifest.json`:
+Import a track (e.g. a Suno download) into a slot:
 
-```json
-{ "tide": { "file": "tide.mp3", "v": 1 }, "ember": { "file": "ember.mp3", "v": 1 }, "night": { "file": "night.mp3", "v": 1 } }
+```sh
+python3 scripts/add_music.py ~/Downloads/track.mp3 tide --end 222
 ```
 
-`tide` is used by the calm and getting-sick practices, `ember` by Fire Wave and Hold Ladder,
-`night` by Wind Down. Tracks are mixed to mono, level-matched, looped with a 6 s crossfade
+It moves the track into A major with the smallest pitch shift (the app's drone, bells and hum
+guide are in A), trims, fades, converts to mono and updates `audio/music/manifest.json`.
+Slots: `tide` (calm and under-the-weather practices; added: *A-Frame Stillness*), `ember`
+(Fire Wave, Hold Ladder), `night` (Wind Down), `transit` (Window Seat, falling back to `tide`). Tracks are mixed to mono, level-matched, looped with a 6 s crossfade
 and ducked under the voice; without a track the app plays a soft drone.
 
 ## Safety

@@ -287,6 +287,30 @@
     "text": "About three minutes to go.",
     "kind": "count"
   },
+  "n_about_two_minutes_to_go": {
+    "text": "About two minutes to go.",
+    "kind": "count"
+  },
+  "n_and_pause_throat_soft": {
+    "text": "And pause. Throat soft.",
+    "kind": "count"
+  },
+  "n_and_slowly_toward_the_left": {
+    "text": "And slowly toward the left.",
+    "kind": "count"
+  },
+  "n_back_to_centre": {
+    "text": "Back to centre.",
+    "kind": "count"
+  },
+  "n_back_to_four_in_six_out": {
+    "text": "Back to four in, six out.",
+    "kind": "count"
+  },
+  "n_breathe_in_about_two_thirds_full": {
+    "text": "Breathe in, about two-thirds full.",
+    "kind": "count"
+  },
   "n_breathe_in_all_the_way_to_the_top_and_hold_fifteen_seconds": {
     "text": "Breathe in, all the way to the top, and hold. Fifteen seconds.",
     "kind": "count"
@@ -361,6 +385,14 @@
   },
   "n_five_minutes_in_top_up_and_a_long_slow_breath_out": {
     "text": "Five minutes. In, top up, and a long, slow breath out.",
+    "kind": "count"
+  },
+  "n_five_pauses_of_up_to_fifteen_seconds": {
+    "text": "Five pauses of up to fifteen seconds.",
+    "kind": "count"
+  },
+  "n_five_pauses_of_up_to_twenty_five_seconds": {
+    "text": "Five pauses of up to twenty-five seconds.",
     "kind": "count"
   },
   "n_five_slow_breaths": {
@@ -507,12 +539,24 @@
     "text": "In for four, out for six. Six breaths.",
     "kind": "count"
   },
+  "n_in_for_four_out_for_six_small_and_quiet_about_six_minutes": {
+    "text": "In for four, out for six, small and quiet. About six minutes.",
+    "kind": "count"
+  },
+  "n_instead_of_pausing_lengthen_the_out_breath_in_for_four_out_f": {
+    "text": "Instead of pausing, lengthen the out-breath. In for four, out for eight.",
+    "kind": "count"
+  },
   "n_last_round": {
     "text": "Last round.",
     "kind": "count"
   },
   "n_last_round_same_again": {
     "text": "Last round. Same again.",
+    "kind": "count"
+  },
+  "n_let_it_out_slowly": {
+    "text": "Let it out slowly.",
     "kind": "count"
   },
   "n_now_four_in_eight_out_ten_rounds": {
@@ -565,6 +609,10 @@
   },
   "n_six_slow_breaths_in_for_four_out_for_six": {
     "text": "Six slow breaths. In for four, out for six.",
+    "kind": "count"
+  },
+  "n_slowly_let_your_head_tip_toward_the_right_shoulder": {
+    "text": "Slowly let your head tip toward the right shoulder.",
     "kind": "count"
   },
   "n_ten_more_seconds": {
@@ -693,6 +741,70 @@
   },
   "welcome": {
     "text": "Welcome. Sit tall, or lie down. Let your eyes close, and let the day go quiet for a few minutes.",
+    "kind": "guide"
+  },
+  "ws_brow": {
+    "text": "Unknit the brow. Soften around the eyes, and across the scalp.",
+    "kind": "technique"
+  },
+  "ws_checkin": {
+    "text": "Notice your head, your jaw, your shoulders. Whatever has eased, let it stay eased.",
+    "kind": "guide"
+  },
+  "ws_close": {
+    "text": "That's your practice. Sip some water, and keep taking your usual medication as you normally would. Come back to this whenever you need it.",
+    "kind": "guide"
+  },
+  "ws_face_why": {
+    "text": "Jaw, brow and shoulders often tighten around a headache. Letting them soften may ease some of the pressure.",
+    "kind": "science"
+  },
+  "ws_jaw": {
+    "text": "Lips together, teeth apart. Let the tongue rest on the floor of the mouth.",
+    "kind": "technique"
+  },
+  "ws_long_why": {
+    "text": "A longer out-breath gives the heart more time to slow, and the body more time to settle.",
+    "kind": "science"
+  },
+  "ws_neck": {
+    "text": "Let the back of the neck lengthen, the chin tipping very slightly down.",
+    "kind": "technique"
+  },
+  "ws_pain": {
+    "text": "In lab studies, slow breathing with a longer out-breath dulled pain a little. It may take the edge off.",
+    "kind": "science"
+  },
+  "ws_pause_intro": {
+    "text": "Now a few soft pauses. Breathe in to about two-thirds full, then simply pause. Throat relaxed, nothing pushing. Let the jaw and shoulders go.",
+    "kind": "technique"
+  },
+  "ws_shoulders": {
+    "text": "On each breath out, let the shoulders drop a little further.",
+    "kind": "technique"
+  },
+  "ws_silent": {
+    "text": "Everything here is silent. Nose only, small breaths. No one around you needs to know you're doing this.",
+    "kind": "guide"
+  },
+  "ws_skip": {
+    "text": "If the throbbing grows, or your head feels fuller, skip the pauses and just lengthen the out-breath.",
+    "kind": "guide"
+  },
+  "ws_small": {
+    "text": "Slower, not bigger. Over-breathing can make you light-headed.",
+    "kind": "technique"
+  },
+  "ws_stress": {
+    "text": "Stress itself raises inflammatory signals. Whether breathing reaches the immune system directly is still uncertain. Regular practice is where any benefit lies.",
+    "kind": "science"
+  },
+  "ws_vagal": {
+    "text": "A long out-breath shifts the heart toward its calmer, vagal rhythm. The same nerve, stimulated electrically, can dampen inflammation.",
+    "kind": "science"
+  },
+  "ws_welcome": {
+    "text": "Welcome. Sit back, head against the headrest if you can, feet flat on the floor. Eyes down, or closed. If you have water, take a sip now.",
     "kind": "guide"
   }
 }

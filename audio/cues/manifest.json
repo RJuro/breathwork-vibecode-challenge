@@ -473,6 +473,42 @@
     "engine": "lux",
     "duration": 1.46
   },
+  "n_about_two_minutes_to_go": {
+    "fp": "543951454b27",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 1.39
+  },
+  "n_and_pause_throat_soft": {
+    "fp": "a7c239a8bf07",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 1.34
+  },
+  "n_and_slowly_toward_the_left": {
+    "fp": "a9297f5b8d1e",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 1.51
+  },
+  "n_back_to_centre": {
+    "fp": "917ef59e37a2",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 0.89
+  },
+  "n_back_to_four_in_six_out": {
+    "fp": "3a5a6e8f92de",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 1.78
+  },
+  "n_breathe_in_about_two_thirds_full": {
+    "fp": "b72dfca04b9e",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 1.9
+  },
   "n_breathe_in_all_the_way_to_the_top_and_hold_fifteen_seconds": {
     "fp": "0579d23a5f4c",
     "voice": "tom",
@@ -586,6 +622,18 @@
     "voice": "tom",
     "engine": "lux",
     "duration": 3.41
+  },
+  "n_five_pauses_of_up_to_fifteen_seconds": {
+    "fp": "737cca8c0bd6",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 2.21
+  },
+  "n_five_pauses_of_up_to_twenty_five_seconds": {
+    "fp": "cc76bcdb8134",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 2.26
   },
   "n_five_slow_breaths": {
     "fp": "ecdec28e9e7d",
@@ -803,6 +851,18 @@
     "engine": "lux",
     "duration": 2.76
   },
+  "n_in_for_four_out_for_six_small_and_quiet_about_six_minutes": {
+    "fp": "6bf57d38067b",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 4.39
+  },
+  "n_instead_of_pausing_lengthen_the_out_breath_in_for_four_out_f": {
+    "fp": "d381d7d0b911",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 4.32
+  },
   "n_last_round": {
     "fp": "ce4e885c3139",
     "voice": "tom",
@@ -814,6 +874,12 @@
     "voice": "tom",
     "engine": "lux",
     "duration": 1.61
+  },
+  "n_let_it_out_slowly": {
+    "fp": "7e685128f2e6",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 1.18
   },
   "n_now_four_in_eight_out_ten_rounds": {
     "fp": "8ea1bc5a49c3",
@@ -892,6 +958,12 @@
     "voice": "tom",
     "engine": "lux",
     "duration": 3.1
+  },
+  "n_slowly_let_your_head_tip_toward_the_right_shoulder": {
+    "fp": "af6d05fcb711",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 2.5
   },
   "n_ten_more_seconds": {
     "fp": "c08818e1ab57",
@@ -1042,5 +1114,101 @@
     "voice": "tom",
     "engine": "lux",
     "duration": 6.41
+  },
+  "ws_brow": {
+    "fp": "9ceeebf6b205",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 3.6
+  },
+  "ws_checkin": {
+    "fp": "0145cd3886e9",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 4.78
+  },
+  "ws_close": {
+    "fp": "dc73c617ef31",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 8.06
+  },
+  "ws_face_why": {
+    "fp": "20cc5a6c4495",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 5.66
+  },
+  "ws_jaw": {
+    "fp": "9e6c264cc6a2",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 4.18
+  },
+  "ws_long_why": {
+    "fp": "86d0182ab06f",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 5.21
+  },
+  "ws_neck": {
+    "fp": "659d8af869e5",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 3.84
+  },
+  "ws_pain": {
+    "fp": "d6503e52a2b0",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 6.02
+  },
+  "ws_pause_intro": {
+    "fp": "e9c74c46941e",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 8.93
+  },
+  "ws_shoulders": {
+    "fp": "27b5bcd46323",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 3.14
+  },
+  "ws_silent": {
+    "fp": "b23b81ae2b0e",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 6.26
+  },
+  "ws_skip": {
+    "fp": "096cc6bb0af6",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 5.57
+  },
+  "ws_small": {
+    "fp": "05bee95b91e1",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 3.41
+  },
+  "ws_stress": {
+    "fp": "30f820967b17",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 9.72
+  },
+  "ws_vagal": {
+    "fp": "dc6a37703f24",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 7.9
+  },
+  "ws_welcome": {
+    "fp": "5e63332188d2",
+    "voice": "tom",
+    "engine": "lux",
+    "duration": 8.69
   }
 }

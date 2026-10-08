@@ -31,7 +31,7 @@ function save(patch) {
 }
 const levelOf = (flow) => {
   const lv = settings.intensity[flow.id];
-  return intensitiesOf(flow).includes(lv) ? lv : 'standard';
+  return intensitiesOf(flow).includes(lv) ? lv : flow.defaultLevel || 'standard';
 };
 
 // ── State ──────────────────────────────────────────────
@@ -108,7 +108,7 @@ function syncIntensity() {
   const lv = levelOf(flow);
   const seg = $('#intensity');
   seg.innerHTML = intensitiesOf(flow)
-    .map((v) => `<button data-v="${v}" aria-pressed="${v === lv}">${LEVEL_NAMES[v]}</button>`)
+    .map((v) => `<button data-v="${v}" aria-pressed="${v === lv}">${(flow.levelNames || {})[v] || LEVEL_NAMES[v]}</button>`)
     .join('');
   $('#intensity-note').textContent = (flow.intensityNotes || {})[lv] || '';
 }
