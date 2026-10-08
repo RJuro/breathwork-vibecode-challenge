@@ -48,7 +48,7 @@ export const fireWave = {
   titleHtml: 'Fire <em>wave</em>',
   tag: 'Energy',
   blurb: 'Ujjayi, three rounds of breath of fire, holds with bandhas.',
-  lede: "A morning heat-builder in Dylan Werner's sequence style: ujjayi warm-up, three short rounds of breath of fire, each sealed with a full-lung hold.",
+  lede: 'A morning heat-builder: ujjayi warm-up, three short rounds of breath of fire, each sealed with a full-lung hold.',
   music: 'ember',
   accent: ['#ffd29a', '#e8553a'],
   sky: 'fire',
@@ -92,11 +92,11 @@ export const fireWave = {
     },
   ],
   learn: `
-<p>Built like the "breath sequence wave" in Dylan Werner's <em>The Illuminated Breath</em>: warm up, build heat, seal it with retention, cool down.</p>
+<p>Built as a classic breath sequence: warm up, build heat, seal it with retention, cool down.</p>
 <h3>The technique</h3>
 <ul>
   <li><strong>Ujjayi</strong>: a soft hiss at the back of the throat, nose only, lengthening from 4:4 to 6:6.</li>
-  <li><strong>Breath of fire</strong>: quick, small breaths through the nose, about two or three a second, belly soft and shoulders still. Werner keeps these rounds short and seals each with a hold, so CO₂ doesn't drop too far.</li>
+  <li><strong>Breath of fire</strong>: quick, small breaths through the nose, about two or three a second, belly soft and shoulders still. The rounds stay short and each is sealed with a hold, so CO₂ doesn't drop too far.</li>
   <li><strong>Full-lung holds with bandhas</strong>: root lock (mula bandha) and chin lock (jalandhara). Hold only to the first clear urge. Holding on full lungs, rather than empty, keeps oxygen higher.</li>
 </ul>
 <h3>Why it works</h3>
@@ -108,7 +108,6 @@ export const fireWave = {
 ${SAFETY_HTML}
 <h3>Sources</h3>
 <ul class="sources">
-  <li>Werner D. <em>The Illuminated Breath</em> (2021); <a href="https://blog.alomoves.com/mindfulness/dylan-werners-4-breathing-exercises-to-immediately-reduce-stress" target="_blank" rel="noopener">4 breathing exercises</a>, Alo Moves.</li>
   <li>Kox et al. 2014, <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4034215/" target="_blank" rel="noopener">voluntary activation of the sympathetic nervous system</a>, PNAS.</li>
   <li>Almahayni &amp; Hammond 2024, systematic review of the Wim Hof Method (8 studies, very low certainty), PLOS ONE: <a href="https://pubmed.ncbi.nlm.nih.gov/?term=Almahayni+Hammond+Wim+Hof+Method" target="_blank" rel="noopener">PubMed search</a>.</li>
 </ul>`,

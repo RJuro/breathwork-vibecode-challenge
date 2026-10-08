@@ -111,7 +111,7 @@ export const SAFETY_HTML = `
   <li>If you are pregnant, or have epilepsy, heart disease, high blood pressure or a fever, skip fast breathing and breath holds altogether: choose Resonance, Cyclic Sighing or Alternate Nostril, or a <em>No holds</em> option. A shorter hold is not the same as a safe one. Ask your doctor if unsure.</li>
   <li>Stop whenever you like. If you feel dizzy or unwell, or the urge to breathe gets strong, breathe normally. <em>Breathe now</em> ends any hold.</li>
 </ul>
-<p class="muted">Not medical advice. Cues are written in the spirit of the teachers named, not in their words, and this app isn't affiliated with them.</p>`;
+<p class="muted">Not medical advice. These practices adapt traditional pranayama and published breathing methods; check with your doctor if you have a health condition.</p>`;
 
 export const ev = {
   solid: '<span class="evidence solid">solid</span>',

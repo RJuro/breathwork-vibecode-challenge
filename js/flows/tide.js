@@ -1,8 +1,8 @@
-// "Turn the Tide": a 15-minute flow shaped like Dylan Werner's breath-sequence wave
+// "Turn the Tide": a 15-minute flow shaped like a classic breath-sequence wave
 // (warm-up → heat → retention → cool-down → check-in), adapted for the first day of
 // a cold: nasal breathing throughout, spaced humming bookends for nasal nitric oxide,
-// short kapalabhati bursts (he keeps fast-breathing rounds short to limit hypocapnia)
-// and holds that lengthen round by round.
+// short kapalabhati bursts (kept short to limit how far CO2 drops) and holds that
+// lengthen round by round.
 
 import { line, say, L, PUMP, HUM, Num, num, mmss, scaled, settle, holdEmpty, holdFull, SAFETY_HTML, ev } from './lib.js';
 
@@ -83,7 +83,7 @@ export const tide = {
   titleHtml: 'Turn the <em>tide</em>',
   tag: 'Under the weather',
   blurb: 'Humming and long, quiet holds for a scratchy-throat day. Comfort, not a cure.',
-  lede: "For the scratchy-throat day: humming, nasal breathing and three rounds of long, quiet holds, in the spirit of Dylan Werner's pranayama. A warming, settling practice. Humming raises nasal nitric oxide, but no study shows breathwork treats a cold.",
+  lede: "For the scratchy-throat day: humming, nasal breathing and three rounds of long, quiet holds. A warming, settling practice. Humming raises nasal nitric oxide, but no study shows breathwork treats a cold.",
   music: 'tide',
   intensity: ['none', 'gentle', 'standard', 'deeper'],
   intensityNotes: {
@@ -182,14 +182,14 @@ export const tide = {
     },
   ],
   learn: `
-<p>The session follows the arc Dylan Werner calls a <em>breath sequence</em>, built the way you'd build an asana class: warm up, build heat, go deep into retention, cool down, check in. Here it's adapted for the first day of a cold.</p>
+<p>The session follows a classic breath-sequence arc, built the way you'd build a yoga class: warm up, build heat, go deep into retention, cool down, check in. Here it's adapted for the first day of a cold.</p>
 
 <h3>The technique</h3>
 <ul>
-  <li><strong>Nose only.</strong> Werner calls nasal breathing "the number one thing". Let the ribs widen to the sides, keep the shoulders still and the belly soft, and breathe in with no more effort than at rest. The aim is to breathe <em>less</em>, not more.</li>
+  <li><strong>Nose only.</strong> Nasal breathing is the foundation of everything here. Let the ribs widen to the sides, keep the shoulders still and the belly soft, and breathe in with no more effort than at rest. The aim is to breathe <em>less</em>, not more.</li>
   <li><strong>The ladder</strong> (sama vritti): equal inhale and exhale, lengthened a second at a time, 4 → 5 → 6. It's his way of easing into a practice.</li>
   <li><strong>Humming</strong> (bhramari): a nasal inhale, then a hum through the whole exhale, lips closed.</li>
-  <li><strong>Kapalabhati</strong>: short, sharp exhales driven from the belly; the inhale happens on its own. Werner keeps fast-breathing bursts short and follows them with a hold, to limit how far CO₂ drops.</li>
+  <li><strong>Kapalabhati</strong>: short, sharp exhales driven from the belly; the inhale happens on its own. The bursts stay short and each is followed by a hold, to limit how far CO₂ drops.</li>
   <li><strong>Holds</strong> (kumbhaka): first with empty lungs (<em>bahya</em>), then with full lungs (<em>antara</em>). On the full hold, gently engage the root lock (<em>mula bandha</em>, a light lift of the pelvic floor) and tuck the chin a little (<em>jalandhara</em>). Stay soft, and come out of the hold whenever you want to. There's no target to beat.</li>
   <li><strong>Cool-down</strong>: in for 4, out for 8, then three more hums and a minute of stillness.</li>
 </ul>
@@ -210,7 +210,6 @@ export const tide = {
 ${SAFETY_HTML}
 <h3>Sources</h3>
 <ul class="sources">
-  <li>Werner D. <em>The Illuminated Breath</em> (2021); <a href="https://blog.alomoves.com/mindfulness/dylan-werners-4-breathing-exercises-to-immediately-reduce-stress" target="_blank" rel="noopener">4 breathing exercises</a> and <a href="https://blog.alomoves.com/mindfulness/how-to-do-box-breathing-for-less-stress" target="_blank" rel="noopener">box breathing</a>, Alo Moves. Cues here are paraphrased in his spirit, not his words.</li>
   <li>Weitzberg &amp; Lundberg 2002, <a href="https://pubmed.ncbi.nlm.nih.gov/12119224/" target="_blank" rel="noopener">Humming greatly increases nasal nitric oxide</a>, Am J Respir Crit Care Med.</li>
   <li>Maniscalco et al. 2003, <a href="https://doi.org/10.1183/09031936.03.00017903" target="_blank" rel="noopener">Assessment of nasal and sinus NO output using single-breath humming</a>, Eur Respir J.</li>
   <li>Sanders et al. 1998, <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC124563" target="_blank" rel="noopener">Role of NO in rhinovirus infection</a>, J Virol.</li>

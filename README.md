@@ -14,7 +14,7 @@ python3 -m http.server 8000   # then http://localhost:8000
 
 | Practice | Tag | What it is | Length |
 |---|---|---|---|
-| **Turn the Tide** | Under the weather | Dylan Werner-style wave: nasal ladder, humming, three kapalabhati rounds with lengthening holds, cool-down | 15 min |
+| **Turn the Tide** | Under the weather | Classic breath-sequence wave: nasal ladder, humming, three kapalabhati rounds with lengthening holds, cool-down | 15 min |
 | **Clear Nose** | Under the weather | Breathe light, McKeown's pinch-and-nod nose-unblocking exercise (kept to moderate air hunger), five hums | 8 min |
 | **Fire Wave** | Energy | Ujjayi warm-up, three short rounds of breath of fire sealed with full-lung holds and bandhas | 8 min |
 | **Hold Ladder** | Long holds | A freediver's dry CO₂ table: six holds of the same length, rests shrinking 1:30 → 0:15 | 12 min |
@@ -73,5 +73,4 @@ and ducked under the voice; without a track the app plays a soft drone.
 
 Seated or lying down only. Never in or near water or while driving. Skip fast breathing and
 long holds if pregnant, epileptic, or living with heart disease or high blood pressure, and
-keep holds comfortable during an active cold. Not medical advice; not affiliated with the
-teachers whose methods inspired these practices.
+keep holds comfortable during an active cold. Not medical advice.

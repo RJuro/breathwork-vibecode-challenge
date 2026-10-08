@@ -287,6 +287,5 @@ ${SAFETY_HTML}
 <h3>Sources</h3>
 <ul class="sources">
   <li>Nam et al. 2024, <a href="https://karger.com/cmr/article/31/5/449/910373/" target="_blank" rel="noopener">alternate nostril breathing and blood pressure: systematic review and meta-analysis</a>, Complement Med Res.</li>
-  <li>Werner D. <em>The Illuminated Breath</em> (2021), chapters on nadi shodhana.</li>
 </ul>`,
 };
