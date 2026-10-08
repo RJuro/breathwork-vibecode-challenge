@@ -64,6 +64,36 @@ export const L = {
   breatheNow: line('breathe_now_ok', "Hold only to the first strong urge. If it comes early, tap breathe now. There's nothing to prove.", 'technique'),
 };
 
+// The teacher's voice: short, invitational lines used sparingly across practices.
+// Describe, don't prescribe; comfort over depth; always a way out.
+export const T = {
+  eyes: line('t_eyes', 'Close your eyes, or let your gaze rest softly on the floor.'),
+  anchor: line('t_anchor', 'Notice where the breath is easiest to feel. Cool air in at the nostrils, slightly warmer air out.', 'technique'),
+  comfort: line('t_comfort', "Breathe easily and comfortably, not deeply. There's no need to try hard.", 'technique'),
+  wander: line('t_wander', "If your mind has wandered, that's what minds do. Noticing is the practice. Come back to the next breath."),
+  holdGuide: line('t_hold_guide', 'Let go whenever you need to. The timer is a guide, not a test.'),
+  firstBreath: line('t_first_breath', 'Keep that first breath calm. If it came as a gasp, make the next hold shorter.', 'technique'),
+  bellyOnly: line('t_belly_only', 'Face and shoulders still. Only the belly moves.', 'technique'),
+  slowerFine: line('t_slower_fine', 'Slower is fine. Rhythm matters more than speed.', 'technique'),
+  letGo: line('t_let_go', 'Let go of the pattern. Let the body breathe itself.'),
+  notice: line('t_notice', "Notice what's different, without needing anything to be different."),
+  carry: line('t_carry', 'Let some movement come back into the hands. Open your eyes when it feels right, and take some of this steadiness with you.'),
+};
+
+/** A "Teacher's notes" block for a practice page: { before, mistakes: [[mistake, fix]], feel, progress, skip }. */
+export function notesHtml(n) {
+  const list = (items) => `<ul>${items.map((x) => `<li>${x}</li>`).join('')}</ul>`;
+  return [
+    n.before && `<h4>Before you start</h4>${list(n.before)}`,
+    n.mistakes && `<h4>Common slips</h4><ul class="fixes">${n.mistakes.map(([m, f]) => `<li><span>${m}</span><em>${f}</em></li>`).join('')}</ul>`,
+    n.feel && `<h4>What you might notice</h4>${list(n.feel)}`,
+    n.progress && `<h4>Going further</h4>${list(n.progress)}`,
+    n.skip && `<h4>Skip it or go gentle if…</h4>${list(n.skip)}`,
+  ]
+    .filter(Boolean)
+    .join('');
+}
+
 /** Settle breath before an empty hold: deep in, all the way out. */
 export const settle = () => ({
   pace: { inhale: 4, exhale: 6 },

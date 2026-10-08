@@ -272,7 +272,8 @@ a.chip { text-decoration: none; }
 .outline summary::-webkit-details-marker { display: none; }
 .outline summary::after { content: ''; width: 9px; height: 9px; border-right: 1.5px solid var(--muted); border-bottom: 1.5px solid var(--muted); transform: rotate(45deg); margin: -4px 4px 0 auto; transition: transform .2s; }
 .outline[open] summary::after { transform: rotate(-135deg); margin-top: 4px; }
-.outline summary .muted { color: var(--dim); font-weight: 400; font-size: 14px; }
+.outline summary { white-space: nowrap; }
+.outline summary .muted { color: var(--dim); font-weight: 400; font-size: 14px; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
 .outline .map { margin-top: 0; }
 .outline .map li:last-child { border-bottom: 0; }
 .cta .intensity-row { margin: 0 0 16px; }
@@ -282,3 +283,15 @@ a.chip { text-decoration: none; }
 .hold-head { margin: 22px 0 -14px; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
 .hold-head span { text-transform: none; letter-spacing: 0; color: var(--dim); }
 .range { width: 100%; accent-color: #e79a6f; min-height: 32px; }
+
+/* Teacher's notes */
+.outline.notes { border-top: 0; }
+.notes-body { padding: 0 0 14px; }
+.notes-body h4 { margin: 14px 0 4px; font: 500 12px/1.4 var(--sans); letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); }
+.notes-body ul { margin: 0; padding-left: 18px; }
+.notes-body li { color: #d9d3c9; font-size: 15px; margin: 5px 0; }
+.notes-body .fixes { list-style: none; padding-left: 0; }
+.notes-body .fixes li { display: grid; gap: 1px; padding: 6px 0; border-top: 1px solid var(--line); }
+.notes-body .fixes li:first-child { border-top: 0; }
+.notes-body .fixes em { color: var(--tide); font-style: normal; }
+.notes-body .fixes em::before { content: '→ '; }

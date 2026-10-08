@@ -1,6 +1,6 @@
 // Energy & long holds: a breath-of-fire wave with full-lung holds, and a dry CO2 table.
 
-import { line, say, L, Num, num, dur, mmss, scaled, holdFull, SAFETY_HTML, ev } from './lib.js';
+import { line, say, L, T, Num, num, dur, mmss, scaled, holdFull, SAFETY_HTML, ev } from './lib.js';
 
 const cap = (s) => s[0].toUpperCase() + s.slice(1);
 
@@ -34,7 +34,7 @@ function fireRound(n, o, opts) {
     steps: [
       { say: o.intro, bell: 'bell' },
       { say: say(`${Num(breaths)} quick breaths. Begin.`), gap: 0.4 },
-      { pace: BOF, count: breaths, style: 'pump', label: 'Breath of fire', cues: [{ breath: breaths - 8, say: L.pumpLast }] },
+      { pace: BOF, count: breaths, style: 'pump', label: 'Breath of fire', cues: [...(o.pumpCue && breaths >= 24 ? [{ breath: 6, say: o.pumpCue }] : []), { breath: breaths - 8, say: L.pumpLast }] },
       ...holdFull(hold, o.holdCues, { record: true }),
       { say: L.release },
       ...o.after,
@@ -74,9 +74,9 @@ export const fireWave = {
         { pace: { inhale: 6, exhale: 6 }, count: 2, style: 'count', cues: [{ at: 0, say: F.six }] },
       ],
     },
-    fireRound(1, { breaths: 30, gentleBreaths: 20, hold: 15, intro: F.r1, holdCues: [{ at: 1, say: L.bandhaShort }, { at: 4.5, say: F.urge }], after: [{ rest: 25, cues: [{ at: 3, say: F.buzz }] }] }, opts),
-    fireRound(2, { breaths: 40, gentleBreaths: 25, hold: 30, intro: F.r2, holdCues: [{ at: 1, say: L.bandha }], after: [{ rest: 30, cues: [{ at: 3, say: F.adrenaline }] }] }, opts),
-    fireRound(3, { breaths: 50, gentleBreaths: 30, hold: 45, intro: F.r3, holdCues: [{ at: 1, say: L.bandhaShort }], after: [{ rest: 15, cues: [{ at: 3, say: F.rest }] }] }, opts),
+    fireRound(1, { breaths: 30, gentleBreaths: 20, hold: 15, intro: F.r1, pumpCue: T.bellyOnly, holdCues: [{ at: 1, say: L.bandhaShort }, { at: 4.5, say: F.urge }], after: [{ rest: 25, cues: [{ at: 3, say: F.buzz }] }] }, opts),
+    fireRound(2, { breaths: 40, gentleBreaths: 25, hold: 30, intro: F.r2, pumpCue: T.slowerFine, holdCues: [{ at: 1, say: L.bandha }], after: [{ rest: 30, cues: [{ at: 3, say: F.adrenaline }] }] }, opts),
+    fireRound(3, { breaths: 50, gentleBreaths: 30, hold: 45, intro: F.r3, holdCues: [{ at: 1, say: L.bandhaShort }, { at: 8, say: T.holdGuide }], after: [{ rest: 15, cues: [{ at: 3, say: F.rest }] }] }, opts),
     {
       id: 'calm-cool',
       title: 'Cool down',
@@ -85,7 +85,7 @@ export const fireWave = {
       steps: [
         { say: F.cool, bell: 'bell', gap: 0.6 },
         { pace: { inhale: 4, exhale: 6 }, count: 6, style: 'count' },
-        { rest: 15 },
+        { rest: 15, cues: [{ at: 2, say: T.notice }] },
         { say: F.close, bell: 'low' },
         { rest: 5 },
       ],
@@ -130,8 +130,8 @@ const H = {
   close: line('hl_close', "That's the ladder. Breathe easy for a minute before you stand. Two or three times a week is plenty."),
 };
 const RESTS = [90, 75, 60, 45, 30, 15];
-const HOLD_CUES = [[{ at: 8, say: H.soft }], [{ at: 10, say: H.dive }], [{ at: 10, say: H.contract }], [{ at: 10, say: H.spleen }], [], [{ at: 5, say: H.last }]];
-const REST_CUES = [[{ at: 5, say: H.rule }, { at: 30, say: H.rests }], [{ at: 5, say: H.why }], [], [], [], []];
+const HOLD_CUES = [[{ at: 8, say: H.soft }], [{ at: 10, say: H.dive }], [{ at: 10, say: H.contract }], [{ at: 10, say: H.spleen }], [{ at: 8, say: T.holdGuide }], [{ at: 5, say: H.last }]];
+const REST_CUES = [[{ at: 5, say: H.rule }, { at: 15, say: T.firstBreath }, { at: 30, say: H.rests }], [{ at: 5, say: H.why }], [], [], [], []];
 
 export const holdLadder = {
   id: 'hold-ladder',

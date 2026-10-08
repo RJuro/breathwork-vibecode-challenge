@@ -27,7 +27,10 @@ python3 -m http.server 8000   # then http://localhost:8000
 Practices with holds offer **Gentle / Standard / Deeper**; Turn the Tide and Clear Nose also
 have **No holds** (no fast breathing, no retention). Tom announces what's coming ("Forty quick
 breaths", "Hold, lungs empty, for up to one minute", "Rest, forty-five seconds") but never
-counts every breath. *Breathe now* ends any hold and skips the rest of that retention block
+counts every breath, and adds a few teacher's cues (attention anchors, mind-wandering, a calm first
+breath after a hold). Each practice page has collapsible **Teacher's notes**: before you start,
+common slips with the cue that fixes them, what you might notice, going further, and when to
+skip (`js/flows/notes.js`). *Breathe now* ends any hold and skips the rest of that retention block
 into normal breathing. Spoken science notes are off by default (Settings → Explanations); every
 practice has a *How it works* page with evidence labels and sources. The summary shows
 *guided* hold time, worked out from the timeline, not a measurement of your breath.

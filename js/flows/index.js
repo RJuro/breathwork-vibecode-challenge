@@ -5,8 +5,10 @@ import { fireWave, holdLadder } from './energy.js';
 import { resonance, sighing, balance } from './calm.js';
 import { windDown } from './sleep.js';
 import { windowSeat } from './travel.js';
+import { NOTES } from './notes.js';
 
 export const FLOWS = [resonance, sighing, balance, fireWave, holdLadder, tide, clearNose, windowSeat, windDown];
+for (const f of FLOWS) f.notes = NOTES[f.id];
 
 export const INTENSITY = {
   none: { holdScale: 0, gentle: true, noHolds: true },

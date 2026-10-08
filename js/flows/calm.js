@@ -1,6 +1,6 @@
 // Calm: resonance breathing, cyclic sighing, alternate-nostril breathing.
 
-import { line, say, SAFETY_HTML, ev } from './lib.js';
+import { line, say, T, SAFETY_HTML, ev } from './lib.js';
 
 const oneMore = say('One more minute.');
 const halfway = say('Halfway.');
@@ -37,7 +37,7 @@ export const resonance = {
       title: 'Arrive',
       what: 'Settle into nasal breathing',
       color: '#8fd0cc',
-      steps: [{ say: R.welcome, bell: 'low', lead: 2 }, { rest: 6 }, { say: R.light }, { rest: 4 }],
+      steps: [{ say: R.welcome, bell: 'low', lead: 2 }, { say: T.eyes }, { rest: 3 }, { say: R.light }, { rest: 4 }],
     },
     {
       id: 'calm-ease',
@@ -59,10 +59,12 @@ export const resonance = {
           style: 'count',
           cues: [
             { breath: 3, say: R.sync },
+            { breath: 6, say: T.anchor },
             { breath: 10, say: R.vagal },
             { breath: 14, say: R.dizzy },
             { breath: 18, say: R.three },
             { breath: 23, say: R.five },
+            { breath: 26, say: T.wander },
             { breath: 30, say: oneMore },
           ],
         },
@@ -73,7 +75,7 @@ export const resonance = {
       title: 'Return',
       what: 'Natural breathing',
       color: '#a7c9e6',
-      steps: [{ say: R.ret, bell: 'bell' }, { rest: 30 }, { say: R.close }, { rest: 6 }],
+      steps: [{ say: R.ret, bell: 'bell' }, { rest: 20 }, { say: T.notice }, { rest: 8 }, { say: R.close }, { rest: 4 }],
     },
   ],
   learn: `
@@ -147,6 +149,7 @@ export const sighing = {
             { breath: 10, say: C.heart },
             { breath: 14, say: halfway },
             { breath: 17, say: C.soft },
+            { breath: 19, say: T.wander },
             { breath: 22, say: oneMore },
           ],
         },
@@ -157,7 +160,7 @@ export const sighing = {
       title: 'Return',
       what: 'Natural breathing',
       color: '#a7c9e6',
-      steps: [{ rest: 15, bell: 'bell' }, { say: C.close }, { rest: 6 }],
+      steps: [{ rest: 10, bell: 'bell' }, { say: T.notice }, { rest: 6 }, { say: C.close }, { rest: 5 }],
     },
   ],
   learn: `
@@ -168,7 +171,7 @@ export const sighing = {
   <li>Anxiety fell in every group, including box breathing and mindfulness. There was no measurable change in resting heart rate, HRV or sleep ${ev.some}.</li>
   <li>The long exhale slows the heart a little on every breath (respiratory sinus arrhythmia) ${ev.solid}. That the second sip re-opens collapsed air sacs is plausible but untested ${ev.spec}.</li>
 </ul>
-<p class="muted">The trial was small (108 people), registered late, and didn't report effect sizes. Promising, not settled.</p>
+<p class="muted">The trial was small (108 people), registered late, and didn't report effect sizes; a later small study found no mood effect. Promising, not settled.</p>
 ${SAFETY_HTML}
 <h3>Sources</h3>
 <ul class="sources">
@@ -186,6 +189,7 @@ const N = {
   rOut: line('bal_r_out', 'Switch. Out through the right.'),
   rIn: line('bal_r_in', 'In through the right.'),
   lOut: line('bal_l_out', 'Switch. Out through the left.'),
+  light: line('bal_light', 'Fingertips light, just enough to close one side.', 'technique'),
   rhythm: line('bal_rhythm', 'Switching sides slows the breath and gives your attention a steady rhythm to follow.', 'science'),
   long: say('Now four in, eight out. Ten rounds.'),
   bp: line('bal_bp', 'Small trials suggest regular practice may modestly lower blood pressure. Much of that is likely the slow breathing itself.', 'science'),
@@ -236,7 +240,9 @@ export const balance = {
             { at: 4, say: N.rOut },
             { at: 8, say: N.rIn },
             { at: 12, say: N.lOut },
+            { breath: 3, say: N.light },
             { breath: 10, say: N.rhythm },
+            { breath: 18, say: T.wander },
           ],
         },
       ],
@@ -266,7 +272,7 @@ export const balance = {
       title: 'Release',
       what: 'Both nostrils, natural breathing',
       color: '#a7c9e6',
-      steps: [{ say: N.release, bell: 'bell' }, { rest: 25 }, { say: N.close }, { rest: 6 }],
+      steps: [{ say: N.release, bell: 'bell' }, { rest: 18 }, { say: T.notice }, { rest: 6 }, { say: N.close }, { rest: 4 }],
     },
   ],
   learn: `

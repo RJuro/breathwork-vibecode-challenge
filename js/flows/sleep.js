@@ -1,6 +1,6 @@
 // Sleep: a wind-down built on a lengthening exhale and Andrew Weil's 4-7-8.
 
-import { line, say, SAFETY_HTML, ev } from './lib.js';
+import { line, say, T, SAFETY_HTML, ev } from './lib.js';
 
 const W = {
   welcome: line('n478_welcome', 'Welcome. Lie down if you can, and let the bed take your weight. This is a wind-down, not a test.'),
@@ -43,7 +43,7 @@ export const windDown = {
         { say: W.six, gap: 0.6 },
         { pace: { inhale: 4, exhale: 6 }, count: 6, style: 'count', cues: [{ breath: 2, say: W.exhale }] },
         { say: W.eight, gap: 0.6 },
-        { pace: { inhale: 4, exhale: 8 }, count: 8, style: 'count', cues: [{ breath: 3, say: W.mind }] },
+        { pace: { inhale: 4, exhale: 8 }, count: 8, style: 'count', cues: [{ breath: 3, say: W.mind }, { breath: 6, say: T.wander }] },
       ],
     },
     {

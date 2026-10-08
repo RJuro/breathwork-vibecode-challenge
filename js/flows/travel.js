@@ -6,7 +6,7 @@
 // "holds" are soft pauses on two-thirds-full lungs, sized by where you are: Plane up to
 // 15 s, Train up to 25 s, or none at all. Nose only, no fast breathing, nothing audible.
 
-import { line, say, num, dur, scaled, SAFETY_HTML, ev } from './lib.js';
+import { line, say, T, num, dur, scaled, SAFETY_HTML, ev } from './lib.js';
 
 const cap = (s) => s[0].toUpperCase() + s.slice(1);
 
@@ -133,7 +133,9 @@ export const windowSeat = {
           cues: [
             { breath: 2, say: W.small },
             { breath: 6, say: W.pain },
+            { breath: 9, say: T.anchor },
             { breath: 12, say: W.vagal },
+            { breath: 15, say: T.wander },
             { breath: 18, say: W.stress },
             { breath: 23, say: W.twoMin },
           ],

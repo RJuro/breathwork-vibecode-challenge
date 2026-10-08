@@ -27,6 +27,10 @@
     "text": "Switch. Out through the left.",
     "kind": "guide"
   },
+  "bal_light": {
+    "text": "Fingertips light, just enough to close one side.",
+    "kind": "technique"
+  },
   "bal_r_in": {
     "text": "In through the right.",
     "kind": "guide"
@@ -737,6 +741,38 @@
   },
   "sigh_welcome": {
     "text": "Welcome. This is the cyclic sigh: a double breath in, and a long, slow breath out.",
+    "kind": "guide"
+  },
+  "t_anchor": {
+    "text": "Notice where the breath is easiest to feel. Cool air in at the nostrils, slightly warmer air out.",
+    "kind": "technique"
+  },
+  "t_belly_only": {
+    "text": "Face and shoulders still. Only the belly moves.",
+    "kind": "technique"
+  },
+  "t_eyes": {
+    "text": "Close your eyes, or let your gaze rest softly on the floor.",
+    "kind": "guide"
+  },
+  "t_first_breath": {
+    "text": "Keep that first breath calm. If it came as a gasp, make the next hold shorter.",
+    "kind": "technique"
+  },
+  "t_hold_guide": {
+    "text": "Let go whenever you need to. The timer is a guide, not a test.",
+    "kind": "guide"
+  },
+  "t_notice": {
+    "text": "Notice what's different, without needing anything to be different.",
+    "kind": "guide"
+  },
+  "t_slower_fine": {
+    "text": "Slower is fine. Rhythm matters more than speed.",
+    "kind": "technique"
+  },
+  "t_wander": {
+    "text": "If your mind has wandered, that's what minds do. Noticing is the practice. Come back to the next breath.",
     "kind": "guide"
   },
   "welcome": {

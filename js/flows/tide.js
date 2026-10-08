@@ -4,7 +4,7 @@
 // short kapalabhati bursts (kept short to limit how far CO2 drops) and holds that
 // lengthen round by round.
 
-import { line, say, L, PUMP, HUM, Num, num, mmss, scaled, settle, holdEmpty, holdFull, SAFETY_HTML, ev } from './lib.js';
+import { line, say, L, T as TL, PUMP, HUM, Num, num, mmss, scaled, settle, holdEmpty, holdFull, SAFETY_HTML, ev } from './lib.js';
 
 const T = {
   welcome: line('welcome', 'Welcome. Sit tall, or lie down. Let your eyes close, and let the day go quiet for a few minutes.'),
@@ -58,7 +58,7 @@ function round(n, o, opts) {
     ? [{ say: say('Five slow breaths.'), gap: 0.6 }, { pace: { inhale: 4, exhale: 6 }, count: 5, style: 'count' }]
     : [
         { say: say(`${Num(o.pumps)} quick breaths. Begin.`), gap: 0.4 },
-        { pace: PUMP, count: o.pumps, style: 'pump', cues: [{ breath: o.pumps - 5, say: L.pumpLast }] },
+        { pace: PUMP, count: o.pumps, style: 'pump', cues: [...(o.pumpCue ? [{ breath: 8, say: o.pumpCue }] : []), { breath: o.pumps - 5, say: L.pumpLast }] },
       ];
   return {
     id: `round${n}`,
@@ -136,16 +136,18 @@ export const tide = {
       hold: 45,
       full: 20,
       intro: T.r1Intro,
+      pumpCue: TL.bellyOnly,
       holdCues: [{ at: 4.5, say: L.breatheNow }, { at: 14, say: T.r1Permission }],
       gentleHoldCues: [{ at: 4.5, say: L.breatheNow }],
       fullCues: [{ at: 1, say: L.bandha }],
-      after: [{ rest: 12, cues: [{ at: 3, say: T.r1After }] }],
+      after: [{ rest: 16, cues: [{ at: 2, say: TL.firstBreath }, { at: 9, say: T.r1After }] }],
     }, opts),
     round(2, {
       pumps: 40,
       hold: 60,
       full: 25,
       intro: T.r2Intro,
+      pumpCue: TL.slowerFine,
       holdCues: [{ at: 20, say: T.r2Hunger }],
       gentleHoldCues: [{ at: 12, say: T.r3Still }],
       fullCues: [

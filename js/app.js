@@ -1,5 +1,6 @@
 import { FLOWS, INTENSITY, LEVEL_NAMES, intensitiesOf } from './flows/index.js';
 import { compile, stateAt, captionAt, exitOf, holdResults } from './engine.js';
+import { notesHtml } from './flows/lib.js';
 import { loadManifests, loadCues, loadMusic, renderSession } from './audio.js';
 
 const $ = (s) => document.querySelector(s);
@@ -97,6 +98,9 @@ function openFlow(f) {
   $('#d-title').innerHTML = f.titleHtml || f.title;
   $('#d-lede').textContent = f.lede;
   $('#learn-body').innerHTML = f.learn || '';
+  $('#notes').hidden = !f.notes;
+  $('#notes').open = false;
+  $('#notes-body').innerHTML = f.notes ? notesHtml(f.notes) : '';
   $('#intensity-row').hidden = !f.intensity;
   $('#outline').open = matchMedia('(min-height: 900px) and (min-width: 700px)').matches;
   syncIntensity();
