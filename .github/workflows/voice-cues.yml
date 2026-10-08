@@ -1,6 +1,7 @@
 # Generates the spoken cues with LuxTTS (voice "tom") on RunPod via the runpod-qwen-tts
 # gateway, and commits them. Needs the repository secret QWEN_TTS_API_KEY (the gateway's
-# GATEWAY_API_KEY). Runs when cue text changes, or by hand from the Actions tab.
+# GATEWAY_API_KEY). Runs when cue text or the generator changes, or by hand from the
+# Actions tab.
 name: Voice cues
 
 on:
@@ -11,7 +12,7 @@ on:
         type: boolean
         default: false
   push:
-    paths: ['flow/cues.json']
+    paths: ['flow/cues.json', 'scripts/generate_cues.py', '.github/workflows/voice-cues.yml']
 
 permissions:
   contents: write

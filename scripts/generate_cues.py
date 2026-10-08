@@ -144,6 +144,12 @@ def main():
         for cid, text, _ in todo:
             print(f"  {cid}: {spoken(text)[:90]}")
         return
+    if KEY:
+        # Fail fast on a bad key or a missing voice/engine, even when nothing needs generating.
+        info = api("GET", "/v1/voices")
+        if args.voice not in info.get("voices", []) or args.engine not in info.get("engines", [args.engine]):
+            sys.exit(f"gateway has no {args.engine}/{args.voice}: {info}")
+        print(f"gateway ok: {args.engine}/{args.voice} available")
     if not todo:
         return
     if not KEY:
