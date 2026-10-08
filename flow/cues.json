@@ -1,39 +1,674 @@
 {
-  "welcome": { "text": "Welcome. Sit tall, or lie down. Let your eyes close, and let the day go quiet for a few minutes.", "kind": "guide" },
-  "nose": { "text": "Breathe only through your nose. It warms and filters the air, and it's where your sinuses add nitric oxide to every breath.", "kind": "science" },
-  "ribs": { "text": "Let the ribs widen to the sides, like a band stretching. Shoulders still, belly soft. Breathe in with no more effort than at rest.", "kind": "technique" },
-  "ladder_intro": { "text": "Now we'll lengthen the breath, step by step. Follow the circle.", "kind": "guide" },
-  "ladder_up": { "text": "A little longer.", "kind": "guide" },
-  "ladder_up2": { "text": "And longer still. Smooth and even.", "kind": "guide" },
-
-  "hum_intro": { "text": "Humming breath. Breathe in through the nose, then hum the whole exhale, lips closed, jaw soft. Let the sound fill your head.", "kind": "technique" },
-  "hum_science": { "text": "Humming makes the air in your sinuses vibrate. In studies, it raised nitric oxide in the nose about fifteen-fold. In the lab, nitric oxide slows cold viruses.", "kind": "science" },
-  "hum_space": { "text": "The first hum gives the biggest boost, so we'll hum again at the end, once your sinuses have refilled.", "kind": "science" },
-
-  "r1_intro": { "text": "Round one. Kapalabhati. Short, sharp exhales through the nose, pulled from the belly. The inhale takes care of itself. Keep your face soft.", "kind": "technique" },
-  "r2_intro": { "text": "Round two. A few more breaths this time. Same easy rhythm.", "kind": "guide" },
-  "r3_intro": { "text": "Last round. Let this be the easiest one.", "kind": "guide" },
-  "g_intro": { "text": "Slow, full breaths through the nose. Then a soft hold, with empty lungs.", "kind": "guide" },
-  "pump_last": { "text": "Last few.", "kind": "guide" },
-  "deep_in": { "text": "Now one deep breath in.", "kind": "guide" },
-  "all_out": { "text": "And all the way out.", "kind": "guide" },
-  "hold_empty": { "text": "Hold. Lungs empty. Relax.", "kind": "guide" },
-
-  "r1_tingle": { "text": "Tingling or lightness is normal. The fast breathing lowered your carbon dioxide, and rising carbon dioxide is what makes you want to breathe. It's a signal, not an emergency.", "kind": "science" },
-  "r2_hunger": { "text": "Air hunger is just a sensation. Notice it without arguing with it. Soften your jaw, your eyes, your hands.", "kind": "technique" },
-  "r3_still": { "text": "Nothing to do. Just the stillness of an empty breath.", "kind": "guide" },
-
-  "inhale_top": { "text": "Breathe in. Fill all the way to the top, and hold.", "kind": "guide" },
-  "bandha": { "text": "Gently lift the pelvic floor, and bring the chin slightly down. Hold the breath as if it's resting, not trapped.", "kind": "technique" },
-  "bandha_short": { "text": "Root lock. Chin down. Stay soft.", "kind": "technique" },
-  "full_science": { "text": "With full lungs, oxygen stays high while carbon dioxide slowly rises. That's where your tolerance is built.", "kind": "science" },
-  "release": { "text": "And let it go. Breathe naturally.", "kind": "guide" },
-
-  "kox": { "text": "In a 2014 study, people trained in this kind of breathing released a surge of adrenaline, and their inflammatory response to a bacterial toxin was roughly halved. Not a cold. But a sign your breath can talk to your immune system.", "kind": "science" },
-
-  "cool_intro": { "text": "Now cool down. In for four, out for eight. Slow and quiet.", "kind": "technique" },
-  "cool_science": { "text": "A long exhale turns up the vagus nerve, your body's brake pedal. Less stress is one of the few things linked to catching fewer colds.", "kind": "science" },
-  "hum_again": { "text": "Three last hums. Long and low.", "kind": "guide" },
-  "checkin": { "text": "Let the breath go. Notice how you feel. Warmth, quiet, whatever is here.", "kind": "guide" },
-  "close": { "text": "That's your practice. Keep warm, have something hot to drink, and get to bed early. If a fever comes, rest instead, or choose the gentle version.", "kind": "guide" }
+  "all_out": {
+    "text": "And all the way out.",
+    "kind": "guide"
+  },
+  "bal_blocked": {
+    "text": "If one side is blocked, don't force it. Just imagine the breath moving through it.",
+    "kind": "technique"
+  },
+  "bal_bp": {
+    "text": "Small trials suggest regular practice may modestly lower blood pressure. Much of that is likely the slow breathing itself.",
+    "kind": "science"
+  },
+  "bal_close": {
+    "text": "That's your practice. Carry the steadiness with you.",
+    "kind": "guide"
+  },
+  "bal_hand": {
+    "text": "Right hand up. Fold the index and middle fingers. Your thumb closes the right nostril, your ring finger closes the left.",
+    "kind": "technique"
+  },
+  "bal_l_in": {
+    "text": "Thumb on the right. In through the left.",
+    "kind": "guide"
+  },
+  "bal_l_out": {
+    "text": "Switch. Out through the left.",
+    "kind": "guide"
+  },
+  "bal_r_in": {
+    "text": "In through the right.",
+    "kind": "guide"
+  },
+  "bal_r_out": {
+    "text": "Switch. Out through the right.",
+    "kind": "guide"
+  },
+  "bal_release": {
+    "text": "Release the hand. Breathe through both nostrils, and notice how the breath feels now.",
+    "kind": "guide"
+  },
+  "bal_rhythm": {
+    "text": "Switching sides slows the breath and gives your attention a steady rhythm to follow.",
+    "kind": "science"
+  },
+  "bal_tradition": {
+    "text": "In yoga tradition, this practice is said to balance body and mind. Notice what balance feels like for you right now.",
+    "kind": "guide"
+  },
+  "bal_welcome": {
+    "text": "Welcome to nadi shodhana, alternate nostril breathing. Sit tall, and rest your left hand in your lap.",
+    "kind": "guide"
+  },
+  "bandha": {
+    "text": "Gently lift the pelvic floor, and bring the chin slightly down. Hold the breath as if it's resting, not trapped.",
+    "kind": "technique"
+  },
+  "bandha_short": {
+    "text": "Root lock. Chin down. Stay soft.",
+    "kind": "technique"
+  },
+  "breathe_now_ok": {
+    "text": "Hold only to the first strong urge. If it comes early, tap breathe now. There's nothing to prove.",
+    "kind": "technique"
+  },
+  "checkin": {
+    "text": "Let the breath go. Notice how you feel. Warmth, quiet, whatever is here.",
+    "kind": "guide"
+  },
+  "close": {
+    "text": "That's your practice. Keep warm, have something hot to drink, and get to bed early. If a fever comes, rest instead, or choose the gentle version.",
+    "kind": "guide"
+  },
+  "cn_close": {
+    "text": "Quiet, low, slow breathing through the nose. Come back to this whenever your nose closes up.",
+    "kind": "guide"
+  },
+  "cn_co2": {
+    "text": "As carbon dioxide gently builds, the nose often opens for a while. A small study saw this, much like after exercise.",
+    "kind": "science"
+  },
+  "cn_cycle": {
+    "text": "One side blocked? Congestion naturally swaps sides every few hours. That's your nasal cycle, not the cold getting worse.",
+    "kind": "science"
+  },
+  "cn_gasp": {
+    "text": "If your first breath after a hold is a gasp, the hold was too long. Next time, let go sooner.",
+    "kind": "technique"
+  },
+  "cn_how": {
+    "text": "Now the nose-clearing exercise. After a small breath out, pinch your nose, and gently nod your head until you need to breathe.",
+    "kind": "technique"
+  },
+  "cn_hum": {
+    "text": "Five slow hums to finish. Humming vibrates the air in your sinuses. A few are plenty, more adds little.",
+    "kind": "science"
+  },
+  "cn_light": {
+    "text": "Now breathe light. Quieter, slightly smaller breaths. Just a touch of air hunger, no more.",
+    "kind": "technique"
+  },
+  "cn_light2": {
+    "text": "Keep it small and quiet. A little air hunger is the point, but only a little.",
+    "kind": "technique"
+  },
+  "cn_release": {
+    "text": "Release. Breathe in gently through the nose, no big breath. Calm it down within a few breaths.",
+    "kind": "guide"
+  },
+  "cn_temp": {
+    "text": "Relief is often temporary. Come back to this whenever you need it, rather than pushing harder.",
+    "kind": "science"
+  },
+  "cn_welcome": {
+    "text": "Sit tall. Breathe through your nose, or through whichever side is more open. If it's fully blocked, sip a little air through the corner of your mouth.",
+    "kind": "guide"
+  },
+  "coh_close": {
+    "text": "That's your practice. Stand up slowly, and take this pace with you.",
+    "kind": "guide"
+  },
+  "coh_dizzy": {
+    "text": "If you feel lightheaded, breathe smaller, not faster.",
+    "kind": "technique"
+  },
+  "coh_five": {
+    "text": "Studies suggest even five minutes of slow breathing can shift the body toward its calm, vagal state.",
+    "kind": "science"
+  },
+  "coh_light": {
+    "text": "Slow doesn't mean big. Keep each breath light and quiet, as if you could barely hear it.",
+    "kind": "technique"
+  },
+  "coh_return": {
+    "text": "Let go of the count. Let the breath find its own rhythm.",
+    "kind": "guide"
+  },
+  "coh_sync": {
+    "text": "At around six breaths a minute, your breath and heart rhythm tend to fall into step, and heart-rate variability usually rises.",
+    "kind": "science"
+  },
+  "coh_vagal": {
+    "text": "Each long exhale lets the heart slow a little. That's the vagus nerve, your body's brake, doing its work.",
+    "kind": "science"
+  },
+  "coh_welcome": {
+    "text": "Welcome. Find a comfortable seat, and let your breath settle in through the nose.",
+    "kind": "guide"
+  },
+  "cool_intro": {
+    "text": "Now cool down. Five slow breaths. In for four, out for eight.",
+    "kind": "technique"
+  },
+  "cool_science": {
+    "text": "A long exhale turns up the vagus nerve, your body's brake pedal. Less stress is one of the few things linked to catching fewer colds.",
+    "kind": "science"
+  },
+  "deep_in": {
+    "text": "Now one deep breath in.",
+    "kind": "guide"
+  },
+  "full_science": {
+    "text": "With full lungs, oxygen stays high while carbon dioxide slowly rises. That's where your tolerance is built.",
+    "kind": "science"
+  },
+  "fw_adrenaline": {
+    "text": "In small studies, breathing like this raised adrenaline. Claims about the immune system are still early.",
+    "kind": "science"
+  },
+  "fw_buzz": {
+    "text": "A gentle buzzing or warmth is normal. Quick breathing nudges your nervous system toward alert.",
+    "kind": "science"
+  },
+  "fw_close": {
+    "text": "That's your practice. Notice the warmth, and the clear head. Take it into your day.",
+    "kind": "guide"
+  },
+  "fw_r1": {
+    "text": "Round one. Breath of fire. Quick, light breaths through the nose, two or three a second. Belly soft, shoulders still. Keep each breath small.",
+    "kind": "technique"
+  },
+  "fw_r2": {
+    "text": "Round two. A few more breaths, and a longer hold.",
+    "kind": "guide"
+  },
+  "fw_r3": {
+    "text": "Last round. The longest hold. Stay soft inside it.",
+    "kind": "guide"
+  },
+  "fw_rest": {
+    "text": "Breathe easy. Let your heart rate settle before the next round.",
+    "kind": "guide"
+  },
+  "fw_ujjayi": {
+    "text": "Ujjayi breath: a soft hiss at the back of the throat, like fogging a mirror with your mouth closed.",
+    "kind": "technique"
+  },
+  "fw_urge": {
+    "text": "Lock and hold only until the first clear urge. Let the energy settle.",
+    "kind": "technique"
+  },
+  "fw_welcome": {
+    "text": "Welcome. This one builds heat. Sit tall, spine long, and breathe through the nose.",
+    "kind": "guide"
+  },
+  "g_intro": {
+    "text": "Slow, full breaths through the nose. Then a soft hold, with empty lungs.",
+    "kind": "guide"
+  },
+  "hl_close": {
+    "text": "That's the ladder. Breathe easy for a minute before you stand. Two or three times a week is plenty.",
+    "kind": "guide"
+  },
+  "hl_contract": {
+    "text": "If your diaphragm starts to twitch, that is your body reacting to carbon dioxide, not running out of oxygen. Stay soft.",
+    "kind": "science"
+  },
+  "hl_dive": {
+    "text": "Your heart may slow during the hold. That's the diving reflex, built into every mammal.",
+    "kind": "science"
+  },
+  "hl_how": {
+    "text": "Every hold starts from a comfortable full breath, not a maximal one. The holds stay the same length. The rests get shorter.",
+    "kind": "technique"
+  },
+  "hl_last": {
+    "text": "Last hold. Stay soft right to the end.",
+    "kind": "guide"
+  },
+  "hl_rests": {
+    "text": "In the rests, breathe slow and easy. No big breaths, no fast breathing.",
+    "kind": "technique"
+  },
+  "hl_rule": {
+    "text": "If a hold ever starts to feel like a maximum effort, end the table there. Training happens below your limit.",
+    "kind": "technique"
+  },
+  "hl_soft": {
+    "text": "Soften the face. Shoulders down. Holding the breath is a relaxation skill.",
+    "kind": "technique"
+  },
+  "hl_spleen": {
+    "text": "Over a few holds, the spleen squeezes out a small reserve of red blood cells. A real effect, but a small one.",
+    "kind": "science"
+  },
+  "hl_welcome": {
+    "text": "Welcome to the hold ladder, a dry breath-hold table from freediving. Sit or lie down. Never in water.",
+    "kind": "guide"
+  },
+  "hl_why": {
+    "text": "The same hold with less rest each time lets carbon dioxide build a little more. That's what you're getting used to.",
+    "kind": "science"
+  },
+  "hum_again": {
+    "text": "Three last hums. Long and low.",
+    "kind": "guide"
+  },
+  "hum_intro": {
+    "text": "Humming breath. Breathe in through the nose, then hum the whole exhale, lips closed, jaw soft. Let the sound fill your head.",
+    "kind": "technique"
+  },
+  "hum_science": {
+    "text": "Humming makes the air in your sinuses vibrate. In studies, it raised nitric oxide in the nose about fifteen-fold. In the lab, nitric oxide slows cold viruses.",
+    "kind": "science"
+  },
+  "hum_space": {
+    "text": "The first hum gives the biggest boost, so we'll hum again at the end, once your sinuses have refilled.",
+    "kind": "science"
+  },
+  "kox": {
+    "text": "In a 2014 study, people trained in this kind of breathing released a surge of adrenaline, and their inflammatory response to a bacterial toxin was roughly halved. Not a cold. But a sign your breath can talk to your immune system.",
+    "kind": "science"
+  },
+  "ladder_intro": {
+    "text": "Now we lengthen the breath, one step at a time. Four counts in, four counts out. Follow the circle.",
+    "kind": "guide"
+  },
+  "ladder_up": {
+    "text": "Five in, five out.",
+    "kind": "guide"
+  },
+  "ladder_up2": {
+    "text": "Six in, six out. Smooth and even.",
+    "kind": "guide"
+  },
+  "n_about_three_minutes_to_go": {
+    "text": "About three minutes to go.",
+    "kind": "count"
+  },
+  "n_breathe_in_all_the_way_to_the_top_and_hold_fifteen_seconds": {
+    "text": "Breathe in, all the way to the top, and hold. Fifteen seconds.",
+    "kind": "count"
+  },
+  "n_breathe_in_all_the_way_to_the_top_and_hold_forty_five_second": {
+    "text": "Breathe in, all the way to the top, and hold. Forty-five seconds.",
+    "kind": "count"
+  },
+  "n_breathe_in_all_the_way_to_the_top_and_hold_forty_seconds": {
+    "text": "Breathe in, all the way to the top, and hold. Forty seconds.",
+    "kind": "count"
+  },
+  "n_breathe_in_all_the_way_to_the_top_and_hold_one_minute": {
+    "text": "Breathe in, all the way to the top, and hold. One minute.",
+    "kind": "count"
+  },
+  "n_breathe_in_all_the_way_to_the_top_and_hold_ten_seconds": {
+    "text": "Breathe in, all the way to the top, and hold. Ten seconds.",
+    "kind": "count"
+  },
+  "n_breathe_in_all_the_way_to_the_top_and_hold_thirty_seconds": {
+    "text": "Breathe in, all the way to the top, and hold. Thirty seconds.",
+    "kind": "count"
+  },
+  "n_breathe_in_all_the_way_to_the_top_and_hold_twenty_five_secon": {
+    "text": "Breathe in, all the way to the top, and hold. Twenty-five seconds.",
+    "kind": "count"
+  },
+  "n_breathe_in_all_the_way_to_the_top_and_hold_twenty_seconds": {
+    "text": "Breathe in, all the way to the top, and hold. Twenty seconds.",
+    "kind": "count"
+  },
+  "n_breathe_rest_a_minute_and_a_half": {
+    "text": "Breathe. Rest, a minute and a half.",
+    "kind": "count"
+  },
+  "n_breathe_rest_forty_five_seconds": {
+    "text": "Breathe. Rest, forty-five seconds.",
+    "kind": "count"
+  },
+  "n_breathe_rest_one_minute": {
+    "text": "Breathe. Rest, one minute.",
+    "kind": "count"
+  },
+  "n_breathe_rest_one_minute_fifteen": {
+    "text": "Breathe. Rest, one minute fifteen.",
+    "kind": "count"
+  },
+  "n_breathe_rest_thirty_seconds": {
+    "text": "Breathe. Rest, thirty seconds.",
+    "kind": "count"
+  },
+  "n_breathe_that_was_the_last_one": {
+    "text": "Breathe. That was the last one.",
+    "kind": "count"
+  },
+  "n_comfortably_full_breath_in": {
+    "text": "Comfortably full breath in.",
+    "kind": "count"
+  },
+  "n_fifty_quick_breaths_begin": {
+    "text": "Fifty quick breaths. Begin.",
+    "kind": "count"
+  },
+  "n_five_hums_in_for_four_then_hum_it_all_out": {
+    "text": "Five hums. In for four, then hum it all out.",
+    "kind": "count"
+  },
+  "n_five_in_five_out": {
+    "text": "Five in, five out.",
+    "kind": "count"
+  },
+  "n_five_minutes_in_top_up_and_a_long_slow_breath_out": {
+    "text": "Five minutes. In, top up, and a long, slow breath out.",
+    "kind": "count"
+  },
+  "n_five_slow_breaths": {
+    "text": "Five slow breaths.",
+    "kind": "count"
+  },
+  "n_forty_five_quick_breaths_begin": {
+    "text": "Forty-five quick breaths. Begin.",
+    "kind": "count"
+  },
+  "n_forty_quick_breaths_begin": {
+    "text": "Forty quick breaths. Begin.",
+    "kind": "count"
+  },
+  "n_four_in_five_out_ten_breaths": {
+    "text": "Four in, five out. Ten breaths.",
+    "kind": "count"
+  },
+  "n_four_in_four_out": {
+    "text": "Four in, four out.",
+    "kind": "count"
+  },
+  "n_four_in_four_out_twelve_rounds_we_start_on_the_left": {
+    "text": "Four in, four out. Twelve rounds. We start on the left.",
+    "kind": "count"
+  },
+  "n_four_rounds_in_through_the_nose_for_four_hold_for_seven_and_": {
+    "text": "Four rounds. In through the nose for four, hold for seven, and whoosh out through the mouth for eight.",
+    "kind": "count"
+  },
+  "n_half_a_minute_of_calm_breathing_then_the_first_hold": {
+    "text": "Half a minute of calm breathing. Then the first hold.",
+    "kind": "count"
+  },
+  "n_halfway": {
+    "text": "Halfway.",
+    "kind": "count"
+  },
+  "n_hold_five_of_six_forty_five_seconds": {
+    "text": "Hold five of six. Forty-five seconds.",
+    "kind": "count"
+  },
+  "n_hold_five_of_six_one_minute": {
+    "text": "Hold five of six. One minute.",
+    "kind": "count"
+  },
+  "n_hold_five_of_six_twenty_five_seconds": {
+    "text": "Hold five of six. Twenty-five seconds.",
+    "kind": "count"
+  },
+  "n_hold_four_of_six_forty_five_seconds": {
+    "text": "Hold four of six. Forty-five seconds.",
+    "kind": "count"
+  },
+  "n_hold_four_of_six_one_minute": {
+    "text": "Hold four of six. One minute.",
+    "kind": "count"
+  },
+  "n_hold_four_of_six_twenty_five_seconds": {
+    "text": "Hold four of six. Twenty-five seconds.",
+    "kind": "count"
+  },
+  "n_hold_lungs_empty_for_up_to_forty_five_seconds": {
+    "text": "Hold, lungs empty, for up to forty-five seconds.",
+    "kind": "count"
+  },
+  "n_hold_lungs_empty_for_up_to_one_minute": {
+    "text": "Hold, lungs empty, for up to one minute.",
+    "kind": "count"
+  },
+  "n_hold_lungs_empty_for_up_to_one_minute_fifteen": {
+    "text": "Hold, lungs empty, for up to one minute fifteen.",
+    "kind": "count"
+  },
+  "n_hold_lungs_empty_for_up_to_one_minute_forty": {
+    "text": "Hold, lungs empty, for up to one minute forty.",
+    "kind": "count"
+  },
+  "n_hold_lungs_empty_for_up_to_one_minute_twenty": {
+    "text": "Hold, lungs empty, for up to one minute twenty.",
+    "kind": "count"
+  },
+  "n_hold_lungs_empty_for_up_to_thirty_five_seconds": {
+    "text": "Hold, lungs empty, for up to thirty-five seconds.",
+    "kind": "count"
+  },
+  "n_hold_lungs_empty_for_up_to_twenty_five_seconds": {
+    "text": "Hold, lungs empty, for up to twenty-five seconds.",
+    "kind": "count"
+  },
+  "n_hold_one_of_six_forty_five_seconds": {
+    "text": "Hold one of six. Forty-five seconds.",
+    "kind": "count"
+  },
+  "n_hold_one_of_six_one_minute": {
+    "text": "Hold one of six. One minute.",
+    "kind": "count"
+  },
+  "n_hold_one_of_six_twenty_five_seconds": {
+    "text": "Hold one of six. Twenty-five seconds.",
+    "kind": "count"
+  },
+  "n_hold_six_of_six_forty_five_seconds": {
+    "text": "Hold six of six. Forty-five seconds.",
+    "kind": "count"
+  },
+  "n_hold_six_of_six_one_minute": {
+    "text": "Hold six of six. One minute.",
+    "kind": "count"
+  },
+  "n_hold_six_of_six_twenty_five_seconds": {
+    "text": "Hold six of six. Twenty-five seconds.",
+    "kind": "count"
+  },
+  "n_hold_three_of_six_forty_five_seconds": {
+    "text": "Hold three of six. Forty-five seconds.",
+    "kind": "count"
+  },
+  "n_hold_three_of_six_one_minute": {
+    "text": "Hold three of six. One minute.",
+    "kind": "count"
+  },
+  "n_hold_three_of_six_twenty_five_seconds": {
+    "text": "Hold three of six. Twenty-five seconds.",
+    "kind": "count"
+  },
+  "n_hold_two_of_six_forty_five_seconds": {
+    "text": "Hold two of six. Forty-five seconds.",
+    "kind": "count"
+  },
+  "n_hold_two_of_six_one_minute": {
+    "text": "Hold two of six. One minute.",
+    "kind": "count"
+  },
+  "n_hold_two_of_six_twenty_five_seconds": {
+    "text": "Hold two of six. Twenty-five seconds.",
+    "kind": "count"
+  },
+  "n_in_for_four_out_for_six_six_breaths": {
+    "text": "In for four, out for six. Six breaths.",
+    "kind": "count"
+  },
+  "n_last_round": {
+    "text": "Last round.",
+    "kind": "count"
+  },
+  "n_last_round_same_again": {
+    "text": "Last round. Same again.",
+    "kind": "count"
+  },
+  "n_now_four_in_eight_out_ten_rounds": {
+    "text": "Now four in, eight out. Ten rounds.",
+    "kind": "count"
+  },
+  "n_now_four_in_six_out_we_ll_stay_here_for_about_six_minutes": {
+    "text": "Now four in, six out. We'll stay here for about six minutes.",
+    "kind": "count"
+  },
+  "n_now_out_for_eight_eight_breaths": {
+    "text": "Now out for eight. Eight breaths.",
+    "kind": "count"
+  },
+  "n_one_more_minute": {
+    "text": "One more minute.",
+    "kind": "count"
+  },
+  "n_pinch_and_nod": {
+    "text": "Pinch, and nod.",
+    "kind": "count"
+  },
+  "n_pinch_and_nod_let_go_at_the_first_clear_urge": {
+    "text": "Pinch, and nod. Let go at the first clear urge.",
+    "kind": "count"
+  },
+  "n_round_one_small_breath_in_small_breath_out": {
+    "text": "Round one. Small breath in, small breath out.",
+    "kind": "count"
+  },
+  "n_round_two_small_breath_in_small_breath_out_pinch_and_nod_unt": {
+    "text": "Round two. Small breath in, small breath out. Pinch and nod, until moderate air hunger.",
+    "kind": "count"
+  },
+  "n_six_in_six_out": {
+    "text": "Six in, six out.",
+    "kind": "count"
+  },
+  "n_six_slow_breaths_in_for_four_out_for_six": {
+    "text": "Six slow breaths. In for four, out for six.",
+    "kind": "count"
+  },
+  "n_ten_more_seconds": {
+    "text": "Ten more seconds.",
+    "kind": "count"
+  },
+  "n_thirty_quick_breaths_begin": {
+    "text": "Thirty quick breaths. Begin.",
+    "kind": "count"
+  },
+  "n_twenty_five_quick_breaths_begin": {
+    "text": "Twenty-five quick breaths. Begin.",
+    "kind": "count"
+  },
+  "n_twenty_quick_breaths_begin": {
+    "text": "Twenty quick breaths. Begin.",
+    "kind": "count"
+  },
+  "n478_drift": {
+    "text": "Let go of counting. Let the breath be as slow and as small as it wants.",
+    "kind": "guide"
+  },
+  "n478_end": {
+    "text": "Nothing more to do. Stay here as long as you like.",
+    "kind": "guide"
+  },
+  "n478_exhale": {
+    "text": "Your heart slows a little on every exhale. A longer exhale gives it more time to settle.",
+    "kind": "science"
+  },
+  "n478_mind": {
+    "text": "Counting gives a busy mind something simple to hold on to.",
+    "kind": "science"
+  },
+  "n478_ratio": {
+    "text": "If the hold feels long, let it go early. The ratio matters more than the seconds.",
+    "kind": "technique"
+  },
+  "n478_tongue": {
+    "text": "Next, four, seven, eight. Rest the tip of your tongue behind your upper front teeth, and keep it there.",
+    "kind": "technique"
+  },
+  "n478_welcome": {
+    "text": "Welcome. Lie down if you can, and let the bed take your weight. This is a wind-down, not a test.",
+    "kind": "guide"
+  },
+  "nose": {
+    "text": "Breathe only through your nose. It warms and filters the air, and it's where your sinuses add nitric oxide to every breath.",
+    "kind": "science"
+  },
+  "pump_last": {
+    "text": "Last few.",
+    "kind": "guide"
+  },
+  "r1_after": {
+    "text": "Notice the tingling settle, as your carbon dioxide comes back up.",
+    "kind": "science"
+  },
+  "r1_intro": {
+    "text": "Round one. Kapalabhati. Short, sharp exhales through the nose, pulled from the belly. The inhale takes care of itself. Keep your face soft.",
+    "kind": "technique"
+  },
+  "r1_tingle": {
+    "text": "Tingling or lightness is normal. The fast breathing lowered your carbon dioxide, and rising carbon dioxide is what makes you want to breathe. It's a signal, not an emergency.",
+    "kind": "science"
+  },
+  "r2_hunger": {
+    "text": "Air hunger is just a sensation. Notice it without arguing with it. Soften your jaw, your eyes, your hands.",
+    "kind": "technique"
+  },
+  "r2_intro": {
+    "text": "Round two. A few more breaths this time, and a longer hold. Many people find the second hold easier than the first.",
+    "kind": "guide"
+  },
+  "r3_after": {
+    "text": "Three rounds done. Notice the warmth in your hands and face, and the quiet behind it.",
+    "kind": "guide"
+  },
+  "r3_intro": {
+    "text": "Last round. Let this be the easiest one.",
+    "kind": "guide"
+  },
+  "r3_still": {
+    "text": "Nothing to do. Just the stillness of an empty breath.",
+    "kind": "guide"
+  },
+  "release": {
+    "text": "And let it go. Breathe naturally.",
+    "kind": "guide"
+  },
+  "ribs": {
+    "text": "Let the ribs widen to the sides, like a band stretching. Shoulders still, belly soft. Breathe in with no more effort than at rest.",
+    "kind": "technique"
+  },
+  "sigh_close": {
+    "text": "Let your breath return to normal. One or two sighs, any time today, can be a small reminder of this.",
+    "kind": "guide"
+  },
+  "sigh_heart": {
+    "text": "Your heart slows a little on every exhale. Making the exhale long leans the whole system toward calm.",
+    "kind": "science"
+  },
+  "sigh_how": {
+    "text": "Breathe in through the nose. At the top, take a second, smaller sip to fill the lungs completely. Then let it all go through the mouth, slowly.",
+    "kind": "technique"
+  },
+  "sigh_science": {
+    "text": "In a month-long Stanford study, five minutes of daily cyclic sighing lifted mood more than mindfulness meditation.",
+    "kind": "science"
+  },
+  "sigh_soft": {
+    "text": "If you feel tingly, slow the exhale down. Calm, not forced.",
+    "kind": "technique"
+  },
+  "sigh_welcome": {
+    "text": "Welcome. This is the cyclic sigh: a double breath in, and a long, slow breath out.",
+    "kind": "guide"
+  },
+  "welcome": {
+    "text": "Welcome. Sit tall, or lie down. Let your eyes close, and let the day go quiet for a few minutes.",
+    "kind": "guide"
+  }
 }

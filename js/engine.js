@@ -1,48 +1,45 @@
-// Compiles a flow definition (flow.js) into an absolute timeline, and answers
+// Compiles a practice definition (js/flows/*.js) into an absolute timeline, and answers
 // "what should the screen show at time t?" for the session view.
 
-const WORDS_PER_SEC = 2.3; // estimate for cues that have no audio yet
+const WORDS_PER_SEC = 2.3; // estimate for lines that have no audio yet
 
 export function estimateDur(text) {
   return text.split(/\s+/).length / WORDS_PER_SEC + 0.4;
 }
 
 /**
- * @param flow   flow definition: { sections: [{ id, title, steps: [...] }] }
- * @param cues   id -> { text, kind? } (flow/cues.json)
- * @param durs   id -> seconds (decoded audio length, or undefined)
- * @param opts   { holdScale, gentle }
+ * @param flow   practice: { sections: [...] | (opts) => [...] }
+ * @param durs   line id -> seconds (decoded audio length, or undefined)
+ * @param opts   { holdScale, gentle } for the chosen intensity
  */
-export function compile(flow, cues, durs = {}, opts = {}) {
-  const { holdScale = 1, gentle = false } = opts;
+export function compile(flow, durs = {}, opts = {}) {
+  const defs = typeof flow.sections === 'function' ? flow.sections(opts) : flow.sections;
   const segs = [];
   const voice = [];
   const sounds = [];
   let t = 0;
 
-  const dur = (id) => {
-    if (!cues[id]) throw new Error(`unknown cue ${id}`);
-    return durs[id] ?? estimateDur(cues[id].text);
-  };
-  const say = (id, at) => {
-    const d = dur(id);
-    voice.push({ id, t: at, dur: d, text: cues[id].text, kind: cues[id].kind || 'guide' });
+  const speak = (c, at) => {
+    if (!c || !c.id || !c.text) throw new Error(`bad spoken line: ${JSON.stringify(c)}`);
+    const d = durs[c.id] ?? estimateDur(c.text);
+    voice.push({ id: c.id, t: at, dur: d, text: c.text, kind: c.kind || 'guide' });
     return d;
   };
+  const lineDur = (c) => durs[c.id] ?? estimateDur(c.text);
 
-  for (const section of flow.sections) {
-    const steps = gentle && section.gentleSteps ? section.gentleSteps : section.steps;
-    for (const step of steps) {
+  for (const section of defs) {
+    for (const step of section.steps) {
       const start = t;
       const base = { section: section.id, start };
 
       if (step.bell) sounds.push({ t, type: step.bell });
 
       if (step.say) {
-        const d = say(step.say, t + (step.lead ?? 0.3));
+        const d = speak(step.say, t + (step.lead ?? 0.3));
         t += (step.lead ?? 0.3) + d + (step.gap ?? 1.5);
         segs.push({ ...base, kind: 'talk', end: t });
       } else if (step.rest) {
+        for (const c of step.cues || []) speak(c.say, start + c.at);
         t += step.rest;
         segs.push({ ...base, kind: 'rest', end: t, label: step.label });
       } else if (step.pace) {
@@ -54,16 +51,18 @@ export function compile(flow, cues, durs = {}, opts = {}) {
           const last = i === step.count - 1;
           const parts = [
             ['in', p.inhale],
+            ['in2', p.inhale2 || 0],
             ['top', p.holdIn || 0],
             [p.hum ? 'hum' : 'out', last && step.lastExhale ? step.lastExhale : p.exhale],
             ['bottom', last ? 0 : p.holdOut || 0],
           ];
           for (const [phase, d] of parts) {
             if (!d) continue;
-            phases.push({ phase, start: t, end: t + d, breath: i });
-            if (phase === 'in' || phase === 'out') {
-              const level = phase === 'in' ? p.inLevel ?? p.level ?? 0.5 : p.level ?? 0.5;
-              sounds.push({ t, dur: d, type: phase, level });
+            const label = step.labels ? step.labels(phase, i) : undefined;
+            phases.push({ phase, start: t, end: t + d, breath: i, label, split: !!p.inhale2 });
+            if (phase === 'in' || phase === 'in2' || phase === 'out') {
+              const level = phase === 'out' ? p.level ?? 0.5 : p.inLevel ?? p.level ?? 0.5;
+              sounds.push({ t, dur: d, type: phase === 'out' ? 'out' : 'in', level });
             } else if (phase === 'hum') {
               sounds.push({ t, dur: d, type: 'hum' });
             }
@@ -72,40 +71,40 @@ export function compile(flow, cues, durs = {}, opts = {}) {
         }
         for (const c of step.cues || []) {
           const at = c.breath != null ? breathStarts[Math.min(c.breath, step.count - 1)] : start + c.at;
-          say(c.id, at + (c.offset || 0));
+          speak(c.say, at + (c.offset || 0));
         }
         segs.push({ ...base, kind: 'pace', end: t, phases, style: step.style || 'slow', count: step.count, label: step.label });
       } else if (step.hold) {
-        const scaled = step.hold === 'empty' ? step.seconds * holdScale : step.seconds;
-        const target = Math.round(scaled / 5) * 5;
+        const target = Math.round(step.seconds);
         const end = t + target;
         for (const c of step.cues || []) {
           const at = c.fromEnd != null ? end - c.fromEnd : start + c.at;
-          // Drop mid-hold cues that would crowd a shortened hold.
-          if (at < start || at + dur(c.id) > end - 2) continue;
-          say(c.id, at);
+          // Drop mid-hold lines that would crowd a short hold.
+          if (at < start || at + lineDur(c.say) > end - 1.5) continue;
+          speak(c.say, at);
         }
-        if (step.tick !== false && target >= 30) sounds.push({ t: end - 10, type: 'tick' });
+        if (step.tick ?? target >= 30) sounds.push({ t: end - 10, type: 'tick' });
         t = end;
-        segs.push({ ...base, kind: 'hold', type: step.hold, end, target, round: step.round, label: step.label });
+        segs.push({ ...base, kind: 'hold', type: step.hold, end, target, record: !!step.record, label: step.label });
       }
     }
   }
 
-  // Nudge any overlapping voice cues apart (never across a segment boundary we care about:
-  // flows are written with room to spare, this only absorbs small duration drift).
+  // Nudge any overlapping lines apart (practices are written with room to spare; this
+  // only absorbs small duration drift between estimates and recordings).
   voice.sort((a, b) => a.t - b.t);
   for (let i = 1; i < voice.length; i++) {
     const prevEnd = voice[i - 1].t + voice[i - 1].dur + 0.4;
     if (voice[i].t < prevEnd) {
-      if (prevEnd - voice[i].t > 1.5) console.warn('cue overlap', voice[i - 1].id, voice[i].id);
+      voice[i].late = prevEnd - voice[i].t; // diagnostics: scripts/check_timing.mjs
+      if (voice[i].late > 1.5) console.warn('cue overlap', voice[i - 1].id, voice[i].id);
       voice[i].t = prevEnd;
     }
   }
 
-  const sections = flow.sections.map((s) => {
+  const sections = defs.map((s) => {
     const own = segs.filter((g) => g.section === s.id);
-    return { id: s.id, title: s.title, start: own[0].start, end: own[own.length - 1].end };
+    return { id: s.id, title: s.title, what: s.what, color: s.color, start: own[0].start, end: own[own.length - 1].end };
   });
 
   return { segs, voice, sounds, sections, total: t };
@@ -139,14 +138,17 @@ export function stateAt(plan, t) {
     out.phase = ph.phase;
     out.p = p;
     out.breath = ph.breath + 1;
-    if (ph.phase === 'in') out.scale = LO + (HI - LO) * ease(p);
+    const MID = LO + (HI - LO) * 0.8; // a split inhale (cyclic sigh) fills most of the way first
+    if (ph.phase === 'in') out.scale = LO + ((ph.split ? MID : HI) - LO) * ease(p);
+    else if (ph.phase === 'in2') out.scale = MID + (HI - MID) * ease(p);
     else if (ph.phase === 'out' || ph.phase === 'hum') out.scale = HI - (HI - LO) * ease(p);
     else out.scale = ph.phase === 'top' ? HI : LO;
-    out.label = { in: 'In', out: 'Out', hum: 'Hum', top: 'Hold', bottom: 'Rest' }[ph.phase];
+    out.label = ph.label || { in: 'In', in2: 'Top up', out: 'Out', hum: 'Hum', top: 'Hold', bottom: 'Rest' }[ph.phase];
+    if (ph.phase === 'in2') out.phase = 'in';
     if (seg.style === 'pump') {
       // Kapalabhati: a quick pulse around a steady size, not a full breath each second.
       out.phase = 'pump';
-      out.label = 'Kapalabhati';
+      out.label = seg.label || 'Kapalabhati';
       out.scale = 0.8 - 0.07 * Math.sin(Math.PI * (ph.phase === 'out' ? p : 0));
       out.sub = `${ph.breath + 1} / ${seg.count}`;
     } else if (seg.style === 'count') {
@@ -159,7 +161,7 @@ export function stateAt(plan, t) {
     out.elapsed = el;
     out.target = seg.target;
     out.scale = seg.type === 'empty' ? LO * 0.94 : HI * 1.02;
-    out.label = seg.type === 'empty' ? 'Hold — empty' : 'Hold — full';
+    out.label = seg.label || (seg.type === 'empty' ? 'Hold, empty' : 'Hold, full');
   } else {
     // Natural breathing: a slow, unforced drift (~5 s cycle).
     out.phase = 'rest';

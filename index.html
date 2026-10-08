@@ -4,8 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="theme-color" content="#0a0b10" />
-    <meta name="description" content="A 15-minute pranayama flow with long holds for the first signs of a cold." />
-    <title>Turn the Tide · Kumbha</title>
+    <meta name="description" content="Guided pranayama and breath-retention practices, voiced and timed, with honest notes on the science." />
+    <title>Kumbha · breath &amp; retention</title>
     <link rel="manifest" href="manifest.webmanifest" />
     <link rel="icon" href="icons/icon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="icons/icon-192.png" />
@@ -24,14 +24,39 @@
       <div class="grain"></div>
     </div>
 
-    <!-- Home -->
-    <main id="home" class="screen is-active">
-      <div class="wrap" style="display: flex; flex-direction: column; flex: 1">
+    <!-- Library -->
+    <main id="library" class="screen is-active">
+      <div class="wrap">
         <header class="top">
           <span class="mark"><b>kumbha</b></span>
           <div class="top-actions">
+            <button class="chip icon open-settings" aria-label="Settings">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+                <path d="M4 7h10M18 7h2M4 17h4M12 17h8" />
+                <circle cx="16" cy="7" r="2" />
+                <circle cx="10" cy="17" r="2" />
+              </svg>
+            </button>
+          </div>
+        </header>
+        <section class="hero">
+          <p class="eyebrow">Pranayama · breath &amp; retention</p>
+          <h1>Breathe on <em>purpose</em></h1>
+          <p class="lede">Short guided practices, voiced and timed for you. Pick one for how you feel right now.</p>
+        </section>
+        <div id="shelf" class="shelf"></div>
+        <p class="hint">Headphones in. Sit or lie down. Never in water or while driving.</p>
+      </div>
+    </main>
+
+    <!-- Practice detail -->
+    <section id="detail" class="screen">
+      <div class="wrap" style="display: flex; flex-direction: column; flex: 1">
+        <header class="top">
+          <a class="chip" href="#/" aria-label="All practices">← All practices</a>
+          <div class="top-actions">
             <button class="chip" id="open-learn">How it works</button>
-            <button class="chip icon" id="open-settings" aria-label="Settings">
+            <button class="chip icon open-settings" aria-label="Settings">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
                 <path d="M4 7h10M18 7h2M4 17h4M12 17h8" />
                 <circle cx="16" cy="7" r="2" />
@@ -42,13 +67,19 @@
         </header>
 
         <section class="hero">
-          <p class="eyebrow">Pranayama · 15 minutes</p>
-          <h1>Turn the <em>tide</em></h1>
-          <p class="lede">
-            For the scratchy-throat day. Humming, nasal breathing and three rounds of long, quiet holds,
-            in the spirit of Dylan Werner's pranayama.
-          </p>
+          <p class="eyebrow" id="d-eyebrow"></p>
+          <h1 id="d-title"></h1>
+          <p class="lede" id="d-lede"></p>
         </section>
+
+        <div class="intensity-row" id="intensity-row" hidden>
+          <div class="seg" id="intensity" role="group" aria-label="Intensity">
+            <button data-v="gentle">Gentle</button>
+            <button data-v="standard">Standard</button>
+            <button data-v="deeper">Deeper</button>
+          </div>
+          <small id="intensity-note"></small>
+        </div>
 
         <ol class="map" id="map" aria-label="Session outline"></ol>
 
@@ -60,7 +91,7 @@
           <p class="voice-note" id="voice-note"></p>
         </div>
       </div>
-    </main>
+    </section>
 
     <!-- Session -->
     <section id="session" class="screen" data-phase="rest" aria-live="polite">
@@ -102,11 +133,7 @@
         <p class="eyebrow">Complete · <span id="done-time"></span></p>
         <h1>Rest <em>now.</em></h1>
         <ul class="holds" id="hold-list"></ul>
-        <ul class="after">
-          <li>Warm drink, early night. Sleep is the best-supported thing you can do for a cold.</li>
-          <li>A few slow hums through the day are a nice reminder. Space them out; they work best that way.</li>
-          <li>If a fever arrives, skip the rounds. Rest, or use the Gentle setting.</li>
-        </ul>
+        <ul class="after" id="after"></ul>
         <button class="primary" id="done-home">Done</button>
         <p class="hint"><button class="ghost" id="done-learn" style="justify-self: center">Why this works →</button></p>
       </div>
@@ -116,10 +143,10 @@
     <dialog class="sheet" id="safety" aria-labelledby="safety-title">
       <div class="sheet-head"><h2 id="safety-title">Before you start</h2></div>
       <div class="sheet-body">
-        <p>This flow includes fast breathing followed by breath holds. That can make you lightheaded, and in rare cases you can black out without warning.</p>
+        <p>Some practices here use fast breathing and long breath holds. They can make you lightheaded, and in rare cases you can black out without warning.</p>
         <ul class="safety-list">
           <li><strong>Only seated or lying down.</strong> Never in or near water, in the bath, or while driving.</li>
-          <li><strong>Skip the rounds</strong> (choose Gentle in settings) if you are pregnant, have epilepsy, heart disease or high blood pressure, or have a fever.</li>
+          <li><strong>Choose Gentle or a calm practice</strong> if you are pregnant, have epilepsy, heart disease or high blood pressure, or have a fever.</li>
           <li>Tingling hands or face is common and passes. If you feel unwell, breathe normally and stop.</li>
           <li>Never force a hold. Tap <em>Breathe now</em> whenever you need to.</li>
         </ul>
@@ -134,16 +161,8 @@
         <button class="chip" data-close>Done</button>
       </div>
       <div class="sheet-body">
-        <div class="setting stack">
-          <span>Intensity<small>Gentle drops the fast breathing. Use it if you're feverish or new to holds.</small></span>
-          <div class="seg" id="intensity" role="group" aria-label="Intensity">
-            <button data-v="gentle">Gentle</button>
-            <button data-v="standard">Standard</button>
-            <button data-v="deeper">Deeper</button>
-          </div>
-        </div>
         <label class="setting">
-          <span>Voice guidance<small>Spoken cues, voiced by Tom.</small></span>
+          <span>Voice guidance<small>Spoken cues and counts, voiced by Tom.</small></span>
           <input type="checkbox" class="switch" id="set-voice" />
         </label>
         <label class="setting">
@@ -151,8 +170,8 @@
           <input type="checkbox" class="switch" id="set-sounds" />
         </label>
         <label class="setting">
-          <span>Ambient tone<small>A low drone under the holds.</small></span>
-          <input type="checkbox" class="switch" id="set-ambience" />
+          <span>Music<small>A quiet bed under the practice: its own track if there is one, otherwise a low drone.</small></span>
+          <input type="checkbox" class="switch" id="set-music" />
         </label>
       </div>
     </dialog>
@@ -167,7 +186,6 @@
     </dialog>
 
     <audio id="track" preload="auto" playsinline></audio>
-    <script type="module" src="js/learn.js"></script>
     <script type="module" src="js/app.js"></script>
   </body>
 </html>

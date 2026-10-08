@@ -17,28 +17,59 @@ function decode(ctx, buf) {
   });
 }
 
-/** Fetch + decode the cues listed in audio/cues/manifest.json (written by
- *  scripts/generate_cues.py). Cues without a recording resolve to null and the app
- *  reads them with on-device speech, so the flow works before cues are generated. */
-export async function loadCues(ids, base = 'audio/cues/') {
-  const ctx = decodeCtx();
-  const out = Object.fromEntries(ids.map((id) => [id, null]));
-  let manifest = {};
+async function fetchJSON(url) {
   try {
-    manifest = await (await fetch(`${base}manifest.json`, { cache: 'no-cache' })).json();
-  } catch {}
+    const res = await fetch(url, { cache: 'no-cache' });
+    return res.ok ? await res.json() : {};
+  } catch {
+    return {};
+  }
+}
+
+let manifests = null;
+/** audio/cues/manifest.json (written by scripts/generate_cues.py) and audio/music/manifest.json. */
+export function loadManifests() {
+  manifests ??= Promise.all([fetchJSON('audio/cues/manifest.json'), fetchJSON('audio/music/manifest.json')]).then(([cues, music]) => ({ cues, music }));
+  return manifests;
+}
+
+const decoded = new Map();
+async function decodeUrl(url) {
+  if (!decoded.has(url)) {
+    decoded.set(
+      url,
+      (async () => {
+        try {
+          const res = await fetch(url);
+          if (!res.ok) throw new Error(res.status);
+          return await decode(decodeCtx(), await res.arrayBuffer());
+        } catch {
+          return null;
+        }
+      })()
+    );
+  }
+  return decoded.get(url);
+}
+
+/** Decode the recorded lines among `ids`. Lines without a recording resolve to null and
+ *  the app reads them with on-device speech, so a practice works before its cues exist. */
+export async function loadCues(ids) {
+  const { cues } = await loadManifests();
+  const out = {};
   await Promise.all(
-    ids.filter((id) => manifest[id]).map(async (id) => {
-      try {
-        const res = await fetch(`${base}${id}.mp3?v=${manifest[id].fp}`);
-        if (!res.ok) throw new Error(res.status);
-        out[id] = await decode(ctx, await res.arrayBuffer());
-      } catch {
-        out[id] = null;
-      }
+    ids.map(async (id) => {
+      out[id] = cues[id] ? await decodeUrl(`audio/cues/${id}.mp3?v=${cues[id].fp}`) : null;
     })
   );
   return out;
+}
+
+/** A practice's background track, or null when none has been added yet. */
+export async function loadMusic(name) {
+  const { music } = await loadManifests();
+  const m = name && music[name];
+  return m ? decodeUrl(`audio/music/${m.file}?v=${m.v || 1}`) : null;
 }
 
 function noiseBuffer(ctx, seconds = 4) {
@@ -194,7 +225,7 @@ function renderAtom(e) {
 
 /** Render a compiled plan to a WAV Blob. */
 export async function renderSession(plan, cues, opts = {}) {
-  const { breathSounds = true, ambience = true } = opts;
+  const { breathSounds = true, ambience = true, music = null } = opts;
   const total = plan.total + 1;
 
   // 1. Atoms.
@@ -210,7 +241,8 @@ export async function renderSession(plan, cues, opts = {}) {
     if (!atoms.has(key)) atoms.set(key, renderAtom(e));
     placed.push([e.t, key]);
   }
-  if (ambience) atoms.set('pad', renderAtom({ type: 'pad' }));
+  const drone = ambience && !music;
+  if (drone) atoms.set('pad', renderAtom({ type: 'pad' }));
   const clips = new Map(await Promise.all([...atoms].map(async ([k, p]) => [k, await p])));
 
   // 2. Mix in plain JS. Scheduling hundreds of nodes in one long OfflineAudioContext is
@@ -244,7 +276,7 @@ export async function renderSession(plan, cues, opts = {}) {
   const FX = 0.55;
   for (const [t, key] of placed) mix(clips.get(key), t, FX);
 
-  if (ambience) {
+  if (drone) {
     // Overlapping, cross-faded copies of one pad clip, faded in and out with the session.
     const fadeIn = 8;
     const fadeOut = 10;
@@ -259,10 +291,40 @@ export async function renderSession(plan, cues, opts = {}) {
     }
   }
 
+  if (ambience && music) mixMusic(music, total, mix);
+
   env.fill(1); // voice is not ducked
   for (const v of plan.voice) if (cues[v.id]) mix(cues[v.id], v.t, 1);
 
   return toWav(out);
+}
+
+// Background track: mixed to mono, levelled to a fixed loudness so any track sits the
+// same distance under the voice, looped with a long crossfade, faded in and out.
+const MUSIC_RMS = 0.035;
+const XFADE = 6;
+function mixMusic(buffer, total, mix) {
+  const n = buffer.length;
+  const mono = new Float32Array(n);
+  for (let c = 0; c < buffer.numberOfChannels; c++) {
+    const d = buffer.getChannelData(c);
+    for (let i = 0; i < n; i++) mono[i] += d[i] / buffer.numberOfChannels;
+  }
+  let sum = 0;
+  for (let i = 0; i < n; i += 4) sum += mono[i] * mono[i];
+  const rms = Math.sqrt(sum / (n / 4)) || 1;
+  const gain = MUSIC_RMS / rms;
+  const clip = { getChannelData: () => mono, length: n };
+  const len = n / SR;
+  const step = Math.max(10, len - XFADE);
+  for (let s = 0; s < total; s += step) {
+    mix(clip, s, gain, (t) => {
+      const x = t - s;
+      const copy = s > 0 && x < XFADE ? x / XFADE : x > step ? Math.max(0, (len - x) / XFADE) : 1;
+      const session = Math.min(1, t / 6, Math.max(0, (total - t) / 10));
+      return copy * session;
+    });
+  }
 }
 
 function toWav(data) {

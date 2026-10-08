@@ -1,7 +1,7 @@
-# Generates the spoken cues with LuxTTS (voice "tom") on RunPod via the runpod-qwen-tts
-# gateway, and commits them. Needs a repository secret QWEN_TTS_API_KEY or GATEWAY_API_KEY (the gateway's
-# GATEWAY_API_KEY). Runs when cue text or the generator changes, or by hand from the
-# Actions tab.
+# Collects every spoken line from the practices (js/flows), renders new or changed ones
+# with LuxTTS (voice "tom") on RunPod via the runpod-qwen-tts gateway, and commits them.
+# Needs a repository secret QWEN_TTS_API_KEY or GATEWAY_API_KEY. Runs when practices or
+# the generator change, or by hand from the Actions tab.
 name: Voice cues
 
 on:
@@ -12,7 +12,7 @@ on:
         type: boolean
         default: false
   push:
-    paths: ['flow/cues.json', 'scripts/generate_cues.py', '.github/workflows/voice-cues.yml']
+    paths: ['js/flows/**', 'js/engine.js', 'scripts/**', '.github/workflows/voice-cues.yml']
 
 permissions:
   contents: write
@@ -36,6 +36,9 @@ jobs:
         if: env.QWEN_TTS_API_KEY != ''
         run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
 
+      - name: Collect spoken lines
+        run: node scripts/export_cues.mjs
+
       - name: Generate cues (Lux · tom)
         if: env.QWEN_TTS_API_KEY != ''
         run: python3 scripts/generate_cues.py ${{ inputs.force && '--force' || '' }}
@@ -45,7 +48,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add audio/cues
+          git add flow/cues.json audio/cues
           git diff --cached --quiet && exit 0
           git commit -m "Generate voice cues (Lux · tom)"
           git push

@@ -1,62 +1,70 @@
-# Kumbha · Turn the Tide
+# Kumbha · breath & retention
 
-A 15-minute guided pranayama flow with long breath holds, for the first scratchy-throat
-day of a cold. It's shaped like Dylan Werner's *breath sequence* (warm up → build heat →
-retention → cool down → check in) and voiced by **Tom** (LuxTTS on RunPod).
+Guided pranayama and breath-hold practices, voiced by **Tom** (LuxTTS on RunPod), timed to
+the second, with honest notes on what the science does and doesn't show. Live at
+<https://breathwork-vibes.apps.rjuro.com>.
 
-Static site, no build step: open `index.html` through any web server.
+Static site, no build step:
 
 ```sh
 python3 -m http.server 8000   # then http://localhost:8000
 ```
 
-## The flow (Standard)
+## Practices
 
-| Section | What happens | Time |
-|---|---|---|
-| Arrive | Nasal breathing cues; a sama-vritti ladder, 4:4 → 5:5 → 6:6 | 2:13 |
-| Hum | Five bhramari hums (nasal nitric oxide) | 1:50 |
-| Round 1 | 30 kapalabhati · 45 s hold out · 20 s hold in with root lock | 2:15 |
-| Round 2 | 40 kapalabhati · 1:00 hold out · 25 s hold in | 2:46 |
-| Round 3 | 45 kapalabhati · 1:15 hold out · 30 s hold in | 3:04 |
-| Cool down | 4:8 breathing, three more hums (spaced, so NO has recovered), stillness | 2:46 |
+| Practice | Tag | What it is | Length |
+|---|---|---|---|
+| **Turn the Tide** | Getting sick | Dylan Werner-style wave: nasal ladder, humming, three kapalabhati rounds with lengthening holds, cool-down | 15 min |
+| **Clear Nose** | Getting sick | Breathe light, McKeown's pinch-and-nod nose-unblocking exercise (kept to moderate air hunger), five hums | 8 min |
+| **Fire Wave** | Energy | Ujjayi warm-up, three short rounds of breath of fire sealed with full-lung holds and bandhas | 8 min |
+| **Hold Ladder** | Long holds | A freediver's dry CO₂ table: six holds of the same length, rests shrinking 1:30 → 0:15 | 12 min |
+| **Resonance** | Calm | Six light breaths a minute (4 in · 6 out), the best-studied calming practice | 9 min |
+| **Cyclic Sighing** | Calm | Double inhale, long mouth exhale, five minutes (Balban et al. 2023) | 6 min |
+| **Alternate Nostril** | Calm | Nadi shodhana, 4:4 then 4:8, with the nostril shown on every phase | 9 min |
+| **Wind Down** | Sleep | Lengthening exhales, four rounds of Weil's 4-7-8, then drift | 7 min |
 
-**Gentle** swaps the kapalabhati for slow breaths and shortens the empty holds (use it with
-a fever). **Deeper** stretches the empty holds to 1:00 / 1:20 / 1:40. *Breathe now* ends
-any empty hold early.
-
-Spoken comments on technique and the science are tagged in the captions. The *How it
-works* sheet has the longer version, with evidence labels and sources. It's honest that no
-trial has tested breathwork against colds.
+Practices with holds offer **Gentle / Standard / Deeper** (Clear Nose: Gentle = no holds).
+Tom announces what's coming ("Forty quick breaths", "Hold, lungs empty, for up to one
+minute", "Rest, forty-five seconds") but never counts every breath. *Breathe now* ends any
+hold early. Each practice has a *How it works* page with evidence labels and sources.
 
 ## How it's built
 
-- `js/flow.js`: the session as data (talk, rest, paced breathing, holds, cue timings).
-- `flow/cues.json`: every spoken line, used by both the app and the TTS script.
-- `js/engine.js`: compiles the flow into a timeline and maps time to orb, phase and caption.
-- `js/audio.js`: decodes the cues, synthesises breath, hum, bell and drone clips, and
-  mixes the whole session into **one WAV track**. That track keeps playing with the
-  screen locked, and the visuals follow its `currentTime`.
-- `js/app.js`: UI. `js/learn.js`: the *How it works* content.
+- `js/flows/*.js`: each practice as data (talk, rest, paced breathing, holds) with its spoken
+  lines inline; `lib.js` has the shared lines, number words and hold helpers.
+- `js/engine.js`: compiles a practice into a timeline; maps time → orb, phase label, caption.
+- `js/audio.js`: decodes Tom's cues and the practice's music, synthesises breath/hum/bell
+  sounds, and mixes the whole session into **one WAV track** (keeps playing with the screen
+  locked; the visuals follow its `currentTime`).
+- `js/app.js`: library, practice page, session, settings.
 
 ## Voice cues (LuxTTS · tom)
 
-Cues are generated through the [runpod-qwen-tts](https://github.com/RJuro/runpod-qwen-tts)
-gateway with `engine: "lux"`, `voice: "tom"`, then trimmed and loudness-normalised
-(−19 LUFS) with ffmpeg; the files live in `audio/cues/`. Any cue missing from
-`audio/cues/manifest.json` falls back to the device's own voice.
-
 ```sh
-export QWEN_TTS_API_KEY=…            # the gateway's GATEWAY_API_KEY
-python3 scripts/generate_cues.py     # only new or changed lines
-python3 scripts/generate_cues.py --dry-run
+node scripts/export_cues.mjs          # collect every line, all practices × intensities → flow/cues.json
+export QWEN_TTS_API_KEY=…             # the gateway's GATEWAY_API_KEY
+python3 scripts/generate_cues.py      # render only new or changed lines into audio/cues/
 ```
 
-Or add `QWEN_TTS_API_KEY` as a repository secret and run the **Voice cues** workflow
-(it also runs whenever `flow/cues.json` changes, and commits the mp3s).
+The **Voice cues** GitHub workflow does both whenever `js/flows/**` changes (repository secret
+`QWEN_TTS_API_KEY` or `GATEWAY_API_KEY`) and commits the results. Lines without a recording
+fall back to the device's voice.
+
+## Music
+
+Drop instrumental tracks into `audio/music/` and list them in `audio/music/manifest.json`:
+
+```json
+{ "tide": { "file": "tide.mp3", "v": 1 }, "ember": { "file": "ember.mp3", "v": 1 }, "night": { "file": "night.mp3", "v": 1 } }
+```
+
+`tide` is used by the calm and getting-sick practices, `ember` by Fire Wave and Hold Ladder,
+`night` by Wind Down. Tracks are mixed to mono, level-matched, looped with a 6 s crossfade
+and ducked under the voice; without a track the app plays a soft drone.
 
 ## Safety
 
-Seated or lying down only. Never in or near water or while driving. Skip the fast
-breathing (use Gentle) if pregnant, epileptic, or living with heart disease or high blood
-pressure. Not medical advice; not affiliated with Dylan Werner.
+Seated or lying down only. Never in or near water or while driving. Skip fast breathing and
+long holds if pregnant, epileptic, or living with heart disease or high blood pressure, and
+keep holds comfortable during an active cold. Not medical advice; not affiliated with the
+teachers whose methods inspired these practices.
