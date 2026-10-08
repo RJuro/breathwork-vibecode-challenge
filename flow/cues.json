@@ -191,10 +191,6 @@
     "text": "Now cool down. Five slow breaths. In for four, out for eight.",
     "kind": "technique"
   },
-  "cool_science": {
-    "text": "A long exhale turns up the vagus nerve, your body's brake pedal. Less stress is one of the few things linked to catching fewer colds.",
-    "kind": "science"
-  },
   "deep_in": {
     "text": "Now one deep breath in.",
     "kind": "guide"
@@ -318,18 +314,6 @@
   "hum_intro": {
     "text": "Humming breath. Breathe in through the nose, then hum the whole exhale, lips closed, jaw soft. Let the sound fill your head.",
     "kind": "technique"
-  },
-  "hum_science": {
-    "text": "Humming makes the air in your sinuses vibrate. In studies, it raised nitric oxide in the nose about fifteen-fold. In the lab, nitric oxide slows cold viruses.",
-    "kind": "science"
-  },
-  "hum_space": {
-    "text": "The first hum gives the biggest boost, so we'll hum again at the end, once your sinuses have refilled.",
-    "kind": "science"
-  },
-  "kox": {
-    "text": "In a 2014 study, people trained in this kind of breathing released a surge of adrenaline, and their inflammatory response to a bacterial toxin was roughly halved. Not a cold. But a sign your breath can talk to your immune system.",
-    "kind": "science"
   },
   "ladder_intro": {
     "text": "Now we lengthen the breath, one step at a time. Four counts in, four counts out. Follow the circle.",
@@ -762,10 +746,6 @@
   "nose_short": {
     "text": "Breathe only through your nose, slow and quiet.",
     "kind": "guide"
-  },
-  "nose_why": {
-    "text": "Your nose warms and filters the air, and it's where your sinuses add nitric oxide to every breath.",
-    "kind": "science"
   },
   "nt_a_light_stomach_it_also_makes_a_good_win_1ofg7hv": {
     "text": "A light stomach. It also makes a good wind-down before sleep.",
@@ -1203,10 +1183,6 @@
     "text": "Last few.",
     "kind": "guide"
   },
-  "r1_after": {
-    "text": "Notice the tingling settle, as your carbon dioxide comes back up.",
-    "kind": "science"
-  },
   "r1_intro": {
     "text": "Round one. Kapalabhati. Short, sharp exhales through the nose, pulled from the belly. The inhale takes care of itself. Keep your face soft.",
     "kind": "technique"
@@ -1278,6 +1254,26 @@
   "sigh_welcome": {
     "text": "Welcome. This is the cyclic sigh: a double breath in, and a long, slow breath out.",
     "kind": "guide"
+  },
+  "story_co2": {
+    "text": "A moment on what just happened. Fast breathing adds very little oxygen; your blood is already almost full. What it does is blow off carbon dioxide. With less of it, your blood turns slightly alkaline, the vessels in your head narrow a little, and you may feel tingling or lightness. That's why the hold felt easy at first. The urge to breathe comes mostly from carbon dioxide rising, not from oxygen falling. It's also why this practice belongs on dry land, seated or lying down: the warning signal arrives late.",
+    "kind": "science"
+  },
+  "story_hum": {
+    "text": "Here's why we hum. Nitric oxide collects in your sinuses, but it barely moves while you breathe quietly. Humming makes the air in them vibrate, and that flushes it out. In one study, humming raised the nitric oxide in the nose about fifteen-fold, compared with a quiet exhale. The boost is biggest on the first hums, and the sinuses take a few minutes to fill again, so we'll hum once more at the end. In cell studies, nitric oxide slows the virus behind most colds. No trial has shown that humming prevents one. But it's a pleasant way to look after your nose.",
+    "kind": "science"
+  },
+  "story_kox": {
+    "text": "Here's a study that changed how scientists think about breathing. In 2014, a group of young men in the Netherlands trained for ten days in a method like this one: fast breathing with long holds, cold exposure and meditation. Then they, and an untrained group, were injected with a purified bacterial toxin that briefly causes flu-like symptoms. The trained group released a surge of adrenaline. Their inflammatory signals were lower, their anti-inflammatory signals higher, and they felt less unwell. It was a small study, in healthy volunteers, with a toxin rather than a virus. Not a cure for a cold. But a sign that your breath can talk to your immune system.",
+    "kind": "science"
+  },
+  "story_nose": {
+    "text": "While you settle, a word about the nose. It warms and moistens every breath, and its fine hairs and mucus catch dust and germs before they reach your lungs. Your sinuses also release a gas called nitric oxide, and it travels down with every breath you take through the nose. In the lab, nitric oxide helps the airways defend themselves. Breathe through your mouth, and you skip all of that. So for the next few minutes, nose only.",
+    "kind": "science"
+  },
+  "story_vagus": {
+    "text": "As you breathe out slowly, your heart slows a little. On every inhale it speeds up; on every exhale it eases off. That rhythm is steered by the vagus nerve, your body's brake pedal, and long exhales give it more to do. Why does that matter today? In a classic study, people under more stress were more likely to catch a cold when they were exposed to the virus. And people who slept less than six hours were about four times more likely to get sick than those who slept seven or more. Calm and sleep are the real medicine here.",
+    "kind": "science"
   },
   "t_anchor": {
     "text": "Notice where the breath is easiest to feel. Cool air in at the nostrils, slightly warmer air out.",

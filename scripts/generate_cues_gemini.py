@@ -220,8 +220,15 @@ def main():
     manifest = json.loads(MANIFEST.read_text()) if MANIFEST.exists() else {}
     todo = [i for i in ids if args.force or manifest.get(i, {}).get("fp") != fingerprint(cues[i]["text"], args.voice, args.model)
             or not (OUT / f"{i}.mp3").exists()]
-    print(f"{args.flow}: {len(ids)} lines, {len(todo)} to record with {args.model} / {args.voice}")
+    stale = [k for k in manifest if k not in cues]
+    for k in stale:  # lines no practice speaks any more
+        manifest.pop(k)
+        (OUT / f"{k}.mp3").unlink(missing_ok=True)
+    print(f"{args.flow}: {len(ids)} lines, {len(todo)} to record with {args.model} / {args.voice}"
+          + (f", {len(stale)} stale removed" if stale else ""))
     OUT.mkdir(parents=True, exist_ok=True)
+    if stale:
+        MANIFEST.write_text(json.dumps(dict(sorted(manifest.items())), indent=2) + "\n")
     failures = []
     with tempfile.TemporaryDirectory() as tmp:
         for cid in todo:

@@ -48,13 +48,6 @@
     "duration": 8.59,
     "match": 1.0
   },
-  "cool_science": {
-    "fp": "794474a8cbf3",
-    "voice": "Schedar",
-    "model": "gemini-3.8-flash-lite-tts",
-    "duration": 10.66,
-    "match": 1.0
-  },
   "deep_in": {
     "fp": "d3c2481d8a7a",
     "voice": "Schedar",
@@ -88,27 +81,6 @@
     "voice": "Schedar",
     "model": "gemini-3.8-flash-lite-tts",
     "duration": 11.69,
-    "match": 1.0
-  },
-  "hum_science": {
-    "fp": "be012cb9a0c0",
-    "voice": "Schedar",
-    "model": "gemini-3.8-flash-lite-tts",
-    "duration": 12.65,
-    "match": 0.964
-  },
-  "hum_space": {
-    "fp": "4d9c37c1a3e9",
-    "voice": "Schedar",
-    "model": "gemini-3.8-flash-lite-tts",
-    "duration": 7.13,
-    "match": 1.0
-  },
-  "kox": {
-    "fp": "0bb59b42cb00",
-    "voice": "Schedar",
-    "model": "gemini-3.8-flash-lite-tts",
-    "duration": 17.06,
     "match": 1.0
   },
   "ladder_intro": {
@@ -293,25 +265,11 @@
     "duration": 4.68,
     "match": 1.0
   },
-  "nose_why": {
-    "fp": "de505b37e59e",
-    "voice": "Schedar",
-    "model": "gemini-3.8-flash-lite-tts",
-    "duration": 8.78,
-    "match": 1.0
-  },
   "pump_last": {
     "fp": "997bd474a952",
     "voice": "Schedar",
     "model": "gemini-3.8-flash-lite-tts",
     "duration": 1.03,
-    "match": 1.0
-  },
-  "r1_after": {
-    "fp": "793d2d07264c",
-    "voice": "Schedar",
-    "model": "gemini-3.8-flash-lite-tts",
-    "duration": 5.59,
     "match": 1.0
   },
   "r1_intro": {
@@ -375,6 +333,41 @@
     "voice": "Schedar",
     "model": "gemini-3.8-flash-lite-tts",
     "duration": 11.98,
+    "match": 1.0
+  },
+  "story_co2": {
+    "fp": "94d81c1a2bf5",
+    "voice": "Schedar",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 36.1,
+    "match": 0.989
+  },
+  "story_hum": {
+    "fp": "d9a48e88aa1f",
+    "voice": "Schedar",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 41.4,
+    "match": 1.0
+  },
+  "story_kox": {
+    "fp": "555d02e28432",
+    "voice": "Schedar",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 46.85,
+    "match": 1.0
+  },
+  "story_nose": {
+    "fp": "4b2859c5721e",
+    "voice": "Schedar",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 31.58,
+    "match": 1.0
+  },
+  "story_vagus": {
+    "fp": "6310b4758bb3",
+    "voice": "Schedar",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 42.38,
     "match": 1.0
   },
   "t_belly_only": {
