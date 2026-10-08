@@ -4,9 +4,9 @@
 The app's drone, bells and hum guide are tuned to A, so the track is moved into A major by
 resampling (a semitone is a ~6% speed change, inaudible on ambient music). The smallest
 shift that fits the track's notes to A major is used unless you pass --shift. The result
-is mono (the app mixes to mono anyway), trimmed, lightly faded, and listed in the manifest.
+is mono (the app mixes to mono anyway), trimmed, and listed in the manifest.
 
-    python3 scripts/add_music.py ~/Downloads/track.mp3 tide --end 222
+    python3 scripts/add_music.py ~/Downloads/track.mp3 tide
     python3 scripts/add_music.py track.mp3 night --shift -2
 
 Needs ffmpeg; numpy only for the automatic shift.
@@ -47,16 +47,36 @@ def key_shift(path):
     return shift
 
 
+def loop_end(path, start):
+    """End point (in the last ~40% of the track) whose level matches the opening, so the
+    app's looped crossfade doesn't step up or down."""
+    import numpy as np
+
+    with tempfile.NamedTemporaryFile(suffix=".raw") as tmp:
+        subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", str(path), "-ac", "1", "-ar", "8000", "-f", "f32le", tmp.name], check=True)
+        x = np.fromfile(tmp.name, dtype=np.float32)
+    sr = 8000
+    db = lambda a: 20 * np.log10(np.sqrt(np.mean(a ** 2)) + 1e-9)
+    head = db(x[int(start * sr):int((start + 8) * sr)])
+    length = len(x) / sr
+    ends = np.arange(max(start + 60, 0.6 * length), length - 2, 1.0)
+    end = min(ends, key=lambda e: (round(abs(db(x[int((e - 8) * sr):int(e * sr)]) - head), 1), -e))
+    print(f"loop end {end:.0f}s: last 8 s within {abs(db(x[int((end - 8) * sr):int(end * sr)]) - head):.1f} dB of the opening")
+    return float(end)
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("src")
     ap.add_argument("name", help="slot: tide, ember, night, transit, …")
     ap.add_argument("--shift", type=int, help="semitones (default: smallest shift into A major)")
-    ap.add_argument("--start", type=float, default=0)
-    ap.add_argument("--end", type=float, help="cut the track here (seconds, before shifting)")
+    ap.add_argument("--start", type=float, default=1.0, help="skip the first seconds (default 1)")
+    ap.add_argument("--end", type=float, help="cut here (seconds, before shifting); default: where the level matches the opening")
     args = ap.parse_args()
 
     shift = args.shift if args.shift is not None else key_shift(args.src)
+    if args.end is None:
+        args.end = loop_end(args.src, args.start)
     ratio = 2 ** (shift / 12)
     span = (args.end or 1e9) - args.start
     trim = ["-ss", str(args.start)] + (["-t", str(span)] if args.end else [])
@@ -66,8 +86,9 @@ def main():
     info = json.loads(probe.stdout)
     rate = int(info["streams"][0]["sample_rate"])
     length = min(span, float(info["format"]["duration"]) - args.start) / ratio
-    # Relabel the sample rate (pitch and speed move together), then resample back.
-    af = f"asetrate={round(rate * ratio)},aresample=44100,afade=t=in:d=0.5,afade=t=out:st={length - 2:.2f}:d=2"
+    # Relabel the sample rate (pitch and speed move together), then resample back. Only
+    # click-proof edge fades: the app crossfades the loop itself.
+    af = f"asetrate={round(rate * ratio)},aresample=44100,afade=t=in:d=0.05,afade=t=out:st={length - 0.05:.2f}:d=0.05"
     subprocess.run(["ffmpeg", "-v", "error", "-y", *trim, "-i", args.src, "-af", af, "-ac", "1", "-ar", "44100", "-b:a", "96k", str(out)], check=True)
 
     manifest_path = MUSIC / "manifest.json"

@@ -1,8 +1,14 @@
 {
   "tide": {
     "file": "tide.mp3",
-    "v": 1,
+    "v": 3,
     "shift": 1,
-    "seconds": 209.5
+    "seconds": 149.9
+  },
+  "transit": {
+    "file": "transit.mp3",
+    "v": 3,
+    "shift": 0,
+    "seconds": 150.9
   }
 }

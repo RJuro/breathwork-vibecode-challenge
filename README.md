@@ -59,13 +59,14 @@ fall back to the device's voice.
 Import a track (e.g. a Suno download) into a slot:
 
 ```sh
-python3 scripts/add_music.py ~/Downloads/track.mp3 tide --end 222
+python3 scripts/add_music.py ~/Downloads/track.mp3 tide
 ```
 
 It moves the track into A major with the smallest pitch shift (the app's drone, bells and hum
-guide are in A), trims, fades, converts to mono and updates `audio/music/manifest.json`.
+guide are in A), cuts it where the level matches the opening so the loop is seamless, converts
+to mono and updates `audio/music/manifest.json`.
 Slots: `tide` (calm and under-the-weather practices; added: *A-Frame Stillness*), `ember`
-(Fire Wave, Hold Ladder), `night` (Wind Down), `transit` (Window Seat, falling back to `tide`). Tracks are mixed to mono, level-matched, looped with a 6 s crossfade
+(Fire Wave, Hold Ladder), `night` (Wind Down), `transit` (Window Seat; added: *Pink Noise Cocoon*). Tracks are mixed to mono, level-matched, looped with a 6 s crossfade
 and ducked under the voice; without a track the app plays a soft drone.
 
 ## Safety

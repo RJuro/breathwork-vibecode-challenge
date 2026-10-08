@@ -318,10 +318,11 @@ function mixMusic(buffer, total, mix, level = 1) {
   const clip = { getChannelData: () => mono, length: n };
   const len = n / SR;
   const step = Math.max(10, len - XFADE);
+  // Equal-power crossfade (sin/cos), so the seam doesn't dip when two copies overlap.
   for (let s = 0; s < total; s += step) {
     mix(clip, s, gain, (t) => {
       const x = t - s;
-      const copy = s > 0 && x < XFADE ? x / XFADE : x > step ? Math.max(0, (len - x) / XFADE) : 1;
+      const copy = s > 0 && x < XFADE ? Math.sin((Math.PI / 2) * (x / XFADE)) : x > step ? Math.cos((Math.PI / 2) * Math.min(1, (x - step) / XFADE)) : 1;
       const session = Math.min(1, t / 6, Math.max(0, (total - t) / 10));
       return copy * session;
     });
