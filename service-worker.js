@@ -1,5 +1,5 @@
 // Offline shell + cue cache. Bump VERSION when shipping changes.
-const VERSION = 'kumbha-v7';
+const VERSION = 'kumbha-v8';
 const SHELL = [
   './',
   'index.html',
@@ -7,6 +7,7 @@ const SHELL = [
   'manifest.webmanifest',
   'js/app.js',
   'js/engine.js',
+  'js/bloom.js',
   'js/audio.js',
   'js/flows/index.js',
   'js/flows/lib.js',

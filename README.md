@@ -46,6 +46,10 @@ practice has a *How it works* page with evidence labels and sources. The summary
 - `js/audio.js`: decodes Tom's cues and the practice's music, synthesises breath/hum/bell
   sounds, and mixes the whole session into **one WAV track** (keeps playing with the screen
   locked; the visuals follow its `currentTime`).
+- `js/bloom.js`: the session visual: two counter-rotating rings of edge-lit glass petals that
+  open on the in-breath and fold on the out-breath, blending additively with a short afterglow;
+  drifting motes show the breath's direction, holds shimmer, hums ripple, colour follows the phase.
+  The original orb is still available (Settings → Visual).
 - `js/app.js`: library, practice page, session, settings.
 
 ## Voice cues (LuxTTS · tom)

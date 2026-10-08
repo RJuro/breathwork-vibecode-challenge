@@ -101,7 +101,7 @@
     </section>
 
     <!-- Session -->
-    <section id="session" class="screen" data-phase="rest" aria-label="Practice in progress">
+    <section id="session" class="screen" data-phase="rest" data-visual="bloom" aria-label="Practice in progress">
       <p class="sr-only" id="live" aria-live="polite"></p>
       <div class="progress" id="progress" aria-hidden="true"></div>
       <div class="session-top">
@@ -114,6 +114,7 @@
             <circle class="track" cx="50" cy="50" r="46" />
             <circle class="fill" id="ring-fill" cx="50" cy="50" r="46" stroke-dasharray="289.027" stroke-dashoffset="289.027" />
           </svg>
+          <canvas class="bloom" id="bloom" aria-hidden="true"></canvas>
           <div class="orb" id="orb" aria-hidden="true">
             <div class="glow"></div>
             <div class="body"></div>
@@ -180,6 +181,13 @@
             <button data-v="quiet">Quiet</button>
             <button data-v="guided">Guided</button>
             <button data-v="full">Full</button>
+          </div>
+        </div>
+        <div class="setting stack">
+          <span>Visual<small>Bloom: petals that open and fold with the breath. Orb: a single glowing sphere.</small></span>
+          <div class="seg" id="set-visual" role="group" aria-label="Visual">
+            <button data-v="bloom">Bloom</button>
+            <button data-v="orb">Orb</button>
           </div>
         </div>
         <label class="setting">

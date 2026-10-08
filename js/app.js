@@ -2,6 +2,7 @@ import { FLOWS, INTENSITY, LEVEL_NAMES, intensitiesOf } from './flows/index.js';
 import { compile, stateAt, captionAt, exitOf, holdResults } from './engine.js';
 import { notesHtml } from './flows/lib.js';
 import { teacherTalk } from './flows/talk.js';
+import { Bloom } from './bloom.js';
 import { loadManifests, loadCues, loadMusic, renderSession } from './audio.js';
 
 const $ = (s) => document.querySelector(s);
@@ -13,7 +14,7 @@ const fmt = (s) => {
 const minutes = (s) => `${Math.max(1, Math.round(s / 60))} min`;
 
 // ── Settings ───────────────────────────────────────────
-const DEFAULTS = { voice: true, talk: 'guided', sounds: true, music: true, voiceVol: 1, bedVol: 1, safetyAck: false, intensity: {} };
+const DEFAULTS = { voice: true, talk: 'guided', visual: 'bloom', sounds: true, music: true, voiceVol: 1, bedVol: 1, safetyAck: false, intensity: {} };
 let settings = load();
 function load() {
   try {
@@ -48,6 +49,7 @@ let fired = new Set();
 let skips = []; // [from, to] jumps made with "Breathe now"
 let announced = '';
 let wakeLock = null;
+let bloom = null;
 const audio = $('#track');
 
 // ── Routing: #/ library, #/p/<id> practice ─────────────
@@ -243,7 +245,12 @@ async function begin() {
   }
   $('#play-error').hidden = true;
   $('#begin-sub').textContent = minutes(plan.total);
+  $('#session').dataset.visual = settings.visual;
   show('session');
+  if (settings.visual === 'bloom') {
+    bloom ??= new Bloom($('#bloom'));
+    bloom.resize();
+  }
   try {
     wakeLock = await navigator.wakeLock?.request('screen');
   } catch {}
@@ -264,7 +271,8 @@ function frame(t) {
   const st = stateAt(plan, t);
   $('#session').dataset.phase = st.phase;
   document.body.dataset.section = st.seg.section;
-  $('#orb').style.setProperty('--s', st.scale.toFixed(4));
+  if (bloom && settings.visual === 'bloom') bloom.draw(st, t);
+  else $('#orb').style.setProperty('--s', st.scale.toFixed(4));
 
   const phaseEl = $('#phase');
   const countEl = $('#count');
@@ -430,6 +438,14 @@ function bindUI() {
   $('#set-voice').checked = settings.voice;
   const syncTalk = () => $$('#set-talk button').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.v === settings.talk)));
   syncTalk();
+  const syncVisual = () => $$('#set-visual button').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.v === settings.visual)));
+  syncVisual();
+  $('#set-visual').addEventListener('click', (e) => {
+    const b = e.target.closest('button[data-v]');
+    if (!b) return;
+    save({ visual: b.dataset.v });
+    syncVisual();
+  });
   $('#set-sounds').checked = settings.sounds;
   $('#set-music').checked = settings.music;
   $('#set-voice-vol').value = settings.voiceVol;
