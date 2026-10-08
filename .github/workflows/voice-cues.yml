@@ -1,0 +1,50 @@
+# Generates the spoken cues with LuxTTS (voice "tom") on RunPod via the runpod-qwen-tts
+# gateway, and commits them. Needs the repository secret QWEN_TTS_API_KEY (the gateway's
+# GATEWAY_API_KEY). Runs when cue text changes, or by hand from the Actions tab.
+name: Voice cues
+
+on:
+  workflow_dispatch:
+    inputs:
+      force:
+        description: Regenerate every cue
+        type: boolean
+        default: false
+  push:
+    paths: ['flow/cues.json']
+
+permissions:
+  contents: write
+
+concurrency:
+  group: voice-cues-${{ github.ref }}
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    env:
+      QWEN_TTS_API_KEY: ${{ secrets.QWEN_TTS_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: No key, nothing to do
+        if: env.QWEN_TTS_API_KEY == ''
+        run: echo "::notice::Add the QWEN_TTS_API_KEY repository secret to generate voice cues."
+
+      - name: Install ffmpeg
+        if: env.QWEN_TTS_API_KEY != ''
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+
+      - name: Generate cues (Lux · tom)
+        if: env.QWEN_TTS_API_KEY != ''
+        run: python3 scripts/generate_cues.py ${{ inputs.force && '--force' || '' }}
+
+      - name: Commit
+        if: env.QWEN_TTS_API_KEY != ''
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add audio/cues
+          git diff --cached --quiet && exit 0
+          git commit -m "Generate voice cues (Lux · tom)"
+          git push
