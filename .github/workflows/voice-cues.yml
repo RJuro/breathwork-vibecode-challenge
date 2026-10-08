@@ -1,5 +1,5 @@
 # Generates the spoken cues with LuxTTS (voice "tom") on RunPod via the runpod-qwen-tts
-# gateway, and commits them. Needs the repository secret QWEN_TTS_API_KEY (the gateway's
+# gateway, and commits them. Needs a repository secret QWEN_TTS_API_KEY or GATEWAY_API_KEY (the gateway's
 # GATEWAY_API_KEY). Runs when cue text or the generator changes, or by hand from the
 # Actions tab.
 name: Voice cues
@@ -24,13 +24,13 @@ jobs:
   generate:
     runs-on: ubuntu-latest
     env:
-      QWEN_TTS_API_KEY: ${{ secrets.QWEN_TTS_API_KEY }}
+      QWEN_TTS_API_KEY: ${{ secrets.QWEN_TTS_API_KEY || secrets.GATEWAY_API_KEY }}
     steps:
       - uses: actions/checkout@v4
 
       - name: No key, nothing to do
         if: env.QWEN_TTS_API_KEY == ''
-        run: echo "::notice::Add the QWEN_TTS_API_KEY repository secret to generate voice cues."
+        run: echo "::notice::Add a QWEN_TTS_API_KEY (or GATEWAY_API_KEY) repository secret to generate voice cues."
 
       - name: Install ffmpeg
         if: env.QWEN_TTS_API_KEY != ''
