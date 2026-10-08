@@ -61,6 +61,7 @@ body[data-section^='night'], body[data-section^='sleep'] { --sky1: #141a3a; --sk
 body[data-section^='clear'], body[data-section^='nose'] { --sky1: #1d3a4f; --sky2: #2a2350; }
 body[data-section^='table'], body[data-section^='deep'] { --sky1: #10304a; --sky2: #241a3f; }
 body[data-section^='balance'] { --sky1: #2b2f55; --sky2: #183a3a; }
+body[data-section^='seat'] { --sky1: #22304f; --sky2: #2b2140; }
 
 /* ── Screens ─────────────────────────────────────────── */
 .screen { display: none; min-height: 100svh; padding: max(20px, env(safe-area-inset-top)) var(--gutter) max(24px, env(safe-area-inset-bottom)); }
