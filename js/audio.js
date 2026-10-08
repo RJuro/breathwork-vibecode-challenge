@@ -111,10 +111,11 @@ function hum(ctx, bus, t, dur) {
   const lp = ctx.createBiquadFilter();
   lp.type = 'lowpass';
   lp.frequency.value = 700;
+  // A2 with a little A3 and E3: in tune with the drone and the A-major music beds.
   [
-    [130.81, 1],
-    [261.63, 0.18],
-    [196.0, 0.12],
+    [110.0, 1],
+    [220.0, 0.18],
+    [164.81, 0.12],
   ].forEach(([f, a]) => {
     const o = ctx.createOscillator();
     const og = ctx.createGain();
@@ -133,7 +134,7 @@ function hum(ctx, bus, t, dur) {
 
 function bell(ctx, bus, t, kind = 'bell') {
   // Singing-bowl-ish: a few inharmonic partials with staggered decays.
-  const f0 = kind === 'tick' ? 880 : kind === 'low' ? 196 : 293.66;
+  const f0 = kind === 'tick' ? 880 : kind === 'low' ? 220 : 293.66; // A5, A3, D4: all in A major
   const amp = kind === 'tick' ? 0.05 : 0.16;
   const decay = kind === 'tick' ? 1.2 : 6;
   [
