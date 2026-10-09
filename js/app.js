@@ -1,4 +1,4 @@
-import { FLOWS, INTENSITY, LEVEL_NAMES, intensitiesOf } from './flows/index.js';
+import { FLOWS, MOMENTS, INTENSITY, LEVEL_NAMES, intensitiesOf } from './flows/index.js';
 import { compile, stateAt, captionAt, exitOf, holdResults } from './engine.js';
 import { notesHtml } from './flows/lib.js';
 import { teacherTalk } from './flows/talk.js';
@@ -16,7 +16,7 @@ const fmt = (s) => {
 const minutes = (s) => `${Math.max(1, Math.round(s / 60))} min`;
 
 // ── Settings ───────────────────────────────────────────
-const DEFAULTS = { look: 2, voice: true, speaker: 'qwen', talk: 'guided', visual: 'contour', sounds: true, music: true, voiceVol: 1, bedVol: 1, safetyAck: false, intensity: {} };
+const DEFAULTS = { look: 2, voice: true, talk: 'guided', visual: 'contour', sounds: true, music: true, voiceVol: 1, bedVol: 1, safetyAck: false, intensity: {} };
 let settings = load();
 function load() {
   try {
@@ -29,13 +29,6 @@ function load() {
     // stored, not the defaults), and is saved so a later choice of Bloom or Orb sticks.
     if (!(stored.look >= 2)) {
       Object.assign(s, { look: 2, visual: 'contour' });
-      if (Object.keys(stored).length) localStorage.setItem('kumbha', JSON.stringify(s));
-    }
-    // Coach voice trial: where the coach recorded a whole practice he replaces Tom, once, for
-    // everyone still on the old default. Picking Tom again sticks.
-    if (!(stored.coach >= 1)) {
-      if (s.speaker === 'tom') s.speaker = 'qwen';
-      s.coach = 1;
       if (Object.keys(stored).length) localStorage.setItem('kumbha', JSON.stringify(s));
     }
     return s;
@@ -88,23 +81,30 @@ function show(id) {
 }
 
 // ── Library ────────────────────────────────────────────
+// Grouped by moment of the day; a moment with a single practice gets a wide tile.
 async function renderShelf() {
-  const { cues } = await loadManifests();
-  const durs = Object.fromEntries(Object.entries(cues).map(([k, v]) => [k, v.duration]));
+  const { packs } = await loadManifests();
   const shelf = $('#shelf');
   shelf.innerHTML = '';
-  // Turn the Tide leads as a wide tile; the rest follow in a two-column grid.
-  const order = [...FLOWS.filter((f) => f.featured), ...FLOWS.filter((f) => !f.featured)];
-  for (const f of order) {
-    const total = compile(f, durs, { ...INTENSITY[levelOf(f)], talk: settings.talk }).total;
-    const a = document.createElement('a');
-    a.className = f.featured ? 'tile wide' : 'tile';
-    a.href = `#/p/${f.id}`;
-    const meta = `<span class="tile-meta">${minutes(total)} · ${f.tag}</span>`;
-    a.innerHTML = f.featured
-      ? `<span class="tile-text">${meta}<span class="tile-title">${f.titleHtml || f.title}</span><span class="tile-blurb">${f.blurb}</span></span><span class="tile-art">${motif(f.id)}</span>`
-      : `<span class="tile-art">${motif(f.id)}</span><span class="tile-text"><span class="tile-title">${f.title}</span>${meta}</span>`;
-    shelf.appendChild(a);
+  for (const m of MOMENTS) {
+    const fs = FLOWS.filter((f) => f.moment === m.id);
+    if (!fs.length) continue;
+    const head = document.createElement('div');
+    head.className = 'moment';
+    head.innerHTML = `<h2>${m.title}</h2><p>${m.sub}</p>`;
+    shelf.appendChild(head);
+    for (const f of fs) {
+      const total = compile(f, durOf(packs[f.voice]), { ...INTENSITY[levelOf(f)], talk: settings.talk }).total;
+      const wide = fs.length === 1;
+      const a = document.createElement('a');
+      a.className = wide ? 'tile wide' : 'tile';
+      a.href = `#/p/${f.id}`;
+      const meta = `<span class="tile-meta">${minutes(total)} · with ${VOICES[f.voice]}</span>`;
+      a.innerHTML = wide
+        ? `<span class="tile-text">${meta}<span class="tile-title">${f.titleHtml || f.title}</span><span class="tile-blurb">${f.blurb}</span></span><span class="tile-art">${motif(f.id)}</span>`
+        : `<span class="tile-art">${motif(f.id)}</span><span class="tile-text"><span class="tile-title">${f.title}</span>${meta}</span>`;
+      shelf.appendChild(a);
+    }
   }
 }
 
@@ -141,24 +141,9 @@ function syncIntensity() {
   $('#intensity-note').textContent = (flow.intensityNotes || {})[lv] || '';
 }
 
-// Voice packs: Tom covers every line; a preview pack is offered only where it recorded every
-// line a run needs, so a session never mixes voices.
-const PREVIEWS = { gemini: ['Gemini', 'Preview voice: Gemini 3.8 Flash Lite TTS.'], qwen: ['Qwen', 'Preview voice: a Qwen3-TTS clone, made on our own server.'] };
-const voiceName = (packs, p) => (p === 'tom' ? 'Tom' : (Object.values(packs[p])[0]?.voice || p).replace(/^./, (c) => c.toUpperCase()));
-async function pickPack(ids) {
-  const { packs } = await loadManifests();
-  const offered = ['tom'];
-  for (const p of Object.keys(PREVIEWS)) if (await packCovers(p, ids)) offered.push(p);
-  return { packs, offered, pack: offered.includes(settings.speaker) ? settings.speaker : 'tom' };
-}
-
-function syncSpeaker({ packs, offered, pack }) {
-  $('#speaker-row').hidden = offered.length < 2;
-  $('#speaker').innerHTML = offered
-    .map((p) => `<button data-v="${p}" aria-pressed="${p === pack}">${p === 'tom' ? 'Tom' : `${voiceName(packs, p)} · ${PREVIEWS[p][0]}`}</button>`)
-    .join('');
-  $('#speaker-note').textContent = PREVIEWS[pack]?.[1] || '';
-}
+// Every practice has its own instructor and voice pack (flow.voice).
+const VOICES = { leo: 'Leo', mira: 'Mira' };
+const durOf = (m = {}) => Object.fromEntries(Object.entries(m).map(([k, v]) => [k, v.duration]));
 
 function renderMap() {
   $('#d-eyebrow').textContent = `${flow.tag} · ${minutes(plan.total)}`;
@@ -189,22 +174,13 @@ async function prepare() {
   begin.disabled = true;
   $('#begin-sub').textContent = 'Preparing…';
 
-  // Draft with estimated timings to learn which lines this run needs, then decode them in
-  // the chosen voice.
+  // Draft with the recorded durations to learn which lines this run needs, then decode them
+  // in the practice's own voice.
   const { packs } = await loadManifests();
-  const durOf = (m) => Object.fromEntries(Object.entries(m).map(([k, v]) => [k, v.duration]));
-  plan = compile(f, durOf(packs.tom), opts);
+  plan = compile(f, durOf(packs[f.voice]), opts);
   renderMap();
-  let ids = [...new Set(plan.voice.map((v) => v.id))];
-  const voices = await pickPack(ids);
-  if (token !== renderToken) return;
-  syncSpeaker(voices);
-  const { pack } = voices;
-  if (pack !== 'tom') {
-    plan = compile(f, durOf(packs[pack]), opts);
-    ids = [...new Set([...ids, ...plan.voice.map((v) => v.id)])];
-  }
-  const [loaded, music] = await Promise.all([loadCues(ids, pack), settings.music ? loadMusic(f.music) : null]);
+  const ids = [...new Set(plan.voice.map((v) => v.id))];
+  const [loaded, music] = await Promise.all([loadCues(ids, f.voice), settings.music ? loadMusic(f.music) : null]);
   if (token !== renderToken) return;
   buffers = loaded;
   const durs = Object.fromEntries(Object.entries(buffers).filter(([, b]) => b).map(([k, b]) => [k, b.duration]));
@@ -255,11 +231,14 @@ async function prepareTalk(f) {
   btn.textContent = 'Preparing audio…';
   const t = teacherTalk(f);
   if (!t) return;
-  const { cues } = await loadManifests();
-  const est = Object.fromEntries(Object.entries(cues).map(([k, v]) => [k, v.duration]));
-  const ids = [...new Set(compile(t, est, { talk: 'full' }).voice.map((v) => v.id))];
-  const { packs, pack } = await pickPack(ids);
-  const [loaded, music] = await Promise.all([loadCues(ids, pack), settings.music ? loadMusic(f.music) : null]);
+  const { packs } = await loadManifests();
+  const ids = [...new Set(compile(t, durOf(packs[f.voice]), { talk: 'full' }).voice.map((v) => v.id))];
+  // Read aloud only once the instructor has recorded every line of the notes.
+  if (!(await packCovers(f.voice, ids))) {
+    btn.hidden = true;
+    return;
+  }
+  const [loaded, music] = await Promise.all([loadCues(ids, f.voice), settings.music ? loadMusic(f.music) : null]);
   const durs = Object.fromEntries(Object.entries(loaded).filter(([, b]) => b).map(([k, b]) => [k, b.duration]));
   const p = compile(t, durs, { talk: 'full' });
   const blob = await renderSession(p, loaded, { breathSounds: false, ambience: settings.music, music, voiceGain: settings.voiceVol, bedGain: settings.bedVol * 0.8 });
@@ -268,7 +247,7 @@ async function prepareTalk(f) {
   talkUrl = URL.createObjectURL(blob);
   player.src = talkUrl;
   btn.disabled = false;
-  btn.textContent = `▶ Listen: ${voiceName(packs, pack)} reads these notes · ${minutes(p.total)}`;
+  btn.textContent = `▶ Listen: ${VOICES[f.voice]} reads these notes · ${minutes(p.total)}`;
 }
 
 // ── Session ────────────────────────────────────────────
@@ -484,14 +463,6 @@ function bindUI() {
     if (!b) return;
     save({ intensity: { ...settings.intensity, [flow.id]: b.dataset.v } });
     syncIntensity();
-    prepare();
-  });
-
-  $('#speaker').addEventListener('click', (e) => {
-    const b = e.target.closest('button[data-v]');
-    if (!b || b.dataset.v === settings.speaker) return;
-    save({ speaker: b.dataset.v });
-    talkFor = null; // the notes are read in the chosen voice too
     prepare();
   });
 

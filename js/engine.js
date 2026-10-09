@@ -3,6 +3,9 @@
 
 const WORDS_PER_SEC = 2.3; // estimate for lines that have no audio yet
 
+/** A line's text without its voice tags (`<sigh>`, `<short pause>`): what captions show and on-device speech reads. */
+export const plain = (text) => text.replace(/\s*<[^>]+>\s*/g, ' ').replace(/\s+/g, ' ').trim();
+
 export function estimateDur(text) {
   return text.split(/\s+/).length / WORDS_PER_SEC + 0.4;
 }
@@ -19,18 +22,19 @@ export function compile(flow, durs = {}, opts = {}) {
   const sounds = [];
   let t = 0;
 
-  // How much Tom says: quiet = instructions and counts; guided (default) adds the
+  // How much the coach says: quiet = instructions and counts; guided (default) adds the
   // teacher's tips; full adds the science.
   const talk = opts.talk || (opts.explain ? 'full' : 'guided');
   const skip = (c) => (c.kind === 'science' && talk !== 'full') || (c.kind === 'tip' && talk === 'quiet');
   const speak = (c, at) => {
     if (!c || !c.id || !c.text) throw new Error(`bad spoken line: ${JSON.stringify(c)}`);
     if (skip(c)) return 0;
-    const d = durs[c.id] ?? estimateDur(c.text);
-    voice.push({ id: c.id, t: at, dur: d, text: c.text, kind: c.kind || 'guide' });
+    const d = durs[c.id] ?? estimateDur(plain(c.text));
+    // `tts` keeps the voice tags for the recording scripts; `text` is what the listener reads.
+    voice.push({ id: c.id, t: at, dur: d, text: plain(c.text), tts: c.text, kind: c.kind || 'guide' });
     return d;
   };
-  const lineDur = (c) => durs[c.id] ?? estimateDur(c.text);
+  const lineDur = (c) => durs[c.id] ?? estimateDur(plain(c.text));
 
   for (const section of defs) {
     for (const step of section.steps) {

@@ -1,8 +1,8 @@
-# Kumbha · breath & retention
+# Kumbha · breath & attention
 
-Guided pranayama and breath-hold practices, voiced by **Tom** (LuxTTS on RunPod), timed to
-the second, with honest notes on what the science does and doesn't show. Live at
-<https://breathwork-vibes.apps.rjuro.com>.
+Short breathing practices and meditations for the moments of the day, led by two coaches,
+**Leo** and **Mira**, timed to the second, with honest notes on what the science does and doesn't
+show. Live at <https://breathwork-vibes.apps.rjuro.com>.
 
 Static site, no build step:
 
@@ -12,98 +12,56 @@ python3 -m http.server 8000   # then http://localhost:8000
 
 ## Practices
 
-| Practice | Tag | What it is | Length |
-|---|---|---|---|
-| **Turn the Tide** | Under the weather | Classic breath-sequence wave: nasal ladder, humming, three kapalabhati rounds with lengthening holds, cool-down | 15 min |
-| **Clear Nose** | Under the weather | Breathe light, McKeown's pinch-and-nod nose-unblocking exercise (kept to moderate air hunger), five hums | 8 min |
-| **Fire Wave** | Energy | Ujjayi warm-up, three short rounds of breath of fire sealed with full-lung holds and bandhas | 8 min |
-| **Hold Ladder** | Long holds | A freediver's dry CO₂ table: six holds of the same length, rests shrinking 1:30 → 0:15 | 12 min |
-| **Resonance** | Calm | Six light breaths a minute (4 in · 6 out), the best-studied calming practice | 9 min |
-| **Cyclic Sighing** | Calm | Double inhale, long mouth exhale, five minutes (Balban et al. 2023) | 6 min |
-| **Alternate Nostril** | Calm | Nadi shodhana, 4:4 then 4:8, with the nostril shown on every phase | 9 min |
-| **Window Seat** | On the move | Silent, seated practice for a headache on a plane or train: soften jaw/brow/shoulders, 4:6 breathing with journey cues, then five pauses: Plane 15 s on two-thirds-full lungs, Train growing 30 s → 1:00 comfortably full (or none) | 15–19 min |
-| **Wind Down** | Sleep | Lengthening exhales, four rounds of Weil's 4-7-8, then drift | 7 min |
+The library is a day arc: Morning, Before, After, Night, and Under the weather (`MOMENTS` in
+`js/flows/index.js`). Every practice has its own instructor and plays only that voice.
 
-Practices with holds offer **Gentle / Standard / Deeper**; Turn the Tide and Clear Nose also
-have **No holds** (no fast breathing, no retention). Tom announces what's coming ("Forty quick
-breaths", "Hold, lungs empty, for up to one minute", "Rest, forty-five seconds") but never
-counts every breath. **How much Tom says** is a setting: Quiet (instructions and counts), Guided
-(default: plus teacher's tips woven in), Full (plus the science). Long holds get spoken time markers,
-and Alternate Nostril pans the breath sound to the open side on headphones. He also adds a few teacher's cues (attention anchors, mind-wandering, a calm first
-breath after a hold). Each practice page has collapsible **Teacher's notes**: before you start,
-common slips with the cue that fixes them, what you might notice, going further, and when to
-skip (`js/flows/notes.js`), with a **Listen** button that plays Tom reading them plus the science
-(`js/flows/talk.js`), so the whole briefing works eyes-closed. *Breathe now* ends any hold and skips the rest of that retention block
-into normal breathing. Spoken science notes are off by default (Settings → Explanations); every
-practice has a *How it works* page with evidence labels and sources. The summary shows
-*guided* hold time, worked out from the timeline, not a measurement of your breath.
+| Practice | Moment | Coach | What it is | Length |
+|---|---|---|---|---|
+| **Reps** | Morning | Leo | Meditation: count out-breaths one to ten, start over when you drift. 3 / 5 / 10 min | 5 min |
+| **Box** | Before | Leo | The tactical breath (4 in · 8 out), then box breathing 4-4-4-4 → 5-5-5-5 (Gentle 3→4, Deeper 5→6, or No holds) | 7 min |
+| **Cool-down** | After | Mira | Legs up after training, 4:6 then 4:8 counted, two quiet minutes | 9 min |
+| **Land** | Night | Mira | Meditation: a body scan, feet to head, lying down. 3 / 5 / 10 min | 6 min |
+| **Turn the Tide** | Under the weather | Mira | Nasal ladder, three short hum sets spaced for the sinuses to refill, three kapalabhati rounds with quiet holds, cool-down | 16 min |
+| **Clear Nose** | Under the weather | Leo | Three hums, breathe light, three pinch-and-nod holds (moderate air hunger at most), three hums | 9 min |
+
+The scripts follow what the research on good guided-breathing coaches showed: say little, a label
+and then the instruction, near-silent holds with the coaching in the recovery, sensations named as
+allowed rather than promised, and one mechanism plus honest caveats for the science. **How much
+your coach says** is a setting: Quiet (instructions and counts), Guided (plus tips), Full (plus the
+science). Each practice page has **Teacher's notes** (`js/flows/notes.js`) with a **Listen** button
+that plays the coach reading them (`js/flows/talk.js`), plus a *How it works* page with evidence
+labels and sources. *Breathe now* ends any hold.
 
 ## How it's built
 
-- `js/flows/*.js`: each practice as data (talk, rest, paced breathing, holds) with its spoken
-  lines inline; `lib.js` has the shared lines, number words and hold helpers.
-- `js/engine.js`: compiles a practice into a timeline; maps time → orb, phase label, caption.
-- `js/audio.js`: decodes Tom's cues and the practice's music, synthesises breath/hum/bell
+- `js/flows/*.js`: each practice as data (talk, rest, paced breathing, holds) with its spoken lines
+  inline (`sit.js` Reps and Land, `train.js` Box and Cool-down, `weather.js` Turn the Tide and Clear
+  Nose); `lib.js` has number words and hold helpers.
+- `js/engine.js`: compiles a practice into a timeline; maps time → visual, phase label, caption.
+- `js/audio.js`: decodes the coach's cues and the practice's music, synthesises breath/hum/bell
   sounds, and mixes the whole session into **one WAV track** (keeps playing with the screen
   locked; the visuals follow its `currentTime`).
-- `js/contour.js`: the look and the session visual, *Contour*: nested contour lines, like a
-  topographic map, that widen on the in-breath and settle on the out-breath over two overlapping
-  washes of colour (a riso-style overprint, one ink pair per phase). Holds fill the rings from the
-  centre outward, hums send a ripple out. The same generator draws the art behind the library and
-  practice headers; `js/motifs.js` has the line drawings on the library tiles. Type: Cormorant
-  Garamond and Hanken Grotesk on warm graphite.
-- `js/bloom.js` (petals) and the original orb are still available (Settings → Visual).
+- `js/contour.js`: the look and the session visual, *Contour*; `js/motifs.js` has the tile drawings.
 - `js/app.js`: library, practice page, session, settings.
 
-## Voice cues (LuxTTS · tom)
+## Voices
+
+**Leo** and **Mira** are Gemini 3.8 designed voices: young, grounded coaches, light relaxed American
+English. Their descriptions, stored ids, delivery style and any clean-up filter are in
+`scripts/voices/gemini_voices.json` (Leo's has a light de-noise). Each records into its own pack,
+`audio/cues-leo/` and `audio/cues-mira/`.
 
 ```sh
-node scripts/export_cues.mjs          # collect every line, all practices × intensities → flow/cues.json
-export QWEN_TTS_API_KEY=…             # the gateway's GATEWAY_API_KEY
-python3 scripts/generate_cues.py      # render only new or changed lines into audio/cues/
-```
-
-The **Voice cues** GitHub workflow does both whenever `js/flows/**` changes (repository secret
-`QWEN_TTS_API_KEY` or `GATEWAY_API_KEY`) and commits the results. Lines without a recording
-fall back to the device's voice.
-
-### Gemini voice (preview)
-
-Turn the Tide is also recorded with **Gemini 3.8 Flash Lite TTS** (voice *Schedar*), in
-`audio/cues-gemini/`. The practice page shows a **Voice** switch wherever that pack covers
-every line the practice can speak, so voices never mix within a session.
-
-```sh
+node scripts/export_cues.mjs                 # every spoken line → flow/cues.json
 export GEMINI_API_KEY=…
-python3 scripts/generate_cues_gemini.py --audition Schedar,Algieba,Sulafat,Vindemiatrix --line welcome
-python3 scripts/generate_cues_gemini.py --flow tide --voice Schedar
+python3 scripts/generate_cues_gemini.py --flow box --voice leo --pack leo --model gemini-3.8-flash-lite-tts
+node scripts/check_timing.mjs                 # every practice, in its coach's pack
 ```
 
-On 3.8 the request text is read verbatim, so the delivery goes in `speech_metadata.style`
-("calm, warm, soft, unhurried"), short and the same for every line, with a fixed seed. Each
-clip is transcribed with `gemini-3.5-transcribe` and checked for exact words, a sane length
-and no long internal pauses; failures get one retake with a new seed. A practice costs a few
-cents; the TTS models are reportedly capped at about 100 requests a day, and the script
-resumes where it stopped.
-
-### Coach voice (preview, Qwen3-TTS on the Spark)
-
-Turn the Tide and Fire Wave, with their teacher's notes, are also recorded by **Coach**: a
-calm, dry, ex-military coach (not a yoga voice), designed with Gemini 3.8 voice design and
-cloned with Qwen3-TTS on the DGX Spark from `scripts/voices/coach.wav`. Where Coach covers
-a practice he is the default voice; the Voice switch lists every pack that covers it. Free,
-no quota: Turn the Tide (59 lines) records in about a minute.
-
-```sh
-ssh -N -L 8881:localhost:8881 spark &
-python3 scripts/generate_cues_spark.py --clone coach --from-file scripts/voices/coach.wav  # once per Spark
-python3 scripts/generate_cues_spark.py --flow tide          # or --only id1,id2 --force to retake lines
-node scripts/check_timing.mjs --pack qwen
-```
-
-Qwen reads like a lecturer, fast and with short gaps between sentences. So each sentence is recorded
-separately and joined with a pause (longer after a short label such as "Round one."; counts are
-recorded whole), and the clip is slowed afterwards (`--tempo 0.88`, pitch kept).
+The script records only new or changed lines, checks each clip's words with a transcription model,
+its length and its pauses, and retakes a failed clip once. Lines are written by hand and may carry
+Gemini voice tags placed by hand (`<sighs>`, `<chuckle>`); captions and on-device speech drop them
+(`plain()` in `js/engine.js`).
 
 ## Music
 
@@ -116,8 +74,8 @@ python3 scripts/add_music.py ~/Downloads/track.mp3 tide
 It moves the track into A major with the smallest pitch shift (the app's drone, bells and hum
 guide are in A), cuts it where the level matches the opening so the loop is seamless, converts
 to mono and updates `audio/music/manifest.json`.
-Slots: `tide` (calm and under-the-weather practices; added: *A-Frame Stillness*), `ember`
-(Fire Wave, Hold Ladder), `night` (Wind Down), `transit` (Window Seat; added: *Pink Noise Cocoon*). Tracks are mixed to mono, level-matched, looped with a 6 s crossfade
+Slots: `tide` (Cool-down, Land, Turn the Tide, Clear Nose; added: *A-Frame Stillness*) and `transit`
+(Reps, Box; added: *Pink Noise Cocoon*). Tracks are mixed to mono, level-matched, looped with a 6 s crossfade
 and ducked under the voice; without a track the app plays a soft drone.
 
 ## Safety

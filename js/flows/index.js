@@ -1,14 +1,21 @@
-// The practice library, in display order (grouped on screen by `tag`).
-import { tide } from './tide.js';
-import { clearNose } from './clear.js';
-import { fireWave, holdLadder } from './energy.js';
-import { resonance, sighing, balance } from './calm.js';
-import { windDown } from './sleep.js';
-import { windowSeat } from './travel.js';
+// The practice library, grouped on screen by moment of the day (`flow.moment`). Every
+// practice has its own instructor: Leo or Mira.
+import { reps, land } from './sit.js';
+import { box, coolDown } from './train.js';
+import { tide, clearNose } from './weather.js';
 import { NOTES } from './notes.js';
 
-export const FLOWS = [resonance, sighing, balance, fireWave, holdLadder, tide, clearNose, windowSeat, windDown];
+export const FLOWS = [reps, box, coolDown, land, tide, clearNose];
 for (const f of FLOWS) f.notes = NOTES[f.id];
+
+/** Shelf order and headers. */
+export const MOMENTS = [
+  { id: 'morning', title: 'Morning', sub: 'Before the phone. Wake the attention up.' },
+  { id: 'before', title: 'Before', sub: "Something's coming. Get level." },
+  { id: 'after', title: 'After', sub: 'Done training. Bring it down.' },
+  { id: 'night', title: 'Night', sub: 'Lights low. Land.' },
+  { id: 'anytime', title: 'Under the weather', sub: 'Scratchy throat, blocked nose.' },
+];
 
 export const INTENSITY = {
   none: { holdScale: 0, gentle: true, noHolds: true },

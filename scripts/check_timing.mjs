@@ -1,18 +1,22 @@
 #!/usr/bin/env node
-// Timing report with the recorded cue lengths: total per practice × intensity, any line
-// pushed late by the one before it, and any line still running when its segment ends.
-//   node scripts/check_timing.mjs [--pack gemini]   (another voice pack: only the practices it fully covers)
-import { readFileSync } from 'node:fs';
+// Timing report with the recorded cue lengths, each practice in its own instructor's pack:
+// total per practice × intensity × talk level, any unrecorded line, any line pushed late by
+// the one before it, and any line still running when its segment ends.
+//   node scripts/check_timing.mjs [--flow box]
+import { existsSync, readFileSync } from 'node:fs';
 import { FLOWS, INTENSITY, intensitiesOf } from '../js/flows/index.js';
 import { compile } from '../js/engine.js';
 
-const pack = process.argv.includes('--pack') ? process.argv[process.argv.indexOf('--pack') + 1] : 'tom';
-const man = JSON.parse(readFileSync(new URL(`../audio/${pack === 'tom' ? 'cues' : `cues-${pack}`}/manifest.json`, import.meta.url)));
-const durs = Object.fromEntries(Object.entries(man).map(([k, v]) => [k, v.duration]));
+const only = process.argv.includes('--flow') ? process.argv[process.argv.indexOf('--flow') + 1] : null;
+const pack = (voice) => {
+  const f = new URL(`../audio/cues-${voice}/manifest.json`, import.meta.url);
+  return existsSync(f) ? Object.fromEntries(Object.entries(JSON.parse(readFileSync(f))).map(([k, v]) => [k, v.duration])) : {};
+};
 const fmt = (s) => `${Math.floor(s / 60)}:${String(Math.round(s % 60)).padStart(2, '0')}`;
 let problems = 0;
 for (const flow of FLOWS) {
-  if (pack !== 'tom' && !intensitiesOf(flow).every((l) => compile(flow, durs, { ...INTENSITY[l], talk: 'full' }).voice.every((v) => durs[v.id]))) continue;
+  if (only && flow.id !== only) continue;
+  const durs = pack(flow.voice);
   for (const [level, talk] of intensitiesOf(flow).flatMap((l) => ['quiet', 'guided', 'full'].map((t) => [l, t]))) {
     const plan = compile(flow, durs, { ...INTENSITY[level], talk });
     const issues = [];

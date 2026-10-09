@@ -1,6 +1,6 @@
 // "Teacher's notes" as a listenable track: each practice's notes (before you start,
 // common slips, what you might notice, going further, when to skip) plus the science
-// lines from its session, read by Tom. Built as an ordinary practice of talk steps, so
+// lines from its session, read by its instructor. Built as an ordinary practice of talk steps, so
 // the same engine, recorder and mixer handle it.
 
 import { line } from './lib.js';
@@ -57,7 +57,7 @@ export function teacherTalk(flow) {
   const seen = new Set();
   const science = compile(flow, {}, { holdScale: 1, talk: 'full', ...(level === 'gentle' ? { holdScale: 0.6, gentle: true } : {}) })
     .voice.filter((v) => v.kind === 'science' && !seen.has(v.id) && seen.add(v.id))
-    .map((v) => ({ id: v.id, text: v.text, kind: 'science' }));
+    .map((v) => ({ id: v.id, text: v.tts, kind: 'science' }));
   if (science.length) {
     head('What the research says.');
     science.forEach((c) => add(c));

@@ -26,18 +26,16 @@ async function fetchJSON(url) {
   }
 }
 
-// Voice packs: Tom (LuxTTS, every line), plus previews recorded per practice: Gemini TTS and
-// a Qwen3-TTS voice clone on our own server.
-export const PACKS = { tom: 'audio/cues', gemini: 'audio/cues-gemini', qwen: 'audio/cues-qwen' };
+// Voice packs: one per instructor (Gemini TTS designed voices). A practice names its own (`flow.voice`).
+export const PACKS = { leo: 'audio/cues-leo', mira: 'audio/cues-mira' };
 
 let manifests = null;
-/** Cue manifests per voice pack (written by scripts/generate_cues*.py) and audio/music/manifest.json.
- *  `cues` is Tom's, kept for callers that only need estimated timings. */
+/** Cue manifests per voice pack (written by scripts/generate_cues_gemini.py) and audio/music/manifest.json. */
 export function loadManifests() {
   const names = Object.keys(PACKS);
   manifests ??= Promise.all([...names.map((n) => fetchJSON(`${PACKS[n]}/manifest.json`)), fetchJSON('audio/music/manifest.json')]).then((all) => {
     const packs = Object.fromEntries(names.map((n, i) => [n, all[i]]));
-    return { cues: packs.tom, packs, music: all.at(-1) };
+    return { packs, music: all.at(-1) };
   });
   return manifests;
 }
@@ -69,7 +67,7 @@ async function decodeUrl(url) {
 
 /** Decode the recorded lines among `ids`. Lines without a recording resolve to null and
  *  the app reads them with on-device speech, so a practice works before its cues exist. */
-export async function loadCues(ids, pack = 'tom') {
+export async function loadCues(ids, pack) {
   const { packs } = await loadManifests();
   const cues = packs[pack] || {};
   const out = {};

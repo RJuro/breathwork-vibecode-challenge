@@ -58,35 +58,8 @@ export const mmss = (s) => (s >= 60 ? `${Math.floor(s / 60)}:${String(s % 60).pa
 
 // Breath patterns
 export const PUMP = { inhale: 0.42, exhale: 0.58, level: 0.6, inLevel: 0.12 };
-export const HUM = { inhale: 4, exhale: 9, holdOut: 3, hum: true };
 
-// Lines several practices share.
-export const L = {
-  pumpLast: line('pump_last', 'Last few.'),
-  deepIn: line('deep_in', 'Now one deep breath in.'),
-  allOut: line('all_out', 'And all the way out.'),
-  release: line('release', 'And let it go. Breathe naturally.'),
-  bandha: line('bandha', 'Gently lift the pelvic floor, and bring the chin slightly down. Hold the breath as if it\'s resting, not trapped.', 'technique'),
-  bandhaShort: line('bandha_short', 'Root lock. Chin down. Stay soft.', 'technique'),
-  tenMore: say('Ten more seconds.'),
-  breatheNow: line('breathe_now_ok', "Hold only to the first strong urge. If it comes early, tap breathe now. There's nothing to prove.", 'technique'),
-};
-
-// The teacher's voice: short, invitational lines used sparingly across practices.
-// Describe, don't prescribe; comfort over depth; always a way out.
-export const T = {
-  eyes: line('t_eyes', 'Close your eyes, or let your gaze rest softly on the floor.'),
-  anchor: line('t_anchor', 'Notice where the breath is easiest to feel. Cool air in at the nostrils, slightly warmer air out.', 'technique'),
-  comfort: line('t_comfort', "Breathe easily and comfortably, not deeply. There's no need to try hard.", 'technique'),
-  wander: line('t_wander', "If your mind has wandered, that's what minds do. Noticing is the practice. Come back to the next breath."),
-  holdGuide: line('t_hold_guide', 'Let go whenever you need to. The timer is a guide, not a test.'),
-  firstBreath: line('t_first_breath', 'Keep that first breath calm. If it came as a gasp, make the next hold shorter.', 'technique'),
-  bellyOnly: line('t_belly_only', 'Face and shoulders still. Only the belly moves.', 'technique'),
-  slowerFine: line('t_slower_fine', 'Slower is fine. Rhythm matters more than speed.', 'technique'),
-  letGo: line('t_let_go', 'Let go of the pattern. Let the body breathe itself.'),
-  notice: line('t_notice', "Notice what's different, without needing anything to be different."),
-  carry: line('t_carry', 'Let some movement come back into the hands. Open your eyes when it feels right, and take some of this steadiness with you.'),
-};
+const tenMore = say('Ten more seconds.');
 
 /** A "Teacher's notes" block for a practice page: { before, mistakes: [[mistake, fix]], feel, progress, skip }. */
 export function notesHtml(n) {
@@ -102,17 +75,6 @@ export function notesHtml(n) {
     .join('');
 }
 
-/** Settle breath before an empty hold: deep in, all the way out. */
-export const settle = () => ({
-  pace: { inhale: 4, exhale: 6 },
-  count: 1,
-  style: 'slow',
-  cues: [
-    { at: 0, say: L.deepIn },
-    { at: 4, say: L.allOut },
-  ],
-});
-
 /** An empty-lung hold with its length announced, a "ten more seconds" call, and extra cues. */
 export function holdEmpty(seconds, cues = [], o = {}) {
   // "Up to", not a target: after fast breathing an empty hold is where oxygen drops fastest.
@@ -123,7 +85,7 @@ export function holdEmpty(seconds, cues = [], o = {}) {
     record: true,
     tick: seconds < 40,
     ...o,
-    cues: [{ at: 0.3, say: announce }, ...cues, ...milestones(seconds), ...(seconds >= 40 ? [{ fromEnd: 11, say: L.tenMore }] : [])],
+    cues: [{ at: 0.3, say: announce }, ...cues, ...milestones(seconds), ...(seconds >= 40 ? [{ fromEnd: 11, say: tenMore }] : [])],
   };
 }
 
@@ -131,14 +93,14 @@ export function holdEmpty(seconds, cues = [], o = {}) {
 export function holdFull(seconds, cues = [], o = {}) {
   return [
     {
-      pace: { inhale: 4 },
+      pace: { inhale: o.inhale ?? 4 },
       count: 1,
       style: 'slow',
       bell: 'low',
       group: o.group,
       cues: [{ at: 0, say: say(`Breathe in, all the way to the top, and hold. ${dur(seconds)[0].toUpperCase()}${dur(seconds).slice(1)}.`) }],
     },
-    { hold: 'full', seconds, tick: false, ...o, cues: [...cues, ...milestones(seconds), ...(seconds >= 40 ? [{ fromEnd: 11, say: L.tenMore }] : [])] },
+    { hold: 'full', seconds, tick: false, group: o.group, cues: [...cues, ...milestones(seconds), ...(seconds >= 40 ? [{ fromEnd: 11, say: tenMore }] : [])] },
   ];
 }
 

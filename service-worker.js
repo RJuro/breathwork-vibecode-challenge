@@ -1,5 +1,5 @@
 // Offline shell + cue cache. Bump VERSION when shipping changes.
-const VERSION = 'kumbha-v12';
+const VERSION = 'kumbha-v14';
 const SHELL = [
   './',
   'index.html',
@@ -13,12 +13,9 @@ const SHELL = [
   'js/audio.js',
   'js/flows/index.js',
   'js/flows/lib.js',
-  'js/flows/tide.js',
-  'js/flows/clear.js',
-  'js/flows/energy.js',
-  'js/flows/calm.js',
-  'js/flows/sleep.js',
-  'js/flows/travel.js',
+  'js/flows/train.js',
+  'js/flows/sit.js',
+  'js/flows/weather.js',
   'js/flows/notes.js',
   'js/flows/talk.js',
   'icons/icon.svg',

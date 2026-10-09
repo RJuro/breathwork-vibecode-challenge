@@ -9,6 +9,11 @@ practice can speak, so voices never mix within a session.
     python3 scripts/generate_cues_gemini.py --audition Schedar,Algieba,Sulafat,Vindemiatrix --line welcome
     python3 scripts/generate_cues_gemini.py --flow tide --voice Schedar
     python3 scripts/generate_cues_gemini.py --flow tide --voice Schedar --only hum_intro --force
+    python3 scripts/generate_cues_gemini.py --flow box --voice leo --pack leo --model gemini-3.8-flash-tts
+
+A --voice named in scripts/voices/gemini_voices.json is a designed voice: its stored id, language
+and style are used. Lines may carry Gemini 3.8 voice tags (<sigh>, <exhales>, <short pause>);
+the other voice packs and the captions strip them.
 
 Gemini 3.8 reads the request text verbatim, so delivery goes in speech_metadata.style (kept
 short and identical for every line; long direction makes the voice drift) and a fixed seed
@@ -35,8 +40,9 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 CUES = ROOT / "flow" / "cues.json"
 TOM = ROOT / "audio" / "cues" / "manifest.json"
-OUT = ROOT / "audio" / "cues-gemini"
+OUT = ROOT / "audio" / "cues-gemini"  # --pack NAME writes audio/cues-NAME instead
 MANIFEST = OUT / "manifest.json"
+DESIGNED = json.loads((ROOT / "scripts" / "voices" / "gemini_voices.json").read_text())
 API = "https://generativelanguage.googleapis.com/v1beta/models"
 KEY = os.environ.get("GEMINI_API_KEY", "")
 
@@ -52,6 +58,11 @@ SEED = 7
 
 def spoken(text):
     return re.sub(r"\s+", " ", text.replace("*", "")).strip()
+
+
+def plain(text):
+    """Without voice tags (<sigh>, <short pause>), for voices that would read them aloud."""
+    return spoken(re.sub(r"<[^>]+>", " ", text))
 
 
 def fingerprint(text, voice, model):
@@ -99,7 +110,9 @@ def call(model, body, timeout=120):
 def synth(text, voice, model, take=0):
     """One line -> (audio bytes, sample rate). 3.8 returns a WAV; older models raw PCM.
     The seed is fixed per take (same seed, same audio), so a retake must change it."""
-    cfg = {"responseModalities": ["AUDIO"], "seed": SEED + take, "speechConfig": {"voiceConfig": {"voice": voice}}}
+    d = DESIGNED.get(voice)
+    speech = {"voiceConfig": {"voice": d["id"] if d else voice}} | ({"languageCode": d["lang"]} if d else {})
+    cfg = {"responseModalities": ["AUDIO"], "seed": SEED + take, "speechConfig": speech}
     part = {"text": spoken(text), "speech_metadata": {"style": STYLE}}
     data = call(model, {"contents": [{"role": "user", "parts": [part]}], "generationConfig": cfg})
     cand = data["candidates"][0]
@@ -111,15 +124,16 @@ def synth(text, voice, model, take=0):
     return base64.b64decode(audio["data"]), rate
 
 
-def polish(audio: bytes, rate: int, dst: Path, tempo: float = 1.0):
+def polish(audio: bytes, rate: int, dst: Path, tempo: float = 1.0, pre: str = ""):
     """WAV or raw PCM -> trimmed, -19 LUFS, mono 24 kHz mp3 (same treatment as the Tom pack).
-    tempo < 1 slows the speech without changing its pitch."""
+    tempo < 1 slows the speech without changing its pitch; `pre` is a voice's own ffmpeg filter
+    (gemini_voices.json "filter"), run first."""
     src = [] if audio[:4] == b"RIFF" else ["-f", "s16le", "-ar", str(rate), "-ac", "1"]
     trim = ("silenceremove=start_periods=1:start_threshold=-50dB:start_silence=0.05,"
             "areverse,silenceremove=start_periods=1:start_threshold=-50dB:start_silence=0.15,areverse")
     subprocess.run([
         "ffmpeg", "-v", "error", "-y", *src, "-i", "pipe:0",
-        "-af", f"{trim},{f'atempo={tempo},' if tempo != 1 else ''}loudnorm=I=-19:TP=-2:LRA=7,afade=t=in:d=0.02",
+        "-af", f"{pre + ',' if pre else ''}{trim},{f'atempo={tempo},' if tempo != 1 else ''}loudnorm=I=-19:TP=-2:LRA=7,afade=t=in:d=0.02",
         "-ac", "1", "-ar", "24000", "-b:a", "64k", str(dst),
     ], input=audio, check=True)
 
@@ -144,6 +158,7 @@ def say_number(n):
 
 def words(s):
     """Lower-case words with digits spelled out, so '25 seconds' matches 'twenty-five seconds'."""
+    s = re.sub(r"<[^>]+>", " ", s)  # voice tags aren't words
     s = re.sub(r"\d+", lambda m: say_number(int(m.group())) if int(m.group()) < 1000 else m.group(), s.lower())
     return re.findall(r"[a-z0-9']+", s.replace("-", " "))
 
@@ -180,10 +195,11 @@ def check(path, cid, text, tom, args):
 
 
 def main():
-    global STYLE
+    global STYLE, OUT, MANIFEST
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--flow", help="practice id (see js/flows); records every line it can speak")
-    ap.add_argument("--voice", default="Schedar")
+    ap.add_argument("--voice", default="Schedar", help="a prebuilt voice, or a designed one from scripts/voices/gemini_voices.json")
+    ap.add_argument("--pack", default="gemini", help="writes audio/cues-PACK/")
     ap.add_argument("--model", default="gemini-3.8-flash-lite-tts")
     ap.add_argument("--transcriber", default="gemini-3.5-transcribe", help="'' to skip the word check")
     ap.add_argument("--style", help=f"delivery direction (default: {STYLE!r})")
@@ -196,8 +212,9 @@ def main():
     args = ap.parse_args()
     if not KEY:
         sys.exit("GEMINI_API_KEY is not set.")
-    if args.style:
-        STYLE = args.style
+    OUT, MANIFEST = ROOT / "audio" / f"cues-{args.pack}", ROOT / "audio" / f"cues-{args.pack}" / "manifest.json"
+    if args.style or args.voice in DESIGNED:
+        STYLE = args.style or DESIGNED[args.voice].get("style", STYLE)
     cues = json.loads(CUES.read_text())
     tom = json.loads(TOM.read_text()) if TOM.exists() else {}
 
@@ -207,7 +224,7 @@ def main():
         for voice in args.audition.split(","):
             pcm, rate = synth(cues[args.line]["text"], voice.strip(), args.model)
             dst = out / f"{args.line}-{voice.strip()}.mp3"
-            polish(pcm, rate, dst)
+            polish(pcm, rate, dst, pre=DESIGNED.get(voice.strip(), {}).get("filter", ""))
             print(f"  {voice}: {duration(dst)}s -> {dst}")
         report()
         return
@@ -242,7 +259,7 @@ def main():
                     print(f"  ✗ {cid}: {e}", file=sys.stderr)
                     continue
                 path = Path(tmp) / f"{cid}.{take}.mp3"
-                polish(pcm, rate, path)
+                polish(pcm, rate, path, pre=DESIGNED.get(args.voice, {}).get("filter", ""))
                 ok, score, dur, note = check(path, cid, text, tom, args)
                 if best is None or score > best[1]:
                     best = (path, score, dur, note, ok)

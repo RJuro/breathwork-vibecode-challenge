@@ -18,8 +18,8 @@ for (const flow of FLOWS) {
   for (const plan of plans) {
     for (const v of plan.voice) {
       const prev = lines[v.id];
-      if (prev && prev.text !== v.text) throw new Error(`line id "${v.id}" has two texts:\n  ${prev.text}\n  ${v.text}`);
-      lines[v.id] = { text: v.text, kind: v.kind };
+      if (prev && prev.text !== v.tts) throw new Error(`line id "${v.id}" has two texts:\n  ${prev.text}\n  ${v.tts}`);
+      lines[v.id] = { text: v.tts, kind: v.kind }; // with its voice tags (<sigh>); plain() strips them
     }
   }
 }
