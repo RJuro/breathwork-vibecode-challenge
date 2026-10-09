@@ -1,0 +1,890 @@
+{
+  "box_check": {
+    "text": "Check how your shoulders, jaw, hands and head feel compared with before. Any change gives you a benchmark.",
+    "kind": "guide"
+  },
+  "box_close": {
+    "text": "Practise the drill on calm days so you can use it when things get stressful.",
+    "kind": "guide"
+  },
+  "box_empty": {
+    "text": "Before we start, empty out. One long breath through the mouth. <exhales> Good.",
+    "kind": "guide"
+  },
+  "box_hold": {
+    "text": "Hold.",
+    "kind": "guide"
+  },
+  "box_in": {
+    "text": "Breathe in.",
+    "kind": "guide"
+  },
+  "box_layers": {
+    "text": "On the way in, fill from the bottom. Belly, then ribs, then chest.",
+    "kind": "technique"
+  },
+  "box_lever": {
+    "text": "A long breath out can slow your heart a little. That's why we're lengthening it.",
+    "kind": "science"
+  },
+  "box_out": {
+    "text": "Out.",
+    "kind": "guide"
+  },
+  "box_plan": {
+    "text": "Here's the plan. Two drills. First, a long breath out, twice as long as the breath in. Then the box: in, hold, out, hold, all the same length. Nothing to win here. Just get the rhythm.",
+    "kind": "guide"
+  },
+  "box_plan_none": {
+    "text": "Here's the plan. No holds today. One drill: breathe out twice as long as you breathe in. The long breath out does most of the work.",
+    "kind": "guide"
+  },
+  "box_release": {
+    "text": "Let it go. Breathe however you like.",
+    "kind": "guide"
+  },
+  "box_soft_hold": {
+    "text": "The holds are a pause, not a squeeze. Throat open, shoulders down.",
+    "kind": "technique"
+  },
+  "box_study": {
+    "text": "In a month-long study, five minutes of box breathing a day eased anxiety about as much as the other breathing methods tested. Slowing down may be part of why it helps.",
+    "kind": "science"
+  },
+  "box_t_exact": {
+    "text": "Don't chase the exact count. Just keep all four sides even.",
+    "kind": "tip"
+  },
+  "box_throat": {
+    "text": "On the way out, narrow the back of the throat a little, so the air leaves slow and even.",
+    "kind": "technique"
+  },
+  "box_welcome": {
+    "text": "Welcome. Sit tall, feet flat on the floor. Close your eyes, or rest them on a spot in front of you.",
+    "kind": "guide"
+  },
+  "box_where": {
+    "text": "Police and military teach this one. It's easy to count, and you can do it without anyone noticing.",
+    "kind": "guide"
+  },
+  "cd_check": {
+    "text": "Check your heart rate, breath and head. Notice if anything settled.",
+    "kind": "guide"
+  },
+  "cd_close": {
+    "text": "That's the cool-down. Water, food and sleep help you recover from training.",
+    "kind": "guide"
+  },
+  "cd_free": {
+    "text": "For the first minute, breathe however you need to. Mouth is fine. Let the panting settle on its own.",
+    "kind": "guide"
+  },
+  "cd_low": {
+    "text": "Breathe low. Let the belly rise. The chest can stay quiet.",
+    "kind": "technique"
+  },
+  "cd_nose": {
+    "text": "If it feels easy now, close your mouth. Nose in, nose out.",
+    "kind": "technique"
+  },
+  "cd_quiet": {
+    "text": "I'll stop talking now. Keep the long breath out, and follow the circle.",
+    "kind": "guide"
+  },
+  "cd_return": {
+    "text": "Let go of the count. Breathe on your own.",
+    "kind": "guide"
+  },
+  "cd_setup": {
+    "text": "Lie on your back and rest your calves on a chair or a bench, knees and hips bent at right angles. No chair? Just lie flat.",
+    "kind": "guide"
+  },
+  "cd_sigh": {
+    "text": "If a big sigh wants to come out, let it. <sighs> That's allowed.",
+    "kind": "guide"
+  },
+  "cd_study": {
+    "text": "In a small lab study, slow breathing after cycling brought heart rate down faster than just resting. A bigger trial found no boost to the training itself. So this is for coming down, not for gains.",
+    "kind": "science"
+  },
+  "cd_t_heavy": {
+    "text": "Let the floor take your weight. Heels heavy, hands open.",
+    "kind": "tip"
+  },
+  "cd_t_jaw": {
+    "text": "Unclench the jaw. Let the tongue rest.",
+    "kind": "tip"
+  },
+  "cd_up": {
+    "text": "Take your legs down, roll onto your side, and get up slowly. Blood pressure can dip after this.",
+    "kind": "guide"
+  },
+  "cd_welcome": {
+    "text": "Welcome. You've done the work. Now we bring it down.",
+    "kind": "guide"
+  },
+  "cd_why": {
+    "text": "A long breath out can slow your heart a little. It helps your body settle after training.",
+    "kind": "science"
+  },
+  "cl_close": {
+    "text": "Back to quiet breathing through your nose. Come back to this whenever it closes up again.",
+    "kind": "guide"
+  },
+  "cl_co2": {
+    "text": "As carbon dioxide builds a little, the nose often opens up for a while. A small study saw the same thing after exercise.",
+    "kind": "science"
+  },
+  "cl_cycle": {
+    "text": "If one side's blocked, that can be normal. Your nose naturally switches sides every few hours. It doesn't necessarily mean your cold's getting worse.",
+    "kind": "science"
+  },
+  "cl_gasp": {
+    "text": "If you gasped on that first breath, you held too long. Let go sooner next time.",
+    "kind": "technique"
+  },
+  "cl_how": {
+    "text": "Here's the drill. Small breath in, small breath out. Then pinch your nose and gently nod your head. When you really need to breathe, let go, and breathe in through your nose, gently.",
+    "kind": "technique"
+  },
+  "cl_hum_again": {
+    "text": "Three more hums to finish. The sinuses have had time to fill up again.",
+    "kind": "guide"
+  },
+  "cl_hum_how": {
+    "text": "We start with three hums. Breathe in through the nose, then hum all the way out with your lips closed.",
+    "kind": "technique"
+  },
+  "cl_light": {
+    "text": "Now breathe light. Smaller, quieter breaths than you'd like. A little air hunger, not a lot.",
+    "kind": "technique"
+  },
+  "cl_quiet": {
+    "text": "Now just quiet breathing through the nose for a minute. Small and slow.",
+    "kind": "guide"
+  },
+  "cl_release": {
+    "text": "Let go. Breathe in through your nose, nice and gentle. No big breath.",
+    "kind": "guide"
+  },
+  "cl_silly": {
+    "text": "Yes, you'll look a bit silly. <chuckle> Nobody's watching.",
+    "kind": "guide"
+  },
+  "cl_t_first": {
+    "text": "Watch the first breath after the hold. Gentle, through the nose. No gulping.",
+    "kind": "tip"
+  },
+  "cl_temp": {
+    "text": "The relief often wears off after a while. That's fine. Do it again later, rather than holding longer now.",
+    "kind": "guide"
+  },
+  "cl_welcome": {
+    "text": "Blocked nose? Let's get it open. Sit tall and breathe through your nose, or through whichever side is more open. If it's completely blocked, sip a little air through the corner of your mouth.",
+    "kind": "guide"
+  },
+  "land_back": {
+    "text": "Start to come back. Wiggle your fingers and your toes.",
+    "kind": "guide"
+  },
+  "land_belly": {
+    "text": "Your belly. Let it rise and fall on its own. You don't have to help.",
+    "kind": "guide"
+  },
+  "land_chest": {
+    "text": "Your chest and upper back. Notice the breath moving there.",
+    "kind": "guide"
+  },
+  "land_close": {
+    "text": "If it's bedtime, you can just stay here. If not, roll onto your side first, and take your time getting up.",
+    "kind": "guide"
+  },
+  "land_face": {
+    "text": "Your face. Eyes, forehead, back of your head. Notice any heaviness against the floor.",
+    "kind": "guide"
+  },
+  "land_feet": {
+    "text": "Start with your feet. Notice your heels on the floor, your soles and toes. You might feel warmth, cold, tingling, or nothing. That's fine.",
+    "kind": "guide"
+  },
+  "land_hands": {
+    "text": "Your hands. Fingertips, palms, the backs of your hands. Then up your arms to your shoulders.",
+    "kind": "guide"
+  },
+  "land_hips": {
+    "text": "Now your hips and lower back. Feel where you meet the floor.",
+    "kind": "guide"
+  },
+  "land_legs": {
+    "text": "Move up into your calves and knees, then your thighs. Notice whether your legs feel heavy.",
+    "kind": "guide"
+  },
+  "land_neck": {
+    "text": "Your neck and jaw. If your jaw feels tense, let it loosen a little.",
+    "kind": "guide"
+  },
+  "land_plan": {
+    "text": "We're going to move your attention slowly through your body, from your feet up to your head. Nothing to fix. You don't even have to relax. Just notice what's there.",
+    "kind": "guide"
+  },
+  "land_science": {
+    "text": "Body scans are a core part of most mindfulness programs. In trials, those programs help with stress and sleep. The benefits are small, but consistent.",
+    "kind": "science"
+  },
+  "land_sigh": {
+    "text": "Start with one big sigh. In through the nose, and let it all go. <sighs>",
+    "kind": "guide"
+  },
+  "land_t_wander": {
+    "text": "If your mind wandered off, that's normal. Pick up wherever you left off.",
+    "kind": "tip"
+  },
+  "land_welcome": {
+    "text": "Hey. Lie down on your back, arms by your sides. Palms up, if that feels okay.",
+    "kind": "guide"
+  },
+  "land_whole": {
+    "text": "Now the whole body at once, lying here, breathing. Stay with that for a while.",
+    "kind": "guide"
+  },
+  "n_breathe_in_all_the_way_to_the_top_and_hold_thirty_seconds": {
+    "text": "Breathe in, all the way to the top, and hold. Thirty seconds.",
+    "kind": "count"
+  },
+  "n_breathe_in_all_the_way_to_the_top_and_hold_twenty_five_secon": {
+    "text": "Breathe in, all the way to the top, and hold. Twenty-five seconds.",
+    "kind": "count"
+  },
+  "n_breathe_in_all_the_way_to_the_top_and_hold_twenty_seconds": {
+    "text": "Breathe in, all the way to the top, and hold. Twenty seconds.",
+    "kind": "count"
+  },
+  "n_drill_one_in_through_the_nose_for_four_out_for_eight_six_bre": {
+    "text": "Drill one. In through the nose for four, out for eight. Six breaths.",
+    "kind": "count"
+  },
+  "n_drill_two_the_box_in_hold_out_hold_five_counts_each_side": {
+    "text": "Drill two. The box. In, hold, out, hold. Five counts each side.",
+    "kind": "count"
+  },
+  "n_drill_two_the_box_in_hold_out_hold_four_counts_each_side": {
+    "text": "Drill two. The box. In, hold, out, hold. Four counts each side.",
+    "kind": "count"
+  },
+  "n_drill_two_the_box_in_hold_out_hold_three_counts_each_side": {
+    "text": "Drill two. The box. In, hold, out, hold. Three counts each side.",
+    "kind": "count"
+  },
+  "n_five_in_five_out": {
+    "text": "Five in, five out.",
+    "kind": "count"
+  },
+  "n_forty_five_quick_breaths_go": {
+    "text": "Forty-five quick breaths. Go.",
+    "kind": "count"
+  },
+  "n_forty_quick_breaths_go": {
+    "text": "Forty quick breaths. Go.",
+    "kind": "count"
+  },
+  "n_halfway": {
+    "text": "Halfway.",
+    "kind": "count"
+  },
+  "n_hold_lungs_empty_for_up_to_forty_five_seconds": {
+    "text": "Hold, lungs empty, for up to forty-five seconds.",
+    "kind": "count"
+  },
+  "n_hold_lungs_empty_for_up_to_one_minute": {
+    "text": "Hold, lungs empty, for up to one minute.",
+    "kind": "count"
+  },
+  "n_hold_lungs_empty_for_up_to_one_minute_fifteen": {
+    "text": "Hold, lungs empty, for up to one minute fifteen.",
+    "kind": "count"
+  },
+  "n_hold_lungs_empty_for_up_to_one_minute_forty": {
+    "text": "Hold, lungs empty, for up to one minute forty.",
+    "kind": "count"
+  },
+  "n_hold_lungs_empty_for_up_to_one_minute_twenty": {
+    "text": "Hold, lungs empty, for up to one minute twenty.",
+    "kind": "count"
+  },
+  "n_hold_lungs_empty_for_up_to_thirty_five_seconds": {
+    "text": "Hold, lungs empty, for up to thirty-five seconds.",
+    "kind": "count"
+  },
+  "n_hold_lungs_empty_for_up_to_twenty_five_seconds": {
+    "text": "Hold, lungs empty, for up to twenty-five seconds.",
+    "kind": "count"
+  },
+  "n_in_through_the_nose_for_four_out_through_the_mouth_for_six_s": {
+    "text": "In through the nose for four, out through the mouth for six. Six breaths.",
+    "kind": "count"
+  },
+  "n_last_few": {
+    "text": "Last few.",
+    "kind": "count"
+  },
+  "n_last_one": {
+    "text": "Last one.",
+    "kind": "count"
+  },
+  "n_last_round_same_again": {
+    "text": "Last round. Same again.",
+    "kind": "count"
+  },
+  "n_now_cool_down_in_for_four_out_for_eight_five_breaths": {
+    "text": "Now cool down. In for four, out for eight. Five breaths.",
+    "kind": "count"
+  },
+  "n_now_five_each_side_same_shape_a_little_longer": {
+    "text": "Now five each side. Same shape, a little longer.",
+    "kind": "count"
+  },
+  "n_now_four_each_side_same_shape_a_little_longer": {
+    "text": "Now four each side. Same shape, a little longer.",
+    "kind": "count"
+  },
+  "n_now_six_each_side_same_shape_a_little_longer": {
+    "text": "Now six each side. Same shape, a little longer.",
+    "kind": "count"
+  },
+  "n_now_stretch_the_breath_out_four_in_eight_out": {
+    "text": "Now stretch the breath out. Four in, eight out.",
+    "kind": "count"
+  },
+  "n_one_minute": {
+    "text": "One minute.",
+    "kind": "count"
+  },
+  "n_one_more_minute": {
+    "text": "One more minute.",
+    "kind": "count"
+  },
+  "n_pinch_and_nod": {
+    "text": "Pinch, and nod.",
+    "kind": "count"
+  },
+  "n_pinch_and_nod_let_go_at_the_first_clear_urge": {
+    "text": "Pinch, and nod. Let go at the first clear urge.",
+    "kind": "count"
+  },
+  "n_round_one_five_slow_breaths_then_rest": {
+    "text": "Round one. Five slow breaths, then rest.",
+    "kind": "count"
+  },
+  "n_round_one_small_breath_in_small_breath_out": {
+    "text": "Round one. Small breath in, small breath out.",
+    "kind": "count"
+  },
+  "n_round_three_five_slow_breaths_then_rest": {
+    "text": "Round three. Five slow breaths, then rest.",
+    "kind": "count"
+  },
+  "n_round_two_five_slow_breaths_then_rest": {
+    "text": "Round two. Five slow breaths, then rest.",
+    "kind": "count"
+  },
+  "n_round_two_small_breath_in_small_breath_out_pinch_and_nod_unt": {
+    "text": "Round two. Small breath in, small breath out. Pinch and nod, until moderate air hunger.",
+    "kind": "count"
+  },
+  "n_six_in_six_out": {
+    "text": "Six in, six out.",
+    "kind": "count"
+  },
+  "n_stay_with_it_ten_more": {
+    "text": "Stay with it. Ten more.",
+    "kind": "count"
+  },
+  "n_ten_more_seconds": {
+    "text": "Ten more seconds.",
+    "kind": "count"
+  },
+  "n_thirty_quick_breaths_go": {
+    "text": "Thirty quick breaths. Go.",
+    "kind": "count"
+  },
+  "n_thirty_seconds": {
+    "text": "Thirty seconds.",
+    "kind": "count"
+  },
+  "n_three_hums": {
+    "text": "Three hums.",
+    "kind": "count"
+  },
+  "n_two_more": {
+    "text": "Two more.",
+    "kind": "count"
+  },
+  "nt_a_racing_heart_jerky_breathing_or_taking_19qov41": {
+    "text": "A racing heart, jerky breathing, or taking bigger breaths afterwards means the hold was too long.",
+    "kind": "tip"
+  },
+  "nt_a_slower_pulse_and_warm_hands_are_common_robtqq": {
+    "text": "A slower pulse and warm hands are common.",
+    "kind": "tip"
+  },
+  "nt_a_warm_buzz_in_the_face_while_humming_is_1vxt0r4": {
+    "text": "A warm buzz in the face while humming is normal.",
+    "kind": "tip"
+  },
+  "nt_a_yawn_or_two_is_normal_jqadn7": {
+    "text": "A yawn or two is normal.",
+    "kind": "tip"
+  },
+  "nt_about_eight_minutes_stay_longer_if_you_h_1yutxfe": {
+    "text": "About eight minutes. Stay longer if you have the time.",
+    "kind": "tip"
+  },
+  "nt_after_training_it_works_well_straight_af_1af709r": {
+    "text": "After training, it works well straight after the Cool-down.",
+    "kind": "tip"
+  },
+  "nt_annoyed_at_losing_count_the_exercise_is__1175vcb": {
+    "text": "Annoyed at losing count? The exercise is to notice, then go back to one.",
+    "kind": "tip"
+  },
+  "nt_at_night_start_it_in_bed_and_put_the_pho_1n0icix": {
+    "text": "At night, start it in bed and put the phone face down.",
+    "kind": "tip"
+  },
+  "nt_before_you_start_md11ht": {
+    "text": "Before you start.",
+    "kind": "guide"
+  },
+  "nt_best_first_thing_before_the_phone_y5kq8t": {
+    "text": "Best first thing, before the phone.",
+    "kind": "tip"
+  },
+  "nt_between_hard_sets_use_the_first_part_on__15yt918": {
+    "text": "Between hard sets, use the first part on its own: long breaths out, hands on your knees.",
+    "kind": "tip"
+  },
+  "nt_big_forced_in_breaths_breathe_in_with_no_1e45l5e": {
+    "text": "Big, forced in-breaths? Breathe in with no more effort than at rest.",
+    "kind": "tip"
+  },
+  "nt_breathe_through_the_more_open_side_or_si_1n8sgny": {
+    "text": "Breathe through the more open side, or sip through the corner of your mouth if fully blocked.",
+    "kind": "tip"
+  },
+  "nt_clamping_the_throat_in_the_holds_a_hold__1paj466": {
+    "text": "Clamping the throat in the holds? A hold is a pause. Throat open, shoulders loose.",
+    "kind": "tip"
+  },
+  "nt_common_slips_and_what_helps_14fhf2u": {
+    "text": "Common slips, and what helps.",
+    "kind": "guide"
+  },
+  "nt_controlling_the_breath_to_make_counting__1u8qbsx": {
+    "text": "Controlling the breath to make counting easier? Let it happen naturally. You're only counting.",
+    "kind": "tip"
+  },
+  "nt_counting_in_breaths_and_out_breaths_only_1i8lw9a": {
+    "text": "Counting in-breaths and out-breaths? Only the out-breaths. One count per breath.",
+    "kind": "tip"
+  },
+  "nt_eyes_closed_or_resting_on_a_spot_on_the__1py7yds": {
+    "text": "Eyes closed, or resting on a spot on the floor.",
+    "kind": "tip"
+  },
+  "nt_falling_asleep_is_fine_at_night_in_the_d_56oi1p": {
+    "text": "Falling asleep is fine at night. In the daytime, sit up a little if you keep drifting off.",
+    "kind": "tip"
+  },
+  "nt_fever_chest_symptoms_breathlessness_preg_icgdb": {
+    "text": "Fever, chest symptoms, breathlessness, pregnancy, high blood pressure, or feeling faint: choose No holds.",
+    "kind": "tip"
+  },
+  "nt_fever_chest_symptoms_pregnancy_epilepsy__168seus": {
+    "text": "Fever, chest symptoms, pregnancy, epilepsy, heart disease or high blood pressure: choose No holds, or a calm practice.",
+    "kind": "tip"
+  },
+  "nt_forcing_the_nose_too_early_the_mouth_is__1yfun9x": {
+    "text": "Forcing the nose too early? The mouth is fine at first. Move to the nose as the breath settles.",
+    "kind": "tip"
+  },
+  "nt_gasping_afterwards_keep_the_first_breath_v2kicl": {
+    "text": "Gasping afterwards? Keep the first breath gentle, through your nose. A gasp means the hold was too long.",
+    "kind": "tip"
+  },
+  "nt_going_further_1ofsqcn": {
+    "text": "Going further.",
+    "kind": "guide"
+  },
+  "nt_gulping_the_breath_in_fill_smoothly_from_y6nggh": {
+    "text": "Gulping the breath in? Fill smoothly from the belly up. Slow down without taking in more air.",
+    "kind": "tip"
+  },
+  "nt_heart_rate_dropping_warm_hands_and_heavy_es5q4j": {
+    "text": "Heart rate dropping, warm hands and heavy legs are common.",
+    "kind": "tip"
+  },
+  "nt_holding_after_a_big_breath_in_hold_after_1ln4nbe": {
+    "text": "Holding after a big breath in? Hold after a small breath out.",
+    "kind": "tip"
+  },
+  "nt_humming_loudly_with_a_tight_jaw_keep_the_9cobsg": {
+    "text": "Humming loudly with a tight jaw? Keep the hum low and quiet, molars apart, lips touching lightly.",
+    "kind": "tip"
+  },
+  "nt_if_attention_on_the_body_brings_up_pain__1ss7xj1": {
+    "text": "If attention on the body brings up pain or distress, open your eyes and put your attention on sounds instead.",
+    "kind": "tip"
+  },
+  "nt_if_holding_your_breath_makes_you_anxious_1yg2iu2": {
+    "text": "If holding your breath makes you anxious, or you are pregnant, choose No holds. The long breath out does most of the work.",
+    "kind": "tip"
+  },
+  "nt_if_lying_with_your_legs_up_is_uncomforta_r22nhb": {
+    "text": "If lying with your legs up is uncomfortable, or you have reflux, lie flat or sit back in a chair.",
+    "kind": "tip"
+  },
+  "nt_if_sitting_with_your_thoughts_feels_over_gode1k": {
+    "text": "If sitting with your thoughts feels overwhelming today, open your eyes and count with them open, or come back another day.",
+    "kind": "tip"
+  },
+  "nt_if_you_have_chest_pain_or_breathlessness_hkgfyg": {
+    "text": "If you have chest pain, or breathlessness that doesn't settle, stop and get medical help.",
+    "kind": "tip"
+  },
+  "nt_in_through_the_nose_the_long_breath_out__1j94yvh": {
+    "text": "In through the nose. The long breath out can leave through the nose or slightly parted lips.",
+    "kind": "tip"
+  },
+  "nt_jumping_straight_up_roll_onto_your_side__1mofhti": {
+    "text": "Jumping straight up? Roll onto your side first, then get up slowly.",
+    "kind": "tip"
+  },
+  "nt_kapalabhati_from_the_chest_snap_the_lowe_xopbci": {
+    "text": "Kapalabhati from the chest? Snap the lower belly in; let the in-breath happen.",
+    "kind": "tip"
+  },
+  "nt_keep_the_holds_comfortable_deeper_is_for_hmp3on": {
+    "text": "Keep the holds comfortable. Deeper is for people who already practise breath holds.",
+    "kind": "tip"
+  },
+  "nt_lie_on_your_back_arms_by_your_sides_use__1j5n1fh": {
+    "text": "Lie on your back, arms by your sides. Use a pillow under your knees if that helps your back.",
+    "kind": "tip"
+  },
+  "nt_lightheaded_or_tingling_make_the_breaths_wyh3a7": {
+    "text": "Lightheaded or tingling? Make the breaths smaller, or choose No holds.",
+    "kind": "tip"
+  },
+  "nt_make_it_the_last_thing_in_every_session__fat8l3": {
+    "text": "Make it the last thing in every session, not only the hard ones.",
+    "kind": "tip"
+  },
+  "nt_many_people_lose_count_within_the_first__1qov1qz": {
+    "text": "Many people lose count within the first minute. That is normal.",
+    "kind": "tip"
+  },
+  "nt_on_your_back_calves_on_a_chair_or_bench__1uoxhol": {
+    "text": "On your back, calves on a chair or bench, hips and knees at about ninety degrees. Or just lie flat.",
+    "kind": "tip"
+  },
+  "nt_practise_five_minutes_a_day_when_things__jcc5uf": {
+    "text": "Practise five minutes a day when things are calm, so it becomes automatic under pressure.",
+    "kind": "tip"
+  },
+  "nt_pushing_the_counts_if_a_side_feels_like__1u0ujeu": {
+    "text": "Pushing the counts? If a side feels like work, go one level gentler.",
+    "kind": "tip"
+  },
+  "nt_pushing_to_strong_air_hunger_with_a_cold_wxlgzx": {
+    "text": "Pushing to strong air hunger? With a cold, moderate is the limit.",
+    "kind": "tip"
+  },
+  "nt_repeat_whenever_you_need_it_rather_than__6cshdj": {
+    "text": "Repeat whenever you need it, rather than holding longer.",
+    "kind": "tip"
+  },
+  "nt_restarting_from_the_feet_after_drifting__bwb1ny": {
+    "text": "Restarting from the feet after drifting? Pick up wherever you left off.",
+    "kind": "tip"
+  },
+  "nt_sit_or_lie_down_kapalabhati_works_best_o_65bf8k": {
+    "text": "Sit or lie down. Kapalabhati works best on an empty stomach.",
+    "kind": "tip"
+  },
+  "nt_sit_tall_with_your_feet_flat_standing_st_7giziu": {
+    "text": "Sit tall with your feet flat. Standing still works too. Never while driving.",
+    "kind": "tip"
+  },
+  "nt_sit_up_comfortable_but_awake_a_chair_the_18xk1bt": {
+    "text": "Sit up, comfortable but awake. A chair, the bed's edge, or the floor works.",
+    "kind": "tip"
+  },
+  "nt_sit_upright_not_straight_after_a_meal_1gi8ibf": {
+    "text": "Sit upright, not straight after a meal.",
+    "kind": "tip"
+  },
+  "nt_skip_it_or_go_gentle_if_1qua4zg": {
+    "text": "Skip it, or go gentle, if…",
+    "kind": "guide"
+  },
+  "nt_some_days_your_head_s_busy_some_days_it__1oco1rn": {
+    "text": "Some days your head's busy, some days it's quiet. Either is fine.",
+    "kind": "tip"
+  },
+  "nt_start_straight_after_training_once_you_c_1haiq8j": {
+    "text": "Start straight after training, once you can talk in full sentences.",
+    "kind": "tip"
+  },
+  "nt_start_with_three_minutes_for_a_week_then_368ubn": {
+    "text": "Start with three minutes for a week, then five. Ten when five feels short.",
+    "kind": "tip"
+  },
+  "nt_stay_sitting_or_lying_for_a_minute_after_8e14h0": {
+    "text": "Stay sitting or lying for a minute after the last hold. Standing up straight away can make you faint.",
+    "kind": "tip"
+  },
+  "nt_straining_in_the_holds_keep_the_hold_eas_2kadoi": {
+    "text": "Straining in the holds? Keep the hold easy and your throat soft.",
+    "kind": "tip"
+  },
+  "nt_taking_big_breaths_to_slow_down_make_the_wgkd15": {
+    "text": "Taking big breaths to slow down? Make them slower and smaller. Keep the breath out long, not loud.",
+    "kind": "tip"
+  },
+  "nt_teacher_s_notes_for_box_19b6nj6": {
+    "text": "Teacher's notes for Box.",
+    "kind": "guide"
+  },
+  "nt_teacher_s_notes_for_clear_nose_1t32ggl": {
+    "text": "Teacher's notes for Clear Nose.",
+    "kind": "guide"
+  },
+  "nt_teacher_s_notes_for_cool_down_1rliagb": {
+    "text": "Teacher's notes for Cool-down.",
+    "kind": "guide"
+  },
+  "nt_teacher_s_notes_for_land_3shmig": {
+    "text": "Teacher's notes for Land.",
+    "kind": "guide"
+  },
+  "nt_teacher_s_notes_for_reps_3wt9v7": {
+    "text": "Teacher's notes for Reps.",
+    "kind": "guide"
+  },
+  "nt_teacher_s_notes_for_turn_the_tide_z3jop": {
+    "text": "Teacher's notes for Turn the Tide.",
+    "kind": "guide"
+  },
+  "nt_that_s_everything_enjoy_the_practice_1tk5o0y": {
+    "text": "That's everything. Enjoy the practice.",
+    "kind": "guide"
+  },
+  "nt_the_holds_are_optional_choose_no_holds_o_y8gayu": {
+    "text": "The holds are optional. Choose No holds once you're actually sick, rather than just starting to feel it.",
+    "kind": "tip"
+  },
+  "nt_the_nose_often_opens_for_a_few_minutes_t_16etayy": {
+    "text": "The nose often opens for a few minutes, then closes again. That is expected.",
+    "kind": "tip"
+  },
+  "nt_tingling_and_lightness_after_kapalabhati_1kz9oa9": {
+    "text": "Tingling and lightness after kapalabhati are common. Dizziness means stop and breathe.",
+    "kind": "tip"
+  },
+  "nt_tingling_or_warmth_where_you_put_your_at_1y2b20u": {
+    "text": "Tingling or warmth where you put your attention is common.",
+    "kind": "tip"
+  },
+  "nt_try_the_ten_minute_version_on_a_slow_eve_cd2q5q": {
+    "text": "Try the ten-minute version on a slow evening.",
+    "kind": "tip"
+  },
+  "nt_trying_to_relax_each_part_just_notice_it_10dilz9": {
+    "text": "Trying to relax each part? Just notice it. Relaxing is optional.",
+    "kind": "tip"
+  },
+  "nt_use_the_four_in_eight_out_breath_on_its__sab5iv": {
+    "text": "Use the four-in, eight-out breath on its own before a hard call, a meeting or a start line.",
+    "kind": "tip"
+  },
+  "nt_waiting_for_a_special_feeling_notice_if__yh7jru": {
+    "text": "Waiting for a special feeling? Notice if there's no sensation, too.",
+    "kind": "tip"
+  },
+  "nt_what_the_research_says_156xzrp": {
+    "text": "What the research says.",
+    "kind": "guide"
+  },
+  "nt_what_you_might_notice_1kr4ekf": {
+    "text": "What you might notice.",
+    "kind": "guide"
+  },
+  "nt_when_five_counts_a_side_is_easy_stick_wi_7qgg0v": {
+    "text": "When five counts a side is easy, stick with it longer before increasing. Six a side is plenty.",
+    "kind": "tip"
+  },
+  "reps_breath": {
+    "text": "Don't change your breathing. Let it do its thing, and just count it.",
+    "kind": "technique"
+  },
+  "reps_check": {
+    "text": "Notice how your head feels now, compared to when you sat down. It might be busy, clear, or somewhere in between. Any of that's fine.",
+    "kind": "guide"
+  },
+  "reps_close": {
+    "text": "Open your eyes. Go do the first thing on your list.",
+    "kind": "guide"
+  },
+  "reps_drift": {
+    "text": "If you just realised you were somewhere else, good. You caught it. Back to one.",
+    "kind": "guide"
+  },
+  "reps_go": {
+    "text": "Next breath out, that's one.",
+    "kind": "guide"
+  },
+  "reps_lost": {
+    "text": "Got to fifteen? <chuckle> Happens to everyone. Back to one.",
+    "kind": "guide"
+  },
+  "reps_plan": {
+    "text": "Here's the drill. Count your breaths out, one to ten, then start again at one. At some point you'll lose count. Everybody does. When you notice, go back to one. Every time you catch it, that's a rep.",
+    "kind": "guide"
+  },
+  "reps_release": {
+    "text": "Okay. Let the counting go.",
+    "kind": "guide"
+  },
+  "reps_t_quiet": {
+    "text": "Keep the count quiet. Like a whisper in your head.",
+    "kind": "tip"
+  },
+  "reps_welcome": {
+    "text": "Morning. Sit up, comfortable but awake. Hands on your thighs, and close your eyes.",
+    "kind": "guide"
+  },
+  "reps_why": {
+    "text": "Researchers use this exact task, counting breaths to ten, to measure attention. And people get better at it with practice.",
+    "kind": "science"
+  },
+  "tw_all_out": {
+    "text": "And all the way out.",
+    "kind": "guide"
+  },
+  "tw_checkin": {
+    "text": "Let the breath go. Notice how you feel right now.",
+    "kind": "guide"
+  },
+  "tw_close": {
+    "text": "That's it for today. Keep warm, have something hot to drink, and get to bed early. If a fever turns up, skip the rounds and just rest.",
+    "kind": "guide"
+  },
+  "tw_co2": {
+    "text": "Quick note. Breathing fast doesn't add much oxygen. Your blood's already nearly full of it. Fast breathing lowers carbon dioxide. That can make you feel tingly or light and make the hold feel easier. The urge to breathe comes mainly from carbon dioxide building back up, not from oxygen running low. That warning can come late. That's why we only do this sitting or lying down.",
+    "kind": "science"
+  },
+  "tw_deep_in": {
+    "text": "Now one deep breath in.",
+    "kind": "guide"
+  },
+  "tw_first": {
+    "text": "Keep the first breath after a hold calm. If you gasped, hold a bit less next time.",
+    "kind": "technique"
+  },
+  "tw_gentle": {
+    "text": "Five slow, full breaths through the nose. Then a soft hold, with your lungs empty.",
+    "kind": "guide"
+  },
+  "tw_hold_ok": {
+    "text": "Let go at the first strong urge. You can tap Breathe now whenever you want.",
+    "kind": "guide"
+  },
+  "tw_hum_again": {
+    "text": "Time for three more hums. The sinuses have had time to fill up again.",
+    "kind": "guide"
+  },
+  "tw_hum_how": {
+    "text": "Now some humming. Breathe in through your nose, then hum the whole way out with your lips closed. Keep it low, with your teeth a little apart. You might feel a buzz in your face.",
+    "kind": "technique"
+  },
+  "tw_hum_last": {
+    "text": "Three last hums. Long and low.",
+    "kind": "guide"
+  },
+  "tw_hum_why": {
+    "text": "Humming vibrates the air in your sinuses, pushing nitric oxide into your nose. One study measured about fifteen times more than during a normal breath out. The first hum releases the most. It takes about three minutes for the sinuses to fill up again, so we use small sets and space them out.",
+    "kind": "science"
+  },
+  "tw_kox": {
+    "text": "In a 2014 study, a group of young men in the Netherlands trained for ten days in a method like this: fast breathing, long holds, cold and meditation. They then got an injection of a toxin that causes flu-like symptoms for a few hours. The trained group had a burst of adrenaline, less inflammation, and felt less sick. But the study was small, they were healthy, and the toxin wasn't a virus. This doesn't cure a cold. It suggests breathing can affect the immune response.",
+    "kind": "science"
+  },
+  "tw_ladder": {
+    "text": "Let's stretch the breath out a little at a time. In for four, out for four. Just follow the circle.",
+    "kind": "guide"
+  },
+  "tw_lock": {
+    "text": "Gently lift your pelvic floor and lower your chin a little. Keep it easy, without straining.",
+    "kind": "technique"
+  },
+  "tw_lock_short": {
+    "text": "Same lock. Chin down, stay soft.",
+    "kind": "technique"
+  },
+  "tw_nh": {
+    "text": "No hold this time. Just breathe easily, and see how you feel.",
+    "kind": "guide"
+  },
+  "tw_nose": {
+    "text": "We'll breathe through the nose the whole time. Slow and quiet, no effort.",
+    "kind": "guide"
+  },
+  "tw_nose_why": {
+    "text": "Your nose warms and moistens the air, and catches a lot of what's floating around before it reaches your lungs. Your sinuses also make nitric oxide, a gas that helps protect your airways. Mouth breathing skips all of that.",
+    "kind": "science"
+  },
+  "tw_r1": {
+    "text": "Round one. Kapalabhati. Short, sharp breaths out through the nose, from the belly. The breath in happens by itself. Keep your face relaxed.",
+    "kind": "technique"
+  },
+  "tw_r2": {
+    "text": "Round two. A few more breaths, and a longer hold. A lot of people find this one easier than the first.",
+    "kind": "guide"
+  },
+  "tw_r3": {
+    "text": "Last round. Let it be the easiest one.",
+    "kind": "guide"
+  },
+  "tw_r3_after": {
+    "text": "That's three rounds. Your hands and face might feel warm. That's normal.",
+    "kind": "guide"
+  },
+  "tw_release": {
+    "text": "Let it go, and breathe normally.",
+    "kind": "guide"
+  },
+  "tw_ribs": {
+    "text": "As you breathe in, let your ribs widen out to the sides. Shoulders stay where they are, belly soft.",
+    "kind": "technique"
+  },
+  "tw_stay": {
+    "text": "Stay where you are for a minute before you get up. After holds, standing up fast can make you dizzy.",
+    "kind": "guide"
+  },
+  "tw_t_ears": {
+    "text": "If you like, rest your thumbs lightly on the little flaps at the front of your ears. The hum may sound louder inside your head.",
+    "kind": "tip"
+  },
+  "tw_t_slower": {
+    "text": "If you lose the rhythm, slow down. Keep it steady.",
+    "kind": "tip"
+  },
+  "tw_vagus": {
+    "text": "A slow breath out can slow your heart a little. In virus studies, people under a lot of stress caught colds more easily, as did people who slept under six hours a night. So tonight, take it easy and get some sleep. That may help more than this session.",
+    "kind": "science"
+  },
+  "tw_welcome": {
+    "text": "Hey. Rough day? Let's look after you a bit. Sit up tall, or lie down if that's easier, and close your eyes.",
+    "kind": "guide"
+  }
+}

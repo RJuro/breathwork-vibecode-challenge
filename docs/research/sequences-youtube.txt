@@ -1,0 +1,1111 @@
+GUIDED BREATHING SEQUENCES ON YOUTUBE: CANDIDATES FOR KUMBHA
+Compiled 9 Oct 2026. Everything is paraphrased. Timings and protocols are stated in full because they are
+facts; quotes are rare and 10 words or fewer.
+
+Method
+- First mined the earlier transcripts (genre-research/transcripts, breathwrk-research/transcripts).
+- Then ran 29 YouTube searches on the Spark and transcribed 37 more videos with Parakeet (timestamps).
+  Transcripts are in sequences-yt/transcripts/<id>.txt|json. Search hits are in search1.txt and search2.txt.
+- Phase lengths were measured from cue timestamps (bin/seg.py prints segments with gaps; small Python
+  one-offs measured cue-to-cue intervals). "Measured" below means taken from the audio; "stated" means the
+  presenter's own number. They often differ: counted seconds usually run slow.
+- Dropped: 8vkYJf8DOsc (panic video, music only, no speech); hmq7ySQZ5w8 (download failed); the two
+  rest-step videos z9tVwAxCO6s and H1LzSF8uFJw (about leg mechanics, no breathing timings).
+
+Evidence labels used in "My judgement": SOLID / SOME / SPECULATIVE / WRONG (garbled science in the video).
+Kumbha fit labels: NEW practice / VARIANT of an existing one / ALREADY COVERED / SKIP.
+Voice-line estimates count new recorded lines (line() and tip()); count clips made with say() are listed
+separately where they matter. Reuse of existing lines (T.*, L.*) is assumed wherever it fits.
+
+Side note from reading the flows: clear.js's on-screen lede names a real teacher ("Patrick McKeown's
+nose-unblocking exercise"), and tide.js's notes do too. That conflicts with the no-real-names rule. Citations
+in the Sources lists are probably fine; the lede probably isn't.
+
+=====================================================================================================
+SOURCES (IDs used below)
+=====================================================================================================
+From the earlier collection (genre-research, section 1 of FINDINGS.md)
+  C1  0BNejY1e9ik  Guided power-breathing for beginners, 3 rounds        11:00  https://www.youtube.com/watch?v=0BNejY1e9ik
+  C2  GZzhk9jEkkI  Box breathing and the tactical breath (SEAL coach)     16:08  https://www.youtube.com/watch?v=GZzhk9jEkkI
+  C3  24hR70YVBfQ  CO2 tolerance table, follow along                       11:52  https://www.youtube.com/watch?v=24hR70YVBfQ
+  C4  8GfIp5pZLvo  Nose, slow and low: 6 breaths/min, counted              4:50  https://www.youtube.com/watch?v=8GfIp5pZLvo
+  C5  D-aTpm91uE0  Coherent breathing with bells                          19:00  https://www.youtube.com/watch?v=D-aTpm91uE0
+  C6  f0pGZLx_v0w  Guided power-breathing, 4 rounds                       16:55  https://www.youtube.com/watch?v=f0pGZLx_v0w
+  C7  rSpaqq9_Wg4  Cold-plunge breath, live voice-over                     5:41  https://www.youtube.com/watch?v=rSpaqq9_Wg4
+  X1  jWXkDny18to  Sleep routine with 1-minute holds                      16:57  https://www.youtube.com/watch?v=jWXkDny18to
+  X2  F7gCY3cFKe8  Guided breathing and relaxation for insomnia           18:46  https://www.youtube.com/watch?v=F7gCY3cFKe8
+  X3  LiUnFJ8P4gM  4-7-8, 10 minutes of counting                          10:33  https://www.youtube.com/watch?v=LiUnFJ8P4gM
+  V13 CrXlxirM1Z8  App channel: how to breathe while flying                ~1:00  https://www.youtube.com/watch?v=CrXlxirM1Z8
+
+New in this round
+  N1  tEmt1Znux58  Box breathing explainer, hospital channel (3.9M views)  2:48  https://www.youtube.com/watch?v=tEmt1Znux58
+  N2  Q4A1dN0EMa8  Tactical breathing, police crisis-support supervisor    2:06  https://www.youtube.com/watch?v=Q4A1dN0EMa8
+  N3  dQsDRGzwuug  Breathing in stressful situations (ex-SEAL, running)    3:05  https://www.youtube.com/watch?v=dQsDRGzwuug
+  N4  RckZsDFiQjo  Box breathing 4-4-4-4, counted aloud                   5:45  https://www.youtube.com/watch?v=RckZsDFiQjo
+  N5  GY7QJaHOnYA  Extended exhale 3:6 (meditation app channel)           2:55  https://www.youtube.com/watch?v=GY7QJaHOnYA
+  N6  ZZvgKzySOgU  Many small breath holds (Buteyko teacher)              7:12  https://www.youtube.com/watch?v=ZZvgKzySOgU
+  N7  1h66gMKFulY  What the control pause is and how to measure it        4:09  https://www.youtube.com/watch?v=1h66gMKFulY
+  N8  f1pOYDukrXo  Measuring the comfortable hold ("BOLT"), interview     1:54  https://www.youtube.com/watch?v=f1pOYDukrXo
+  N9  UK3evBQkeEU  Breathe light, slow and deep, guided                   9:16  https://www.youtube.com/watch?v=UK3evBQkeEU
+  N10 kSZKIupBUuc  The physiological sigh, explained by a neuroscientist  4:48  https://www.youtube.com/watch?v=kSZKIupBUuc
+  N11 DGdq3dLaHUQ  Finding your optimal breathing rate with an HRV sensor 14:28  https://www.youtube.com/watch?v=DGdq3dLaHUQ
+  N12 b2Mc6Cl1jR0  Resonant-frequency protocol explainer                  2:47  https://www.youtube.com/watch?v=b2Mc6Cl1jR0
+  N13 GjlvBz2SkVo  HRV resonance instruction and live demo                8:02  https://www.youtube.com/watch?v=GjlvBz2SkVo
+  N14 u-yAY4LRReQ  Five-minute humming practice                           5:39  https://www.youtube.com/watch?v=u-yAY4LRReQ
+  N15 LMS3K8_5KFA  Five-minute morning reset: slow, box, hum              5:14  https://www.youtube.com/watch?v=LMS3K8_5KFA
+  N16 t5zM-zyD-VE  Calm your nerves before presentations                  5:24  https://www.youtube.com/watch?v=t5zM-zyD-VE
+  N17 VJT6jSdXNHA  Breathing in an athlete's warm-up                       2:47  https://www.youtube.com/watch?v=VJT6jSdXNHA
+  N18 6DafzpUn4C4  Walking breath holds ("simulate altitude"), class demo 3:14  https://www.youtube.com/watch?v=6DafzpUn4C4
+  N19 nyLUgNlWBZ4  Breathing exercise during a walk                       1:23  https://www.youtube.com/watch?v=nyLUgNlWBZ4
+  N20 bcM0ymUb_Ko  How to apnea walk (freediving instructor)              9:53  https://www.youtube.com/watch?v=bcM0ymUb_Ko
+  N21 7XRzyEdT5Z8  Apnea walking: three exercises (same instructor)      10:50  https://www.youtube.com/watch?v=7XRzyEdT5Z8
+  N22 1ardWn3jglk  O2 tables, how to build one                            3:30  https://www.youtube.com/watch?v=1ardWn3jglk
+  N23 yUcQDoRvxnQ  O2 training: personalising a table                     7:12  https://www.youtube.com/watch?v=yUcQDoRvxnQ
+  N24 L0-w9NKea3E  Why CO2 tables are not useful (freediving coach)       9:41  https://www.youtube.com/watch?v=L0-w9NKea3E
+  N25 Px0bVJd5M_0  Best breathing rhythm for runners                      5:56  https://www.youtube.com/watch?v=Px0bVJd5M_0
+  N26 dXg66JWyfKc  How to breathe while running: three techniques         5:37  https://www.youtube.com/watch?v=dXg66JWyfKc
+  N27 wLAd4jVkiyM  Breathing to recover after sprinting                   1:24  https://www.youtube.com/watch?v=wLAd4jVkiyM
+                   (same clip as vghmIqMYBcc, which would not download)
+  N28 CU7SW99cN2s  Guided post-workout breathing session                 11:05  https://www.youtube.com/watch?v=CU7SW99cN2s
+  N29 OB1bsYDHpvQ  Guided ice plunge / cold shower breathing              3:34  https://www.youtube.com/watch?v=OB1bsYDHpvQ
+  N30 RFWXfeJKVeo  Ice-bath breathwork (studio brand)                      7:13  https://www.youtube.com/watch?v=RFWXfeJKVeo
+  N31 mxzdKTx7xJs  "Tummo" breathing tutorial (yoga channel, 1M views)    9:26  https://www.youtube.com/watch?v=mxzdKTx7xJs
+  N32 uSWM7bFkq80  Pressure breathing for mountaineering                  2:28  https://www.youtube.com/watch?v=uSWM7bFkq80
+  N33 5tJp7SDtVZk  Three breathing techniques for a high-altitude trek    6:28  https://www.youtube.com/watch?v=5tJp7SDtVZk
+  N34 BoCB2P1mL1w  Walking upstairs when short of breath (pulm. rehab)    2:29  https://www.youtube.com/watch?v=BoCB2P1mL1w
+  N35 j5HD9LGsZhk  Cooling breath (sitali), how-to                        1:47  https://www.youtube.com/watch?v=j5HD9LGsZhk
+
+=====================================================================================================
+PART A. CALM, STRESS AND PANIC
+=====================================================================================================
+
+1. BOX BREATHING WITH A TACTICAL OPENER  ("Box")
+-----------------------------------------------------------------------------------------------------
+Goal: stay level-headed before or after something stressful (a call-out, a hard meeting, an exam).
+Train it when calm so it is there under pressure.
+
+Structure, as the videos run it
+- C2, two drills.
+  - Drill 1, the tactical breath: 4-count inhale (belly, then lower ribs, then chest), 8-count exhale.
+    Explained at 4:27-6:20. He also allows 4:4 or 4:6. A slight pause at the top is fine.
+  - Drill 2, box: stated 5-5-5-5 (in, hold, out, hold) for about 5 minutes, timed by an app's tones.
+    The guided set runs 9:41-14:45.
+    - Measured: 9 inhale cues, median cycle 27.6 s, so about 6.9 s per side and 2.2 breaths a minute.
+      He says "three breaths per minute", which would be 5 s per side. The app counted slow.
+    - About 10 cycles in 5 minutes. It starts with a full exhale (9:36).
+- N4, the counted version: stated 4-4-4-4 with numbers spoken at about 1.0 s each. Measured cycle 16-17 s
+  (0:39-1:29), i.e. about 3.6 breaths a minute. Counts for 4 cycles, then single-word cues only, then
+  bells. 5:45 in all.
+- N15 includes 4 box rounds at about 4-4-4-4 (measured 15-16 s per round, 2:27-3:29).
+- N1 (hospital): in, hold 1-5 s, out, hold 1-5 s, repeat 7-10 times. Sitting with feet grounded helps,
+  but it can be done anywhere.
+- N2 (police): 4-4-4-4 "on repeat", used on the way to a hard call or after it.
+
+Proposed Kumbha structure (Standard), about 7 minutes
+- Arrive, 30 s: the plan in numbers.
+- Tactical breath, 4 in : 8 out, 6 breaths (72 s). Belly, ribs, chest on the way in; throat slightly
+  narrowed on the way out.
+- Box 4-4-4-4, 8 rounds (2:08).
+- Box 5-5-5-5, 6 rounds (2:00).
+- Close, 30 s: the benchmark check.
+- Gentle: 3-3-3-3 then 4-4-4-4, holds soft. Deeper: 5-5-5-5 then 6-6-6-6 (24-s cycles, 2.5 a minute).
+- No holds: run the tactical 4:8 throughout. This is the honest fallback, since the evidence below does not
+  favour the holds anyway.
+- Engine: pace {inhale, holdIn, exhale, holdOut} already exists, as used by 4-7-8 and HUM.
+
+Cues that made it work
+- C2 states the plan as two drills before starting, and names the 1:2 ratio as "one-two": four in is the
+  one, eight out is the two (5:53).
+- Explains when each drill is used: the 4:8 is for performing, under pressure; box is for training in a
+  quiet room so the pattern is there when needed (6:20-8:05).
+- Once running, nearly every cue is one word: inhale, hold, exhale, hold (from 9:45). Extra lines are rare
+  and practical: soften your gaze or close your eyes; relax; clear your mind.
+- A "few more rounds" call near the end (13:16), then "one more" (14:10).
+- The close is a benchmark: notice how your body and head feel, compare with the start, note it (14:46).
+  That suits the coach voice exactly.
+- N2's practical framing: do it on the way to a hard call, and nobody knows you're doing it.
+- N4's reassurance early on: don't worry about being exact.
+
+Safety
+- Seated or standing still. Not while driving, despite N2's "on the way to a call" (fine for a passenger).
+- The holds are short (4-6 s), so blackout risk is negligible. Still skip the holds if pregnant, or if
+  holding makes you anxious; use the 4:8 instead.
+- Don't push the counts up into strain; 6-6-6-6 is a sensible ceiling.
+
+Evidence
+- As presented:
+  - C2: calmer and clearer thinking under duress. The science is garbled: he says nasal breathing
+    releases "nitrous oxide", which then delivers oxygen and nitrogen.
+  - N1: lowers blood pressure and heart rate, improves mood.
+  - N2: keeps you out of fight-or-flight, so you respond rather than react.
+- My judgement:
+  - SOME. Slow breathing at 3-6 a minute reliably shifts heart rate and HRV.
+  - In the 2023 one-month remote trial Kumbha already cites for cyclic sighing, a 5-5-5-5 box arm also
+    lowered anxiety and improved mood, but less than sighing on positive mood.
+  - I'm not aware of evidence that the holds add anything over a plain long exhale. I recall a 2021
+    comparison of box-style "combat tactical breathing" with prolonged exhalation that found no clear edge
+    for the box (Röttger et al. 2021); verify before citing.
+  - Its real strengths are that it's easy to remember, easy to count, and widely taught to police and
+    military.
+
+Kumbha fit
+- NEW practice under Calm, or a new "Focus" tag.
+- The best fit for the ex-military coach in the whole set: drills, ratios, benchmark. It is the most
+  obvious gap in the library.
+- Voice: about 12-14 new lines: welcome, plan, three-part breath, throat, when-to-use, box intro, soft
+  hold, gaze, science, where it's used, benchmark close, plus 2-3 tips.
+- Count clips: "In. Hold. Out. Hold." (4, shared) and "Six breaths, four in, eight out." style
+  announcements.
+
+2. LONG-EXHALE LADDER  (2:4, 3:6, 4:8)
+-----------------------------------------------------------------------------------------------------
+Goal: bring yourself down fast when anxious or wound up. It's the simplest panic tool there is.
+
+Structure
+- N5: in through the nose for 3, out through the mouth for 6, counted. The counts run at about 1 s each:
+  "in" at 1:18.8, "out" at 1:24.9, the next "in" at 1:31.7, so a 12.9-s cycle and 4.7 breaths a minute.
+  - Only 3 counted breaths, then free breathing.
+  - Scaling is offered up front (0:45): if 3:6 is too long, use 2:4; to go further, 4:8.
+- C2's tactical breath is the same idea at 4:8.
+- N15 opens with 6 breaths at about 4:8 (measured 4.1 s in, 12.0-s cycle).
+- N28 (see 17) runs 4:8 for about 4 minutes, lying down.
+
+Proposed: start at 2:4 for 4 breaths, then 3:6 for 6, then 4:8 for 8. About 3 minutes.
+
+Cues that made it work
+- The scaling is offered before starting, so nobody fails the count.
+- Breathe into the belly on the way in, out through the mouth.
+- A closing "notice how the mind and body feel now".
+
+Safety
+- Very low risk. If light-headed, make the breaths smaller rather than longer.
+- For a first-ever panic attack, or chest pain, seek medical help rather than breathing through it.
+
+Evidence
+- As presented: slows your breathing, heart rate "and even your thoughts" (N5, 0:10).
+- My judgement:
+  - SOME for the acute calming effect: exhale-weighted slow breathing raises vagal HRV.
+  - Kumbha already cites Meehan & Shaffer 2024: at 6 breaths a minute, 1:1 and 1:2 ratios did about the
+    same. It is the slowing that matters most.
+
+Kumbha fit
+- Mostly covered already: Wind-down has 4:6 into 4:8, and Window Seat has 4:8.
+- Best used as the second half of the "Steady" practice in entry 3, or as the no-holds track of "Box".
+- Voice: 3-4 lines if folded into another practice.
+
+3. SMALL HOLDS  ("Steady": many small breath holds)
+-----------------------------------------------------------------------------------------------------
+Goal: settle over-breathing, a panic spike, a tickly cough, or "can't get a satisfying breath". It is the
+opposite of a sigh: it builds a little CO2 back up instead of blowing it off.
+
+Structure, N6, measured
+- Setup: sit upright, mouth closed, tongue resting on the roof of the mouth, nose only throughout.
+- Each cycle:
+  - a normal, small, quiet breath in and out through the nose;
+  - pinch the nose and hold, while the coach counts 5-4-3-2-1. Measured hold 5.2-6.2 s (9 holds);
+  - let go of the nose and breathe normally, mouth closed, for the stated 10-15 s. Measured cycle median
+    29 s (range 24-36 s), which includes the pre-hold breath.
+- 10 holds from 1:21 to 5:49, about 4.5 minutes, then 30 s of sitting quietly.
+- Stated: holds of 3-5 s, rests of 10-15 s, for 5-10 minutes or until symptoms settle (0:45).
+
+Proposed Kumbha structure
+- 1 min of nose-only settling.
+- 10-12 cycles: small breath in and out, hold 5 s on the exhale (Gentle 3 s; Deeper 7 s), rest 12 s.
+- 2 min of small, quiet breathing, or the 3:6 ladder from entry 2.
+- Close. About 7 minutes in all.
+- Engine: clear-nose's pinch() step (hold: 'empty', label 'Pinch & nod') plus { rest: 12 }. Nothing new is
+  needed.
+
+Cues that made it work
+- Every hold starts from a normal small breath, not a deep one. The video repeats this, because people
+  instinctively take a big breath first (1:35).
+- The count-down in the hold makes it feel short and certain.
+- Between holds: shoulders soften, belly loose, lips sealed (2:03-2:35).
+- Expect a pull to take a deeper breath at some point; let it pass and stay small (4:04).
+- Name the possible "positive signs" as allowed, not promised: extra saliva, warmth (4:36).
+- Ends with "use it any time, or as and when you need it".
+
+Safety
+- The video itself says no breath holds if pregnant, and to check with a practitioner if you have a serious
+  condition.
+- Kumbha's standard safety block applies. Holds of 5 s carry essentially no blackout risk.
+- Do not use it to self-manage chest pain, a first-ever attack, or an asthma attack that isn't settling
+  with your reliever: get help.
+
+Evidence
+- As presented: helps recover from panic or hyperventilation, stops coughing fits, clears brain fog; works
+  by slowing breathing and raising CO2 and nitric oxide (2:55).
+- My judgement:
+  - SOME. The CO2 logic for acute over-breathing is physiologically sound, since symptoms of low CO2
+    reverse as it rises. This is a safer version of the discouraged paper-bag advice.
+  - Breathing retraining that includes Buteyko has small RCTs in asthma showing better symptoms and less
+    reliever use, though not better lung function.
+  - CO2-raising training for panic has some trial support.
+  - The "brain fog" and long-COVID claims are SPECULATIVE.
+
+Kumbha fit
+- NEW practice.
+- The current Calm practices are all "slow and long" (resonance, sighing, alternate nostril). This would be
+  the first one for "I'm over-breathing right now".
+- Excellent for the coach: a short count-down, a one-line instruction, silence.
+- Voice: about 9-11 lines: welcome/plan, small-breath rule, tongue and lips, the urge-to-breathe-big line,
+  positive signs, why it works (CO2), when to use it, close, 2 tips.
+- Count clips: "Hold. Five. Four. Three. Two. One. Let go." The numbers probably already exist.
+
+4. COMFORTABLE-HOLD CHECK  (control pause)
+-----------------------------------------------------------------------------------------------------
+Goal: a personal tracking number. How long can you comfortably pause after a normal exhale? It isn't a
+practice; it's a one-minute check.
+
+Structure
+- N7 (1:30-1:03) and N8 (0:17-0:42) agree:
+  - one normal, silent breath in and out through the nose;
+  - pinch the nose and start the timer;
+  - stop at the first definite desire to breathe, or the first involuntary movement of the breathing
+    muscles;
+  - the first breath after should be normal. If you have to gulp, you held too long and the number is
+    inflated.
+- N8 shows the correction: the guest stopped at 24 s, but his first breaths were slightly fast, so the
+  presenter marked it down to 21-22 s.
+
+Cues that made it work
+- Stated up front: it doesn't matter what you get; it's feedback, not a test (N7 0:24, N8 0:07).
+- This is not a maximum hold (N8 0:35).
+
+Safety
+- Seated. No risk at these lengths.
+
+Evidence
+- As presented:
+  - N7: in asthma, symptoms are typically present below about 20-25 s; the goal is 40 s.
+  - N8: below 25 s, breathing-pattern disorder is more likely; above 25 s there's an "89% chance" none is
+    present. Higher scores mean less breathlessness during exercise.
+- My judgement: SOME as a personal trend number, SPECULATIVE as a diagnosis.
+  - A 2008 study (Courtney & Cohen) found breath-hold time correlated poorly with measured end-tidal CO2.
+  - The cut-offs and the 89% figure come from the presenters; I couldn't verify them.
+  - Use it only to compare yourself with yourself, same time of day, seated, after rest.
+
+Kumbha fit
+- NEW tool, not a practice. A "Check" button that runs one hold with record: true and writes the result to
+  the practice log the earlier research suggested.
+- Shows a 2-week trend with no cut-offs or labels.
+- Useful as an optional before/after step in Hold Ladder, Clear Nose and Steady.
+- Voice: 3-4 lines (how to, stop-at-first-urge, first-breath-normal, result framing).
+
+5. BREATHE LIGHT  (reduced breathing at a slow pace, plus a sleep version)
+-----------------------------------------------------------------------------------------------------
+Goal: lower the volume of breathing until there's a mild, comfortable air hunger. It's used for calm, and in
+X2 as a sleep routine.
+
+Structure
+- N9, "light, slow and deep", about 6 minutes of practice:
+  - lying on the back, knees bent, hands on the lower ribs;
+  - 5.5 s in, 5.5 s out, nose only, timed with bells. Measured "gently breathing in" at 2:25.4, "out" at
+    2:30.9, so 5.5 s;
+  - from 3:53, shrink the breath until there is a gentle air hunger. If it's too strong, make the breaths
+    a little bigger (4:38);
+  - 2 minutes of bells only (6:40-8:14), then normal breathing and a check-in.
+- X2, the sleep version, 18:46 in all:
+  - about 7.5 min of body-scan induction first (a 10-to-1 count-down at 2:16-3:16, then a head-to-toe
+    scan 3:18-7:37);
+  - then about 11 min of breathe-light from 7:42: slow the inhale by about 30%, breathe so softly you
+    barely feel the air;
+  - take as many rests as you need (11:13);
+  - not timed: "unnecessary to time your breathing" (8:51).
+- C5, a cousin: coherent breathing at about 5.5:5.5 with cues to stay "light as a feather" (0:40), a
+  body-relaxation pass (3:47-5:15), then 10 min of bells only.
+
+Cues that made it work
+- Calibrate by feel, both ways: a small air hunger is the target, and if it's too strong, take a slightly
+  bigger breath (N9 3:53-4:43).
+- "Just enough air" (N9 3:37, C5 5:37).
+- "Make sure you're not holding your breath" (X2 10:28). Light breathing is not breath-holding.
+- If you feel constricted, you're overdoing it: rest, breathe normally, then resume (X2 10:40-11:02).
+- Name allowed signs: warmth, saliva, a slower mind (C5 5:59, N9 8:25).
+- Avoid X2's hypnotic layer: "you feel incredibly sleepy", "every cell relaxing", and the mid-session
+  mouth-tape product plug (1:01-1:13).
+
+Safety
+- Very low risk.
+- Strong air hunger is not the goal. For people with anxiety it can backfire, which is the reason for the
+  "make it bigger" escape.
+- During a cold, keep it mild (Kumbha already follows this).
+
+Evidence
+- As presented:
+  - N9: raises CO2, which "improves oxygen delivery to the brain"; reduces anxiety, brain fog and long COVID
+    symptoms.
+  - X2: oxygen delivery improves, relaxation response, lower heart rate.
+- My judgement:
+  - SOME for slow breathing in general.
+  - SPECULATIVE that the reduced-volume part adds anything for anxiety or sleep.
+  - The CO2/Bohr-effect "better oxygen delivery" story is physiology stretched well beyond what a slight
+    CO2 rise does at rest.
+  - The long-COVID claim is unsupported.
+
+Kumbha fit
+- VARIANT.
+  - Clear Nose already has a "breathe light" step.
+  - Wind-down could gain a 3-minute breathe-light block between 4-7-8 and drift (improvement 3 below).
+  - Resonance could offer "light" as a tip.
+- A standalone practice would overlap too much.
+- Voice: 4-6 lines for the Wind-down block.
+
+6. THE PHYSIOLOGICAL SIGH, ONE TO THREE  (pocket version)
+-----------------------------------------------------------------------------------------------------
+Goal: the fastest in-the-moment reset: one to three sighs, not five minutes.
+
+Structure
+- N10: a full inhale through the nose, a second short inhale on top, then a long, extended exhale. Repeat
+  1-3 times (2:06-2:48). No guided timing.
+- Kumbha's Cyclic Sighing already uses inhale 2.5 s, top-up 1 s, exhale 7 s.
+
+Cues that made it work
+- The when: in real time, while life is happening, not on a retreat (0:22).
+- One mechanism, one sentence: the second sip re-opens collapsed air sacs, the long exhale offloads CO2.
+- A second short mechanism, longer exhales slow the heart (3:02-4:21). Kumbha already says this in
+  sigh_heart.
+
+Safety
+- Low risk. For someone actively hyperventilating, one or two sighs, then small slow breaths (entry 3),
+  rather than repeated big ones.
+
+Evidence
+- As presented: 1-3 sighs bring stress down "very, very fast"; found in their own lab and others.
+- My judgement:
+  - SOME. Spontaneous sighs do act as resetters of breathing.
+  - The 2023 RCT tested 5 minutes a day for a month, not the 1-3-sigh acute use.
+  - The alveolar re-inflation step is plausible but untested (Kumbha's notes already say so).
+
+Kumbha fit
+- VARIANT of Cyclic Sighing: a "Pocket" length of 3 sighs, about 40 s, with the existing close.
+- Fits the "choose your length" idea from the earlier app research.
+- Voice: 1-2 lines ("Three sighs. That's the whole thing.").
+
+7. RESONANCE PACE FINDER
+-----------------------------------------------------------------------------------------------------
+Goal: find the slow breathing rate that suits you, rather than assuming 6 a minute.
+
+Structure
+- N11: with an ear-clip HRV sensor and a coherence app, 2 minutes at each of three paces: 10-s cycles
+  (5:5), 11 s (5.5:5.5), 12 s (6:6). Compare the average coherence scores and pick the highest.
+  - His result that day: 3.4 / 4.1 / 3.2. His usual best is 6:6, but that day it was 5.5:5.5 (12:05-12:52).
+  - Total about 6 min plus setup.
+- N12: most people fall between about 4 and 7 breaths a minute; being within about half a breath a minute
+  gets most of the effect; retest every few months.
+- N13: first, long mouth exhales to bring the heart down to resting (about 80 s, 1:48-3:11), then match
+  the breath to the rise-and-fall of the heart-rate trace. Live graph needed.
+
+Cues that made it work
+- Treat it as an experiment with a prediction (N11 3:53).
+- Accept day-to-day variation (N11 12:31).
+- Slower is not bigger: N4-style soft breaths. Kumbha already has the coh_light line.
+
+Safety
+- N12 notes mild rib or upper-belly soreness early on, from unfamiliar mechanics.
+- Stop if light-headed (N12 2:40).
+
+Evidence
+- As presented: N12 says individual pacing "consistently" beats generic slow breathing; claims better focus,
+  recovery and sleep.
+- My judgement:
+  - SOME for slow breathing raising HRV.
+  - The advantage of individual tuning over plain 6 a minute is not well established. My reading of the
+    2022 meta-analysis Kumbha already cites is that slow breathing works across rates; check before
+    claiming otherwise.
+  - Without a heart sensor, Kumbha can only offer a comfort pick, and it should say so.
+
+Kumbha fit: IMPROVEMENT to Resonance (improvement 1 below).
+
+8. COHERENT / SIX-A-MINUTE, COUNTED OR BELLS-ONLY
+-----------------------------------------------------------------------------------------------------
+Goal: plain slow breathing for HRV and calm.
+
+Structure
+- C4: 4 in, 6 out, nose, counted aloud with no gaps for about 3.5 minutes.
+  - Numbers are drawn out; C4 calls it seconds, but it measures closer to 3 s and 5 s (genre research).
+  - About 80% of the movement from the diaphragm, minimal chest (4:34).
+- C5: about 5.5 in and 5.5 out with spoken in/out cues for about 7.5 min, including a body-relaxation pass,
+  then 10 minutes of bells only (7:32-18:41).
+
+Cues that made it work
+- C4: "low, slow, nose", and don't let the breath get bigger as it gets slower (0:10-0:29).
+- C5: tells you to pause the recording any time; then hands over to the bells.
+
+Evidence: SOME to SOLID, as Kumbha's Resonance notes already say. C5 claims saliva and warmth are signs of
+"short and long-term benefits", which is overreach.
+
+Kumbha fit
+- ALREADY COVERED by Resonance (4:5 then 4:6).
+- Two things worth taking: a bells-only extension after the voice stops (C5), and C4's 80% diaphragm
+  number as a tip.
+- Voice: 1-2 lines.
+
+9. HUMMING SET  (bhramari with ear closure)
+-----------------------------------------------------------------------------------------------------
+Goal: a quick settle using sound. It also warms the voice before speaking.
+
+Structure
+- N14, 7 hums in about 5 minutes. Each is a 2-4 s inhale, then a long hum, measured about 15-20 s with
+  talk in between.
+  - Hums 1-2 are plain (0:57-1:31).
+  - Hums 3-4: hum "like a bee", playful (2:08-2:46).
+  - Hums 5-7: press the ear flap (tragus) closed while humming, to make the sound louder inside (3:14-4:44).
+- N15 finishes with 6 humming breaths, measured about 5 s in and 7 s hum (12-s cycle, 3:49-5:00).
+- N16, before a presentation: belly breaths, then wave breaths, then about 6 hums (1:55-3:13), then sit.
+
+Cues that made it work
+- The progression gives each hum a new thing to notice: plain, then bee, then ears closed.
+- Where do you feel the vibration? (N14 1:57)
+- Optional ear-pressing; keep eyes open if you prefer (N14 3:50).
+
+Safety
+- None to speak of. Skip pressing the ears with an ear infection.
+
+Evidence
+- As presented: humming acts on the vocal cords and the ventral vagus, the "social engagement system"
+  (N14 0:12). She reports her smartwatch "body battery" rising (anecdote).
+- My judgement:
+  - SOLID that humming raises nasal nitric oxide many-fold (Weitzberg & Lundberg 2002). Tide already says
+    this.
+  - The vagal and polyvagal framing is SPECULATIVE.
+
+Kumbha fit
+- ALREADY COVERED: Tide and Clear Nose have hums (HUM = 4 in, 9 hum, 3 pause).
+- Two takeaways: the ear-closure progression as a tip for longer hums, and 2-3 hums as the last part of the
+  "Ready" practice (entry 10) for people about to speak.
+- Voice: 2 lines (bee, ears).
+
+=====================================================================================================
+PART B. FOCUS AND PERFORMANCE
+=====================================================================================================
+
+10. READY  (pre-performance reset: exam, presentation, start line)
+-----------------------------------------------------------------------------------------------------
+Goal: about 3-4 minutes before something that matters. Bring the arousal down a notch, keep the head clear,
+and finish switched on rather than sleepy. The videos give the pieces; this sequence assembles them.
+
+The pieces, as measured
+- N15, a 5-minute morning reset:
+  - 6 slow breaths at about 4 in : 8 out (12.0-s cycle, 0:49-2:00);
+  - 4 box rounds at about 4-4-4-4 (15-16 s each, 2:27-3:29);
+  - 6 humming breaths at about 5 in : 7 hum (11.8 s, 3:49-5:00);
+  - mostly silent, with a visual dot pacer.
+- C2: the tactical 4:8 is the performance breath. His box close ends on a three-word drive: focus,
+  commit, inhale (13:20).
+- N10: 1-3 physiological sighs, for use in real time.
+- N16: hums before speaking, eyes closed, then "alert yet relaxed" (3:29-3:45).
+- N2: on the way to the call.
+- N3: running under pressure. He counts 3 steps in, a brief pause, 3 steps out, then adds a mantra
+  (1:01-1:22). After a sprint, pause and take one breath to recover (2:30-2:37).
+
+Proposed Kumbha structure, about 3:30, seated or standing
+- 0:00 Plan in one line.
+- 0:10 Two physiological sighs (about 20 s).
+- 0:30 Tactical 4:8, 5 breaths (60 s).
+- 1:30 Box 4-4-4-4, 4 rounds (64 s).
+- 2:35 Optional, "Stage" mode only: 3 hums of about 8 s.
+- 3:05 Back to normal breathing, eyes open, one focus line, "Go."
+- Modes:
+  - Exam/Desk: no hums.
+  - Stage: hums, for the voice.
+  - Start line: standing, eyes open, no holds; box swapped for 4:6.
+
+Cues that made it work
+- Treat it as a routine you rehearse, not a rescue: C2 says you won't perform it under pressure unless you
+  train it.
+- End on an action, not a feeling: C2's three-word drive. N15 closes by wishing a good day, which is weaker.
+- Keep it short: the earlier app research found 1-3-minute sessions were the most loved thing about
+  Breathwrk.
+
+Safety
+- Short holds only.
+- Not while driving.
+
+Evidence
+- As presented: N15 claims to switch the autonomic system from "hyper-sympathetic" to parasympathetic.
+- My judgement:
+  - SOME for slow breathing lowering pre-performance anxiety.
+  - No evidence that this particular combination beats any one of its parts.
+  - The honest claim is "takes the edge off; won't make you sleepy at 3-4 minutes".
+
+Kumbha fit
+- NEW practice, under a new "Focus" tag, or under Calm.
+- Very strong coach fit. It is the briefing before the job.
+- Reuses the Box and Sighing patterns and some of their lines.
+- Voice: about 8-10 new lines (welcome/plan, three mode-specific intros, focus line, "Go", a tip or two).
+
+11. ATHLETE WARM-UP WITH SHORT MOVING HOLDS
+-----------------------------------------------------------------------------------------------------
+Goal: switch on before competition, as a breathing layer on top of a normal warm-up.
+
+Structure, N17
+- Warm-up jog at low to moderate intensity, nose only, "light, slow, low".
+- 2 easy holds while moving: a normal breath in and out, pinch the nose, keep moving for 10-15 paces.
+  Then about 1 minute of nasal breathing (0:50-1:10).
+- About 5 stronger holds: after a normal exhale, hold and keep moving. As the air hunger rises, raise the
+  pace from slow jog to fast jog to run. When it's strong, let go.
+- After each strong hold: 6 minimal nose breaths, then 12-18 normal breaths, then repeat (1:12-1:58).
+- Total about 10-12 minutes inside the warm-up.
+- N18 is the same "easy" stage done as a class: 5 × (10-15 paces held after a normal exhale, then 30-60 s
+  of normal nasal breathing) (0:12-3:10). The rule: never go straight into strong holds.
+
+Safety
+- On land, on open flat ground, away from traffic, edges, stairs and water.
+- Moving holds burn oxygen faster than sitting ones.
+- Skip if pregnant, or with heart disease, epilepsy or high blood pressure.
+
+Evidence
+- As presented: light breathing raises CO2 so more oxygen reaches the muscles; strong holds release red
+  cells from the spleen, raise brain blood flow, and open the nose and lungs (2:12).
+- My judgement:
+  - The spleen effect is SOLID but small (a few percent more red cells, after several near-maximal holds)
+    and fades within minutes. Kumbha's Hold Ladder notes say this.
+  - Performance benefit is inconsistent in studies: SPECULATIVE.
+  - The CO2/oxygen-delivery point during warm-up is WRONG in degree, since exercise raises CO2 by itself
+    anyway.
+  - The nose-opening effect of holds is plausible; Clear Nose already uses it.
+
+Kumbha fit
+- VARIANT. Best as an optional segment of entry 12 (Walking Holds), or a "Start line" option in Ready.
+- I would not ship the strong-hold stage: it conflicts with "hold to the first clear urge".
+- Voice: 3-4 lines if folded in.
+
+=====================================================================================================
+PART C. ON THE MOVE AND TRAINING
+=====================================================================================================
+
+12. WALKING HOLDS  (dry apnea walk, kept easy)
+-----------------------------------------------------------------------------------------------------
+Goal: practise calm under a rising urge to breathe while moving. It's a freediver's dry drill, and a
+mindful walk for everyone else.
+
+Structure, as the videos give it
+- N19, the basic walk: 5 minutes at normal pace, breathing slowly through the nose, 3 s in and 3 s out.
+  If the air hunger gets too much, slow the walk, not the nose (0:32-1:05).
+- N18, easy holds: 5 × (normal breath out, pinch nose, walk 10-15 paces, let go, 30-60 s of normal nasal
+  breathing).
+- N21, three freediving exercises:
+  - Ex. 1 (2:52-4:50): 5 walks each to the first contraction, with 2 minutes of rest between. The rest is
+    standing still, tidal breathing through the nose.
+  - Ex. 2 (4:53-6:24): walk 20 slow steps (1 step = 1 s) holding, take 2 breaths, repeat. Do 10 minutes,
+    building to 15 then 20. Scale down to 15 or 10 steps if hard.
+  - Ex. 3 (7:24-8:25): box breathing while walking, steps matched to counts. 4-4-4-4 for 10-15 minutes;
+    if easy, 6-6-6-6 next time.
+- N20, tables:
+  - fixed: 3 × (1:30 walk, 2:00 rest);
+  - or building: an easy one, a harder one, then a near-max third (6:45-8:25).
+  - Measure by time, not steps or distance. At most twice a week.
+
+Proposed Kumbha structure (Standard, about 12 minutes)
+- 3 min nasal walk at 3:3 (N19).
+- 6 easy holds after a normal exhale: 15 s, 15, 20, 20, 25, 25 (Gentle 10-15 s; Deeper up to 35 s), each
+  followed by 45 s of quiet nasal walking.
+- 3 min of box-walk 4-4-4-4 (N21 Ex. 3), then a 1-min easy walk.
+- Time-based, since the app can't count steps: one second is about one slow pace (N21 5:05).
+
+Cues that made it work
+- Treat the numbers as yours alone; don't compare steps with someone else (N20 5:22-6:11).
+- Be honest with yourself: if it was hard, shorten the next one (N21 6:07-7:14). That is pure coach
+  register.
+- Stop at the first contraction in early sessions. It's an awareness exercise, not a fight (N21 4:19-4:50).
+- Reset properly between holds: stand still, breathe normally through the nose (N21 3:59).
+
+Safety (the sources' own rules plus Kumbha's)
+- Never with a nose clip, so both airways stay free if you black out (N21 1:02-1:39).
+- Grass or sand, not hard ground (N21 1:42-2:02).
+- Away from traffic, kerbs, stairs and water.
+- Stop if dizzy, light-headed or less coordinated. The source's red line is loss of motor control (2:22),
+  which is far too late for Kumbha; stop at the first clear urge.
+- Never after fast breathing.
+- N21 claims you're "very unlikely" to black out because CO2 will stop you. That is not reliable when
+  moving, so don't repeat it.
+- Skip if pregnant, or with heart disease, epilepsy or high blood pressure.
+
+Evidence
+- As presented:
+  - Simulates a dive and trains CO2 tolerance; harder than static holds because CO2 builds faster
+    (N21 0:29-1:02).
+  - N19 adds a quieter mind.
+- My judgement:
+  - SOME for breath-hold training lengthening holds (the small apnea-training studies Kumbha cites).
+  - SPECULATIVE for any general-health benefit.
+  - As a calm-under-discomfort drill it is coherent.
+
+Kumbha fit
+- NEW practice under "On the move" or "Long holds".
+- Strong coach fit: drills, sets and honest scaling.
+- Moderate risk means it needs Gentle as the default and a clear safety gate.
+- Voice: about 10-12 lines (plan, ground rules, first-hold line, "stand and reset", honesty line, box-walk
+  intro, close, tips).
+- Plus say() announcements ("Hold, lungs resting, twenty seconds.").
+
+13. RUNNING BREATH RHYTHM  ("Stride")
+-----------------------------------------------------------------------------------------------------
+Goal: settle breathing into the stride, as a cue for easy versus hard effort.
+
+Structure
+- N25:
+  - easy runs 3:3 (3 strides in, 3 out);
+  - steady or tempo 2:2;
+  - sprint finish 1:1;
+  - or odd patterns, 3:2 easy and 2:1 hard, so the exhale lands on alternating feet (0:52-4:11). He notes
+    the research behind the odd patterns is disputed.
+- N26, nose "gears":
+  - easy pace in and out through the nose (walk breaks allowed);
+  - faster, in through the nose and out through the mouth;
+  - hardest, mouth in and out, but still deep into the belly (1:12-4:08).
+- N3: 3 steps in, a brief pause, 3 steps out, plus a mantra, when struggling to keep up.
+
+Proposed Kumbha structure
+- 5 min "find the rhythm" with a soft breath tone set from a cadence choice (160, 170 or 180 steps/min).
+- 3:3, nose only, then 3:2 for 3 min, then free.
+- At 170 spm, 3 steps = 1.06 s, so a 3:2 cycle is 1.76 s (34 breaths/min). The engine handles short
+  phases; PUMP already uses 0.42/0.58 s.
+
+Cues that made it work
+- Patterns are training wheels for effort: if you can't hold 3:3 on an easy run, you're running too fast
+  (N25 1:39).
+- Find your own pattern; there's no single right one (N25 4:27).
+
+Safety
+- Eyes and ears on traffic; one earbud.
+- No holds while running.
+
+Evidence
+- As presented:
+  - N25: more oxygen in per minute at 2:2. The odd patterns spread impact stress between sides to avoid
+    injury, which he flags as disputed.
+  - N26: nose breathing gives lower heart rate at the same pace.
+- My judgement:
+  - Coupling of breath and stride is a real, well-described phenomenon.
+  - The injury claim for odd patterns is SPECULATIVE.
+  - Nasal-only running lowers ventilation but has no shown performance benefit: SPECULATIVE.
+
+Kumbha fit
+- NEW, but lower priority. It needs a cadence setting, and a run needs a different UI (pocket, screen off).
+- Coach fit good: short gear calls.
+- Voice: about 6-8 lines.
+
+14. INTERVAL RECOVERY BREATH  (between sets)
+-----------------------------------------------------------------------------------------------------
+Goal: get the most out of a 60-90 s rest between hard efforts.
+
+Structure
+- N27, the down-shift order (0:31-1:12):
+  - in and out through the mouth, slowing the exhale;
+  - then nose in, slow relaxed exhale through the mouth;
+  - then, as breathlessness falls, nose in and out with a slow, gentle exhale.
+  - The theme is "nose, slow, low", with each stage roughly as breathlessness allows.
+- N3: you can't sprint forever; pause, and one breath gets you some recovery (2:23-2:37).
+
+Proposed: a 60 s or 90 s timer:
+- 0-20 s, mouth, long exhales;
+- 20-45 s, nose in, mouth out (4:6-ish);
+- 45-90 s, nose only;
+- a 10-s warning, then "Go".
+- Posture cue: hands on knees.
+
+Evidence
+- As presented: slow breathing improves alveolar ventilation; fast shallow mouth breathing wastes air to
+  dead space; helps heart-rate recovery.
+- My judgement:
+  - The dead-space point is SOLID physiology.
+  - Whether deliberate slowing speeds recovery between intervals is SOME at best: small studies, mixed.
+  - Not from the videos: a small 2019 study (Michaelson et al.) found hands-on-knees beat hands-on-head for
+    heart-rate recovery and tidal volume between intervals. Worth using as the posture cue.
+
+Kumbha fit
+- VARIANT of entry 15: a "Between sets" mode of a Recover practice, or a 60/90-s repeating timer.
+- Voice: 4-5 lines.
+
+15. POST-WORKOUT DOWNSHIFT  ("Cool-down")
+-----------------------------------------------------------------------------------------------------
+Goal: switch from training to recovery: heart rate down, head quiet.
+
+Structure, N28, measured
+- Lie down, neutral spine, feet up with knees and hips at 90 degrees (calves on a bench or chair), eyes
+  closed (0:21-0:46).
+- Breathe in through the nose, out through the mouth or nose. Counted aloud at about 4 in : 8 out.
+  - "Out" cues at 2:24.8, 2:36.6, 2:48.8, 3:00.7 make a 12.0-s cycle (5 a minute).
+  - An "in" at 2:56.8 is followed by "out" at 3:00.7, so the inhale is 3.9 s.
+- Counted from about 1:00 to 5:00 (about 20 breaths), then sparse counting and silence until 10:45.
+- Ends with one deep breath and a send-off (10:45-11:01).
+- "I'll lead you for ten minutes, but go as long as you need" (0:16).
+
+Proposed Kumbha structure, about 8 minutes
+- 30 s of setup (feet up), then 1 min of free breathing to let the pant settle.
+- 4:8 counted, 15 breaths (3 min).
+- 4:8 uncounted, tones only, 3 min.
+- Check-in.
+- A between-sets mode (entry 14) can live in the same practice.
+
+Cues that made it work
+- The posture setup is concrete and specific (feet up, 90/90).
+- After the counted block the voice disappears.
+- One closing line about recovering.
+- Skip the source's mumbled filler counting: Parakeet caught many unclear words in it, so it is not a model.
+
+Safety
+- Low risk. Get up slowly: blood pressure can dip after slow breathing with the legs raised. Kumbha
+  Resonance's "stand up slowly" line already exists.
+
+Evidence
+- As presented: "recovery state", getting the most out of the workout.
+- My judgement:
+  - SOME. Small studies show slow breathing after exercise speeds the return of vagal tone a little.
+  - Effects on training adaptation are unknown.
+  - Honest claim: helps you come down faster and feel settled.
+
+Kumbha fit
+- NEW practice, under a new "Training" tag, or "On the move".
+- Excellent coach fit: training vocabulary, short setup and silence.
+- Engine needs nothing new.
+- Voice: about 7-9 lines (welcome/setup, feet up, why the long exhale, counted-to-quiet handover, a tip,
+  check-in, close, getting up slowly).
+
+16. COLD-WATER BREATH  ("Cold": shower or plunge companion)
+-----------------------------------------------------------------------------------------------------
+Goal: get through the first minute of cold without gasping and hyperventilating, then settle. It's control,
+not toughness.
+
+Structure, as the videos run it
+- C7, a live voice-over of a 3-minute plunge:
+  - first, let the breath do what it wants; don't fight mouth breathing or short inhales (1:17);
+  - head back on the tub edge (1:32);
+  - then lengthen the exhales, audibly or vocalised (1:44-2:03);
+  - once in control, full inhale, a hold at the top, ease out (2:03; to drop for Kumbha);
+  - then switch to nasal breathing (2:28), then 5 s in : 5 s out, or box (3:02);
+  - get out at 3 minutes, slowly (4:02);
+  - afterwards, rewarm by moving rather than rushing into a hot shower or sauna (4:30-4:58).
+- N29, a cold shower or tub, about 3 min:
+  - a big nasal breath before stepping in, exhaling through the mouth as you get in (0:31);
+  - 6 rounds of 5 in through the nose : 5 out through the mouth (0:45-1:37);
+  - then about 3 rounds of 5-5-5-5 box (1:42-2:47);
+  - then an "optional plunge on the exhale", head under, or face wet in a shower (2:47). Drop for Kumbha.
+- N30: mostly intention-setting before the bath, "slow inhale, even slower exhale", then sitting in. Little
+  structure.
+
+Proposed Kumbha structure: shower-first, about 4 minutes, all of it on audio from outside the shower
+- 45 s on land: 6 breaths at 4:6, nose in, mouth out.
+- Step in or turn to cold on an exhale.
+- 0:00-0:45 in the cold:
+  - let the gasp happen; then long exhales through pursed lips or a hum;
+  - a "longer out than in" cue every few breaths.
+- 0:45-2:00: 5 in through the nose : 5 out through the mouth, then nose only.
+- At 2:00 (Gentle 1:00, Deeper 3:00): "Out. Slowly."
+- 1 min of rewarm cues: move, dry off, no hot shower straight away.
+- No holds at any point in the water, and no fast breathing before or during.
+
+Cues that made it work
+- Permission first: the gasp is normal; don't fight it for the first breaths (C7 1:17).
+- Then one job: make the exhale longer (C7 1:44, N29 0:53).
+- Rest the head; relax the shoulders (C7 1:32).
+- A fixed exit time, announced (C7 4:02).
+- The rewarm advice is concrete and a little surprising (C7 4:30).
+- The coach voice suits it: terse, calm, a bit dry.
+
+Safety (this is where Kumbha would add real value over the sources)
+- Never breath-holds or fast breathing in or before cold water. Both sources add holds in the water, and N29
+  suggests going under on an exhale. Cold shock shortens breath-holds and triggers an involuntary gasp,
+  which in open water is how people drown.
+- Drownings have been reported after hyperventilation-plus-hold practice in water. Say so plainly.
+- Shower or a tub you can step out of. Never alone in open water.
+- Skip it with heart disease, high blood pressure, Raynaud's, or if pregnant.
+- Get out if you're shivering hard or getting clumsy, or if fingers go white or numb.
+
+Evidence
+- As presented:
+  - C7: dopamine you can "literally feel", "anti-inflammatory properties".
+  - N30: white blood cells increase; reprogram the subconscious.
+  - All WRONG or SPECULATIVE as stated.
+- My judgement:
+  - SOLID that the cold-shock response (gasp, hyperventilation, heart-rate spike) peaks in the first minute
+    and fades over a few minutes, and that it shrinks with repeated short exposures (Tipton's cold-shock
+    research).
+  - SOME that deliberately slowing the breath shortens that phase.
+  - Mood benefits of cold showers come from small, mixed studies.
+
+Kumbha fit
+- NEW practice under "Energy", or a new "Cold" tag.
+- Kumbha's current safety line ("never in or near water, in the bath") would need a scoped exception: no
+  holds, no fast breathing, shower first.
+- Coach fit is excellent.
+- Voice: about 10-12 lines (plan, step-in exhale, gasp-is-normal, long-exhale, rhythm, nose, exit, rewarm,
+  safety, two tips).
+
+17. PRESSURE BREATHING AND EXHALE-ON-EFFORT  (hills, stairs, altitude)
+-----------------------------------------------------------------------------------------------------
+Goal: keep breathlessness under control on steep climbs, stairs, or above about 3,000 m.
+
+Structure
+- N32, mountaineering:
+  - above about 3,000 m, match breathing to steps;
+  - before a steep or vertical section, 2-3 "pressure breaths": a full deep inhale, then a forceful exhale
+    against pursed lips that takes its time to empty fully (0:49-1:22);
+  - if too out of breath for that, first slow down with mouth breathing, then resume (1:28-2:00).
+- N34, pulmonary rehab:
+  - inhale through the nose while standing still at the bottom of the stairs;
+  - exhale (pursed lips) as you step up;
+  - never hold the breath and rush (0:12-1:20).
+- N33: a trek-prep pranayama routine:
+  - belly breathing;
+  - alternate-nostril with a short hold, 3-count in, 5-15 rounds;
+  - kapalabhati, 10-30 forceful exhales, with contraindications listed (gastric ulcers, high or low blood
+    pressure, pregnancy, recent abdominal surgery).
+
+Proposed Kumbha structure
+- "Uphill", a short on-the-move practice:
+  - 1 min of nasal walking;
+  - then a pattern of 1 breath in over 1 step, out over 2 steps with pursed lips, on the climb;
+  - every 2 minutes, 2 pressure breaths;
+  - stop-and-reset on any spike.
+- Alternatively, a "stairs" tip set inside Window Seat's travel family.
+
+Cues that made it work
+- Exhale on the effort, inhale at rest (N34).
+- Slowing down is part of the technique, not a failure (N32 1:53, N34 0:41).
+- The rest step (lock the lower knee each step) is the mechanical partner, but those videos give no breath
+  timings.
+
+Safety
+- None specific for healthy people.
+- For anyone with lung or heart disease, this is a rehab tool to learn with their team.
+- Breathing does not prevent altitude sickness: ascend slowly; descend if symptoms worsen.
+
+Evidence
+- As presented:
+  - N33: belly breathing "increases oxygen supply", kapalabhati raises body temperature and lung capacity,
+    exhales "push out toxins". All WRONG.
+  - N32: pressure breathing helps "a lot" (anecdote).
+- My judgement:
+  - SOLID that pursed-lip breathing eases breathlessness in COPD.
+  - The pressure-breathing rationale at altitude is plausible (higher airway pressure keeps small airways
+    open, as in PEEP); only small field data, so SPECULATIVE to SOME.
+  - No breathing technique is shown to prevent acute mountain sickness.
+
+Kumbha fit
+- NEW but niche, under "On the move".
+- Low priority, unless hikers are an audience.
+- Voice: about 6-8 lines.
+
+=====================================================================================================
+PART D. LONG HOLDS AND ENERGY
+=====================================================================================================
+
+18. CO2 TABLE  (follow-along) AND A FAIRER ALTERNATIVE
+-----------------------------------------------------------------------------------------------------
+Structure, C3, measured
+- 6 holds of 45 s after a slow inhale to about 80%.
+- Rests start at 1:30 and drop by 15 s each time: 1:30, 1:15, 1:00, 0:45, 0:30, 0:15.
+- An app voice gives "Coming up, hold in 15", exhale that last breath, inhale to 80%, a 3-2-1 count-down,
+  "Hold" (e.g. 2:33.9-2:49.4).
+- Measured holds: 44.2, 43.4, 44.3, 44.5 s.
+- "Recover" twice at the end of each hold.
+- After the last hold, "extended recovery", then the option of 2 minutes of recovery breathing and a
+  max-hold test (11:10-11:27).
+- If 45 s is too long, use 15 or 30 s.
+
+The critique, N24
+- Because rests shrink, later holds start with CO2 already high. So the table mostly teaches fighting
+  discomfort, not relaxing into the early stages (4:41-5:27).
+- The coach's alternative: train the early stage with holds that all start from the same CO2. For
+  top-stage training, take just one or two breaths between holds (6:31-6:50). The latter is an advanced
+  method not for an app.
+- Any hold trains CO2 tolerance; shrinking rests aren't required (7:29-8:14).
+
+Kumbha fit
+- ALREADY COVERED by Hold Ladder (6 holds, rests 1:30 to 0:15, intensities 25/45/60 s).
+- C3 has three cues Kumbha lacks: the 15-s heads-up, the 80% inhale, and the optional max-hold test.
+- N24 suggests a "Steady rests" option.
+- See improvement 2 below.
+- Evidence: SOME for tables lengthening holds (as Kumbha's notes already say). The critique is coaching
+  opinion, but physiologically coherent.
+
+19. O2 TABLE  (rising holds, fixed rests)
+-----------------------------------------------------------------------------------------------------
+Structure
+- N22: test your max hold.
+- Holds then rise towards 90-95% of it, in steps of 5 s (max under 1:00), 10 s (1:30-2:00), or 15 s
+  (over 2:00). His example for a 1:00 max is 30, 35, 40, 45, 50, 55 s.
+- Rest is always 2 minutes of "pendulum" breathing, 5 in : 5 out.
+- 4-8 rounds. Optionally add a 100% max at the end. Retest weekly and re-scale (0:36-3:30).
+- N23: hypoxic training only works if it is "mildly hypoxic"; build up gradually; about twice a week. He
+  trains in the pool with a buddy.
+
+Safety
+- O2 tables deliberately approach low-oxygen levels. Blackout risk is real even sitting, and higher than in
+  CO2 tables.
+- Dry, lying down, never alone, never in water, never after fast breathing.
+
+Evidence
+- As presented: builds tolerance to low oxygen.
+- My judgement: SOME that hold time improves with training. The adaptation is mostly tolerance and the
+  diving response.
+
+Kumbha fit
+- SKIP for now, or offer only as a Hold Ladder variant capped at about 60-70% of a comfortable hold.
+- Its whole point (near-maximal holds) conflicts with Kumbha's "first clear urge" principle and its solo,
+  at-home use.
+- The fixed 2-minute rest is worth borrowing (improvement 2).
+
+20. POWER-BREATHING ROUNDS  (deep cyclic breathing, empty hold, 15-s recovery hold), incl. a sleep version
+-----------------------------------------------------------------------------------------------------
+Structure, measured
+- C1, 3 rounds. Each round:
+  - about 30-35 full in/out breaths over about 105-110 s (about 3.6 s each);
+  - "10 more", "5 more", "last one" milestones;
+  - an empty hold of about 23 s, 60 s, then about 90 s in round 3 (8:16-9:47, "30 seconds left" at 9:18);
+  - a full recovery breath held 15 s.
+- C6, 4 rounds of slower deep breathing (about 1.5-2 min each). Measured empty holds of about 59 s, 91 s,
+  121 s and 164 s, each with a 15-s recovery hold. Mostly silent.
+- X1, the sleep version, 3 rounds:
+  - 2-count in through the nose, 2 out through the mouth, for about 105 s (about 25 breaths);
+  - a short top hold of 6-10 s, exhale, an empty hold of about 50-55 s, a recovery hold of 13-21 s;
+  - "halfway", "three more, two, last one" countdowns.
+
+Evidence: covered in Kumbha's Tide and Fire Wave notes (adrenaline rise in small studies; SpO2 drops in the
+holds).
+
+Kumbha fit
+- ALREADY COVERED by Tide (kapalabhati, empty holds 45/60/75 s, full holds) and Fire Wave.
+- I would not add X1 as a sleep practice: deep cyclic breathing with holds is arousing, which is the wrong
+  direction at bedtime.
+- One cue worth keeping: C1's "if you need to breathe before the cue, that's okay" (5:28).
+- Voice: 0.
+
+21. "TUMMO"-STYLE ROUNDS  (as taught on a large yoga channel)
+-----------------------------------------------------------------------------------------------------
+Structure, N31, 3 rounds
+- Deep belly-then-chest inhales with forceful pursed-lip exhales, as if throwing the air at your hand.
+  The video says 21 breaths per round; it measures as about 25-30 s of breathing in round 1.
+- Then a full inhale and hold: 30 s, 45 s, then 60 s with a root lock in round 3.
+- A slow, controlled pursed-lip exhale.
+- 30 s of seated stillness, visualising a flame at the base of the spine.
+- About 7 minutes in all (2:16-8:01).
+
+Evidence
+- As presented: "detoxes", improves metabolism, burns fat, purifies the "pranic body", "five times more
+  effective" with the lock. All WRONG or SPECULATIVE.
+- My judgement: a 2013 study of Tibetan practitioners (Kozhevnikov et al.) found the forceful "vase"
+  breathing raised core temperature, and the visualisation helped sustain it. SOME, for heat only. The
+  video's version is closer to Fire Wave than to that.
+
+Kumbha fit
+- ALREADY COVERED by Fire Wave (full-lung holds with bandhas, 15/30/45 s).
+- Two small borrowings: the controlled pursed-lip release after the hold, and 30 s of stillness between
+  rounds.
+- Voice: 1-2 lines.
+
+22. COOLING BREATH  (sitali)
+-----------------------------------------------------------------------------------------------------
+Structure, N35, 5-10 cycles
+- Lips in an "O", tongue curled and stuck out.
+- Inhale through the tongue like sipping through a straw, with a hiss.
+- Close the mouth, chin to chest (chin lock), hold 5 s.
+- Lift the chin and exhale slowly through the nose (0:25-1:10).
+- About 15 s per cycle, so 1.5-2.5 minutes.
+
+Evidence
+- As presented: cools the body, soothes eyes and ears, promotes liver and spleen, improves digestion,
+  reduces thirst. Mostly WRONG.
+- My judgement: the evaporative cooling of the incoming air is real but tiny. It's a SPECULATIVE comfort
+  practice for a hot day. About a fifth or more of people can't curl the tongue; the usual alternative is
+  sipping air through the teeth (sitkari).
+
+Kumbha fit
+- SKIP as a full practice. At most a 2-minute "hot day" variant in Calm.
+- The coach voice can carry it ("Curl the tongue. If you can't, teeth together, sip through them."), but
+  the evidence is thin.
+- Voice: 4-5 lines.
+
+23. 4-7-8  (counted)
+-----------------------------------------------------------------------------------------------------
+Structure, X3
+- 4 in through the nose, 7 hold, 8 out through the mouth. Counts at about 1.3-1.6 s each, so a real cycle
+  of about 27-28 s.
+- About 20 cycles in 10 minutes, then free breathing.
+
+Kumbha fit
+- ALREADY COVERED by Wind-down (4 rounds).
+- Nothing new except confirmation that slow counting reads as calm.
+
+24. LONG-INHALE "AWAKE" BREATH FOR FLYING
+-----------------------------------------------------------------------------------------------------
+Structure, V13: 6 s in through the nose, 2 s out through the mouth.
+
+Evidence
+- As presented: cabin pressure lowers blood oxygen, which makes you sleepy. Long exhales lower blood oxygen,
+  long inhales raise it and "activate the energizing branch".
+- My judgement: WRONG. Inhale length doesn't raise saturation in any meaningful way, and fast,
+  inhale-heavy breathing mostly lowers CO2.
+
+Kumbha fit
+- SKIP. It also contradicts Window Seat's reasoning (cabin air, no over-breathing).
+
+=====================================================================================================
+RANKED: TOP 5 NEW PRACTICES TO ADD
+=====================================================================================================
+1. BOX (entry 1)
+   - Tactical 4:8 opener, then box 4-4-4-4 into 5-5-5-5; about 7 min, with Gentle/Deeper/No holds.
+   - Why first: the most-searched calm technique missing from the library, low risk, a native fit for the
+     ex-military coach (drills, ratios, benchmark close), and the engine already supports it.
+   - About 12-14 lines.
+2. STEADY (entries 3 + 2)
+   - 10-12 small holds of 5 s with 12-s rests, then a 3:6 long-exhale ladder; about 7 min.
+   - Why: fills the "I'm over-breathing right now" gap; the sighing and resonance practices go the other
+     way.
+   - Reuses Clear Nose's pinch step.
+   - About 10-12 lines.
+3. READY (entry 10)
+   - 2 sighs, tactical 4:8 ×5, box ×4, optional hums, "Go"; 3-4 min.
+   - Modes: Desk, Stage, Start line.
+   - Why: a short, high-use practice (exams, talks, start lines) that recombines patterns Kumbha already
+     has; the coach briefing tone is ideal.
+   - About 8-10 lines.
+4. COLD (entry 16)
+   - Shower-first cold companion: let the gasp happen, long exhales, 5:5, exit on time, rewarm by moving;
+     no holds in water.
+   - Why: cold exposure is hugely popular, and the YouTube versions add holds and head-dunks. An honest,
+     safety-led version is a real differentiator. It needs a scoped change to the water rule.
+   - About 10-12 lines.
+5. COOL-DOWN (entries 15 + 14)
+   - Feet up 90/90, 4:8 counted for 3 min, then 3 min of tones only; plus a 60/90-s "between sets" mode.
+   - Why: a training audience gets a reason to open Kumbha after every session; low risk; nothing new in
+     the engine.
+   - About 9-11 lines across both modes.
+
+Runners-up:
+- Walking Holds (entry 12): good coach fit, but moderate risk and needs a careful safety gate.
+- Stride (entry 13): needs a cadence setting and a running UI.
+- Comfortable-hold check (entry 4): a tool rather than a practice, but cheap and it feeds the practice log.
+
+=====================================================================================================
+THREE IMPROVEMENTS TO EXISTING PRACTICES
+=====================================================================================================
+1. RESONANCE: "Find your pace" plus a bells-only extension (entries 7 and 8)
+   - An optional first-run session: 2 minutes each at 6.5, 6, 5.5 and 5 breaths a minute (cycles of 9.2,
+     10, 10.9 and 12 s, keeping the 2:3 in/out split). Then a tap: "Which felt easiest?" Store it and use
+     it as Resonance's main pace.
+   - Say plainly that without a heart sensor this is a comfort pick, that most people land between 4.5
+     and 6.5, that 6 is a good default, and that the best rate can shift day to day (N11 saw this).
+   - Add "+5 / +10 min, bells only" after the close, as in C5.
+   - About 4 lines.
+2. HOLD LADDER: three cues from C3, and a fairer table from N24 and N22
+   - A heads-up 15 s before each hold, a count-in, and "Recover." as a one-word call.
+   - "Breathe in to about 80%" instead of "comfortably full".
+   - An optional comfortable-hold check (entry 4) or easy max-hold test, after 2 minutes of recovery
+     breathing, logged for the trend.
+   - A "Steady rests" option: the same holds, but a constant 2:00 rest (5:5 breathing), so every hold
+     starts from the same CO2. Kinder for beginners, and it answers the critique.
+   - About 5-6 lines.
+3. WIND-DOWN: a breathe-light block before the drift (entry 5)
+   - After the four 4-7-8 rounds, 3 minutes of breathe-light: nose only, make each breath a little
+     smaller until there's a faint air hunger. If it gets strong, take a slightly bigger breath. Rest any
+     time.
+   - Then the existing drift.
+   - Keep X2's calibration cues and drop its hypnotic "you feel sleepy" layer.
+   - Evidence for sleep is weak, so phrase it as "quiet, small breathing", not a sleep cure.
+   - About 4-5 lines.
+- Honourable mention: Cyclic Sighing's "Pocket" length of 3 sighs (entry 6). It costs 1-2 lines and fits
+  the choose-your-length idea from the app research.

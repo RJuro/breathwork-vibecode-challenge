@@ -1,0 +1,1227 @@
+KUMBHA: BREATHING SEQUENCES FROM COMMUNITY SOURCES AND RESEARCH
+Compiled 2026-10-09. Paraphrased throughout. Protocols are given as facts; quotes are rare and short.
+YouTube was skipped (another agent covers it).
+
+HOW THIS WAS GATHERED
+- Reddit: reddit.com blocks unauthenticated JSON, so posts were read through two public Reddit archives
+  (Arctic Shift, PullPush) and reddit.com's search RSS feed, all of which rate-limited heavily.
+  Full post dumps: r/breathwork (3,000 posts, 2019 to mid-2025) and r/Buteyko (all 1,331 posts),
+  plus search-result pages (top posts for "breathing" queries) and thread reads in r/Freediving,
+  r/WimHof, r/insomnia, r/Anxiety, r/running, r/Meditation, r/climbing, r/Stoicism, r/CPTSD,
+  r/longcovid, r/asthma and r/army (see Appendix A). r/navy and r/ProtectAndServe searches returned
+  nothing about breathing practice. A few items seen only through search-engine snippets or mirrors are
+  marked [snippet]. Reddit thread IDs are given as r/<sub>/<id>. A thread's URL is
+  https://www.reddit.com/r/<sub>/comments/<id>/.
+- Forums and training sources: DeeperBlue (pages return 403; read through search excerpts), a freediving
+  agency manual (RAID), TDI/SDI, SSI, PADI, Buteyko and "breathe light" practitioner sites, a US Army field
+  manual (FM 7-22), police training articles, NHS leaflets, and yoga schools.
+- Research: papers were checked in PubMed/PMC full text where possible. Where only the abstract or a
+  secondary source was available, it says so. "unverified" = a number I could not confirm from the source.
+- Raw notes: raw/literature.txt (research, 313 lines), raw/forums.txt (training sources, 950 lines),
+  raw/dumps/*.jsonl (Reddit post dumps), raw/rss/ and raw/bw_apps_threads.txt (Reddit threads).
+
+EVIDENCE SCALE USED BELOW
+  strong = replicated, controlled, decent samples
+  moderate = at least one decent RCT or consistent smaller trials
+  weak = small, uncontrolled, single-session, or self-report only
+  speculative = mechanism, case report, or community claim only
+
+UNIVERSAL SAFETY TEXT (applies to every sequence below; the per-item safety notes add to it)
+- Never in or near water, in the bath, or while driving or operating anything. A hypoxic blackout comes
+  with no warning. Sitting or lying unless the practice is explicitly a walking one.
+- No fast breathing before any hold. It removes the urge to breathe and makes holds feel easy while
+  oxygen keeps falling. In a lab, 15 s of hyperventilation before each of 5 holds made the oxygen low
+  point fall further hold after hold (94% to 87%) (Pernett 2023).
+- Stop at tingling, numbness, cramping of the hands, dizziness, chest pain, or visual changes.
+- After the last hold, stay seated or lying for a minute before standing. An r/Freediving user who got up
+  straight after a 1:40 dry hold in bed walked to another room, fainted, and hit his head
+  (r/Freediving/4xly7m).
+- No "packing" (extra gulps of air on top of a full breath). A user who packed during a table had months of
+  breathlessness and chest-bone pain afterwards; a dive-medicine doctor was involved (r/Freediving/ne0tw9).
+- Holds and air hunger: skip or keep very light in pregnancy, heart disease, uncontrolled high blood
+  pressure, epilepsy, history of fainting, panic disorder, kidney disease, sickle cell disease, recent
+  surgery, and with an active chest infection. Consensus across practitioner safety lists, which are
+  broad but not evidence-graded (raw/forums.txt section 2f).
+- Fast breathing (hyperventilation): additionally skip with bipolar disorder, psychosis history, or
+  severe PTSD unless supervised. Community reports of manic and panic episodes after long intense
+  sessions: r/breathwork/1i41qso, r/breathwork/1gjcl91.
+
+
+======================================================================================================
+PART 1. CANDIDATE SEQUENCES
+======================================================================================================
+Ordering: new practices first, then variants and improvements to existing practices, then weaker
+ideas. The ranked lists are in Parts 3 and 4.
+
+------------------------------------------------------------------------------------------------------
+1. STEADY BOX (box / "tactical" breathing, sized by an exhale test)
+------------------------------------------------------------------------------------------------------
+GOAL: Stay level under pressure: before a hard conversation, a speech, an exam, a shift, or after a bad
+call. A focus tool, not a sleep tool.
+
+STRUCTURE
+- Optional sizing step (from the Balban 2023 box arm): 4 normal breaths, one full nasal inhale, then
+  exhale as slowly as possible. Time the exhale. Box side length from that time:
+    exhale 0-20 s  -> 3-4 s per side
+    exhale 25-45 s -> 5-6 s per side
+    exhale 50-75 s or more -> 8-10 s per side
+  (The paper's bands skip 21-24 s and 46-49 s; round to the nearer band.)
+- Box: in (nose) 4 / hold full 4 / out 4 / hold empty 4. 16 s per cycle = 3.75 breaths/min.
+- Session: 5 min (about 19 cycles at 4 s). The police "combat breathing" version is the same counts,
+  repeated "several times"; the classroom handout version is 3 cycles. A 1-min pocket version = 4 cycles.
+- Difficulty variants:
+    Gentle: 3-3-3-3, or triangle 4 in / 4 out / 4 hold empty (no full hold), the form many
+      anxious users find easier (r/breathwork/155pkg2: start box at 3 s, build up).
+    Standard: 4-4-4-4 for 5 min.
+    Long: 5-5-5-5 or 6-6-6-6 if the exhale test supports it.
+- US Army FM 7-22 "heart rate control" is a related no-hold version: 5-7 s in, 5-7 s out, "a few
+  repetitions several times per day", used right before or after a task.
+
+EVIDENCE
+- Balban et al. 2023, Cell Rep Med (RCT, 4 arms, 5 min/day for 28 days, n=108; box arm n=21): box raised
+  daily positive affect (+1.84 PANAS, p=0.026) and lowered state anxiety (-3.75); not significantly
+  different from mindfulness. Cyclic sighing did better on positive affect. Strength: weak-moderate.
+- Röttger et al. 2021, Appl Psychophysiol Biofeedback (n=30, within-subject, stressful Stroop task):
+  combat tactical breathing gave lower physiological arousal than a long-exhale technique, but long
+  exhale gave better task performance; no difference in felt stress. Exact counts paywalled. Weak.
+- Police students, PsyArXiv preprint (n=96, randomised pairs, simulated critical incident): pairs told to
+  use tactical breathing performed better, as rated by expert observers; felt stress unchanged.
+  Not peer-reviewed. Weak. https://core.ac.uk/outputs/645909803
+- Bouchard et al. 2012, PLoS One (n=41 soldiers, 3 x 30-min biofeedback-assisted tactical breathing
+  sessions in a stressful video game): lower cortisol/heart-rate stress in a live simulated ambush. Weak.
+- Against: Marchant et al. 2025 (n=84 students, within-subject): 6 breaths/min raised HRV more than
+  square or 4-7-8 breathing. After HIIT, box breathing kept heart rate higher than 6 breaths/min
+  (n=40, PMC12622787). So box is a focus/arousal-control tool, not the best recovery or sleep tool.
+- The "Navy SEAL" origin is popular lore traced to one former SEAL's books; no official Navy document
+  found. The police version dates to a 2001 trade-magazine article. The app need not mention either.
+
+COMMUNITY NOTES
+- Mentioned in 94 of 3,000 r/breathwork posts (fast breathing styles lead: 226 mention one fast method,
+  164 holotropic; 105 coherent/resonance). People use box mid-day for focus or an energy lull and say it
+  needs more concentration than 6/min breathing (r/breathwork/mcgyjh).
+- Police trainers say breathing is the "chorus" answer to adrenaline, but argue it is one tool among
+  several (Police1/Corrections1 articles). One police trainer recommends starting the count as stressors
+  begin, not at the peak; another suggests box breathing after a traumatic call.
+- Mistakes: bearing down or straining in the holds; filling and emptying the lungs completely (the police
+  article teaches this; it pushes people toward over-breathing); using it at bedtime and staying alert.
+- Drop-out: the holds feel hard when already anxious. r/Anxiety threads "Does anyone NOT benefit from
+  breathing exercises?" (r/Anxiety/198wq4s) and r/Anxiety/11pok96: box holds feel like suffocating,
+  counting makes people hyper-aware of their breathing ("forget how to breathe"), and some end up
+  hyperventilating; several say they need to get up and move instead. People with panic disorder have
+  shorter breath-holds (secondary sources, raw/forums.txt 5g). So: a no-hold option and a "walk while you
+  do it" option.
+
+SAFETY
+- Holds are short and low risk. Keep holds relaxed: no straining against a closed throat (raises blood
+  pressure). Skip the holds (use 4 in / 6 out) in pregnancy if uncomfortable, and in panic disorder.
+
+SOURCES
+- Balban 2023: https://pmc.ncbi.nlm.nih.gov/articles/PMC9873947/
+- Röttger 2021: doi:10.1007/s10484-020-09485-w (paywalled)
+- Bouchard 2012: https://pmc.ncbi.nlm.nih.gov/articles/PMC3338628/
+- Marchant 2025: Appl Psychophysiol Biofeedback 50(2):261-276
+- Box vs 6/min after HIIT: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12622787/
+- Police combat breathing: https://www.police1.com/officer-safety/articles/how-to-incorporate-combat-breathing-in-police-pursuits-ER1ZKNdX79tS3XN8
+- US Army FM 7-22 para 9-32/9-33: https://arotc.illinoisstate.edu/downloads/resources/FM_7-22_October%202020.pdf
+- Harvard Health "tactical breather": https://www.health.harvard.edu/mind-and-mood/try-this-take-a-tactical-breather
+- r/breathwork/mcgyjh, r/breathwork/155pkg2, r/breathwork/1bf1wee
+
+KUMBHA FIT
+- NEW practice. Suggested tag: a new "Focus" tag, or "Calm". The engine already supports holdIn/holdOut.
+- Coach voice: the best fit in the whole list. It is the one practice where an ex-military voice is the
+  expected teacher. Keep the origin story out (no names).
+- Make the exhale test optional and reusable (see item 3, Breath Check).
+- New voice lines: about 16 (welcome, how-to, exhale-test instructions and 3 result lines, "no straining
+  in the holds", 4 cues, a science line on the Balban arm, a line on using it before a task, close).
+
+
+------------------------------------------------------------------------------------------------------
+2. LEVEL (slow-and-shallow training for panic-prone breathing; a 4-week ladder)
+------------------------------------------------------------------------------------------------------
+GOAL: Make breathing slower, smaller and more regular, so it stops feeding panic. A daily training
+programme for people who over-breathe when anxious, practised when calm, not a rescue in the moment.
+
+STRUCTURE (from the capnometry-assisted respiratory training trial, Meuret et al. 2008)
+- Session = 17 min, twice a day, 4 weeks:
+    2 min  sit quietly, eyes closed, breathe normally
+    10 min breathe with pacing tones
+    5 min  no tones; keep the same rate and the same small breath
+- Tone rate by week: week 1 = 13 breaths/min, week 2 = 11, week 3 = 9, week 4 = 6.
+- Emphasis: weeks 1-2 regular rate and rhythm; weeks 3-4 shallower breathing (in the trial, to raise
+  exhaled CO2 above 35 mmHg on a capnometer). For people whose CO2 was already normal, the training
+  targeted regularity and avoiding sighs.
+- App translation without a sensor: tones at the week's rate; cue "smaller, quieter" breaths in weeks
+  3-4; ask the user to rate light-headedness and tingling (signs of over-breathing) after each session.
+- Variants (my suggestions, untested): a single 12-min session per day (2 quiet + 5 paced + 5 unpaced) for
+  people who will not do twice daily; a "week picker" so people can repeat a week.
+
+EVIDENCE
+- Meuret, Wilhelm, Ritz, Roth 2008, J Psychiatr Res 42(7):560-568: RCT, panic disorder, n=37 (20 training,
+  17 wait-list), plus 5 weekly 1-hour clinic sessions. Panic severity effect vs wait-list d=2.21; resting
+  CO2 32.2 -> 34.6 mmHg; resting breathing rate 11.6 -> 9.3/min; home adherence 91%; panic-free 40% at
+  week 4, 68% at 12 months (uncontrolled follow-up). Strength: moderate for panic disorder WITH a
+  capnometer and clinic sessions.
+- A later trial (Meuret et al. 2010, J Consult Clin Psychol; sample size unverified, seen only via search
+  summaries) found this training and cognitive therapy reduced panic severity about equally. A commercial
+  device version was FDA-cleared.
+- The capnometer feedback is the core ingredient. An app without one keeps the pacing and the
+  "slow and shallow" instruction but not the feedback, so effects will likely be smaller. Say so.
+- Supporting idea: deep slow breathing can over-breathe. 6/min breathing lowered end-tidal CO2 mildly
+  in Marchant 2025; a 6/min "deep" breather in r/breathwork/1c6ylcq reported fog and headache.
+
+COMMUNITY NOTES
+- A recurring failure mode: people told to "take deep breaths" get dizzier and more panicky. One user did
+  slow belly breathing all day for a week and started having panic attacks (r/breathwork/15d39ns); a
+  reply suggested smaller inhales. CPTSD users report breathing drills leaving them light-headed, which
+  then adds to the anxiety [snippet, r/CPTSD mirror].
+- A popular r/Buteyko post describes a panic routine built on silent breathing through one nostril until
+  the air hunger fades (r/Buteyko/dzp8c1). Same principle: smaller, quieter, slower.
+- Users want to practise when calm so the skill is there in a crisis (r/Anxiety and NHS leaflets agree).
+- r/Anxiety's "air hunger" thread (r/Anxiety/e6a6x0): many people with normal tests and 99% oximeter
+  readings describe never getting a satisfying breath, yawning and sighing constantly; slowing and
+  reducing breathing "helped a bit" for the poster. This is exactly the over-breathing pattern that
+  sighing and deep breathing can feed, and the group this programme is for.
+- Skeptics: one user with clinical anxiety says breathing exercises are for stress, not for disorders
+  (r/Anxiety/ekp7t8). Copy should not oversell; "a skill to practise alongside treatment".
+
+SAFETY
+- Not a treatment for panic disorder on its own; "see a clinician if panic is frequent" line needed.
+- Chest pain, fainting or breathlessness on exertion need medical review before assuming panic.
+- Do not use rebreathing into a bag (oxygen can fall; reports of harm when the cause was a heart attack).
+
+SOURCES
+- Meuret 2008: https://pmc.ncbi.nlm.nih.gov/articles/PMC2890048/
+- Trial registry wording (17 min twice daily): https://clinicaltrials.gov/study/NCT03547180
+- NHS West Suffolk "Calming Hand" leaflet: https://wsh.nhs.uk/CMS-Documents/Patient-leaflets/Physiotherapy/6239-1-The-Calming-Hand.pdf
+- NHS Borders hyperventilation leaflet: https://www.nhsborders.scot.nhs.uk/media/213548/Hyperventilation.pdf
+- r/breathwork/15d39ns, r/breathwork/1c6ylcq, r/Buteyko/dzp8c1
+
+KUMBHA FIT
+- NEW practice, or a 4-week "programme" mode. Tag: Calm (or a new "Anxiety" tag). It overlaps with
+  Resonance (both end at 6/min) but differs in its message: smaller breaths, a slow ladder from a normal
+  rate, and a transfer phase without tones. Week 1 at 13/min is close to normal breathing, so it is the
+  gentlest entry in the app.
+- Coach voice: fits if kept very plain and slow ("Smaller. Quieter. Nobody should hear it.").
+- New voice lines: about 14 (welcome, week intros x4, "smaller, quieter" cues x3, transfer-phase
+  instruction, after-session check-in, a science line on CO2 and panic, close).
+
+
+------------------------------------------------------------------------------------------------------
+3. BREATH CHECK (control pause + slow-exhale test; a 3-minute measurement, not a practice)
+------------------------------------------------------------------------------------------------------
+GOAL: Give the user a number to track over weeks and use it to size other practices (box side length,
+hold-ladder level, breathe-light dose).
+
+STRUCTURE
+- Sit, rest 1-2 min (practitioner pages say 10 min; first thing in the morning is most comparable).
+- Test A, control pause / BOLT: small normal breath in and out through the nose, pinch the nose after
+  the out-breath, time to the FIRST definite urge to breathe (a throat or belly twitch, or an urge to
+  swallow). Release and breathe in calmly through the nose. If the first breath is a gasp, it was held
+  too long. Not a maximum hold.
+- Rest 1 min of normal breathing.
+- Test B, slow exhale: 4 normal breaths, one full nasal inhale, then exhale as slowly as possible; time
+  until empty. (This is the box-sizing test in Balban 2023.)
+- Show the trend over weeks, not day-to-day.
+- Bands, if shown at all (practitioner bands, NOT validated, and sources disagree):
+    control pause: under 10 s / 10-20 / 20-30 / 30-40 / 40+ (one source) vs under 15 / 15-25 / over 25
+    (another). Best shown as a personal trend line rather than a grade.
+
+EVIDENCE
+- Courtney & Cohen 2008 (n=83): breath-hold time correlated slightly NEGATIVELY with end-tidal CO2
+  (r=-0.24), the opposite of the Buteyko claim that it measures CO2. It was shorter in people with abnormal
+  lung function and with chest-dominant breathing. So the control pause is not a CO2 gauge; it may track
+  breathing pattern and breathlessness. No test-retest reliability study found. Strength of the test as a
+  health measure: weak.
+- Slow-exhale test: used only to size box breathing in one trial; no validation found.
+
+COMMUNITY NOTES
+- Central to r/Buteyko (the FAQ calls it the main health measure). Users warn the number swings a lot
+  within a day: one post records 30 s in the morning and 15 s four hours after the gym; commenters advise
+  comparing week to week, and note that meals and exercise lower it [snippet, r/Buteyko/1jkbed0].
+- A long-running user logged a morning control pause rising from about 25 to 35-40 s over 3 months of
+  twice-daily sessions (r/Buteyko/pa8eaq). One user went from about 10 to about 25 over 6 months
+  (r/Buteyko/1rfutin). Self-reports.
+- Wanted features: logging, charts, and comparison across weeks (r/Buteyko app posts 1mc4r2k, 1qt68yj).
+
+SAFETY
+- The control pause is a short hold to the first urge: low risk. Do not turn it into a maximum hold.
+
+SOURCES
+- Courtney & Cohen 2008, J Altern Complement Med 14(2):115-123
+- BOLT method page: https://oxygenadvantage.com/pages/bolt-score-test
+- Control pause page: https://buteykoclinic.com/blogs/start-your-breathing-test/start-your-breathing-test
+- Balban 2023 exhale test: https://pmc.ncbi.nlm.nih.gov/articles/PMC9873947/
+- r/Buteyko/pa8eaq, r/Buteyko/1rfutin
+
+KUMBHA FIT
+- NEW utility (2-3 min), not a full practice. Feeds Steady Box (side length), Breathe Light (whether to do
+  holds at all), and Hold Ladder (level). Store the numbers locally.
+- Coach voice: good ("Not a contest. First twitch, and you stop.").
+- New voice lines: about 8. Very cheap to build: the engine already records hold times ('record: true').
+- Honesty: do not show "health" bands. Show "your trend".
+
+
+------------------------------------------------------------------------------------------------------
+4. BREATHE LIGHT (reduced-volume breathing with small holds; asthma-style breathing retraining)
+------------------------------------------------------------------------------------------------------
+GOAL: Quieter, smaller, nasal everyday breathing. The asthma evidence is about symptoms and reliever
+use, not lung function.
+
+STRUCTURE (combining the practitioner protocols; all practitioner guidance)
+- Warm-up: 1-2 min normal nasal breathing; optional control pause (item 3).
+- Block A "small holds" (2.5-5 min): breathe out normally, pinch, hold 3-5 s; release; normal nasal
+  breathing 10-15 s; repeat. Holds no longer than half the user's control pause.
+- Block B "breathe light" (3-4 blocks of 3-4 min, 1 min normal breathing between): soften the breath until
+  the air movement is barely felt at the nostrils, about 70-80% of a normal breath, keeping a gentle,
+  tolerable air hunger without tensing the belly. If the breath turns into gulps or the rhythm falls
+  apart, break for about 1 min.
+  Paced option from the same sources: 4 s in, 5-6 s out, ~1 s pause (6 breaths/min), kept small.
+- Close: 1-2 min normal breathing; optional repeat control pause.
+- Total: about 12-18 min. Practitioner dosing: 15-20 min, up to 3 times a day, for 6 weeks or more.
+- A community example (r/Buteyko/pa8eaq, 18 min, twice a day): 3 min of 6 s in / 6 s out; control pause;
+  4 x [3 min reduced breathing at about 1.5 s in / 2.5 s out then a pause to the first urge; then one
+  6 s in / 6 s out breath and a hold]; 3 min of 6/6; end control pause.
+- Variants: Gentle = Block A only (no air hunger); Standard = A + 3 x 3 min of B; Walking = breathe light
+  during a 10-15 min walk with the mouth closed.
+
+EVIDENCE
+- Bowler et al. 1998, Med J Aust (blinded RCT, n=39, 3 months): reliever use fell by a median 904 mcg/day
+  vs 57 (p=0.002); inhaled steroid down 49% vs 0 (p=0.06); no change in lung function or end-tidal CO2.
+- Cooper et al. 2003, Thorax (RCT, n=90, 6 months): symptoms -3 vs 0 points (p=0.003); reliever -2 puffs/day;
+  no change in airway responsiveness or lung function.
+- Cowie et al. 2008, Respir Med: Buteyko and physiotherapist breathing/relaxation improved asthma control
+  about equally (40% -> 79% vs 44% -> 72%); Buteyko reduced inhaled steroids more.
+- BREATHE trial, Bruton et al. 2018, Lancet Respir Med (n=655): a home DVD of diaphragmatic, nasal and slow
+  breathing, controlled breath holds and relaxation raised asthma quality of life by 0.28 points (below
+  the 0.5 minimal important difference on average); no change in lung function. Strength: strong for a
+  small quality-of-life gain.
+- Cochrane 2020 (22 RCTs, n=2880): breathing exercises improve asthma quality of life by about 0.42
+  points at 3 months (moderate certainty).
+- The CO2 theory behind the method is not supported (Bowler, Cooper, Courtney). Long COVID: no trial of
+  reduced breathing found. Strength overall: moderate for "fewer symptoms and less reliever use in
+  asthma"; speculative for anything else.
+
+COMMUNITY NOTES (r/Buteyko, 1,331 posts read)
+- What people like: waking more refreshed, calmer mood, a clearer nose (r/Buteyko/1rfutin,
+  r/Buteyko/ryxdp7, r/Buteyko/ji07zl).
+- Tips that recur: tiny holds of 2-5 s after an out-breath spread through the day, tied to triggers such
+  as washing hands; relaxation first, breath reduction second; lie down if sitting is uncomfortable;
+  sessions before meals (r/Buteyko/1rfutin).
+- Main confusion: people cannot tell what "reduced breathing" means in practice. Several threads ask
+  for exact steps and get vague answers (r/Buteyko/i3cuir, r/Buteyko/ds4ual). An app with a clear pacer
+  is the fix.
+- Mistakes and side effects: holding too hard caused weeks of ear (Eustachian tube) pain for one user
+  (r/Buteyko/pa8eaq); headaches when forcing nasal breathing, possibly dehydration (r/breathwork/lrvzic);
+  big day-to-day swings in the number cause discouragement.
+- Unhealthy claims also circulate in the sub (sleep cut to 3-4 hours, eating less at "high CP"). The app
+  should not repeat any of them.
+
+SAFETY
+- Pregnancy: no holds or air hunger. Avoid moderate or strong air hunger with heart disease, high blood
+  pressure, epilepsy, diabetes (can lower blood sugar, per one clinic), panic disorder, long COVID or
+  dysautonomia, and in the first days of a cold. Asthma: keep the inhaler; never cut medication without a
+  doctor. In an asthma attack, use medication first.
+
+SOURCES
+- Bowler 1998: Med J Aust 169:575-578. Cooper 2003: https://pmc.ncbi.nlm.nih.gov/articles/PMC1746772/
+- Cowie 2008: Respir Med 102:726-732. BREATHE: https://pmc.ncbi.nlm.nih.gov/articles/PMC5757422/
+- Cochrane 2020 CD001277: https://rehabilitation.cochrane.org/breathing-exercises-adults-asthma
+- Practitioner protocols: https://oxygenadvantage.com/pages/science__functional-breathing-techniques-exercises
+  and the athletes' manual PDF (raw/forums.txt 2b-2c); https://buteykoclinic.com/blogs/news/is-buteyko-breathing-dangerous
+- UK physio guideline (ACPRC): https://www.acprc.org.uk/media/1jtnfqjv/gl-04buteykobreathingtechnique.pdf
+
+KUMBHA FIT
+- NEW practice, but it shares DNA with Clear Nose (which already has "breathe light" plus pinch-and-nod
+  holds). Option: make Breathe Light the daily retraining practice and keep Clear Nose as the acute
+  congestion one. Tag: "Calm" or a new "Everyday" tag.
+- Coach voice: fits ("Quieter. If I can hear you, it's too much.").
+- New voice lines: about 15. The 'record' hold and the small-pace (SMALL) pacer in clear.js can be reused.
+
+
+------------------------------------------------------------------------------------------------------
+5. BETWEEN SETS (recovery breathing during interval or strength training)
+------------------------------------------------------------------------------------------------------
+GOAL: Bring the heart rate down faster in the 1-3 min between hard efforts, then settle after training.
+
+STRUCTURE
+- Posture first: hands on knees, back rounded, for the first 30-60 s (not hands on head).
+- 0-60 s: let the breath run free through the mouth; then shift to nose in, long mouth out.
+- 60 s to end of rest: slow breathing at about 6 breaths/min (4 in / 6 out), or 4-7-8 if the user
+  likes it (the strength-training study used 4-7-8 for the last 2 of 3 min).
+- Cue "10 seconds, stand up" before the next set.
+- Rest timers: 1:00, 2:00, 3:00. Number of sets: user-set (e.g., 5).
+- Cool-down variant after the session: 3-5 min at 6 breaths/min, lying or seated.
+
+EVIDENCE
+- Hands on knees vs hands on head, Michaelson et al. 2019, Transl J ACSM (n=20 female soccer players,
+  4 x 4 min at 90-95% max HR, 3-min recoveries): hands on knees gave faster HR recovery (53 vs 31 bpm) and
+  bigger tidal volume. A companion thesis found no difference in next-effort power. Weak-moderate.
+- 4-7-8 between squat sets (J Hum Kinet 2024, n=18 trained men, 5 x 3 at 80% 1RM, 3-min rests): better HR
+  recovery in sets 2 and 3 (51 vs 44.5 bpm; 48 vs 38 bpm); no effect on power, velocity, or perceived
+  recovery. Weak.
+- After HIIT (n=40): box breathing left heart rate higher than both 6/min and free breathing; time to
+  recover did not differ significantly (p=0.128). A tiny study (n=9) found 6/min fastest for HR recovery.
+- Four weeks of slow breathing added to sprint-interval training gave no extra performance gain (n=34).
+- Honest claim: it can speed heart-rate recovery and feels calmer; it does not make the next set stronger.
+
+COMMUNITY NOTES
+- r/breathwork users use slow breathing after workouts (r/breathwork/1i77axv comment). Recovery posture
+  coverage in running media says use hands-on-knees for rests of 3 min or less, then walk.
+- Common mistake: trying slow breathing in the first seconds after a max effort, when the body needs
+  big breaths. Let it run free first.
+
+SAFETY
+- Low risk. No breath holds between sets. Stop and seek help for chest pain or unusual breathlessness.
+
+SOURCES
+- Michaelson 2019 record: https://lida.sport-iat.de/ta/Record/4059063 ; coverage: https://runningmagazine.ca/?p=72348
+- Companion thesis: https://cedar.wwu.edu/wwuet/330
+- 4-7-8 between squat sets: https://pmc.ncbi.nlm.nih.gov/articles/PMC11307190/
+- Box vs 6/min after HIIT: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12622787/
+
+KUMBHA FIT
+- NEW practice; new tag "Training" (or under "On the move"). Needs a set counter and a rest timer; the
+  pacer is the same 4/6 already used.
+- Coach voice: a natural fit (gym-floor drill sergeant, calm version).
+- New voice lines: about 12 (posture, "let it run", switch to nose, 10-second warning, set count, cool-down).
+
+
+------------------------------------------------------------------------------------------------------
+6. COLD RINSE (breathing through a cold shower, building tolerance over days)
+------------------------------------------------------------------------------------------------------
+GOAL: Turn the gasp-and-pant of cold water into a controlled long exhale; build cold tolerance gradually.
+Breathing here is a skill for the cold, not a health claim about cold.
+
+STRUCTURE
+- Before: 1 min of slow breathing, 4 in / 6 out. NO fast breathing beforehand.
+- At the end of a normal shower, switch to cold:
+    first 10-30 s: the gasp will come; aim for long, audible exhales through pursed lips, about 2-3 s in,
+      5-6 s out; keep the head out of the stream at first.
+    then: slow to 4 in / 6 out.
+- Dose ladder (from a cold-shower trial in women with depressive symptoms): at least 30 s on days 1-3,
+  1-3 min on days 4-6, then 2-3 min; maximum 3 min.
+- After: towel off, dress, warm drink; 1 min of slow breathing.
+- Variant: contrast (warm-cold-warm) for beginners; "face only" cold water splash (triggers the diving
+  reflex; the heart slows) for people who will not do a full cold shower.
+
+EVIDENCE
+- Cold-shock habituation is real and fast: about 4 immersions cut the gasp response (respiratory rate
+  -8 breaths/min, heart rate -14 bpm; Barwood et al. 2024 meta-analysis). Strong.
+- Eglin & Tipton 2005 (n=18): six cold showers at about 10 C over 4 days cut breathing rate in the first
+  30 s of a later cold immersion by about 21%; 15 C showers did not work. So the water has to be truly cold;
+  tap water in many places is warmer than 10 C, especially in summer, so promise "easier", not "trained".
+- Four sessions of psychological skills training (goal-setting, arousal regulation, imagery, self-talk)
+  raised breath-hold time in 11 C water by 80% (Barwood 2006, n=32). Moderate. The breathing cues in this
+  practice are a form of arousal regulation, not a tested protocol.
+- Blades et al. 2024 (RCT, n=84 women with depressive symptoms, 3 weeks): cold showers plus hyperventilation
+  breathing were NOT better for depression, anxiety or stress than 15 min of slow 8/min breathing with a
+  warm shower; all dropouts were in the cold arm. Ketelhut 2023 (n=42): no autonomic or mood effect.
+  So: no mood claim. Zwaag 2022: cold training alone did not change the immune response in a lab.
+- No trial tests a specific breathing pattern against cold shock (the "1-10-1" rule is a teaching slogan).
+
+COMMUNITY NOTES
+- r/WimHof threads: people do the cold shower right after the breathing; routine is hard to keep
+  (r/WimHof/8uayu9, r/WimHof/17ovkzz); itchy skin after cold showers (r/WimHof/akqmys); repeated colds
+  blamed on cold showers in winter (r/WimHof/9jnlvc); tingling fades with practice (r/WimHof/1hzjti5
+  [snippet]).
+- r/Stoicism/i98qih: cold showers after breathing as a daily test of will; the most liked reply says it
+  removes "that moment of hesitation" before doing something uncomfortable. Another warns the euphoria is
+  mostly an adrenaline response.
+- The dangerous combination is fast breathing plus holds plus water. Several r/WimHof posts describe
+  blanking out during long holds (r/WimHof/18hjtj2) or passing out with jerking movements
+  (r/WimHof/1b242gn). Keep the breathing and the water apart.
+
+SAFETY
+- Never cold plunge or swim alone; never fast breathing or breath holds in or near water.
+- Avoid with heart disease, arrhythmia, uncontrolled high blood pressure, Raynaud's, cold urticaria,
+  pregnancy (ask a doctor). Cold shock raises heart rate and blood pressure sharply.
+- Stop if dizzy, chest tight, or shivering hard.
+
+SOURCES
+- Barwood 2024 meta-analysis: J Therm Biol 119:103775
+- Eglin & Tipton 2005: Eur J Appl Physiol 93:624-629
+- Barwood 2006: Aviat Space Environ Med 77:1136-1142
+- Tipton 2017 review: Exp Physiol 102:1335-1355
+- Blades 2024: https://pmc.ncbi.nlm.nih.gov/articles/PMC11599992/
+- Ketelhut 2023: https://pmc.ncbi.nlm.nih.gov/articles/PMC10579249/
+- Zwaag 2022: https://pmc.ncbi.nlm.nih.gov/articles/PMC9071023/
+
+KUMBHA FIT
+- NEW practice. Tag: "Energy" (morning) or a new "Cold" tag. Audio-first, since the phone sits outside the
+  shower: it needs voice cues and bells only. The existing 'tide' practice already tells the 2014
+  endotoxin study, so the science content exists.
+- Coach voice: an excellent fit ("That gasp is normal. Long breath out. Again.").
+- New voice lines: about 14 (pre-breath, switch-to-cold count-in, gasp line, exhale cues x3, time markers,
+  day-ladder intros x3, warm-up close).
+
+
+------------------------------------------------------------------------------------------------------
+7. BREATH-HOLD WALK (apnea walk / "simulated altitude" walk)
+------------------------------------------------------------------------------------------------------
+GOAL: Get used to air hunger while moving; an outdoor companion to the seated Hold Ladder. Training for
+freedivers and curious breath-hold people, not a health intervention.
+
+STRUCTURE (two community/training versions; pick one)
+- Version A, "small paces" ladder (practitioner manual): walk 30-60 s with nose breathing. Breathe out
+  normally, pinch the nose, walk 10 paces; release, 10 calm nasal breaths (about 1 min); hold 10 paces
+  again; then 15, 15, 20, 20, 25, 25 ... adding 5 paces every second hold until the air hunger is medium
+  to strong; after 2-5 such holds, walk with normal breathing for a few minutes. About 10-15 min.
+  Beginner (control pause under ~15 s): holds of 5-10 paces only, 1 min rest, 10 reps.
+- Version B, freediving apnea walk (TDI/SDI): seated breathe-up 2-3 min; full inhale; sit and hold until
+  your usual marker (e.g., the first contraction); then stand and walk at normal pace until you need to
+  breathe; recovery breaths; mark the spot; 2-3 min rest; repeat 6-8 times, trying to pass the mark.
+- Recovery after every hold: 3-4 "recovery breaths" (quick inhale, brief hold with closed throat 1-3 s,
+  exhale), never a big forced exhale first (RAID manual; a small study found it helps slow recoverers).
+- Progression: count paces per hold; log the best; 2-3 times a week.
+- App translation: the app cannot see paces, so the voice counts time ("hold ... release") or the user
+  taps when they release. A step counter via motion sensors is possible but not needed.
+
+EVIDENCE
+- No controlled trial of walking breath-holds found. Claims of red-cell or EPO benefits are untested.
+- What exists nearby: serial maximal holds 2 min apart make the spleen contract (haemoglobin +2-4% for
+  about 10 minutes; Schagatay 2001, 2005; Bakovic 2003) - transient, and seen with near-maximal holds,
+  not short walking holds. Two weeks of daily maximal apneas lengthened apnea by 44 s in 10 untrained
+  people (Engan 2013, uncontrolled). Breath-hold sprints in team-sport athletes (voluntary hypoventilation
+  at low lung volume; meta-analysis of 10 RCTs, n=199) improved repeated-sprint fatigue resistance, but
+  that is a supervised athletic protocol. Strength for walking holds: speculative; for "holds are
+  tolerable and improve with practice": moderate.
+
+COMMUNITY NOTES
+- r/Freediving: one user found walking holds improved in-water comfort faster than lying-down statics,
+  which they found boring (r/Freediving/1hbbdzk). Apnea walks are recommended alongside tables
+  (r/Freediving/1g58uvu). An r/Buteyko user posts the "high altitude steps" exercise and does it on a bike
+  (r/Buteyko/dq0zqb); commenters note it is meant only for people with a control pause above 10 s.
+- A "dive simulation" walk shared in r/Freediving/96s2dp: breathe-up seated, last comfortable breath, stand,
+  climb stairs for 15 s ("descent"), stand still 15 s ("freefall"), climb 30 s ("ascent"), sit and breathe.
+  The poster wanted a multi-phase timer with repetitions; a freediving-app developer replied that he was
+  unsure what an apnea-walk feature should do. Demand exists, and no standard. (Stairs add a fall risk; use
+  flat ground in Kumbha.)
+- DeeperBlue forum [snippet]: empty-lung walks are mentally draining and can lead to burnout; do not do a
+  static session right after walks; count your steps; improvement may mostly be familiarity.
+
+SAFETY
+- Do it on grass or a path away from roads, water, stairs and edges; with a partner if holds get long.
+  Fainting while walking means a fall. Stop the hold at the first sign of dizziness or tunnel vision.
+- Not for pregnancy, heart disease, high blood pressure, epilepsy, fainting history, panic disorder,
+  diabetes, or a control pause under ~12 s. No fast breathing before holds.
+- Never in or near water, never while cycling in traffic (the r/Buteyko bike example is unsafe).
+
+SOURCES
+- TDI/SDI apnea walk: https://www.tdisdi.com/pfi-diver-news/what-is-an-apnea-walk
+- Practitioner manual (walking ladder): https://oxygenadvantage.com/wp-content/uploads/2020/05/Oxygen-Advantage-Manual-for-Athletes.pdf
+- Breath-hold challenge exclusions: https://oxygenadvantage.com/pages/breath-hold-challenge
+- RAID static apnea manual (recovery breaths): https://gofreediving.co.uk/wp-content/uploads/2024/09/Static-Apnea-Management-Manual_V1.0.-1.pdf
+- Hook breathing study: https://pmc.ncbi.nlm.nih.gov/articles/PMC6729099/
+- Spleen: Schagatay 2001 J Appl Physiol 90:1623; Schagatay 2005 Eur J Appl Physiol 93:447; Bakovic 2003 J Appl Physiol 95:1460
+- Breath-hold sprint meta-analysis: https://pmc.ncbi.nlm.nih.gov/articles/PMC12084195/
+- r/Freediving/1hbbdzk, r/Freediving/1g58uvu, r/Freediving/96s2dp, r/Buteyko/dq0zqb
+
+KUMBHA FIT
+- NEW practice. Tags: "Long holds" (second item next to Hold Ladder) or "On the move".
+- Coach voice: very good fit ("Ten paces. Hold. Release. Ten breaths.").
+- New voice lines: about 12. Needs a "tap when you release" hold (the 'record' hold already exists).
+
+
+------------------------------------------------------------------------------------------------------
+8. HOLD LADDER, BETTER VERSION (first-urge table, contraction ladder, recovery breaths)
+------------------------------------------------------------------------------------------------------
+GOAL: Train calm during holds without the burnout that hard tables cause.
+IMPROVES: hold-ladder (currently 6 holds of 25 s / 45 s / 1:00, rests shrinking).
+
+STRUCTURE (three options; all dry, seated or lying)
+- a) FIRST-URGE TABLE (beginners; recommended by several freediving instructors on Reddit): comfortable
+  full breath, hold until the first clear urge or first contraction, tap to end; 2:00 rest; 6-8 holds.
+  The app logs each hold. Purpose: relaxation, not CO2 load.
+- b) CONTRACTION LADDER (from the RAID manual, for people who tense up at contractions): hold to the first
+  contraction (e.g., 0:45) -> rest 1:45 -> hold to first contraction + 15 s -> rest 2:00 -> contraction
+  + 30 s -> rest 2:30 -> contraction + 45 s. If +30 is too much, use +20.
+- c) CLASSIC CO2 TABLE (what Kumbha has now): fixed hold at 50-60% of the user's max, 8 rounds, rest
+  starting at 2:00-2:30 and dropping 15 s per round to 0:30 (or 0:15 if too easy, 1:00 if too hard).
+  Total about 20 min. Kumbha's 6-hold version is a sensible shortened form.
+- After every hold: 2-4 recovery breaths (quick inhale, 1-3 s pause with closed throat, exhale), not
+  a big exhale (RAID manual; hook-breathing study).
+- Frequency: 2-3 times a week, rest day between; never a CO2 and an O2 table on the same day.
+- Breathe-up between holds: normal-sized breaths, exhale up to twice the inhale; no big breaths.
+
+EVIDENCE
+- Declercq et al. 2024, Eur J Appl Physiol (n=28 novices, three single sessions): CO2 and O2 tables caused
+  LESS oxygen drop (6-8%) than maximal holds (16%). They are a gentle stimulus. No training study shows
+  tables improve maximum breath-hold (one uncontrolled thesis, n=15). Strength: speculative for
+  improvement; the safety-relevant finding (tables are milder than max holds) is moderate.
+- Pernett 2023 (n=18): hyperventilation before serial holds made desaturation worse with each hold.
+- Spleen contraction needs about 3-5 near-maximal holds 2 min apart; Kumbha's existing spleen line
+  ("a real effect, but a small one") is accurate.
+
+COMMUNITY NOTES (r/Freediving)
+- Burnout is the main reason people stop: "I just don't want to do long statics anymore"; replies say
+  reduce intensity, do tables only to the first contraction, 2 tables a week, take weeks off
+  (r/Freediving/1s62e2t). Others plateau for a year with tables "too easy" or "too hard"
+  (r/Freediving/1t1uvlt).
+- A "no-contraction" table shared in r/Freediving/vhe0ey: breathe-up, hold until the first contraction,
+  6 slow recovery breaths, breathe-up, repeat (about 17 times in that example). Replies: such relaxation
+  tables are easy, not fatiguing, can be done daily, and delay the onset of contractions; one reply notes
+  there is no strong evidence either way.
+- A much harder "contraction-time" table circulates too (hold to the first contraction, then 45 s more,
+  one breath, repeat 10 times; r/Freediving/vhdrn). It is a pool-with-buddy drill; not for Kumbha.
+- An instructor's advice to a fast-progressing beginner: hold to the first urge, 2:00 rest, 6-8 times;
+  tables are not great for beginners (r/Freediving/1hbbdzk; also r/Freediving/1g28xjy).
+- Over-breathing in the breathe-up inflates holds and is the main hidden danger (r/Freediving/1g28xjy,
+  r/Freediving/1g58uvu).
+- Holds feel much harder when stressed or in an unfamiliar place (r/Freediving/1upq54j, 1pbjg7m).
+- Mental tricks people like: treat contractions as a massage; think only of the next 10 s
+  (r/Freediving/1qjr2w5, 1tze1lo). Counting contractions helps some and distracts others.
+- Wanted features: a timer that fires a set time after the first contraction; contraction tap logging;
+  tables that rescale to a new personal best; hold-history charts (r/Freediving/1g28xjy, 1kxee13).
+
+SAFETY
+- Dry only, seated or lying, with someone nearby once holds get long. No fast breathing. Holds below max
+  for novices. Stop on tingling, visual changes, or twitching that is not a diaphragm contraction.
+
+SOURCES
+- RAID manual: https://gofreediving.co.uk/wp-content/uploads/2024/09/Static-Apnea-Management-Manual_V1.0.-1.pdf
+- Declercq 2024: doi:10.1007/s00421-024-05563-7 ; Pernett 2023: https://pmc.ncbi.nlm.nih.gov/articles/PMC10363065/
+- FII on table frequency: https://www.freedivinginstructors.com/article/203
+- Cape RADD tables: https://www.caperadd.com/news/what-are-apnea-tables/
+- r/Freediving/1s62e2t, 1t1uvlt, 1hbbdzk, 1g28xjy, 1upq54j, 1qjr2w5, 1tze1lo, 1kxee13
+
+KUMBHA FIT
+- VARIANT of hold-ladder: add a "First urge" difficulty (option a), and add 2-4 recovery breaths after
+  each hold. Option b could be a later "Contractions" level.
+- Coach voice: already in place. New lines: about 6 (first-urge explanation, "tap at the first urge",
+  recovery-breath instruction, "next time, ten seconds past it").
+
+
+------------------------------------------------------------------------------------------------------
+9. PACE FINDER (a self-guided resonance-pace test)
+------------------------------------------------------------------------------------------------------
+GOAL: Let each user find the slow pace that feels smoothest, then practise at it.
+IMPROVES: resonance (currently fixed at 4 in / 6 out = 6 breaths/min).
+
+STRUCTURE (the clinical protocol, adapted)
+- Clinic protocol (Lehrer et al. 2013, as described by Shaffer & Meehan 2020): breathe at 6.5, 6.0, 5.5,
+  5.0 and 4.5 breaths/min, in that order, 2 min each, with 2 min rest between; keep the same in:out
+  ratio throughout; choose the rate with the largest heart-rate swing and phase synchrony (6 ranked
+  criteria, read from an ECG or chest strap).
+- App version without a sensor: same 5 rates, 2 min each with 1 min of free breathing between (about
+  14 min); after each, the user rates "smooth and easy" vs "hungry for air" vs "light-headed"; the app
+  suggests the slowest rate that felt smooth and not light-headed. Re-test every few weeks.
+- With a sensor (optional, later): phone-camera pulse (finger on the lens) can estimate HRV; in one study
+  it picked the same resonance pace as ECG 77% of the time (van Dijk 2023, n=57).
+- Ratios at each rate (one choice): 6.5/min = 3.7 in / 5.5 out; 6.0 = 4/6; 5.5 = 4.4/6.5; 5.0 = 4.8/7.2;
+  4.5 = 5.3/8.0 (in:out about 2:3).
+
+EVIDENCE
+- Shaffer & Meehan 2020, Front Neurosci: practical guide; the 2-min-per-rate procedure; reliability of
+  the resonance pace is limited (r=0.73 over 2 weeks, n=21). Comfort is only a tie-breaker; no study
+  validates comfort as the selection criterion.
+- Capdevila 2021 (n=21): the resonance pace changed between sessions a week apart in 2 of 3 people.
+- Laborde 2022 (n=112, within-subject): 6/min with no biofeedback raised HRV as much as with biofeedback.
+- Steffen 2017 (n=95): breathing at one's resonance pace lifted mood and lowered blood pressure in a
+  stress task more than resonance + 1 breath/min. Weak-moderate.
+- Meehan & Shaffer 2024 (n=26 + 16): 1:1 vs 1:2 inhale:exhale at 6/min made no difference to HRV.
+- Honest framing: "6 a minute works for most people. This finds the pace that feels best to you." Do not
+  call it "your resonance frequency" without a sensor.
+
+COMMUNITY NOTES
+- r/breathwork users with HRV straps say the differences between paces are small and they cannot tell
+  which is "the one" (r/breathwork/seafhh). Others like 5.5 in / 5.5 out best (r/breathwork/155pkg2,
+  r/breathwork/slbj8c). A commenter advises testing different lengths and choosing the one that feels
+  most natural (r/breathwork/1dtbzpi).
+- A 6/min "deep" breather felt drunk with a headache (r/breathwork/1c6ylcq), a warning that slower
+  paces need SMALLER breaths; 4.5/min can cause light-headedness from over-breathing (Shaffer & Meehan).
+
+SAFETY
+- Low risk. Cue "smaller, not bigger" at the slow rates; stop a rate that makes the user light-headed.
+
+SOURCES
+- Shaffer & Meehan 2020: https://pmc.ncbi.nlm.nih.gov/articles/PMC7578229/
+- Capdevila 2021: https://pmc.ncbi.nlm.nih.gov/articles/PMC8052415/
+- Meehan & Shaffer 2024: https://pmc.ncbi.nlm.nih.gov/articles/PMC11310264/
+- Laborde 2022: Psychophysiology 59(1):e13952 ; Steffen 2017: Front Public Health 5:222
+- van Dijk 2023 (phone PPG): Psychosom Med 85(7):568-576
+- r/breathwork/seafhh, 155pkg2, slbj8c, 1dtbzpi, 1c6ylcq
+
+KUMBHA FIT
+- IMPROVEMENT to resonance: an optional "Find your pace" run; afterwards Resonance uses the chosen pace
+  instead of a fixed 4/6. The existing line "coh_light" (slow doesn't mean big) is already the right cue.
+- Coach voice fits. New voice lines: about 9 (intro, "next pace", 3 rating prompts, result, re-test
+  reminder, "smaller at the slow paces").
+
+
+------------------------------------------------------------------------------------------------------
+10. LIGHTS OUT (15 minutes of 6-a-minute breathing at bedtime)
+------------------------------------------------------------------------------------------------------
+GOAL: Settle for sleep with the one bedtime breathing dose that has a randomised trial behind it.
+IMPROVES: wind-down (currently about 1 min 4/6 + about 1.6 min 4/8 + 4 rounds of 4-7-8, a few minutes).
+
+STRUCTURE (Laborde et al. 2019)
+- In bed or just before, 15 min: in 4.5 s through the nose, out 5.5 s through pursed lips (6 breaths/min).
+- Every night for 30 days in the trial.
+- Fade the voice: guide for the first 3-5 min, then bells or a soft tone only, then silence; or let the
+  pacer slow to 5/min for the last minutes.
+- Kumbha options: "Short" = the current wind-down; "Long" = the current opening + 12 min of 4.5/5.5
+  (the 4-7-8 rounds optional at the end, since the holds suit some people and not others).
+
+EVIDENCE
+- Laborde et al. 2019, J Clin Med (RCT, n=70 randomised, 64 analysed healthy students): 15 min of slow
+  breathing before sleep for 30 days improved self-rated sleep quality vs 15 min of social media
+  (between-group d=0.62) and raised overnight vagal HRV. Self-report; the control may itself harm sleep.
+  Weak-moderate.
+- Tsai et al. 2015 (n=14 insomniacs + 14 controls, 20 min at 6/min before sleep, single nights): shorter
+  sleep onset and fewer awakenings on polysomnography. Weak.
+- Kuula 2020 (pilot, n=10 per condition, 30 min at 5/min): sleep onset 12.6 vs 16.5 min, not significant.
+- Eide 2026 systematic review (9 studies, n=457): self-rated sleep improves with roughly 4-week protocols;
+  objective sleep-onset effects inconclusive.
+- 4-7-8: no study measured objective sleep onset; one tinnitus RCT (n=48, 4 cycles morning and evening for
+  6 weeks) improved insomnia scores vs education only (weak; groups unbalanced). Marchant 2025: 4-7-8
+  raised HRV less than 6/min.
+
+COMMUNITY NOTES
+- At the extreme: one r/Meditation user breathes 10 s in and 30-40 s out for 20 minutes and calls the effect
+  "almost high" (r/Meditation/1kh5ewx). In a 12-week trial, healthy adults trained to their "slowest
+  comfortable" pace averaged under 3 breaths/min (Gamboa 2025). Very slow is possible; keep it optional.
+- 4-7-8 is the best-known sleep breath but many find the 7-s hold and 8-s exhale hard; replies say speed
+  up the count and keep the ratio, or start with 4-4-8, or box at 3 s (r/breathwork/155pkg2). One
+  user does 20 rounds morning and night and found it got easier over 4 months (same thread).
+- The originator's advice of no more than 4 cycles at first (Kumbha already follows it) is widely repeated.
+- A user who fixed night waking with exhale-hold training warns NOT to do exhale-hold practice right
+  before bed: it stirred anxiety for hours early on (r/insomnia/1oqn7y2).
+- r/insomnia's most-shared non-breathing tools: the relaxation-plus-imagery "military" method
+  (r/insomnia/haoll9: face, shoulders, out-breath and chest, legs, then 10 s of a calm image) and
+  "cognitive shuffling" (r/insomnia/1j9l29i). People like being given something to focus on.
+- Comment: "lying with closed eyes and slow breathing is still restful even if you don't sleep" eases
+  sleep anxiety for some (r/insomnia/ihgu4q).
+
+SAFETY
+- Low risk. Pursed-lip out-breath keeps the breath slow without over-breathing.
+
+SOURCES
+- Laborde 2019: https://pmc.ncbi.nlm.nih.gov/articles/PMC6406675/
+- Tsai 2015: Psychophysiology 52(3):388-396 ; Kuula 2020: https://pmc.ncbi.nlm.nih.gov/articles/PMC7198497/
+- Eide 2026: Sleep Med Rev 87:102284 ; Kirazli 2026 (4-7-8): https://pmc.ncbi.nlm.nih.gov/articles/PMC12895279/
+- Gamboa 2025 (very slow breathing, 12 weeks): https://pmc.ncbi.nlm.nih.gov/articles/PMC12464420/
+- r/breathwork/155pkg2, r/insomnia/1oqn7y2, r/insomnia/haoll9, r/insomnia/ihgu4q, r/Meditation/1kh5ewx
+
+KUMBHA FIT
+- IMPROVEMENT to wind-down (a "Long" length) or a second Sleep practice. A body-relaxation sweep (face,
+  shoulders, arms, chest, legs) in the first minutes fits the military-method crowd without naming it.
+- Coach voice fits, but must get quieter and sparser. New voice lines: about 8 (pursed-lip cue, body
+  sweep x4, "I'll go quiet now", the 30-day study line, close).
+
+
+------------------------------------------------------------------------------------------------------
+11. SPACED HUMS (humming sets separated by quiet breathing)
+------------------------------------------------------------------------------------------------------
+GOAL: Get the most out of humming for a stuffy nose and for calm, by letting the sinuses refill.
+IMPROVES: tide (5 hums + 3 hums) and clear-nose (5 hums in a row).
+TOTAL: adds no time if the gaps are filled by the practice's existing quiet-breathing blocks.
+
+STRUCTURE
+- 3 sets of 3-5 slow hums, separated by about 3 min of quiet nasal breathing (the other parts of the
+  practice can fill the gaps). Hum on the out-breath, low to medium pitch, lips closed, jaw soft.
+- Breath cycle while humming: about 12-14 s per breath (e.g., in 4, hum 8-10). Kumbha's HUM pace is
+  4 in / 9 out / 3 pause = 16 s, which is close.
+- Optional: thumbs lightly closing the ear flaps (not inside the canal), as in bhramari.
+
+EVIDENCE
+- Weitzberg & Lundberg 2002 (n=10): humming raises nasal nitric oxide about 15-fold. Strong physiology.
+- Maniscalco et al. 2003 (n=10 + model): the nitric oxide peak drops with each consecutive hum (the
+  sinuses empty) and recovers fully after about 3 min of silence. A separate study: after 5 hums in a
+  row, nasal NO stayed about 15% lower. So five in a row is mostly front-loaded; spaced sets refill.
+- Trivedi 2023 (n=118, within-subject): HRV was highest with 12-14 s humming breaths.
+- Health outcomes are weak: one small RCT in chronic sinusitis (n=60, 12 weeks, symptoms improved by
+  3.4 points more than controls, below the clinically important difference); hypertension trials are
+  single-session or uncontrolled; one 20-patient crossover found no blood-pressure drop from humming.
+  The often-quoted "60 hums an hour for sinusitis" comes from a single-person case report.
+- During humming itself HRV can briefly shift toward arousal (n=16); calm follows afterwards.
+
+COMMUNITY NOTES
+- Humming on the out-breath is a common suggestion for calming down (r/breathwork/1i78h54); one r/insomnia
+  user hums during box breathing at night (r/insomnia/1oqn7y2). Chanting raised one user's control pause a
+  lot (r/Buteyko/oi2tsh), which fits the "long exhale" effect more than anything special.
+
+SAFETY
+- Low risk. Ear infection: skip the ear-closing variant. Do not press inside the ear canal.
+
+SOURCES
+- Weitzberg 2002: Am J Respir Crit Care Med 166:144-145 ; Maniscalco 2003: Eur Respir J 22:323-329 and
+  Eur J Clin Invest 33:1090-1094 ; Trivedi 2023: https://pmc.ncbi.nlm.nih.gov/articles/PMC10775838/
+- Abishek 2019 sinusitis RCT: https://pmc.ncbi.nlm.nih.gov/articles/PMC6521749/
+- Eby 2006 case report: Med Hypotheses 66:851-854 ; Nivethitha 2017: https://pmc.ncbi.nlm.nih.gov/articles/PMC5433120/
+
+KUMBHA FIT
+- IMPROVEMENT to tide and clear-nose: split the hums into 2-3 sets with quiet breathing between rather
+  than 5 in a row. Clear Nose could open with 3 hums and close with 3 more.
+- No new voice lines needed beyond 1-2 ("Quiet breathing now; the sinuses refill in a few minutes").
+
+
+------------------------------------------------------------------------------------------------------
+12. GENTLE RESONANCE, LYING DOWN (for low-energy days, long COVID, post-viral fatigue)
+------------------------------------------------------------------------------------------------------
+GOAL: A low-effort version of Resonance for people who cannot sit up comfortably or tire easily.
+
+STRUCTURE
+- Lying on the back, knees supported. Nose in 4 s, nose out 6 s, small breaths. 10 min.
+- Two published programmes: (a) Leeds pilot: 10 min daily, 4 weeks; (b) a commercial programme analysed
+  by a hospital team: twice a day, 5 days a week, starting at 10 min and building to 30 min by week 4
+  "as tolerated", with nose-unblocking instructions.
+- Option: hum the last 3 out-breaths (item 11).
+
+EVIDENCE
+- University of Leeds pilot (n=13 long COVID, 4 weeks, uncontrolled): self-reported symptoms, sleep and
+  function improved. Weak.
+- Putrino et al. 2024, Front Rehabil Sci (retrospective, n=99 in a commercial programme, no control):
+  92% reported improvement; largest gains in ability to breathe and sleep quality. Weak.
+- The best long COVID trial is a different approach: an online singing-based breathing programme
+  (Philip et al. 2022, Lancet Respir Med, RCT n=150, 6 weekly 1-h group sessions): mental-health score
+  +2.4 (p=0.047) and less breathlessness when running; physical score unchanged. Moderate.
+
+COMMUNITY NOTES
+- r/longcovid's top posts are recovery stories that list breathing exercises as one item among many
+  (r/longcovid/1exu1mj "doing all the things"); air hunger is a common symptom (1v0p7nw). A strong
+  theme is anger at being told symptoms are "just anxiety" or to "try yoga" despite post-exertional
+  malaise (r/longcovid/1ibm6p3, 15ryizu, 1b3xj69). Kumbha's copy must not imply breathing symptoms are
+  psychological, and must say stop if it triggers a crash.
+- Practitioner safety pages warn long COVID users off air hunger and holds while recovering (same as the
+  existing tide/clear-nose notes).
+
+SAFETY
+- Stop if it brings on dizziness, palpitations or crashes (post-exertional symptom worsening). No holds.
+
+SOURCES
+- Leeds pilot: https://medicinehealth.leeds.ac.uk/news/article/666/tech-assisted-breathing-exercises-relieve-long-covid-symptoms
+- Putrino 2024: https://frontiersin.org/journals/rehabilitation-sciences/articles/10.3389/fresc.2024.1411344/full
+- Philip 2022: https://pmc.ncbi.nlm.nih.gov/articles/PMC9045747/
+
+KUMBHA FIT
+- VARIANT of resonance (a "Lying, 10 min, no warm-up" option) or a third "Under the weather" practice.
+- Coach voice fits. New voice lines: about 5.
+
+
+------------------------------------------------------------------------------------------------------
+13. POCKET SIGH (1-3 cyclic sighs, any time)
+------------------------------------------------------------------------------------------------------
+GOAL: A one-minute reset for a tense moment.
+IMPROVES: sighing (currently 28 sighs, about 5 min).
+
+STRUCTURE
+- 1 to 3 sighs: nose in, a short second sip on top, long mouth exhale; then 30 s of normal breathing.
+  About 45-60 s total. Pairs with a home-screen shortcut.
+
+EVIDENCE
+- Balban 2023: 5 min a day for 28 days of cyclic sighing gave the largest rise in positive affect and the
+  largest fall in resting breathing rate; the advantage over mindfulness grew with days practised.
+  The study gave no phase timings; Kumbha's 2.5 + 1 in / 7 out (about 5.7 breaths/min) is a reasonable
+  choice. Weak-moderate.
+- Single instructed sighs: mixed. In one lab study an instructed sigh after stress did NOT help
+  muscle-tension recovery (Vlemincx 2010); in another, people reported more relief after an instructed
+  deep breath than after a short hold (Vlemincx 2016). So the pocket version is a reminder and comfort,
+  with no evidence for a single sigh; the 5-minute daily practice is the studied dose.
+
+COMMUNITY NOTES
+- The double-inhale sigh appears in 23 of 3,000 r/breathwork posts, mostly as shared podcast clips; the
+  2-minute clip posts are among the sub's top posts (r/breathwork/ll45s3, my86tx). People use it for panic
+  and before speaking (r/Anxiety and Substack snippets; Toastmasters advice).
+
+SAFETY
+- Low risk; repeated many times in a row it becomes over-breathing.
+
+SOURCES
+- Balban 2023: https://pmc.ncbi.nlm.nih.gov/articles/PMC9873947/
+- Vlemincx 2010 Physiol Behav 101:67-73 ; Vlemincx 2016 Physiol Behav 165:127-135
+
+KUMBHA FIT
+- VARIANT of sighing ("Pocket", 1 min). Kumbha's sighing already says one or two sighs in a tense moment
+  is fine. New voice lines: about 3.
+
+
+------------------------------------------------------------------------------------------------------
+14. STEP DOWN (match the agitation, then slow it: a 10-8-6 ladder)
+------------------------------------------------------------------------------------------------------
+GOAL: For anger or overwhelm, when slow breathing feels impossible to start. Begin fast, end slow.
+
+STRUCTURE (community protocol, attributed to a strength coach; no names in the app)
+- 10 quick breaths through the mouth (about 1 s each), then
+- 8 slower breaths, in through the nose, out through the mouth (about 3 in / 4 out), then
+- 6 slow nasal breaths (4 in / 6 out). About 2 min. Optionally repeat the last stage.
+- A similar user-made version: 3 quick breaths in, 3 quick out, a few times, then normal breathing
+  (r/breathwork/1i77axv).
+- Kumbha variant idea: "10 fast, 8 slower, 6 slow, then 2 cyclic sighs".
+
+EVIDENCE
+- None for this sequence. Related principle used in clinical "paced breathing" programmes: start near the
+  person's current rate and step down (the panic-training ladder in item 2 starts at 13/min). Strength:
+  speculative.
+
+COMMUNITY NOTES
+- The poster found slow breathing "really hard to do" while overwhelmed, and the fast-then-slow pattern
+  helped at once (r/breathwork/1i77axv); a commenter recommends the 10-8-6 version for anger.
+
+SAFETY
+- The 10 fast breaths are short enough to be low risk; skip them with panic disorder (fast breathing can
+  trigger symptoms). No holds.
+
+SOURCES
+- r/breathwork/1i77axv
+
+KUMBHA FIT
+- VARIANT of sighing or a short new "Calm" practice. Coach voice: good ("Ten fast. Get it out. Now
+  eight, slower."). New voice lines: about 6. Evidence is anecdotal; label it as a quick reset.
+
+
+------------------------------------------------------------------------------------------------------
+15. RUN RHYTHM (footstep-synced breathing for easy runs and hills)
+------------------------------------------------------------------------------------------------------
+GOAL: Settle into an easy pace and keep breathing smooth; a pacing cue more than a technique.
+
+STRUCTURE
+- Easy running: inhale over 3 steps, exhale over 2 (3:2), so the exhale lands on alternating feet.
+- Harder running or hills: 2:1. Maximum efforts: 2-1-1-1.
+- Learning (runner's guide): lie down with a hand on the belly, breathe in for 3 counts and out for 2;
+  add foot taps; then walk at 3:2; then run. No music while learning.
+- Alternative: nose-only for easy runs, slowing down whenever nasal breathing becomes hard.
+- App: an audio cue at the user's cadence (e.g., 160-180 steps/min) saying "in-two-three, out-two" for
+  a minute, then fading to a soft click; re-cue every few minutes.
+
+EVIDENCE
+- The injury-prevention rationale (exhale on alternating feet) is untested; one coach reports most serious
+  runners naturally breathe 2:2. Nasal-only running: no loss of VO2max in runners who had already trained
+  nasally for 6 months (Dallam 2018, n=10); untrained runners lose top-end capacity. Strength: weak.
+
+COMMUNITY NOTES
+- r/running threads seen (opening posts only): breathing takes a mile or two to settle into rhythm
+  (r/running/q3xyjw); is mouth breathing on slow runs really bad? (r/running/p8tr4e). An r/army post makes
+  the slow-down case: most people should run more easy miles (r/army/1odd7nk). Side-stitch advice in
+  coaching articles: exhale on the foot opposite the stitch, slow down, press the spot.
+
+SAFETY
+- Low risk. Do not combine with breath holds while running near traffic.
+
+SOURCES
+- Runner's guide summary: https://www.runnersworld.co.za/health/run-faster-with-rhythmic-breathing/
+- Counterpoint: https://runnersconnect.net/breathing-patterns/
+- Dallam 2018: https://jhp-ojs-tamucc.tdl.org/jhp/article/download/70/pdf_23/395
+
+KUMBHA FIT
+- NEW practice under "On the move". Needs a cadence setting; otherwise trivial. Coach voice: good.
+  New voice lines: about 8. Lower priority: evidence is thin and running apps already do this.
+
+
+------------------------------------------------------------------------------------------------------
+16. COOLING BREATH (sitali / sitkari for a hot day or after hard exercise)
+------------------------------------------------------------------------------------------------------
+GOAL: Feel cooler and calmer on a hot day; a seasonal novelty.
+
+STRUCTURE
+- A few minutes of slow nasal breathing first.
+- Sitali: tongue curled into a tube, inhale through it like a straw; close the mouth, exhale slowly through
+  the nose. Sitkari (if the tongue does not curl): teeth lightly together, lips apart, hiss in between the
+  teeth; exhale through the nose.
+- 2-3 min, rest 1-2 min, repeat; up to 10 min. Exhale about twice the inhale (e.g., 3 in / 6 out).
+
+EVIDENCE
+- Mechanism is evaporative cooling of the tongue and mouth; no good trial of a body-temperature or comfort
+  effect found. Strength: speculative.
+
+COMMUNITY NOTES
+- Few Reddit mentions. Yoga sources list cautions: cold or dusty air, asthma, low blood pressure,
+  sensitive teeth.
+
+SAFETY
+- Unwarmed air: skip with asthma or in cold air.
+
+SOURCES
+- https://yogainternational.com/article/view/beat-the-heat-sitali-and-sitkari
+
+KUMBHA FIT
+- Possible small seasonal practice ("Hot day"). Coach voice: fine. About 6 new lines. Low priority.
+
+
+------------------------------------------------------------------------------------------------------
+17. STILL POINT (natural respiratory pause for precise work)
+------------------------------------------------------------------------------------------------------
+GOAL: A steady body for a precise moment: a shot, a photo, a putt, a release.
+
+STRUCTURE
+- Breathe normally 3-5 cycles; take a slightly deeper breath, let part of it out until comfortable, then
+  pause 2-3 s (up to about 8 s) and do the precise action (shot, photo, putt, release); breathe again
+  before any discomfort. Repeat 5-10 times.
+
+EVIDENCE
+- Doctrine in military marksmanship (US Army FM 7-22; NZDF and USMC rifle material); no controlled trial
+  found. Strength: speculative for non-shooting uses.
+
+COMMUNITY NOTES
+- r/army/1ssjbr4: a soldier who qualifies once a year lists "point, breathe, squeeze, sight picture" as
+  the basics they relearn each time; replies stress that the skill fades without practice.
+
+SAFETY
+- Trivial holds; none.
+
+SOURCES
+- FM 7-22: https://arotc.illinoisstate.edu/downloads/resources/FM_7-22_October%202020.pdf
+- NZDF breathing OIA: https://www.nzdf.mil.nz/assets/Uploads/DocumentLibrary/OIA-2026-5845-Breathing-Techniques.pdf
+
+KUMBHA FIT
+- Niche. Could be a 1-min "Focus" drill for archers, photographers, golfers. Coach voice: perfect
+  (it is literally range instruction). About 5 new lines. Low priority.
+
+
+------------------------------------------------------------------------------------------------------
+18. STAIRS (pursed-lip breathing for breathlessness on exertion)
+------------------------------------------------------------------------------------------------------
+GOAL: Climb stairs or hills without getting out of breath so fast.
+
+STRUCTURE
+- On stairs or a hill: breathe in through the nose for 2 steps, out through pursed lips for 4 steps; pause
+  on the landing if needed. Before starting: 3 slow breaths. 1-5 min.
+
+EVIDENCE
+- Cochrane review of breathing exercises in COPD (16 RCTs, n=1233): pursed-lip breathing improved 6-minute
+  walk distance by about 50 m in a single study (n=60); dyspnoea effects inconsistent. Evidence is for
+  lung disease, not healthy people. Strength: weak.
+
+COMMUNITY NOTES
+- r/climbing/c2fqln: a climber who freezes on lead uses an audible pursed-lip exhale on every move to keep
+  breathing (friends tease the sound, but it works as a cue); another slows the breath at any rest, even
+  10 s, and notices they hold their breath during moves on lead but not on top rope.
+
+SAFETY
+- New breathlessness on stairs needs a medical check; this is not a substitute.
+
+SOURCES
+- Holland 2012 Cochrane CD008250.
+
+KUMBHA FIT
+- Small "On the move" drill. Coach voice fine. About 5 lines. Low priority; risk of looking like a medical
+  product. Better as a tip inside other practices.
+
+
+------------------------------------------------------------------------------------------------------
+19. ALREADY COVERED (checked, no change needed)
+------------------------------------------------------------------------------------------------------
+- Alternate nostril breathing (balance): community uses it to clear the nose and for balance, e.g. 10 per
+  nostril morning, lunchtime and evening (r/breathwork/lrvzic). The only clinical data found are
+  single-session blood-pressure/HRV studies in hypertensive inpatients without a non-breathing control
+  (Upadhyay 2023). Kumbha's version is fine as is.
+- Fire-wave (breath of fire + full holds): the Balban fast-breathing arm used 30 deep breaths then only a
+  15-s EMPTY hold, 3 rounds, 5 min/day, and it improved mood (weak). Zwaag 2022 found the adrenaline rise
+  comes from the fast breathing itself; the long empty-lung hold only adds deep desaturation (SpO2 down to
+  58-73%). This supports Kumbha's choice of short, full-lung holds. No change needed.
+- 4-7-8 timing in wind-down matches the originator's handout (4 rounds at first).
+- Cyclic sighing timing: the study gave none; Kumbha's choice is reasonable.
+
+
+------------------------------------------------------------------------------------------------------
+NOT RECOMMENDED FOR KUMBHA (found, but should stay out)
+------------------------------------------------------------------------------------------------------
+- Long empty-lung maximal holds after fast breathing (the common "3 rounds, 2-3 min retention" routine):
+  r/WimHof/1b242gn describes repeated loss of consciousness with fast jerking movements during the holds,
+  sometimes waking on the floor; r/WimHof/18hjtj2 describes blanking out in a 3-min hold. In both threads,
+  commenters treat this as normal or as "releasing trauma" and encourage continuing. It is hypoxic
+  fainting. SpO2 falls to around 60% in lab studies (Zwaag 2022); no mood benefit over slow breathing
+  (Blades 2024). Kumbha's short full holds are the safer design, and its copy could say plainly that
+  blacking out or twitching is never a release, it is the signal to stop.
+- One-breath CO2 tables and empty-lung apnea walks: forum instructors call them demoralising and hard on
+  beginners; burnout risk.
+- Breath-hold sprints (voluntary hypoventilation at low lung volume): real but small athletic evidence,
+  supervised; dizziness and falls at sprint speed. Not for an unsupervised app.
+- Hypoxic swim sets and any underwater breath-hold training: USA Swimming restricts them to supervised
+  advanced swimmers; shallow-water blackout deaths.
+- Paper-bag rebreathing for panic: oxygen falls; deaths reported when the "panic" was a heart attack.
+- "Inspiratory muscle training" without a device: no evidence-based equivalent; the blood-pressure effect
+  (about -9 mmHg) needs a resistive trainer at 75% of maximal pressure, 30 breaths a day.
+- Long (40-60 min) connected/holotropic-style fast breathing alone at home: tetany, panic, and reports of
+  manic episodes in vulnerable people (r/breathwork/1gjcl91, 1i41qso, mxqpqz).
+- Device-free "blood-pressure programmes" claiming device-level results: the device-guided trials are null
+  once industry-sponsored ones are removed (Landman 2014 IPD meta-analysis). Non-device 6/min breathing
+  may lower systolic pressure about 4-8 mmHg in hypertensives (low-quality pooled data), so at most a
+  carefully worded note on Resonance, never a claim.
+
+
+======================================================================================================
+PART 2. WHAT COMMUNITY USERS WISH THEIR BREATHING APP DID
+======================================================================================================
+From app-feedback threads in r/breathwork (r/breathwork/krjc9m, kl6hid, koxz54, s5ele9, 1hh0218, i95xf9,
+1hhf2fp), r/Freediving (1kxee13, 1g28xjy, 1oise85), r/Buteyko (1mc4r2k, 1qt68yj, 1qd1gpp), r/WimHof,
+and non-Reddit feedback boards found by search. Grouped, most frequent first.
+
+1. Custom timings for every phase, including holds, saved as named routines. The single most common ask
+   (r/breathwork/krjc9m; a popular app added "custom duration for box, resonance and 2-to-1" after users
+   asked, r/breathwork/1hhf2fp; a request to add holds to custom patterns, r/breathwork/i95xf9).
+   Kumbha has fixed, designed practices; a light version would be per-practice pace/length options
+   (it already has difficulty levels), not a full pattern builder.
+2. A record of what they did: total hold time, hold history, control-pause trend, charts across weeks
+   (r/breathwork/krjc9m "does it keep a log of total retention time"; r/Buteyko/1mc4r2k built a web app
+   just to automate timers and chart progress; r/Freediving/1kxee13 lists progress charts).
+3. Honest streaks and stable content. One long-time subscriber quit after an update removed the routines
+   in their daily practice and the streak tracker showed streaks that were not real (r/breathwork/1hh0218).
+4. Depth and feedback, not templates: a user found a polished market-leading app "empty": templated
+   sessions, no feedback, no sense of progress (r/breathwork/1md5mfw); replies say the awareness and the
+   "why" are what make it stick. Kumbha's learn pages and science lines already address this.
+5. Simplicity when overwhelmed: an anxious user liked an app because they "didn't want to wade through a
+   billion options" (r/breathwork/1hhf2fp). One tap to start the right thing.
+6. Not too many sounds at once: a user dropped a live guided session because the metronome, the leader's
+   breathing, his voice and background noise all played together and felt chaotic (r/Meditation/1kh5ewx).
+   Voice cues that name each phase, plus haptics and a calm visual during holds (a user praised spoken
+   phase cues; the developer then added a clean hold visual and per-second haptics, r/breathwork/koxz54).
+7. Session length you can set (1-60 min), and short pocket versions.
+8. No subscription for "a glorified stopwatch"; one-time price or free (r/Freediving/1kxee13, several
+   comments). Kumbha being free and offline is a selling point.
+9. Private, offline, local-first data with export (r/Buteyko/1qt68yj and 1qd1gpp highlight PWA, offline,
+   on-device data, CSV export). Kumbha's static PWA matches this exactly.
+10. Freediving-specific: a tap to log the first contraction and an alert a set time after it; tables that
+   rescale to a new personal best; heart-rate strap or watch integration (r/Freediving/1g28xjy, 1kxee13,
+   1oise85 uses a watch's built-in table).
+11. Beginner-first progression rather than dropping people into hard tables (r/Freediving/1kxee13 post's
+   main argument; instructor comments in 1hbbdzk).
+12. Reminders, and practice tied to daily moments (Buteyko users set "mini pause" triggers like washing
+   hands, r/Buteyko/1rfutin; WimHof users struggle to keep a routine, r/WimHof/8uayu9, 17ovkzz).
+13. Health integrations (Apple Health "mindful minutes", Garmin) and HRV feedback for the curious
+   (r/breathwork/koxz54, seafhh).
+14. Non-Reddit feedback boards: time-of-day presets (a morning vs night technique), breath-length
+   tracking, and rates from 5 to 60 breaths/min for people with lung conditions (Fitbit community).
+
+What made people quit (across all sources)
+- No felt effect after months (coherent breathing for PTSD, r/breathwork/1dtbzpi).
+- Side effects they did not expect: head fog and headache from deep 5.5/min breathing (1c6ylcq); panic
+  after all-day deep breathing (15d39ns); tetany and crying in long fast sessions (mxqpqz); ear pain from
+  hard holds (r/Buteyko/pa8eaq); light-headedness for a week after starting fast breathing
+  (r/breathwork/o6oipg).
+- Holds that feel impossible when anxious (4-7-8: r/breathwork/155pkg2).
+- Burnout and dread from pushing tables (r/Freediving/1s62e2t).
+- Breath focus itself triggers anxiety for some trauma survivors [snippet, r/CPTSD]; r/CPTSD's most liked
+  "regulation" posts are not breathing drills but orienting prompts: unclench the jaw, drop the shoulders,
+  look around the room, one slow breath (r/CPTSD/kxc0od, k8jq2e, mcglkt, lafv87), and some reject
+  "generic breathing advice" outright (r/CPTSD/1os8i18).
+- Routine friction, apps that degraded, and subscription prices.
+- Feeling dismissed: in r/asthma and r/longcovid, recurring threads complain that real breathing problems
+  were written off as anxiety, or answered with "try yoga" (r/asthma/1muob02, 1qdndvj; r/longcovid/1ibm6p3,
+  15ryizu). Breathing exercises are welcome as an add-on, resented as a substitute for diagnosis.
+
+Implications for Kumbha (short)
+- Offer an eyes-open option with external cues (window-seat already does jaw/brow/shoulders well).
+- Keep every hold skippable and every practice shortenable; say "smaller, not bigger" often.
+- Offer a "keep moving" option for the anxious (walk while breathing), since several r/Anxiety users say
+  sitting still and attending to the breath makes it worse (r/Anxiety/198wq4s, 11pok96).
+- Store hold times and control-pause results locally with a simple trend view.
+- Never frame breathlessness as "just stress"; one plain line in practices that touch breathing symptoms:
+  "If breathing itself is the problem, get it checked. This is comfort, not a diagnosis."
+
+
+======================================================================================================
+PART 3. TOP 5 NEW PRACTICES (ranked)
+======================================================================================================
+Ranking weighs: evidence, community demand, distinctness from the 9 current practices, safety, and fit
+with the coach voice.
+
+1. STEADY BOX (item 1). The best-known technique Kumbha lacks (police, military, school and NHS handouts
+   teach versions of it); the coach voice is its natural teacher; the exhale test from the trial sizes
+   it; one RCT arm plus police and soldier data (weak-moderate). About 16 new lines. Low risk.
+   Tag: new "Focus" or "Calm".
+2. LEVEL, the 4-week slow-and-shallow ladder (item 2). Strongest single RCT behind any new candidate
+   (panic severity d=2.2 vs wait-list, equal to cognitive therapy in a second trial), though with a CO2
+   sensor and clinic sessions the app lacks; must be framed as training, not treatment. Fills a gap: the
+   app has no programme for people whose "deep breaths" make things worse. About 14 lines.
+3. BREATHE LIGHT + BREATH CHECK (items 4 and 3, shipped together). Large and loyal community, clear asthma
+   RCT evidence for symptoms and reliever use (not lung function), and community frustration that nobody
+   explains the steps clearly. The check is cheap to build and feeds other practices. About 23 lines total.
+4. BETWEEN SETS (item 5). Opens a new audience (gym, intervals); small but direct evidence for faster
+   heart-rate recovery (posture plus slow exhale); zero hold risk; the coach voice is at home. About 12 lines.
+5. COLD RINSE (item 6). Cold-shock habituation is well established; the breathing gives people something to
+   do with the gasp; strong coach-voice fit; must avoid mood or immune claims and keep fast breathing away
+   from water. About 14 lines.
+
+Close runners-up: Breath-Hold Walk (item 7; popular with freedivers and breathe-light users, but
+speculative evidence and a fall risk) and Step Down (item 14; anecdotal only).
+
+
+======================================================================================================
+PART 4. THREE EVIDENCE-BASED IMPROVEMENTS TO EXISTING PRACTICES
+======================================================================================================
+
+1. RESONANCE: add "Find your pace" (item 9).
+   Run the clinical sequence 6.5 -> 6.0 -> 5.5 -> 5.0 -> 4.5 breaths/min, 2 min each (Lehrer protocol as
+   described by Shaffer & Meehan 2020), rate each for smoothness and light-headedness, and use the chosen
+   pace in Resonance. Frame it as "the pace that feels best", not a measured resonance frequency (that
+   needs a heart sensor, and it shifts week to week: Capdevila 2021). Keep 6/min as default; 1:1 vs 1:2
+   ratio makes no HRV difference (Meehan & Shaffer 2024), so a 5/5 option is equally valid.
+   Also consider a "lying, 10 min" option for low-energy users (item 12).
+
+2. WIND-DOWN: add a "Long" length built on the one bedtime RCT (item 10).
+   Laborde 2019: 15 min nightly of 4.5 s in through the nose, 5.5 s out through pursed lips, for 30 days,
+   improved self-rated sleep quality (d=0.62 vs control). Kumbha's current wind-down has only about
+   2.5 min of slow breathing before the 4-7-8 rounds. A Long version: current opening, then ~12 min at
+   4.5/5.5 with the voice fading to bells, and 4-7-8 optional. 6/min also raises HRV more than 4-7-8 (Marchant
+   2025). Add an "after" note: the trial dose was every night for a month.
+
+3. TIDE and CLEAR NOSE: space the hums (item 11).
+   Nasal nitric oxide is front-loaded: each consecutive hum gives a smaller peak, and the sinuses take about
+   3 min of quiet breathing to refill (Maniscalco 2003). Replace 5 hums in a row with 2-3 sets of 2-3 hums,
+   separated by the existing quiet-breathing blocks. Humming breaths of 12-14 s gave the highest HRV
+   (Trivedi 2023, n=118); the current 16-s HUM cycle is close and can stay. Learn-page wording should keep
+   "15-fold NO rise" as physiology only, and drop any implication that it treats sinusitis.
+
+Runner-up improvements
+- HOLD LADDER: add a "First urge" level (hold to the first urge, tap to end, 2-min rests, 6-8 holds) and
+  2-4 recovery breaths after each hold (item 8). Directly answers the main Reddit failure mode (burnout)
+  and the instructors' advice; tables are a mild stimulus anyway (Declercq 2024).
+- SIGHING: a 1-minute "Pocket" length (item 13), with honest copy that the 5-min daily dose is what was
+  studied.
+
+
+======================================================================================================
+SIDE NOTES FOR THE KUMBHA TEAM (outside the brief, spotted while reading the flows)
+======================================================================================================
+- The brief says the app never names real teachers or brands, but user-facing copy in the flow files does
+  (read-only grep, nothing changed):
+    js/flows/clear.js:32 lede names a breathing teacher ("Patrick McKeown's nose-unblocking exercise");
+      clear.js:122 and :127 learn text name the method/brand and the teacher.
+    js/flows/sleep.js:30 'after' line and :77/:81 learn text name "Weil" / "Andrew Weil's 4-7-8".
+    js/flows/tide.js:214 learn text names the same breathing teacher.
+  Source lists that cite paper titles containing a brand (energy.js:116, :215; tide.js:222) are probably
+  unavoidable. "Stanford study" in calm.js:116 names an institution, likely fine.
+  Check: grep -rn "McKeown\|Weil\|Hof\|Huberman\|Buteyko\|Oxygen Advantage" js/
+
+
+======================================================================================================
+APPENDIX A. REDDIT THREADS USED (r/<sub>/<id> -> https://www.reddit.com/r/<sub>/comments/<id>/)
+======================================================================================================
+r/breathwork: 1bf1wee (fast breathwork is not enough), 1iw2anp (simple observation), 1i41qso (bipolar
+  mania after a session), 1gjcl91 (aftermath of "gentle" 50-min circular breathing), 15d39ns (panic after
+  all-day deep breathing), 155pkg2 (4-7-8 is hard), mxqpqz (routines, tetany), 1i78h54 (beginner exit
+  from fight-or-flight), 1i77axv (fast-then-slow reset; 10-8-6), 1dtbzpi (gave up on coherent breathing),
+  1c6ylcq (5.5/min fog and headache), lrvzic (nose-breathing headaches; alternate nostril 10 per side
+  3x/day), seafhh (resonance search with HRV strap), mcgyjh (box vs coherent), tymy76 (training a slower
+  default rate), o6oipg (light-headed after a week of fast breathing), 13a782r (diaphragm),
+  krjc9m, kl6hid, koxz54, s5ele9, 1hh0218, i95xf9, 1hhf2fp (app threads), ll45s3, my86tx (sigh clips),
+  slbj8c (5.5/5.5 animation).
+r/Buteyko: 1rfutin (10 -> 25 CP, 12 tips), pa8eaq (3 months, exact session, ear pain), dzp8c1 (panic
+  routine), gcpvyu, dnf1eb, ryxdp7, i3cuir (what is reduced breathing exactly?), 115gxd2 (side effects),
+  dq0zqb (altitude steps), fgrjpr (straw breathing), oi2tsh (chanting), ds4ual (diabetic beginner, CP fell),
+  1mc4r2k, 1qt68yj, 1qd1gpp (timer apps), l4jxjt (FAQ).
+r/Freediving: 1g28xjy (fast beginner PB, SpO2 46%, advice), 1kxee13 (app post + pricing comments),
+  1tze1lo and 1qjr2w5 (dealing with contractions), 1g58uvu (apnea training start), 1hbbdzk (how much air;
+  instructor's first-urge advice), 1t1uvlt (no progress in a year), 1s62e2t (plateau, burnout),
+  1upq54j and 1pbjg7m (holds harder when stressed), 1oise85 (watch CO2 table).
+r/WimHof (search results and snippets): 8uayu9, 17ovkzz (routine trouble), akqmys, 9jnlvc (cold shower
+  issues), 18hjtj2 (blanking out in a 3-min hold), 1b242gn (passing out with jerking), 1ol18eg and
+  1hzjti5 (effects fading), 5s9nie (dysphonia).
+r/insomnia: 1oqn7y2 (exhale-hold routine; do not do it right before bed), haoll9 (relaxation + imagery
+  method), 1j9l29i (cognitive shuffling), ihgu4q (resting with slow breathing).
+r/Anxiety: e6a6x0 (air hunger), ekp7t8 (a year of daily breathing; "breathing is for stress, not
+  disorders" reply), 198wq4s and 11pok96 (breathing exercises make it worse), mwzvv9 (grounding).
+r/CPTSD: kxc0od, k8jq2e, mcglkt, lafv87 (jaw/shoulders/look-around prompts), 1os8i18 (breathing advice
+  does nothing for relational trauma), 1i3h7y5 (rib-cage tension and breath mechanics).
+r/running: q3xyjw (settling into rhythm), p8tr4e (mouth breathing on slow runs). r/army: 1odd7nk (run slower), 1ssjbr4 (marksmanship).
+  r/Stoicism: i98qih (cold showers). r/Meditation: 16v58fg (belly breathing, crying), 1kh5ewx (10 s in /
+  30-40 s out; chaotic live audio). r/climbing: c2fqln (adrenaline on lead; pursed-lip exhale per move).
+  r/Freediving extra: 4xly7m (dry blackout after standing up), ne0tw9 (packing injury), vhe0ey
+  (no-contraction table), vhdrn (contraction-time table), 96s2dp (stairs dive-simulation walk),
+  1upq54j (holds harder away from home).
+r/breathwork extra: 1md5mfw (big app feels templated and empty).
+r/longcovid: 1exu1mj, 1v0p7nw, 1ibm6p3, 15ryizu, 1b3xj69. r/asthma: 1muob02, 1qdndvj.
+Snippet-only (via mirrors/search engines): r/Buteyko/1jkbed0 (CP varies within a day), r/WimHof/1hzjti5,
+  r/CPTSD trigger posts. r/navy, r/ProtectAndServe, r/climbing and r/Stoicism: top search results for
+  "breathing" were stories, memes and quotes, not protocols (r/navy search returned nothing relevant);
+  claims about police/military use rely on training documents instead (Part 1, item 1).

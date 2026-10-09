@@ -1,0 +1,481 @@
+BREATHWRK RESEARCH FOR KUMBHA
+Compiled 2026-10-09. Everything below is paraphrased. Transcripts are in transcripts/<video id>.txt
+(Parakeet TDT 0.6B v3 on the Spark). The Google Play page was saved as play.html.
+
+=====================================================================
+1. SOURCES
+=====================================================================
+
+Breathwrk's own pages
+  [W1] Home page: https://www.breathwrk.com
+  [W2] Pro page: https://www.breathwrk.com/breathwrk-pro
+  [W3] General FAQ: https://www.breathwrk.com/generalfaqs
+  [W4] Subscription and billing FAQ: https://www.breathwrk.com/subscriptionandbillingfaqs
+  [W5] Science page: https://www.breathwrk.com/science
+  [W6] Blog: https://www.breathwrk.com/blog
+       and the "Awake" post: https://www.breathwrk.com/post/start-your-day-with-an-energizing-breathing-exercise-breathwrk
+  [W7] Peloton's announcement post: https://www.onepeloton.com/blog/peloton-breathwrk
+
+Store listings
+  [AS] App Store (US): https://apps.apple.com/us/app/breathwrk-breathing-exercises/id1481804500
+  [GP] Google Play: https://play.google.com/store/apps/details?id=com.breathwrk.android
+       (fetched 9 Oct 2026; shows 3 reviews)
+
+Third-party written reviews
+  [CT] Choosing Therapy review: https://www.choosingtherapy.com/breathwrk-app-review/
+  [JU] JustUseApp, about 36 App Store reviews collected (mostly 2020–23):
+       https://justuseapp.com/en/app/1481804500/breathwrk-breathing-exercises/reviews
+
+YouTube videos, transcribed
+  Breathwrk reviews and walkthroughs:
+  [V1] uudpQo9yknk  "Reducing Stress with BreathWrk for 30 Days" (Jack Jenkins, 14.6 min).
+       The best source: a real 30-day hands-on test.
+  [V2] OGpdeDtbeTU  "Breath better with Breathwrk!" (iHelp, 3.5 min). A hands-on screen walkthrough:
+       info tabs, Me tab, breath-hold test.
+  [V3] EC27F28yA5Q  "How to use the Breathwrk app" (AccessAbility Services, 3 min). Tutorial covering
+       onboarding, the four tabs and the per-exercise control panel.
+  [V4] 2nVZw2QPzO0  "BreathWrk app - HOW TO USE?" (mrhackio, 5 min). Shows onboarding, the paywall price,
+       stats and the Apple Health mindful-minutes option.
+  [V5] C9WzDp3pGbQ  "Breathwrk ... Honest Review" (How To Mr, 2.2 min). Generic and scripted, so weak evidence.
+  [V6] l5MI5CGyHDA  "Breathwrk Sleep App Honest Review" (Wise Explainer, 2.7 min). Generic and reads as if
+       AI-scripted; its "log mood before/after" claim is not confirmed anywhere else.
+  [V7] kh9DsuFrcW8  "Breathwrk App Review" (2.2 min). Reads as AI-generated and claims sleep tracking that
+       no other source supports. UNRELIABLE; used only where other sources agree.
+
+  Comparison and other-app videos:
+  [V8]  Mc0Zjoljw04  "I Do Othership Every Day for 60 Days" (Jack Jenkins, 16 min). Compares it with Breathwrk.
+  [V9]  MpRbtH3PtCs  "The BEST Breathwork App? | COHERENCE Review" (Coach Schuyler, 15 min).
+  [V10] AAIb_81J_rg  "Apps I use to practice slow paced breathing" (a clinical psychology PhD student, 8 min).
+        Covers Breathe+ and an HRV coherence app.
+  [V11] 3GiV_CdgB0M  "Best FREE Breathing App" (Pure-Health with Dr Laina, 5 min). Simple tone pacer.
+  [V12] 0KLOZBEAI14  "Top 5 Guided Breathing Apps for Stress Relief" (Health·WHYS, 4 min listicle).
+
+  Official Breathwrk channel (youtube.com/@breathwrk):
+  [V13] CrXlxirM1Z8  "How To Breathe While Flying" (the Awake breath).
+  [V14] N4RV2yROSVg  "Mood Lifter Class" (excerpt).
+  - O8Ke-LJU-2I and PwcMCdXf_2E are music only, with no speech.
+  - These could not be downloaded ("not available"): XBy-55LfGmU (App Preview), ad9XM6jhybc
+    ("Google Fit Permission Request", used here by title only) and MEmWOnIhi_Q (fireside chat).
+
+Context: Peloton bought Breathwrk in Oct 2025. The app was relaunched as v17 in April 2026 with Peloton
+instructors and video classes [AS][GP][W7].
+
+=====================================================================
+2. BREATHWRK FEATURE INVENTORY
+   (Free/Pro as best confirmed. "?" means the sources don't settle it.)
+=====================================================================
+
+Library and goals
+- Timed breathing exercises built from inhales, exhales and holds, with music, haptics and short lessons
+  [W1][GP].
+  - Breathwrk's own counts vary: "over 50" exercises [W1] or "100+" [W2].
+  - Five categories: Calming, Sleep/Nighttime, Energizing, Perform, Health. Each is colour-coded [CT][V1].
+  - Named exercises:
+    - Calm, Sleep, Awake (6 s in through the nose, 2 s out through the mouth) [W6][V13], Recharge,
+      Alleviate [JU].
+    - Craving Curber, Breath of Fire [W6].
+    - 4-7-8 [AS][GP], and box breathing [V6].
+  - FREE: a handful, about one per category [CT]. One review names Calm, Sleep, Awake and Recharge as free
+    [JU]. PRO: the rest [W2].
+  - Several Play reviews say the free tier has shrunk over time [GP][CT].
+- "Health" exercises: pain, headaches, cramps, quitting-smoking cravings and blood pressure [AS]; nausea,
+  hiccups, asthma, long COVID, and four pregnancy and labour exercises [CT]. Mostly PRO [CT].
+- Every exercise has an info panel with Overview, Recommended use (who it suits, best time of day) and
+  Science [V2][V3][JU]. FREE.
+
+Classes, programs and habits
+- Coach-led audio classes of 1–20 minutes, with subtitles [V1][CT]. "3 new classes daily" [W1].
+  - The free tier gets some classes; the rest are PRO [W1][W2].
+  - Since v17: Peloton instructor video classes and 140+ new classes [AS][GP].
+- 7-day challenges, one per category, which add a daily plan to the home screen [V1][CT]. You can invite a
+  friend to a challenge by text or email [CT]. All were free while [CT] used the app.
+- Multi-day "Programs" (7-day series), relaunched in v25.20 [AS]. PRO; the Pro page lists "programs" under
+  the annual plan [W2].
+- "Habits": 12+ curated schedules spread across the day and week, each with reminders [W1][W2][V3][CT].
+  Limited when FREE, full with PRO [CT].
+- Onboarding:
+  - Pick a goal, then give your wake and sleep times; these drive the daily schedule and notifications
+    [V3][V5][CT].
+  - Then create an account with Apple, Google, Facebook, email or Peloton credentials [V3][V4][W3]. [CT]
+    reports a guest mode.
+
+In-session experience
+- Visuals: animated pacers. [V1] shows a circle, a line (it rises on the inhale, falls on the exhale and
+  stays flat on holds), and a "sleeping monkey". The home page mentions a time-of-day palette, bright by
+  day and muted at night [W1].
+- Haptics: vibrations synced to the breath, so you can practise eyes closed [GP][CT][JU]. Basic haptics
+  appear to be free; "customisation" (voice guide, sound guide, haptics, duration) is PRO [W1].
+- Audio:
+  - Voice guides and coaches, plus "Soundwrk" functional music from its own label (PRO) [W2].
+  - Voice guides were removed and then came back in v16.04, March 2026 [AS].
+  - A Pro reviewer found many exercises showing "Coming Soon" instead of voice instructions [GP].
+- Per-exercise control panel for voice, vibration, sounds and visuals [V3].
+  - Length: three fixed lengths, according to [JU]; [V2] shows "make it longer".
+  - A lung-size setting exists: one user says inhales were still too long on "small" [JU].
+  - Adjustable intervals are PRO [CT].
+- Safety: the hold test shows a note to always stop if lightheaded [V2]. The science page has no medical
+  disclaimer [W5]; Peloton's post does have one [W7].
+
+Tests, stats and gamification
+- Breath-hold test with a personal best (resettable), a max-inhale test and exhale tests, plus a "lung
+  score" [AS][V1][V2][W1].
+  - The site describes "Breath Hold and Breath Exhale Challenges" [W1]. Unlimited holds are PRO [W2].
+  - None of the sources explain how the lung score is calculated.
+- "Me" tab [W1][V2][V1][V3]: streak, top streak, minutes, total breaths, levels, rankings based on breath
+  count, most-practised exercises, and sharing. FREE.
+- Social:
+  - "Breathe With Friends", for doing exercises and classes together [W1].
+  - Compete with friends and the community [V3].
+  - A global user counter on the home screen [V3].
+- Integrations:
+  - Apple Health (Mindful Minutes) [AS][V4].
+  - Google Fit (suggested only by an official video's title).
+  - Peloton: sessions count toward Peloton streaks, challenges and workout history [W7].
+
+Platforms, business and trust
+- Runs on iPhone, Mac (Apple silicon), Vision Pro, Android and the web [AS][W1].
+  - No iPad or Apple Watch app is listed [AS], and none of the sources mention widgets.
+  - "Offline access" is claimed [AS], but one review says the Pro update broke airplane mode [JU].
+- Price:
+  - Home page: $4.08 a month billed annually, or $9 a month [W1].
+  - Pro page: $5.75 a month billed annually (about $69 a year), or $12 a month [W2].
+  - 7-day trial. In-app purchases range from $1.99 to $69.99 [AS].
+  - Free with some Peloton memberships [W1][W3].
+  - Scholarships on request [AS dev reply]; discounts for students, teachers and the military [CT].
+  - No refunds for renewals [W4].
+- Ratings:
+  - App Store: 4.8 from 18K ratings [AS].
+  - Google Play: 2.2 from 2.7K reviews, 500K+ downloads, updated 18 Sep 2026 [GP]. In 2023 [CT] saw 4.2,
+    so the rating has fallen a lot since the relaunch.
+- Privacy label: contact info, identifiers and usage data are "used to track you" [AS].
+- Claims: strong and often unhedged. Examples: benefits "in as little as 60 secs" [W1]; panic
+  "short-circuited", sleep apnea reduced [W5]; blood pressure, asthma and long COVID [AS][CT].
+
+=====================================================================
+3. WHAT REVIEWERS LOVE, HATE AND WISH FOR
+=====================================================================
+
+LOVE
+- Very short sessions (1–3 minutes) that fit anywhere: before a test, on a work break, at bedtime
+  [V5][V2][JU: several].
+  - V1 averaged about 7.5 minutes a day over 30 days.
+  - One [JU] user chose it over the big meditation apps for exactly this no-frills brevity.
+- Coaches with energy and character. V1 preferred coach-led classes to the plain pacer and singled out one
+  coach's voice as perfect. Coaches add visualisations and encouragement [V1].
+- Structure for chaotic people. V1 said the reminders, 7-day challenges and daily recommendations
+  "helped tremendously" for someone disorganised. [CT] and [JU] users liked the schedules too.
+- Seeing progress:
+  - V1 tracked his breath hold rising from 30 to 42 s and enjoyed the breaths and minutes totals.
+  - Some [JU] users like points, levels and breath totals.
+  - V1 ignored the rankings and leaderboard, and one [JU] parent didn't understand the levels.
+- Exact numbers and context: one [JU] user liked that exercises give exact inhale and exhale seconds.
+  Others liked notes on who each exercise suits and the best time of day [JU], and the science notes [JU].
+- Eyes-closed and discreet use:
+  - Vibration plus visuals [JU].
+  - Audio cues mean less screen time at bedtime [JU].
+  - In other apps, vibration lets you pace discreetly with the phone in your pocket [V10], and tones let
+    you close your eyes and pull a wandering mind back [V11].
+- Following along with text: V8 noted that Breathwrk had transcripts of coach classes and Othership
+  didn't, which he called bad for accessibility.
+
+HATE
+- The paywall keeps growing:
+  - The free tier has been cut over the years [GP][CT].
+  - The app nags to log in, upgrade and rank up [CT].
+  - Two exercises in the free tier are nearly identical [AS review].
+- Billing and support failures: a renewal that charged but didn't unlock, with no reply from support
+  [GP]. No refunds [W4]. This drives the 2.2 rating on Play.
+- Unfinished or broken audio:
+  - Voice instructions that say "Coming Soon" [GP]; exercises without guided audio [CT].
+  - Coach subtitles often wrong [V1].
+  - Sound out of sync with the visual, sessions that won't start, crashes [JU x3]; notifications stop and
+    the hold timer glitches [CT].
+- Nose or mouth instruction shown once, then dropped on later runs [GP].
+- Timing doesn't fit everyone:
+  - Inhales too long even on the "small lungs" setting [JU].
+  - Exhale challenges of 30+ seconds are hard [V1].
+  - An update removed the longer sessions, and having to restart the short sleep one is annoying [JU].
+- Broke in airplane mode after the Pro update [JU].
+- Gets repetitive [V5].
+
+WISH
+- A visual pacer during coach-led classes, not only in the coachless ones [V1].
+- Length set by dragging instead of three fixed lengths, and a way to mute the music, for the gym [JU].
+- An option for people who can't breathe through the nose (deviated septum) [JU].
+- A one-time purchase instead of a subscription [JU]; a running-specific exercise [JU].
+- From the Othership review [V8]:
+  - difficulty labels;
+  - a guided path based on an onboarding quiz;
+  - short articles alongside sessions;
+  - separate voice and music volume;
+  - transcripts.
+- From the Coherence review [V9]:
+  - a step-by-step preview of the session;
+  - a timer to cut a long session short;
+  - "sync" sessions, where friends (or anyone, at fixed daily times) breathe together and friends join
+    free;
+  - reminders by day and time;
+  - a home strip with morning, afternoon and evening practices;
+  - a calendar of how consistently you practise.
+
+=====================================================================
+4. WHAT WOULD BE COOL FOR KUMBHA (ranked)
+=====================================================================
+
+Constraints assumed:
+- Static PWA, offline, no accounts or backend. localStorage is fine.
+- No real names or brands in the app, honest claims.
+- Haptics: navigator.vibrate works on Android Chrome only. iOS Safari has no Vibration API.
+- Storage: Safari can clear storage for a site that hasn't been added to the home screen after about
+  7 days without use. Any personal history should call navigator.storage.persist() and offer
+  export/import.
+
+--------------------------- QUICK WINS ---------------------------
+
+1. Choose your length (paced practices). Effort S–M.
+   What:
+   - A length choice for Resonance, Cyclic Sighing, Alternate Nostril and Wind Down's drift: 1 / 3 / 5 /
+     10 min, or "as written". The "one-minute reset" becomes a first-class option.
+   - Implementation: the paced steps in js/flows/calm.js and sleep.js already carry `count`. Scale that
+     count, and keep the intro and outro talk fixed, so the voice packs need no new lines.
+   - Optionally add a manifest "shortcuts" entry (e.g. "Resonance · 3 min") for long-press on the Android
+     home-screen icon.
+   Evidence:
+   - Short sessions are the most praised thing about Breathwrk [V5][V2][JU].
+   - Users explicitly asked for drag-to-length [JU] and complained when long sessions disappeared [JU].
+   - Coherence's cut-it-short timer [V9].
+   Fit: pure timeline data; no new audio needed.
+   Avoid: promising effects "in 60 seconds" (Breathwrk's line). Say "a short reset", nothing more.
+
+2. A quiet practice log. Effort S.
+   What:
+   - At session end, append {date, practice, intensity, minutes played, guided hold seconds} to
+     localStorage.
+   - A small "Your practice" sheet with a month dot-grid, the number of days practised this month, total
+     minutes, and the practices you use most.
+   - Export/import as JSON, so an evicted cache or a new phone doesn't wipe it.
+   Evidence:
+   - Breathwrk's Me tab (streaks, minutes, breaths) is free and well used [V1][V2][JU].
+   - Coherence's consistency calendar [V9].
+   - V1's 30-day write-up was built on exactly these totals.
+   Fit: perfect fit for localStorage.
+   Avoid:
+   - Streak-loss shaming, levels, points and ranks. V1 ignored them and a parent was confused by them
+     [JU].
+   - Counting "breaths" as an achievement.
+   - Show the guided hold time with the same caveat the done screen already uses: not a measurement.
+
+3. Reminders without a server: "Add to calendar" (.ics). Effort S.
+   What:
+   - On a practice page, "Remind me daily at…" generates an .ics file with a daily RRULE whose link opens
+     #/<practice> on the live URL. The calendar app does the reminding.
+   - Pair it with a time-of-day hint on the library (morning: Fire Wave; evening: Wind Down) and a
+     one-line "good for / best time" in each practice's notes.
+   Evidence:
+   - Habits and reminders are core to Breathwrk's retention [V3][CT].
+   - V1 credited the reminders and daily plan most.
+   - Users liked "best time of day" info [JU].
+   - Coherence's 8 am reminder [V9].
+   Fit:
+   - A PWA can't reliably schedule local notifications without a push server (Notification Triggers
+     were abandoned).
+   - An .ics file needs no backend and works offline.
+   - The link should open the practice page, not auto-play: audio needs a tap anyway.
+   Avoid: nag copy, and reminders on by default.
+
+4. Make offline guaranteed: a "Ready offline" button per practice. Effort S.
+   What:
+   - A button that prefetches every cue for the chosen voice, intensity and talk level, plus the music bed,
+     then shows a "Ready offline" badge.
+   - Most valuable for Window Seat, which is literally for planes and trains.
+   - Note from the code:
+     - service-worker.js caches cue audio only as it plays.
+     - Its activate step deletes every cache that doesn't match VERSION.
+     - So all cached cues and music are dropped on each deploy.
+     - Fix: put versioned (?v=) audio in a separate long-lived cache.
+   Evidence:
+   - Breathwrk's Pro update broke airplane mode, which ruined it for one paying user [JU].
+   - The App Store listing advertises offline access [AS].
+   Fit: this is Kumbha's home turf.
+   Avoid: silently downloading hundreds of MB. Show the size first.
+
+5. Haptic pacing (Android) with a softer fallback elsewhere. Effort S.
+   What:
+   - Settings → "Vibration": a short pulse at each in/out turn, a double pulse when a hold starts or ends.
+   - Implementation: navigator.vibrate() from the same state machine that drives the phase label in
+     app.js.
+   - On iOS, hide the setting; breath sounds and bells already do the job.
+   Evidence:
+   - Breathwrk markets haptics as the eyes-closed mode [GP], and users like it [JU].
+   - Pacing from a pocket while out in public [V10]; Coherence's turn-of-breath tap [V9].
+   Fit:
+   - Vibration only fires while the page is visible. With the screen locked, Kumbha's single WAV keeps
+     going but vibration stops.
+   - Say so in the setting's small print.
+   Avoid: buzzing every second, and claiming it "syncs your nervous system".
+
+6. Nose or mouth on every phase. Effort S.
+   What:
+   - A small glyph or word next to the phase label: "in · nose", "out · mouth", "hum".
+   - Data: an optional `via` field on pace steps, which Alternate Nostril already half-does with its
+     nostril indicator.
+   - Add a setting, "Can't breathe through my nose today", that swaps nose cues for "gently through the
+     mouth" captions, and points to Clear Nose.
+   Evidence:
+   - A Play review complained the nose/mouth cue appeared once and then vanished [GP].
+   - Othership shows nose/mouth pictures per class [V8].
+   - A deviated-septum user was locked out of a nose exercise [JU].
+   Fit: data plus captions. The voice lines stay as they are.
+   Avoid: medical advice about nasal obstruction.
+
+7. One-tap check-in before and after (optional). Effort S.
+   What:
+   - Before Begin and on the done screen: "How tense? 1–5", or three words (tense / okay / settled).
+   - Stored in the practice log and shown as "you noted 4 → 2".
+   - Off by default and skippable in one tap.
+   Evidence:
+   - V1 ran his own before/after stress score (8 → 5) to judge the app.
+   - Breathe2Relax-style mood tracking is praised in [V12].
+   - [V6] says Breathwrk has this, but that source is weak.
+   Fit: localStorage only.
+   Avoid:
+   - Presenting it as proof the practice "works", or charting "stress reduction" as an outcome.
+   - Use a caption: "Your own notes. Feeling better after resting is normal, whatever the technique."
+
+--------------------------- BIGGER BETS ---------------------------
+
+8. Comfort pace: fit the rhythm to your lungs. Effort M.
+   What:
+   - Per practice: "slower / as written / quicker", which scales paced in/out seconds, e.g. 4:6 → 3.5:5
+     → 5:7.
+   - For Resonance, show the resulting breaths per minute.
+   - The engine compiles timelines from data, so this means scaling `pace` and re-fitting the spoken-line
+     slots. Only do it where the voice doesn't count breaths, as in Kumbha's design.
+   - Persist the choice per practice, like intensity.
+   Evidence:
+   - "Inhale too long even on small lungs" [JU].
+   - Advanced users frustrated by fixed ratios [V7, weak].
+   - Clinicians tell patients to find the pace that feels comfortable [V10].
+   - Simple pacers loved for adjustable in/out [V11][V12].
+   Fit: no new audio, as long as cue timing tolerates it. Check with scripts/check_timing.mjs.
+   Avoid: calling it "personalised to your lung capacity", or a "lung score" (Breathwrk never explains
+   theirs).
+
+9. The easy-pause check: a gentle, honest breath-hold log. Effort M.
+   What:
+   - A 1-minute standalone check:
+     - Breathe quietly for a minute.
+     - After a normal out-breath, pinch your nose and tap.
+     - Tap again at the FIRST clear urge to breathe (not your max), then breathe calmly.
+   - Logged locally and shown as a simple history line next to the practice log.
+   - Lives under Hold Ladder / Clear Nose as "Check in".
+   Evidence:
+   - Breathwrk's breath-hold test with a resettable personal best is a free feature people use [V2].
+   - V1's headline result was his hold rising from 30 to 42 s.
+   - Breathwrk sells "lung score" and exhale tests [AS].
+   Fit: localStorage. The existing safety sheet and the "Breathe now" pattern apply.
+   Avoid:
+   - Max-hold testing, personal-best chasing and "lung score/health" language.
+   - No fast breathing before it. Seated only, never in water. Skip it during an active cold.
+   - Say clearly: a comfort marker that varies day to day, not a fitness or health measurement.
+   - Don't name the branded test it resembles.
+
+10. Weeks: short multi-day programs. Effort M.
+    What:
+    - 3–4 curated weeks, e.g.:
+      - "Seven evenings" (Wind Down, then lengthening);
+      - "A week of resonance" (3 → 10 min, using idea 1);
+      - "Getting used to holds" (No holds → Gentle → Standard on Turn the Tide / Hold Ladder).
+    - A "Today" card on the library shows the next day's practice.
+    - Progress is in localStorage. Missing a day just waits, with no reset and no locked days.
+    Evidence:
+    - Breathwrk's 7-day challenges drove V1's whole 30 days, and Breathwrk relaunched "Programs" [AS].
+    - Othership's journeys were the reviewer's favourite on-ramp, though he wanted guide rails and
+      difficulty labels [V8].
+    Fit: data only; uses existing practices and intensities.
+    Avoid:
+    - Streak pressure.
+    - "7 days to lower blood pressure"-style promises; name weeks by what you do, not by outcomes.
+    - Never auto-advance intensity. Suggest it, and let the person choose.
+
+11. Breathe together, via a link (no backend). Effort M.
+    What:
+    - "Breathe with someone": the share sheet (Web Share API) sends a link carrying the practice,
+      intensity, talk level and a start time a minute or two ahead.
+    - Every device computes its position from Date.now(), so people in different places, or two phones in
+      one room, run the same timeline.
+    - Late joiners jump in by setting the mixed track's currentTime.
+    - Optional public times ("Resonance at the top of every hour") work the same way, with no server: you
+      just know others may be in step.
+    Evidence:
+    - Breathwrk's "Breathe With Friends" [W1] and challenge-a-friend [CT].
+    - Coherence's sync sessions, free for invitees, with a twice-daily group breath [V9].
+    - V8 enjoyed a partner-breathing class with his wife.
+    Fit:
+    - Clocks are usually within a fraction of a second, which is fine for 4–6 s breaths.
+    - Kumbha's single mixed WAV makes seeking easy.
+    - Put only practice parameters in the link, never personal data.
+    Avoid: presence counts, feeds and leaderboards; none are possible without a backend, and none are
+    wanted.
+
+12. A "Line" visual that shows what's coming. Effort M.
+    What:
+    - A fourth visual (Settings → Visual): a scrolling breath curve, where up is in, down is out and
+      flat is hold.
+    - The next 20–30 s are drawn ahead, so long exhales and holds are visible before they arrive.
+    - Seconds are shown on the current segment.
+    Evidence:
+    - V1 described Breathwrk's line pacer as easy to follow, and wanted a pacer even in coach-led classes.
+    - Breathe+'s rising and falling bar [V10]; Coherence shows the seconds [V9].
+    Fit: canvas, driven by the same stateAt() timeline as Contour. Keep it in the Contour ink pairs.
+    Avoid: none beyond respecting prefers-reduced-motion, as contour.js already does.
+
+13. A simple custom pacer. Effort M.
+    What:
+    - "Your own rhythm": set in / hold / out / hold seconds and minutes.
+    - Uses breath sounds, bells, the Contour visual and optional haptics. No voice, apart from the
+      existing generic "breathe in / out" lines if all packs cover them.
+    - Saved presets live in localStorage.
+    Evidence:
+    - The most-recommended simple apps are exactly this [V11][V12].
+    - Coherence's 21 patterns and sequences [V9].
+    - Advanced users want custom ratios [V7].
+    Fit: synthesised audio already exists in audio.js.
+    Avoid: unlimited hold lengths. Cap holds (e.g. 20 s) unless the safety sheet has been acknowledged,
+    and keep "Breathe now".
+
+DELIBERATELY NOT RECOMMENDED
+- Leaderboards, ranks, levels, or a global "breaths taken" counter: they need a backend, people ignore
+  them [V1], and they pressure people.
+- Apple Health / Google Fit sync: not possible from a PWA. Use the JSON/CSV export instead.
+- A "Health" shelf (hiccups, asthma, long COVID, blood pressure, pregnancy): this is where Breathwrk
+  overclaims most [AS][CT][W5]. Kumbha's comfort-not-treatment line is a strength.
+- Daily "new content" feeds: they make the app feel repetitive [V5] and turn it into a content treadmill.
+
+=====================================================================
+5. WHERE KUMBHA ALREADY DOES BETTER THAN BREATHWRK
+=====================================================================
+
+1. Honest claims and safety.
+   - Breathwrk's science page has no medical disclaimer, and it markets blood pressure, asthma, long COVID
+     and sleep apnea benefits [W5][AS][CT].
+   - Kumbha has evidence labels and sources on every How it works page, a safety sheet, "Breathe now",
+     and guided hold time explicitly "not a measurement".
+2. Audio that can't drift and voices that are always complete.
+   - Breathwrk users report audio/visual desync, voice instructions marked "Coming Soon", wrong subtitles
+     and sessions that won't start [GP][JU][V1][CT].
+   - Kumbha:
+     - mixes one WAV, and the visuals follow its currentTime;
+     - offers a voice pack only if it covers every line;
+     - draws captions from the same script the voice reads;
+     - keeps playing with the screen locked.
+3. No account, no paywall, no tracking.
+   - Breathwrk requires sign-in and declares data used to track users [AS][W3].
+   - Its 2.2 Play rating is driven by billing and support failures [GP].
+   - Kumbha has none of that.
+4. Things reviewers wish other apps had, which Kumbha already has:
+   - separate voice and music volume (V8 wished Othership had it);
+   - talk levels (Quiet / Guided / Full);
+   - the teacher's notes with Listen;
+   - a session outline before you start (V9 praised Coherence's preview);
+   - No-holds and Gentle levels as difficulty labels (V8's top wish).
