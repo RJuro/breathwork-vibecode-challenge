@@ -218,7 +218,8 @@ h1 em { font-style: italic; font-weight: 400; }
 /* Contour (default): the map, with the words beneath it */
 .contour, .bloom { position: absolute; inset: -8%; width: 116%; height: 116%; pointer-events: none; }
 #session[data-visual='contour'] .orb-wrap { width: min(80vw, 46svh, 400px); }
-#session[data-visual='contour'] .orb-text { position: static; margin-top: 10px; text-shadow: none; }
+/* Fixed heights under the map, so a count or a longer caption never moves the rings. */
+#session[data-visual='contour'] .orb-text { position: static; margin-top: 10px; text-shadow: none; height: 148px; align-content: start; }
 #session[data-visual='contour'] .orb, #session[data-visual='contour'] .bloom, #session[data-visual='contour'] .ring { display: none; }
 #session[data-visual='bloom'] .orb, #session[data-visual='bloom'] .contour { display: none; }
 #session[data-visual='orb'] .bloom, #session[data-visual='orb'] .contour { display: none; }
@@ -249,7 +250,7 @@ h1 em { font-style: italic; font-weight: 400; }
 .ring .fill { stroke: color-mix(in oklab, var(--c1) 70%, white); stroke-opacity: 0.4; stroke-linecap: round; }
 
 .caption {
-  min-height: 5.2em; margin: 0 auto; padding: 0 calc(var(--gutter) + 12px); max-width: 30em; text-align: center;
+  height: 5.2em; margin: 0 auto; padding: 0 calc(var(--gutter) + 12px); max-width: 30em; text-align: center;
   font-family: var(--serif); font-size: clamp(19px, 5vw, 23px); line-height: 1.32; color: #ddd7ce;
   opacity: 0; transform: translateY(6px); transition: opacity .7s ease, transform .7s ease;
 }

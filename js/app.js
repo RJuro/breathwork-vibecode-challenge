@@ -330,14 +330,15 @@ function frame(t) {
   // Captions (and on-device speech for lines without a recording).
   const cap = captionAt(plan, t);
   const capEl = $('#caption');
-  const key = cap ? cap.id + cap.t : '';
+  const [part, text] = cap ? captionPart(cap, t) : [0, ''];
+  const key = cap ? `${cap.id}${cap.t}|${part}` : '';
   if (capEl.dataset.key !== key) {
     capEl.dataset.key = key;
     capEl.classList.remove('show');
     if (cap) {
       setTimeout(() => {
         const tag = { science: 'Why it works', technique: 'Technique' }[cap.kind];
-        capEl.innerHTML = (tag ? `<span class="tag">${tag}</span>` : '') + escapeHtml(cap.text);
+        capEl.innerHTML = (tag ? `<span class="tag">${tag}</span>` : '') + escapeHtml(text);
         capEl.classList.add('show');
       }, 180);
     }
@@ -433,6 +434,30 @@ function setMediaSession() {
   });
   navigator.mediaSession.setActionHandler('play', () => audio.play());
   navigator.mediaSession.setActionHandler('pause', () => audio.pause());
+}
+
+/** A long line is shown a sentence or two at a time (up to ~18 words), in step with the voice,
+ *  so the caption keeps one size. -> [part index, text] */
+function captionPart(cap, t) {
+  const words = (s) => s.trim().split(/\s+/).length;
+  // Sentences; one over 22 words splits at the comma or colon nearest its middle.
+  const sentences = (cap.text.match(/[^.!?]+[.!?]+\S*\s*|[^.!?]+$/g) || [cap.text]).flatMap((s) => {
+    if (words(s) <= 22) return [s];
+    const cuts = [...s.matchAll(/[,:;] /g)].map((m) => m.index + 2);
+    const cut = cuts.sort((a, b) => Math.abs(a - s.length / 2) - Math.abs(b - s.length / 2))[0];
+    return cut ? [s.slice(0, cut), s.slice(cut)] : [s];
+  });
+  const parts = [];
+  for (const s of sentences) {
+    const last = parts.at(-1);
+    if (last && words(last + s) <= 18) parts[parts.length - 1] = last + s;
+    else parts.push(s);
+  }
+  const total = parts.reduce((n, p) => n + p.length, 0);
+  let at = ((t - cap.t) / cap.dur) * total;
+  let i = 0;
+  while (i < parts.length - 1 && at > parts[i].length) at -= parts[i++].length;
+  return [i, parts[i].trim()];
 }
 
 function escapeHtml(s) {

@@ -1,7 +1,8 @@
 // "Contour": the session visual and the app's line art. Nested contour lines, like a
 // topographic map, that widen on the in-breath and settle on the out-breath, over two
 // overlapping washes of colour (a riso-style overprint) that follow the phase. Holds fill
-// the rings from the centre outward as time passes; hums send a ripple outward.
+// the rings from the centre outward as time passes; hums send a ripple outward. A few points of
+// light ride the contours and twinkle, over a faint drift of dust.
 
 const RINGS = 11;
 const LO = 0.46;
@@ -28,23 +29,25 @@ const rgba = (c, a) => `rgba(${c[0] | 0},${c[1] | 0},${c[2] | 0},${a})`;
 /** Ring k (0 = centre … 1 = outermost) as points in unit space (outer extent ≈ 1).
  *  `drift` slowly turns the wobble so the map breathes without repeating. */
 export function ringPoints(k, drift = 0, n = 40) {
+  return Array.from({ length: n }, (_, i) => ringAt(k, (i / n) * Math.PI * 2, drift));
+}
+
+/** The point at angle `a` (radians) on ring k, in unit space. */
+function ringAt(k, a, drift = 0) {
   const base = 0.085 + 0.66 * k;
   const w = 0.06 + 0.1 * k;
-  const ox = 0.039 * k * k;
-  const oy = -0.023 * k;
-  const pts = [];
-  for (let i = 0; i < n; i++) {
-    const a = (i / n) * Math.PI * 2;
-    const r =
-      base *
-      (1 +
-        w * Math.sin(2 * a + 0.6 + k * 0.9 + drift) +
-        w * 0.6 * Math.sin(3 * a + 1.7 - k * 0.5 - drift * 0.7) +
-        w * 0.3 * Math.sin(5 * a + k * 2.1 + drift * 0.4));
-    pts.push([ox + Math.cos(a) * r, oy + Math.sin(a) * r * 0.92]);
-  }
-  return pts;
+  const r =
+    base *
+    (1 +
+      w * Math.sin(2 * a + 0.6 + k * 0.9 + drift) +
+      w * 0.6 * Math.sin(3 * a + 1.7 - k * 0.5 - drift * 0.7) +
+      w * 0.3 * Math.sin(5 * a + k * 2.1 + drift * 0.4));
+  return [0.039 * k * k + Math.cos(a) * r, -0.023 * k + Math.sin(a) * r * 0.92];
 }
+
+const rand = (a, b) => a + Math.random() * (b - a);
+/** A glint: a point of light on a contour line, drifting along it while it twinkles. */
+const glint = (age = 0) => ({ k: [0.2, 0.3, 0.5, 0.6, 0.7, 0.8, 0.9][(Math.random() * 7) | 0], a: rand(0, Math.PI * 2), v: rand(0.03, 0.08) * (Math.random() < 0.5 ? -1 : 1), life: age, dur: rand(3.5, 7) });
 
 /** A smooth closed SVG path through ring k, scaled by `s` around (cx, cy). */
 export function ringPath(k, cx, cy, s, drift = 0) {
@@ -84,6 +87,8 @@ export class Contour {
     this.last = performance.now();
     this.reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
     this.inkKey = '';
+    this.glints = Array.from({ length: 6 }, () => glint(rand(0, 5)));
+    this.dust = Array.from({ length: 26 }, () => ({ x: rand(-1.15, 1.15), y: rand(-1.15, 1.15), ph: rand(0, 6.3), w: rand(0.4, 1.1) }));
     this.resize();
     new ResizeObserver(() => this.resize()).observe(canvas);
   }
@@ -182,5 +187,55 @@ export class Contour {
       ctx.lineJoin = 'round';
       ctx.stroke();
     }
+
+    if (!this.reduced) this.glimmer(dt, t, cx, cy, R, s, d, A);
+  }
+
+  /** Dust: faint specks drifting up and twinkling slowly. Glints: soft points of light on the
+   *  contours with a thin four-point star at their peak, a little brighter as the map opens. */
+  glimmer(dt, t, cx, cy, R, s, d, A) {
+    const { ctx, dpr } = this;
+    ctx.globalCompositeOperation = 'lighter';
+    for (const m of this.dust) {
+      m.y -= dt * 0.012;
+      if (m.y < -1.15) m.y = 1.15;
+      const a = 0.05 + 0.13 * (0.5 + 0.5 * Math.sin(t * m.w + m.ph));
+      ctx.fillStyle = rgba(INK, a);
+      ctx.beginPath();
+      ctx.arc(cx + m.x * R, cy + m.y * R, 0.9 * dpr, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    for (let i = 0; i < this.glints.length; i++) {
+      const g = this.glints[i];
+      g.life += dt;
+      g.a += g.v * dt;
+      if (g.life > g.dur) this.glints[i] = glint();
+      const env = Math.sin(Math.PI * Math.min(1, g.life / g.dur)) ** 2 * (0.55 + 0.45 * this.open);
+      if (env < 0.02) continue;
+      const [ux, uy] = ringAt(g.k, g.a, d);
+      const x = cx + ux * s;
+      const y = cy + uy * s;
+      const r = 10 * dpr;
+      const halo = ctx.createRadialGradient(x, y, 0, x, y, r);
+      halo.addColorStop(0, rgba([255, 250, 240], 0.85 * env));
+      halo.addColorStop(0.3, rgba(A, 0.3 * env));
+      halo.addColorStop(1, rgba(A, 0));
+      ctx.fillStyle = halo;
+      ctx.beginPath();
+      ctx.arc(x, y, r, 0, Math.PI * 2);
+      ctx.fill();
+      if (env > 0.5) {
+        const len = (4 + 6 * env) * dpr;
+        ctx.strokeStyle = rgba([255, 250, 240], 0.5 * env);
+        ctx.lineWidth = 0.8 * dpr;
+        ctx.beginPath();
+        ctx.moveTo(x - len, y);
+        ctx.lineTo(x + len, y);
+        ctx.moveTo(x, y - len);
+        ctx.lineTo(x, y + len);
+        ctx.stroke();
+      }
+    }
+    ctx.globalCompositeOperation = 'source-over';
   }
 }
