@@ -1,0 +1,704 @@
+{
+  "all_out": {
+    "fp": "232cec7ab59f",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 1.07
+  },
+  "bandha": {
+    "fp": "85dc938cbf02",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 7.27
+  },
+  "bandha_short": {
+    "fp": "c514a15dae1e",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 2.81
+  },
+  "breathe_now_ok": {
+    "fp": "d30662db6a0b",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 7.13
+  },
+  "checkin": {
+    "fp": "e5ff701ef8cd",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 5.92
+  },
+  "close": {
+    "fp": "1881143cb1a2",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 9.68
+  },
+  "cool_intro": {
+    "fp": "8e36d9d1c626",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 5.64
+  },
+  "deep_in": {
+    "fp": "57e2a932935a",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 1.51
+  },
+  "full_science": {
+    "fp": "6e063a9ef1ec",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 6.7
+  },
+  "fw_adrenaline": {
+    "fp": "1f147cc26f4c",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 6.11
+  },
+  "fw_buzz": {
+    "fp": "a0aa31ba3b5c",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 4.31
+  },
+  "fw_close": {
+    "fp": "5138e666b7f7",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 6.06
+  },
+  "fw_r1": {
+    "fp": "409fe0ecbb9e",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 11.49
+  },
+  "fw_r2": {
+    "fp": "6311c98dcee3",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 3.99
+  },
+  "fw_r3": {
+    "fp": "a9c9db439a05",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 4.93
+  },
+  "fw_rest": {
+    "fp": "77a069b4785f",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 4.13
+  },
+  "fw_t_haaa": {
+    "fp": "b2d0ba5abcad",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 6.79
+  },
+  "fw_t_hand": {
+    "fp": "889fd7359b2e",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 4.3
+  },
+  "fw_t_snap": {
+    "fp": "cda1073d9f58",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 5.39
+  },
+  "fw_ujjayi": {
+    "fp": "d35a1c2e24e3",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 6.4
+  },
+  "fw_urge": {
+    "fp": "143f809cdedf",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 4.63
+  },
+  "fw_welcome": {
+    "fp": "d03c60f3f534",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 6.8
+  },
+  "g_intro": {
+    "fp": "8c381fe1fed8",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 5.16
+  },
+  "hum_again": {
+    "fp": "b9b5ce32dee9",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 1.9
+  },
+  "hum_intro": {
+    "fp": "2a1430e75011",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 10.4
+  },
+  "ladder_intro": {
+    "fp": "b5d044717d69",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 7.76
+  },
+  "ladder_up": {
+    "fp": "00cbd852c2a2",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 1.89
+  },
+  "ladder_up2": {
+    "fp": "05106acb56ab",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 3.09
+  },
+  "n_breathe_in_all_the_way_to_the_top_and_hold_fifteen_seconds": {
+    "fp": "b7621294bd1e",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 3.52
+  },
+  "n_breathe_in_all_the_way_to_the_top_and_hold_forty_five_second": {
+    "fp": "8a4b84fe99fa",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 3.87
+  },
+  "n_breathe_in_all_the_way_to_the_top_and_hold_forty_seconds": {
+    "fp": "e29569c36cc5",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 4.04
+  },
+  "n_breathe_in_all_the_way_to_the_top_and_hold_one_minute": {
+    "fp": "ed67b629f922",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 3.49
+  },
+  "n_breathe_in_all_the_way_to_the_top_and_hold_ten_seconds": {
+    "fp": "e125a23224ed",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 3.04
+  },
+  "n_breathe_in_all_the_way_to_the_top_and_hold_thirty_seconds": {
+    "fp": "9f57c6d173fb",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 3.83
+  },
+  "n_breathe_in_all_the_way_to_the_top_and_hold_twenty_five_secon": {
+    "fp": "6b8c2007462a",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 4.13
+  },
+  "n_breathe_in_all_the_way_to_the_top_and_hold_twenty_seconds": {
+    "fp": "e75148b3e37a",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 4.52
+  },
+  "n_fifty_quick_breaths_begin": {
+    "fp": "4afbaa59dc0f",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 2.19
+  },
+  "n_five_hums_in_for_four_then_hum_it_all_out": {
+    "fp": "927b4a7b080c",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 3.02
+  },
+  "n_five_in_five_out": {
+    "fp": "00cbd852c2a2",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 1.29
+  },
+  "n_five_slow_breaths": {
+    "fp": "d08fa0c60f94",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 1.13
+  },
+  "n_forty_five_quick_breaths_begin": {
+    "fp": "8d9f83289711",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 2.15
+  },
+  "n_forty_quick_breaths_begin": {
+    "fp": "87acdd04dda7",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 1.83
+  },
+  "n_four_in_four_out": {
+    "fp": "0da544680cdb",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 1.74
+  },
+  "n_hold_lungs_empty_for_up_to_forty_five_seconds": {
+    "fp": "7a0868eac180",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 3.22
+  },
+  "n_hold_lungs_empty_for_up_to_one_minute": {
+    "fp": "f5abf04e8332",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 2.19
+  },
+  "n_hold_lungs_empty_for_up_to_one_minute_fifteen": {
+    "fp": "78d255f81b1c",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 2.98
+  },
+  "n_hold_lungs_empty_for_up_to_one_minute_forty": {
+    "fp": "a15d0d64857c",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 2.72
+  },
+  "n_hold_lungs_empty_for_up_to_one_minute_twenty": {
+    "fp": "5dc0099739e1",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 2.95
+  },
+  "n_hold_lungs_empty_for_up_to_thirty_five_seconds": {
+    "fp": "2ac377a9a14c",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 2.98
+  },
+  "n_hold_lungs_empty_for_up_to_twenty_five_seconds": {
+    "fp": "67e96a5c3e9f",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 2.57
+  },
+  "n_one_minute": {
+    "fp": "92a6001c2eb1",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 0.55
+  },
+  "n_round_one_five_slow_breaths_then_rest": {
+    "fp": "0dc294f18b63",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 3.52
+  },
+  "n_round_three_five_slow_breaths_then_rest": {
+    "fp": "a7636c584bcb",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 3.58
+  },
+  "n_round_two_five_slow_breaths_then_rest": {
+    "fp": "7e782fad16a7",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 3.2
+  },
+  "n_six_in_six_out": {
+    "fp": "5d119d23c0ca",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 1.44
+  },
+  "n_six_slow_breaths_in_for_four_out_for_six": {
+    "fp": "73af3c5fd4bb",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 3.46
+  },
+  "n_ten_more_seconds": {
+    "fp": "7729ee445158",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 0.97
+  },
+  "n_thirty_quick_breaths_begin": {
+    "fp": "6532fe35d7b0",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 2.07
+  },
+  "n_thirty_seconds": {
+    "fp": "24a43b88372d",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 1.0
+  },
+  "n_twenty_five_quick_breaths_begin": {
+    "fp": "7e168871e6ce",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 1.85
+  },
+  "n_twenty_quick_breaths_begin": {
+    "fp": "96a16905df6b",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 1.67
+  },
+  "nh_notice": {
+    "fp": "aaa552f3d042",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 4.01
+  },
+  "nose_short": {
+    "fp": "883e957976ad",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 2.75
+  },
+  "nt_a_warm_buzz_in_the_face_while_humming_is_1vxt0r4": {
+    "fp": "414ccdd944b2",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 2.81
+  },
+  "nt_before_you_start_md11ht": {
+    "fp": "b96e123b1d0c",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 0.84
+  },
+  "nt_big_forced_in_breaths_breathe_in_with_no_1e45l5e": {
+    "fp": "f8c1aaa2e36d",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 4.41
+  },
+  "nt_can_t_find_ujjayi_breathe_out_a_whispere_l23k59": {
+    "fp": "1d5cee974cc4",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 8.93
+  },
+  "nt_chest_and_shoulders_heaving_only_the_low_1nc5bdx": {
+    "fp": "616fa49ffe41",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 4.05
+  },
+  "nt_common_slips_and_what_helps_14fhf2u": {
+    "fp": "631871f550ba",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 1.87
+  },
+  "nt_dizziness_nausea_or_anxiety_stop_breathe_1atvin8": {
+    "fp": "68c8bfd6f259",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 5.83
+  },
+  "nt_fever_chest_symptoms_pregnancy_epilepsy__168seus": {
+    "fp": "e3ef62645b73",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 7.11
+  },
+  "nt_going_further_1ofsqcn": {
+    "fp": "43a01a70f002",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 0.81
+  },
+  "nt_going_too_fast_rhythm_before_speed_slowe_1p76kzy": {
+    "fp": "0370e007b6e6",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 3.18
+  },
+  "nt_humming_loud_with_a_tight_jaw_a_low_quie_16y0n3i": {
+    "fp": "aa04cdd7dafa",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 6.22
+  },
+  "nt_kapalabhati_from_the_chest_snap_the_lowe_xopbci": {
+    "fp": "459f3c82da3b",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 4.94
+  },
+  "nt_keep_the_holds_comfortable_deeper_is_for_hmp3on": {
+    "fp": "2a69d4fc2c96",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 4.67
+  },
+  "nt_locks_a_gentle_lift_of_the_pelvic_floor__zw73it": {
+    "fp": "17a7611f05eb",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 8.94
+  },
+  "nt_mornings_on_an_empty_stomach_two_to_thre_vq4br4": {
+    "fp": "301cc601ef6d",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 3.4
+  },
+  "nt_over_weeks_more_breaths_per_round_before_ycgkft": {
+    "fp": "60e7de424445",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 3.39
+  },
+  "nt_pregnancy_epilepsy_high_blood_pressure_o_mgi260": {
+    "fp": "7864d81e7762",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 11.6
+  },
+  "nt_pulling_the_in_breath_in_snap_out_then_l_61atq1": {
+    "fp": "2d0d2649fce9",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 6.58
+  },
+  "nt_seated_or_lying_kapalabhati_goes_best_on_pc7xzn": {
+    "fp": "015702a332aa",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 4.96
+  },
+  "nt_sit_upright_never_standing_a_hand_on_the_yo4wmk": {
+    "fp": "26c1c9cb3084",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 4.77
+  },
+  "nt_skip_it_or_go_gentle_if_1qua4zg": {
+    "fp": "932c421c8b4f",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 1.66
+  },
+  "nt_squeezing_the_throat_in_ujjayi_whisper_l_vsfjo0": {
+    "fp": "e860440cfc69",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 4.94
+  },
+  "nt_straining_in_the_holds_hold_as_if_the_br_163wko": {
+    "fp": "4dbed58f1821",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 5.35
+  },
+  "nt_teacher_s_notes_for_fire_wave_1hkjkqa": {
+    "fp": "1ee3fe4e8f45",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 1.39
+  },
+  "nt_teacher_s_notes_for_turn_the_tide_z3jop": {
+    "fp": "fafbf47b6127",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 1.79
+  },
+  "nt_that_s_everything_enjoy_the_practice_1tk5o0y": {
+    "fp": "f8d2e9a41981",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 2.2
+  },
+  "nt_the_holds_are_optional_switch_to_no_hold_1mjj253": {
+    "fp": "3332855e77bb",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 5.11
+  },
+  "nt_tingling_and_lightness_after_kapalabhati_1kz9oa9": {
+    "fp": "951250db4b03",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 5.39
+  },
+  "nt_warmth_tingling_and_a_raised_heart_rate__14keom": {
+    "fp": "c48dd8d7b357",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 4.49
+  },
+  "nt_what_the_research_says_156xzrp": {
+    "fp": "d0bfbde4a299",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 1.46
+  },
+  "nt_what_you_might_notice_1kr4ekf": {
+    "fp": "81b8f362c0bb",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 0.9
+  },
+  "pump_last": {
+    "fp": "b9b7d463791c",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 0.72
+  },
+  "r1_intro": {
+    "fp": "753b5e3322cb",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 10.28
+  },
+  "r1_permission": {
+    "fp": "54ceac04a4bc",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 6.8
+  },
+  "r2_hunger": {
+    "fp": "8edbc6fed005",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 5.47
+  },
+  "r2_intro": {
+    "fp": "07dd2c8345b3",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 8.17
+  },
+  "r3_after": {
+    "fp": "a9b47fe9d46e",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 5.01
+  },
+  "r3_intro": {
+    "fp": "37239390a44e",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 3.7
+  },
+  "r3_still": {
+    "fp": "806b73ee5cf3",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 3.77
+  },
+  "release": {
+    "fp": "9342f6af196a",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 2.44
+  },
+  "ribs": {
+    "fp": "8cf6eb77eecc",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 8.65
+  },
+  "story_co2": {
+    "fp": "88d50b7432a1",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 33.44
+  },
+  "story_hum": {
+    "fp": "1640aa2be6ce",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 37.09
+  },
+  "story_kox": {
+    "fp": "9c0c9a616a95",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 43.37
+  },
+  "story_nose": {
+    "fp": "acb5c39225f9",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 28.01
+  },
+  "story_vagus": {
+    "fp": "b0f199f49421",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 33.86
+  },
+  "t_belly_only": {
+    "fp": "0525956e5449",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 3.55
+  },
+  "t_first_breath": {
+    "fp": "8dae0788db83",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 5.04
+  },
+  "t_hold_guide": {
+    "fp": "ce1cf3e20a5d",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 4.62
+  },
+  "t_notice": {
+    "fp": "72423bf2458b",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 3.82
+  },
+  "t_slower_fine": {
+    "fp": "ac1d58d67ccf",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 3.72
+  },
+  "tide_t_easy_in": {
+    "fp": "4c2a8edc5f4e",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 3.11
+  },
+  "tide_t_hum": {
+    "fp": "baa191c79818",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 6.74
+  },
+  "welcome": {
+    "fp": "1e626cb923a1",
+    "voice": "coach",
+    "model": "qwen3-tts (spark)",
+    "duration": 7.76
+  }
+}

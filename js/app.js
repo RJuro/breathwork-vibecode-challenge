@@ -16,7 +16,7 @@ const fmt = (s) => {
 const minutes = (s) => `${Math.max(1, Math.round(s / 60))} min`;
 
 // ── Settings ───────────────────────────────────────────
-const DEFAULTS = { look: 2, voice: true, speaker: 'tom', talk: 'guided', visual: 'contour', sounds: true, music: true, voiceVol: 1, bedVol: 1, safetyAck: false, intensity: {} };
+const DEFAULTS = { look: 2, voice: true, speaker: 'qwen', talk: 'guided', visual: 'contour', sounds: true, music: true, voiceVol: 1, bedVol: 1, safetyAck: false, intensity: {} };
 let settings = load();
 function load() {
   try {
@@ -29,6 +29,13 @@ function load() {
     // stored, not the defaults), and is saved so a later choice of Bloom or Orb sticks.
     if (!(stored.look >= 2)) {
       Object.assign(s, { look: 2, visual: 'contour' });
+      if (Object.keys(stored).length) localStorage.setItem('kumbha', JSON.stringify(s));
+    }
+    // Coach voice trial: where the coach recorded a whole practice he replaces Tom, once, for
+    // everyone still on the old default. Picking Tom again sticks.
+    if (!(stored.coach >= 1)) {
+      if (s.speaker === 'tom') s.speaker = 'qwen';
+      s.coach = 1;
       if (Object.keys(stored).length) localStorage.setItem('kumbha', JSON.stringify(s));
     }
     return s;
@@ -134,13 +141,23 @@ function syncIntensity() {
   $('#intensity-note').textContent = (flow.intensityNotes || {})[lv] || '';
 }
 
-function syncSpeaker(offer, gemini) {
-  $('#speaker-row').hidden = !offer;
-  if (!offer) return;
-  const name = Object.values(gemini)[0]?.voice || 'Gemini';
-  $('#speaker [data-v="gemini"]').textContent = `${name} · Gemini`;
-  $$('#speaker button').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.v === settings.speaker)));
-  $('#speaker-note').textContent = settings.speaker === 'gemini' ? 'Preview voice: Gemini 3.8 Flash Lite TTS.' : '';
+// Voice packs: Tom covers every line; a preview pack is offered only where it recorded every
+// line a run needs, so a session never mixes voices.
+const PREVIEWS = { gemini: ['Gemini', 'Preview voice: Gemini 3.8 Flash Lite TTS.'], qwen: ['Qwen', 'Preview voice: a Qwen3-TTS clone, made on our own server.'] };
+const voiceName = (packs, p) => (p === 'tom' ? 'Tom' : (Object.values(packs[p])[0]?.voice || p).replace(/^./, (c) => c.toUpperCase()));
+async function pickPack(ids) {
+  const { packs } = await loadManifests();
+  const offered = ['tom'];
+  for (const p of Object.keys(PREVIEWS)) if (await packCovers(p, ids)) offered.push(p);
+  return { packs, offered, pack: offered.includes(settings.speaker) ? settings.speaker : 'tom' };
+}
+
+function syncSpeaker({ packs, offered, pack }) {
+  $('#speaker-row').hidden = offered.length < 2;
+  $('#speaker').innerHTML = offered
+    .map((p) => `<button data-v="${p}" aria-pressed="${p === pack}">${p === 'tom' ? 'Tom' : `${voiceName(packs, p)} · ${PREVIEWS[p][0]}`}</button>`)
+    .join('');
+  $('#speaker-note').textContent = PREVIEWS[pack]?.[1] || '';
 }
 
 function renderMap() {
@@ -173,16 +190,16 @@ async function prepare() {
   $('#begin-sub').textContent = 'Preparing…';
 
   // Draft with estimated timings to learn which lines this run needs, then decode them in
-  // the chosen voice. The Gemini preview is offered only where it recorded every line.
+  // the chosen voice.
   const { packs } = await loadManifests();
   const durOf = (m) => Object.fromEntries(Object.entries(m).map(([k, v]) => [k, v.duration]));
   plan = compile(f, durOf(packs.tom), opts);
   renderMap();
   let ids = [...new Set(plan.voice.map((v) => v.id))];
-  const offerGemini = await packCovers('gemini', ids);
+  const voices = await pickPack(ids);
   if (token !== renderToken) return;
-  syncSpeaker(offerGemini, packs.gemini);
-  const pack = offerGemini && settings.speaker === 'gemini' ? 'gemini' : 'tom';
+  syncSpeaker(voices);
+  const { pack } = voices;
   if (pack !== 'tom') {
     plan = compile(f, durOf(packs[pack]), opts);
     ids = [...new Set([...ids, ...plan.voice.map((v) => v.id)])];
@@ -241,7 +258,8 @@ async function prepareTalk(f) {
   const { cues } = await loadManifests();
   const est = Object.fromEntries(Object.entries(cues).map(([k, v]) => [k, v.duration]));
   const ids = [...new Set(compile(t, est, { talk: 'full' }).voice.map((v) => v.id))];
-  const [loaded, music] = await Promise.all([loadCues(ids), settings.music ? loadMusic(f.music) : null]);
+  const { packs, pack } = await pickPack(ids);
+  const [loaded, music] = await Promise.all([loadCues(ids, pack), settings.music ? loadMusic(f.music) : null]);
   const durs = Object.fromEntries(Object.entries(loaded).filter(([, b]) => b).map(([k, b]) => [k, b.duration]));
   const p = compile(t, durs, { talk: 'full' });
   const blob = await renderSession(p, loaded, { breathSounds: false, ambience: settings.music, music, voiceGain: settings.voiceVol, bedGain: settings.bedVol * 0.8 });
@@ -250,7 +268,7 @@ async function prepareTalk(f) {
   talkUrl = URL.createObjectURL(blob);
   player.src = talkUrl;
   btn.disabled = false;
-  btn.textContent = `▶ Listen: Tom reads these notes · ${minutes(p.total)}`;
+  btn.textContent = `▶ Listen: ${voiceName(packs, pack)} reads these notes · ${minutes(p.total)}`;
 }
 
 // ── Session ────────────────────────────────────────────
@@ -473,6 +491,7 @@ function bindUI() {
     const b = e.target.closest('button[data-v]');
     if (!b || b.dataset.v === settings.speaker) return;
     save({ speaker: b.dataset.v });
+    talkFor = null; // the notes are read in the chosen voice too
     prepare();
   });
 

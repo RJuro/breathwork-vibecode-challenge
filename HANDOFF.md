@@ -19,10 +19,38 @@ from Roman's laptop). This file is for a Claude Code session **on that laptop** 
   |---|---|---|---|---|
   | `tom` | `audio/cues/` | Tom (LuxTTS, cloned) | every line | `scripts/generate_cues.py` via the RunPod gateway. The **Voice cues** GitHub workflow regenerates it automatically when `js/flows/**`, `js/engine.js` or `scripts/**` change |
   | `gemini` | `audio/cues-gemini/` | Schedar (Gemini 3.8 Flash Lite TTS) | Turn the Tide only | `scripts/generate_cues_gemini.py` (needs `GEMINI_API_KEY`; reportedly capped at ~100 TTS requests/day) |
-  | `qwen` | `audio/cues-qwen/` | to choose | **nothing yet**: this is the task | `scripts/generate_cues_spark.py` (new, see below) |
+  | `qwen` | `audio/cues-qwen/` | Coach (Qwen3-TTS clone of a Gemini voice-design voice) | Turn the Tide + Fire Wave + their notes (trial) | `scripts/generate_cues_spark.py` |
 
 - **Roman's verdict on Gemini:** "really good". The ask now is to record **the rest** with the
   Qwen model on the Spark: free, no daily quota, about 12× real time.
+
+## Update 2026-10-09 (laptop session)
+
+- **Voice chosen: "Coach".** Calm, dry, ex-military, not a yoga voice. Roman designed it with
+  Gemini 3.8 voice design. It is cloned on the Spark from `scripts/voices/coach.wav` (plus `.txt`),
+  and re-registered with `--clone coach --from-file scripts/voices/coach.wav`.
+- **Trial coverage only.** Coach recorded Turn the Tide, Fire Wave and both practices' teacher's notes
+  (117 lines). Where Coach covers a practice he is the default voice. Existing users still on the old
+  `tom` default move to him once (`settings.coach`). The Voice switch is built from every pack that
+  covers the run, and the notes player uses the chosen pack. Timing is clean
+  (`check_timing.mjs --pack qwen`), and the words were checked with Parakeet.
+- **Pace.** Qwen reads like a lecturer, at about 3.0 words/s with 0.34 s between sentences. Guided coaches
+  on YouTube run at 2.1–2.7 words/s with 0.8–1 s between sentences. The script now records each sentence
+  separately and joins them with pauses (`GAP`, `LABEL_GAP`; counts are recorded whole), then
+  applies `--tempo 0.88`. That gives about 2.6 words/s. Longer gaps would push the hold cues late.
+- **Next, if Roman likes the trial:**
+  - record the other 7 practices: `python3 scripts/generate_cues_spark.py`, then retake flagged lines;
+  - optionally rewrite lines in the coach register. Genre research with patterns and example
+    rewrites is in the laptop session's scratchpad, not in the repo. A changed line also
+    re-records Tom (CI) and drops the Gemini pack's coverage of that practice.
+- **Spark gotchas:**
+  - The TTS server has no length cap. One runaway clip once filled all 121 GB and the container had
+    to be restarted (`docker restart qwentts`). Watch `free -g` on a big run.
+  - Every cloning reference needs an exact transcript.
+- **Transcription on the Spark:** Parakeet TDT 0.6B v3 (int8 ONNX, CPU) is in `~/parakeet` on the AIDK
+  Spark. `~/parakeet/.venv/bin/python ~/parakeet/transcribe.py <youtube id | audio file>...` writes
+  `~/parakeet/out/`. YouTube downloads need `--force-ipv4` (already set) because IPv6 hangs. The HF hub
+  library hangs on that box, but curl downloads are fine.
 
 ## The task
 

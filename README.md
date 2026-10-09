@@ -86,6 +86,25 @@ and no long internal pauses; failures get one retake with a new seed. A practice
 cents; the TTS models are reportedly capped at about 100 requests a day, and the script
 resumes where it stopped.
 
+### Coach voice (preview, Qwen3-TTS on the Spark)
+
+Turn the Tide and Fire Wave, with their teacher's notes, are also recorded by **Coach**: a
+calm, dry, ex-military coach (not a yoga voice), designed with Gemini 3.8 voice design and
+cloned with Qwen3-TTS on the DGX Spark from `scripts/voices/coach.wav`. Where Coach covers
+a practice he is the default voice; the Voice switch lists every pack that covers it. Free,
+no quota: Turn the Tide (59 lines) records in about a minute.
+
+```sh
+ssh -N -L 8881:localhost:8881 spark &
+python3 scripts/generate_cues_spark.py --clone coach --from-file scripts/voices/coach.wav  # once per Spark
+python3 scripts/generate_cues_spark.py --flow tide          # or --only id1,id2 --force to retake lines
+node scripts/check_timing.mjs --pack qwen
+```
+
+Qwen reads like a lecturer, fast and with short gaps between sentences. So each sentence is recorded
+separately and joined with a pause (longer after a short label such as "Round one."; counts are
+recorded whole), and the clip is slowed afterwards (`--tempo 0.88`, pitch kept).
+
 ## Music
 
 Import a track (e.g. a Suno download) into a slot:

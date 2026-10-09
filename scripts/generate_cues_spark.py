@@ -9,10 +9,17 @@ machine that can open one:
     python3 scripts/generate_cues_spark.py --voice narrator_m                       # every line
     python3 scripts/generate_cues_spark.py --voice narrator_m --flow tide --force   # one practice again
 
-Optionally clone the Gemini preview voice (Schedar) from one of its recorded lines, so the
-whole app can share that voice:
+Add a voice by cloning a short reference (8-15 s; its words in a .txt next to it), or one
+of another pack's recorded lines:
 
+    python3 scripts/generate_cues_spark.py --clone coach --from-file scripts/voices/coach.wav
     python3 scripts/generate_cues_spark.py --clone schedar --from-pack gemini --from-line welcome
+
+The current pack is "coach": a calm, dry ex-military coach, designed with Gemini 3.8 voice
+design and cloned from scripts/voices/coach.wav. Qwen reads like a lecturer, faster and with
+shorter sentence gaps than guided-breathing coaches, so each sentence is recorded on its own and
+joined with a pause (longer after a short label like "Round one."), then the clip is slowed
+with --tempo (pitch kept).
 
 All pending lines go to /batch in one call (the service is fastest that way), then each WAV
 is trimmed and loudness-normalised like the other packs and written to audio/cues-qwen/ with
@@ -25,12 +32,14 @@ import hashlib
 import io
 import json
 import os
+import re
 import subprocess
 import sys
 import tempfile
 import urllib.error
 import urllib.request
 import uuid
+import wave
 import zipfile
 from pathlib import Path
 
@@ -42,10 +51,47 @@ CUES = ROOT / "flow" / "cues.json"
 OUT = ROOT / "audio" / "cues-qwen"
 MANIFEST = OUT / "manifest.json"
 MODEL = "qwen3-tts (spark)"
+TEMPO = 0.88
+GAP, LABEL_GAP = 0.6, 0.85  # s added after a sentence (before --tempo); after a short label
 
 
-def fingerprint(text, voice):
-    return hashlib.sha1(f"{MODEL}|{voice}|{spoken(text)}".encode()).hexdigest()[:12]
+def fingerprint(text, voice, tempo):
+    return hashlib.sha1(f"{MODEL}|{voice}|{tempo}|{GAP}|{LABEL_GAP}|{spoken(text)}".encode()).hexdigest()[:12]
+
+
+def chunks(text):
+    """[(text, pause after)]: each full sentence on its own; runs of short ones (<= 3 words, like
+    "Round one." or "Chin down.") stay together and get the longer pause when a sentence follows."""
+    out, short = [], []
+    for x in re.split(r"(?<=[.!?])\s+", spoken(text)):
+        if len(x.split()) <= 3:
+            short.append(x)
+            continue
+        if short:
+            out.append((" ".join(short), LABEL_GAP))
+            short = []
+        out.append((x, GAP))
+    return out + [(" ".join(short), 0)] if short else out
+
+
+def record(base, voice, texts, tight=()):
+    """{id: text} -> {id: wav bytes}, in one /batch call. Lines are recorded chunk by chunk and
+    joined with pauses; lines in `tight` (counts and timing calls) are recorded whole."""
+    parts = {i: [(t, 0)] if i in tight else chunks(t) for i, t in texts.items()}
+    wavs = batch(base, voice, [{"id": f"{i}__{k}", "text": x} for i, ps in parts.items() for k, (x, _) in enumerate(ps)])
+    out = {}
+    for i, ps in parts.items():
+        buf = io.BytesIO()
+        with wave.open(buf, "wb") as w:
+            for k, (_, gap) in enumerate(ps):
+                with wave.open(io.BytesIO(wavs[f"{i}__{k}"])) as r:
+                    if k == 0:
+                        w.setparams(r.getparams())
+                    w.writeframes(r.readframes(r.getnframes()))
+                    if k < len(ps) - 1:
+                        w.writeframes(bytes(int(gap * r.getframerate()) * r.getsampwidth() * r.getnchannels()))
+        out[i] = buf.getvalue()
+    return out
 
 
 def post(url, body=None, data=None, headers=None, timeout=60):
@@ -88,10 +134,8 @@ def check(path, text, args):
     return ok, dur, score, note
 
 
-def clone(base, name, pack, line):
-    """Register a Spark voice from a recorded line of another pack (its text is the transcript)."""
-    cues = json.loads(CUES.read_text())
-    src = ROOT / "audio" / ("cues" if pack == "tom" else f"cues-{pack}") / f"{line}.mp3"
+def clone(base, name, src, transcript):
+    """Register a Spark voice from a reference recording and the exact words spoken in it."""
     if not src.exists():
         sys.exit(f"no recording {src}")
     wav = subprocess.run(["ffmpeg", "-v", "error", "-i", str(src), "-ac", "1", "-ar", "24000", "-f", "wav", "-"],
@@ -100,18 +144,19 @@ def clone(base, name, pack, line):
     if not 6 <= secs <= 16:
         print(f"note: the reference is {secs:.1f}s; 8-15 s clones best")
     boundary = uuid.uuid4().hex
-    parts = [("name", name), ("transcript", spoken(cues[line]["text"]))]
+    parts = [("name", name), ("transcript", transcript)]
     body = b"".join(f'--{boundary}\r\nContent-Disposition: form-data; name="{k}"\r\n\r\n{v}\r\n'.encode() for k, v in parts)
     body += (f'--{boundary}\r\nContent-Disposition: form-data; name="audio"; filename="ref.wav"\r\n'
              f"Content-Type: audio/wav\r\n\r\n").encode() + wav + f"\r\n--{boundary}--\r\n".encode()
     out = post(f"{base}/voices", data=body, headers={"Content-Type": f"multipart/form-data; boundary={boundary}"}, timeout=300)
-    print(f"voice {name!r} added from {src.relative_to(ROOT)} ({secs:.1f}s): {out[:200].decode(errors='replace')}")
+    print(f"voice {name!r} added from {src} ({secs:.1f}s): {out[:200].decode(errors='replace')}")
 
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--url", default="http://localhost:8881")
-    ap.add_argument("--voice", default="narrator_m")
+    ap.add_argument("--voice", default="coach")
+    ap.add_argument("--tempo", type=float, default=TEMPO, help=f"speed factor applied after recording (default {TEMPO})")
     ap.add_argument("--flow", help="only this practice's lines (default: every line in flow/cues.json)")
     ap.add_argument("--only", help="comma-separated line ids")
     ap.add_argument("--force", action="store_true")
@@ -120,6 +165,7 @@ def main():
     ap.add_argument("--line", default="welcome")
     ap.add_argument("--out-dir", default=str(Path(tempfile.gettempdir()) / "spark-audition"))
     ap.add_argument("--clone", metavar="NAME", help="add a Spark voice from a recorded line (see --from-pack/--from-line)")
+    ap.add_argument("--from-file", type=Path, help="reference WAV/MP3; its transcript is the .txt beside it")
     ap.add_argument("--from-pack", default="gemini")
     ap.add_argument("--from-line", default="welcome")
     args = ap.parse_args()
@@ -127,16 +173,20 @@ def main():
     cues = json.loads(CUES.read_text())
 
     if args.clone:
-        clone(base, args.clone, args.from_pack, args.from_line)
+        if args.from_file:
+            clone(base, args.clone, args.from_file, args.from_file.with_suffix(".txt").read_text().strip())
+        else:
+            pack = "cues" if args.from_pack == "tom" else f"cues-{args.from_pack}"
+            clone(base, args.clone, ROOT / "audio" / pack / f"{args.from_line}.mp3", spoken(cues[args.from_line]["text"]))
         return
 
     if args.audition:
         out = Path(args.out_dir)
         out.mkdir(parents=True, exist_ok=True)
         for voice in [v.strip() for v in args.audition.split(",")]:
-            wav = batch(base, voice, [{"id": args.line, "text": spoken(cues[args.line]["text"])}])[args.line]
+            wav = record(base, voice, {args.line: cues[args.line]["text"]})[args.line]
             dst = out / f"{args.line}-{voice}.mp3"
-            polish(wav, 24000, dst)
+            polish(wav, 24000, dst, args.tempo)
             print(f"  {voice}: {duration(dst)}s -> {dst}")
         return
 
@@ -150,21 +200,21 @@ def main():
     for k in [k for k in manifest if k not in cues]:  # lines no practice speaks any more
         manifest.pop(k)
         (OUT / f"{k}.mp3").unlink(missing_ok=True)
-    todo = [i for i in ids if args.force or manifest.get(i, {}).get("fp") != fingerprint(cues[i]["text"], args.voice)
+    todo = [i for i in ids if args.force or manifest.get(i, {}).get("fp") != fingerprint(cues[i]["text"], args.voice, args.tempo)
             or not (OUT / f"{i}.mp3").exists()]
     est = sum(len(cues[i]["text"].split()) for i in todo) / 2.4 / 60
     print(f"{len(ids)} lines, {len(todo)} to record with {args.voice} (~{est:.0f} min of speech, one /batch call)")
     if not todo:
         return
-    wavs = batch(base, args.voice, [{"id": i, "text": spoken(cues[i]["text"])} for i in todo])
+    wavs = record(base, args.voice, {i: cues[i]["text"] for i in todo}, {i for i in todo if cues[i].get("kind") == "count"})
 
     OUT.mkdir(parents=True, exist_ok=True)
     flagged = []
     for i in todo:
         dst = OUT / f"{i}.mp3"
-        polish(wavs[i], 24000, dst)
+        polish(wavs[i], 24000, dst, args.tempo)
         ok, dur, score, note = check(dst, cues[i]["text"], args)
-        manifest[i] = {"fp": fingerprint(cues[i]["text"], args.voice), "voice": args.voice, "model": MODEL, "duration": dur}
+        manifest[i] = {"fp": fingerprint(cues[i]["text"], args.voice, args.tempo), "voice": args.voice, "model": MODEL, "duration": dur}
         if args.transcribe:
             manifest[i]["match"] = score
         print(f"  {'✓' if ok else '!'} {i}  {note}")

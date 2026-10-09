@@ -111,14 +111,15 @@ def synth(text, voice, model, take=0):
     return base64.b64decode(audio["data"]), rate
 
 
-def polish(audio: bytes, rate: int, dst: Path):
-    """WAV or raw PCM -> trimmed, -19 LUFS, mono 24 kHz mp3 (same treatment as the Tom pack)."""
+def polish(audio: bytes, rate: int, dst: Path, tempo: float = 1.0):
+    """WAV or raw PCM -> trimmed, -19 LUFS, mono 24 kHz mp3 (same treatment as the Tom pack).
+    tempo < 1 slows the speech without changing its pitch."""
     src = [] if audio[:4] == b"RIFF" else ["-f", "s16le", "-ar", str(rate), "-ac", "1"]
     trim = ("silenceremove=start_periods=1:start_threshold=-50dB:start_silence=0.05,"
             "areverse,silenceremove=start_periods=1:start_threshold=-50dB:start_silence=0.15,areverse")
     subprocess.run([
         "ffmpeg", "-v", "error", "-y", *src, "-i", "pipe:0",
-        "-af", f"{trim},loudnorm=I=-19:TP=-2:LRA=7,afade=t=in:d=0.02",
+        "-af", f"{trim},{f'atempo={tempo},' if tempo != 1 else ''}loudnorm=I=-19:TP=-2:LRA=7,afade=t=in:d=0.02",
         "-ac", "1", "-ar", "24000", "-b:a", "64k", str(dst),
     ], input=audio, check=True)
 

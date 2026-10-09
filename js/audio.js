@@ -26,16 +26,19 @@ async function fetchJSON(url) {
   }
 }
 
-// Voice packs: Tom (LuxTTS, every line) and a Gemini TTS preview recorded per practice.
-export const PACKS = { tom: 'audio/cues', gemini: 'audio/cues-gemini' };
+// Voice packs: Tom (LuxTTS, every line), plus previews recorded per practice: Gemini TTS and
+// a Qwen3-TTS voice clone on our own server.
+export const PACKS = { tom: 'audio/cues', gemini: 'audio/cues-gemini', qwen: 'audio/cues-qwen' };
 
 let manifests = null;
 /** Cue manifests per voice pack (written by scripts/generate_cues*.py) and audio/music/manifest.json.
  *  `cues` is Tom's, kept for callers that only need estimated timings. */
 export function loadManifests() {
-  manifests ??= Promise.all([fetchJSON(`${PACKS.tom}/manifest.json`), fetchJSON(`${PACKS.gemini}/manifest.json`), fetchJSON('audio/music/manifest.json')]).then(
-    ([tom, gemini, music]) => ({ cues: tom, packs: { tom, gemini }, music })
-  );
+  const names = Object.keys(PACKS);
+  manifests ??= Promise.all([...names.map((n) => fetchJSON(`${PACKS[n]}/manifest.json`)), fetchJSON('audio/music/manifest.json')]).then((all) => {
+    const packs = Object.fromEntries(names.map((n, i) => [n, all[i]]));
+    return { cues: packs.tom, packs, music: all.at(-1) };
+  });
   return manifests;
 }
 
