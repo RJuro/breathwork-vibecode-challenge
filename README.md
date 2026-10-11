@@ -1,4 +1,4 @@
-# Kumbha · breath & retention
+# Breathe-up · breath & retention
 
 Breath-retention training (15–25 min) and short practices for the moments of the day, led by two coaches,
 **Leo** and **Mira**, timed to the second, with honest notes on what the science does and doesn't
@@ -48,6 +48,12 @@ allowed rather than promised, and one mechanism plus honest caveats for the scie
 your coach says** is a setting: Quiet (instructions and counts), Guided (plus tips), Full (plus the
 science). Each practice has a *How it works* page with technique, evidence labels, sources and, for
 some, the teacher's tips (`js/flows/notes.js`). *Breathe now* ends any hold.
+
+Motion (`ContourArt` in `js/contour.js`, "Tile motion" in `styles.css`): the home and practice-page
+maps draw themselves in and breathe at six a minute, each ring lagging the one inside it, with light
+runners on the index lines and a pointer tilt; the session map shares that look at the same scale. Tiles
+reveal as they scroll into view, and every tile drawing acts out its practice on hover. All of it is
+static under prefers-reduced-motion.
 
 Also in the app: a chart of each practice's number over the last 20 sessions (seconds held; Breath
 Check charts its control pause), CSV export of the log and **Save audio for offline** in Settings,

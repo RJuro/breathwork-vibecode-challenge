@@ -3,7 +3,7 @@ import { compile, stateAt, captionAt, exitOf, holdResults, retention } from './e
 import { notesHtml } from './flows/lib.js';
 import { Bloom } from './bloom.js';
 import { Contour, ContourArt } from './contour.js';
-import { motif } from './motifs.js';
+import { motif, washOf } from './motifs.js';
 import { loadManifests, loadCues, loadMusic, renderSession, allAudioUrls } from './audio.js';
 
 const $ = (s) => document.querySelector(s);
@@ -94,6 +94,7 @@ function route() {
 function show(id) {
   $$('.screen').forEach((el) => el.classList.toggle('is-active', el.id === id));
   for (const [screen, a] of Object.entries(art)) screen === id ? a.play() : a.stop();
+  if (id === 'library') revealShelf();
   window.scrollTo(0, 0);
 }
 
@@ -112,6 +113,7 @@ async function renderShelf() {
     if (!fs.length) continue;
     const head = document.createElement('div');
     head.className = 'moment';
+    head.style.setProperty('--i', String(n));
     head.innerHTML = `<h2>${m.title}</h2><p>${m.sub}</p>`;
     shelf.appendChild(head);
     for (const f of fs) {
@@ -120,13 +122,48 @@ async function renderShelf() {
       const a = document.createElement('a');
       a.className = wide ? 'tile wide' : 'tile';
       a.style.setProperty('--i', String(n++));
+      a.style.setProperty('--wash', washOf(f.id));
       a.href = `#/p/${f.id}`;
-      const meta = `<span class="tile-meta">${minutes(total)} · with ${VOICES[f.voice]}</span>`;
+      const meta = `<span class="tile-meta">${minutes(total)}</span>`;
       a.innerHTML = wide
         ? `<span class="tile-text">${meta}<span class="tile-title">${f.titleHtml || f.title}</span><span class="tile-blurb">${f.blurb}</span></span><span class="tile-art">${motif(f.id)}</span>`
         : `<span class="tile-art">${motif(f.id)}</span><span class="tile-text"><span class="tile-title">${f.title}</span>${meta}</span>`;
       shelf.appendChild(a);
     }
+  }
+  if ($('#library').classList.contains('is-active')) revealShelf();
+}
+
+/** Tiles and headers arrive as they scroll into view, each batch staggered (styles.css, "Tile
+ *  motion"). `.in` comes off once the choreography has played, so a hover never restarts it. */
+const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+let revealer = null;
+let firstReveal = true;
+function revealShelf() {
+  if (calm || !('IntersectionObserver' in window)) return;
+  revealer?.disconnect();
+  // The first batch waits for the hero to start; later ones (scrolling) go at once.
+  let start = firstReveal ? 0.45 : 0.1;
+  firstReveal = false;
+  revealer = new IntersectionObserver(
+    (entries) => {
+      const batch = entries.filter((e) => e.isIntersecting);
+      batch.forEach((e, k) => {
+        const el = e.target;
+        revealer.unobserve(el);
+        const d = start + k * 0.08;
+        el.style.setProperty('--d', `${d.toFixed(2)}s`);
+        el.classList.replace('pending', 'in');
+        setTimeout(() => el.classList.remove('in'), (d + 2.2) * 1000);
+      });
+      if (batch.length) start = 0.05;
+    },
+    { rootMargin: '0px 0px -6% 0px' }
+  );
+  for (const el of $$('#shelf > .tile, #shelf > .moment')) {
+    el.classList.remove('in');
+    el.classList.add('pending');
+    revealer.observe(el);
   }
 }
 
@@ -284,6 +321,7 @@ async function begin() {
   } else if (settings.visual === 'contour') {
     contour ??= new Contour($('#contour'));
     contour.resize();
+    contour.restart();
   }
   try {
     wakeLock = await navigator.wakeLock?.request('screen');
@@ -454,7 +492,7 @@ function setMediaSession() {
   if (!('mediaSession' in navigator)) return;
   navigator.mediaSession.metadata = new MediaMetadata({
     title: flow.title,
-    artist: 'Kumbha · pranayama',
+    artist: 'Breathe-up',
     artwork: [{ src: 'icons/icon-512.png', sizes: '512x512', type: 'image/png' }],
   });
   navigator.mediaSession.setActionHandler('play', () => audio.play());
@@ -491,6 +529,18 @@ function escapeHtml(s) {
 
 // ── UI wiring ──────────────────────────────────────────
 function bindUI() {
+  // Tiles: a spotlight in the practice's colour and a slight tilt, following the pointer.
+  $('#shelf').addEventListener('pointermove', (e) => {
+    const tile = e.target.closest('.tile');
+    if (!tile || e.pointerType !== 'mouse') return;
+    const r = tile.getBoundingClientRect();
+    const x = (e.clientX - r.left) / r.width;
+    const y = (e.clientY - r.top) / r.height;
+    tile.style.setProperty('--mx', `${(x * 100).toFixed(1)}%`);
+    tile.style.setProperty('--my', `${(y * 100).toFixed(1)}%`);
+    tile.style.setProperty('--ry', `${((x - 0.5) * 5).toFixed(2)}deg`);
+    tile.style.setProperty('--rx', `${((0.5 - y) * 5).toFixed(2)}deg`);
+  });
   $('#begin').addEventListener('click', begin);
   $('#open-learn').addEventListener('click', () => $('#learn').showModal());
   $('#done-learn').addEventListener('click', () => $('#learn').showModal());
@@ -613,7 +663,7 @@ function exportLog() {
   const title = Object.fromEntries(FLOWS.map((f) => [f.id, f.title]));
   const rows = readLog().map((e) => [new Date(e.at).toISOString(), title[e.id] || e.id, e.level || '', e.secs, e.held || 0, (e.holds || []).join(' ')]);
   const csv = [['date', 'practice', 'level', 'seconds', 'seconds_held', 'holds'], ...rows].map((r) => r.map((x) => `"${String(x).replace(/"/g, '""')}"`).join(',')).join('\n');
-  download('kumbha-log.csv', 'text/csv', csv + '\n');
+  download('breathe-up-log.csv', 'text/csv', csv + '\n');
 }
 
 /** Fetch every recording once; the service worker keeps them, across app updates. */
@@ -649,14 +699,14 @@ function addReminder() {
   const local = (d) => `${d.getFullYear()}${String(d.getMonth() + 1).padStart(2, '0')}${String(d.getDate()).padStart(2, '0')}T${String(d.getHours()).padStart(2, '0')}${String(d.getMinutes()).padStart(2, '0')}00`;
   const url = `${location.origin}${location.pathname}#/p/${flow.id}`;
   const ics = [
-    'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Kumbha//EN', 'BEGIN:VEVENT',
+    'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Breathe-up//EN', 'BEGIN:VEVENT',
     `UID:kumbha-${flow.id}-${Date.now()}`, `DTSTAMP:${new Date().toISOString().replace(/[-:]/g, '').slice(0, 15)}Z`,
     `DTSTART:${local(start)}`, `DTEND:${local(end)}`, 'RRULE:FREQ=DAILY',
     `SUMMARY:${flow.title} with ${VOICES[flow.voice]}`, `URL:${url}`, `DESCRIPTION:${url}`,
     'BEGIN:VALARM', 'TRIGGER:PT0M', 'ACTION:DISPLAY', `DESCRIPTION:${flow.title}`, 'END:VALARM',
     'END:VEVENT', 'END:VCALENDAR',
   ].join('\r\n');
-  download(`kumbha-${flow.id}.ics`, 'text/calendar', ics + '\r\n');
+  download(`breathe-up-${flow.id}.ics`, 'text/calendar', ics + '\r\n');
 }
 
 const ICON_PAUSE = '<svg viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14" rx="1.5"/><rect x="14" y="5" width="4" height="14" rx="1.5"/></svg>';

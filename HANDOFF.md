@@ -1,8 +1,8 @@
-# Handoff: Kumbha with two coaches (2026-10-09)
+# Handoff: Breathe-up (formerly Kumbha), two coaches
 
 ## Where things stand
 
-- **App:** Kumbha, a static PWA (vanilla ES modules, no build step). Branch `claude/cold-flow-rebuild`;
+- **App:** Breathe-up (renamed from Kumbha on 11 Oct 2026; storage keys and cache names still say `kumbha`, keep them so logs and saved audio survive), a static PWA (vanilla ES modules, no build step). Branch `claude/cold-flow-rebuild`;
   Coolify deploys from it on request (API call below), not on push.
 - **Coaches only.** Every practice is led by **Leo** or **Mira**, Gemini 3.8 designed voices (young,
   grounded coaches, light American English; Roman approved the younger versions on 9 Oct). Tom,

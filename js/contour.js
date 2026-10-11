@@ -86,7 +86,7 @@ export class ContourArt {
       for (const [k, v] of Object.entries(attrs)) e.setAttribute(k, v);
       return e;
     };
-    this.svg = el('svg', { viewBox: `0 0 ${w} ${h}`, preserveAspectRatio: 'xMaxYMin slice', 'aria-hidden': 'true', focusable: 'false' });
+    this.svg = el('svg', { viewBox: `0 0 ${w} ${h}`, preserveAspectRatio: 'xMaxYMin meet', 'aria-hidden': 'true', focusable: 'false' });
     this.w1 = this.svg.appendChild(el('circle', { class: 'w1' }));
     this.w2 = this.svg.appendChild(el('circle', { class: 'w2' }));
     this.rings = Array.from({ length: RINGS }, (_, j) => {
@@ -216,8 +216,15 @@ export class Contour {
     this.inkKey = '';
     this.glints = Array.from({ length: 6 }, () => glint(rand(0, 5)));
     this.dust = Array.from({ length: 26 }, () => ({ x: rand(-1.15, 1.15), y: rand(-1.15, 1.15), ph: rand(0, 6.3), w: rand(0.4, 1.1) }));
+    this.ringOpen = Array(RINGS).fill(this.open);
+    this.born = performance.now();
     this.resize();
     new ResizeObserver(() => this.resize()).observe(canvas);
+  }
+
+  /** Replay the draw-in (rings drawing themselves from the centre) at the start of a session. */
+  restart() {
+    this.born = performance.now();
   }
 
   resize() {
@@ -253,6 +260,9 @@ export class Contour {
     const o = Math.max(0, Math.min(1.05, (st.scale - LO) / (HI - LO)));
     this.open = lerp(this.open, o, 1 - Math.exp(-dt * 12));
     const s = R * lerp(0.8, 1, this.open);
+    // Each ring follows the breath a beat after the one inside it, so a breath travels outward.
+    this.ringOpen = this.ringOpen.map((v, j) => lerp(v, this.open, 1 - Math.exp(-dt * (this.reduced ? 12 : 12 - 8.5 * (j / (RINGS - 1))))));
+    const born = this.reduced ? 9 : (now - this.born) / 1000;
     if (!this.reduced) this.drift += dt * (st.phase === 'pump' ? 0.25 : 0.06);
     const d = this.drift;
 
@@ -300,22 +310,61 @@ export class Contour {
           width += 2.2 * dpr * near;
         }
       }
+      const sj = R * lerp(0.8, 1, this.ringOpen[j]);
       const p = ringPoints(k, d);
+      // Draw-in: each ring strokes itself, centre first, 70 ms apart.
+      const drawn = outExpo(Math.max(0, born - 0.15 - j * 0.07) / 1.3);
+      if (drawn < 1) {
+        let len = 0;
+        for (let i = 0; i < p.length; i++) len += Math.hypot(p[i][0] - p[(i + 1) % p.length][0], p[i][1] - p[(i + 1) % p.length][1]) * sj;
+        ctx.setLineDash([len * drawn, len]);
+      }
       ctx.beginPath();
       const mx = (a, b) => (a + b) / 2;
       const last = p[p.length - 1];
-      ctx.moveTo(cx + mx(last[0], p[0][0]) * s, cy + mx(last[1], p[0][1]) * s);
+      ctx.moveTo(cx + mx(last[0], p[0][0]) * sj, cy + mx(last[1], p[0][1]) * sj);
       for (let i = 0; i < p.length; i++) {
         const q = p[(i + 1) % p.length];
-        ctx.quadraticCurveTo(cx + p[i][0] * s, cy + p[i][1] * s, cx + mx(p[i][0], q[0]) * s, cy + mx(p[i][1], q[1]) * s);
+        ctx.quadraticCurveTo(cx + p[i][0] * sj, cy + p[i][1] * sj, cx + mx(p[i][0], q[0]) * sj, cy + mx(p[i][1], q[1]) * sj);
       }
       ctx.strokeStyle = rgba(color, alpha);
       ctx.lineWidth = width;
       ctx.lineJoin = 'round';
       ctx.stroke();
+      ctx.setLineDash([]);
+      if (ix && !this.reduced && born > 2) this.runner(j, k, sj, cx, cy, d, now / 1000, A);
     }
 
     if (!this.reduced) this.glimmer(dt, t, cx, cy, R, s, d, A);
+  }
+
+  /** A point of light running along index ring j now and then: a soft halo under a bright core. */
+  runner(j, k, sj, cx, cy, d, now, A) {
+    const { ctx, dpr } = this;
+    const [period, dir, off] = j === 3 ? [9, 1, 0] : [13, -1, 4.5];
+    const life = ((now + off) / period) % 1;
+    if (life > 0.55) return;
+    const env = Math.sin((Math.PI * life) / 0.55) ** 2;
+    const a0 = dir * life * Math.PI * 3.2 + j;
+    const seg = (span) => {
+      ctx.beginPath();
+      for (let i = 0; i <= 14; i++) {
+        const [x, y] = ringAt(k, a0 - dir * span * (i / 14), d);
+        i ? ctx.lineTo(cx + x * sj, cy + y * sj) : ctx.moveTo(cx + x * sj, cy + y * sj);
+      }
+    };
+    ctx.globalCompositeOperation = 'lighter';
+    ctx.lineCap = 'round';
+    seg(0.55);
+    ctx.strokeStyle = rgba(A, 0.22 * env);
+    ctx.lineWidth = 8 * dpr;
+    ctx.stroke();
+    seg(0.22);
+    ctx.strokeStyle = rgba([255, 250, 240], 0.85 * env);
+    ctx.lineWidth = 2 * dpr;
+    ctx.stroke();
+    ctx.globalCompositeOperation = 'source-over';
+    ctx.lineCap = 'butt';
   }
 
   /** Dust: faint specks drifting up and twinkling slowly. Glints: soft points of light on the
@@ -340,8 +389,9 @@ export class Contour {
       const env = Math.sin(Math.PI * Math.min(1, g.life / g.dur)) ** 2 * (0.55 + 0.45 * this.open);
       if (env < 0.02) continue;
       const [ux, uy] = ringAt(g.k, g.a, d);
-      const x = cx + ux * s;
-      const y = cy + uy * s;
+      const sg = R * lerp(0.8, 1, this.ringOpen[Math.round(g.k * (RINGS - 1))]); // ride the ring's own lag
+      const x = cx + ux * sg;
+      const y = cy + uy * sg;
       const r = 10 * dpr;
       const halo = ctx.createRadialGradient(x, y, 0, x, y, r);
       halo.addColorStop(0, rgba([255, 250, 240], 0.85 * env));

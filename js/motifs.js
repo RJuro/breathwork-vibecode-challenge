@@ -22,14 +22,31 @@ const M = {
   'clear-nose': { wash: '#62c2ae', at: [34, 22, 14], d: ['M12 46C12 20 44 20 44 46', 'M20 46C20 31 36 31 36 46'] },
 };
 
-/** The tile drawing for practice `id`, as an inline SVG string. */
+// A traced copy of one stroke, for the hover's travelling light (box: its outline as a path).
+const TRACE = {
+  box: 'M14 12H42Q44 12 44 14V42Q44 44 42 44H14Q12 44 12 42V14Q12 12 14 12Z',
+  kumbhaka: 0,
+  'hold-ladder': 0,
+  resonance: 0,
+  'cool-down': 0,
+  'breathe-light': 0,
+  'window-seat': 0,
+};
+
+/** The tile drawing for practice `id`, as an inline SVG string. Every stroke gets
+ *  pathLength=1 and its index (class `n0`…, `--n`), so CSS can draw it in and animate it
+ *  per practice (styles.css, "Tile motion"). */
 export function motif(id) {
   const m = M[id] || M.reps;
   const [x, y, r] = m.at;
-  let svg = `<svg viewBox="0 0 56 56" aria-hidden="true" focusable="false"><circle class="wash" cx="${x}" cy="${y}" r="${r}" fill="${m.wash}"/>`;
-  for (const [cx, cy, cr] of m.circles || []) svg += `<circle cx="${cx}" cy="${cy}" r="${cr}"/>`;
-  if (m.rect) svg += `<rect x="${m.rect[0]}" y="${m.rect[1]}" width="${m.rect[2]}" height="${m.rect[3]}" rx="${m.rect[4]}"/>`;
-  for (const d of m.d || []) svg += `<path d="${d}"/>`;
+  let n = 0;
+  const stroke = (tag, attrs) => `<${tag} ${attrs} class="n${n}" style="--n:${n++}" pathLength="1"/>`;
+  let svg = `<svg class="m m-${id}" viewBox="0 0 56 56" aria-hidden="true" focusable="false"><circle class="wash" cx="${x}" cy="${y}" r="${r}" fill="${m.wash}"/>`;
+  for (const [cx, cy, cr] of m.circles || []) svg += stroke('circle', `cx="${cx}" cy="${cy}" r="${cr}"`);
+  if (m.rect) svg += stroke('rect', `x="${m.rect[0]}" y="${m.rect[1]}" width="${m.rect[2]}" height="${m.rect[3]}" rx="${m.rect[4]}"`);
+  for (const d of m.d || []) svg += stroke('path', `d="${d}"`);
+  const t = TRACE[id];
+  if (t !== undefined) svg += `<path class="trace" d="${typeof t === 'number' ? m.d[t] : t}" pathLength="1"/>`;
   return svg + '</svg>';
 }
 

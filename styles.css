@@ -1,4 +1,4 @@
-/* Kumbha · "Contour": warm graphite, topographic line art, riso-style overprinted washes,
+/* Breathe-up · "Contour": warm graphite, topographic line art, riso-style overprinted washes,
    Cormorant Garamond for display, Hanken Grotesk for text. */
 
 @property --c1 { syntax: '<color>'; inherits: true; initial-value: #ffd9c4; }
@@ -73,9 +73,20 @@ body[data-section^='seat'] { --sky1: var(--sun); --sky2: var(--aqua); }
 /* Contour art behind the library and practice headers */
 .topo {
   position: absolute; top: 0; left: 50%; transform: translateX(-50%);
-  width: min(100%, 640px); height: 340px; z-index: 0; pointer-events: none; overflow: hidden;
+  width: min(100%, 680px); aspect-ratio: 420 / 340; z-index: 0; pointer-events: none; overflow: hidden;
+  /* Feathered edges, so the map dissolves instead of stopping at its box. */
+  -webkit-mask-image: linear-gradient(to bottom, #000 55%, transparent 97%), linear-gradient(to right, transparent, #000 14%);
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(to bottom, #000 55%, transparent 97%), linear-gradient(to right, transparent, #000 14%);
+  mask-composite: intersect;
 }
-#detail .topo { height: 290px; }
+#detail .topo { aspect-ratio: 420 / 300; }
+@media (min-width: 700px) {
+  .topo {
+    -webkit-mask-image: linear-gradient(to bottom, #000 55%, transparent 97%), linear-gradient(to right, transparent, #000 14%, #000 86%, transparent);
+    mask-image: linear-gradient(to bottom, #000 55%, transparent 97%), linear-gradient(to right, transparent, #000 14%, #000 86%, transparent);
+  }
+}
 .topo svg { display: block; width: 100%; height: 100%; }
 .topo .w1, .topo .w2 { mix-blend-mode: screen; transition: fill 1.2s ease; }
 .topo .w1 { fill: var(--sky1); opacity: 0.5; }
@@ -122,18 +133,28 @@ h1 em { font-style: italic; font-weight: 400; }
 .moment h2 { margin: 0; font-family: var(--serif); font-size: 26px; font-weight: 300; line-height: 1.1; }
 .moment p { margin: 0; font-size: 13px; color: var(--muted); }
 .tile {
+  --rx: 0deg; --ry: 0deg;
   display: flex; flex-direction: column; justify-content: space-between; gap: 14px;
   min-height: 172px; padding: 16px; border: 1px solid var(--line-2); border-radius: 22px;
   color: inherit; text-decoration: none; background: rgba(28, 27, 30, 0.4);
-  transition: transform .2s, border-color .2s, background .2s;
+  transition: transform .45s cubic-bezier(.2,.8,.2,1), border-color .3s, background .3s, box-shadow .45s;
 }
-.tile:hover { border-color: rgba(240, 235, 227, 0.36); background: rgba(40, 39, 43, 0.5); transform: translateY(-1px); }
-.tile:active { transform: scale(0.995); }
+@media (hover: hover) {
+  .tile:hover {
+    border-color: color-mix(in oklab, var(--wash, #fff) 45%, var(--line-2));
+    background: radial-gradient(240px circle at var(--mx, 75%) var(--my, 25%), color-mix(in oklab, var(--wash, #fff) 17%, transparent), transparent 72%), rgba(40, 39, 43, 0.55);
+    transform: perspective(700px) rotateX(var(--rx)) rotateY(var(--ry)) translateY(-3px);
+    box-shadow: 0 22px 44px -28px color-mix(in oklab, var(--wash, #fff) 70%, transparent);
+  }
+}
+.tile:focus-visible { border-color: color-mix(in oklab, var(--wash, #fff) 60%, var(--line-2)); outline: none; }
+.tile:active { transform: scale(0.985); transition-duration: .1s; }
 .tile.wide { grid-column: span 2; flex-direction: row; align-items: stretch; min-height: 190px; padding: 20px; }
 .tile-art svg { display: block; width: 48px; height: 48px; overflow: visible; }
 .tile.wide .tile-art { align-self: center; flex-shrink: 0; }
 .tile.wide .tile-art svg { width: 116px; height: 116px; }
-.tile-art path, .tile-art rect, .tile-art circle:not(.wash) { fill: none; stroke: var(--ink); stroke-width: 1.1; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.tile-art path, .tile-art rect, .tile-art circle:not(.wash) { fill: none; stroke: var(--ink); stroke-width: 1.3; stroke-linecap: round; stroke-linejoin: round; }
+.tile.wide .tile-art svg :is(path, rect, circle:not(.wash)) { stroke-width: 0.6; }
 .tile-art .wash { opacity: 0.6; }
 .tile-text { display: flex; flex-direction: column; gap: 5px; min-width: 0; }
 .tile.wide .tile-text { justify-content: flex-end; }
@@ -218,6 +239,14 @@ h1 em { font-style: italic; font-weight: 400; }
 /* Contour (default): the map, with the words beneath it */
 .contour, .bloom { position: absolute; inset: -8%; width: 116%; height: 116%; pointer-events: none; }
 #session[data-visual='contour'] .orb-wrap { width: min(80vw, 46svh, 400px); }
+/* The session map at the size of the home page's: well past its box, feathered out at the edges,
+   so the outer rings bleed off the screen. */
+#session[data-visual='contour'] .contour {
+  inset: -48%; width: 196%; height: 196%;
+  -webkit-mask-image: radial-gradient(closest-side, #000 58%, transparent 100%);
+  mask-image: radial-gradient(closest-side, #000 58%, transparent 100%);
+}
+#session[data-visual='contour'] .orb-text, #session[data-visual='contour'] .caption { position: relative; z-index: 1; text-shadow: 0 1px 18px rgba(20, 19, 22, 0.9), 0 0 4px rgba(20, 19, 22, 0.6); }
 /* Fixed heights under the map, so a count or a longer caption never moves the rings. */
 #session[data-visual='contour'] .orb-text { position: static; margin-top: 10px; text-shadow: none; height: 148px; align-content: start; }
 #session[data-visual='contour'] .orb, #session[data-visual='contour'] .bloom, #session[data-visual='contour'] .ring { display: none; }
@@ -352,7 +381,83 @@ dialog::backdrop { background: rgba(12, 11, 14, 0.6); backdrop-filter: blur(3px)
   .screen.is-active .hero > :nth-child(2) { animation-delay: 0.45s; }
   .screen.is-active .hero > :nth-child(3) { animation-delay: 0.55s; }
   .screen.is-active .hero > :nth-child(4) { animation-delay: 0.65s; }
-  #library.is-active .moment, #library.is-active .tile { animation: rise 0.8s cubic-bezier(.16,1,.3,1) both; animation-delay: calc(0.6s + var(--i, 0) * 45ms); }
   .tile-art .wash { transform-box: fill-box; transform-origin: center; animation: tile-breathe 10s cubic-bezier(.45,0,.55,1) infinite; animation-delay: calc(var(--i, 0) * -0.35s); }
 }
 @keyframes tile-breathe { 0%, 100% { transform: scale(0.94); } 40% { transform: scale(1.08); } }
+
+/* ── Tile motion ─────────────────────────────────────────
+   Arrival, as each tile scrolls into view (`.in`, removed afterwards so a hover never restarts
+   it): the tile wipes up out of a blur, its wash pops in, the drawing draws itself stroke by
+   stroke, then the words.
+   Hover: every drawing acts out its practice. */
+.tile-art .m :is(path, rect, circle) { transform-box: fill-box; transform-origin: center; }
+.tile-art .trace { stroke: #fffaf0; stroke-width: 2.2; stroke-dasharray: 0.14 0.86; opacity: 0; transition: opacity .3s; }
+.tile.wide .tile-art .trace { stroke-width: 1.1; }
+.m-steady circle:not(.wash) { fill: var(--ink); fill-opacity: 0; }
+.m-breath-check .n1 { transform-box: view-box; transform-origin: 28px 40px; transform: rotate(-30deg); }
+.m-clear-nose path, .m-land .n1 { transform-origin: center bottom; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .shelf .pending { opacity: 0; }
+  .tile.in { animation: tile-in 1.1s cubic-bezier(.16,1,.3,1) backwards; animation-delay: var(--d); }
+  .tile.in .tile-art .wash { animation: wash-in 1s cubic-bezier(.34,1.56,.64,1) backwards, tile-breathe 10s cubic-bezier(.45,0,.55,1) infinite; animation-delay: calc(var(--d) + 0.25s), calc(var(--i) * -0.35s); }
+  .tile.in .tile-art .m > [class^='n'] { stroke-dasharray: 1; animation: stroke-in 1s cubic-bezier(.65,0,.35,1) backwards; animation-delay: calc(var(--d) + 0.4s + var(--n) * 120ms); }
+  .tile.in .tile-text > * { animation: rise 0.9s cubic-bezier(.16,1,.3,1) backwards; animation-delay: calc(var(--d) + 0.45s); }
+  .moment.in h2 { animation: slide-in 1s cubic-bezier(.16,1,.3,1) backwards; animation-delay: var(--d); }
+  .moment.in p { animation: slide-in 1s cubic-bezier(.16,1,.3,1) backwards; animation-delay: calc(var(--d) + 0.15s); }
+}
+@keyframes tile-in { from { clip-path: inset(100% 0 0 0 round 22px); translate: 0 22px; filter: blur(8px); } to { clip-path: inset(0 0 0 0 round 22px); translate: 0 0; filter: blur(0); } }
+@keyframes wash-in { from { scale: 0; opacity: 0; } }
+@keyframes stroke-in { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@keyframes slide-in { from { opacity: 0; translate: -14px 0; } }
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  :is(.tile:hover, .tile:focus-visible) .tile-art .wash { animation: wash-hover 1.4s cubic-bezier(.45,0,.55,1) infinite alternate; }
+  :is(.tile:hover, .tile:focus-visible) .trace { opacity: 1; animation: trace-run 1.9s cubic-bezier(.45,0,.55,1) infinite; }
+  .tile:hover .m-hold-ladder .trace { stroke-dasharray: 0.22 0.78; animation-duration: 2.4s; }
+  /* Reps: the tally marks tick in one by one, then the strike. */
+  .tile:hover .m-reps > [class^='n'] { stroke-dasharray: 1; animation: retick 2.6s cubic-bezier(.65,0,.35,1) infinite; animation-delay: calc(var(--n) * 0.2s); }
+  /* Rounds: three breaths in a row. */
+  .tile:hover .m-rounds circle:not(.wash) { animation: pulse 1.8s cubic-bezier(.45,0,.55,1) infinite; animation-delay: calc(var(--n) * 0.3s); }
+  /* Steady: the dots fill one after another, like tiny holds. */
+  .tile:hover .m-steady circle:not(.wash) { animation: dot 2.4s ease-in-out infinite; animation-delay: calc(var(--n) * 0.32s); }
+  /* Alternate Nostril: the two sides take turns. */
+  .tile:hover .m-alternate .n0 { animation: sway-l 2.6s cubic-bezier(.45,0,.55,1) infinite; }
+  .tile:hover .m-alternate .n1 { animation: sway-r 2.6s cubic-bezier(.45,0,.55,1) infinite; animation-delay: -1.3s; }
+  /* Clear Nose: the arches hum. */
+  .tile:hover .m-clear-nose path { animation: hum 0.9s ease-in-out infinite; animation-delay: calc(var(--n) * 0.15s); }
+  /* Turn the Tide and Window Seat: the water rolls, the view slides by. */
+  .tile:hover .m-tide path { animation: roll 2.6s cubic-bezier(.45,0,.55,1) infinite; animation-delay: calc(var(--n) * -0.45s); }
+  .tile:hover .m-window-seat .n1 { animation: roll 3.2s cubic-bezier(.45,0,.55,1) infinite; }
+  /* Land: the body breathes, the head settles. */
+  .tile:hover .m-land .n1 { animation: breathe-y 4s cubic-bezier(.45,0,.55,1) infinite; }
+  .tile:hover .m-land .n0 { animation: bob 4s cubic-bezier(.45,0,.55,1) infinite; }
+  /* Ready: the arrow leans forward. */
+  .tile:hover .m-ready :is(.n0, .n1) { animation: nudge 1.2s cubic-bezier(.34,1.56,.64,1) infinite; }
+  /* Between Sets: the bar goes up. */
+  .tile:hover .m-between-sets > [class^='n'] { animation: lift 1.7s cubic-bezier(.45,0,.55,1) infinite; }
+  /* Lights Out: the moon rocks. */
+  .tile:hover .m-lights-out .n0 { animation: rock 3.4s cubic-bezier(.45,0,.55,1) infinite; }
+  /* Breath Check: the needle sweeps. */
+  .tile:hover .m-breath-check .n1 { animation: sweep 2.8s cubic-bezier(.65,0,.35,1) infinite; }
+  /* Breathe Light: the wave gets smaller and smaller. */
+  .tile:hover .m-breathe-light .n0 { animation: flatten 3.2s cubic-bezier(.45,0,.55,1) infinite; }
+  /* Box, Kumbhaka, Hold Ladder, Resonance, Cool-down: a light traces the line (.trace). */
+}
+@keyframes wash-hover { from { transform: scale(1); } to { transform: scale(1.4); } }
+@keyframes trace-run { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@keyframes retick { 0% { stroke-dashoffset: 1; } 20%, 100% { stroke-dashoffset: 0; } }
+@keyframes pulse { 0%, 100% { transform: scale(1); } 30% { transform: scale(1.25); } }
+@keyframes dot { 0%, 100% { fill-opacity: 0; } 12%, 40% { fill-opacity: 1; } 55% { fill-opacity: 0; } }
+@keyframes sway-l { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(-3.5px); } }
+@keyframes sway-r { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(3.5px); } }
+@keyframes hum { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.08); } }
+@keyframes roll { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(-4px); } }
+@keyframes breathe-y { 0%, 100% { transform: scaleY(1); } 40% { transform: scaleY(1.9); } }
+@keyframes bob { 0%, 100% { transform: translateY(0); } 40% { transform: translateY(-1.5px); } }
+@keyframes nudge { 0%, 100% { transform: translateX(0); } 40% { transform: translateX(5px); } }
+@keyframes lift { 0%, 100% { transform: translateY(0); } 45%, 60% { transform: translateY(-6px); } }
+@keyframes rock { 0%, 100% { transform: rotate(-9deg); } 50% { transform: rotate(12deg); } }
+@keyframes sweep { 0%, 100% { transform: rotate(-70deg); } 55% { transform: rotate(8deg); } }
+@keyframes flatten { 0%, 100% { transform: scaleY(1); opacity: 1; } 50% { transform: scaleY(0.2); opacity: 0.55; } }
+#session .progress, #session .session-top, #session .controls { position: relative; z-index: 2; }
