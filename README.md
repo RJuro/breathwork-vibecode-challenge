@@ -13,7 +13,7 @@ python3 -m http.server 8000   # then http://localhost:8000
 ## Practices
 
 The library opens with Retention, the long sessions, then a day arc: Morning, Before, After, Night,
-Under the weather, and On the move (`MOMENTS` in `js/flows/index.js`). Every practice has its own
+Training, Breathe light, Under the weather, and On the move (`MOMENTS` in `js/flows/index.js`). Every practice has its own
 instructor and plays only that voice.
 
 | Practice | Moment | Coach | What it is | Length |
@@ -24,8 +24,15 @@ instructor and plays only that voice.
 | **Alternate Nostril** | Retention | Mira | Nadi shodhana, then holds at 1 : 4 : 2 (3·12·6 → 4·16·8, Deeper 5·20·10), breath sound panned to the open side | 16 min |
 | **Reps** | Morning | Leo | Meditation: count out-breaths one to ten, start over when you drift. 3 / 5 / 10 min | 5 min |
 | **Box** | Before | Leo | The tactical breath (4 in · 8 out), then box breathing 4-4-4-4 → 5-5-5-5 (Gentle 3→4, Deeper 5→6, or No holds) | 7 min |
+| **Ready** | Before | Leo | Pre-performance routine: two sighs, 4:8, box, a first step. Desk / Stage (adds hums) / Start line (standing, no holds) | 3–4 min |
+| **Resonance** | Before | Leo | Six-a-minute slow breathing, ten minutes, quiet at the end; **Find your pace** tries 6.5 → 4.5 a minute, then pick one as the level | 12 / 15 min |
+| **Between Sets** | Training | Mira | A rest timer (1:00 / 1:30 / 2:00 / 3:00): hands on knees, free breathing, then 4:6 through the nose; "Again" for the next rest | 1–3 min |
 | **Cool-down** | After | Mira | Legs up after training, 4:6 then 4:8 counted, two quiet minutes | 9 min |
 | **Land** | Night | Mira | Meditation: a body scan, feet to head, lying down. 3 / 5 / 10 min | 6 min |
+| **Lights Out** | Night | Mira | 4.5 in / 5.5 out with pursed lips in bed, a body sweep, then the voice goes quiet (Laborde 2019). 10 / 15 / 20 min | 15 min |
+| **Breath Check** | Breathe light | Leo | Control pause (hold to the first urge) and slowest exhale; logged, charted as a trend | 3–5 min |
+| **Breathe Light** | Breathe light | Leo | Small holds, then rounds of barely-there 6-a-minute breathing with mild air hunger (asthma-clinic retraining) | 9–19 min |
+| **Steady** | Breathe light | Mira | Ten tiny holds after a normal breath out, then small 3:6 breathing, for over-breathing and panic spikes | 7 min |
 | **Turn the Tide** | Under the weather | Mira | Nasal ladder, three short hum sets spaced for the sinuses to refill, three kapalabhati rounds with quiet holds, cool-down | 16 min |
 | **Clear Nose** | Under the weather | Leo | Three hums, breathe light, three pinch-and-nod holds (moderate air hunger at most), three hums | 9 min |
 | **Window Seat** | On the move | Mira | Silent, seated practice for a headache on a plane or train: soften, 4:6 breathing, then soft pauses (Plane 5 × 15 s, Train 0:30 → 1:00, or none) | 16–19 min |
@@ -39,9 +46,14 @@ The scripts follow what the research on good guided-breathing coaches showed: sa
 and then the instruction, near-silent holds with the coaching in the recovery, sensations named as
 allowed rather than promised, and one mechanism plus honest caveats for the science. **How much
 your coach says** is a setting: Quiet (instructions and counts), Guided (plus tips), Full (plus the
-science). Each practice page has **Teacher's notes** (`js/flows/notes.js`) with a **Listen** button
-that plays the coach reading them (`js/flows/talk.js`), plus a *How it works* page with evidence
-labels and sources. *Breathe now* ends any hold.
+science). Each practice has a *How it works* page with technique, evidence labels, sources and, for
+some, the teacher's tips (`js/flows/notes.js`). *Breathe now* ends any hold.
+
+Also in the app: a chart of each practice's number over the last 20 sessions (seconds held; Breath
+Check charts its control pause), CSV export of the log and **Save audio for offline** in Settings,
+a daily calendar reminder (an `.ics` file) on each practice page, optional vibration on breath turns
+(Android), and *Again* on the Done screen. Practices with their own level keys (Ready's modes,
+Resonance's paces, Between Sets' rest lengths) read `opts.level`; `optsOf(level)` builds the options.
 
 ## How it's built
 

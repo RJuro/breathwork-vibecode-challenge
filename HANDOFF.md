@@ -52,15 +52,14 @@ account is on Gemini tier 3, so the old ~100 requests/day cap no longer bites.
 
 ## Next
 
-- **Practices on deck:** Ready (Leo, 3 min before a talk/exam/start line), Between Sets (Mira,
-  60–90 s), Steady (small holds for over-breathing), Breathe Light + a breath check, a long Wind Down
-  (Laborde 2019: 15 min of 4.5 in / 5.5 out), Resonance with "find your pace".
-- **Session log** is in (browser storage, `kumbha-log`). Next: a hold-history chart, CSV export.
-- **Teacher's notes** for the five new practices aren't written yet (old notes for Hold Ladder and
-  Window Seat are in git history, `f670174^:js/flows/notes.js`).
-- **App ideas** (Breathwrk research): choose-your-length, "Add to calendar" reminders, a "ready offline" button, vibration on breath turns (Android).
-- **Service worker:** it wipes every cache on a version bump, including cue audio; keep versioned
-  (`?v=`) audio in its own long-lived cache.
+- **Built 11 Oct 2026:** Ready, Resonance (+ Find your pace), Between Sets, Lights Out, Breath Check,
+  Breathe Light, Steady (`js/flows/daily.js`); history chart, CSV export, offline save, calendar
+  reminder, vibration, Again. Teacher's notes are no longer read aloud (Roman: nobody listens to
+  them first); their tips are folded into *How it works*. Recorded audio lives in the `kumbha-audio`
+  cache, which survives version bumps.
+- **Still open from the research:** Cold Rinse (cold-shower breathing), Breath-hold Walk, Level (the
+  4-week slow-and-shallow ladder for panic), Step Down (10-8-6), Run Rhythm, Cooling Breath.
+- **Ideas:** contraction tap-logging in Hold Ladder; tables that rescale to a new First-urge best.
 
 ## Deploy
 

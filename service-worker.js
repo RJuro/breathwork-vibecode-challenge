@@ -1,5 +1,7 @@
-// Offline shell + cue cache. Bump VERSION when shipping changes.
-const VERSION = 'kumbha-v17';
+// Offline shell + audio cache. Bump VERSION when shipping changes; AUDIO survives the bump, since
+// every recording is versioned in its URL (?v=) and never changes in place.
+const VERSION = 'kumbha-v18';
+const AUDIO = 'kumbha-audio';
 const SHELL = [
   './',
   'index.html',
@@ -17,8 +19,8 @@ const SHELL = [
   'js/flows/sit.js',
   'js/flows/weather.js',
   'js/flows/retain.js',
+  'js/flows/daily.js',
   'js/flows/notes.js',
-  'js/flows/talk.js',
   'icons/icon.svg',
   'icons/icon-192.png',
 ];
@@ -37,7 +39,7 @@ self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches
       .keys()
-      .then((keys) => Promise.all(keys.filter((k) => k !== VERSION).map((k) => caches.delete(k))))
+      .then((keys) => Promise.all(keys.filter((k) => k !== VERSION && k !== AUDIO).map((k) => caches.delete(k))))
       .then(() => self.clients.claim())
   );
 });
@@ -51,6 +53,22 @@ self.addEventListener('fetch', (event) => {
   // can use the HTTP cache as is.
   // (A navigation request can't be re-issued with options, so build a fresh one.)
   const url = new URL(request.url);
+  // Versioned recordings: cache first, kept across updates (and filled by "Save audio for offline").
+  if (url.origin === self.location.origin && url.searchParams.has('v') && /\.mp3$/.test(url.pathname)) {
+    event.respondWith(
+      caches.open(AUDIO).then((c) =>
+        c.match(request).then(
+          (hit) =>
+            hit ||
+            fetch(request).then((res) => {
+              if (res.ok) c.put(request, res.clone());
+              return res;
+            })
+        )
+      )
+    );
+    return;
+  }
   const own = url.origin === self.location.origin && !url.searchParams.has('v');
   event.respondWith(
     fetch(own ? new Request(request.url, { cache: 'no-cache', credentials: 'same-origin' }) : request)

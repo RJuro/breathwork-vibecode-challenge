@@ -1,6 +1,6 @@
 // Teacher's notes for each practice page: the practical things a good teacher says
 // before, during and after (posture, common slips with the cue that fixes them, what's
-// normal, how to progress, when to skip). Shown collapsed under the session outline.
+// normal, how to progress, when to skip). Shown as Tips on the How it works page.
 
 export const NOTES = {
   reps: {
@@ -109,5 +109,36 @@ export const NOTES = {
     ],
     progress: ['Repeat whenever you need it, rather than holding longer.'],
     skip: ['Fever, chest symptoms, breathlessness, pregnancy, high blood pressure, or feeling faint: choose No holds.'],
+  },
+
+  'hold-ladder': {
+    before: [
+      'Dry only: seated or lying, never in or near water, never while driving.',
+      'Start with First urge. Move to a table when its holds are about half your relaxed, not all-out, maximum.',
+      'Two or three tables a week is plenty, with a rest day between.',
+    ],
+    mistakes: [
+      ['Big or fast breaths in the rests', 'Normal-size breaths, out a little longer than in.'],
+      ['Tensing up as the hold goes on', 'Check the jaw, shoulders, hands and hips, and let each one go.'],
+      ['Bearing down with the throat', 'A soft throat. Nothing pushes.'],
+      ['Gasping on the first breath', 'The hold was too long: shorten the next one, or end the table.'],
+    ],
+    feel: ['Belly or throat twitches late in a hold are contractions. They are a fine moment to end it.', 'Stop if you feel lightheaded, or get head pressure, chest pain or changes in your vision.'],
+    skip: ['Heart or lung disease, high blood pressure, pregnancy, panic disorder, or when you are unwell.'],
+  },
+
+  'window-seat': {
+    before: [
+      'A rolled jumper behind your lower back, feet flat, and the headrest not pushing your chin down.',
+      'Water within reach. On long journeys, stand up and walk every 30 to 60 minutes.',
+      'Headphones in. Nothing here is audible to the people next to you.',
+    ],
+    mistakes: [
+      ['Breathing big to “get more air”', 'Slower, not bigger.'],
+      ['Straining in the pauses', 'Pause, rather than hold: soft throat, nothing pushing.'],
+      ['Chin poking forward', 'Let the back of the neck lengthen.'],
+    ],
+    feel: ['Some relief, or simply feeling calmer, is a good result.', 'If the throb gets worse in the pauses, skip them.'],
+    skip: ['A throbbing headache or migraine aura, during descent, pregnancy, heart or lung disease, or anaemia: choose No pauses.'],
   },
 };

@@ -1,11 +1,10 @@
 #!/usr/bin/env node
-// Prints the ids of every line one practice can speak (all intensities, all talk levels, and
-// its teacher's notes read aloud), for the voice-pack scripts.
+// Prints the ids of every line one practice can speak (all intensities, all talk levels),
+// for the voice-pack scripts.
 //   node scripts/flow_lines.mjs tide
 
-import { FLOWS, INTENSITY, intensitiesOf } from '../js/flows/index.js';
+import { FLOWS, optsOf, intensitiesOf } from '../js/flows/index.js';
 import { compile } from '../js/engine.js';
-import { teacherTalk } from '../js/flows/talk.js';
 
 const flow = FLOWS.find((f) => f.id === process.argv[2]);
 if (!flow) {
@@ -13,7 +12,5 @@ if (!flow) {
   process.exit(1);
 }
 const ids = new Set();
-for (const level of intensitiesOf(flow)) for (const v of compile(flow, {}, { ...INTENSITY[level], talk: 'full' }).voice) ids.add(v.id);
-const talk = teacherTalk(flow);
-if (talk) for (const v of compile(talk, {}, { talk: 'full' }).voice) ids.add(v.id);
+for (const level of intensitiesOf(flow)) for (const v of compile(flow, {}, { ...optsOf(level), talk: 'full' }).voice) ids.add(v.id);
 console.log(JSON.stringify([...ids]));

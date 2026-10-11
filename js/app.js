@@ -1,11 +1,10 @@
-import { FLOWS, MOMENTS, INTENSITY, LEVEL_NAMES, intensitiesOf } from './flows/index.js';
+import { FLOWS, MOMENTS, LEVEL_NAMES, intensitiesOf, optsOf } from './flows/index.js';
 import { compile, stateAt, captionAt, exitOf, holdResults, retention } from './engine.js';
 import { notesHtml } from './flows/lib.js';
-import { teacherTalk } from './flows/talk.js';
 import { Bloom } from './bloom.js';
 import { Contour, contourSvg } from './contour.js';
 import { motif } from './motifs.js';
-import { loadManifests, loadCues, loadMusic, renderSession, packCovers } from './audio.js';
+import { loadManifests, loadCues, loadMusic, renderSession, allAudioUrls } from './audio.js';
 
 const $ = (s) => document.querySelector(s);
 const $$ = (s) => document.querySelectorAll(s);
@@ -16,7 +15,7 @@ const fmt = (s) => {
 const minutes = (s) => `${Math.max(1, Math.round(s / 60))} min`;
 
 // ── Settings ───────────────────────────────────────────
-const DEFAULTS = { look: 2, voice: true, talk: 'guided', visual: 'contour', sounds: true, music: true, voiceVol: 1, bedVol: 1, safetyAck: false, intensity: {} };
+const DEFAULTS = { look: 2, voice: true, talk: 'guided', visual: 'contour', sounds: true, music: true, vibrate: false, voiceVol: 1, bedVol: 1, safetyAck: false, intensity: {} };
 let settings = load();
 function load() {
   try {
@@ -114,7 +113,7 @@ async function renderShelf() {
     head.innerHTML = `<h2>${m.title}</h2><p>${m.sub}</p>`;
     shelf.appendChild(head);
     for (const f of fs) {
-      const total = compile(f, durOf(packs[f.voice]), { ...INTENSITY[levelOf(f)], talk: settings.talk }).total;
+      const total = compile(f, durOf(packs[f.voice]), { ...optsOf(levelOf(f)), talk: settings.talk }).total;
       const wide = fs.length === 1;
       const a = document.createElement('a');
       a.className = wide ? 'tile wide' : 'tile';
@@ -140,19 +139,33 @@ function openFlow(f) {
   document.body.dataset.section = f.sky || 'arrive';
   $('#d-title').innerHTML = f.titleHtml || f.title;
   $('#d-lede').textContent = f.lede;
-  $('#learn-body').innerHTML = f.learn || '';
-  $('#notes').hidden = !f.notes;
-  $('#notes').open = false;
-  $('#notes-audio').pause();
-  $('#notes-body').innerHTML = f.notes ? notesHtml(f.notes) : '';
+  // A practice's teacher's tips sit in How it works, just before the safety notes.
+  const tips = f.notes ? `<h3>Tips</h3><div class="notes-body">${notesHtml(f.notes)}</div>` : '';
+  const learn = f.learn || '';
+  $('#learn-body').innerHTML = learn.includes('<h3>Safety</h3>') ? learn.replace('<h3>Safety</h3>', `${tips}<h3>Safety</h3>`) : learn + tips;
   $('#intensity-row').hidden = !f.intensity;
   $('#outline').open = matchMedia('(min-height: 900px) and (min-width: 700px)').matches;
   syncIntensity();
-  const mine = readLog().filter((e) => e.id === f.id).slice(-3).reverse();
-  $('#history').hidden = !mine.length;
-  $('#history').innerHTML = mine.map((e) => `<li><span>${day(e.at)}</span><span>${minutes(e.secs)}${e.held ? ` · ${fmt(e.held)} held` : ''}</span></li>`).join('');
+  renderHistory(f);
   show('detail');
   prepare();
+}
+
+/** The last sessions of this practice, and a small chart of its number over the last 20
+ *  (seconds held, or the practice's own `metric`, e.g. Breath Check's control pause). */
+function renderHistory(f) {
+  const all = readLog().filter((e) => e.id === f.id);
+  const metric = f.metric || { label: 'held', of: (e) => e.held };
+  const val = (e) => metric.of(e) || 0;
+  const pts = all.slice(-20).map(val);
+  const max = Math.max(...pts, 1);
+  const chart =
+    pts.length > 1 && pts.some(Boolean)
+      ? `<li class="chart"><svg viewBox="0 0 100 24" preserveAspectRatio="none" aria-hidden="true"><polyline points="${pts.map((v, i) => `${((i / (pts.length - 1)) * 100).toFixed(1)},${(22 - (v / max) * 20).toFixed(1)}`).join(' ')}"/></svg><span>${metric.label}, last ${pts.length}</span></li>`
+      : '';
+  const rows = all.slice(-3).reverse().map((e) => `<li><span>${day(e.at)}</span><span>${minutes(e.secs)}${val(e) ? ` · ${fmt(val(e))} ${metric.label}` : ''}</span></li>`);
+  $('#history').hidden = !rows.length;
+  $('#history').innerHTML = chart + rows.join('');
 }
 
 function syncIntensity() {
@@ -192,7 +205,7 @@ function renderMap() {
 async function prepare() {
   const token = ++renderToken;
   const f = flow;
-  const opts = { ...INTENSITY[levelOf(f)], talk: settings.talk };
+  const opts = { ...optsOf(levelOf(f)), talk: settings.talk };
   const begin = $('#begin');
   begin.disabled = true;
   $('#begin-sub').textContent = 'Preparing…';
@@ -219,7 +232,7 @@ async function prepare() {
   try {
     blob = await renderSession(plan, settings.voice ? buffers : {}, {
       breathSounds: settings.sounds,
-      ambience: settings.music,
+      ambience: settings.music && f.music !== false,
       music,
       voiceGain: settings.voiceVol,
       bedGain: settings.bedVol,
@@ -236,41 +249,6 @@ async function prepare() {
   audio.load();
   begin.disabled = false;
   $('#begin-sub').textContent = minutes(plan.total);
-  if (talkFor !== f.id) prepareTalk(f);
-}
-
-// ── Teacher's notes, read aloud ────────────────────────
-// Rendered after the session track (so it never delays Begin), into its own player.
-let talkFor = null;
-let talkUrl = null;
-async function prepareTalk(f) {
-  talkFor = f.id;
-  const btn = $('#notes-listen');
-  const player = $('#notes-audio');
-  player.pause();
-  player.hidden = true;
-  btn.hidden = false;
-  btn.disabled = true;
-  btn.textContent = 'Preparing audio…';
-  const t = teacherTalk(f);
-  if (!t) return;
-  const { packs } = await loadManifests();
-  const ids = [...new Set(compile(t, durOf(packs[f.voice]), { talk: 'full' }).voice.map((v) => v.id))];
-  // Read aloud only once the instructor has recorded every line of the notes.
-  if (!(await packCovers(f.voice, ids))) {
-    btn.hidden = true;
-    return;
-  }
-  const [loaded, music] = await Promise.all([loadCues(ids, f.voice), settings.music ? loadMusic(f.music) : null]);
-  const durs = Object.fromEntries(Object.entries(loaded).filter(([, b]) => b).map(([k, b]) => [k, b.duration]));
-  const p = compile(t, durs, { talk: 'full' });
-  const blob = await renderSession(p, loaded, { breathSounds: false, ambience: settings.music, music, voiceGain: settings.voiceVol, bedGain: settings.bedVol * 0.8 });
-  if (talkFor !== f.id) return;
-  if (talkUrl) URL.revokeObjectURL(talkUrl);
-  talkUrl = URL.createObjectURL(blob);
-  player.src = talkUrl;
-  btn.disabled = false;
-  btn.textContent = `▶ Listen: ${VOICES[f.voice]} reads these notes · ${minutes(p.total)}`;
 }
 
 // ── Session ────────────────────────────────────────────
@@ -284,7 +262,6 @@ async function begin() {
   skips = [];
   announced = '';
   audio.currentTime = 0;
-  $('#notes-audio').pause();
   try {
     await audio.play();
   } catch (e) {
@@ -320,8 +297,18 @@ function loop() {
   raf = requestAnimationFrame(tick);
 }
 
+let buzzKey = '';
+/** A short buzz when the breath turns (Android; iPhones have no vibration API for the web). */
+function buzz(st) {
+  const key = st.seg.kind === 'pace' || st.seg.kind === 'hold' ? `${st.seg.start}|${st.label}|${st.breath}` : '';
+  if (key === buzzKey) return;
+  buzzKey = key;
+  if (key && settings.vibrate && document.visibilityState === 'visible') navigator.vibrate?.(st.phase === 'in' ? 40 : st.phase === 'out' ? [20, 60, 20] : 15);
+}
+
 function frame(t) {
   const st = stateAt(plan, t);
+  buzz(st);
   $('#session').dataset.phase = st.phase;
   document.body.dataset.section = st.seg.section;
   if (contour && settings.visual === 'contour') contour.draw(st, t);
@@ -434,17 +421,21 @@ function finish() {
   const holds = holdResults(plan, skips, played);
   const held = Math.round(retention(plan, skips, played));
   const before = readLog().filter((e) => e.id === flow.id).at(-1);
-  if (played >= 60) logSession({ id: flow.id, level: levelOf(flow), at: Date.now(), secs: Math.round(played), held, holds: holds.map(Math.round) });
+  if (played >= 60 && !flow.noLog) logSession({ id: flow.id, level: levelOf(flow), at: Date.now(), secs: Math.round(played), held, holds: holds.map(Math.round) });
   stopSession();
 
-  $('#done-held').hidden = !held;
-  $('#done-held').textContent = `${fmt(held)} holding your breath${before?.held ? ` · last time ${fmt(before.held)}` : ''}`;
+  // The practice's own number (Breath Check: the control pause), or seconds held.
+  const metric = flow.metric || { label: 'held', of: (e) => e.held };
+  const now = metric.of({ held, holds });
+  const then = before && metric.of(before);
+  $('#done-held').hidden = !now;
+  $('#done-held').textContent = `${fmt(now)} ${metric.label}${then ? ` · last time ${fmt(then)}` : ''}`;
 
   const list = $('#hold-list');
   list.innerHTML = '';
   holds.forEach((h, i) => {
     const li = document.createElement('li');
-    li.innerHTML = `<div class="k">Hold ${i + 1}</div><div class="v">${fmt(h)}</div>`;
+    li.innerHTML = `<div class="k">${(flow.recordNames || [])[i] || `Hold ${i + 1}`}</div><div class="v">${fmt(h)}</div>`;
     list.appendChild(li);
   });
   list.hidden = holds.length === 0;
@@ -537,6 +528,12 @@ function bindUI() {
   $('#set-voice-vol').value = settings.voiceVol;
   $('#set-bed-vol').value = settings.bedVol;
   let dirty = false;
+  $('#set-vibrate').checked = settings.vibrate;
+  $('#set-vibrate').closest('.setting').hidden = !('vibrate' in navigator);
+  $('#set-vibrate').addEventListener('change', (e) => save({ vibrate: e.target.checked }));
+  $('#export-log').addEventListener('click', exportLog);
+  $('#save-offline').addEventListener('click', saveOffline);
+  $('#add-reminder').addEventListener('click', addReminder);
   for (const [id, key] of [
     ['#set-voice', 'voice'],
     ['#set-sounds', 'sounds'],
@@ -566,21 +563,15 @@ function bindUI() {
   $('#settings').addEventListener('close', () => {
     if (dirty) renderShelf();
     if (dirty && flow) {
-      talkFor = null; // re-render the notes track too (music/volume may have changed)
       prepare();
     }
     dirty = false;
-  });
-  $('#notes-listen').addEventListener('click', () => {
-    const player = $('#notes-audio');
-    $('#notes-listen').hidden = true;
-    player.hidden = false;
-    player.play().catch(() => {});
   });
 
   $('#pause-btn').addEventListener('click', togglePause);
   $('#breathe-btn').addEventListener('click', breatheNow);
   $('#end-btn').addEventListener('click', finish);
+  $('#done-again').addEventListener('click', begin);
   $('#done-home').addEventListener('click', () => {
     location.hash = '#/';
   });
@@ -603,6 +594,65 @@ function bindUI() {
     }
   });
   window.addEventListener('hashchange', route);
+}
+
+// ── Log export, offline audio, reminders ───────────────
+function download(name, type, text) {
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([text], { type }));
+  a.download = name;
+  a.click();
+  setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+}
+
+function exportLog() {
+  const title = Object.fromEntries(FLOWS.map((f) => [f.id, f.title]));
+  const rows = readLog().map((e) => [new Date(e.at).toISOString(), title[e.id] || e.id, e.level || '', e.secs, e.held || 0, (e.holds || []).join(' ')]);
+  const csv = [['date', 'practice', 'level', 'seconds', 'seconds_held', 'holds'], ...rows].map((r) => r.map((x) => `"${String(x).replace(/"/g, '""')}"`).join(',')).join('\n');
+  download('kumbha-log.csv', 'text/csv', csv + '\n');
+}
+
+/** Fetch every recording once; the service worker keeps them, across app updates. */
+async function saveOffline() {
+  const btn = $('#save-offline');
+  btn.disabled = true;
+  const urls = await allAudioUrls();
+  let done = 0;
+  let failed = 0;
+  const next = async () => {
+    while (urls.length) {
+      const u = urls.pop();
+      try {
+        if (!(await fetch(u)).ok) failed++;
+      } catch {
+        failed++;
+      }
+      btn.textContent = `Saving… ${++done}`;
+    }
+  };
+  await Promise.all(Array.from({ length: 6 }, next));
+  btn.disabled = false;
+  btn.textContent = failed ? `Saved, ${failed} failed. Tap to retry` : 'Saved for offline ✓';
+}
+
+/** A daily calendar event at the chosen time, linking back to this practice. */
+function addReminder() {
+  const [h, m] = ($('#reminder-time').value || '07:30').split(':').map(Number);
+  const start = new Date();
+  start.setHours(h, m, 0, 0);
+  if (start < new Date()) start.setDate(start.getDate() + 1);
+  const end = new Date(start.getTime() + Math.max(5, Math.round(plan.total / 60)) * 60000);
+  const local = (d) => `${d.getFullYear()}${String(d.getMonth() + 1).padStart(2, '0')}${String(d.getDate()).padStart(2, '0')}T${String(d.getHours()).padStart(2, '0')}${String(d.getMinutes()).padStart(2, '0')}00`;
+  const url = `${location.origin}${location.pathname}#/p/${flow.id}`;
+  const ics = [
+    'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Kumbha//EN', 'BEGIN:VEVENT',
+    `UID:kumbha-${flow.id}-${Date.now()}`, `DTSTAMP:${new Date().toISOString().replace(/[-:]/g, '').slice(0, 15)}Z`,
+    `DTSTART:${local(start)}`, `DTEND:${local(end)}`, 'RRULE:FREQ=DAILY',
+    `SUMMARY:${flow.title} with ${VOICES[flow.voice]}`, `URL:${url}`, `DESCRIPTION:${url}`,
+    'BEGIN:VALARM', 'TRIGGER:PT0M', 'ACTION:DISPLAY', `DESCRIPTION:${flow.title}`, 'END:VALARM',
+    'END:VEVENT', 'END:VCALENDAR',
+  ].join('\r\n');
+  download(`kumbha-${flow.id}.ics`, 'text/calendar', ics + '\r\n');
 }
 
 const ICON_PAUSE = '<svg viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14" rx="1.5"/><rect x="14" y="5" width="4" height="14" rx="1.5"/></svg>';

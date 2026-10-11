@@ -605,7 +605,7 @@ function seatPauses(opts) {
       { say: W.skip },
       { say: plane ? say(`${cap(num(5))} pauses of up to ${dur(holds[0])}.`) : W.trainCount, gap: 0.6 },
       ...holds.flatMap((h, i) => [
-        { pace: { inhale: 4 }, count: 1, style: 'slow', group: `p${i}`, bell: i ? 'low' : undefined, cues: [{ at: 0, say: plane ? W.in : W.inTrain }] },
+        { pace: { inhale: plane ? 4 : 5.5 }, count: 1, style: 'slow', group: `p${i}`, bell: i ? 'low' : undefined, cues: [{ at: 0, say: plane ? W.in : W.inTrain }] },
         {
           hold: 'full',
           seconds: h,

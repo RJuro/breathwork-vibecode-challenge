@@ -4,7 +4,7 @@
 // the one before it, and any line still running when its segment ends.
 //   node scripts/check_timing.mjs [--flow box]
 import { existsSync, readFileSync } from 'node:fs';
-import { FLOWS, INTENSITY, intensitiesOf } from '../js/flows/index.js';
+import { FLOWS, optsOf, intensitiesOf } from '../js/flows/index.js';
 import { compile } from '../js/engine.js';
 
 const only = process.argv.includes('--flow') ? process.argv[process.argv.indexOf('--flow') + 1] : null;
@@ -18,7 +18,7 @@ for (const flow of FLOWS) {
   if (only && flow.id !== only) continue;
   const durs = pack(flow.voice);
   for (const [level, talk] of intensitiesOf(flow).flatMap((l) => ['quiet', 'guided', 'full'].map((t) => [l, t]))) {
-    const plan = compile(flow, durs, { ...INTENSITY[level], talk });
+    const plan = compile(flow, durs, { ...optsOf(level), talk });
     const issues = [];
     for (const v of plan.voice) {
       if (!durs[v.id]) issues.push(`unrecorded ${v.id}`);

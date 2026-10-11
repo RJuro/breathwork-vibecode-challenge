@@ -79,6 +79,14 @@ export async function loadCues(ids, pack) {
   return out;
 }
 
+/** Every recorded file (both voice packs and the music), at the URLs the app loads them from,
+ *  so fetching them all fills the service worker's audio cache for offline use. */
+export async function allAudioUrls() {
+  const { packs, music } = await loadManifests();
+  const cues = Object.entries(packs).flatMap(([p, m]) => Object.entries(m).map(([id, c]) => `${PACKS[p]}/${id}.mp3?v=${c.fp}`));
+  return [...cues, ...Object.values(music).map((m) => `audio/music/${m.file}?v=${m.v || 1}`)];
+}
+
 /** A practice's background track: the first of `names` that has been added, or null. */
 export async function loadMusic(names) {
   const { music } = await loadManifests();

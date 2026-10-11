@@ -5,16 +5,13 @@
 
 import { readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
-import { FLOWS, INTENSITY, intensitiesOf } from '../js/flows/index.js';
+import { FLOWS, optsOf, intensitiesOf } from '../js/flows/index.js';
 import { compile } from '../js/engine.js';
-import { teacherTalk } from '../js/flows/talk.js';
 
 const out = fileURLToPath(new URL('../flow/cues.json', import.meta.url));
 const lines = {};
 for (const flow of FLOWS) {
-  const plans = intensitiesOf(flow).map((level) => compile(flow, {}, { ...INTENSITY[level], talk: 'full' }));
-  const talk = teacherTalk(flow);
-  if (talk) plans.push(compile(talk, {}, { talk: 'full' }));
+  const plans = intensitiesOf(flow).map((level) => compile(flow, {}, { ...optsOf(level), talk: 'full' }));
   for (const plan of plans) {
     for (const v of plan.voice) {
       const prev = lines[v.id];
