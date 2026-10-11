@@ -50,7 +50,7 @@ export const box = {
   voice: 'leo',
   blurb: 'The tactical breath, then the box. Two drills to stay level under pressure.',
   lede: 'Two drills. A long breath out, twice the breath in. Then the box: in, hold, out, hold, all the same length. Train it on calm days so it is there on hard ones.',
-  music: ['focus', 'keys'],
+  music: ['focus'],
   accent: ['#cfd8e3', '#4a5d78'],
   sky: 'deep',
   intensity: ['none', 'gentle', 'standard', 'deeper'],

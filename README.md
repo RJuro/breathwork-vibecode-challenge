@@ -105,8 +105,9 @@ guide are in A), cuts it where the level matches the opening so the loop is seam
 to mono and updates `audio/music/manifest.json`.
 Each practice names a small pool of beds (`music: ['night', 'deep']`), and each new session of
 that practice plays the next one that exists (by its count in the log), so long practices don't
-always sound the same. Beds (all Suno): `night` (*After the Party*), `focus` (*A Major Morning*), `tide` (*A-Frame
-Stillness*), `transit` (*Pink Noise Cocoon*). The pools also name `deep`, `dusk`, `keys`, `terrace`
+always sound the same. Beds (all Suno): `night` (*After the Party*), `focus` (*A Major Morning*), `midnight` (*Midnight
+Focus*, has a soft beat, so only under Reps and Ready), `tide` (*A-Frame Stillness*), `transit` (*Pink
+Noise Cocoon*). The pools also name `deep`, `dusk`, `keys`, `terrace`
 and `swell`, slots that are empty for now: a pool skips beds that don't exist, so adding a track
 with `add_music.py` puts it into rotation. AI music tried and dropped: Lyria 3.5 songs (no exclusion
 controls; beats, a spoken stock tag, DC offset and sub-bass) and Lyria RealTime (aimless, judged garbage).

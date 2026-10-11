@@ -5,6 +5,12 @@
     "shift": 0,
     "seconds": 162.8
   },
+  "midnight": {
+    "file": "midnight.mp3",
+    "v": 1,
+    "shift": -2,
+    "seconds": 182.6
+  },
   "night": {
     "file": "night.mp3",
     "v": 4,
