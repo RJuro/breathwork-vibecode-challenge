@@ -2,7 +2,7 @@ import { FLOWS, MOMENTS, LEVEL_NAMES, intensitiesOf, optsOf } from './flows/inde
 import { compile, stateAt, captionAt, exitOf, holdResults, retention } from './engine.js';
 import { notesHtml } from './flows/lib.js';
 import { Bloom } from './bloom.js';
-import { Contour, contourSvg } from './contour.js';
+import { Contour, ContourArt } from './contour.js';
 import { motif } from './motifs.js';
 import { loadManifests, loadCues, loadMusic, renderSession, allAudioUrls } from './audio.js';
 
@@ -93,6 +93,7 @@ function route() {
 
 function show(id) {
   $$('.screen').forEach((el) => el.classList.toggle('is-active', el.id === id));
+  for (const [screen, a] of Object.entries(art)) screen === id ? a.play() : a.stop();
   window.scrollTo(0, 0);
 }
 
@@ -105,6 +106,7 @@ async function renderShelf() {
   const { packs } = await loadManifests();
   const shelf = $('#shelf');
   shelf.innerHTML = '';
+  let n = 0;
   for (const m of MOMENTS) {
     const fs = FLOWS.filter((f) => f.moment === m.id);
     if (!fs.length) continue;
@@ -117,6 +119,7 @@ async function renderShelf() {
       const wide = fs.length === 1;
       const a = document.createElement('a');
       a.className = wide ? 'tile wide' : 'tile';
+      a.style.setProperty('--i', String(n++));
       a.href = `#/p/${f.id}`;
       const meta = `<span class="tile-meta">${minutes(total)} · with ${VOICES[f.voice]}</span>`;
       a.innerHTML = wide
@@ -127,11 +130,12 @@ async function renderShelf() {
   }
 }
 
-/** Contour art behind the library and practice headers (colours come from the section). */
-function renderTopo() {
-  $('#lib-topo').innerHTML = contourSvg({ w: 420, h: 340, cx: 318, cy: 112, s: 200, drift: 0.4 });
-  $('#detail-topo').innerHTML = contourSvg({ w: 420, h: 300, cx: 330, cy: 70, s: 170, drift: 1.7 });
-}
+// Contour art behind the library and practice headers (colours come from the section),
+// animated while its screen shows.
+const art = {
+  library: new ContourArt($('#lib-topo'), { w: 420, h: 340, cx: 318, cy: 112, s: 200, drift: 0.4 }),
+  detail: new ContourArt($('#detail-topo'), { w: 420, h: 300, cx: 330, cy: 70, s: 170, drift: 1.7 }),
+};
 
 // ── Practice detail ────────────────────────────────────
 function openFlow(f) {
@@ -660,6 +664,5 @@ const ICON_PLAY = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v
 
 bindUI();
 renderShelf();
-renderTopo();
 route();
 if ('serviceWorker' in navigator) navigator.serviceWorker.register('service-worker.js').catch(() => {});

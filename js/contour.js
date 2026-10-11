@@ -62,18 +62,145 @@ export function ringPath(k, cx, cy, s, drift = 0) {
   return d + 'Z';
 }
 
-/** Static contour art (hero, backgrounds): rings plus two overprinted washes. Wash and
- *  index colours come from CSS (`.w1`, `.w2`, `.ix`), so a section can recolour it. */
-export function contourSvg({ w, h, cx, cy, s, rings = RINGS, drift = 0 }) {
-  let out = `<svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="xMaxYMin slice" aria-hidden="true" focusable="false">`;
-  out += `<circle class="w1" cx="${cx - s * 0.13}" cy="${cy - s * 0.1}" r="${s * 0.34}"/>`;
-  out += `<circle class="w2" cx="${cx + s * 0.16}" cy="${cy + s * 0.12}" r="${s * 0.26}"/>`;
-  for (let j = 0; j < rings; j++) {
-    const k = j / (RINGS - 1);
-    const ix = j === 3 || j === 8;
-    out += `<path class="${ix ? 'ix' : 'rl'}" style="--o:${(0.62 - 0.48 * k).toFixed(2)}" d="${ringPath(k, cx, cy, s, drift)}"/>`;
+const cosEase = (x) => 0.5 - 0.5 * Math.cos(Math.PI * Math.min(1, Math.max(0, x)));
+const outExpo = (x) => (x >= 1 ? 1 : 1 - 2 ** (-10 * x));
+/** The app's own rhythm, six breaths a minute: 0 → 1 over a 4 s in-breath, back over a 6 s out-breath. */
+const breathAt = (t) => {
+  const p = ((t % 10) + 10) % 10;
+  return p < 4 ? cosEase(p / 4) : 1 - cosEase((p - 4) / 6);
+};
+
+/** The contour art behind the library and practice headers, in motion. Washes bloom, the rings
+ *  draw themselves in from the centre, then the map breathes at six a minute: each ring lags
+ *  the one inside it, so every breath travels outward as a ripple. The wobble slowly morphs,
+ *  a point of light runs along the index lines, and the pointer tilts the rings like stacked
+ *  layers. Colours come from CSS (`.w1`, `.w2`, `.ix`), so a section can recolour it.
+ *  Static under prefers-reduced-motion. */
+export class ContourArt {
+  constructor(host, { w, h, cx, cy, s, drift = 0 }) {
+    Object.assign(this, { host, cx, cy, s, drift0: drift, raf: 0, on: false });
+    this.reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const NS = 'http://www.w3.org/2000/svg';
+    const el = (tag, attrs) => {
+      const e = document.createElementNS(NS, tag);
+      for (const [k, v] of Object.entries(attrs)) e.setAttribute(k, v);
+      return e;
+    };
+    this.svg = el('svg', { viewBox: `0 0 ${w} ${h}`, preserveAspectRatio: 'xMaxYMin slice', 'aria-hidden': 'true', focusable: 'false' });
+    this.w1 = this.svg.appendChild(el('circle', { class: 'w1' }));
+    this.w2 = this.svg.appendChild(el('circle', { class: 'w2' }));
+    this.rings = Array.from({ length: RINGS }, (_, j) => {
+      const k = j / (RINGS - 1);
+      const p = this.svg.appendChild(el('path', { class: j === 3 || j === 8 ? 'ix' : 'rl', pathLength: 1 }));
+      p.style.setProperty('--o', (0.62 - 0.48 * k).toFixed(2));
+      return { k, p };
+    });
+    // Points of light running along the two index lines (a soft halo under a bright core).
+    this.runs = [3, 8].map((j, n) => ({
+      k: j / (RINGS - 1),
+      glow: this.svg.appendChild(el('path', { class: 'run-glow', pathLength: 1 })),
+      core: this.svg.appendChild(el('path', { class: 'run', pathLength: 1 })),
+      period: n ? 13 : 9,
+      offset: n ? 4.5 : 0,
+      dir: n ? -1 : 1,
+    }));
+    host.replaceChildren(this.svg);
+    this.pointer = [0, 0];
+    this.tilt = [0, 0];
+    addEventListener('pointermove', (e) => (this.pointer = [e.clientX / innerWidth - 0.5, e.clientY / innerHeight - 0.5]), { passive: true });
+    document.addEventListener('visibilitychange', () => (document.hidden ? this.pause() : this.on && !this.reduced && this.loop()));
+    this.t0 = performance.now();
+    this.frame(this.t0, true);
   }
-  return out + '</svg>';
+
+  /** Start (or restart, with the draw-in) when its screen shows; stop when it hides. */
+  play() {
+    this.on = true;
+    this.t0 = performance.now();
+    this.last = this.t0;
+    if (this.reduced) return this.frame(this.t0, true);
+    this.loop();
+  }
+
+  stop() {
+    this.on = false;
+    this.pause();
+  }
+
+  pause() {
+    cancelAnimationFrame(this.raf);
+  }
+
+  loop() {
+    cancelAnimationFrame(this.raf);
+    const tick = (now) => {
+      this.frame(now);
+      this.raf = requestAnimationFrame(tick);
+    };
+    this.raf = requestAnimationFrame(tick);
+  }
+
+  frame(now, still = this.reduced) {
+    const t = (now - this.t0) / 1000;
+    const dt = Math.min(0.1, (now - (this.last ?? now)) / 1000);
+    this.last = now;
+    const { cx, cy, s } = this;
+    const L = (a, b, k) => a + (b - a) * k;
+
+    // Arrival: washes bloom (0–1.4 s); rings draw in from the centre, 70 ms apart.
+    const bloom = still ? 1 : outExpo(t / 1.4);
+    const draw = (j) => (still ? 1 : outExpo(Math.max(0, t - 0.25 - j * 0.07) / 1.3));
+
+    // Idle: breathing, drift, pointer tilt (smoothed), a gentle lift as the page scrolls.
+    const b = still ? 0.35 : breathAt(t - 1.5);
+    const drift = this.drift0 + (still ? 0 : t * 0.035);
+    const ease = 1 - Math.exp(-dt * 3);
+    this.tilt = this.tilt.map((v, i) => L(v, still ? 0 : this.pointer[i], ease));
+    const scroll = still ? 0 : Math.min(1, scrollY / 320);
+    this.svg.style.transform = scroll ? `translateY(${(-scroll * 28).toFixed(1)}px)` : '';
+    this.svg.style.opacity = (1 - scroll * 0.55).toFixed(3);
+
+    const wob = (a, p) => Math.sin((t * 2 * Math.PI) / p + a);
+    const w = (circle, x, y, r, a) => {
+      circle.setAttribute('cx', (x + (still ? 0 : wob(a, 23) * s * 0.05)).toFixed(1));
+      circle.setAttribute('cy', (y + (still ? 0 : wob(a + 1.3, 31) * s * 0.04)).toFixed(1));
+      circle.setAttribute('r', (r * L(0.55, 1, bloom) * (1 + 0.07 * b)).toFixed(1));
+      circle.style.fillOpacity = (bloom * (0.85 + 0.15 * b)).toFixed(3);
+    };
+    w(this.w1, cx - s * 0.13, cy - s * 0.1, s * 0.34, 0);
+    w(this.w2, cx + s * 0.16, cy + s * 0.12, s * 0.26, 2.1);
+
+    const at = (k) => {
+      const lag = breathAt(t - 1.5 - k * 2.2); // outer rings breathe later: a ripple
+      const sk = s * (1 + (still ? 0 : 0.045 * lag));
+      const shift = 14 * k;
+      return [cx + this.tilt[0] * shift, cy + this.tilt[1] * shift, sk];
+    };
+    for (const [j, r] of this.rings.entries()) {
+      const [x, y, sk] = at(r.k);
+      r.p.setAttribute('d', ringPath(r.k, x, y, sk, drift));
+      const d = draw(j);
+      r.p.style.strokeDasharray = d < 1 ? '1 1' : '';
+      r.p.style.strokeDashoffset = d < 1 ? (1 - d).toFixed(4) : '';
+    }
+
+    for (const run of this.runs) {
+      if (still) {
+        run.core.style.opacity = run.glow.style.opacity = 0;
+        continue;
+      }
+      const [x, y, sk] = at(run.k);
+      const d = ringPath(run.k, x, y, sk, drift);
+      const life = (t - 2.4 - run.offset) / run.period; // first run once the rings are drawn
+      const env = life < 0 ? 0 : Math.sin(Math.PI * Math.min(1, (life % 1) / 0.55)) ** 2 * ((life % 1) < 0.55 ? 1 : 0);
+      for (const [p, len] of [[run.glow, 0.09], [run.core, 0.035]]) {
+        p.setAttribute('d', d);
+        p.style.strokeDasharray = `${len} ${1 - len}`;
+        p.style.strokeDashoffset = (run.dir * (life % 1) * 1.6).toFixed(4);
+        p.style.opacity = env.toFixed(3);
+      }
+    }
+  }
 }
 
 export class Contour {
