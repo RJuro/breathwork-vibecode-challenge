@@ -3,18 +3,21 @@
 import { reps, land } from './sit.js';
 import { box, coolDown } from './train.js';
 import { tide, clearNose } from './weather.js';
+import { kumbhaka, holdLadder, rounds, alternate, windowSeat } from './retain.js';
 import { NOTES } from './notes.js';
 
-export const FLOWS = [reps, box, coolDown, land, tide, clearNose];
+export const FLOWS = [kumbhaka, holdLadder, rounds, alternate, reps, box, coolDown, land, tide, clearNose, windowSeat];
 for (const f of FLOWS) f.notes = NOTES[f.id];
 
 /** Shelf order and headers. */
 export const MOMENTS = [
+  { id: 'retention', title: 'Retention', sub: 'The long sessions, 15 to 25 minutes. The holds are the work.' },
   { id: 'morning', title: 'Morning', sub: 'Before the phone. Wake the attention up.' },
   { id: 'before', title: 'Before', sub: "Something's coming. Get level." },
   { id: 'after', title: 'After', sub: 'Done training. Bring it down.' },
   { id: 'night', title: 'Night', sub: 'Lights low. Land.' },
   { id: 'anytime', title: 'Under the weather', sub: 'Scratchy throat, blocked nose.' },
+  { id: 'move', title: 'On the move', sub: 'A headache, and you’re stuck in a seat.' },
 ];
 
 export const INTENSITY = {

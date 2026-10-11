@@ -1,5 +1,5 @@
 import { FLOWS, MOMENTS, INTENSITY, LEVEL_NAMES, intensitiesOf } from './flows/index.js';
-import { compile, stateAt, captionAt, exitOf, holdResults } from './engine.js';
+import { compile, stateAt, captionAt, exitOf, holdResults, retention } from './engine.js';
 import { notesHtml } from './flows/lib.js';
 import { teacherTalk } from './flows/talk.js';
 import { Bloom } from './bloom.js';
@@ -42,6 +42,23 @@ function save(patch) {
     localStorage.setItem('kumbha', JSON.stringify(settings));
   } catch {}
 }
+// ── Session log (this device only) ─────────────────────
+const LOG = 'kumbha-log';
+function readLog() {
+  try {
+    const l = JSON.parse(localStorage.getItem(LOG) || '[]');
+    return Array.isArray(l) ? l : [];
+  } catch {
+    return [];
+  }
+}
+function logSession(entry) {
+  try {
+    localStorage.setItem(LOG, JSON.stringify([...readLog(), entry].slice(-500)));
+  } catch {}
+}
+const day = (at) => new Date(at).toLocaleDateString(undefined, { day: 'numeric', month: 'short' });
+
 const levelOf = (flow) => {
   const lv = settings.intensity[flow.id];
   return intensitiesOf(flow).includes(lv) ? lv : flow.defaultLevel || 'standard';
@@ -83,6 +100,9 @@ function show(id) {
 // ── Library ────────────────────────────────────────────
 // Grouped by moment of the day; a moment with a single practice gets a wide tile.
 async function renderShelf() {
+  const week = readLog().filter((e) => e.at > Date.now() - 7 * 864e5);
+  const held = week.reduce((n, e) => n + (e.held || 0), 0);
+  $('#week').textContent = week.length ? `This week: ${week.length} session${week.length > 1 ? 's' : ''} · ${minutes(week.reduce((n, e) => n + e.secs, 0))}${held ? ` · ${fmt(held)} held` : ''}` : '';
   const { packs } = await loadManifests();
   const shelf = $('#shelf');
   shelf.innerHTML = '';
@@ -128,6 +148,9 @@ function openFlow(f) {
   $('#intensity-row').hidden = !f.intensity;
   $('#outline').open = matchMedia('(min-height: 900px) and (min-width: 700px)').matches;
   syncIntensity();
+  const mine = readLog().filter((e) => e.id === f.id).slice(-3).reverse();
+  $('#history').hidden = !mine.length;
+  $('#history').innerHTML = mine.map((e) => `<li><span>${day(e.at)}</span><span>${minutes(e.secs)}${e.held ? ` · ${fmt(e.held)} held` : ''}</span></li>`).join('');
   show('detail');
   prepare();
 }
@@ -315,8 +338,9 @@ function frame(t) {
     phaseEl.textContent = st.label;
     countEl.textContent = st.sub || '';
   } else {
-    phaseEl.textContent = '';
-    countEl.textContent = '';
+    // A labelled rest (between holds) counts down to the next one.
+    phaseEl.textContent = st.label;
+    countEl.textContent = st.label ? fmt(st.seg.end - t) : '';
   }
 
   const bars = $$('#progress i');
@@ -408,7 +432,13 @@ function stopSession() {
 function finish() {
   const played = audio.ended ? plan.total : audio.currentTime;
   const holds = holdResults(plan, skips, played);
+  const held = Math.round(retention(plan, skips, played));
+  const before = readLog().filter((e) => e.id === flow.id).at(-1);
+  if (played >= 60) logSession({ id: flow.id, level: levelOf(flow), at: Date.now(), secs: Math.round(played), held, holds: holds.map(Math.round) });
   stopSession();
+
+  $('#done-held').hidden = !held;
+  $('#done-held').textContent = `${fmt(held)} holding your breath${before?.held ? ` · last time ${fmt(before.held)}` : ''}`;
 
   const list = $('#hold-list');
   list.innerHTML = '';

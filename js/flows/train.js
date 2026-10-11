@@ -7,7 +7,7 @@
 import { line, say, tip, num, Num, SAFETY_HTML, ev } from './lib.js';
 
 // ── Box ────────────────────────────────────────────────
-const B = {
+export const B = {
   welcome: line('box_welcome', 'Welcome. Sit tall, feet flat on the floor. Close your eyes, or rest them on a spot in front of you.'),
   plan: line('box_plan', "Here's the plan. Two drills. First, a long breath out, twice as long as the breath in. Then the box: in, hold, out, hold, all the same length. Nothing to win here. Just get the rhythm."),
   planNone: line('box_plan_none', "Here's the plan. No holds today. One drill: breathe out twice as long as you breathe in. The long breath out does most of the work."),
@@ -50,7 +50,7 @@ export const box = {
   voice: 'leo',
   blurb: 'The tactical breath, then the box. Two drills to stay level under pressure.',
   lede: 'Two drills. A long breath out, twice the breath in. Then the box: in, hold, out, hold, all the same length. Train it on calm days so it is there on hard ones.',
-  music: 'transit',
+  music: ['focus', 'transit'],
   accent: ['#cfd8e3', '#4a5d78'],
   sky: 'deep',
   intensity: ['none', 'gentle', 'standard', 'deeper'],
@@ -190,7 +190,7 @@ export const coolDown = {
   voice: 'mira',
   blurb: 'After training: legs up, long breaths out, then quiet.',
   lede: 'For straight after training. Legs up, let the panting settle, then long breaths out that bring the heart rate down, and a couple of quiet minutes.',
-  music: 'tide',
+  music: ['night', 'tide'],
   accent: ['#d8efe4', '#3f8f7a'],
   sky: 'calm',
   after: ['Make it the last thing in every session, not just the hard ones.', 'Get up slowly; blood pressure can dip after slow breathing with the legs raised.'],

@@ -8,16 +8,22 @@
   grounded coaches, light American English; Roman approved the younger versions on 9 Oct). Tom,
   the Gemini preview voice (Schedar), the Qwen "Coach" voice and the nine old practices are retired
   (in git history). There is no Voice switch: a practice plays its own coach's pack.
-- **Library = a day arc** (`MOMENTS` in `js/flows/index.js`):
+- **Library = Retention + a day arc** (`MOMENTS` in `js/flows/index.js`). Retention added 11 Oct 2026
+  after Roman asked for 15–25 min sessions focused on holds (and the return of the plane/train one):
 
   | Moment | Practice | Coach | File |
   |---|---|---|---|
+  | Retention | Kumbhaka (ratio 1:2:1.5:1, up to 8·16·12·8) | Leo | `js/flows/retain.js` |
+  | Retention | Hold Ladder (First urge, or CO₂ table 8 × 0:45/1:00) | Leo | `js/flows/retain.js` |
+  | Retention | Rounds (30 breaths, capped empty hold, recovery breath) | Mira | `js/flows/retain.js` |
+  | Retention | Alternate Nostril with 1:4:2 holds | Mira | `js/flows/retain.js` |
   | Morning | Reps (breath-counting meditation, 3/5/10 min) | Leo | `js/flows/sit.js` |
   | Before | Box (tactical breath, then box breathing) | Leo | `js/flows/train.js` |
   | After | Cool-down (legs up, long exhales, quiet) | Mira | `js/flows/train.js` |
   | Night | Land (body scan, 3/5/10 min) | Mira | `js/flows/sit.js` |
   | Under the weather | Turn the Tide (hum sets spaced 3+ min, quiet holds) | Mira | `js/flows/weather.js` |
   | Under the weather | Clear Nose (hums, breathe light, pinch-and-nod) | Leo | `js/flows/weather.js` |
+  | On the move | Window Seat (headache on a plane/train; Plane/Train pauses) | Mira | `js/flows/retain.js` |
 
 - **Scripts** were written by hand, then reviewed by GPT-6.1 Sol via `codex exec` for "human or
   compressed/AI-ish" (verdict and every change: `docs/research/script-review-sol.md`; all 51 edits
@@ -49,8 +55,10 @@ account is on Gemini tier 3, so the old ~100 requests/day cap no longer bites.
 - **Practices on deck:** Ready (Leo, 3 min before a talk/exam/start line), Between Sets (Mira,
   60–90 s), Steady (small holds for over-breathing), Breathe Light + a breath check, a long Wind Down
   (Laborde 2019: 15 min of 4.5 in / 5.5 out), Resonance with "find your pace".
-- **App ideas** (Breathwrk research): choose-your-length, a quiet practice log in browser storage,
-  "Add to calendar" reminders, a "ready offline" button, vibration on breath turns (Android).
+- **Session log** is in (browser storage, `kumbha-log`). Next: a hold-history chart, CSV export.
+- **Teacher's notes** for the five new practices aren't written yet (old notes for Hold Ladder and
+  Window Seat are in git history, `f670174^:js/flows/notes.js`).
+- **App ideas** (Breathwrk research): choose-your-length, "Add to calendar" reminders, a "ready offline" button, vibration on breath turns (Android).
 - **Service worker:** it wipes every cache on a version bump, including cue audio; keep versioned
   (`?v=`) audio in its own long-lived cache.
 

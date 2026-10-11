@@ -108,7 +108,7 @@ export const SAFETY_HTML = `
 <h3>Safety</h3>
 <ul>
   <li>Only seated or lying down. Never in or near water, in the bath, or while driving. Blackouts after fast breathing or long holds come without warning.</li>
-  <li>If you are pregnant, or have epilepsy, heart disease, high blood pressure or a fever, skip fast breathing and breath holds altogether: choose Resonance, Cyclic Sighing or Alternate Nostril, or a <em>No holds</em> option. A shorter hold is not the same as a safe one. Ask your doctor if unsure.</li>
+  <li>If you are pregnant, or have epilepsy, heart disease, high blood pressure or a fever, skip fast breathing and breath holds altogether: choose Reps, Land or Cool-down, or a <em>No holds</em> option. A shorter hold is not the same as a safe one. Ask your doctor if unsure.</li>
   <li>Stop whenever you like. If you feel dizzy or unwell, or the urge to breathe gets strong, breathe normally. <em>Breathe now</em> ends any hold.</li>
 </ul>
 <p class="muted">Not medical advice. These practices adapt traditional pranayama and published breathing methods; check with your doctor if you have a health condition.</p>`;

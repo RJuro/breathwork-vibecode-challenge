@@ -216,6 +216,293 @@
     "duration": 14.38,
     "match": 1.0
   },
+  "hl_calm": {
+    "fp": "746e05c8b2c0",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 4.85,
+    "match": 0.947
+  },
+  "hl_close": {
+    "fp": "7e3d540ad336",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 5.74,
+    "match": 1.0
+  },
+  "hl_contract": {
+    "fp": "c389ab026f6a",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 9.18,
+    "match": 1.0
+  },
+  "hl_dive": {
+    "fp": "9e05945c4171",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 7.73,
+    "match": 1.0
+  },
+  "hl_done": {
+    "fp": "a87408a977d7",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 3.7,
+    "match": 1.0
+  },
+  "hl_full": {
+    "fp": "0a60fa9a8457",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 6.22,
+    "match": 1.0
+  },
+  "hl_last": {
+    "fp": "3a80e4d22617",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 3.81,
+    "match": 1.0
+  },
+  "hl_no_big": {
+    "fp": "e66fe784c04a",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 12.46,
+    "match": 1.0
+  },
+  "hl_plan": {
+    "fp": "ed5fa48c467a",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 14.1,
+    "match": 1.0
+  },
+  "hl_plan_urge": {
+    "fp": "e104d3c387e3",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 14.4,
+    "match": 1.0
+  },
+  "hl_recovery": {
+    "fp": "0c5b09ae10f5",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 7.13,
+    "match": 1.0
+  },
+  "hl_rest_why": {
+    "fp": "019a3e098540",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 9.42,
+    "match": 1.0
+  },
+  "hl_rule": {
+    "fp": "84d0a7c99f8c",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 8.17,
+    "match": 1.0
+  },
+  "hl_spleen": {
+    "fp": "deb13f2edaff",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 8.44,
+    "match": 1.0
+  },
+  "hl_stay": {
+    "fp": "7e66c0a12c94",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 4.12,
+    "match": 1.0
+  },
+  "hl_study": {
+    "fp": "4aa666977b37",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 9.9,
+    "match": 1.0
+  },
+  "hl_t_rest_out": {
+    "fp": "f72ae86938fa",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 4.6,
+    "match": 1.0
+  },
+  "hl_t_rest_urge": {
+    "fp": "3497864d1b5e",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 5.93,
+    "match": 1.0
+  },
+  "hl_t_scan": {
+    "fp": "59bbbb268e8a",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 5.03,
+    "match": 1.0
+  },
+  "hl_t_soft": {
+    "fp": "30df9c7dadef",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 5.12,
+    "match": 1.0
+  },
+  "hl_t_ten": {
+    "fp": "93701e56deba",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 4.48,
+    "match": 1.0
+  },
+  "hl_t_urge": {
+    "fp": "8b435c09151e",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 5.65,
+    "match": 1.0
+  },
+  "hl_t_wave": {
+    "fp": "9fd829bca9c9",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 7.23,
+    "match": 1.0
+  },
+  "hl_welcome": {
+    "fp": "a37b50a28a81",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 12.94,
+    "match": 0.947
+  },
+  "kb_air": {
+    "fp": "2445237d6c01",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 6.78,
+    "match": 1.0
+  },
+  "kb_close": {
+    "fp": "a354c827bce9",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 7.69,
+    "match": 1.0
+  },
+  "kb_co2": {
+    "fp": "b2b2442d31d3",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 8.63,
+    "match": 0.947
+  },
+  "kb_empty_hold": {
+    "fp": "54241ac36527",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 6.66,
+    "match": 1.0
+  },
+  "kb_nose": {
+    "fp": "66df5c2ce8ec",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 4.43,
+    "match": 1.0
+  },
+  "kb_notice": {
+    "fp": "14d15cb7859c",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 4.69,
+    "match": 1.0
+  },
+  "kb_plan": {
+    "fp": "794ba7514a21",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 24.15,
+    "match": 0.926
+  },
+  "kb_rate": {
+    "fp": "b2063e2194e1",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 11.53,
+    "match": 0.964
+  },
+  "kb_release": {
+    "fp": "207cbac0cef2",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 3.98,
+    "match": 1.0
+  },
+  "kb_slow_out": {
+    "fp": "9afa9e16994e",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 8.3,
+    "match": 1.0
+  },
+  "kb_t_circle": {
+    "fp": "4ac3dbb18302",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 5.03,
+    "match": 1.0
+  },
+  "kb_t_face": {
+    "fp": "cfe718dea27a",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 5.43,
+    "match": 1.0
+  },
+  "kb_t_wander": {
+    "fp": "9ffb246d69e5",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 3.88,
+    "match": 1.0
+  },
+  "kb_texts": {
+    "fp": "be40096c79d1",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 8.6,
+    "match": 1.0
+  },
+  "kb_top": {
+    "fp": "b00d02d86d6d",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 4.94,
+    "match": 1.0
+  },
+  "kb_welcome": {
+    "fp": "46d8b78fb11e",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 8.15,
+    "match": 1.0
+  },
+  "n_comfortably_full_breath_in": {
+    "fp": "31600842360e",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 2.11,
+    "match": 1.0
+  },
   "n_drill_one_in_through_the_nose_for_four_out_for_eight_six_bre": {
     "fp": "4647084f6763",
     "voice": "leo",
@@ -244,11 +531,144 @@
     "duration": 9.51,
     "match": 1.0
   },
+  "n_fifth_hold": {
+    "fp": "e9230534cd73",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 1.1,
+    "match": 1.0
+  },
+  "n_first_hold": {
+    "fp": "b2908ffc2c5b",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 1.07,
+    "match": 1.0
+  },
+  "n_fourth_hold": {
+    "fp": "342570dfd942",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 1.8,
+    "match": 1.0
+  },
   "n_halfway": {
     "fp": "a64ce9d4064d",
     "voice": "leo",
     "model": "gemini-3.8-flash-lite-tts",
     "duration": 0.75,
+    "match": 1.0
+  },
+  "n_hold_eight_of_eight_forty_five_seconds": {
+    "fp": "5f0b4fee91b7",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 3.36,
+    "match": 1.0
+  },
+  "n_hold_eight_of_eight_one_minute": {
+    "fp": "4945730747b9",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 3.57,
+    "match": 1.0
+  },
+  "n_hold_five_of_eight_forty_five_seconds": {
+    "fp": "0036f81cd335",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 4.08,
+    "match": 1.0
+  },
+  "n_hold_five_of_eight_one_minute": {
+    "fp": "dd378a810647",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 2.99,
+    "match": 1.0
+  },
+  "n_hold_four_of_eight_forty_five_seconds": {
+    "fp": "da60d3a3c5e2",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 4.07,
+    "match": 1.0
+  },
+  "n_hold_four_of_eight_one_minute": {
+    "fp": "ae096920beac",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 3.96,
+    "match": 1.0
+  },
+  "n_hold_one_of_eight_forty_five_seconds": {
+    "fp": "4c9c4a29d1ef",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 3.21,
+    "match": 1.0
+  },
+  "n_hold_one_of_eight_one_minute": {
+    "fp": "6ba5195ce464",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 2.94,
+    "match": 1.0
+  },
+  "n_hold_seven_of_eight_forty_five_seconds": {
+    "fp": "358689be3155",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 4.18,
+    "match": 1.0
+  },
+  "n_hold_seven_of_eight_one_minute": {
+    "fp": "65f366ac5c3e",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 3.07,
+    "match": 1.0
+  },
+  "n_hold_six_of_eight_forty_five_seconds": {
+    "fp": "a31c40891c44",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 3.63,
+    "match": 1.0
+  },
+  "n_hold_six_of_eight_one_minute": {
+    "fp": "06dc4a664aac",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 3.01,
+    "match": 1.0
+  },
+  "n_hold_three_of_eight_forty_five_seconds": {
+    "fp": "529bcdfe28ea",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 3.49,
+    "match": 1.0
+  },
+  "n_hold_three_of_eight_one_minute": {
+    "fp": "8dd1a0506813",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 2.91,
+    "match": 1.0
+  },
+  "n_hold_two_of_eight_forty_five_seconds": {
+    "fp": "0c2c28938409",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 3.54,
+    "match": 1.0
+  },
+  "n_hold_two_of_eight_one_minute": {
+    "fp": "f3394486e624",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 3.11,
     "match": 1.0
   },
   "n_last_one": {
@@ -286,6 +706,13 @@
     "duration": 4.67,
     "match": 1.0
   },
+  "n_one_minute": {
+    "fp": "dfda58790bc5",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 1.01,
+    "match": 1.0
+  },
   "n_one_more_minute": {
     "fp": "c9c9906a7bfe",
     "voice": "leo",
@@ -307,6 +734,13 @@
     "duration": 5.41,
     "match": 1.0
   },
+  "n_recovery_breaths": {
+    "fp": "d7c93b8192c9",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 1.31,
+    "match": 1.0
+  },
   "n_round_one_small_breath_in_small_breath_out": {
     "fp": "4a8fc48ed06e",
     "voice": "leo",
@@ -321,11 +755,102 @@
     "duration": 9.07,
     "match": 1.0
   },
+  "n_second_hold": {
+    "fp": "f874e17a7a20",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 0.98,
+    "match": 1.0
+  },
+  "n_sixth_hold": {
+    "fp": "f593880f5391",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 1.78,
+    "match": 1.0
+  },
   "n_stay_with_it_ten_more": {
     "fp": "64d13722caa7",
     "voice": "leo",
     "model": "gemini-3.8-flash-lite-tts",
     "duration": 2.29,
+    "match": 1.0
+  },
+  "n_step_one_eight_rounds_four_in_eight_hold_six_out_four_hold": {
+    "fp": "6f2dc12b952b",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 9.08,
+    "match": 1.0
+  },
+  "n_step_one_six_rounds_four_in_eight_hold_six_out_four_hold": {
+    "fp": "0ed090a9eaca",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 8.39,
+    "match": 1.0
+  },
+  "n_step_one_six_rounds_six_in_twelve_hold_nine_out_six_hold": {
+    "fp": "05d4419585a8",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 8.48,
+    "match": 1.0
+  },
+  "n_step_three_ten_rounds_ten_in_twenty_hold_fifteen_out_ten_hol": {
+    "fp": "b205ef174f2c",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 8.73,
+    "match": 1.0
+  },
+  "n_step_three_twelve_rounds_eight_in_sixteen_hold_twelve_out_ei": {
+    "fp": "f8c2336e83fb",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 8.28,
+    "match": 1.0
+  },
+  "n_step_two_eight_rounds_eight_in_sixteen_hold_twelve_out_eight": {
+    "fp": "de61b5b0d93a",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 8.73,
+    "match": 1.0
+  },
+  "n_step_two_eight_rounds_six_in_twelve_hold_nine_out_six_hold": {
+    "fp": "9565c841f552",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 9.46,
+    "match": 1.0
+  },
+  "n_step_two_eighteen_rounds_six_in_twelve_hold_nine_out_six_hol": {
+    "fp": "3b3f1ad0cc66",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 8.24,
+    "match": 1.0
+  },
+  "n_ten_more_seconds": {
+    "fp": "a7b5b5dfaf31",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 1.12,
+    "match": 1.0
+  },
+  "n_third_hold": {
+    "fp": "35c6bd883ad6",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 1.91,
+    "match": 1.0
+  },
+  "n_thirty_seconds": {
+    "fp": "c91f1afff731",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 1.04,
     "match": 1.0
   },
   "n_three_hums": {

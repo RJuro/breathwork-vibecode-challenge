@@ -1,4 +1,22 @@
 {
+  "deep": {
+    "file": "deep.mp3",
+    "v": 1,
+    "shift": -1,
+    "seconds": 161.9
+  },
+  "focus": {
+    "file": "focus.mp3",
+    "v": 2,
+    "shift": -1,
+    "seconds": 135.8
+  },
+  "night": {
+    "file": "night.mp3",
+    "v": 2,
+    "shift": 0,
+    "seconds": 154.8
+  },
   "tide": {
     "file": "tide.mp3",
     "v": 3,

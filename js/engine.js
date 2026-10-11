@@ -138,15 +138,26 @@ export function exitOf(plan, seg) {
 /** Guided hold time per recorded hold, from the timeline alone (no reliance on screen
  *  frames, which stop in background tabs). `skips` are [from, to] jumps made with
  *  "Breathe now"; `endT` is where playback stopped. */
-export function holdResults(plan, skips, endT) {
+export function holdResults(plan, skips, endT, all = false) {
   const out = [];
   for (const s of plan.segs) {
-    if (s.kind !== 'hold' || !s.record || s.start >= endT) continue;
+    if (s.kind !== 'hold' || (!s.record && !all) || s.start >= endT) continue;
     if (skips.some(([from, to]) => from < s.start && to >= s.end)) continue; // jumped over entirely
     const jump = skips.find(([from]) => from >= s.start && from < s.end);
     out.push(Math.max(0, Math.min(jump ? jump[0] : s.end, endT) - s.start));
   }
   return out;
+}
+
+/** Seconds spent holding the breath: every hold step as it was actually held, plus the held
+ *  phases (top, bottom) of paced breathing, up to `endT`. */
+export function retention(plan, skips, endT) {
+  let s = holdResults(plan, skips, endT, true).reduce((a, b) => a + b, 0);
+  for (const g of plan.segs) {
+    if (g.kind !== 'pace' || g.start >= endT) continue;
+    for (const p of g.phases) if ((p.phase === 'top' || p.phase === 'bottom') && p.start < endT) s += Math.min(p.end, endT) - p.start;
+  }
+  return s;
 }
 
 const ease = (x) => 0.5 - Math.cos(Math.PI * Math.min(1, Math.max(0, x))) / 2;
@@ -192,6 +203,8 @@ export function stateAt(plan, t) {
       out.sub = `${ph.breath + 1} / ${seg.count}`;
     } else if (seg.style === 'count') {
       out.sub = String(Math.max(1, Math.ceil(ph.end - t - 0.05)));
+    } else if (seg.style === 'tally') {
+      out.sub = `${ph.breath + 1} / ${seg.count}`;
     }
   } else if (seg.kind === 'hold') {
     const el = Math.max(0, t - seg.start);
@@ -205,6 +218,7 @@ export function stateAt(plan, t) {
     // Natural breathing: a slow, unforced drift (~5 s cycle).
     out.phase = 'rest';
     out.scale = 0.64 + 0.06 * Math.sin((t / 5.5) * Math.PI * 2);
+    out.label = seg.label || ''; // a labelled rest (between holds) shows a countdown
   }
   return out;
 }
