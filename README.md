@@ -105,13 +105,11 @@ guide are in A), cuts it where the level matches the opening so the loop is seam
 to mono and updates `audio/music/manifest.json`.
 Each practice names a small pool of beds (`music: ['night', 'deep']`), and each new session of
 that practice plays the next one that exists (by its count in the log), so long practices don't
-always sound the same. Beds: `night` (Suno: *After the Party*), `focus` (Suno: *A Major Morning*),
-`tide` (*A-Frame Stillness*), `transit` (*Pink Noise Cocoon*), and five recorded from **Lyria
-RealTime** (`~/Desktop/kumbha-music/realtime/record.py`, outside the repo): `deep`, `dusk`, `keys`,
-`terrace`, `swell`. RealTime is instrumental only and has real controls, so drums are muted, density
-and brightness kept low, and the key locked to A major / F♯ minor; prompts are short weighted phrases,
-crossfaded over the recording. (Lyria 3.5 song generation was dropped: it has no exclusion controls,
-added beats and even spoken tags, and its output carries DC offset and sub-bass rumble.)
+always sound the same. Beds (all Suno): `night` (*After the Party*), `focus` (*A Major Morning*), `tide` (*A-Frame
+Stillness*), `transit` (*Pink Noise Cocoon*). The pools also name `deep`, `dusk`, `keys`, `terrace`
+and `swell`, slots that are empty for now: a pool skips beds that don't exist, so adding a track
+with `add_music.py` puts it into rotation. AI music tried and dropped: Lyria 3.5 songs (no exclusion
+controls; beats, a spoken stock tag, DC offset and sub-bass) and Lyria RealTime (aimless, judged garbage).
 `add_music.py` low-cuts at 35 Hz and limits peaks; prefer `--shift 0` for RealTime beds.
 Tracks are mixed to mono, level-matched, looped with a 6 s crossfade
 and ducked under the voice; without a track the app plays a soft drone.
