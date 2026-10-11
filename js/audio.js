@@ -87,10 +87,12 @@ export async function allAudioUrls() {
   return [...cues, ...Object.values(music).map((m) => `audio/music/${m.file}?v=${m.v || 1}`)];
 }
 
-/** A practice's background track: the first of `names` that has been added, or null. */
-export async function loadMusic(names) {
+/** A practice's background track. `names` is its pool of beds; `pick` (the number of sessions
+ *  already done) rotates through the ones that exist, so a practice doesn't always sound the same. */
+export async function loadMusic(names, pick = 0) {
   const { music } = await loadManifests();
-  const m = [].concat(names || []).map((n) => music[n]).find(Boolean);
+  const pool = [].concat(names || []).map((n) => music[n]).filter(Boolean);
+  const m = pool[pick % pool.length];
   return m ? decodeUrl(`audio/music/${m.file}?v=${m.v || 1}`) : null;
 }
 

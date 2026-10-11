@@ -100,7 +100,7 @@ export const tide = {
   voice: 'mira',
   blurb: 'Humming and quiet holds for a scratchy-throat day. Comfort, not a cure.',
   lede: 'For the scratchy-throat day: nose breathing, three short sets of humming, and three rounds of quiet holds. Warming and settling. Humming raises nasal nitric oxide, but no study shows breathwork treats a cold.',
-  music: 'tide',
+  music: ['tide', 'swell'],
   accent: ['#f6c48f', '#e0785a'],
   intensity: ['none', 'gentle', 'standard', 'deeper'],
   intensityNotes: {
@@ -253,7 +253,7 @@ export const clearNose = {
   voice: 'leo',
   blurb: 'Three hums, breathe light, three pinch-and-nod holds, three more hums.',
   lede: 'For a stuffy nose. A breathing-retraining exercise for unblocking the nose, kept gentle for a cold, with a short set of hums at each end.',
-  music: 'tide',
+  music: ['tide', 'swell'],
   accent: ['#cfe8ff', '#5b8fd6'],
   sky: 'clear',
   intensity: ['none', 'standard'],

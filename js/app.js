@@ -257,7 +257,7 @@ async function prepare() {
   plan = compile(f, durOf(packs[f.voice]), opts);
   renderMap();
   const ids = [...new Set(plan.voice.map((v) => v.id))];
-  const [loaded, music] = await Promise.all([loadCues(ids, f.voice), settings.music ? loadMusic(f.music) : null]);
+  const [loaded, music] = await Promise.all([loadCues(ids, f.voice), settings.music ? loadMusic(f.music, readLog().filter((e) => e.id === f.id).length) : null]);
   if (token !== renderToken) return;
   buffers = loaded;
   const durs = Object.fromEntries(Object.entries(buffers).filter(([, b]) => b).map(([k, b]) => [k, b.duration]));

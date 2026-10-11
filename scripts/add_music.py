@@ -4,7 +4,7 @@
 The app's drone, bells and hum guide are tuned to A, so the track is moved into A major by
 resampling (a semitone is a ~6% speed change, inaudible on ambient music). The smallest
 shift that fits the track's notes to A major is used unless you pass --shift. The result
-is mono (the app mixes to mono anyway), low-cut at 35 Hz, peak-limited, trimmed, and listed in
+is mono (the app mixes to mono anyway), low-cut at 40 Hz (4-pole), peak-limited, trimmed, and listed in
 the manifest.
 
     python3 scripts/add_music.py ~/Downloads/track.mp3 tide
@@ -90,7 +90,7 @@ def main():
     # Relabel the sample rate (pitch and speed move together), then resample back. Cut DC and
     # sub-bass rumble (it makes small speakers pump) and keep peaks under 0 dB. Only
     # click-proof edge fades: the app crossfades the loop itself.
-    af = (f"asetrate={round(rate * ratio)},aresample=44100,highpass=f=35:p=2,alimiter=limit=0.8:level=0,"
+    af = (f"asetrate={round(rate * ratio)},aresample=44100,highpass=f=40:p=2,highpass=f=40:p=2,alimiter=limit=0.8:level=0,"
           f"afade=t=in:d=0.05,afade=t=out:st={length - 0.05:.2f}:d=0.05")
     subprocess.run(["ffmpeg", "-v", "error", "-y", *trim, "-i", args.src, "-af", af, "-ac", "1", "-ar", "44100", "-b:a", "96k", str(out)], check=True)
 
