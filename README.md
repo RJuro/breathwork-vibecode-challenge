@@ -85,11 +85,11 @@ python3 scripts/add_music.py ~/Downloads/track.mp3 tide
 It moves the track into A major with the smallest pitch shift (the app's drone, bells and hum
 guide are in A), cuts it where the level matches the opening so the loop is seamless, converts
 to mono and updates `audio/music/manifest.json`.
-Slots: `deep` (the Retention sessions), `focus` (Reps, Box), `night` (Cool-down, Land), all made with
-Lyria 3.5 from prompts that describe a beatless bed for a breathwork app (prompts kept outside the repo
-in `~/Desktop/kumbha-music/lyria/v2/`); `tide` (Turn the Tide, Clear Nose; *A-Frame Stillness*) and
-`transit` (Window Seat; *Pink Noise Cocoon*). A practice can list fallbacks: `music: ['deep', 'tide']`.
-Lyria often ignores the requested key; pass a small `--shift` (±1) rather than accept a big automatic one. Tracks are mixed to mono, level-matched, looped with a 6 s crossfade
+Slots: `night` (Retention, Cool-down, Land; Suno: *After the Party*), `focus` (Reps, Box; Suno:
+*A Major Morning*), `tide` (Turn the Tide, Clear Nose; *A-Frame Stillness*) and `transit` (Window Seat;
+*Pink Noise Cocoon*). A practice can list fallbacks: `music: ['night', 'tide']`. Lyria 3.5 was tried
+and dropped (odd soundscapes, sub-bass rumble). Suno prompts work best with only the wanted sound in
+Style and the unwanted in Exclude. Prefer a small `--shift` (0 or ±1) over a big automatic one. Tracks are mixed to mono, level-matched, looped with a 6 s crossfade
 and ducked under the voice; without a track the app plays a soft drone.
 
 ## Safety
