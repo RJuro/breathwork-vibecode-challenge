@@ -55,6 +55,11 @@ runners on the index lines and a pointer tilt; the session map shares that look 
 reveal as they scroll into view, and every tile drawing acts out its practice on hover. All of it is
 static under prefers-reduced-motion.
 
+Paced steps speak every phase ("Breathe in." "Hold." "Out.", and the side in Alternate Nostril), so
+every practice works with eyes closed: a pace step's `calls(phase, breath)` gives the line, and the
+engine fits the step's tips into the gaps between calls, or, when a tip is too long for any gap,
+silences as few calls as it can (the in-call last). Lights Out stays quiet on purpose.
+
 In a session, *Skip ›* (or the right arrow key) jumps to the next section; skipped time counts
 neither as practice nor as held breath.
 

@@ -631,6 +631,10 @@
     "text": "About two minutes to go.",
     "kind": "count"
   },
+  "n_and_breathe_in": {
+    "text": "And breathe in.",
+    "kind": "count"
+  },
   "n_and_out_as_slowly_as_you_can": {
     "text": "And out, as slowly as you can.",
     "kind": "count"
@@ -977,6 +981,18 @@
   },
   "n_one_more_minute": {
     "text": "One more minute.",
+    "kind": "count"
+  },
+  "n_out": {
+    "text": "Out.",
+    "kind": "count"
+  },
+  "n_out_through_the_left": {
+    "text": "Out through the left.",
+    "kind": "count"
+  },
+  "n_out_through_the_right": {
+    "text": "Out through the right.",
     "kind": "count"
   },
   "n_pace_five_four_and_a_half_breaths_a_minute": {

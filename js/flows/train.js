@@ -4,7 +4,10 @@
 // Voice tags (<exhales>, <chuckle>, <sighs>) are placed by hand; captions and the other
 // voices drop them.
 
-import { line, say, tip, num, Num, SAFETY_HTML, ev } from './lib.js';
+import { line, say, tip, num, Num, callsFor, SAFETY_HTML, ev } from './lib.js';
+
+const LEO = callsFor('leo');
+const MIRA = callsFor('mira');
 
 // ── Box ────────────────────────────────────────────────
 export const B = {
@@ -32,14 +35,6 @@ export const B = {
 const boxIntro = (s) => say(`Drill two. The box. In, hold, out, hold. ${Num(s)} counts each side.`);
 const boxUp = (s) => say(`Now ${num(s)} each side. Same shape, a little longer.`);
 const BOX_LABELS = (ph) => ({ in: 'In', top: 'Hold', out: 'Out', bottom: 'Hold' })[ph];
-/** "In. Hold. Out. Hold." on the first `rounds` rounds of a box with sides of `s` seconds. */
-const called = (s, rounds) =>
-  Array.from({ length: rounds }, (_, i) => [
-    { breath: i, say: B.in },
-    { breath: i, offset: s, say: B.hold },
-    { breath: i, offset: 2 * s, say: B.out },
-    { breath: i, offset: 3 * s, say: B.hold },
-  ]).flat();
 
 export const box = {
   id: 'box',
@@ -76,7 +71,7 @@ export const box = {
       color: '#7f95b3',
       steps: [
         { say: B.drillOne, gap: 0.6 },
-        { pace: { inhale: 4, exhale: 8 }, count: 6, style: 'count', cues: [{ breath: 1, say: B.layers }, { breath: 3, say: B.throat }, { breath: 5, say: B.lever }] },
+        { pace: { inhale: 4, exhale: 8 }, count: 6, style: 'count', calls: LEO, cues: [{ breath: 1, say: B.layers }, { breath: 3, say: B.throat }, { breath: 5, say: B.lever }] },
       ],
     };
     const close = {
@@ -94,7 +89,7 @@ export const box = {
         color: '#4a5d78',
         steps: [
           { say: B.stay, gap: 0.6 },
-          { pace: { inhale: 4, exhale: 8 }, count: 10, style: 'count', cues: [{ breath: 2, say: B.where }, { breath: 5, say: B.exact }, { breath: 9, say: B.lastOne }] },
+          { pace: { inhale: 4, exhale: 8 }, count: 10, style: 'count', calls: LEO, cues: [{ breath: 2, say: B.where }, { breath: 5, say: B.exact }, { breath: 8, offset: 4 + 0.9, say: B.lastOne }] },
         ],
       };
       return [arrive, tactical, stay, close];
@@ -119,7 +114,8 @@ export const box = {
             count: ra,
             style: 'count',
             labels: BOX_LABELS,
-            cues: [...called(a, 2), { breath: 3, say: B.softHold }, { breath: Math.min(5, ra - 2), say: B.where }, { breath: ra - 1, say: B.lastOne }],
+            calls: LEO,
+            cues: [{ breath: 2, say: B.softHold }, { breath: Math.min(5, ra - 3), say: B.where }, { breath: ra - 2, offset: 3 * a + 0.9, say: B.lastOne }],
           },
         ],
       },
@@ -130,7 +126,7 @@ export const box = {
         color: '#4a5d78',
         steps: [
           { say: boxUp(b), gap: 0.6 },
-          { pace: pace(b), count: rb, style: 'count', labels: BOX_LABELS, cues: [{ breath: 1, say: B.exact }, { breath: 2, say: B.study }, { breath: rb - 1, say: B.lastOne }] },
+          { pace: pace(b), count: rb, style: 'count', labels: BOX_LABELS, calls: LEO, cues: [{ breath: 1, say: B.exact }, { breath: 3, say: B.study }, { breath: rb - 2, offset: 3 * b + 0.9, say: B.lastOne }] },
         ],
       },
       close,
@@ -214,7 +210,7 @@ export const coolDown = {
       color: '#6bbaa0',
       steps: [
         { say: C.stepOne, gap: 0.6 },
-        { pace: { inhale: 4, exhale: 6 }, count: 6, style: 'count', cues: [{ breath: 2, say: C.low }] },
+        { pace: { inhale: 4, exhale: 6 }, count: 6, style: 'count', calls: MIRA, cues: [{ breath: 2, say: C.low }] },
       ],
     },
     {
@@ -228,12 +224,13 @@ export const coolDown = {
           pace: { inhale: 4, exhale: 8 },
           count: 15,
           style: 'count',
+          calls: MIRA,
           cues: [
             { breath: 1, say: C.why },
             { breath: 4, say: C.jaw },
             { breath: 7, say: C.nose },
             { breath: 10, say: C.study },
-            { breath: 13, say: C.twoMore },
+            { breath: 12, offset: 5.3, say: C.twoMore },
           ],
         },
       ],
@@ -243,7 +240,7 @@ export const coolDown = {
       title: 'Quiet',
       what: '4 in · 8 out, no talking',
       color: '#3f8f7a',
-      steps: [{ say: C.quiet, gap: 0.8 }, { pace: { inhale: 4, exhale: 8 }, count: 10, style: 'slow' }],
+      steps: [{ say: C.quiet, gap: 0.8 }, { pace: { inhale: 4, exhale: 8 }, count: 10, style: 'slow', calls: MIRA }],
     },
     {
       id: 'cd-return',

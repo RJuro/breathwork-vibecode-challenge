@@ -56,6 +56,14 @@ export const scaled = (s, opts) => Math.max(10, Math.round((s * (opts.holdScale 
 
 export const mmss = (s) => (s >= 60 ? `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}` : `${s}s`);
 
+/** Spoken phase calls per coach, for paced steps (`calls:` on a pace step, see engine.js): every breath
+ *  says its phases, so the practice works with eyes closed. */
+const CALL = {
+  leo: { in: line('box_in', 'Breathe in.'), hold: line('box_hold', 'Hold.'), out: line('box_out', 'Out.') },
+  mira: { in: say('And breathe in.'), hold: line('st_hold', 'Hold.'), out: say('Out.') },
+};
+export const callsFor = (voice) => (phase) => ({ in: CALL[voice].in, top: CALL[voice].hold, out: CALL[voice].out, bottom: CALL[voice].hold })[phase] || null;
+
 // Breath patterns
 export const PUMP = { inhale: 0.42, exhale: 0.58, level: 0.6, inLevel: 0.12 };
 

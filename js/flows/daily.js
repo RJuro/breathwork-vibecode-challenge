@@ -2,9 +2,11 @@
 // training; Lights Out (Mira) at bedtime; and the breathe-light set: Breath Check and Breathe
 // Light (Leo), Steady (Mira). Practices with their own level keys read `opts.level`.
 
-import { line, say, tip, num, SAFETY_HTML, ev } from './lib.js';
+import { line, say, tip, num, callsFor, SAFETY_HTML, ev } from './lib.js';
 import { B } from './train.js';
 
+const LEO = callsFor('leo');
+const MIRA = callsFor('mira');
 const BOX_LABELS = (ph) => ({ in: 'In', top: 'Hold', out: 'Out', bottom: 'Hold' })[ph];
 const SMALL = { inhale: 2, exhale: 2.5 };
 
@@ -56,7 +58,7 @@ export const ready = {
       color: '#7a6a8f',
       steps:
         mode === 'start'
-          ? [{ say: RY.even, gap: 0.6 }, { pace: { inhale: 4, exhale: 6 }, count: 6, style: 'count', cues: [{ breath: 2, say: RY.eyes }] }]
+          ? [{ say: RY.even, gap: 0.6 }, { pace: { inhale: 4, exhale: 6 }, count: 6, style: 'count', calls: LEO, cues: [{ breath: 2, say: RY.eyes }] }]
           : [
               { say: RY.box, gap: 0.6 },
               {
@@ -64,7 +66,8 @@ export const ready = {
                 count: 4,
                 style: 'count',
                 labels: BOX_LABELS,
-                cues: [{ breath: 0, say: B.in }, { breath: 0, offset: 4, say: B.hold }, { breath: 0, offset: 8, say: B.out }, { breath: 0, offset: 12, say: B.hold }, { breath: 1, say: B.softHold }],
+                calls: LEO,
+                cues: [{ breath: 1, say: B.softHold }],
               },
             ],
     };
@@ -88,7 +91,7 @@ export const ready = {
         title: 'Long out',
         what: '4 in · 8 out, five breaths',
         color: '#9a8058',
-        steps: [{ say: RY.long, gap: 0.6 }, { pace: { inhale: 4, exhale: 8 }, count: 5, style: 'count', cues: [{ breath: 1, say: RY.low }, { breath: 3, say: RY.why }] }],
+        steps: [{ say: RY.long, gap: 0.6 }, { pace: { inhale: 4, exhale: 8 }, count: 5, style: 'count', calls: LEO, cues: [{ breath: 1, say: RY.low }, { breath: 3, say: RY.why }] }],
       },
       box,
       ...(mode === 'stage'
@@ -168,8 +171,8 @@ export const betweenSets = {
           { say: BS.knees, bell: 'low', lead: 0.3, gap: 0.5 },
           { rest: free, label: 'Recover' },
           { say: BS.nose, gap: 0.5 },
-          { pace: { inhale: 4, exhale: 6 }, count: mixed, style: 'count', cues: mixed >= 3 ? [{ breath: 1, say: BS.why }] : [] },
-          ...(nose ? [{ say: BS.noseOnly, gap: 0.5 }, { pace: { inhale: 4, exhale: 6 }, count: nose, style: 'count' }] : []),
+          { pace: { inhale: 4, exhale: 6 }, count: mixed, style: 'count', calls: MIRA, cues: mixed >= 3 ? [{ breath: 1, say: BS.why }] : [] },
+          ...(nose ? [{ say: BS.noseOnly, gap: 0.5 }, { pace: { inhale: 4, exhale: 6 }, count: nose, style: 'count', calls: MIRA }] : []),
           { say: BS.ten, gap: 0 },
           { rest: 8, label: 'Get set' },
           { say: BS.go, bell: 'bell', gap: 0.5 },
@@ -268,7 +271,7 @@ export const resonance = {
             color: ['#9db8d4', '#89a8c8', '#7598bc', '#6288b0', '#4f78a4'][n],
             steps: [
               { say: say(`Pace ${num(n + 1)}. ${words} breaths a minute.`), bell: 'bell', gap: 0.6 },
-              { pace: { inhale: i, exhale: o }, count, style: 'count', cues: n === 3 ? [{ breath: 1, say: RS.slower }] : [] },
+              { pace: { inhale: i, exhale: o }, count, style: 'count', calls: LEO, cues: n === 3 ? [{ breath: 1, say: RS.slower }] : [] },
               { say: last ? RS.pick : RS.rate },
               ...(last ? [{ rest: 4 }] : [{ rest: 50, label: 'Breathe normally' }]),
             ],
@@ -281,7 +284,7 @@ export const resonance = {
     const quiet = Math.round(180 / cycle(pace));
     return [
       { id: 'calm-arrive', title: 'Arrive', what: 'Settle', color: '#a9c2d8', steps: [{ say: RS.welcome, bell: 'low', lead: 2 }, { say: RS.plan }, { rest: 4 }] },
-      { id: 'calm-ease', title: 'Ease in', what: '4 in · 5 out', color: '#8fb0d0', steps: [{ say: RS.ease, gap: 0.6 }, { pace: { inhale: 4, exhale: 5 }, count: 6, style: 'count' }] },
+      { id: 'calm-ease', title: 'Ease in', what: '4 in · 5 out', color: '#8fb0d0', steps: [{ say: RS.ease, gap: 0.6 }, { pace: { inhale: 4, exhale: 5 }, count: 6, style: 'count', calls: LEO }] },
       {
         id: 'calm-res',
         title: 'Resonance',
@@ -293,11 +296,12 @@ export const resonance = {
             pace: { inhale: pace[0], exhale: pace[1] },
             count: main,
             style: 'slow',
+            calls: LEO,
             cues: [{ breath: 2, say: RS.small }, { breath: 5, say: RS.nose }, { breath: 9, say: RS.light }, { breath: 14, say: RS.waves }, { breath: 22, say: RS.wander }, { breath: 30, say: RS.gadget }],
           },
         ],
       },
-      { id: 'calm-quiet', title: 'Quiet', what: 'Same pace, no talking', color: '#4f6f8f', steps: [{ say: RS.quiet, gap: 0.8 }, { pace: { inhale: pace[0], exhale: pace[1] }, count: quiet, style: 'slow' }] },
+      { id: 'calm-quiet', title: 'Quiet', what: 'Same pace, only the calls', color: '#4f6f8f', steps: [{ say: RS.quiet, gap: 0.8 }, { pace: { inhale: pace[0], exhale: pace[1] }, count: quiet, style: 'slow', calls: LEO }] },
       { id: 'close', title: 'Return', what: 'Natural breathing', color: '#b8cde0', steps: [{ say: RS.ret, bell: 'bell' }, { rest: 15 }, { say: RS.close }, { rest: 4 }] },
     ];
   },
@@ -549,7 +553,7 @@ export const breatheLight = {
         color: ['#8fbfae', '#76ad99', '#5e9a85', '#4d7f6d'][r],
         steps: [
           r === 0 ? { say: BL.lightHow, bell: 'bell', gap: 0.6 } : { say: last ? BL.last : BL.again, bell: 'bell', gap: 0.6 },
-          { pace: LIGHT, count: breaths, style: 'slow', cues },
+          { pace: LIGHT, count: breaths, style: 'slow', calls: (ph) => (ph === 'bottom' ? null : LEO(ph)), cues },
           ...(last ? [] : [{ say: BL.brk, gap: 0.3 }, { rest: 55, label: 'Break' }]),
         ],
       };
@@ -628,7 +632,7 @@ export const steady = {
     return [
       { id: 'balance-arrive', title: 'Settle', what: 'Mouth closed, nose only', color: '#b3a8f0', steps: [{ say: ST.welcome, bell: 'low', lead: 1 }, { say: ST.plan }, { say: ST.safety }, { say: ST.small }, { rest: 20 }] },
       { id: 'balance-holds', title: 'Tiny holds', what: `Ten holds of ${h} s`, color: '#857bdb', steps: cycles },
-      { id: 'balance-slow', title: 'Small and slow', what: '3 in · 6 out', color: '#6c63c9', steps: [{ say: ST.slow, bell: 'bell', gap: 0.6 }, { pace: { inhale: 3, exhale: 6, level: 0.3 }, count: 12, style: 'count' }] },
+      { id: 'balance-slow', title: 'Small and slow', what: '3 in · 6 out', color: '#6c63c9', steps: [{ say: ST.slow, bell: 'bell', gap: 0.6 }, { pace: { inhale: 3, exhale: 6, level: 0.3 }, count: 12, style: 'count', calls: MIRA }] },
       { id: 'close', title: 'Back', what: 'Use it any time', color: '#b9b0e6', steps: [{ say: ST.close, bell: 'low' }, { rest: 4 }] },
     ];
   },

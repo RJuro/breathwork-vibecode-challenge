@@ -489,6 +489,13 @@
     "duration": 1.85,
     "match": 1
   },
+  "n_and_breathe_in": {
+    "fp": "85d255a64ad8",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 1.51,
+    "match": 1.0
+  },
   "n_and_pause_up_to_fifteen_seconds_throat_soft": {
     "fp": "6aa04e41adff",
     "voice": "mira",
@@ -796,6 +803,27 @@
     "model": "gemini-3.8-flash-lite-tts",
     "duration": 0.73,
     "match": 1
+  },
+  "n_out": {
+    "fp": "e1bee8ac0c54",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 0.61,
+    "match": 1.0
+  },
+  "n_out_through_the_left": {
+    "fp": "d72cd13bb234",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 1.25,
+    "match": 1.0
+  },
+  "n_out_through_the_right": {
+    "fp": "14720c3490fe",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 1.85,
+    "match": 1.0
   },
   "n_round_four_thirty_breaths": {
     "fp": "d601b54d72df",

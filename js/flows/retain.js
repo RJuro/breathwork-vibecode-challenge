@@ -3,7 +3,7 @@
 // pauses for a headache on a plane or a train.
 // Voice tags are placed by hand; captions and on-device speech drop them.
 
-import { line, say, tip, num, Num, dur, mmss, scaled, milestones, holdEmpty, holdFull, SAFETY_HTML, ev } from './lib.js';
+import { line, say, tip, num, Num, dur, mmss, scaled, milestones, holdEmpty, holdFull, callsFor, SAFETY_HTML, ev } from './lib.js';
 import { B } from './train.js';
 
 const cap = (s) => s[0].toUpperCase() + s.slice(1);
@@ -38,13 +38,8 @@ const KB_STEPS = {
 };
 const ratio = (u) => ({ inhale: u, holdIn: 2 * u, exhale: 1.5 * u, holdOut: u });
 const RATIO_LABELS = (ph) => ({ in: 'In', top: 'Hold', out: 'Out', bottom: 'Hold, empty' })[ph];
-/** "Breathe in. Hold. Out. Hold." over round i of a ratio step with unit u. */
-const kbCalls = (u, i) => [
-  { breath: i, say: B.in },
-  { breath: i, offset: u, say: B.hold },
-  { breath: i, offset: 3 * u, say: B.out },
-  { breath: i, offset: 4.5 * u, say: B.hold },
-];
+const LEO = callsFor('leo');
+const MIRA = callsFor('mira');
 const kbIntro = (n, u, r) => say(`Step ${num(n)}. ${Num(r)} rounds. ${Num(u)} in, ${num(2 * u)} hold, ${num(1.5 * u)} out, ${num(u)} hold.`);
 
 export const kumbhaka = {
@@ -71,10 +66,12 @@ export const kumbhaka = {
     const steps = KB_STEPS[levelOf(opts)];
     const last = steps.length - 1;
     const cuesFor = (k, u, r) => {
-      if (k === 0) return [...kbCalls(u, 0), ...kbCalls(u, 1), { breath: 2, say: B.layers }, { breath: 3, say: K.slowOut }, { breath: 4, say: B.softHold }, { breath: 5, say: K.circle }];
-      const first = [...kbCalls(u, 0), { breath: 1, say: K.emptyHold }, { breath: 2, say: K.air }];
-      if (k < last) return [...first, { breath: 4, say: K.face }, { breath: r - 1, say: B.lastOne }];
-      return [...first, { breath: 3, say: K.rate }, { breath: 5, say: K.co2 }, { breath: 7, say: K.texts }, { breath: 8, say: K.wander }, { breath: r - 1, say: B.lastOne }];
+      // Tips go wherever they fit between the calls (engine.js); "Last one." sits in the empty hold before it.
+      const lastOne = { breath: r - 2, offset: 4.5 * u + 0.9, say: B.lastOne };
+      if (k === 0) return [{ breath: 1, say: B.layers }, { breath: 2, say: K.slowOut }, { breath: 3, say: B.softHold }, { breath: 4, say: K.circle }];
+      const first = [{ breath: 0, say: K.emptyHold }, { breath: 1, say: K.air }];
+      if (k < last) return [...first, { breath: 3, say: K.face }, lastOne];
+      return [...first, { breath: 2, say: K.rate }, { breath: 4, say: K.co2 }, { breath: 6, say: K.texts }, { breath: 8, say: K.wander }, lastOne];
     };
     return [
       {
@@ -92,7 +89,7 @@ export const kumbhaka = {
         steps: [
           ...(k === last ? [{ say: K.top, bell: 'bell' }] : []),
           { say: kbIntro(k + 1, u, r), bell: k === last ? undefined : 'bell', gap: 0.6 },
-          { pace: ratio(u), count: r, style: 'count', labels: RATIO_LABELS, cues: cuesFor(k, u, r) },
+          { pace: ratio(u), count: r, style: 'count', labels: RATIO_LABELS, calls: LEO, cues: cuesFor(k, u, r) },
         ],
       })),
       {
@@ -348,7 +345,7 @@ export const rounds = {
       color: '#8fcfb8',
       steps: [
         { say: R.slow, bell: 'bell', gap: 0.6 },
-        { pace: { inhale: 4, exhale: 6 }, count: 12, style: 'count' },
+        { pace: { inhale: 4, exhale: 6 }, count: 12, style: 'count', calls: MIRA },
         { say: R.quiet, bell: 'low' },
         { rest: 60 },
         { say: R.close },
@@ -427,15 +424,19 @@ const sides = (ph, i) => {
   if (ph === 'in') return left ? 'In · left' : 'In · right';
   if (ph === 'out') return left ? 'Out · right' : 'Out · left';
 };
-/** Side calls over one round (two breaths) of a step with in u, hold 4u, out 2u. */
-const anCalls = (u, i) => [
-  { breath: i, say: N.lInH },
-  { breath: i, offset: u, say: N.both },
-  { breath: i, offset: 5 * u, say: N.rOutH },
-  { breath: i + 1, say: N.rIn },
-  { breath: i + 1, offset: u, say: N.both },
-  { breath: i + 1, offset: 5 * u, say: N.lOutH },
-];
+/** Side calls on every breath (left on even breaths, right on odd). The first rounds say the full
+ *  instruction; after that, short calls. */
+const OUT_R = say('Out through the right.');
+const OUT_L = say('Out through the left.');
+const evenCalls = (ph, i) =>
+  ph === 'in' ? (i === 0 ? N.lIn : i % 2 ? N.rIn : N.lInH) : ph === 'out' ? (i === 0 ? N.rOut : i === 1 ? N.lOut : i % 2 ? OUT_L : OUT_R) : null;
+const holdCalls = (first) => (ph, i) => {
+  const full = first && i < 2;
+  if (ph === 'in') return i % 2 ? N.rIn : N.lInH;
+  if (ph === 'top') return full ? N.both : MIRA('top');
+  if (ph === 'out') return full ? (i % 2 ? N.lOutH : N.rOutH) : i % 2 ? OUT_L : OUT_R;
+  return null;
+};
 
 export const alternate = {
   id: 'alternate',
@@ -480,7 +481,8 @@ export const alternate = {
             style: 'count',
             labels: sides,
             pan: sidePan,
-            cues: [{ at: 0, say: N.lIn }, { at: 4, say: N.rOut }, { at: 8, say: N.rIn }, { at: 12, say: N.lOut }, { breath: 4, say: N.ears }, { breath: 8, say: N.track }],
+            calls: evenCalls,
+            cues: [{ breath: 4, say: N.ears }, { breath: 8, say: N.track }],
           },
         ],
       },
@@ -497,10 +499,13 @@ export const alternate = {
             style: 'count',
             labels: sides,
             pan: sidePan,
-            cues:
-              k === 0
-                ? [...anCalls(u, 0), { breath: 2, say: N.holdSoft }, { breath: 4, say: N.arm }, { breath: 6, say: N.air }, { breath: 8, say: N.rate }, { breath: 11, say: N.wander }, ...(b > 16 ? [{ breath: 16, say: N.track }] : []), { breath: b - 2, say: N.last }]
-                : [{ breath: 0, say: N.lInH }, { breath: 0, offset: u, say: N.both }, { breath: 2, say: N.bp }, { breath: 5, say: N.wander }, { breath: b - 2, say: N.last }],
+            calls: holdCalls(k === 0),
+            cues: [
+              ...(k === 0
+                ? [{ breath: 2, say: N.holdSoft }, { breath: 4, say: N.arm }, { breath: 6, say: N.air }, { breath: 8, say: N.rate }, { breath: 11, say: N.wander }, ...(b > 16 ? [{ breath: 16, say: N.track }] : [])]
+                : [{ breath: 2, say: N.bp }, { breath: 5, say: N.wander }]),
+              { breath: b - 2, offset: u + 1, say: N.last },
+            ],
           },
         ],
       })),
@@ -587,7 +592,7 @@ function seatPauses(opts) {
       title: 'Long exhale',
       what: '4 in · 8 out, no pauses',
       color: '#6f7fc7',
-      steps: [{ say: W.long, bell: 'bell', gap: 0.6 }, { pace: { inhale: 4, exhale: 8 }, count: 20, style: 'count', cues: [{ breath: 3, say: W.longWhy }] }],
+      steps: [{ say: W.long, bell: 'bell', gap: 0.6 }, { pace: { inhale: 4, exhale: 8 }, count: 20, style: 'count', calls: MIRA, cues: [{ breath: 3, say: W.longWhy }] }],
     };
   }
   // Plane: five 15 s pauses on two-thirds-full lungs (cabin air starts you lower).
@@ -672,6 +677,7 @@ export const windowSeat = {
           pace: { inhale: 4, exhale: 6 },
           count: 35,
           style: 'count',
+          calls: MIRA,
           cues: [
             { breath: 2, say: W.small },
             { breath: 4, say: W.window },
@@ -695,7 +701,7 @@ export const windowSeat = {
       color: '#9a8fd6',
       steps: [
         { say: W.release, bell: 'bell', gap: 0.6 },
-        { pace: { inhale: 4, exhale: 6 }, count: 12, style: 'count', cues: [{ breath: 2, say: W.tiltR }, { breath: 6, say: W.tiltL }, { breath: 10, say: W.centre }] },
+        { pace: { inhale: 4, exhale: 6 }, count: 12, style: 'count', calls: MIRA, cues: [{ breath: 2, say: W.tiltR }, { breath: 6, say: W.tiltL }, { breath: 10, say: W.centre }] },
       ],
     },
     {

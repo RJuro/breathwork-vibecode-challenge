@@ -36,6 +36,31 @@ export function compile(flow, durs = {}, opts = {}) {
   };
   const lineDur = (c) => durs[c.id] ?? estimateDur(plain(c.text));
 
+  // Spoken phase calls ("Breathe in." "Hold." "Out.") on every breath of a paced step, for eyes-closed
+  // practice; `calls(phase, breath)` gives the line or null. The step's other cues go into the first gap
+  // between calls that holds them (within two breaths). A cue too long for any gap starts right after a
+  // call and silences the fewest calls it can (in and out weigh most: they matter most with eyes
+  // closed, the start of a breath above all). Count lines ("Last one.") never move.
+  const placeWithCalls = (cues, phases, calls, end, cycle) => {
+    const list = phases.map((ph) => ({ t: ph.start, c: calls(ph.phase, ph.breath), w: { in: 2.5, out: 2 }[ph.phase] ?? 1 })).filter((k) => k.c);
+    const taken = [];
+    const free = (a, b) => !taken.some(([x, y]) => a < y && b > x);
+    const callsIn = (a, b) => list.filter((k) => !k.off && k.t >= a && k.t < b);
+    const cost = (a, b) => callsIn(a, b).reduce((n, k) => n + k.w, 0);
+    for (const x of cues.sort((p, q) => p.t - q.t)) {
+      const d = lineDur(x.c) + 0.4;
+      const tries = [x.t, ...list.filter((k) => k.t >= x.t - 0.01).map((k) => k.t + lineDur(k.c) + 0.3)].filter((w) => w >= x.t && w - x.t <= 2 * cycle && w + d <= end + 0.5 && free(w, w + d));
+      let at = x.t;
+      if (x.c.kind !== 'count' && tries.length) {
+        at = tries.find((w) => !cost(w - 0.2, w + d)) ?? tries.reduce((best, w) => (cost(w - 0.2, w + d) < cost(best - 0.2, best + d) ? w : best));
+      }
+      for (const k of callsIn(at - 0.2, at + d)) k.off = true;
+      taken.push([at, at + d]);
+      speak(x.c, at);
+    }
+    for (const k of list) if (!k.off) speak(k.c, k.t);
+  };
+
   for (const section of defs) {
     for (const step of section.steps) {
       const start = t;
@@ -85,10 +110,11 @@ export function compile(flow, durs = {}, opts = {}) {
             t += d;
           }
         }
-        for (const c of step.cues || []) {
-          const at = c.breath != null ? breathStarts[Math.min(c.breath, step.count - 1)] : start + c.at;
-          speak(c.say, at + (c.offset || 0));
-        }
+        const cues = (step.cues || [])
+          .map((c) => ({ c: c.say, t: (c.breath != null ? breathStarts[Math.min(c.breath, step.count - 1)] : start + c.at) + (c.offset || 0) }))
+          .filter((x) => !skip(x.c));
+        if (!step.calls) for (const x of cues) speak(x.c, x.t);
+        else placeWithCalls(cues, phases, step.calls, t, step.count > 1 ? breathStarts[1] - breathStarts[0] : t - start);
         segs.push({ ...base, kind: 'pace', end: t, phases, style: step.style || 'slow', count: step.count, label: step.label, group: step.group });
       } else if (step.hold) {
         const target = Math.round(step.seconds);

@@ -5,8 +5,9 @@
 // holds stay near-silent, with the coaching in the recovery; and a minute's rest before
 // standing up after holds.
 
-import { line, say, tip, PUMP, Num, num, mmss, scaled, holdEmpty, holdFull, SAFETY_HTML, ev } from './lib.js';
+import { line, say, tip, callsFor, PUMP, Num, num, mmss, scaled, holdEmpty, holdFull, SAFETY_HTML, ev } from './lib.js';
 
+const MIRA = callsFor('mira');
 const HUM = { inhale: 4, exhale: 9, holdOut: 1, hum: true }; // ~14 s a hum: where HRV peaked in one study
 
 // ── Turn the Tide ──────────────────────────────────────
@@ -59,7 +60,7 @@ function round(n, o, opts) {
       what: '5 slow breaths · no holds',
       steps: [
         { say: say(`Round ${num(n)}. Five slow breaths, then rest.`), bell: 'bell', gap: 0.6 },
-        { pace: { inhale: 4, exhale: 6 }, count: 5, style: 'count' },
+        { pace: { inhale: 4, exhale: 6 }, count: 5, style: 'count', calls: MIRA },
         { rest: 20, cues: [{ at: 1, say: T.nh }] },
       ],
     };
@@ -68,7 +69,7 @@ function round(n, o, opts) {
   const g = opts.gentle;
   const group = `r${n}`;
   const breaths = g
-    ? [{ say: T.gentle, gap: 0.6 }, { pace: { inhale: 4, exhale: 6 }, count: 5, style: 'count' }]
+    ? [{ say: T.gentle, gap: 0.6 }, { pace: { inhale: 4, exhale: 6 }, count: 5, style: 'count', calls: MIRA }]
     : [
         { say: say(`${Num(o.pumps)} quick breaths. Go.`), gap: 0.4 },
         { pace: PUMP, count: o.pumps, style: 'pump', cues: [...(o.pumpCue ? [{ breath: 8, say: o.pumpCue }] : []), { breath: o.pumps - 5, say: T.lastFew }] },
@@ -129,9 +130,9 @@ export const tide = {
         { say: T.ribs },
         { rest: 8 },
         { say: T.ladder, gap: 0.8 },
-        { pace: { inhale: 4, exhale: 4 }, count: 2, style: 'count' },
-        { pace: { inhale: 5, exhale: 5 }, count: 2, style: 'count', cues: [{ at: 0, say: T.five }] },
-        { pace: { inhale: 6, exhale: 6 }, count: 3, style: 'count', cues: [{ at: 0, say: T.six }] },
+        { pace: { inhale: 4, exhale: 4 }, count: 2, style: 'count', calls: MIRA },
+        { pace: { inhale: 5, exhale: 5 }, count: 2, style: 'count', calls: MIRA, cues: [{ at: 0, say: T.five }] },
+        { pace: { inhale: 6, exhale: 6 }, count: 3, style: 'count', calls: MIRA, cues: [{ at: 0, say: T.six }] },
       ],
     },
     {
@@ -178,7 +179,7 @@ export const tide = {
       color: '#7cc7c4',
       steps: [
         { say: T.cool, bell: 'bell', gap: 0.8 },
-        { pace: { inhale: 4, exhale: 8 }, count: 5, style: 'count', cues: [{ breath: 1, say: T.vagus }] },
+        { pace: { inhale: 4, exhale: 8 }, count: 5, style: 'count', calls: MIRA, cues: [{ breath: 1, say: T.vagus }] },
         { say: T.humLast, gap: 0.6 },
         { pace: HUM, count: 3, style: 'hum' },
         { say: T.checkin, lead: 1 },
