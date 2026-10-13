@@ -125,7 +125,7 @@ export const land = {
   voice: 'mira',
   blurb: 'Lie down. A slow scan from your feet to your head. Nothing to fix.',
   lede: 'A body scan, lying down. Attention moves slowly from the feet to the head, with quiet in between. For after training, or for the end of the day.',
-  music: ['dusk', 'night'],
+  music: ['dusk', 'mind'],
   accent: ['#cfc6f2', '#5b4f9e'],
   sky: 'night',
   intensity: ['gentle', 'standard', 'deeper'],

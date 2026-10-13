@@ -108,15 +108,20 @@ guide are in A), cuts it where the level matches the opening so the loop is seam
 to mono and updates `audio/music/manifest.json`.
 Each practice names a small pool of beds (`music: ['night', 'deep']`), and each new session of
 that practice plays the next one that exists (by its count in the log), so long practices don't
-always sound the same. Beds: `night` (Suno: *After the Party*), `focus` (Suno: *A Major Morning*), `midnight` (Suno:
+always sound the same. Beds: `night` (Suno: *After the Party*, now only under Cool-down), `focus` (Suno: *A Major Morning*), `midnight` (Suno:
 *Midnight Focus*), `tide` (*A-Frame Stillness*), `transit` (*Pink Noise Cocoon*), and five placeholder
-tracks cut from two AI-generated focus-music compilations on YouTube (to be regenerated): `deep`
-(*Closing Hour*) and `current` (*Quiet Current*) under Retention, `swell` (*Cold Glass*) under Under
+tracks cut from two AI-generated focus-music compilations on YouTube (to be regenerated): `mind`
+(*Productive Mind*), `deep` (*Closing Hour*), `building` (*Keep Building*) and `current` (*Quiet
+Current*) under Retention, `dusk` (*Purposeful Work*) and `mind` under Land and Lights Out, `swell` (*Cold Glass*) under Under
 the weather and Breathe light, `terrace` (*At Rest*) under Cool-down, `keys` (*Flow State*) under
 Reps and Ready. All of these have a soft beat; they were chosen by their percussive share (a
 harmonic/percussive split of the spectrogram, above 150 Hz): 0.19–0.25, against 0.30 for Midnight
 Focus and 0.07–0.12 for the beatless beds. Box, Resonance, Land and Lights Out keep beatless beds
-only. `dusk` is still empty.
+only.
+
+Voice clips are cleaned after loudness normalisation (`DEHISS` in `generate_cues_gemini.py`: low-cut,
+adaptive denoise, a soft gate on the pauses, a cut above 11 kHz); `CUE_REV` in `js/audio.js` versions
+the clip URLs, so bump it whenever every clip is reprocessed in place.
 `add_music.py` low-cuts at 35 Hz and limits peaks; prefer `--shift 0` for RealTime beds.
 Tracks are mixed to mono, level-matched, looped with a 6 s crossfade
 and ducked under the voice; without a track the app plays a soft drone.

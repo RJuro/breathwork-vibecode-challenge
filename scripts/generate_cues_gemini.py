@@ -124,6 +124,11 @@ def synth(text, voice, model, take=0):
     return base64.b64decode(audio["data"]), rate
 
 
+# loudnorm lifts the noise between phrases; this takes it back out: low-cut, adaptive denoise, a soft
+# gate (pauses -20 dB, not muted), and a cut above 11 kHz where TTS hiss sits.
+DEHISS = "highpass=f=70,afftdn=nr=15:nf=-60:tn=1,agate=threshold=0.004:range=0.1:ratio=4:attack=3:release=150,lowpass=f=11000"
+
+
 def polish(audio: bytes, rate: int, dst: Path, tempo: float = 1.0, pre: str = ""):
     """WAV or raw PCM -> trimmed, -19 LUFS, mono 24 kHz mp3 (same treatment as the Tom pack).
     tempo < 1 slows the speech without changing its pitch; `pre` is a voice's own ffmpeg filter
@@ -133,7 +138,7 @@ def polish(audio: bytes, rate: int, dst: Path, tempo: float = 1.0, pre: str = ""
             "areverse,silenceremove=start_periods=1:start_threshold=-50dB:start_silence=0.15,areverse")
     subprocess.run([
         "ffmpeg", "-v", "error", "-y", *src, "-i", "pipe:0",
-        "-af", f"{pre + ',' if pre else ''}{trim},{f'atempo={tempo},' if tempo != 1 else ''}loudnorm=I=-19:TP=-2:LRA=7,afade=t=in:d=0.02",
+        "-af", f"{pre + ',' if pre else ''}{trim},{f'atempo={tempo},' if tempo != 1 else ''}loudnorm=I=-19:TP=-2:LRA=7,{DEHISS},afade=t=in:d=0.02",
         "-ac", "1", "-ar", "24000", "-b:a", "64k", str(dst),
     ], input=audio, check=True)
 

@@ -351,7 +351,7 @@ export const lightsOut = {
   voice: 'mira',
   blurb: 'Fifteen minutes of slow breathing in bed. The voice fades out.',
   lede: 'Six slow breaths a minute in bed, in through the nose and out through pursed lips. Mira talks you through a body sweep for the first few minutes, then goes quiet.',
-  music: ['dusk', 'night'],
+  music: ['dusk', 'mind'],
   accent: ['#cfc6f2', '#3d3570'],
   sky: 'night',
   intensity: ['gentle', 'standard', 'deeper'],

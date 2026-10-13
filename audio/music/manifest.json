@@ -1,4 +1,10 @@
 {
+  "building": {
+    "file": "building.mp3",
+    "v": 1,
+    "shift": 0,
+    "seconds": 144.4
+  },
   "current": {
     "file": "current.mp3",
     "v": 1,
@@ -10,6 +16,12 @@
     "v": 1,
     "shift": -1,
     "seconds": 211.1
+  },
+  "dusk": {
+    "file": "dusk.mp3",
+    "v": 1,
+    "shift": 0,
+    "seconds": 132.6
   },
   "focus": {
     "file": "focus.mp3",
@@ -28,6 +40,12 @@
     "v": 1,
     "shift": -2,
     "seconds": 182.6
+  },
+  "mind": {
+    "file": "mind.mp3",
+    "v": 1,
+    "shift": 0,
+    "seconds": 73.8
   },
   "night": {
     "file": "night.mp3",

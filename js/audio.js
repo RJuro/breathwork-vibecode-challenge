@@ -28,6 +28,8 @@ async function fetchJSON(url) {
 
 // Voice packs: one per instructor (Gemini TTS designed voices). A practice names its own (`flow.voice`).
 export const PACKS = { leo: 'audio/cues-leo', mira: 'audio/cues-mira' };
+/** Bumped when every clip is reprocessed in place (2: hiss removed), so caches fetch the new files. */
+const CUE_REV = 2;
 
 let manifests = null;
 /** Cue manifests per voice pack (written by scripts/generate_cues_gemini.py) and audio/music/manifest.json. */
@@ -73,7 +75,7 @@ export async function loadCues(ids, pack) {
   const out = {};
   await Promise.all(
     ids.map(async (id) => {
-      out[id] = cues[id] ? await decodeUrl(`${PACKS[pack]}/${id}.mp3?v=${cues[id].fp}`) : null;
+      out[id] = cues[id] ? await decodeUrl(`${PACKS[pack]}/${id}.mp3?v=${cues[id].fp}.${CUE_REV}`) : null;
     })
   );
   return out;
@@ -83,7 +85,7 @@ export async function loadCues(ids, pack) {
  *  so fetching them all fills the service worker's audio cache for offline use. */
 export async function allAudioUrls() {
   const { packs, music } = await loadManifests();
-  const cues = Object.entries(packs).flatMap(([p, m]) => Object.entries(m).map(([id, c]) => `${PACKS[p]}/${id}.mp3?v=${c.fp}`));
+  const cues = Object.entries(packs).flatMap(([p, m]) => Object.entries(m).map(([id, c]) => `${PACKS[p]}/${id}.mp3?v=${c.fp}.${CUE_REV}`));
   return [...cues, ...Object.values(music).map((m) => `audio/music/${m.file}?v=${m.v || 1}`)];
 }
 
