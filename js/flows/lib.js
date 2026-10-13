@@ -17,6 +17,8 @@
 export const line = (id, text, kind = 'guide') => ({ id, text, kind });
 /** A teacher's tip: spoken at the Guided and Full voice levels, skipped at Quiet. */
 export const tip = (id, text) => line(id, text, 'tip');
+/** Part of a science thread told over several holds: heard at Guided and Full, skipped at Quiet. */
+export const lesson = (id, text) => line(id, text, 'lesson');
 
 const slug = (s) =>
   s
@@ -58,16 +60,17 @@ export const mmss = (s) => (s >= 60 ? `${Math.floor(s / 60)}:${String(s % 60).pa
 
 /** Spoken phase calls per coach, for paced steps (`calls:` on a pace step, see engine.js): every breath
  *  says its phases, so the practice works with eyes closed. */
+const C = (id, text) => line(id, text, 'count');
 const CALL = {
   leo: {
-    in: [line('box_in', 'Breathe in.'), line('box_in_v2', 'Breathe in.'), line('box_in_v3', 'Breathe in.'), line('leo_in_and', 'And breathe in.')],
-    hold: [line('box_hold', 'Hold.'), line('box_hold_v2', 'Hold.'), line('box_hold_v3', 'Hold.'), line('leo_hold_and', 'And hold.')],
-    out: [line('box_out', 'Out.'), line('box_out_v2', 'Out.'), line('box_out_v3', 'Out.'), line('leo_out_and', 'And out.')],
+    in: [C('box_in', 'Breathe in.'), C('leo_in_nose', 'In through the nose.'), C('leo_in_and', 'And breathe in.'), C('leo_in_slow', 'Breathe in, slow.')],
+    hold: [C('box_hold', 'Hold.'), C('leo_hold_there', 'Hold it there.'), C('leo_hold_and', 'And hold.'), C('leo_hold_pause', 'Pause.')],
+    out: [C('box_out', 'Out.'), C('leo_out_let', 'Let it out.'), C('leo_out_and', 'And out.'), C('leo_out_slow', 'Slowly out.')],
   },
-  mira: { in: [say('And breathe in.')], hold: [line('st_hold', 'Hold.')], out: [say('Out.')] },
+  mira: { in: [say('And breathe in.')], hold: [C('st_hold', 'Hold.')], out: [say('Out.')] },
 };
-/** Takes rotate breath by breath in a fixed shuffle (never the same take twice in a row, and the two
- *  holds of one breath differ), so the calls don't sound copy-pasted. */
+/** Different wordings rotate breath by breath in a fixed shuffle (never the same one twice in a row,
+ *  and the two holds of one breath differ), so the calls don't sound copy-pasted. */
 const pick = (list, i, k) => list[(3 * i + k) % list.length];
 export const callsFor = (voice) => (phase, i = 0) => {
   const c = CALL[voice];

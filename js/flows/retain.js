@@ -3,44 +3,78 @@
 // pauses for a headache on a plane or a train.
 // Voice tags are placed by hand; captions and on-device speech drop them.
 
-import { line, say, tip, num, Num, dur, mmss, scaled, milestones, holdEmpty, holdFull, callsFor, SAFETY_HTML, ev } from './lib.js';
-import { B } from './train.js';
+import { line, say, tip, lesson, num, Num, dur, mmss, scaled, milestones, holdEmpty, holdFull, callsFor, SAFETY_HTML, ev } from './lib.js';
 
 const cap = (s) => s[0].toUpperCase() + s.slice(1);
+const LEO = callsFor('leo');
+const MIRA = callsFor('mira');
 const tenMore = say('Ten more seconds.');
 const levelOf = (opts) => (opts.gentle ? 'gentle' : (opts.holdScale ?? 1) > 1 ? 'deeper' : 'standard');
 const STAY = line('tw_stay', 'Stay where you are for a minute before you get up. After holds, standing up fast can make you dizzy.');
 
 // ── Kumbhaka ───────────────────────────────────────────
+// Structure from a co-design pass with GPT Sol (docs/research/kumbhaka-plan-sol.md): a short arrival,
+// each step introduced, one shared breath in and all the way out before it, then the rounds with the
+// phases called on every breath. Most rounds are calls only; the content that is there is tied to
+// the phase it is about, and builds over the session (an effort check over three holds in the last
+// step). Forty seconds of free breathing between steps. Nothing is said twice.
 const K = {
-  welcome: line('kb_welcome', 'Welcome. Sit up tall on a cushion or a chair, hands resting on your knees, and close your eyes.'),
-  plan: line('kb_plan', "This is kumbhaka: in, hold, out, hold, at a fixed ratio. If you breathe in for four, you hold for eight, breathe out for six, and hold empty for four. We start short and step it up. If you need air before a count ends, just breathe."),
-  nose: line('kb_nose', 'Breathe through your nose the whole time, slow and quiet.', 'technique'),
-  slowOut: line('kb_slow_out', "Let the air out steadily, over the whole count. If you run out early, let it out slower next time.", 'technique'),
-  emptyHold: line('kb_empty_hold', 'The empty hold is usually the harder one. Keep your belly soft, and breathe if you need to.', 'technique'),
-  air: line('kb_air', 'If a hold gets too long, breathe. Join the rhythm again once your breathing feels easy.'),
-  circle: tip('kb_t_circle', "You don't have to count. If your eyes are open, the circle keeps time for you."),
-  face: tip('kb_t_face', 'Let your forehead, your eyes and your jaw go slack.'),
-  wander: tip('kb_t_wander', "If your mind's drifted off, come back on the next breath in."),
-  rate: line('kb_rate', "You're down to under two breaths a minute now. Most slow-breathing research is at about six a minute, so how much of it applies here isn't clear.", 'science'),
-  co2: line('kb_co2', 'During the holds, carbon dioxide builds up. That, more than low oxygen, is what makes you want to breathe.', 'science'),
-  texts: line('kb_texts', 'Kumbhaka means the held breath. In the old hatha yoga texts, the holds are the heart of the practice.'),
-  top: line('kb_top', 'Top step. Same rhythm, longer counts. Stay easy.'),
-  release: line('kb_release', 'Let go of the count, and breathe at your own pace.'),
-  notice: line('kb_notice', 'Stay here for a minute. See if the breath stays slow on its own.'),
-  close: line('kb_close', 'Open your eyes. If the top step stayed easy all the way through, try the next level next time.'),
+  welcome: line('kb_welcome2', "Get seated, or lie down somewhere comfortable. This is kumbhaka: a pause after breathing in, and another after breathing out."),
+  permission: line('kb_permission', "Breathe whenever you need to, even in the middle of a hold. If you feel dizzy or off, stop and breathe normally. And never do this in water."),
+  nose: line('kb_nose2', "Use your nose if it's comfortable, and keep the breathing quiet.", 'technique'),
+  // Step intros, by role (first / middle / last step).
+  size: line('kb_size', "Use a comfortable breath. There's no need to fill all the way up.", 'technique'),
+  leadFirst: line('kb_lead_first', "We'll breathe in together, then all the way out. The next breath in starts round one."),
+  longer: line('kb_longer', 'The counts get longer here. Let the calls do the counting.'),
+  leadMiddle: line('kb_lead_middle', "One breath in together, one full breath out, and then we're into the rounds."),
+  finishOk: line('kb_finish_ok', 'If the last step was a lot, you can finish on natural breathing here. That counts.'),
+  leadLast: line('kb_lead_last', 'Before the last sequence, one breath in with me and all the way out. Round one follows.'),
+  // In the rounds, tied to their phase.
+  shoulders: line('kb_shoulders', "Keep your shoulders loose while you hold. Don't bear down.", 'technique'),
+  evenOut: line('kb_even_out', 'Let the air leave evenly, without pushing.', 'technique'),
+  belly: tip('kb_t_belly2', 'At the bottom, pause without pulling your belly in.'),
+  ribs: line('kb_ribs', 'Let your lower ribs widen as you breathe in.', 'technique'),
+  rejoin: line('kb_rejoin', "If you lose the rhythm, take a few ordinary breaths. Rejoin on a fresh breath in when it feels easy."),
+  noticePause: tip('kb_t_notice_pause', "Notice the pause once the air has left."),
+  hands: line('kb_hands', "These holds are a good time to check for extra effort. Start with your hands. If they're gripping, let them go.", 'technique'),
+  jaw: line('kb_jaw', 'Next, your jaw. If your teeth are pressed together, let them part. You can hold without clenching.', 'technique'),
+  body: line('kb_body', 'Last check: is your whole body braced? Small movements are fine. Only the air needs to pause.', 'technique'),
+  support: tip('kb_t_support2', 'Let your attention rest where your body meets the floor.'),
+  // Between steps, and the close.
+  interval1: line('kb_interval_1', "That's the first step done. Breathe at your own pace now. No counts for the next forty seconds."),
+  interval2: line('kb_interval_2', "That's the second step. Take forty seconds of normal breathing before we set up the longer one."),
+  release: line('kb_release2', "That was the last hold. Let your breathing find its own pace. We'll stay here for a minute."),
+  nextTime: tip('kb_t_next_time', "Next time, pick the level you can finish without strain, empty holds included. Repeating a level is fine."),
+  close: line('kb_close2', "Open your eyes when you're ready, and take your time getting up."),
 };
 /** Steps per level: [unit in seconds, rounds]. A round is u in, 2u hold, 1.5u out, u hold. */
 const KB_STEPS = {
-  gentle: [[4, 8], [6, 18]],
+  gentle: [[4, 6], [6, 8]],
   standard: [[4, 6], [6, 8], [8, 12]],
-  deeper: [[6, 6], [8, 8], [10, 10]],
+  deeper: [[6, 6], [8, 8], [10, 12]],
 };
 const ratio = (u) => ({ inhale: u, holdIn: 2 * u, exhale: 1.5 * u, holdOut: u });
+/** One explanation told over the free full holds of the later steps, one part per hold, in order:
+ *  what drives the urge, what slow breathing does to the heart, why the empty hold is harder. */
+const KB_THREAD = [
+  lesson('kb_a1', "While you hold, here's what's going on. Your body keeps making carbon dioxide, and with no air moving, it builds up."),
+  lesson('kb_a2', 'That rise makes your blood slightly more acidic. Sensors in your brainstem and in your neck pick it up, and the urge builds.'),
+  lesson('kb_a3', "At rest, after normal breaths, it's mostly carbon dioxide you feel, not low oxygen. Still, breathe at the first urge."),
+  lesson('kb_b1', 'When you breathe again, your heart rate follows the breath. It usually speeds up on the way in and slows on the way out.'),
+  lesson('kb_b2', "Slow breathing tends to make that swing bigger, especially around six breaths a minute. A bigger swing doesn't mean you'll feel calmer, though."),
+  lesson('kb_b3', "We're slower than that, and we're adding holds. So don't assume this gives you anything beyond slow breathing on its own."),
+  lesson('kb_c1', "The holds also depend on how much air you're holding. With less in your lungs, the urge can arrive sooner."),
+  lesson('kb_c2', 'With a full breath you carry more oxygen, and signals from your chest may help hold the urge off a little longer.'),
+  lesson('kb_c3', "With practice, holds may feel more familiar. Longer holds don't prove stronger lungs, though. Keep stopping at the urge."),
+];
 const RATIO_LABELS = (ph) => ({ in: 'In', top: 'Hold', out: 'Out', bottom: 'Hold, empty' })[ph];
-const LEO = callsFor('leo');
-const MIRA = callsFor('mira');
 const kbIntro = (n, u, r) => say(`Step ${num(n)}. ${Num(r)} rounds. ${Num(u)} in, ${num(2 * u)} hold, ${num(1.5 * u)} out, ${num(u)} hold.`);
+/** In-round content per role, as [round (0-based), phase, line]. `top` is the full hold, `bottom` the empty one. */
+const KB_ROUNDS = {
+  first: [[0, 'top', K.shoulders], [2, 'out', K.evenOut], [4, 'out', K.belly]],
+  middle: [[0, 'in', K.ribs], [0, 'top', K.rejoin], [6, 'bottom', K.noticePause]],
+  last: [[0, 'top', K.hands], [1, 'top', K.jaw], [2, 'top', K.body], [3, 'bottom', K.support]],
+};
 
 export const kumbhaka = {
   id: 'kumbhaka',
@@ -65,39 +99,63 @@ export const kumbhaka = {
   sections: (opts) => {
     const steps = KB_STEPS[levelOf(opts)];
     const last = steps.length - 1;
-    const cuesFor = (k, u, r) => {
-      // Tips go wherever they fit between the calls (engine.js); "Last one." sits in the empty hold before it.
-      const lastOne = { breath: r - 2, offset: 4.5 * u + 1.9, say: B.lastOne };
-      if (k === 0) return [{ breath: 1, say: B.layers }, { breath: 2, say: K.slowOut }, { breath: 3, say: B.softHold }, { breath: 4, say: K.circle }];
-      const first = [{ breath: 0, say: K.emptyHold }, { breath: 1, say: K.air }];
-      if (k < last) return [...first, { breath: 3, say: K.face }, lastOne];
-      return [...first, { breath: 2, say: K.rate }, { breath: 4, say: K.co2 }, { breath: 6, say: K.texts }, { breath: 8, say: K.wander }, lastOne];
-    };
+    const role = (k) => (k === 0 ? 'first' : k === last ? 'last' : 'middle');
+    const intro = { first: [K.size, K.leadFirst], middle: [K.longer, K.leadMiddle], last: [K.finishOk, K.leadLast] };
+    const intervals = [K.interval1, K.interval2];
+    // The thread runs on consecutive full holds, after each step's own coaching: rounds 2–4 of a middle
+    // step, rounds 5 onwards of the last (whose final round stays quiet).
+    const thread = [...KB_THREAD];
+    const SLOTS = { first: [], middle: [1, 2, 3], last: [4, 5, 6, 7, 8, 9] };
+    const lessons = (k, r) => SLOTS[role(k)].filter((n) => n < r - 1).flatMap((n) => (thread.length ? [{ breath: n, phase: 'top', say: thread.shift() }] : []));
     return [
       {
         id: 'deep-arrive',
         title: 'Arrive',
-        what: 'Posture, the ratio',
+        what: 'Posture, permission',
         color: '#a3a8e0',
-        steps: [{ say: K.welcome, bell: 'low', lead: 2 }, { say: K.plan }, { say: K.nose }, { rest: 20 }],
+        steps: [{ say: K.welcome, bell: 'low', lead: 2 }, { say: K.permission }, { say: K.nose }, { rest: 4 }],
       },
-      ...steps.map(([u, r], k) => ({
-        id: `deep-${k + 1}`,
-        title: k === last ? 'Top step' : `Step ${k + 1}`,
-        what: `${u} · ${2 * u} · ${1.5 * u} · ${u}, ${r} rounds`,
-        color: ['#8f95d6', '#6f75c0', '#4b4f9a'][k],
-        steps: [
-          ...(k === last ? [{ say: K.top, bell: 'bell' }] : []),
-          { say: kbIntro(k + 1, u, r), bell: k === last ? undefined : 'bell', gap: 0.6 },
-          { pace: ratio(u), count: r, style: 'count', labels: RATIO_LABELS, calls: LEO, cues: cuesFor(k, u, r) },
-        ],
-      })),
+      ...steps.flatMap(([u, r], k) => [
+        {
+          id: `deep-${k + 1}`,
+          title: k === last ? 'Top step' : `Step ${k + 1}`,
+          what: `${u} · ${2 * u} · ${1.5 * u} · ${u}, ${r} rounds`,
+          color: ['#8f95d6', '#6f75c0', '#4b4f9a'][k],
+          steps: [
+            { say: kbIntro(k + 1, u, r), bell: 'bell', gap: 0.8 },
+            ...intro[role(k)].map((line) => ({ say: line, gap: 0.8 })),
+            // One breath together: in, then all the way out. The rounds start on the next breath in.
+            { pace: { inhale: u, exhale: 1.5 * u }, count: 1, style: 'count', calls: LEO },
+            {
+              pace: ratio(u),
+              count: r,
+              style: 'count',
+              labels: RATIO_LABELS,
+              calls: LEO,
+              endOnHold: true,
+              // Gentle has no middle step: its rejoin cue moves to the break (below).
+              cues: [...KB_ROUNDS[role(k)].map(([round, phase, line]) => ({ breath: round, phase, say: line })), ...lessons(k, r)],
+            },
+          ],
+        },
+        ...(k < last
+          ? [
+              {
+                id: `calm-break-${k + 1}`,
+                title: 'Own pace',
+                what: 'Forty seconds, no counts',
+                color: '#b9bde8',
+                steps: [{ rest: 40, label: 'Your own pace', cues: [{ at: 0.5, say: intervals[k] }, ...(last === 1 ? [{ at: 13, say: K.rejoin }] : [])] }],
+              },
+            ]
+          : []),
+      ]),
       {
         id: 'calm-kb',
         title: 'Release',
-        what: 'Natural breathing, quiet',
+        what: 'Natural breathing, a minute',
         color: '#b9bde8',
-        steps: [{ say: K.release, bell: 'bell' }, { rest: 10 }, { say: K.notice }, { rest: 60 }, { say: K.close, bell: 'low' }, { rest: 4 }],
+        steps: [{ rest: 60, cues: [{ at: 0.5, say: K.release }, { at: 40, say: K.nextTime }, { at: 53, say: K.close }] }, { rest: 2 }],
       },
     ];
   },
@@ -264,10 +322,10 @@ const R = {
   plan: line('rd_plan', "Four rounds. Each one starts with a set of full breaths. Then you breathe out and hold with your lungs empty, for as long as it's comfortable. When you need air, take one big breath in and hold it for fifteen seconds. Then a short rest, and we go again."),
   how: line('rd_how', "Breathe in deep, into your belly and then your chest. Then just let it fall out. Don't push the breath out.", 'technique'),
   tingle: line('rd_tingle', "You might get tingly hands or a tingly face, or feel a bit lightheaded. That's the fast breathing. If it gets strong, slow down, or just breathe normally."),
-  lastBreath: line('rd_last_breath', 'Last one. Let it go.'),
+  lastBreath: line('rd_last_breath', 'Last one. Let it go.', 'count'),
   tap: line('rd_tap', 'Whenever you need to breathe, tap Breathe now.'),
   relax: tip('rd_t_relax', 'Let your shoulders drop and your hands go soft.'),
-  letGo: line('rd_let_go', 'And let it go.'),
+  letGo: line('rd_let_go', 'And let it go.', 'count'),
   rest: tip('rd_t_rest', 'Breathe normally for a bit, and let yourself settle before the next round.'),
   why: line('rd_why', "Fast breathing lowers carbon dioxide, so the urge to breathe comes later than usual, while oxygen keeps falling. That's why the holds here have a cap.", 'science'),
   study: line('rd_study', 'In a month-long study, five minutes a day of fast breathing with short holds lifted mood and eased anxiety. The slower practices did about as well.', 'science'),
@@ -403,6 +461,17 @@ const N = {
   bp: line('an_bp', "A few small trials found alternate nostril breathing lowered blood pressure a little. Whether the holds add anything isn't known.", 'science'),
   wander: tip('an_t_wander', 'If your mind wanders, use the next switch to come back.'),
   last: say('Last round.'),
+  // Own-pace breaks before each set of holds, and the shared breath that starts each set.
+  breaks: [
+    line('an_break_1', 'Lower your hand and breathe through both sides at your own pace for half a minute.'),
+    line('an_break_2', "Hand down for a bit. Breathe however you like. We'll go longer next."),
+    line('an_break_3', 'Rest your arm, and breathe at your own pace. One more set to go.'),
+  ],
+  leads: [
+    line('an_lead_1', 'Before the holds, one breath in through both sides with me, then all the way out. We start on the left.'),
+    line('an_lead_2', 'Hand back up. One easy breath in together, all the way out, and the longer rounds start on the left.'),
+    line('an_lead_3', 'Last set. Breathe in with me, let it all go, and we begin again on the left.'),
+  ],
   release: line('an_release', 'Release the hand. Breathe through both sides, and let the breath find its own pace.'),
   close: line('an_close', 'Sit for a moment longer, then open your eyes.'),
 };
@@ -486,13 +555,24 @@ export const alternate = {
           },
         ],
       },
-      ...steps.map(([u, b], k) => ({
+      ...steps.flatMap(([u, b], k) => [
+        {
+          id: `calm-an-break-${k + 1}`,
+          title: 'Own pace',
+          what: 'Hand down, half a minute',
+          color: '#c4bcef',
+          steps: [{ rest: 30, label: 'Your own pace', cues: [{ at: 0.5, say: N.breaks[k] }] }],
+        },
+        {
         id: `balance-${k + 1}`,
         title: k ? 'Longer' : 'With holds',
         what: `${u} · ${4 * u} · ${2 * u}, ${b / 2} rounds`,
         color: ['#857bdb', '#7067cc', '#5b52b8'][k],
         steps: [
           { say: say(`In for ${num(u)}, hold for ${num(4 * u)}, out for ${num(2 * u)}. ${Num(b / 2)} rounds.`), bell: 'bell', gap: 0.6 },
+          { say: N.leads[k], gap: 0.6 },
+          // One breath together through both sides, all the way out; the set starts on the next breath in.
+          { pace: { inhale: u, exhale: 2 * u }, count: 1, style: 'count', calls: MIRA },
           {
             pace: { inhale: u, holdIn: 4 * u, exhale: 2 * u },
             count: b,
@@ -502,13 +582,14 @@ export const alternate = {
             calls: holdCalls(k === 0),
             cues: [
               ...(k === 0
-                ? [{ breath: 2, say: N.holdSoft }, { breath: 4, say: N.arm }, { breath: 6, say: N.air }, { breath: 8, say: N.rate }, { breath: 11, say: N.wander }, ...(b > 16 ? [{ breath: 16, say: N.track }] : [])]
-                : [{ breath: 2, say: N.bp }, { breath: 5, say: N.wander }]),
+                ? [{ breath: 2, phase: 'top', say: N.holdSoft }, { breath: 4, say: N.arm }, { breath: 6, phase: 'top', say: N.air }, { breath: 8, phase: 'top', say: N.rate }, { breath: 11, say: N.wander }, ...(b > 16 ? [{ breath: 16, say: N.track }] : [])]
+                : [{ breath: 2, phase: 'top', say: N.bp }, { breath: 5, say: N.wander }]),
               { breath: b - 2, offset: u + 1, say: N.last },
             ],
           },
         ],
-      })),
+        },
+      ]),
       {
         id: 'calm-an',
         title: 'Release',

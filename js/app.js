@@ -390,7 +390,7 @@ function frame(t) {
     capEl.classList.remove('show');
     if (cap) {
       setTimeout(() => {
-        const tag = { science: 'Why it works', technique: 'Technique' }[cap.kind];
+        const tag = { science: 'Why it works', lesson: 'Why it works', technique: 'Technique' }[cap.kind];
         capEl.innerHTML = (tag ? `<span class="tag">${tag}</span>` : '') + escapeHtml(text);
         capEl.classList.add('show');
       }, 180);

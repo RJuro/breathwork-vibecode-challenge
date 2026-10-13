@@ -25,10 +25,14 @@ export function compile(flow, durs = {}, opts = {}) {
   // How much the coach says: quiet = instructions and counts; guided (default) adds the
   // teacher's tips; full adds the science.
   const talk = opts.talk || (opts.explain ? 'full' : 'guided');
-  const skip = (c) => (c.kind === 'science' && talk !== 'full') || (c.kind === 'tip' && talk === 'quiet');
+  // Nothing but counts and calls is ever said twice in one session.
+  const said = new Set();
+  // `lesson`: a science thread told across holds, heard at Guided and Full.
+  const skip = (c) => (c.kind === 'science' && talk !== 'full') || ((c.kind === 'tip' || c.kind === 'lesson') && talk === 'quiet') || (c.kind !== 'count' && said.has(c.id));
   const speak = (c, at) => {
     if (!c || !c.id || !c.text) throw new Error(`bad spoken line: ${JSON.stringify(c)}`);
     if (skip(c)) return 0;
+    said.add(c.id);
     const d = durs[c.id] ?? estimateDur(plain(c.text));
     // `tts` keeps the voice tags for the recording scripts; `text` is what the listener reads.
     voice.push({ id: c.id, t: at, dur: d, text: plain(c.text), tts: c.text, kind: c.kind || 'guide' });
@@ -49,6 +53,20 @@ export function compile(flow, durs = {}, opts = {}) {
     const cost = (a, b) => callsIn(a, b).reduce((n, k) => n + k.w, 0);
     for (const x of cues.sort((p, q) => p.t - q.t)) {
       const d = lineDur(x.c) + 0.4;
+      // A cue tied to a phase ("out", "top" = full hold, "bottom" = empty hold) waits for that phase,
+      // starting just after its call, and must end before the phase does.
+      if (x.phase) {
+        const ph = phases.find((p) => p.phase === x.phase && p.start >= x.t - 0.01 && p.end - p.start >= d + 1 && free(p.start + 1, p.start + 1 + d));
+        if (ph) {
+          const call = list.find((k) => Math.abs(k.t - ph.start) < 0.01);
+          const at = ph.start + (call ? lineDur(call.c) + 0.3 : 0.3);
+          if (at + d <= ph.end + 0.1) {
+            taken.push([at, at + d]);
+            speak(x.c, at);
+            continue;
+          }
+        }
+      }
       const tries = [x.t, ...list.filter((k) => k.t >= x.t - 0.01).map((k) => k.t + lineDur(k.c) + 0.3)].filter((w) => w >= x.t && w - x.t <= 2 * cycle && w + d <= end + 0.5 && free(w, w + d));
       let at = x.t;
       if (x.c.kind !== 'count' && tries.length) {
@@ -94,7 +112,7 @@ export function compile(flow, durs = {}, opts = {}) {
             ['in2', p.inhale2 || 0],
             ['top', p.holdIn || 0],
             [p.hum ? 'hum' : 'out', last && step.lastExhale ? step.lastExhale : p.exhale],
-            ['bottom', last ? 0 : p.holdOut || 0],
+            ['bottom', last && !step.endOnHold ? 0 : p.holdOut || 0], // `endOnHold`: the last round keeps its empty hold
           ];
           for (const [phase, d] of parts) {
             if (!d) continue;
@@ -111,7 +129,7 @@ export function compile(flow, durs = {}, opts = {}) {
           }
         }
         const cues = (step.cues || [])
-          .map((c) => ({ c: c.say, t: (c.breath != null ? breathStarts[Math.min(c.breath, step.count - 1)] : start + c.at) + (c.offset || 0) }))
+          .map((c) => ({ c: c.say, phase: c.phase, t: (c.breath != null ? breathStarts[Math.min(c.breath, step.count - 1)] : start + c.at) + (c.offset || 0) }))
           .filter((x) => !skip(x.c));
         if (!step.calls) for (const x of cues) speak(x.c, x.t);
         else placeWithCalls(cues, phases, step.calls, t, step.count > 1 ? breathStarts[1] - breathStarts[0] : t - start);

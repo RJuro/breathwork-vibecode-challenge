@@ -20,12 +20,16 @@ export const B = {
   throat: line('box_throat', 'On the way out, narrow the back of the throat a little, so the air leaves slow and even.', 'technique'),
   lever: line('box_lever', "A long breath out can slow your heart a little. That's why we're lengthening it.", 'science'),
   stay: say('Stay with it. Ten more.'),
-  hold: line('box_hold', 'Hold.'),
+  hold: line('box_hold', 'Hold.', 'count'),
   softHold: line('box_soft_hold', 'The holds are a pause, not a squeeze. Throat open, shoulders down.', 'technique'),
   where: line('box_where', "Police and military teach this one. It's easy to count, and you can do it without anyone noticing."),
   exact: tip('box_t_exact', "Don't chase the exact count. Just keep all four sides even."),
   study: line('box_study', 'In a month-long study, five minutes of box breathing a day eased anxiety about as much as the other breathing methods tested. Slowing down may be part of why it helps.', 'science'),
   lastOne: say('Last one.'),
+  breakOne: line('box_break_1', 'Let the count go for a few breaths. Breathe at your own pace.'),
+  leadA: line('box_lead_a', 'One breath in with me, all the way out, and the box starts on the next breath in.'),
+  breakTwo: line('box_break_2', 'Breathe on your own for a moment. The next box is a little bigger.'),
+  leadB: line('box_lead_b', 'Once more: in together, all the way out, then the bigger box.'),
   release: line('box_release', 'Let it go. Breathe however you like.'),
   check: line('box_check', 'Check how your shoulders, jaw, hands and head feel compared with before. Any change gives you a benchmark.'),
   close: line('box_close', 'Practise the drill on calm days so you can use it when things get stressful.'),
@@ -69,7 +73,7 @@ export const box = {
       color: '#7f95b3',
       steps: [
         { say: B.drillOne, gap: 0.6 },
-        { pace: { inhale: 4, exhale: 8 }, count: 6, style: 'count', calls: LEO, cues: [{ breath: 1, say: B.layers }, { breath: 3, say: B.throat }, { breath: 5, say: B.lever }] },
+        { pace: { inhale: 4, exhale: 8 }, count: 6, style: 'count', calls: LEO, cues: [{ breath: 1, say: B.layers }, { breath: 3, phase: 'out', say: B.throat }, { breath: 5, say: B.lever }] },
       ],
     };
     const close = {
@@ -87,7 +91,7 @@ export const box = {
         color: '#4a5d78',
         steps: [
           { say: B.stay, gap: 0.6 },
-          { pace: { inhale: 4, exhale: 8 }, count: 10, style: 'count', calls: LEO, cues: [{ breath: 2, say: B.where }, { breath: 5, say: B.exact }, { breath: 8, offset: 4 + 0.9, say: B.lastOne }] },
+          { pace: { inhale: 4, exhale: 8 }, count: 10, style: 'count', calls: LEO, cues: [{ breath: 2, say: B.where }, { breath: 5, say: B.exact }, { breath: 8, offset: 5.6, say: B.lastOne }] },
         ],
       };
       return [arrive, tactical, stay, close];
@@ -97,9 +101,13 @@ export const box = {
     const ra = rounds(a, 128);
     const rb = rounds(b, 120);
     const pace = (s) => ({ inhale: s, holdIn: s, exhale: s, holdOut: s });
+    const breather = (id, line) => ({ id, title: 'Own pace', what: 'Twenty seconds', color: '#b8c4d4', steps: [{ rest: 20, label: 'Your own pace', cues: [{ at: 0.5, say: line }] }] });
+    // One breath together, all the way out; the box starts on the next breath in.
+    const leadIn = (s) => ({ pace: { inhale: s, exhale: 2 * s }, count: 1, style: 'count', calls: LEO });
     return [
       arrive,
       tactical,
+      breather('box-break-1', B.breakOne),
       {
         id: 'box-a',
         title: 'The box',
@@ -107,6 +115,8 @@ export const box = {
         color: '#5f7596',
         steps: [
           { say: boxIntro(a), gap: 0.6 },
+          { say: B.leadA, gap: 0.6 },
+          leadIn(a),
           {
             pace: pace(a),
             count: ra,
@@ -117,6 +127,7 @@ export const box = {
           },
         ],
       },
+      breather('box-break-2', B.breakTwo),
       {
         id: 'box-b',
         title: 'Bigger box',
@@ -124,6 +135,8 @@ export const box = {
         color: '#4a5d78',
         steps: [
           { say: boxUp(b), gap: 0.6 },
+          { say: B.leadB, gap: 0.6 },
+          leadIn(b),
           { pace: pace(b), count: rb, style: 'count', labels: BOX_LABELS, calls: LEO, cues: [{ breath: 1, say: B.exact }, { breath: 3, say: B.study }, { breath: rb - 2, offset: 3 * b + 1.9, say: B.lastOne }] },
         ],
       },

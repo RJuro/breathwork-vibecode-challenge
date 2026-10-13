@@ -60,6 +60,12 @@ every practice works with eyes closed: a pace step's `calls(phase, breath)` give
 engine fits the step's tips into the gaps between calls, or, when a tip is too long for any gap,
 silences as few calls as it can (the in-call last). Lights Out stays quiet on purpose.
 
+Coaching rules (from Roman's notes and a co-design pass with GPT Sol, `docs/research/kumbhaka-plan-sol.md`):
+nothing but counts and calls is said twice in a session (the engine drops repeats); a cue can name its
+breath phase (`phase: 'top'`, `'bottom'`, `'out'`, `'in'`) and is spoken inside it; hold practices start each
+sequence with one shared breath in and all the way out, and put a named own-pace break between sequences;
+deeper content is told as a thread over consecutive holds (`lesson` lines: heard at Guided and Full).
+
 In a session, *Skip ›* (or the right arrow key) jumps to the next section; skipped time counts
 neither as practice nor as held breath.
 

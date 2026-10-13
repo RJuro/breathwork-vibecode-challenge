@@ -107,13 +107,12 @@ def call(model, body, timeout=120):
             raise
 
 
-def synth(text, voice, model, take=0, variant=0):
+def synth(text, voice, model, take=0):
     """One line -> (audio bytes, sample rate). 3.8 returns a WAV; older models raw PCM.
-    The seed is fixed per take (same seed, same audio), so a retake must change it. A line id ending
-    in _v2, _v3 ... is another take of the same words: `variant` moves its seed well away."""
+    The seed is fixed per take (same seed, same audio), so a retake must change it."""
     d = DESIGNED.get(voice)
     speech = {"voiceConfig": {"voice": d["id"] if d else voice}} | ({"languageCode": d["lang"]} if d else {})
-    cfg = {"responseModalities": ["AUDIO"], "seed": SEED + take + 1000 * variant, "speechConfig": speech}
+    cfg = {"responseModalities": ["AUDIO"], "seed": SEED + take, "speechConfig": speech}
     part = {"text": spoken(text), "speech_metadata": {"style": STYLE}}
     data = call(model, {"contents": [{"role": "user", "parts": [part]}], "generationConfig": cfg})
     cand = data["candidates"][0]
@@ -260,8 +259,7 @@ def main():
             best = None
             for take in range(1 + args.retries):
                 try:
-                    variant = int(m[1]) if (m := re.search(r"_v(\d+)$", cid)) else 0
-                    pcm, rate = synth(text, args.voice, args.model, take, variant)
+                    pcm, rate = synth(text, args.voice, args.model, take)
                 except Exception as e:
                     print(f"  ✗ {cid}: {e}", file=sys.stderr)
                     continue

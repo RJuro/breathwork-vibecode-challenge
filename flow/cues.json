@@ -15,6 +15,18 @@
     "text": "A few small trials found alternate nostril breathing lowered blood pressure a little. Whether the holds add anything isn't known.",
     "kind": "science"
   },
+  "an_break_1": {
+    "text": "Lower your hand and breathe through both sides at your own pace for half a minute.",
+    "kind": "guide"
+  },
+  "an_break_2": {
+    "text": "Hand down for a bit. Breathe however you like. We'll go longer next.",
+    "kind": "guide"
+  },
+  "an_break_3": {
+    "text": "Rest your arm, and breathe at your own pace. One more set to go.",
+    "kind": "guide"
+  },
   "an_close": {
     "text": "Sit for a moment longer, then open your eyes.",
     "kind": "guide"
@@ -41,6 +53,18 @@
   },
   "an_l_out_h": {
     "text": "Release the left, and breathe out.",
+    "kind": "guide"
+  },
+  "an_lead_1": {
+    "text": "Before the holds, one breath in through both sides with me, then all the way out. We start on the left.",
+    "kind": "guide"
+  },
+  "an_lead_2": {
+    "text": "Hand back up. One easy breath in together, all the way out, and the longer rounds start on the left.",
+    "kind": "guide"
+  },
+  "an_lead_3": {
+    "text": "Last set. Breathe in with me, let it all go, and we begin again on the left.",
     "kind": "guide"
   },
   "an_plan": {
@@ -155,6 +179,14 @@
     "text": "Sit up, mouth closed, with your tongue resting on the roof of your mouth.",
     "kind": "guide"
   },
+  "box_break_1": {
+    "text": "Let the count go for a few breaths. Breathe at your own pace.",
+    "kind": "guide"
+  },
+  "box_break_2": {
+    "text": "Breathe on your own for a moment. The next box is a little bigger.",
+    "kind": "guide"
+  },
   "box_check": {
     "text": "Check how your shoulders, jaw, hands and head feel compared with before. Any change gives you a benchmark.",
     "kind": "guide"
@@ -169,31 +201,23 @@
   },
   "box_hold": {
     "text": "Hold.",
-    "kind": "guide"
-  },
-  "box_hold_v2": {
-    "text": "Hold.",
-    "kind": "guide"
-  },
-  "box_hold_v3": {
-    "text": "Hold.",
-    "kind": "guide"
+    "kind": "count"
   },
   "box_in": {
     "text": "Breathe in.",
-    "kind": "guide"
-  },
-  "box_in_v2": {
-    "text": "Breathe in.",
-    "kind": "guide"
-  },
-  "box_in_v3": {
-    "text": "Breathe in.",
-    "kind": "guide"
+    "kind": "count"
   },
   "box_layers": {
     "text": "On the way in, fill from the bottom. Belly, then ribs, then chest.",
     "kind": "technique"
+  },
+  "box_lead_a": {
+    "text": "One breath in with me, all the way out, and the box starts on the next breath in.",
+    "kind": "guide"
+  },
+  "box_lead_b": {
+    "text": "Once more: in together, all the way out, then the bigger box.",
+    "kind": "guide"
   },
   "box_lever": {
     "text": "A long breath out can slow your heart a little. That's why we're lengthening it.",
@@ -201,15 +225,7 @@
   },
   "box_out": {
     "text": "Out.",
-    "kind": "guide"
-  },
-  "box_out_v2": {
-    "text": "Out.",
-    "kind": "guide"
-  },
-  "box_out_v3": {
-    "text": "Out.",
-    "kind": "guide"
+    "kind": "count"
   },
   "box_plan": {
     "text": "Here's the plan. Two drills. First, a long breath out, twice as long as the breath in. Then the box: in, hold, out, hold, all the same length. Nothing to win here. Just get the rhythm.",
@@ -361,7 +377,7 @@
   },
   "cl_release": {
     "text": "Let go. Breathe in through your nose, nice and gentle. No big breath.",
-    "kind": "guide"
+    "kind": "count"
   },
   "cl_silly": {
     "text": "Yes, you'll look a bit silly. <chuckle> Nobody's watching.",
@@ -475,68 +491,136 @@
     "text": "Welcome. This is a breath-hold table, the way freedivers train on dry land. Sit or lie down somewhere you can't fall from. Never do this in water.",
     "kind": "guide"
   },
-  "kb_air": {
-    "text": "If a hold gets too long, breathe. Join the rhythm again once your breathing feels easy.",
-    "kind": "guide"
+  "kb_a1": {
+    "text": "While you hold, here's what's going on. Your body keeps making carbon dioxide, and with no air moving, it builds up.",
+    "kind": "lesson"
   },
-  "kb_close": {
-    "text": "Open your eyes. If the top step stayed easy all the way through, try the next level next time.",
-    "kind": "guide"
+  "kb_a2": {
+    "text": "That rise makes your blood slightly more acidic. Sensors in your brainstem and in your neck pick it up, and the urge builds.",
+    "kind": "lesson"
   },
-  "kb_co2": {
-    "text": "During the holds, carbon dioxide builds up. That, more than low oxygen, is what makes you want to breathe.",
-    "kind": "science"
+  "kb_a3": {
+    "text": "At rest, after normal breaths, it's mostly carbon dioxide you feel, not low oxygen. Still, breathe at the first urge.",
+    "kind": "lesson"
   },
-  "kb_empty_hold": {
-    "text": "The empty hold is usually the harder one. Keep your belly soft, and breathe if you need to.",
+  "kb_b1": {
+    "text": "When you breathe again, your heart rate follows the breath. It usually speeds up on the way in and slows on the way out.",
+    "kind": "lesson"
+  },
+  "kb_b2": {
+    "text": "Slow breathing tends to make that swing bigger, especially around six breaths a minute. A bigger swing doesn't mean you'll feel calmer, though.",
+    "kind": "lesson"
+  },
+  "kb_b3": {
+    "text": "We're slower than that, and we're adding holds. So don't assume this gives you anything beyond slow breathing on its own.",
+    "kind": "lesson"
+  },
+  "kb_body": {
+    "text": "Last check: is your whole body braced? Small movements are fine. Only the air needs to pause.",
     "kind": "technique"
   },
-  "kb_nose": {
-    "text": "Breathe through your nose the whole time, slow and quiet.",
+  "kb_c1": {
+    "text": "The holds also depend on how much air you're holding. With less in your lungs, the urge can arrive sooner.",
+    "kind": "lesson"
+  },
+  "kb_c2": {
+    "text": "With a full breath you carry more oxygen, and signals from your chest may help hold the urge off a little longer.",
+    "kind": "lesson"
+  },
+  "kb_c3": {
+    "text": "With practice, holds may feel more familiar. Longer holds don't prove stronger lungs, though. Keep stopping at the urge.",
+    "kind": "lesson"
+  },
+  "kb_close2": {
+    "text": "Open your eyes when you're ready, and take your time getting up.",
+    "kind": "guide"
+  },
+  "kb_even_out": {
+    "text": "Let the air leave evenly, without pushing.",
     "kind": "technique"
   },
-  "kb_notice": {
-    "text": "Stay here for a minute. See if the breath stays slow on its own.",
+  "kb_finish_ok": {
+    "text": "If the last step was a lot, you can finish on natural breathing here. That counts.",
     "kind": "guide"
   },
-  "kb_plan": {
-    "text": "This is kumbhaka: in, hold, out, hold, at a fixed ratio. If you breathe in for four, you hold for eight, breathe out for six, and hold empty for four. We start short and step it up. If you need air before a count ends, just breathe.",
-    "kind": "guide"
-  },
-  "kb_rate": {
-    "text": "You're down to under two breaths a minute now. Most slow-breathing research is at about six a minute, so how much of it applies here isn't clear.",
-    "kind": "science"
-  },
-  "kb_release": {
-    "text": "Let go of the count, and breathe at your own pace.",
-    "kind": "guide"
-  },
-  "kb_slow_out": {
-    "text": "Let the air out steadily, over the whole count. If you run out early, let it out slower next time.",
+  "kb_hands": {
+    "text": "These holds are a good time to check for extra effort. Start with your hands. If they're gripping, let them go.",
     "kind": "technique"
   },
-  "kb_t_circle": {
-    "text": "You don't have to count. If your eyes are open, the circle keeps time for you.",
-    "kind": "tip"
-  },
-  "kb_t_face": {
-    "text": "Let your forehead, your eyes and your jaw go slack.",
-    "kind": "tip"
-  },
-  "kb_t_wander": {
-    "text": "If your mind's drifted off, come back on the next breath in.",
-    "kind": "tip"
-  },
-  "kb_texts": {
-    "text": "Kumbhaka means the held breath. In the old hatha yoga texts, the holds are the heart of the practice.",
+  "kb_interval_1": {
+    "text": "That's the first step done. Breathe at your own pace now. No counts for the next forty seconds.",
     "kind": "guide"
   },
-  "kb_top": {
-    "text": "Top step. Same rhythm, longer counts. Stay easy.",
+  "kb_interval_2": {
+    "text": "That's the second step. Take forty seconds of normal breathing before we set up the longer one.",
     "kind": "guide"
   },
-  "kb_welcome": {
-    "text": "Welcome. Sit up tall on a cushion or a chair, hands resting on your knees, and close your eyes.",
+  "kb_jaw": {
+    "text": "Next, your jaw. If your teeth are pressed together, let them part. You can hold without clenching.",
+    "kind": "technique"
+  },
+  "kb_lead_first": {
+    "text": "We'll breathe in together, then all the way out. The next breath in starts round one.",
+    "kind": "guide"
+  },
+  "kb_lead_last": {
+    "text": "Before the last sequence, one breath in with me and all the way out. Round one follows.",
+    "kind": "guide"
+  },
+  "kb_lead_middle": {
+    "text": "One breath in together, one full breath out, and then we're into the rounds.",
+    "kind": "guide"
+  },
+  "kb_longer": {
+    "text": "The counts get longer here. Let the calls do the counting.",
+    "kind": "guide"
+  },
+  "kb_nose2": {
+    "text": "Use your nose if it's comfortable, and keep the breathing quiet.",
+    "kind": "technique"
+  },
+  "kb_permission": {
+    "text": "Breathe whenever you need to, even in the middle of a hold. If you feel dizzy or off, stop and breathe normally. And never do this in water.",
+    "kind": "guide"
+  },
+  "kb_rejoin": {
+    "text": "If you lose the rhythm, take a few ordinary breaths. Rejoin on a fresh breath in when it feels easy.",
+    "kind": "guide"
+  },
+  "kb_release2": {
+    "text": "That was the last hold. Let your breathing find its own pace. We'll stay here for a minute.",
+    "kind": "guide"
+  },
+  "kb_ribs": {
+    "text": "Let your lower ribs widen as you breathe in.",
+    "kind": "technique"
+  },
+  "kb_shoulders": {
+    "text": "Keep your shoulders loose while you hold. Don't bear down.",
+    "kind": "technique"
+  },
+  "kb_size": {
+    "text": "Use a comfortable breath. There's no need to fill all the way up.",
+    "kind": "technique"
+  },
+  "kb_t_belly2": {
+    "text": "At the bottom, pause without pulling your belly in.",
+    "kind": "tip"
+  },
+  "kb_t_next_time": {
+    "text": "Next time, pick the level you can finish without strain, empty holds included. Repeating a level is fine.",
+    "kind": "tip"
+  },
+  "kb_t_notice_pause": {
+    "text": "Notice the pause once the air has left.",
+    "kind": "tip"
+  },
+  "kb_t_support2": {
+    "text": "Let your attention rest where your body meets the floor.",
+    "kind": "tip"
+  },
+  "kb_welcome2": {
+    "text": "Get seated, or lie down somewhere comfortable. This is kumbhaka: a pause after breathing in, and another after breathing out.",
     "kind": "guide"
   },
   "land_back": {
@@ -605,15 +689,39 @@
   },
   "leo_hold_and": {
     "text": "And hold.",
-    "kind": "guide"
+    "kind": "count"
+  },
+  "leo_hold_pause": {
+    "text": "Pause.",
+    "kind": "count"
+  },
+  "leo_hold_there": {
+    "text": "Hold it there.",
+    "kind": "count"
   },
   "leo_in_and": {
     "text": "And breathe in.",
-    "kind": "guide"
+    "kind": "count"
+  },
+  "leo_in_nose": {
+    "text": "In through the nose.",
+    "kind": "count"
+  },
+  "leo_in_slow": {
+    "text": "Breathe in, slow.",
+    "kind": "count"
   },
   "leo_out_and": {
     "text": "And out.",
-    "kind": "guide"
+    "kind": "count"
+  },
+  "leo_out_let": {
+    "text": "Let it out.",
+    "kind": "count"
+  },
+  "leo_out_slow": {
+    "text": "Slowly out.",
+    "kind": "count"
   },
   "lo_arms": {
     "text": "Let your arms rest on the bed, and let your hands go loose.",
@@ -1143,10 +1251,6 @@
     "text": "Stay with it. Ten more.",
     "kind": "count"
   },
-  "n_step_one_eight_rounds_four_in_eight_hold_six_out_four_hold": {
-    "text": "Step one. Eight rounds. Four in, eight hold, six out, four hold.",
-    "kind": "count"
-  },
   "n_step_one_six_rounds_four_in_eight_hold_six_out_four_hold": {
     "text": "Step one. Six rounds. Four in, eight hold, six out, four hold.",
     "kind": "count"
@@ -1155,12 +1259,12 @@
     "text": "Step one. Six rounds. Six in, twelve hold, nine out, six hold.",
     "kind": "count"
   },
-  "n_step_three_ten_rounds_ten_in_twenty_hold_fifteen_out_ten_hol": {
-    "text": "Step three. Ten rounds. Ten in, twenty hold, fifteen out, ten hold.",
-    "kind": "count"
-  },
   "n_step_three_twelve_rounds_eight_in_sixteen_hold_twelve_out_ei": {
     "text": "Step three. Twelve rounds. Eight in, sixteen hold, twelve out, eight hold.",
+    "kind": "count"
+  },
+  "n_step_three_twelve_rounds_ten_in_twenty_hold_fifteen_out_ten_": {
+    "text": "Step three. Twelve rounds. Ten in, twenty hold, fifteen out, ten hold.",
     "kind": "count"
   },
   "n_step_two_eight_rounds_eight_in_sixteen_hold_twelve_out_eight": {
@@ -1169,10 +1273,6 @@
   },
   "n_step_two_eight_rounds_six_in_twelve_hold_nine_out_six_hold": {
     "text": "Step two. Eight rounds. Six in, twelve hold, nine out, six hold.",
-    "kind": "count"
-  },
-  "n_step_two_eighteen_rounds_six_in_twelve_hold_nine_out_six_hol": {
-    "text": "Step two. Eighteen rounds. Six in, twelve hold, nine out, six hold.",
     "kind": "count"
   },
   "n_take_a_break_breathe_normally_for_a_minute": {
@@ -1225,11 +1325,11 @@
   },
   "rd_last_breath": {
     "text": "Last one. Let it go.",
-    "kind": "guide"
+    "kind": "count"
   },
   "rd_let_go": {
     "text": "And let it go.",
-    "kind": "guide"
+    "kind": "count"
   },
   "rd_plan": {
     "text": "Four rounds. Each one starts with a set of full breaths. Then you breathe out and hold with your lungs empty, for as long as it's comfortable. When you need air, take one big breath in and hold it for fifteen seconds. Then a short rest, and we go again.",
@@ -1383,6 +1483,18 @@
     "text": "How was that one? Smooth, hungry for air, or lightheaded? Remember it.",
     "kind": "guide"
   },
+  "res_rate_2": {
+    "text": "Same check for that pace. Smooth, a little short of air, or lightheaded?",
+    "kind": "guide"
+  },
+  "res_rate_3": {
+    "text": "Notice how that one sat with you before we slow down again.",
+    "kind": "guide"
+  },
+  "res_rate_4": {
+    "text": "And that one? Keep it in mind. One more to go, the slowest.",
+    "kind": "guide"
+  },
   "res_return": {
     "text": "Let the pace go, and breathe on your own.",
     "kind": "guide"
@@ -1417,7 +1529,7 @@
   },
   "st_hold": {
     "text": "Hold.",
-    "kind": "guide"
+    "kind": "count"
   },
   "st_plan": {
     "text": "We'll do ten tiny holds. A small breath out, a short pause, then quiet breathing. If a pause ever feels like too much, skip it and just breathe gently.",
@@ -1453,7 +1565,7 @@
   },
   "tw_all_out": {
     "text": "And all the way out.",
-    "kind": "guide"
+    "kind": "count"
   },
   "tw_checkin": {
     "text": "Let the breath go. Notice how you feel right now.",
@@ -1469,7 +1581,7 @@
   },
   "tw_deep_in": {
     "text": "Now one deep breath in.",
-    "kind": "guide"
+    "kind": "count"
   },
   "tw_first": {
     "text": "Keep the first breath after a hold calm. If you gasped, hold a bit less next time.",
@@ -1477,7 +1589,7 @@
   },
   "tw_gentle": {
     "text": "Five slow, full breaths through the nose. Then a soft hold, with your lungs empty.",
-    "kind": "guide"
+    "kind": "count"
   },
   "tw_hold_ok": {
     "text": "Let go at the first strong urge. You can tap Breathe now whenever you want.",
@@ -1513,11 +1625,11 @@
   },
   "tw_lock_short": {
     "text": "Same lock. Chin down, stay soft.",
-    "kind": "technique"
+    "kind": "count"
   },
   "tw_nh": {
     "text": "No hold this time. Just breathe easily, and see how you feel.",
-    "kind": "guide"
+    "kind": "count"
   },
   "tw_nose": {
     "text": "We'll breathe through the nose the whole time. Slow and quiet, no effort.",
@@ -1545,7 +1657,7 @@
   },
   "tw_release": {
     "text": "Let it go, and breathe normally.",
-    "kind": "guide"
+    "kind": "count"
   },
   "tw_ribs": {
     "text": "As you breathe in, let your ribs widen out to the sides. Shoulders stay where they are, belly soft.",

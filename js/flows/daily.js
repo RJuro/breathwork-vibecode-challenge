@@ -217,7 +217,12 @@ const RS = {
   quiet: line('res_quiet', "I'll be quiet for the last few minutes. Stay with the circle."),
   ret: line('res_return', 'Let the pace go, and breathe on your own.'),
   close: line('res_close', 'Open your eyes when you like. Ten minutes a day is a good start, and more is fine if you enjoy it.'),
-  rate: line('res_rate', 'How was that one? Smooth, hungry for air, or lightheaded? Remember it.'),
+  rate: [
+    line('res_rate', 'How was that one? Smooth, hungry for air, or lightheaded? Remember it.'),
+    line('res_rate_2', 'Same check for that pace. Smooth, a little short of air, or lightheaded?'),
+    line('res_rate_3', 'Notice how that one sat with you before we slow down again.'),
+    line('res_rate_4', 'And that one? Keep it in mind. One more to go, the slowest.'),
+  ],
   slower: line('res_slower', 'At these slower paces, keep the breaths small and easy.', 'technique'),
   pick: line('res_pick', 'Pick the pace that felt smoothest, without straining or feeling lightheaded. Choose it above the Begin button next time. Test again in a few weeks, because it can shift.'),
 };
@@ -272,7 +277,7 @@ export const resonance = {
             steps: [
               { say: say(`Pace ${num(n + 1)}. ${words} breaths a minute.`), bell: 'bell', gap: 0.6 },
               { pace: { inhale: i, exhale: o }, count, style: 'count', calls: LEO, cues: n === 3 ? [{ breath: 1, say: RS.slower }] : [] },
-              { say: last ? RS.pick : RS.rate },
+              { say: last ? RS.pick : RS.rate[n] },
               ...(last ? [{ rest: 4 }] : [{ rest: 50, label: 'Breathe normally' }]),
             ],
           };
@@ -595,7 +600,7 @@ const ST = {
   plan: line('st_plan', "We'll do ten tiny holds. A small breath out, a short pause, then quiet breathing. If a pause ever feels like too much, skip it and just breathe gently."),
   safety: line('st_safety', "If you have chest pain, or an asthma attack your inhaler isn't helping, stop here and get help instead."),
   small: line('st_small', "Start each hold after a small, normal breath out. Don't push the air out.", 'technique'),
-  hold: line('st_hold', 'Hold.'),
+  hold: line('st_hold', 'Hold.', 'count'),
   letGo: say('Let go.'),
   soft: tip('st_t_soft', 'Between holds, let your shoulders drop and your belly go soft.'),
   pull: line('st_pull', "You might feel like taking one big breath. If you can, let that pass. If you're really struggling for air, stop the holds and breathe freely."),
