@@ -67,7 +67,7 @@ export const kumbhaka = {
     const last = steps.length - 1;
     const cuesFor = (k, u, r) => {
       // Tips go wherever they fit between the calls (engine.js); "Last one." sits in the empty hold before it.
-      const lastOne = { breath: r - 2, offset: 4.5 * u + 0.9, say: B.lastOne };
+      const lastOne = { breath: r - 2, offset: 4.5 * u + 1.9, say: B.lastOne };
       if (k === 0) return [{ breath: 1, say: B.layers }, { breath: 2, say: K.slowOut }, { breath: 3, say: B.softHold }, { breath: 4, say: K.circle }];
       const first = [{ breath: 0, say: K.emptyHold }, { breath: 1, say: K.air }];
       if (k < last) return [...first, { breath: 3, say: K.face }, lastOne];

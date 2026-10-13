@@ -146,12 +146,40 @@
     "duration": 0.66,
     "match": 1
   },
+  "box_hold_v2": {
+    "fp": "93f35c93ae5e",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 0.68,
+    "match": 1.0
+  },
+  "box_hold_v3": {
+    "fp": "93f35c93ae5e",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 0.81,
+    "match": 1.0
+  },
   "box_in": {
     "fp": "d5316815bfa8",
     "voice": "leo",
     "model": "gemini-3.8-flash-lite-tts",
     "duration": 0.81,
     "match": 1
+  },
+  "box_in_v2": {
+    "fp": "d5316815bfa8",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 0.79,
+    "match": 1.0
+  },
+  "box_in_v3": {
+    "fp": "d5316815bfa8",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 0.82,
+    "match": 1.0
   },
   "box_layers": {
     "fp": "43ba610150fd",
@@ -173,6 +201,20 @@
     "model": "gemini-3.8-flash-lite-tts",
     "duration": 0.72,
     "match": 1
+  },
+  "box_out_v2": {
+    "fp": "79bcbd13e133",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 0.63,
+    "match": 1.0
+  },
+  "box_out_v3": {
+    "fp": "79bcbd13e133",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 0.71,
+    "match": 1.0
   },
   "box_plan": {
     "fp": "cca8623f8e86",
@@ -614,6 +656,27 @@
     "model": "gemini-3.8-flash-lite-tts",
     "duration": 8.15,
     "match": 1
+  },
+  "leo_hold_and": {
+    "fp": "02f38a04b2b6",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 1.66,
+    "match": 1.0
+  },
+  "leo_in_and": {
+    "fp": "91a934eef3d9",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 1.7,
+    "match": 1.0
+  },
+  "leo_out_and": {
+    "fp": "4869d9099252",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 1.12,
+    "match": 1.0
   },
   "n_and_out_as_slowly_as_you_can": {
     "fp": "39b02696180f",

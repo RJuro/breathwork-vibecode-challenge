@@ -59,10 +59,20 @@ export const mmss = (s) => (s >= 60 ? `${Math.floor(s / 60)}:${String(s % 60).pa
 /** Spoken phase calls per coach, for paced steps (`calls:` on a pace step, see engine.js): every breath
  *  says its phases, so the practice works with eyes closed. */
 const CALL = {
-  leo: { in: line('box_in', 'Breathe in.'), hold: line('box_hold', 'Hold.'), out: line('box_out', 'Out.') },
-  mira: { in: say('And breathe in.'), hold: line('st_hold', 'Hold.'), out: say('Out.') },
+  leo: {
+    in: [line('box_in', 'Breathe in.'), line('box_in_v2', 'Breathe in.'), line('box_in_v3', 'Breathe in.'), line('leo_in_and', 'And breathe in.')],
+    hold: [line('box_hold', 'Hold.'), line('box_hold_v2', 'Hold.'), line('box_hold_v3', 'Hold.'), line('leo_hold_and', 'And hold.')],
+    out: [line('box_out', 'Out.'), line('box_out_v2', 'Out.'), line('box_out_v3', 'Out.'), line('leo_out_and', 'And out.')],
+  },
+  mira: { in: [say('And breathe in.')], hold: [line('st_hold', 'Hold.')], out: [say('Out.')] },
 };
-export const callsFor = (voice) => (phase) => ({ in: CALL[voice].in, top: CALL[voice].hold, out: CALL[voice].out, bottom: CALL[voice].hold })[phase] || null;
+/** Takes rotate breath by breath in a fixed shuffle (never the same take twice in a row, and the two
+ *  holds of one breath differ), so the calls don't sound copy-pasted. */
+const pick = (list, i, k) => list[(3 * i + k) % list.length];
+export const callsFor = (voice) => (phase, i = 0) => {
+  const c = CALL[voice];
+  return { in: pick(c.in, i, 0), top: pick(c.hold, i, 2), out: pick(c.out, i, 1), bottom: pick(c.hold, i, 0) }[phase] || null;
+};
 
 // Breath patterns
 export const PUMP = { inhale: 0.42, exhale: 0.58, level: 0.6, inLevel: 0.12 };

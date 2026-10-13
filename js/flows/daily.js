@@ -553,7 +553,7 @@ export const breatheLight = {
         color: ['#8fbfae', '#76ad99', '#5e9a85', '#4d7f6d'][r],
         steps: [
           r === 0 ? { say: BL.lightHow, bell: 'bell', gap: 0.6 } : { say: last ? BL.last : BL.again, bell: 'bell', gap: 0.6 },
-          { pace: LIGHT, count: breaths, style: 'slow', calls: (ph) => (ph === 'bottom' ? null : LEO(ph)), cues },
+          { pace: LIGHT, count: breaths, style: 'slow', calls: (ph, i) => (ph === 'bottom' ? null : LEO(ph, i)), cues },
           ...(last ? [] : [{ say: BL.brk, gap: 0.3 }, { rest: 55, label: 'Break' }]),
         ],
       };

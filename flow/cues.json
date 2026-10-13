@@ -171,7 +171,23 @@
     "text": "Hold.",
     "kind": "guide"
   },
+  "box_hold_v2": {
+    "text": "Hold.",
+    "kind": "guide"
+  },
+  "box_hold_v3": {
+    "text": "Hold.",
+    "kind": "guide"
+  },
   "box_in": {
+    "text": "Breathe in.",
+    "kind": "guide"
+  },
+  "box_in_v2": {
+    "text": "Breathe in.",
+    "kind": "guide"
+  },
+  "box_in_v3": {
     "text": "Breathe in.",
     "kind": "guide"
   },
@@ -184,6 +200,14 @@
     "kind": "science"
   },
   "box_out": {
+    "text": "Out.",
+    "kind": "guide"
+  },
+  "box_out_v2": {
+    "text": "Out.",
+    "kind": "guide"
+  },
+  "box_out_v3": {
     "text": "Out.",
     "kind": "guide"
   },
@@ -577,6 +601,18 @@
   },
   "land_whole": {
     "text": "Now the whole body at once, lying here, breathing. Stay with that for a while.",
+    "kind": "guide"
+  },
+  "leo_hold_and": {
+    "text": "And hold.",
+    "kind": "guide"
+  },
+  "leo_in_and": {
+    "text": "And breathe in.",
+    "kind": "guide"
+  },
+  "leo_out_and": {
+    "text": "And out.",
     "kind": "guide"
   },
   "lo_arms": {
