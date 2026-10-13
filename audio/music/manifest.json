@@ -1,9 +1,27 @@
 {
+  "current": {
+    "file": "current.mp3",
+    "v": 1,
+    "shift": -1,
+    "seconds": 227.4
+  },
+  "deep": {
+    "file": "deep.mp3",
+    "v": 1,
+    "shift": -1,
+    "seconds": 211.1
+  },
   "focus": {
     "file": "focus.mp3",
     "v": 3,
     "shift": 0,
     "seconds": 162.8
+  },
+  "keys": {
+    "file": "keys.mp3",
+    "v": 1,
+    "shift": -1,
+    "seconds": 164.4
   },
   "midnight": {
     "file": "midnight.mp3",
@@ -16,6 +34,18 @@
     "v": 4,
     "shift": 0,
     "seconds": 190.0
+  },
+  "swell": {
+    "file": "swell.mp3",
+    "v": 1,
+    "shift": -1,
+    "seconds": 127.8
+  },
+  "terrace": {
+    "file": "terrace.mp3",
+    "v": 1,
+    "shift": -1,
+    "seconds": 172.3
   },
   "tide": {
     "file": "tide.mp3",

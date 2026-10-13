@@ -35,7 +35,7 @@ export const ready = {
   voice: 'leo',
   blurb: 'Three minutes before a talk, an exam or a start line.',
   lede: 'A short routine for the minutes before something that matters: two sighs, long breaths out, a few rounds of box breathing, and one clear first step. Short enough to use in a corridor.',
-  music: ['focus', 'midnight'],
+  music: ['focus', 'midnight', 'keys'],
   accent: ['#e6dcc8', '#8a6a3c'],
   sky: 'deep',
   intensity: ['desk', 'stage', 'start'],

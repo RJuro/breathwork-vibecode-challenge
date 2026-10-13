@@ -55,6 +55,9 @@ runners on the index lines and a pointer tilt; the session map shares that look 
 reveal as they scroll into view, and every tile drawing acts out its practice on hover. All of it is
 static under prefers-reduced-motion.
 
+In a session, *Skip ›* (or the right arrow key) jumps to the next section; skipped time counts
+neither as practice nor as held breath.
+
 Also in the app: a chart of each practice's number over the last 20 sessions (seconds held; Breath
 Check charts its control pause), CSV export of the log and **Save audio for offline** in Settings,
 a daily calendar reminder (an `.ics` file) on each practice page, optional vibration on breath turns
@@ -105,12 +108,15 @@ guide are in A), cuts it where the level matches the opening so the loop is seam
 to mono and updates `audio/music/manifest.json`.
 Each practice names a small pool of beds (`music: ['night', 'deep']`), and each new session of
 that practice plays the next one that exists (by its count in the log), so long practices don't
-always sound the same. Beds (all Suno): `night` (*After the Party*), `focus` (*A Major Morning*), `midnight` (*Midnight
-Focus*, has a soft beat, so only under Reps and Ready), `tide` (*A-Frame Stillness*), `transit` (*Pink
-Noise Cocoon*). The pools also name `deep`, `dusk`, `keys`, `terrace`
-and `swell`, slots that are empty for now: a pool skips beds that don't exist, so adding a track
-with `add_music.py` puts it into rotation. AI music tried and dropped: Lyria 3.5 songs (no exclusion
-controls; beats, a spoken stock tag, DC offset and sub-bass) and Lyria RealTime (aimless, judged garbage).
+always sound the same. Beds: `night` (Suno: *After the Party*), `focus` (Suno: *A Major Morning*), `midnight` (Suno:
+*Midnight Focus*), `tide` (*A-Frame Stillness*), `transit` (*Pink Noise Cocoon*), and five placeholder
+tracks cut from two AI-generated focus-music compilations on YouTube (to be regenerated): `deep`
+(*Closing Hour*) and `current` (*Quiet Current*) under Retention, `swell` (*Cold Glass*) under Under
+the weather and Breathe light, `terrace` (*At Rest*) under Cool-down, `keys` (*Flow State*) under
+Reps and Ready. All of these have a soft beat; they were chosen by their percussive share (a
+harmonic/percussive split of the spectrogram, above 150 Hz): 0.19–0.25, against 0.30 for Midnight
+Focus and 0.07–0.12 for the beatless beds. Box, Resonance, Land and Lights Out keep beatless beds
+only. `dusk` is still empty.
 `add_music.py` low-cuts at 35 Hz and limits peaks; prefer `--shift 0` for RealTime beds.
 Tracks are mixed to mono, level-matched, looped with a 6 s crossfade
 and ducked under the voice; without a track the app plays a soft drone.

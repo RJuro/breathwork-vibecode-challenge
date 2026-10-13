@@ -38,7 +38,7 @@ export const reps = {
   voice: 'leo',
   blurb: 'Count your breaths to ten. Lose count, start again. That’s the rep.',
   lede: 'A short sit for the morning. Count your out-breaths from one to ten and start over. When you drift, notice it and go back to one. Every catch is a rep.',
-  music: ['focus', 'midnight'],
+  music: ['focus', 'midnight', 'keys'],
   accent: ['#f3dfc1', '#b9824a'],
   sky: 'clear',
   intensity: ['gentle', 'standard', 'deeper'],

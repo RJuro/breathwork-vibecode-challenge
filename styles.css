@@ -228,6 +228,9 @@ h1 em { font-style: italic; font-weight: 400; }
 .session-top { display: flex; justify-content: space-between; align-items: baseline; padding: 14px var(--gutter) 0; }
 #section-name { font-family: var(--serif); font-style: italic; font-size: 21px; }
 #time-left { font-size: 12px; letter-spacing: 0.18em; color: var(--muted); font-variant-numeric: tabular-nums; }
+.session-right { display: flex; align-items: baseline; gap: 6px; }
+.skip { background: none; border: 0; color: var(--muted); font: inherit; font-size: 13px; letter-spacing: 0.04em; min-height: 44px; padding: 0 0 0 12px; cursor: pointer; }
+.skip:hover, .skip:focus-visible { color: var(--ink); }
 
 .stage { flex: 1; position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 320px; }
 .orb-wrap { position: relative; width: min(78vw, 400px); aspect-ratio: 1; display: grid; place-items: center; }

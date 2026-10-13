@@ -440,6 +440,18 @@ function breatheNow() {
   audio.currentTime = target;
 }
 
+/** Jump to the start of the next section (the last one ends the session). Skipped time counts
+ *  neither as practice nor as held breath. */
+function skipSection() {
+  const t = audio.currentTime;
+  const next = plan.sections.find((s) => s.start > t + 0.5);
+  if (!next) return finish();
+  skips.push([t, next.start]);
+  for (const v of plan.voice) if (v.t < next.start) fired.add(v);
+  window.speechSynthesis?.cancel();
+  audio.currentTime = next.start + 0.01;
+}
+
 function togglePause() {
   if (audio.paused) {
     audio.play();
@@ -459,9 +471,10 @@ function stopSession() {
 }
 
 function finish() {
-  const played = audio.ended ? plan.total : audio.currentTime;
-  const holds = holdResults(plan, skips, played);
-  const held = Math.round(retention(plan, skips, played));
+  const at = audio.ended ? plan.total : audio.currentTime;
+  const played = at - skips.reduce((n, [a, b]) => n + Math.max(0, Math.min(b, at) - a), 0); // time actually spent
+  const holds = holdResults(plan, skips, at);
+  const held = Math.round(retention(plan, skips, at));
   const before = readLog().filter((e) => e.id === flow.id).at(-1);
   if (played >= 60 && !flow.noLog) logSession({ id: flow.id, level: levelOf(flow), at: Date.now(), secs: Math.round(played), held, holds: holds.map(Math.round) });
   stopSession();
@@ -624,6 +637,7 @@ function bindUI() {
 
   $('#pause-btn').addEventListener('click', togglePause);
   $('#breathe-btn').addEventListener('click', breatheNow);
+  $('#skip-btn').addEventListener('click', skipSection);
   $('#end-btn').addEventListener('click', finish);
   $('#done-again').addEventListener('click', begin);
   $('#done-home').addEventListener('click', () => {
@@ -639,6 +653,7 @@ function bindUI() {
       e.preventDefault();
       togglePause();
     } else if (e.code === 'Enter') breatheNow();
+    else if (e.code === 'ArrowRight') skipSection();
   });
   document.addEventListener('visibilitychange', async () => {
     if (document.visibilityState === 'visible' && $('#session').classList.contains('is-active') && !wakeLock) {

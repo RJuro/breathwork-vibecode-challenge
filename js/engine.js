@@ -155,7 +155,11 @@ export function retention(plan, skips, endT) {
   let s = holdResults(plan, skips, endT, true).reduce((a, b) => a + b, 0);
   for (const g of plan.segs) {
     if (g.kind !== 'pace' || g.start >= endT) continue;
-    for (const p of g.phases) if ((p.phase === 'top' || p.phase === 'bottom') && p.start < endT) s += Math.min(p.end, endT) - p.start;
+    for (const p of g.phases) {
+      if ((p.phase !== 'top' && p.phase !== 'bottom') || p.start >= endT) continue;
+      if (skips.some(([a, b]) => p.start >= a && p.start < b)) continue; // skipped over
+      s += Math.min(p.end, endT) - p.start;
+    }
   }
   return s;
 }
