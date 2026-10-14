@@ -1,4 +1,4 @@
-import { FLOWS, MOMENTS, LEVEL_NAMES, intensitiesOf, optsOf } from './flows/index.js';
+import { FLOWS, MOMENTS, AREAS, areaOf, LEVEL_NAMES, intensitiesOf, optsOf } from './flows/index.js';
 import { compile, stateAt, captionAt, exitOf, holdResults, retention } from './engine.js';
 import { notesHtml } from './flows/lib.js';
 import { Bloom } from './bloom.js';
@@ -15,13 +15,14 @@ const fmt = (s) => {
 const minutes = (s) => `${Math.max(1, Math.round(s / 60))} min`;
 
 // ── Settings ───────────────────────────────────────────
-const DEFAULTS = { look: 2, voice: true, talk: 'guided', visual: 'contour', sounds: true, music: true, vibrate: false, voiceVol: 1, bedVol: 1, safetyAck: false, intensity: {} };
+const DEFAULTS = { look: 2, voice: true, talk: 'guided', visual: 'contour', sounds: true, music: true, vibrate: false, voiceVol: 1, bedVol: 1, safetyAck: false, intensity: {}, musicFor: {} };
 let settings = load();
 function load() {
   try {
     const stored = JSON.parse(localStorage.getItem('kumbha') || '{}');
     const s = { ...DEFAULTS, ...stored };
     if (typeof s.intensity !== 'object') s.intensity = {}; // v1 stored one global string
+    if (typeof s.musicFor !== 'object') s.musicFor = {};
     if ('ambience' in s) s.music = s.ambience;
     if (s.explain === true && !('talk' in stored)) s.talk = 'full';
     // The Contour redesign: its visual becomes everyone's default once (judged on what was
@@ -58,6 +59,10 @@ function logSession(entry) {
 }
 const day = (at) => new Date(at).toLocaleDateString(undefined, { day: 'numeric', month: 'short' });
 
+/** Music for this practice: its own on/off switch if you've used it, else the practice's default
+ *  (`musicDefault`), else the global setting. Practices without a pool never have music. */
+const musicOn = (f) => !!f.music && (settings.musicFor[f.id] ?? f.musicDefault ?? settings.music);
+
 const levelOf = (flow) => {
   const lv = settings.intensity[flow.id];
   return intensitiesOf(flow).includes(lv) ? lv : flow.defaultLevel || 'standard';
@@ -87,6 +92,11 @@ function route() {
   else {
     flow = null;
     document.body.dataset.section = 'arrive';
+    const next = location.hash.startsWith('#/yoga') ? 'yoga' : 'breath';
+    if (next !== area) {
+      area = next;
+      renderShelf();
+    }
     show('library');
   }
 }
@@ -99,8 +109,15 @@ function show(id) {
 }
 
 // ── Library ────────────────────────────────────────────
-// Grouped by moment of the day; a moment with a single practice gets a wide tile.
+// Two areas (breathwork, yoga), each grouped by moment; a moment with a single practice gets a wide tile.
+let area = location.hash.startsWith('#/yoga') ? 'yoga' : 'breath';
 async function renderShelf() {
+  const head = AREAS[area];
+  $('#hero-eyebrow').innerHTML = head.eyebrow;
+  $('#hero-title').innerHTML = head.title;
+  $('#hero-lede').textContent = head.lede;
+  $('#lib-hint').textContent = head.hint;
+  $$('.areas a').forEach((a) => a.toggleAttribute('aria-current', a.dataset.area === area));
   const week = readLog().filter((e) => e.at > Date.now() - 7 * 864e5);
   const held = week.reduce((n, e) => n + (e.held || 0), 0);
   $('#week').textContent = week.length ? `This week: ${week.length} session${week.length > 1 ? 's' : ''} · ${minutes(week.reduce((n, e) => n + e.secs, 0))}${held ? ` · ${fmt(held)} held` : ''}` : '';
@@ -108,7 +125,7 @@ async function renderShelf() {
   const shelf = $('#shelf');
   shelf.innerHTML = '';
   let n = 0;
-  for (const m of MOMENTS) {
+  for (const m of MOMENTS.filter((x) => (x.area || 'breath') === area)) {
     const fs = FLOWS.filter((f) => f.moment === m.id);
     if (!fs.length) continue;
     const head = document.createElement('div');
@@ -179,12 +196,16 @@ function openFlow(f) {
   flow = f;
   document.body.dataset.section = f.sky || 'arrive';
   $('#d-title').innerHTML = f.titleHtml || f.title;
+  $('#d-back').href = areaOf(f) === 'yoga' ? '#/yoga' : '#/';
+  $('#d-hint').textContent = AREAS[areaOf(f)].hint;
   $('#d-lede').textContent = f.lede;
   // A practice's teacher's tips sit in How it works, just before the safety notes.
   const tips = f.notes ? `<h3>Tips</h3><div class="notes-body">${notesHtml(f.notes)}</div>` : '';
   const learn = f.learn || '';
   $('#learn-body').innerHTML = learn.includes('<h3>Safety</h3>') ? learn.replace('<h3>Safety</h3>', `${tips}<h3>Safety</h3>`) : learn + tips;
   $('#intensity-row').hidden = !f.intensity;
+  $('#music-row').hidden = !f.music;
+  syncMusic();
   $('#outline').open = matchMedia('(min-height: 900px) and (min-width: 700px)').matches;
   syncIntensity();
   renderHistory(f);
@@ -207,6 +228,10 @@ function renderHistory(f) {
   const rows = all.slice(-3).reverse().map((e) => `<li><span>${day(e.at)}</span><span>${minutes(e.secs)}${val(e) ? ` · ${fmt(val(e))} ${metric.label}` : ''}</span></li>`);
   $('#history').hidden = !rows.length;
   $('#history').innerHTML = chart + rows.join('');
+}
+
+function syncMusic() {
+  $$('#music-seg button').forEach((b) => b.setAttribute('aria-pressed', String((b.dataset.v === 'on') === musicOn(flow))));
 }
 
 function syncIntensity() {
@@ -257,7 +282,7 @@ async function prepare() {
   plan = compile(f, durOf(packs[f.voice]), opts);
   renderMap();
   const ids = [...new Set(plan.voice.map((v) => v.id))];
-  const [loaded, music] = await Promise.all([loadCues(ids, f.voice), settings.music ? loadMusic(f.music, readLog().filter((e) => e.id === f.id).length) : null]);
+  const [loaded, music] = await Promise.all([loadCues(ids, f.voice), musicOn(f) ? loadMusic(f.music, readLog().filter((e) => e.id === f.id).length) : null]);
   if (token !== renderToken) return;
   buffers = loaded;
   const durs = Object.fromEntries(Object.entries(buffers).filter(([, b]) => b).map(([k, b]) => [k, b.duration]));
@@ -273,7 +298,7 @@ async function prepare() {
   try {
     blob = await renderSession(plan, settings.voice ? buffers : {}, {
       breathSounds: settings.sounds,
-      ambience: settings.music && f.music !== false,
+      ambience: musicOn(f),
       music,
       voiceGain: settings.voiceVol,
       bedGain: settings.bedVol,
@@ -571,6 +596,14 @@ function bindUI() {
     begin();
   });
 
+  $('#music-seg').addEventListener('click', (e) => {
+    const b = e.target.closest('button[data-v]');
+    if (!b) return;
+    save({ musicFor: { ...settings.musicFor, [flow.id]: b.dataset.v === 'on' } });
+    syncMusic();
+    prepare();
+  });
+
   $('#intensity').addEventListener('click', (e) => {
     const b = e.target.closest('button[data-v]');
     if (!b) return;
@@ -641,7 +674,7 @@ function bindUI() {
   $('#end-btn').addEventListener('click', finish);
   $('#done-again').addEventListener('click', begin);
   $('#done-home').addEventListener('click', () => {
-    location.hash = '#/';
+    location.hash = flow && areaOf(flow) === 'yoga' ? '#/yoga' : '#/';
   });
   audio.addEventListener('ended', finish);
   audio.addEventListener('timeupdate', () => voiceTick(audio.currentTime));

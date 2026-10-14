@@ -16,7 +16,7 @@ export function estimateDur(text) {
  * @param opts   { holdScale, gentle } for the chosen intensity
  */
 export function compile(flow, durs = {}, opts = {}) {
-  const defs = typeof flow.sections === 'function' ? flow.sections(opts) : flow.sections;
+  const defs = typeof flow.sections === 'function' ? flow.sections(opts, durs) : flow.sections; // durs: for practices that size phases to their cues (yoga)
   const segs = [];
   const voice = [];
   const sounds = [];

@@ -29,6 +29,7 @@
         <header class="top">
           <span class="mark">Breathe-up</span>
           <div class="top-actions">
+            <nav class="areas" aria-label="Areas"><a class="chip" href="#/" data-area="breath">Breathe</a><a class="chip" href="#/yoga" data-area="yoga">Yoga</a></nav>
             <button class="chip icon open-settings" aria-label="Settings">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
                 <path d="M4 7h10M18 7h2M4 17h4M12 17h8" />
@@ -39,13 +40,13 @@
           </div>
         </header>
         <section class="hero">
-          <p class="eyebrow">Breath &amp; retention</p>
-          <h1>Breathe on <em>purpose</em></h1>
-          <p class="lede">Retention training and short daily practices, timed to the second and logged on this device. For calm, focus and comfort, not medical treatment.</p>
+          <p class="eyebrow" id="hero-eyebrow">Breath &amp; retention</p>
+          <h1 id="hero-title">Breathe on <em>purpose</em></h1>
+          <p class="lede" id="hero-lede">Retention training and short daily practices, timed to the second and logged on this device. For calm, focus and comfort, not medical treatment.</p>
           <p class="week" id="week"></p>
         </section>
         <div id="shelf" class="shelf"></div>
-        <p class="hint">Headphones in. Sit or lie down. Never in water or while driving.</p>
+        <p class="hint" id="lib-hint">Headphones in. Sit or lie down. Never in water or while driving.</p>
       </div>
     </main>
 
@@ -54,7 +55,7 @@
       <div class="topo" id="detail-topo" aria-hidden="true"></div>
       <div class="wrap" style="display: flex; flex-direction: column; flex: 1">
         <header class="top">
-          <a class="chip" href="#/" aria-label="All practices">← All practices</a>
+          <a class="chip" id="d-back" href="#/" aria-label="All practices">← All practices</a>
           <div class="top-actions">
             <button class="chip" id="open-learn">How it works</button>
             <button class="chip icon open-settings" aria-label="Settings">
@@ -84,11 +85,14 @@
             <div class="seg" id="intensity" role="group" aria-label="Intensity"></div>
             <p class="intensity-note" id="intensity-note" aria-live="polite"></p>
           </div>
+          <div class="intensity-row" id="music-row" hidden>
+            <div class="seg" id="music-seg" role="group" aria-label="Music"><button data-v="off">No music</button><button data-v="on">Music</button></div>
+          </div>
           <button class="begin" id="begin" disabled>
             <span>Begin</span><span class="begin-sub" id="begin-sub">Loading…</span>
           </button>
           <p class="play-error" id="play-error" role="alert" hidden>Audio couldn't start. Check that your phone isn't on silent, then tap Begin again.</p>
-          <p class="hint">Headphones in. Sit or lie down. Never in water or while driving.</p>
+          <p class="hint" id="d-hint">Headphones in. Sit or lie down. Never in water or while driving.</p>
           <p class="voice-note" id="voice-note"></p>
           <div class="reminder">
             <label for="reminder-time">Every day at</label>

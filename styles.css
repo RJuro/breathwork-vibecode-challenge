@@ -113,6 +113,9 @@ body[data-section^='seat'] { --sky1: var(--sun); --sky2: var(--aqua); }
 }
 .chip:hover { border-color: rgba(240, 235, 227, 0.36); background: rgba(40, 39, 43, 0.75); }
 .chip.icon { padding: 0; width: 44px; justify-content: center; }
+.areas { display: flex; gap: 6px; }
+.areas .chip { color: var(--muted); }
+.areas .chip[aria-current] { color: var(--ink); border-color: rgba(240, 235, 227, 0.5); }
 .chip svg { width: 18px; height: 18px; display: block; }
 a.chip { text-decoration: none; }
 

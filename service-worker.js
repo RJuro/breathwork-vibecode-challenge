@@ -1,6 +1,6 @@
 // Offline shell + audio cache. Bump VERSION when shipping changes; AUDIO survives the bump, since
 // every recording is versioned in its URL (?v=) and never changes in place.
-const VERSION = 'kumbha-v30';
+const VERSION = 'kumbha-v31';
 const AUDIO = 'kumbha-audio';
 const SHELL = [
   './',
@@ -21,6 +21,8 @@ const SHELL = [
   'js/flows/retain.js',
   'js/flows/daily.js',
   'js/flows/notes.js',
+  'js/flows/yoga.js',
+  'js/yoga.js',
   'icons/icon.svg',
   'icons/icon-192.png',
 ];
