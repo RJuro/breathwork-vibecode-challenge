@@ -59,6 +59,9 @@ account is on Gemini tier 3, so the old ~100 requests/day cap no longer bites.
 
 ## Yoga (14 Oct 2026)
 
+The full write-up (model, research, what's creative in the teachers' sequencing, the planned
+"Spiral" flow, writing rules, backlog) is in `docs/yoga.md`.
+
 A separate library area (`#/yoga`, tabs at the top of the library; `MOMENTS[].area`, `AREAS` in
 js/flows/index.js). Practices (js/flows/yoga.js, both voiced by Leo, music off unless switched on per
 practice: the practice page has a No music / Music switch, `musicFor` in settings):
