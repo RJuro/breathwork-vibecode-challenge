@@ -1,0 +1,31 @@
+{
+ "leo": {
+  "design": "Man in his late twenties, a breath and conditioning coach: calm, grounded and quietly confident, the young instructor people follow for straight talk rather than hype. Warm, relaxed, youthful baritone, close to the microphone, easy to listen to, with a hint of a smile. He speaks plainly to one person, unhurried, with natural pauses. Light, relaxed General American English with no strong regional accent. Not spiritual, not breathy, not an announcer.",
+  "gender": "male",
+  "accent": "light General American",
+  "persona": "Grounded, Confident, Warm",
+  "sample": "Welcome. Sit tall, close your eyes. Here's the plan: four rounds, four counts each side. Nothing to win today. Just get the rhythm.",
+  "ids": {
+   "american": "voice_nriopph7sm2g",
+   "european": "voice_wi2b31q7x6eh"
+  },
+  "lang": "en-US",
+  "filter": "afftdn=nr=12:nf=-45:tn=1",
+  "style": "calm and grounded, talking to one person at a natural, unhurried pace, with short pauses between sentences",
+  "id": "voice_fg6irj02etk0"
+ },
+ "mira": {
+  "design": "Woman in her mid-twenties, a breathwork and strength coach with a grounded, self-assured presence: people follow her for clear, no-nonsense guidance that still feels warm. Youthful low-mid voice with a soft, slightly husky texture, smooth and close to the microphone, calm and confident, with a dry, understated humour. She speaks plainly and directly to one person, unhurried, with natural pauses. Light, relaxed General American English, no strong regional accent. Modern and magnetic, never sing-song. No yoga-teacher softness, no breathiness, no hype, no upspeak, no vocal fry.",
+  "gender": "female",
+  "accent": "light General American",
+  "persona": "Grounded, Confident, Warm",
+  "sample": "Okay. Get comfortable, shoulders down. We're going to slow everything down for a few minutes. If your mind wanders, fine. Come back to the breath.",
+  "ids": {
+   "american": "voice_y1sjwd2eg93y",
+   "european": "voice_fzchilcl4edf"
+  },
+  "lang": "en-US",
+  "style": "calm and grounded, talking to one person at a natural, unhurried pace, with short pauses between sentences",
+  "id": "voice_setcfwax01uf"
+ }
+}

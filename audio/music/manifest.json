@@ -1,0 +1,80 @@
+{
+  "building": {
+    "file": "building.mp3",
+    "v": 1,
+    "shift": 0,
+    "seconds": 144.4
+  },
+  "current": {
+    "file": "current.mp3",
+    "v": 1,
+    "shift": -1,
+    "seconds": 227.4
+  },
+  "deep": {
+    "file": "deep.mp3",
+    "v": 1,
+    "shift": -1,
+    "seconds": 211.1
+  },
+  "dusk": {
+    "file": "dusk.mp3",
+    "v": 1,
+    "shift": 0,
+    "seconds": 132.6
+  },
+  "focus": {
+    "file": "focus.mp3",
+    "v": 3,
+    "shift": 0,
+    "seconds": 162.8
+  },
+  "keys": {
+    "file": "keys.mp3",
+    "v": 1,
+    "shift": -1,
+    "seconds": 164.4
+  },
+  "midnight": {
+    "file": "midnight.mp3",
+    "v": 1,
+    "shift": -2,
+    "seconds": 182.6
+  },
+  "mind": {
+    "file": "mind.mp3",
+    "v": 1,
+    "shift": 0,
+    "seconds": 73.8
+  },
+  "night": {
+    "file": "night.mp3",
+    "v": 4,
+    "shift": 0,
+    "seconds": 190.0
+  },
+  "swell": {
+    "file": "swell.mp3",
+    "v": 1,
+    "shift": -1,
+    "seconds": 127.8
+  },
+  "terrace": {
+    "file": "terrace.mp3",
+    "v": 1,
+    "shift": -1,
+    "seconds": 172.3
+  },
+  "tide": {
+    "file": "tide.mp3",
+    "v": 3,
+    "shift": 1,
+    "seconds": 149.9
+  },
+  "transit": {
+    "file": "transit.mp3",
+    "v": 3,
+    "shift": 0,
+    "seconds": 150.9
+  }
+}

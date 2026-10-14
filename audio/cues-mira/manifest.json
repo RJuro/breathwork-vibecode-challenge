@@ -1,0 +1,2011 @@
+{
+  "an_air_r2": {
+    "fp": "6fd779c0e316",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 11.43,
+    "match": 1.0
+  },
+  "an_arm_r2": {
+    "fp": "b14348603152",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 7.61,
+    "match": 1.0
+  },
+  "an_blocked_r2": {
+    "fp": "5f74a6c1fedf",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 9.04,
+    "match": 1.0
+  },
+  "an_both": {
+    "fp": "ebf4000b30d9",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 4.2,
+    "match": 1
+  },
+  "an_break_1": {
+    "fp": "720a92e9adb4",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 6.49,
+    "match": 1.0
+  },
+  "an_break_2_r2": {
+    "fp": "5093e0e9e563",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 6.92,
+    "match": 1.0
+  },
+  "an_break_3": {
+    "fp": "ee5e5f242acb",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 5.28,
+    "match": 1.0
+  },
+  "an_close_r2": {
+    "fp": "b93f0c65d644",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 9.39,
+    "match": 1.0
+  },
+  "an_creep": {
+    "fp": "7b5117efb2a1",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 8.59,
+    "match": 1.0
+  },
+  "an_deepest_check_r2": {
+    "fp": "bc23e7c5a6bf",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 9.56,
+    "match": 1.0
+  },
+  "an_exhale_check_r2": {
+    "fp": "5e598d5223b1",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 8.29,
+    "match": 1.0
+  },
+  "an_hand_r2": {
+    "fp": "e574b62d86b0",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 14.34,
+    "match": 1.0
+  },
+  "an_hold_soft": {
+    "fp": "e01e87a8c5c1",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 5.02,
+    "match": 1
+  },
+  "an_holds_r2": {
+    "fp": "97abd417cd7e",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 8.57,
+    "match": 1.0
+  },
+  "an_l_in_h": {
+    "fp": "79379e5373c5",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 1.24,
+    "match": 1
+  },
+  "an_l_out": {
+    "fp": "529a75f2fbe9",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 2.64,
+    "match": 1
+  },
+  "an_l_out_h": {
+    "fp": "9ed4103c37f8",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 2.61,
+    "match": 1
+  },
+  "an_last_exhale_r2": {
+    "fp": "7c7271643216",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 8.7,
+    "match": 1.0
+  },
+  "an_lead_1_r2": {
+    "fp": "a44a9f95468f",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 9.4,
+    "match": 1.0
+  },
+  "an_lead_2_r2": {
+    "fp": "27e9df868f79",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 9.89,
+    "match": 1.0
+  },
+  "an_lead_3_r2": {
+    "fp": "8114c608dd8a",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 8.11,
+    "match": 1.0
+  },
+  "an_longer_check_r2": {
+    "fp": "aedaa4e1e246",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 8.02,
+    "match": 1.0
+  },
+  "an_nasal_cycle_r2": {
+    "fp": "af393f1472b9",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 13.42,
+    "match": 0.963
+  },
+  "an_plan": {
+    "fp": "27cb17e5fe59",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 16.01,
+    "match": 0.986
+  },
+  "an_r_in": {
+    "fp": "3f66a9de00c0",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 1.27,
+    "match": 1
+  },
+  "an_r_out": {
+    "fp": "49550926389c",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 2.41,
+    "match": 1
+  },
+  "an_r_out_h": {
+    "fp": "07bc451f3d48",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 2.69,
+    "match": 1
+  },
+  "an_ready": {
+    "fp": "c4771ebd1203",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 3.43,
+    "match": 1.0
+  },
+  "an_release": {
+    "fp": "f4d0c947c514",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 8.83,
+    "match": 1.0
+  },
+  "an_resistance": {
+    "fp": "6620d7868f6e",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 9.81,
+    "match": 1.0
+  },
+  "an_t_ears_r2": {
+    "fp": "0f48ba61fb02",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 8.9,
+    "match": 1.0
+  },
+  "an_t_track": {
+    "fp": "f7cbfa1418c6",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 6.61,
+    "match": 1.0
+  },
+  "an_welcome_r2": {
+    "fp": "f6de7b0b6392",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 11.33,
+    "match": 1.0
+  },
+  "bs_knees": {
+    "fp": "e92b563d8ff3",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 6.11,
+    "match": 1.0
+  },
+  "bs_nose2_r2": {
+    "fp": "b18d36e09e52",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 12.96,
+    "match": 1.0
+  },
+  "bs_nose_only2_r2": {
+    "fp": "11ce5ca9a3f3",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 3.12,
+    "match": 1.0
+  },
+  "bs_upright": {
+    "fp": "18896a0536b2",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 2.23,
+    "match": 1.0
+  },
+  "bs_why_r2": {
+    "fp": "38e7a45bbc8f",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 6.04,
+    "match": 1.0
+  },
+  "cd_close2": {
+    "fp": "862924322f2e",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 5.81,
+    "match": 1.0
+  },
+  "cd_free": {
+    "fp": "27e351cd16d2",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 6.09,
+    "match": 1.0
+  },
+  "cd_interval": {
+    "fp": "fbaafdfe7356",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 6.63,
+    "match": 1.0
+  },
+  "cd_legs": {
+    "fp": "68dfd5600d40",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 5.49,
+    "match": 1.0
+  },
+  "cd_low2": {
+    "fp": "baa8240a37a3",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 4.81,
+    "match": 1.0
+  },
+  "cd_oxygen_after": {
+    "fp": "6008c5d138a9",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 10.09,
+    "match": 0.936
+  },
+  "cd_permission": {
+    "fp": "c6edbfc2781a",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 9.8,
+    "match": 1.0
+  },
+  "cd_quiet2": {
+    "fp": "0cba18cbea5d",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 8.23,
+    "match": 1.0
+  },
+  "cd_return2": {
+    "fp": "53eef045e243",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 8.22,
+    "match": 1.0
+  },
+  "cd_setup": {
+    "fp": "7d2ef8d7b124",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 12.18,
+    "match": 1.0
+  },
+  "cd_sit_pause": {
+    "fp": "1b2f747f06e2",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 7.88,
+    "match": 1.0
+  },
+  "cd_step_one": {
+    "fp": "ffe6f212f6ad",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 12.23,
+    "match": 1.0
+  },
+  "cd_step_two": {
+    "fp": "2d31fb0b2c65",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 9.97,
+    "match": 1.0
+  },
+  "cd_up": {
+    "fp": "a456f623ade1",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 8.09,
+    "match": 1.0
+  },
+  "cd_welcome": {
+    "fp": "b63f015b5b18",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 3.1,
+    "match": 0.857
+  },
+  "cd_why2": {
+    "fp": "cd37c1feb931",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 5.5,
+    "match": 1.0
+  },
+  "land_belly4": {
+    "fp": "6a01c7b24379",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 3.8,
+    "match": 1.0
+  },
+  "land_chest4": {
+    "fp": "1b3b5b91c62a",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 6.88,
+    "match": 1.0
+  },
+  "land_close4": {
+    "fp": "8f5e3b78d81c",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 16.55,
+    "match": 1.0
+  },
+  "land_face3": {
+    "fp": "312b67b35c92",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 6.36,
+    "match": 1.0
+  },
+  "land_feet4": {
+    "fp": "6b625dc5df13",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 8.55,
+    "match": 1.0
+  },
+  "land_hands4": {
+    "fp": "f11951598d4f",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 5.75,
+    "match": 1.0
+  },
+  "land_hips3": {
+    "fp": "531a40b131f4",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 5.99,
+    "match": 1.0
+  },
+  "land_l_adaptation4": {
+    "fp": "c14b82a5baeb",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 9.81,
+    "match": 1.0
+  },
+  "land_l_back": {
+    "fp": "fe1ba43106f7",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 8.18,
+    "match": 1.0
+  },
+  "land_legs4": {
+    "fp": "9e445a0d61ae",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 9.15,
+    "match": 1.0
+  },
+  "land_neck4": {
+    "fp": "45edbe3d5b84",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 3.94,
+    "match": 1.0
+  },
+  "land_plan4": {
+    "fp": "a52fdaca3b04",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 13.23,
+    "match": 1.0
+  },
+  "land_settle4": {
+    "fp": "1b74bc8ac032",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 5.47,
+    "match": 1.0
+  },
+  "land_welcome3": {
+    "fp": "b24e52d3aa62",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 8.19,
+    "match": 1.0
+  },
+  "land_whole4": {
+    "fp": "d123d6dd7de8",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 8.35,
+    "match": 1.0
+  },
+  "lo_arms2": {
+    "fp": "24648dc7eded",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 2.79,
+    "match": 1.0
+  },
+  "lo_belly2": {
+    "fp": "ce30ae52e30e",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 3.24,
+    "match": 1.0
+  },
+  "lo_face2": {
+    "fp": "5393153e6ae6",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 2.58,
+    "match": 1.0
+  },
+  "lo_heart": {
+    "fp": "b93b40d4799c",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 7.52,
+    "match": 1.0
+  },
+  "lo_legs2": {
+    "fp": "8bb15309716d",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 2.28,
+    "match": 1.0
+  },
+  "lo_neck": {
+    "fp": "4d38310ac74d",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 2.05,
+    "match": 1.0
+  },
+  "lo_plan2_r2": {
+    "fp": "2321491e3115",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 15.51,
+    "match": 1.0
+  },
+  "lo_quiet2_r2": {
+    "fp": "50d689abbba3",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 3.01,
+    "match": 1.0
+  },
+  "lo_release": {
+    "fp": "603b2423a05e",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 2.24,
+    "match": 1.0
+  },
+  "lo_rest2": {
+    "fp": "0e7989962cf6",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 2.38,
+    "match": 1.0
+  },
+  "lo_shoulders": {
+    "fp": "a4d4450f7d45",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 3.18,
+    "match": 1
+  },
+  "lo_welcome_r2": {
+    "fp": "0f8ae0829c64",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 9.43,
+    "match": 1.0
+  },
+  "mira_hold_there": {
+    "fp": "0c5d086e8f5a",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 1.1,
+    "match": 1.0
+  },
+  "mira_in_gently": {
+    "fp": "94cb98d85421",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 1.26,
+    "match": 1.0
+  },
+  "mira_in_nose": {
+    "fp": "6b75dfa04812",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 1.53,
+    "match": 1.0
+  },
+  "mira_in_now": {
+    "fp": "9dadcceaaf89",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 1.86,
+    "match": 1.0
+  },
+  "mira_out_and": {
+    "fp": "92a41ed1bd02",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 1.19,
+    "match": 1.0
+  },
+  "mira_out_breathe": {
+    "fp": "3577a1163408",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 0.85,
+    "match": 1.0
+  },
+  "mira_out_let": {
+    "fp": "93fb8c5deb14",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 0.66,
+    "match": 1.0
+  },
+  "n_about_two_minutes_to_go": {
+    "fp": "63c41f7e4dc2",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 1.85,
+    "match": 1
+  },
+  "n_all_the_way_out": {
+    "fp": "21bf1b7746ee",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 1.36,
+    "match": 1.0
+  },
+  "n_and_breathe_in": {
+    "fp": "85d255a64ad8",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 1.51,
+    "match": 1.0
+  },
+  "n_and_hum": {
+    "fp": "0565cbd4ccb2",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 1.17,
+    "match": 1.0
+  },
+  "n_breathe_in_about_two_thirds_full": {
+    "fp": "b053c51f2158",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 3.94,
+    "match": 1
+  },
+  "n_breathe_in_comfortably_full_not_to_the_top": {
+    "fp": "17b48a4ae0d6",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 4.8,
+    "match": 1
+  },
+  "n_breathe_in_with_me": {
+    "fp": "ea64bfcff667",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 0.94,
+    "match": 1.0
+  },
+  "n_bring_your_head_back_to_the_center": {
+    "fp": "246ee8ffd64b",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 2.2,
+    "match": 1.0
+  },
+  "n_five_more": {
+    "fp": "28ff3babf973",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 0.8,
+    "match": 1.0
+  },
+  "n_five_pauses_of_up_to_fifteen_seconds": {
+    "fp": "4f8de6447987",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 3.27,
+    "match": 1
+  },
+  "n_five_pauses_with_limits_growing_from_thirty_seconds_to_a_min": {
+    "fp": "a6d759ade4c6",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 4.56,
+    "match": 1.0
+  },
+  "n_forty_five_quick_breaths": {
+    "fp": "588393ab543e",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 2.14,
+    "match": 1.0
+  },
+  "n_forty_quick_breaths": {
+    "fp": "1c63f8f1ef17",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 1.78,
+    "match": 1.0
+  },
+  "n_four_in_four_out_we_start_on_the_left": {
+    "fp": "667afa13d6d3",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 4.35,
+    "match": 1
+  },
+  "n_go": {
+    "fp": "86d9b7062a52",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 0.7,
+    "match": 1
+  },
+  "n_hold_comfortably_full_up_to_thirty_seconds": {
+    "fp": "f9349fdbe368",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 4.39,
+    "match": 1.0
+  },
+  "n_hold_comfortably_full_up_to_twenty_five_seconds": {
+    "fp": "56c4677af371",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 4.18,
+    "match": 1.0
+  },
+  "n_hold_comfortably_full_up_to_twenty_seconds": {
+    "fp": "6d8703853fa7",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 4.4,
+    "match": 1.0
+  },
+  "n_hold_lungs_empty_for_up_to_forty_five_seconds": {
+    "fp": "78eda58be3c0",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 5.65,
+    "match": 1
+  },
+  "n_hold_lungs_empty_for_up_to_one_minute": {
+    "fp": "a41d5aa3bdc7",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 3.9,
+    "match": 1
+  },
+  "n_hold_lungs_empty_for_up_to_one_minute_fifteen": {
+    "fp": "ece6901d19ac",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 5.3,
+    "match": 1
+  },
+  "n_hold_lungs_empty_for_up_to_one_minute_forty": {
+    "fp": "19df49349fce",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 4.23,
+    "match": 1
+  },
+  "n_hold_lungs_empty_for_up_to_one_minute_twenty": {
+    "fp": "bdf35b30e852",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 4.47,
+    "match": 1
+  },
+  "n_hold_lungs_empty_for_up_to_thirty_five_seconds": {
+    "fp": "1d5118da7fad",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 5.15,
+    "match": 1
+  },
+  "n_hold_lungs_empty_for_up_to_twenty_five_seconds": {
+    "fp": "7f3460b42d59",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 4.59,
+    "match": 1
+  },
+  "n_in_for_five_hold_for_twenty_out_for_ten_six_rounds": {
+    "fp": "14f2d5d6ce28",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 6.57,
+    "match": 1
+  },
+  "n_in_for_four_hold_for_sixteen_out_for_eight_eight_rounds": {
+    "fp": "c98906e98793",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 6.07,
+    "match": 1
+  },
+  "n_in_for_three_hold_for_twelve_out_for_six_six_rounds": {
+    "fp": "ded94e2da482",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 8.1,
+    "match": 1
+  },
+  "n_in_for_three_hold_for_twelve_out_for_six_sixteen_rounds": {
+    "fp": "828e1e589791",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 7.52,
+    "match": 1
+  },
+  "n_last_hold": {
+    "fp": "5a37d73a98af",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 1.08,
+    "match": 1.0
+  },
+  "n_last_round": {
+    "fp": "102ca609d63b",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 0.85,
+    "match": 1
+  },
+  "n_let_it_out_slowly": {
+    "fp": "2cd1b3667f19",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 1.39,
+    "match": 1
+  },
+  "n_next_four_in_six_out": {
+    "fp": "78a94b550ec6",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 3.06,
+    "match": 1.0
+  },
+  "n_now_slow_it_down_in_for_four_out_for_six": {
+    "fp": "7006bc60ed22",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 5.77,
+    "match": 1
+  },
+  "n_one_minute_in": {
+    "fp": "172ff5cc0424",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 0.99,
+    "match": 1.0
+  },
+  "n_out": {
+    "fp": "e1bee8ac0c54",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 0.61,
+    "match": 1.0
+  },
+  "n_out_through_the_left": {
+    "fp": "d72cd13bb234",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 1.25,
+    "match": 1.0
+  },
+  "n_out_through_the_right": {
+    "fp": "14720c3490fe",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 1.85,
+    "match": 1.0
+  },
+  "n_pause_for_up_to_fifteen_seconds_keep_your_throat_soft": {
+    "fp": "f61d14105002",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 4.65,
+    "match": 1.0
+  },
+  "n_pause_for_up_to_fifty_seconds_keep_your_throat_soft": {
+    "fp": "deed45422671",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 5.32,
+    "match": 1.0
+  },
+  "n_pause_for_up_to_forty_seconds_keep_your_throat_soft": {
+    "fp": "bbd788b6641c",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 5.27,
+    "match": 1.0
+  },
+  "n_pause_for_up_to_one_minute_keep_your_throat_soft": {
+    "fp": "805278416758",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 5.05,
+    "match": 1.0
+  },
+  "n_pause_for_up_to_thirty_seconds_keep_your_throat_soft": {
+    "fp": "52ccc1ec1e2d",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 4.57,
+    "match": 1.0
+  },
+  "n_return_to_center_and_rest_your_neck": {
+    "fp": "c2d103922d00",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 3.11,
+    "match": 1.0
+  },
+  "n_round_four_thirty_breaths_one_easy_breath_with_me_first": {
+    "fp": "9dc747eb1895",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 5.73,
+    "match": 1.0
+  },
+  "n_round_four_twenty_breaths_one_easy_breath_with_me_first": {
+    "fp": "55e6eb18424c",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 5.3,
+    "match": 1.0
+  },
+  "n_round_three_thirty_breaths_one_easy_breath_with_me_first": {
+    "fp": "8f698a43dbed",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 4.96,
+    "match": 1.0
+  },
+  "n_round_three_twenty_breaths_one_easy_breath_with_me_first": {
+    "fp": "58ab468e0a7b",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 5.25,
+    "match": 1.0
+  },
+  "n_round_two_thirty_breaths_one_easy_breath_with_me_first": {
+    "fp": "a8b4ad663b2e",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 5.55,
+    "match": 1.0
+  },
+  "n_round_two_twenty_breaths_one_easy_breath_with_me_first": {
+    "fp": "2ba3acaf24b0",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 4.66,
+    "match": 1.0
+  },
+  "n_take_an_easy_breath_then_breathe_at_your_own_pace": {
+    "fp": "fe724df5ec92",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 4.07,
+    "match": 1.0
+  },
+  "n_ten": {
+    "fp": "8b73ba87e0af",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 0.64,
+    "match": 1.0
+  },
+  "n_ten_more_breaths": {
+    "fp": "1fd8d3952571",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 1.91,
+    "match": 1.0
+  },
+  "n_ten_more_seconds": {
+    "fp": "235f8c488341",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 3.17,
+    "match": 1
+  },
+  "n_ten_seconds_drop_the_counts_and_get_into_position_for_your_e": {
+    "fp": "b1bba29c0663",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 6.94,
+    "match": 1.0
+  },
+  "n_thirty_quick_breaths": {
+    "fp": "5857bbdba6db",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 1.84,
+    "match": 1.0
+  },
+  "n_thirty_seconds_in": {
+    "fp": "727a989b4b00",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 1.17,
+    "match": 1.0
+  },
+  "n_tilt_a_little_toward_your_left_shoulder": {
+    "fp": "0458fe32fefe",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 2.68,
+    "match": 1.0
+  },
+  "n_twenty": {
+    "fp": "94691ab97ca7",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 0.81,
+    "match": 1.0
+  },
+  "n_two_more_breaths": {
+    "fp": "cf2ec7e92ac2",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 1.18,
+    "match": 1.0
+  },
+  "rd_blackout": {
+    "fp": "e82b5f3909eb",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 9.76,
+    "match": 1.0
+  },
+  "rd_break_1": {
+    "fp": "08dae7556ecb",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 4.42,
+    "match": 1.0
+  },
+  "rd_break_2": {
+    "fp": "0f1f7236c68f",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 6.31,
+    "match": 1.0
+  },
+  "rd_break_3": {
+    "fp": "25150365e1eb",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 5.57,
+    "match": 1.0
+  },
+  "rd_check_r2": {
+    "fp": "b0027f412d67",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 11.09,
+    "match": 1.0
+  },
+  "rd_close_r2": {
+    "fp": "7fef50a68c38",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 5.64,
+    "match": 1.0
+  },
+  "rd_down_rest": {
+    "fp": "449f5a5d50c3",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 4.38,
+    "match": 1.0
+  },
+  "rd_flow_why_r2": {
+    "fp": "1eb8c120371d",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 7.74,
+    "match": 1.0
+  },
+  "rd_how2": {
+    "fp": "dd21c9c37a0d",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 6.88,
+    "match": 0.929
+  },
+  "rd_last_breath_r2": {
+    "fp": "6362937b582a",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 0.75,
+    "match": 1.0
+  },
+  "rd_last_in": {
+    "fp": "1b4c93d0794f",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 1.47,
+    "match": 1.0
+  },
+  "rd_let_go": {
+    "fp": "fa90240702e7",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 1.97,
+    "match": 1
+  },
+  "rd_lung_reserve": {
+    "fp": "fdb16a3e6e61",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 9.37,
+    "match": 1.0
+  },
+  "rd_oxygen_r2": {
+    "fp": "3085941e489c",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 13.72,
+    "match": 1.0
+  },
+  "rd_plan_r2": {
+    "fp": "0b43373dc227",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 10.26,
+    "match": 1.0
+  },
+  "rd_power_in": {
+    "fp": "041fbd4969c8",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 0.7,
+    "match": 1.0
+  },
+  "rd_quiet_r2": {
+    "fp": "ce3ed822e456",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 8.01,
+    "match": 1.0
+  },
+  "rd_recovery_in": {
+    "fp": "b1d7f59ce82d",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 2.66,
+    "match": 1.0
+  },
+  "rd_repeated_holds_r2": {
+    "fp": "f2ab96c3441c",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 9.34,
+    "match": 1.0
+  },
+  "rd_round_1_20_r2": {
+    "fp": "74534751cd4f",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 12.41,
+    "match": 1.0
+  },
+  "rd_round_1_30_r2": {
+    "fp": "c7373cd813d5",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 11.29,
+    "match": 1.0
+  },
+  "rd_t_relax": {
+    "fp": "4297dcb3ae3b",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 3.94,
+    "match": 1
+  },
+  "rd_tap_r2": {
+    "fp": "d8045f30de17",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 14.38,
+    "match": 1.0
+  },
+  "rd_tingle_fade_r2": {
+    "fp": "e21f1e6378fa",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 9.13,
+    "match": 1.0
+  },
+  "rd_tingle_r2": {
+    "fp": "382e3b858140",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 11.56,
+    "match": 1.0
+  },
+  "rd_tingle_why_r2": {
+    "fp": "736cde41a957",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 9.45,
+    "match": 1.0
+  },
+  "rd_urge_returns_r2": {
+    "fp": "b088f8eb92ff",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 6.69,
+    "match": 1.0
+  },
+  "rd_welcome": {
+    "fp": "2fc4080b6193",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 9.27,
+    "match": 1.0
+  },
+  "rd_why2": {
+    "fp": "1223a9080e16",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 10.36,
+    "match": 1.0
+  },
+  "st_close2_r2": {
+    "fp": "a5dda1805416",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 12.96,
+    "match": 1.0
+  },
+  "st_feet": {
+    "fp": "98175aaa90cc",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 4.65,
+    "match": 1.0
+  },
+  "st_hold": {
+    "fp": "1c03fd3d6b62",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 0.79,
+    "match": 1
+  },
+  "st_pull2_r2": {
+    "fp": "954df667ba4b",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 8.39,
+    "match": 1.0
+  },
+  "st_recover": {
+    "fp": "deb650e5f8a7",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 5.54,
+    "match": 1.0
+  },
+  "st_safety": {
+    "fp": "7fdd3daa6d9b",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 9.24,
+    "match": 1.0
+  },
+  "st_slow_plan_r2": {
+    "fp": "b479eecc273a",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 15.1,
+    "match": 1.0
+  },
+  "st_small2_r2": {
+    "fp": "ec54a7e3e19b",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 17.53,
+    "match": 1.0
+  },
+  "st_t_soft": {
+    "fp": "6ac18010f732",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 4.8,
+    "match": 1
+  },
+  "st_unsatisfied": {
+    "fp": "e61391aa35ab",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 12.04,
+    "match": 1.0
+  },
+  "st_welcome2_r2": {
+    "fp": "8b44660e9ee4",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 7.56,
+    "match": 1.0
+  },
+  "st_why_1_r2": {
+    "fp": "af6505a64b2e",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 11.51,
+    "match": 1.0
+  },
+  "st_why_2_r2": {
+    "fp": "aa15a046621e",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 11.1,
+    "match": 1.0
+  },
+  "tw_after_middle_hum": {
+    "fp": "276f4c0be3ef",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 3.81,
+    "match": 1.0
+  },
+  "tw_all_out": {
+    "fp": "fe285c4fd786",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 1.72,
+    "match": 1
+  },
+  "tw_before_hum": {
+    "fp": "0abd45b102c7",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 4.78,
+    "match": 1.0
+  },
+  "tw_checkin2": {
+    "fp": "8c3a1e38a0fd",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 5.68,
+    "match": 1.0
+  },
+  "tw_close_r2": {
+    "fp": "bca84e7160e3",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 8.32,
+    "match": 1.0
+  },
+  "tw_co2_1_r2": {
+    "fp": "8d53f81a63bf",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 9.98,
+    "match": 1.0
+  },
+  "tw_co2_3": {
+    "fp": "a8af3a0450f0",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 9.32,
+    "match": 1.0
+  },
+  "tw_cool": {
+    "fp": "cc826da4e5f5",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 11.55,
+    "match": 1.0
+  },
+  "tw_cough_r2": {
+    "fp": "2f7d7706813c",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 10.65,
+    "match": 1.0
+  },
+  "tw_deep_in2": {
+    "fp": "77e2422be060",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 1.41,
+    "match": 1.0
+  },
+  "tw_easy": {
+    "fp": "6ff4eb578f11",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 7.57,
+    "match": 1.0
+  },
+  "tw_fast_purpose_r2": {
+    "fp": "1e9e628b1c93",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 11.78,
+    "match": 1.0
+  },
+  "tw_fast_safety_r2": {
+    "fp": "4f75c9ea7c54",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 22.85,
+    "match": 1.0
+  },
+  "tw_first_r2": {
+    "fp": "e6190dcbffaa",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 10.55,
+    "match": 1.0
+  },
+  "tw_five": {
+    "fp": "7d7b88dfc1ee",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 2.33,
+    "match": 1.0
+  },
+  "tw_hold_exit_r2": {
+    "fp": "7a0776c7b428",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 9.25,
+    "match": 1.0
+  },
+  "tw_hum_again2": {
+    "fp": "1c5c405b9b07",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 3.93,
+    "match": 1.0
+  },
+  "tw_hum_how_r2": {
+    "fp": "8772a827944e",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 18.64,
+    "match": 1.0
+  },
+  "tw_hum_last": {
+    "fp": "4d9648f3991e",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 4.85,
+    "match": 1.0
+  },
+  "tw_hum_rest": {
+    "fp": "8fab88e92fae",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 3.27,
+    "match": 1.0
+  },
+  "tw_hum_space_r2": {
+    "fp": "1ebc0eeb6beb",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 11.87,
+    "match": 1.0
+  },
+  "tw_hum_vibration_r2": {
+    "fp": "273d2ea1183d",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 7.09,
+    "match": 1.0
+  },
+  "tw_ladder2": {
+    "fp": "e11f6df35c2e",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 8.05,
+    "match": 1.0
+  },
+  "tw_last_rest": {
+    "fp": "005606fec4b2",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 3.98,
+    "match": 1.0
+  },
+  "tw_lead_1": {
+    "fp": "398d804c43b6",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 5.15,
+    "match": 1.0
+  },
+  "tw_lead_2": {
+    "fp": "a12ac32fc80a",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 6.12,
+    "match": 1.0
+  },
+  "tw_lead_3": {
+    "fp": "54f9ee9c4cdc",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 5.5,
+    "match": 1.0
+  },
+  "tw_lung_stretch_r2": {
+    "fp": "a322d6341e18",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 11.15,
+    "match": 1.0
+  },
+  "tw_nh_1_r2": {
+    "fp": "b54f151eac90",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 7.92,
+    "match": 1.0
+  },
+  "tw_nh_2": {
+    "fp": "a69c4def2134",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 5.18,
+    "match": 1.0
+  },
+  "tw_nh_3_r2": {
+    "fp": "fb5d9d456d5e",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 8.11,
+    "match": 1.0
+  },
+  "tw_nose_r2": {
+    "fp": "d1b9a45ab910",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 8.46,
+    "match": 1.0
+  },
+  "tw_nose_why2": {
+    "fp": "d5cd58a105ed",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 8.96,
+    "match": 1.0
+  },
+  "tw_permission_r2": {
+    "fp": "fecfb702aa57",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 20.12,
+    "match": 1.0
+  },
+  "tw_r1_2": {
+    "fp": "bd615a985afd",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 10.8,
+    "match": 1.0
+  },
+  "tw_r2_2": {
+    "fp": "37dcd18c279f",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 7.5,
+    "match": 1.0
+  },
+  "tw_r3": {
+    "fp": "c70cc07cb345",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 6.87,
+    "match": 1.0
+  },
+  "tw_rest_1_r2": {
+    "fp": "61ac03dc5ad9",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 5.29,
+    "match": 1.0
+  },
+  "tw_rest_2_r2": {
+    "fp": "9f09b746f508",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 7.89,
+    "match": 1.0
+  },
+  "tw_rest_3_r2": {
+    "fp": "1f952fecfb72",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 7.0,
+    "match": 1.0
+  },
+  "tw_rhythm_r2": {
+    "fp": "2009112d1d5c",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 10.45,
+    "match": 1.0
+  },
+  "tw_ribs_r2": {
+    "fp": "d7550420a7d0",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 13.21,
+    "match": 1.0
+  },
+  "tw_six": {
+    "fp": "ca478eeb2ae0",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 2.31,
+    "match": 1.0
+  },
+  "tw_sleep_r2": {
+    "fp": "8f3f2d87418f",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 13.56,
+    "match": 1.0
+  },
+  "tw_slow_hold_gases": {
+    "fp": "7341664fabab",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 11.65,
+    "match": 1.0
+  },
+  "tw_slow_round_1_gentle_r2": {
+    "fp": "5ba3ae74e6f7",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 10.71,
+    "match": 1.0
+  },
+  "tw_slow_round_1_none_r2": {
+    "fp": "bb7e3297aa0d",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 11.19,
+    "match": 1.0
+  },
+  "tw_slow_round_2_gentle_r2": {
+    "fp": "c97db03a4af3",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 8.35,
+    "match": 1.0
+  },
+  "tw_slow_round_2_none_r2": {
+    "fp": "fca36b162719",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 11.0,
+    "match": 1.0
+  },
+  "tw_slow_round_3_gentle_r2": {
+    "fp": "eb519a26c211",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 10.77,
+    "match": 1.0
+  },
+  "tw_slow_round_3_none_r2": {
+    "fp": "af5f48502fdc",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 10.24,
+    "match": 1.0
+  },
+  "tw_twitch_rule_r2": {
+    "fp": "a7f266316bc5",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 6.84,
+    "match": 1.0
+  },
+  "tw_vagus2": {
+    "fp": "f5f2133d9cc4",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 3.75,
+    "match": 0.842
+  },
+  "tw_variation_r2": {
+    "fp": "77f304142107",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 8.75,
+    "match": 1.0
+  },
+  "tw_weather_stay": {
+    "fp": "9371435f6756",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 8.37,
+    "match": 1.0
+  },
+  "tw_welcome_r2": {
+    "fp": "f47e9c57acc1",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 9.41,
+    "match": 1.0
+  },
+  "ws_airflow_r2": {
+    "fp": "dcb0d9b534a2",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 3.98,
+    "match": 1.0
+  },
+  "ws_break_1": {
+    "fp": "8bde5183e5b3",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 3.27,
+    "match": 1.0
+  },
+  "ws_break_2": {
+    "fp": "a10e78d7fc28",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 3.35,
+    "match": 1.0
+  },
+  "ws_break_3": {
+    "fp": "f96484133a9d",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 4.61,
+    "match": 1.0
+  },
+  "ws_break_4": {
+    "fp": "4b08662a4079",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 3.23,
+    "match": 1.0
+  },
+  "ws_break_5": {
+    "fp": "fd298e0f87e5",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 4.31,
+    "match": 1.0
+  },
+  "ws_breath_size_r2": {
+    "fp": "23e2cc75573b",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 3.56,
+    "match": 1.0
+  },
+  "ws_brow": {
+    "fp": "15bb785a140b",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 7.11,
+    "match": 1
+  },
+  "ws_cabin_altitude_r2": {
+    "fp": "9629f80eebdc",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 11.22,
+    "match": 0.913
+  },
+  "ws_cabin_dry_r2": {
+    "fp": "688d9ffe729f",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 11.79,
+    "match": 0.982
+  },
+  "ws_checkin_r2": {
+    "fp": "4c4f7e16a89a",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 7.6,
+    "match": 1.0
+  },
+  "ws_close": {
+    "fp": "c81e674d8e7d",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 12.56,
+    "match": 1.0
+  },
+  "ws_descent": {
+    "fp": "6606d5dcc43f",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 8.29,
+    "match": 0.955
+  },
+  "ws_descent_no_holds_r2": {
+    "fp": "8bf6c42c3357",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 7.12,
+    "match": 1.0
+  },
+  "ws_face_why_r2": {
+    "fp": "3726fe01bf37",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 6.24,
+    "match": 1.0
+  },
+  "ws_h_last_r2": {
+    "fp": "64cdb8ab3abd",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 1.65,
+    "match": 1.0
+  },
+  "ws_h_sway": {
+    "fp": "4630ceb6d076",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 6.82,
+    "match": 1.0
+  },
+  "ws_jaw": {
+    "fp": "99aea2387237",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 8.38,
+    "match": 1.0
+  },
+  "ws_lead_r2": {
+    "fp": "a58706e7d485",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 10.4,
+    "match": 1.0
+  },
+  "ws_long_check_r2": {
+    "fp": "436f70a57ffa",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 4.02,
+    "match": 1.0
+  },
+  "ws_long_r2": {
+    "fp": "7bd19e3a5a76",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 4.85,
+    "match": 1.0
+  },
+  "ws_long_rest": {
+    "fp": "ab561003126e",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 4.81,
+    "match": 1.0
+  },
+  "ws_long_why_r2": {
+    "fp": "8922d9f22562",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 4.74,
+    "match": 1.0
+  },
+  "ws_neck": {
+    "fp": "98c39a8776af",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 6.7,
+    "match": 1
+  },
+  "ws_pause_intro_r2": {
+    "fp": "29146d5d7836",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 15.69,
+    "match": 1.0
+  },
+  "ws_pulse_r2": {
+    "fp": "6c72bfb130c7",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 8.07,
+    "match": 1.0
+  },
+  "ws_release_r2": {
+    "fp": "b6cc9966d935",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 15.02,
+    "match": 1.0
+  },
+  "ws_shoulders": {
+    "fp": "9fed7500d87a",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 5.45,
+    "match": 1.0
+  },
+  "ws_silent_r2": {
+    "fp": "39b7456048fe",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 13.88,
+    "match": 1.0
+  },
+  "ws_skip_r2": {
+    "fp": "a38da9125cbd",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 16.15,
+    "match": 1.0
+  },
+  "ws_slow_r2": {
+    "fp": "7c0edbdc2ba1",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 12.29,
+    "match": 1.0
+  },
+  "ws_t_anchor2": {
+    "fp": "f5dd9cf1daa8",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 3.75,
+    "match": 1.0
+  },
+  "ws_t_shoulders2": {
+    "fp": "84c607d1e972",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 2.9,
+    "match": 1.0
+  },
+  "ws_t_sounds2": {
+    "fp": "69436ba2c42c",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 3.97,
+    "match": 1.0
+  },
+  "ws_t_wander2": {
+    "fp": "13f41be0ec5e",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 3.04,
+    "match": 1.0
+  },
+  "ws_tilt_r2": {
+    "fp": "f0d73ae50c52",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 2.72,
+    "match": 1.0
+  },
+  "ws_train_safety_r2": {
+    "fp": "137c0131e899",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 4.61,
+    "match": 0.917
+  },
+  "ws_transition": {
+    "fp": "32b23fdbf697",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 4.53,
+    "match": 1.0
+  },
+  "ws_urge_location_r2": {
+    "fp": "fe1ef9f28210",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 9.97,
+    "match": 1.0
+  },
+  "ws_urgent": {
+    "fp": "41b611828a5d",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 12.95,
+    "match": 1.0
+  },
+  "ws_welcome_r2": {
+    "fp": "e3c381a1db18",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 16.26,
+    "match": 1.0
+  }
+}
