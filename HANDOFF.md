@@ -51,6 +51,12 @@ Several recorders can share a pack (manifest writes merge), e.g. one `--flow` pe
 - Nothing said twice (the engine drops repeats; only `count` lines repeat).
 - Every content line fits its breath phase (`phase:` on the cue; `off-phase` in check_timing if not).
 - Deeper content is a connected `lesson` thread over consecutive holds or breaths. Keep the science, extend it.
+- Listener state (Roman, 14 Oct, after "some things are weird"): walk each session as the listener (posture, eyes,
+  hands, what they're doing, how they feel) and say what they'd want to know at that moment: a reason, a mechanism,
+  a surprising true detail. No "open your eyes" unless they were offered to close them; never undercut an instruction
+  with a caveat (evidence limits go once in `learn`); no fragments; safety lines in proportion to the holds.
+  Process that worked: Sol rewrite per flow file, then blind listener reviews (subagents reading
+  `session_script.mjs` output), then Sol applies them, then a hand pass.
 
 Voice specs (design text, stored ids, style, Leo's de-noise filter) are in
 `scripts/voices/gemini_voices.json`; new voices are designed with the Danish reader's

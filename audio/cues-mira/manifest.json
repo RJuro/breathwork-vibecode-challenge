@@ -1,17 +1,24 @@
 {
-  "an_air": {
-    "fp": "e97b9932999f",
+  "an_air_r2": {
+    "fp": "6fd779c0e316",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 5.87,
-    "match": 1
+    "duration": 11.43,
+    "match": 1.0
   },
-  "an_blocked": {
-    "fp": "69d4db95be4b",
+  "an_arm_r2": {
+    "fp": "b14348603152",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 7.06,
-    "match": 1
+    "duration": 7.61,
+    "match": 1.0
+  },
+  "an_blocked_r2": {
+    "fp": "5f74a6c1fedf",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 9.04,
+    "match": 1.0
   },
   "an_both": {
     "fp": "ebf4000b30d9",
@@ -20,13 +27,6 @@
     "duration": 4.2,
     "match": 1
   },
-  "an_bp2": {
-    "fp": "70fb12387e4a",
-    "voice": "mira",
-    "model": "gemini-3.8-flash-lite-tts",
-    "duration": 7.93,
-    "match": 1.0
-  },
   "an_break_1": {
     "fp": "720a92e9adb4",
     "voice": "mira",
@@ -34,11 +34,11 @@
     "duration": 6.49,
     "match": 1.0
   },
-  "an_break_2": {
-    "fp": "7b52d1feabf9",
+  "an_break_2_r2": {
+    "fp": "5093e0e9e563",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 5.54,
+    "duration": 6.92,
     "match": 1.0
   },
   "an_break_3": {
@@ -48,26 +48,40 @@
     "duration": 5.28,
     "match": 1.0
   },
-  "an_close": {
-    "fp": "b57adf5812d4",
+  "an_close_r2": {
+    "fp": "b93f0c65d644",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 4.08,
-    "match": 1
-  },
-  "an_comparison": {
-    "fp": "a1ace3fcb05b",
-    "voice": "mira",
-    "model": "gemini-3.8-flash-lite-tts",
-    "duration": 8.44,
+    "duration": 9.39,
     "match": 1.0
   },
-  "an_hand": {
-    "fp": "8f2fce2bb647",
+  "an_creep": {
+    "fp": "7b5117efb2a1",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 10.71,
-    "match": 1
+    "duration": 8.59,
+    "match": 1.0
+  },
+  "an_deepest_check_r2": {
+    "fp": "bc23e7c5a6bf",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 9.56,
+    "match": 1.0
+  },
+  "an_exhale_check_r2": {
+    "fp": "5e598d5223b1",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 8.29,
+    "match": 1.0
+  },
+  "an_hand_r2": {
+    "fp": "e574b62d86b0",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 14.34,
+    "match": 1.0
   },
   "an_hold_soft": {
     "fp": "e01e87a8c5c1",
@@ -76,11 +90,11 @@
     "duration": 5.02,
     "match": 1
   },
-  "an_holds": {
-    "fp": "3b056aae33f6",
+  "an_holds_r2": {
+    "fp": "97abd417cd7e",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 6.93,
+    "duration": 8.57,
     "match": 1.0
   },
   "an_l_in_h": {
@@ -104,40 +118,54 @@
     "duration": 2.61,
     "match": 1
   },
-  "an_lead_1": {
-    "fp": "11e2f794e74b",
+  "an_last_exhale_r2": {
+    "fp": "7c7271643216",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 8.67,
+    "duration": 8.7,
     "match": 1.0
   },
-  "an_lead_2b": {
-    "fp": "edb0e48f1001",
+  "an_lead_1_r2": {
+    "fp": "a44a9f95468f",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 9.94,
+    "duration": 9.4,
     "match": 1.0
   },
-  "an_lead_3": {
-    "fp": "1b8c5ae40477",
+  "an_lead_2_r2": {
+    "fp": "27e9df868f79",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 7.15,
+    "duration": 9.89,
     "match": 1.0
   },
-  "an_meaning": {
-    "fp": "af1ff0f8070d",
+  "an_lead_3_r2": {
+    "fp": "8114c608dd8a",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 7.21,
+    "duration": 8.11,
     "match": 1.0
+  },
+  "an_longer_check_r2": {
+    "fp": "aedaa4e1e246",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 8.02,
+    "match": 1.0
+  },
+  "an_nasal_cycle_r2": {
+    "fp": "af393f1472b9",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 13.42,
+    "match": 0.963
   },
   "an_plan": {
-    "fp": "b7c775928c98",
+    "fp": "27cb17e5fe59",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 19.99,
-    "match": 1
+    "duration": 16.01,
+    "match": 0.986
   },
   "an_r_in": {
     "fp": "3f66a9de00c0",
@@ -160,117 +188,96 @@
     "duration": 2.69,
     "match": 1
   },
-  "an_rate2": {
-    "fp": "059af27229ae",
-    "voice": "mira",
-    "model": "gemini-3.8-flash-lite-tts",
-    "duration": 8.87,
-    "match": 1.0
-  },
   "an_ready": {
-    "fp": "09c7e83d1921",
+    "fp": "c4771ebd1203",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 2.08,
+    "duration": 3.43,
     "match": 1.0
   },
   "an_release": {
-    "fp": "596f271fb353",
+    "fp": "f4d0c947c514",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 6.78,
-    "match": 1
-  },
-  "an_slower": {
-    "fp": "ecd541e75a68",
-    "voice": "mira",
-    "model": "gemini-3.8-flash-lite-tts",
-    "duration": 8.28,
+    "duration": 8.83,
     "match": 1.0
   },
-  "an_t_arm": {
-    "fp": "32fdb5dbc5f6",
+  "an_resistance": {
+    "fp": "6620d7868f6e",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 5.82,
-    "match": 1
+    "duration": 9.81,
+    "match": 1.0
   },
-  "an_t_ears": {
-    "fp": "e73d4981207b",
+  "an_t_ears_r2": {
+    "fp": "0f48ba61fb02",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 7.07,
-    "match": 1
+    "duration": 8.9,
+    "match": 1.0
   },
   "an_t_track": {
-    "fp": "c1247c64f964",
+    "fp": "f7cbfa1418c6",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 4.83,
-    "match": 1
+    "duration": 6.61,
+    "match": 1.0
   },
-  "an_t_wander": {
-    "fp": "ade89f7b425f",
+  "an_welcome_r2": {
+    "fp": "f6de7b0b6392",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 4.25,
-    "match": 1
-  },
-  "an_welcome2": {
-    "fp": "df5655389fcd",
-    "voice": "mira",
-    "model": "gemini-3.8-flash-lite-tts",
-    "duration": 10.04,
-    "match": 0.962
+    "duration": 11.33,
+    "match": 1.0
   },
   "bs_knees": {
-    "fp": "e1f56460519c",
+    "fp": "e92b563d8ff3",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 5.94,
-    "match": 1
-  },
-  "bs_nose2": {
-    "fp": "091b066f7f84",
-    "voice": "mira",
-    "model": "gemini-3.8-flash-lite-tts",
-    "duration": 7.55,
+    "duration": 6.11,
     "match": 1.0
   },
-  "bs_nose_only2": {
-    "fp": "434642f366f3",
+  "bs_nose2_r2": {
+    "fp": "b18d36e09e52",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 6.37,
+    "duration": 12.96,
     "match": 1.0
   },
-  "bs_why": {
-    "fp": "e80e8c41f8b0",
+  "bs_nose_only2_r2": {
+    "fp": "11ce5ca9a3f3",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 7.83,
-    "match": 1
+    "duration": 3.12,
+    "match": 1.0
   },
-  "cd_check": {
-    "fp": "2a80483aac92",
+  "bs_upright": {
+    "fp": "18896a0536b2",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 7.27,
-    "match": 1
+    "duration": 2.23,
+    "match": 1.0
+  },
+  "bs_why_r2": {
+    "fp": "38e7a45bbc8f",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 6.04,
+    "match": 1.0
   },
   "cd_close2": {
-    "fp": "f195bd75659c",
+    "fp": "862924322f2e",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 6.83,
+    "duration": 5.81,
     "match": 1.0
   },
   "cd_free": {
-    "fp": "9b244cd09eb6",
+    "fp": "27e351cd16d2",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 8.09,
-    "match": 1
+    "duration": 6.09,
+    "match": 1.0
   },
   "cd_interval": {
     "fp": "fbaafdfe7356",
@@ -279,249 +286,200 @@
     "duration": 6.63,
     "match": 1.0
   },
+  "cd_legs": {
+    "fp": "68dfd5600d40",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 5.49,
+    "match": 1.0
+  },
   "cd_low2": {
-    "fp": "590260bc1698",
+    "fp": "baa8240a37a3",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 6.04,
+    "duration": 4.81,
     "match": 1.0
   },
-  "cd_nose2": {
-    "fp": "7c477347a456",
+  "cd_oxygen_after": {
+    "fp": "6008c5d138a9",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 4.34,
-    "match": 1.0
-  },
-  "cd_nose_in": {
-    "fp": "72774bbf729b",
-    "voice": "mira",
-    "model": "gemini-3.8-flash-lite-tts",
-    "duration": 1.01,
-    "match": 1.0
+    "duration": 10.09,
+    "match": 0.936
   },
   "cd_permission": {
-    "fp": "98588a169c84",
+    "fp": "c6edbfc2781a",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 6.42,
+    "duration": 9.8,
     "match": 1.0
   },
   "cd_quiet2": {
-    "fp": "faa64ade6435",
+    "fp": "0cba18cbea5d",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 7.01,
+    "duration": 8.23,
     "match": 1.0
   },
   "cd_return2": {
-    "fp": "625ba6acaad2",
+    "fp": "53eef045e243",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 4.89,
+    "duration": 8.22,
     "match": 1.0
   },
   "cd_setup": {
-    "fp": "14a7cc0c7145",
+    "fp": "7d2ef8d7b124",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 10.58,
-    "match": 1
-  },
-  "cd_sigh2": {
-    "fp": "f1e8411d3a1e",
-    "voice": "mira",
-    "model": "gemini-3.8-flash-lite-tts",
-    "duration": 5.7,
+    "duration": 12.18,
     "match": 1.0
   },
-  "cd_study2": {
-    "fp": "fecbc046994e",
+  "cd_sit_pause": {
+    "fp": "1b2f747f06e2",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 5.18,
+    "duration": 7.88,
     "match": 1.0
   },
-  "cd_study_limit": {
-    "fp": "3089286a2210",
+  "cd_step_one": {
+    "fp": "ffe6f212f6ad",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 6.42,
+    "duration": 12.23,
     "match": 1.0
   },
-  "cd_study_link": {
-    "fp": "d010def0f377",
+  "cd_step_two": {
+    "fp": "2d31fb0b2c65",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 5.58,
+    "duration": 9.97,
     "match": 1.0
-  },
-  "cd_study_result": {
-    "fp": "4c788fc87fd0",
-    "voice": "mira",
-    "model": "gemini-3.8-flash-lite-tts",
-    "duration": 5.57,
-    "match": 1.0
-  },
-  "cd_study_training": {
-    "fp": "8ad5805ce086",
-    "voice": "mira",
-    "model": "gemini-3.8-flash-lite-tts",
-    "duration": 5.16,
-    "match": 1.0
-  },
-  "cd_t_heavy": {
-    "fp": "14e7c0050cfb",
-    "voice": "mira",
-    "model": "gemini-3.8-flash-lite-tts",
-    "duration": 5.78,
-    "match": 1
-  },
-  "cd_t_jaw": {
-    "fp": "b98f8a340284",
-    "voice": "mira",
-    "model": "gemini-3.8-flash-lite-tts",
-    "duration": 3.26,
-    "match": 1
   },
   "cd_up": {
-    "fp": "79e71103f917",
+    "fp": "a456f623ade1",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 7.55,
-    "match": 1
+    "duration": 8.09,
+    "match": 1.0
   },
   "cd_welcome": {
-    "fp": "98aada051ae8",
+    "fp": "b63f015b5b18",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 5.06,
-    "match": 1
+    "duration": 3.1,
+    "match": 0.857
   },
   "cd_why2": {
-    "fp": "86c5ea86fb26",
+    "fp": "cd37c1feb931",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 5.61,
+    "duration": 5.5,
     "match": 1.0
   },
-  "land_back": {
-    "fp": "d2d28abf2233",
+  "land_belly4": {
+    "fp": "6a01c7b24379",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 4.33,
-    "match": 1
-  },
-  "land_belly": {
-    "fp": "75c016eff6c5",
-    "voice": "mira",
-    "model": "gemini-3.8-flash-lite-tts",
-    "duration": 6.1,
-    "match": 1
-  },
-  "land_chest2": {
-    "fp": "12577d9f5792",
-    "voice": "mira",
-    "model": "gemini-3.8-flash-lite-tts",
-    "duration": 5.79,
+    "duration": 3.8,
     "match": 1.0
   },
-  "land_close": {
-    "fp": "5c5fddef1283",
+  "land_chest4": {
+    "fp": "1b3b5b91c62a",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 8.86,
-    "match": 0.93
-  },
-  "land_face2": {
-    "fp": "b91482fdc230",
-    "voice": "mira",
-    "model": "gemini-3.8-flash-lite-tts",
-    "duration": 5.56,
+    "duration": 6.88,
     "match": 1.0
   },
-  "land_feet2": {
-    "fp": "54fa7729f14d",
+  "land_close4": {
+    "fp": "8f5e3b78d81c",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 8.51,
+    "duration": 16.55,
     "match": 1.0
   },
-  "land_hands2": {
-    "fp": "06307ca73b84",
+  "land_face3": {
+    "fp": "312b67b35c92",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 7.77,
+    "duration": 6.36,
     "match": 1.0
   },
-  "land_hips": {
-    "fp": "116b47d477a6",
+  "land_feet4": {
+    "fp": "6b625dc5df13",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 5.42,
-    "match": 1
-  },
-  "land_legs": {
-    "fp": "5e83fc731f1a",
-    "voice": "mira",
-    "model": "gemini-3.8-flash-lite-tts",
-    "duration": 7.61,
-    "match": 1
-  },
-  "land_neck2": {
-    "fp": "eaeb8aefc1cd",
-    "voice": "mira",
-    "model": "gemini-3.8-flash-lite-tts",
-    "duration": 5.65,
+    "duration": 8.55,
     "match": 1.0
   },
-  "land_plan2": {
-    "fp": "f4f858d6df66",
+  "land_hands4": {
+    "fp": "f11951598d4f",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 9.27,
+    "duration": 5.75,
     "match": 1.0
   },
-  "land_science2": {
-    "fp": "c24b1ea16257",
+  "land_hips3": {
+    "fp": "531a40b131f4",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 10.41,
+    "duration": 5.99,
     "match": 1.0
   },
-  "land_science_limits": {
-    "fp": "d486fbe9b8e7",
+  "land_l_adaptation4": {
+    "fp": "c14b82a5baeb",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 8.58,
-    "match": 0.947
-  },
-  "land_settle": {
-    "fp": "13bc5fcf31a0",
-    "voice": "mira",
-    "model": "gemini-3.8-flash-lite-tts",
-    "duration": 5.97,
+    "duration": 9.81,
     "match": 1.0
   },
-  "land_t_wander": {
-    "fp": "2d8fa7453802",
+  "land_l_back": {
+    "fp": "fe1ba43106f7",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 5.25,
-    "match": 1
+    "duration": 8.18,
+    "match": 1.0
   },
-  "land_welcome": {
-    "fp": "0ee06cef0782",
+  "land_legs4": {
+    "fp": "9e445a0d61ae",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 7.49,
-    "match": 1
+    "duration": 9.15,
+    "match": 1.0
   },
-  "land_whole2": {
-    "fp": "736396ca54f8",
+  "land_neck4": {
+    "fp": "45edbe3d5b84",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 6.7,
+    "duration": 3.94,
+    "match": 1.0
+  },
+  "land_plan4": {
+    "fp": "a52fdaca3b04",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 13.23,
+    "match": 1.0
+  },
+  "land_settle4": {
+    "fp": "1b74bc8ac032",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 5.47,
+    "match": 1.0
+  },
+  "land_welcome3": {
+    "fp": "b24e52d3aa62",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 8.19,
+    "match": 1.0
+  },
+  "land_whole4": {
+    "fp": "d123d6dd7de8",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 8.35,
     "match": 1.0
   },
   "lo_arms2": {
@@ -538,46 +496,60 @@
     "duration": 3.24,
     "match": 1.0
   },
-  "lo_close": {
-    "fp": "8576174260c2",
-    "voice": "mira",
-    "model": "gemini-3.8-flash-lite-tts",
-    "duration": 4.68,
-    "match": 0.824
-  },
   "lo_face2": {
-    "fp": "3cb05f993c18",
+    "fp": "5393153e6ae6",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 3.8,
+    "duration": 2.58,
+    "match": 1.0
+  },
+  "lo_heart": {
+    "fp": "b93b40d4799c",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 7.52,
     "match": 1.0
   },
   "lo_legs2": {
-    "fp": "439875d6a6be",
+    "fp": "8bb15309716d",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 2.09,
+    "duration": 2.28,
     "match": 1.0
   },
-  "lo_plan2": {
-    "fp": "40abab8ed895",
+  "lo_neck": {
+    "fp": "4d38310ac74d",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 17.62,
+    "duration": 2.05,
     "match": 1.0
   },
-  "lo_quiet2": {
-    "fp": "2bbfd5063c11",
+  "lo_plan2_r2": {
+    "fp": "2321491e3115",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 2.03,
+    "duration": 15.51,
+    "match": 1.0
+  },
+  "lo_quiet2_r2": {
+    "fp": "50d689abbba3",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 3.01,
+    "match": 1.0
+  },
+  "lo_release": {
+    "fp": "603b2423a05e",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 2.24,
     "match": 1.0
   },
   "lo_rest2": {
-    "fp": "3567f884bf01",
+    "fp": "0e7989962cf6",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 3.34,
+    "duration": 2.38,
     "match": 1.0
   },
   "lo_shoulders": {
@@ -587,47 +559,12 @@
     "duration": 3.18,
     "match": 1
   },
-  "lo_slower2": {
-    "fp": "1ab7e13e4512",
+  "lo_welcome_r2": {
+    "fp": "0f8ae0829c64",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 6.35,
+    "duration": 9.43,
     "match": 1.0
-  },
-  "lo_study_1": {
-    "fp": "dcf64e9e5078",
-    "voice": "mira",
-    "model": "gemini-3.8-flash-lite-tts",
-    "duration": 3.98,
-    "match": 1.0
-  },
-  "lo_study_2": {
-    "fp": "c1819ff98d47",
-    "voice": "mira",
-    "model": "gemini-3.8-flash-lite-tts",
-    "duration": 3.34,
-    "match": 1.0
-  },
-  "lo_study_3": {
-    "fp": "af4b70d0203f",
-    "voice": "mira",
-    "model": "gemini-3.8-flash-lite-tts",
-    "duration": 3.05,
-    "match": 1.0
-  },
-  "lo_study_4": {
-    "fp": "43004cd2a915",
-    "voice": "mira",
-    "model": "gemini-3.8-flash-lite-tts",
-    "duration": 3.11,
-    "match": 1.0
-  },
-  "lo_welcome": {
-    "fp": "46174588c320",
-    "voice": "mira",
-    "model": "gemini-3.8-flash-lite-tts",
-    "duration": 8.54,
-    "match": 1
   },
   "mira_hold_there": {
     "fp": "0c5d086e8f5a",
@@ -706,55 +643,6 @@
     "duration": 1.17,
     "match": 1.0
   },
-  "n_and_pause_up_to_fifteen_seconds_throat_soft": {
-    "fp": "6aa04e41adff",
-    "voice": "mira",
-    "model": "gemini-3.8-flash-lite-tts",
-    "duration": 5.12,
-    "match": 1
-  },
-  "n_and_pause_up_to_fifty_seconds_throat_soft": {
-    "fp": "5295110e65a5",
-    "voice": "mira",
-    "model": "gemini-3.8-flash-lite-tts",
-    "duration": 6.01,
-    "match": 1
-  },
-  "n_and_pause_up_to_forty_seconds_throat_soft": {
-    "fp": "1a1913accf8c",
-    "voice": "mira",
-    "model": "gemini-3.8-flash-lite-tts",
-    "duration": 5.34,
-    "match": 1
-  },
-  "n_and_pause_up_to_one_minute_throat_soft": {
-    "fp": "e356b944219e",
-    "voice": "mira",
-    "model": "gemini-3.8-flash-lite-tts",
-    "duration": 5.25,
-    "match": 1
-  },
-  "n_and_pause_up_to_thirty_seconds_throat_soft": {
-    "fp": "b92c81c8994b",
-    "voice": "mira",
-    "model": "gemini-3.8-flash-lite-tts",
-    "duration": 5.36,
-    "match": 1
-  },
-  "n_and_slowly_toward_the_left": {
-    "fp": "fa0fe2bae881",
-    "voice": "mira",
-    "model": "gemini-3.8-flash-lite-tts",
-    "duration": 2.05,
-    "match": 1
-  },
-  "n_back_to_center": {
-    "fp": "077138923146",
-    "voice": "mira",
-    "model": "gemini-3.8-flash-lite-tts",
-    "duration": 1.78,
-    "match": 1
-  },
   "n_breathe_in_about_two_thirds_full": {
     "fp": "b053c51f2158",
     "voice": "mira",
@@ -776,6 +664,13 @@
     "duration": 0.94,
     "match": 1.0
   },
+  "n_bring_your_head_back_to_the_center": {
+    "fp": "246ee8ffd64b",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 2.2,
+    "match": 1.0
+  },
   "n_five_more": {
     "fp": "28ff3babf973",
     "voice": "mira",
@@ -783,19 +678,19 @@
     "duration": 0.8,
     "match": 1.0
   },
-  "n_five_pauses_growing_from_thirty_seconds_to_a_minute": {
-    "fp": "ffad4eaa353a",
-    "voice": "mira",
-    "model": "gemini-3.8-flash-lite-tts",
-    "duration": 4.91,
-    "match": 1
-  },
   "n_five_pauses_of_up_to_fifteen_seconds": {
     "fp": "4f8de6447987",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
     "duration": 3.27,
     "match": 1
+  },
+  "n_five_pauses_with_limits_growing_from_thirty_seconds_to_a_min": {
+    "fp": "a6d759ade4c6",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 4.56,
+    "match": 1.0
   },
   "n_forty_five_quick_breaths": {
     "fp": "588393ab543e",
@@ -909,13 +804,6 @@
     "duration": 6.07,
     "match": 1
   },
-  "n_in_for_four_out_for_six_small_and_quiet_about_six_minutes": {
-    "fp": "e73b4139e00a",
-    "voice": "mira",
-    "model": "gemini-3.8-flash-lite-tts",
-    "duration": 7.47,
-    "match": 1
-  },
   "n_in_for_three_hold_for_twelve_out_for_six_six_rounds": {
     "fp": "ded94e2da482",
     "voice": "mira",
@@ -930,25 +818,18 @@
     "duration": 7.52,
     "match": 1
   },
-  "n_instead_of_pausing_make_the_breath_out_longer_in_for_four_ou": {
-    "fp": "8c3f5bc448ae",
+  "n_last_hold": {
+    "fp": "5a37d73a98af",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 7.17,
-    "match": 1
+    "duration": 1.08,
+    "match": 1.0
   },
   "n_last_round": {
     "fp": "102ca609d63b",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
     "duration": 0.85,
-    "match": 1
-  },
-  "n_let_go": {
-    "fp": "2d8a9c886494",
-    "voice": "mira",
-    "model": "gemini-3.8-flash-lite-tts",
-    "duration": 0.78,
     "match": 1
   },
   "n_let_it_out_slowly": {
@@ -958,12 +839,12 @@
     "duration": 1.39,
     "match": 1
   },
-  "n_now_cool_down_in_for_four_out_for_eight_five_breaths": {
-    "fp": "404fb8508b62",
+  "n_next_four_in_six_out": {
+    "fp": "78a94b550ec6",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 6.47,
-    "match": 1
+    "duration": 3.06,
+    "match": 1.0
   },
   "n_now_slow_it_down_in_for_four_out_for_six": {
     "fp": "7006bc60ed22",
@@ -972,26 +853,12 @@
     "duration": 5.77,
     "match": 1
   },
-  "n_now_small_slow_breaths_three_in_six_out": {
-    "fp": "7ee1f59a5878",
+  "n_one_minute_in": {
+    "fp": "172ff5cc0424",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 6.59,
-    "match": 1
-  },
-  "n_now_stretch_the_breath_out_four_in_eight_out": {
-    "fp": "42d9a107c0ae",
-    "voice": "mira",
-    "model": "gemini-3.8-flash-lite-tts",
-    "duration": 5.29,
-    "match": 1
-  },
-  "n_one_minute": {
-    "fp": "1cd061d5a0e5",
-    "voice": "mira",
-    "model": "gemini-3.8-flash-lite-tts",
-    "duration": 0.73,
-    "match": 1
+    "duration": 0.99,
+    "match": 1.0
   },
   "n_out": {
     "fp": "e1bee8ac0c54",
@@ -1014,109 +881,109 @@
     "duration": 1.85,
     "match": 1.0
   },
-  "n_round_four_thirty_breaths": {
-    "fp": "d601b54d72df",
+  "n_pause_for_up_to_fifteen_seconds_keep_your_throat_soft": {
+    "fp": "f61d14105002",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 2.6,
-    "match": 1
-  },
-  "n_round_four_twenty_breaths": {
-    "fp": "e2bceccdc81c",
-    "voice": "mira",
-    "model": "gemini-3.8-flash-lite-tts",
-    "duration": 2.78,
-    "match": 1
-  },
-  "n_round_one_five_slow_breaths_then_an_easy_empty_hold": {
-    "fp": "b891c42a22dd",
-    "voice": "mira",
-    "model": "gemini-3.8-flash-lite-tts",
-    "duration": 6.05,
+    "duration": 4.65,
     "match": 1.0
   },
-  "n_round_one_five_slow_breaths_then_rest": {
-    "fp": "207596103bd1",
+  "n_pause_for_up_to_fifty_seconds_keep_your_throat_soft": {
+    "fp": "deed45422671",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 5.24,
-    "match": 1
-  },
-  "n_round_one_thirty_breaths": {
-    "fp": "8c965dcb71a7",
-    "voice": "mira",
-    "model": "gemini-3.8-flash-lite-tts",
-    "duration": 2.59,
-    "match": 1
-  },
-  "n_round_one_twenty_breaths": {
-    "fp": "73fb940e7ffb",
-    "voice": "mira",
-    "model": "gemini-3.8-flash-lite-tts",
-    "duration": 2.35,
-    "match": 1
-  },
-  "n_round_three_five_slow_breaths_then_an_easy_empty_hold": {
-    "fp": "4da123fa22f5",
-    "voice": "mira",
-    "model": "gemini-3.8-flash-lite-tts",
-    "duration": 5.88,
+    "duration": 5.32,
     "match": 1.0
   },
-  "n_round_three_five_slow_breaths_then_rest": {
-    "fp": "f3fa3cd9c777",
+  "n_pause_for_up_to_forty_seconds_keep_your_throat_soft": {
+    "fp": "bbd788b6641c",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 5.64,
-    "match": 1
-  },
-  "n_round_three_thirty_breaths": {
-    "fp": "2adddcc1fb6f",
-    "voice": "mira",
-    "model": "gemini-3.8-flash-lite-tts",
-    "duration": 2.6,
-    "match": 1
-  },
-  "n_round_three_twenty_breaths": {
-    "fp": "c592e4e9834a",
-    "voice": "mira",
-    "model": "gemini-3.8-flash-lite-tts",
-    "duration": 2.66,
-    "match": 1
-  },
-  "n_round_two_five_slow_breaths_then_an_easy_empty_hold": {
-    "fp": "9c4bf792fb0f",
-    "voice": "mira",
-    "model": "gemini-3.8-flash-lite-tts",
-    "duration": 5.41,
+    "duration": 5.27,
     "match": 1.0
   },
-  "n_round_two_five_slow_breaths_then_rest": {
-    "fp": "fdf3648bedca",
+  "n_pause_for_up_to_one_minute_keep_your_throat_soft": {
+    "fp": "805278416758",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 4.75,
-    "match": 1
+    "duration": 5.05,
+    "match": 1.0
   },
-  "n_round_two_thirty_breaths": {
-    "fp": "51fa820ba73f",
+  "n_pause_for_up_to_thirty_seconds_keep_your_throat_soft": {
+    "fp": "52ccc1ec1e2d",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 2.81,
-    "match": 1
+    "duration": 4.57,
+    "match": 1.0
   },
-  "n_round_two_twenty_breaths": {
-    "fp": "1145fb7dc3ea",
+  "n_return_to_center_and_rest_your_neck": {
+    "fp": "c2d103922d00",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 2.85,
-    "match": 1
+    "duration": 3.11,
+    "match": 1.0
+  },
+  "n_round_four_thirty_breaths_one_easy_breath_with_me_first": {
+    "fp": "9dc747eb1895",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 5.73,
+    "match": 1.0
+  },
+  "n_round_four_twenty_breaths_one_easy_breath_with_me_first": {
+    "fp": "55e6eb18424c",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 5.3,
+    "match": 1.0
+  },
+  "n_round_three_thirty_breaths_one_easy_breath_with_me_first": {
+    "fp": "8f698a43dbed",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 4.96,
+    "match": 1.0
+  },
+  "n_round_three_twenty_breaths_one_easy_breath_with_me_first": {
+    "fp": "58ab468e0a7b",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 5.25,
+    "match": 1.0
+  },
+  "n_round_two_thirty_breaths_one_easy_breath_with_me_first": {
+    "fp": "a8b4ad663b2e",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 5.55,
+    "match": 1.0
+  },
+  "n_round_two_twenty_breaths_one_easy_breath_with_me_first": {
+    "fp": "2ba3acaf24b0",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 4.66,
+    "match": 1.0
+  },
+  "n_take_an_easy_breath_then_breathe_at_your_own_pace": {
+    "fp": "fe724df5ec92",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 4.07,
+    "match": 1.0
   },
   "n_ten": {
     "fp": "8b73ba87e0af",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
     "duration": 0.64,
+    "match": 1.0
+  },
+  "n_ten_more_breaths": {
+    "fp": "1fd8d3952571",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 1.91,
     "match": 1.0
   },
   "n_ten_more_seconds": {
@@ -1126,18 +993,11 @@
     "duration": 3.17,
     "match": 1
   },
-  "n_ten_seconds_stand_up": {
-    "fp": "5a5fafdacbdd",
+  "n_ten_seconds_drop_the_counts_and_get_into_position_for_your_e": {
+    "fp": "b1bba29c0663",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 2.57,
-    "match": 1
-  },
-  "n_the_next_breath_in_starts_six_breaths_nose_in_for_four_mouth": {
-    "fp": "6034b1871d14",
-    "voice": "mira",
-    "model": "gemini-3.8-flash-lite-tts",
-    "duration": 6.96,
+    "duration": 6.94,
     "match": 1.0
   },
   "n_thirty_quick_breaths": {
@@ -1147,12 +1007,19 @@
     "duration": 1.84,
     "match": 1.0
   },
-  "n_thirty_seconds": {
-    "fp": "e86ccd9a33f4",
+  "n_thirty_seconds_in": {
+    "fp": "727a989b4b00",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 1.13,
-    "match": 1
+    "duration": 1.17,
+    "match": 1.0
+  },
+  "n_tilt_a_little_toward_your_left_shoulder": {
+    "fp": "0458fe32fefe",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 2.68,
+    "match": 1.0
   },
   "n_twenty": {
     "fp": "94691ab97ca7",
@@ -1161,19 +1028,19 @@
     "duration": 0.81,
     "match": 1.0
   },
-  "n_two_more": {
-    "fp": "915cf96e65a1",
+  "n_two_more_breaths": {
+    "fp": "cf2ec7e92ac2",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 1.23,
-    "match": 1
+    "duration": 1.18,
+    "match": 1.0
   },
   "rd_blackout": {
-    "fp": "eec2f5f6744c",
+    "fp": "e82b5f3909eb",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 14.65,
-    "match": 1
+    "duration": 9.76,
+    "match": 1.0
   },
   "rd_break_1": {
     "fp": "08dae7556ecb",
@@ -1196,18 +1063,32 @@
     "duration": 5.57,
     "match": 1.0
   },
-  "rd_close": {
-    "fp": "60d05d48e64d",
+  "rd_check_r2": {
+    "fp": "b0027f412d67",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 2.25,
-    "match": 1
+    "duration": 11.09,
+    "match": 1.0
+  },
+  "rd_close_r2": {
+    "fp": "7fef50a68c38",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 5.64,
+    "match": 1.0
   },
   "rd_down_rest": {
     "fp": "449f5a5d50c3",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
     "duration": 4.38,
+    "match": 1.0
+  },
+  "rd_flow_why_r2": {
+    "fp": "1eb8c120371d",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 7.74,
     "match": 1.0
   },
   "rd_how2": {
@@ -1217,11 +1098,11 @@
     "duration": 6.88,
     "match": 0.929
   },
-  "rd_last_breath2": {
-    "fp": "61fbe5f6b860",
+  "rd_last_breath_r2": {
+    "fp": "6362937b582a",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 1.02,
+    "duration": 0.75,
     "match": 1.0
   },
   "rd_last_in": {
@@ -1231,34 +1112,6 @@
     "duration": 1.47,
     "match": 1.0
   },
-  "rd_lead_1": {
-    "fp": "ce740f743c2a",
-    "voice": "mira",
-    "model": "gemini-3.8-flash-lite-tts",
-    "duration": 7.91,
-    "match": 1.0
-  },
-  "rd_lead_2": {
-    "fp": "b147432ad154",
-    "voice": "mira",
-    "model": "gemini-3.8-flash-lite-tts",
-    "duration": 7.05,
-    "match": 1.0
-  },
-  "rd_lead_3": {
-    "fp": "60407c710d3e",
-    "voice": "mira",
-    "model": "gemini-3.8-flash-lite-tts",
-    "duration": 8.39,
-    "match": 1.0
-  },
-  "rd_lead_4": {
-    "fp": "846946a0c04a",
-    "voice": "mira",
-    "model": "gemini-3.8-flash-lite-tts",
-    "duration": 9.15,
-    "match": 1.0
-  },
   "rd_let_go": {
     "fp": "fa90240702e7",
     "voice": "mira",
@@ -1266,18 +1119,25 @@
     "duration": 1.97,
     "match": 1
   },
-  "rd_oxygen": {
-    "fp": "c5e0f856dc21",
+  "rd_lung_reserve": {
+    "fp": "fdb16a3e6e61",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 9.88,
+    "duration": 9.37,
     "match": 1.0
   },
-  "rd_plan2": {
-    "fp": "3e7da25b8d40",
+  "rd_oxygen_r2": {
+    "fp": "3085941e489c",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 15.76,
+    "duration": 13.72,
+    "match": 1.0
+  },
+  "rd_plan_r2": {
+    "fp": "0b43373dc227",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 10.26,
     "match": 1.0
   },
   "rd_power_in": {
@@ -1287,11 +1147,11 @@
     "duration": 0.7,
     "match": 1.0
   },
-  "rd_quiet2": {
-    "fp": "5a2b9173b62c",
+  "rd_quiet_r2": {
+    "fp": "ce3ed822e456",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 5.6,
+    "duration": 8.01,
     "match": 1.0
   },
   "rd_recovery_in": {
@@ -1301,18 +1161,25 @@
     "duration": 2.66,
     "match": 1.0
   },
-  "rd_study2": {
-    "fp": "a9d6921b6116",
+  "rd_repeated_holds_r2": {
+    "fp": "f2ab96c3441c",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 11.99,
+    "duration": 9.34,
     "match": 1.0
   },
-  "rd_study_comparison": {
-    "fp": "0c87c2ba187b",
+  "rd_round_1_20_r2": {
+    "fp": "74534751cd4f",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 8.99,
+    "duration": 12.41,
+    "match": 1.0
+  },
+  "rd_round_1_30_r2": {
+    "fp": "c7373cd813d5",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 11.29,
     "match": 1.0
   },
   "rd_t_relax": {
@@ -1322,39 +1189,67 @@
     "duration": 3.94,
     "match": 1
   },
-  "rd_tap": {
-    "fp": "b7af14bb5989",
+  "rd_tap_r2": {
+    "fp": "d8045f30de17",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 3.34,
-    "match": 1
+    "duration": 14.38,
+    "match": 1.0
   },
-  "rd_tingle2": {
-    "fp": "3ed81c1bd34a",
+  "rd_tingle_fade_r2": {
+    "fp": "e21f1e6378fa",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 8.24,
+    "duration": 9.13,
+    "match": 1.0
+  },
+  "rd_tingle_r2": {
+    "fp": "382e3b858140",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 11.56,
+    "match": 1.0
+  },
+  "rd_tingle_why_r2": {
+    "fp": "736cde41a957",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 9.45,
+    "match": 1.0
+  },
+  "rd_urge_returns_r2": {
+    "fp": "b088f8eb92ff",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 6.69,
     "match": 1.0
   },
   "rd_welcome": {
-    "fp": "5fb7a2f3e621",
+    "fp": "2fc4080b6193",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 8.61,
-    "match": 1
-  },
-  "rd_why2": {
-    "fp": "66ca72513df1",
-    "voice": "mira",
-    "model": "gemini-3.8-flash-lite-tts",
-    "duration": 9.24,
+    "duration": 9.27,
     "match": 1.0
   },
-  "st_close2": {
-    "fp": "889dad9e136e",
+  "rd_why2": {
+    "fp": "1223a9080e16",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 5.48,
+    "duration": 10.36,
+    "match": 1.0
+  },
+  "st_close2_r2": {
+    "fp": "a5dda1805416",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 12.96,
+    "match": 1.0
+  },
+  "st_feet": {
+    "fp": "98175aaa90cc",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 4.65,
     "match": 1.0
   },
   "st_hold": {
@@ -1364,19 +1259,12 @@
     "duration": 0.79,
     "match": 1
   },
-  "st_plan": {
-    "fp": "c5fc57b07c6b",
+  "st_pull2_r2": {
+    "fp": "954df667ba4b",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 15.41,
-    "match": 1
-  },
-  "st_pull2": {
-    "fp": "ad616d789aa7",
-    "voice": "mira",
-    "model": "gemini-3.8-flash-lite-tts",
-    "duration": 6.53,
-    "match": 0.947
+    "duration": 8.39,
+    "match": 1.0
   },
   "st_recover": {
     "fp": "deb650e5f8a7",
@@ -1386,31 +1274,24 @@
     "match": 1.0
   },
   "st_safety": {
-    "fp": "1d77b131b81b",
+    "fp": "7fdd3daa6d9b",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 7.66,
-    "match": 1
-  },
-  "st_settle": {
-    "fp": "7580ec0b8d82",
-    "voice": "mira",
-    "model": "gemini-3.8-flash-lite-tts",
-    "duration": 6.62,
+    "duration": 9.24,
     "match": 1.0
   },
-  "st_small2": {
-    "fp": "8343b12c7260",
+  "st_slow_plan_r2": {
+    "fp": "b479eecc273a",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 10.93,
+    "duration": 15.1,
     "match": 1.0
   },
-  "st_t_jaw": {
-    "fp": "99d51c7ea09a",
+  "st_small2_r2": {
+    "fp": "ec54a7e3e19b",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 6.06,
+    "duration": 17.53,
     "match": 1.0
   },
   "st_t_soft": {
@@ -1420,32 +1301,32 @@
     "duration": 4.8,
     "match": 1
   },
-  "st_welcome2": {
-    "fp": "6ff2e414bab4",
+  "st_unsatisfied": {
+    "fp": "e61391aa35ab",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 9.07,
-    "match": 0.968
-  },
-  "st_why_1": {
-    "fp": "9bb9462f5a8a",
-    "voice": "mira",
-    "model": "gemini-3.8-flash-lite-tts",
-    "duration": 5.36,
+    "duration": 12.04,
     "match": 1.0
   },
-  "st_why_2": {
-    "fp": "fd0d5ea03f17",
+  "st_welcome2_r2": {
+    "fp": "8b44660e9ee4",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 7.44,
+    "duration": 7.56,
     "match": 1.0
   },
-  "st_why_3": {
-    "fp": "87c57f16b774",
+  "st_why_1_r2": {
+    "fp": "af6505a64b2e",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 8.21,
+    "duration": 11.51,
+    "match": 1.0
+  },
+  "st_why_2_r2": {
+    "fp": "aa15a046621e",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 11.1,
     "match": 1.0
   },
   "tw_after_middle_hum": {
@@ -1470,45 +1351,45 @@
     "match": 1.0
   },
   "tw_checkin2": {
-    "fp": "73711ea69112",
+    "fp": "8c3a1e38a0fd",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 7.06,
+    "duration": 5.68,
     "match": 1.0
   },
-  "tw_close2": {
-    "fp": "fcd105e34fa5",
+  "tw_close_r2": {
+    "fp": "bca84e7160e3",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 8.75,
+    "duration": 8.32,
     "match": 1.0
   },
-  "tw_co2_1": {
-    "fp": "c6042e3d1fc6",
+  "tw_co2_1_r2": {
+    "fp": "8d53f81a63bf",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 11.74,
-    "match": 1.0
-  },
-  "tw_co2_2": {
-    "fp": "2ce71bf868f7",
-    "voice": "mira",
-    "model": "gemini-3.8-flash-lite-tts",
-    "duration": 12.74,
+    "duration": 9.98,
     "match": 1.0
   },
   "tw_co2_3": {
-    "fp": "d4e6329ee8e1",
+    "fp": "a8af3a0450f0",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 12.88,
+    "duration": 9.32,
     "match": 1.0
   },
-  "tw_co2_gentle": {
-    "fp": "6cd1eb09f42a",
+  "tw_cool": {
+    "fp": "cc826da4e5f5",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 15.81,
+    "duration": 11.55,
+    "match": 1.0
+  },
+  "tw_cough_r2": {
+    "fp": "2f7d7706813c",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 10.65,
     "match": 1.0
   },
   "tw_deep_in2": {
@@ -1519,24 +1400,45 @@
     "match": 1.0
   },
   "tw_easy": {
-    "fp": "c450bc01353f",
+    "fp": "6ff4eb578f11",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 6.81,
+    "duration": 7.57,
     "match": 1.0
   },
-  "tw_first": {
-    "fp": "1687a7353d76",
+  "tw_fast_purpose_r2": {
+    "fp": "1e9e628b1c93",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 7.01,
-    "match": 1
+    "duration": 11.78,
+    "match": 1.0
+  },
+  "tw_fast_safety_r2": {
+    "fp": "4f75c9ea7c54",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 22.85,
+    "match": 1.0
+  },
+  "tw_first_r2": {
+    "fp": "e6190dcbffaa",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 10.55,
+    "match": 1.0
   },
   "tw_five": {
-    "fp": "b877446d9969",
+    "fp": "7d7b88dfc1ee",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 2.09,
+    "duration": 2.33,
+    "match": 1.0
+  },
+  "tw_hold_exit_r2": {
+    "fp": "7a0776c7b428",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 9.25,
     "match": 1.0
   },
   "tw_hum_again2": {
@@ -1546,19 +1448,19 @@
     "duration": 3.93,
     "match": 1.0
   },
-  "tw_hum_how2": {
-    "fp": "9fcc31696681",
+  "tw_hum_how_r2": {
+    "fp": "8772a827944e",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 11.37,
+    "duration": 18.64,
     "match": 1.0
   },
   "tw_hum_last": {
-    "fp": "fdd502796162",
+    "fp": "4d9648f3991e",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 3.77,
-    "match": 1
+    "duration": 4.85,
+    "match": 1.0
   },
   "tw_hum_rest": {
     "fp": "8fab88e92fae",
@@ -1567,39 +1469,18 @@
     "duration": 3.27,
     "match": 1.0
   },
-  "tw_hum_space": {
-    "fp": "5213679a9d42",
+  "tw_hum_space_r2": {
+    "fp": "1ebc0eeb6beb",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 12.52,
+    "duration": 11.87,
     "match": 1.0
   },
-  "tw_hum_why2": {
-    "fp": "472e3d9a4b25",
+  "tw_hum_vibration_r2": {
+    "fp": "273d2ea1183d",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 10.64,
-    "match": 1.0
-  },
-  "tw_kox_1": {
-    "fp": "98b4ece84afd",
-    "voice": "mira",
-    "model": "gemini-3.8-flash-lite-tts",
-    "duration": 11.53,
-    "match": 1.0
-  },
-  "tw_kox_2": {
-    "fp": "80200ff82cd7",
-    "voice": "mira",
-    "model": "gemini-3.8-flash-lite-tts",
-    "duration": 13.83,
-    "match": 1.0
-  },
-  "tw_kox_3": {
-    "fp": "e7a92abbba6f",
-    "voice": "mira",
-    "model": "gemini-3.8-flash-lite-tts",
-    "duration": 12.32,
+    "duration": 7.09,
     "match": 1.0
   },
   "tw_ladder2": {
@@ -1610,10 +1491,10 @@
     "match": 1.0
   },
   "tw_last_rest": {
-    "fp": "728c7618cebd",
+    "fp": "005606fec4b2",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 4.88,
+    "duration": 3.98,
     "match": 1.0
   },
   "tw_lead_1": {
@@ -1637,18 +1518,18 @@
     "duration": 5.5,
     "match": 1.0
   },
-  "tw_lock2": {
-    "fp": "9718c5ff8851",
+  "tw_lung_stretch_r2": {
+    "fp": "a322d6341e18",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 7.44,
+    "duration": 11.15,
     "match": 1.0
   },
-  "tw_nh_1": {
-    "fp": "8794830bad9f",
+  "tw_nh_1_r2": {
+    "fp": "b54f151eac90",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 5.8,
+    "duration": 7.92,
     "match": 1.0
   },
   "tw_nh_2": {
@@ -1658,123 +1539,158 @@
     "duration": 5.18,
     "match": 1.0
   },
-  "tw_nh_3": {
-    "fp": "10ac1a20cfa3",
+  "tw_nh_3_r2": {
+    "fp": "fb5d9d456d5e",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 6.29,
+    "duration": 8.11,
     "match": 1.0
   },
-  "tw_nose2": {
-    "fp": "f37311f6f0b6",
+  "tw_nose_r2": {
+    "fp": "d1b9a45ab910",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 5.73,
+    "duration": 8.46,
     "match": 1.0
   },
   "tw_nose_why2": {
-    "fp": "599423be7fac",
+    "fp": "d5cd58a105ed",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 13.87,
+    "duration": 8.96,
     "match": 1.0
   },
-  "tw_permission": {
-    "fp": "45d4ead5d1f9",
+  "tw_permission_r2": {
+    "fp": "fecfb702aa57",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 11.83,
+    "duration": 20.12,
     "match": 1.0
   },
   "tw_r1_2": {
-    "fp": "f322ea399c7c",
+    "fp": "bd615a985afd",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 10.74,
+    "duration": 10.8,
     "match": 1.0
   },
   "tw_r2_2": {
-    "fp": "e07d2faf6ae9",
+    "fp": "37dcd18c279f",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 6.98,
+    "duration": 7.5,
     "match": 1.0
   },
   "tw_r3": {
-    "fp": "01db738985d1",
+    "fp": "c70cc07cb345",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 3.48,
-    "match": 1
-  },
-  "tw_rest_1": {
-    "fp": "1467496a193d",
-    "voice": "mira",
-    "model": "gemini-3.8-flash-lite-tts",
-    "duration": 7.2,
+    "duration": 6.87,
     "match": 1.0
   },
-  "tw_rest_2": {
-    "fp": "379954b4569e",
+  "tw_rest_1_r2": {
+    "fp": "61ac03dc5ad9",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 7.04,
+    "duration": 5.29,
     "match": 1.0
   },
-  "tw_rest_3": {
-    "fp": "b1323ab48bda",
+  "tw_rest_2_r2": {
+    "fp": "9f09b746f508",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 4.76,
+    "duration": 7.89,
     "match": 1.0
   },
-  "tw_ribs": {
-    "fp": "ef25006502e0",
+  "tw_rest_3_r2": {
+    "fp": "1f952fecfb72",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 9.48,
-    "match": 1
+    "duration": 7.0,
+    "match": 1.0
+  },
+  "tw_rhythm_r2": {
+    "fp": "2009112d1d5c",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 10.45,
+    "match": 1.0
+  },
+  "tw_ribs_r2": {
+    "fp": "d7550420a7d0",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 13.21,
+    "match": 1.0
   },
   "tw_six": {
-    "fp": "60f7d60560a4",
+    "fp": "ca478eeb2ae0",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 2.37,
+    "duration": 2.31,
     "match": 1.0
   },
-  "tw_sleep": {
-    "fp": "3abf7d5cb93b",
+  "tw_sleep_r2": {
+    "fp": "8f3f2d87418f",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 11.84,
+    "duration": 13.56,
     "match": 1.0
   },
-  "tw_stay": {
-    "fp": "516b451bc4ad",
+  "tw_slow_hold_gases": {
+    "fp": "7341664fabab",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 6.66,
-    "match": 1
-  },
-  "tw_stress": {
-    "fp": "0081c65ae91f",
-    "voice": "mira",
-    "model": "gemini-3.8-flash-lite-tts",
-    "duration": 11.02,
+    "duration": 11.65,
     "match": 1.0
   },
-  "tw_t_ears": {
-    "fp": "0a3194792fd4",
+  "tw_slow_round_1_gentle_r2": {
+    "fp": "5ba3ae74e6f7",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 8.76,
-    "match": 1
+    "duration": 10.71,
+    "match": 1.0
   },
-  "tw_t_slower2": {
-    "fp": "5a66bf8b091f",
+  "tw_slow_round_1_none_r2": {
+    "fp": "bb7e3297aa0d",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 4.63,
+    "duration": 11.19,
+    "match": 1.0
+  },
+  "tw_slow_round_2_gentle_r2": {
+    "fp": "c97db03a4af3",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 8.35,
+    "match": 1.0
+  },
+  "tw_slow_round_2_none_r2": {
+    "fp": "fca36b162719",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 11.0,
+    "match": 1.0
+  },
+  "tw_slow_round_3_gentle_r2": {
+    "fp": "eb519a26c211",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 10.77,
+    "match": 1.0
+  },
+  "tw_slow_round_3_none_r2": {
+    "fp": "af5f48502fdc",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 10.24,
+    "match": 1.0
+  },
+  "tw_twitch_rule_r2": {
+    "fp": "a7f266316bc5",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 6.84,
     "match": 1.0
   },
   "tw_vagus2": {
@@ -1784,12 +1700,33 @@
     "duration": 3.75,
     "match": 0.842
   },
-  "tw_welcome": {
-    "fp": "79de47a5a1a9",
+  "tw_variation_r2": {
+    "fp": "77f304142107",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 12.03,
-    "match": 1
+    "duration": 8.75,
+    "match": 1.0
+  },
+  "tw_weather_stay": {
+    "fp": "9371435f6756",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 8.37,
+    "match": 1.0
+  },
+  "tw_welcome_r2": {
+    "fp": "f47e9c57acc1",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 9.41,
+    "match": 1.0
+  },
+  "ws_airflow_r2": {
+    "fp": "dcb0d9b534a2",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 3.98,
+    "match": 1.0
   },
   "ws_break_1": {
     "fp": "8bde5183e5b3",
@@ -1826,6 +1763,13 @@
     "duration": 4.31,
     "match": 1.0
   },
+  "ws_breath_size_r2": {
+    "fp": "23e2cc75573b",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 3.56,
+    "match": 1.0
+  },
   "ws_brow": {
     "fp": "15bb785a140b",
     "voice": "mira",
@@ -1833,74 +1777,95 @@
     "duration": 7.11,
     "match": 1
   },
-  "ws_checkin": {
-    "fp": "d2f36443ccf8",
+  "ws_cabin_altitude_r2": {
+    "fp": "9629f80eebdc",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 7.01,
-    "match": 0.941
+    "duration": 11.22,
+    "match": 0.913
+  },
+  "ws_cabin_dry_r2": {
+    "fp": "688d9ffe729f",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 11.79,
+    "match": 0.982
+  },
+  "ws_checkin_r2": {
+    "fp": "4c4f7e16a89a",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 7.6,
+    "match": 1.0
   },
   "ws_close": {
-    "fp": "71ab316613c2",
+    "fp": "c81e674d8e7d",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 10.35,
-    "match": 1
+    "duration": 12.56,
+    "match": 1.0
   },
-  "ws_face_why": {
-    "fp": "6008dfb7dd35",
+  "ws_descent": {
+    "fp": "6606d5dcc43f",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 9,
-    "match": 1
+    "duration": 8.29,
+    "match": 0.955
   },
-  "ws_h_brow": {
-    "fp": "1a57519c811c",
+  "ws_descent_no_holds_r2": {
+    "fp": "8bf6c42c3357",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 4.2,
-    "match": 1
+    "duration": 7.12,
+    "match": 1.0
   },
-  "ws_h_hands": {
-    "fp": "011cfa673e68",
+  "ws_face_why_r2": {
+    "fp": "3726fe01bf37",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 2.91,
-    "match": 1
+    "duration": 6.24,
+    "match": 1.0
   },
-  "ws_h_jaw": {
-    "fp": "59dd85f5636d",
+  "ws_h_last_r2": {
+    "fp": "64cdb8ab3abd",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 3.45,
-    "match": 1
-  },
-  "ws_h_last": {
-    "fp": "e560906c3e59",
-    "voice": "mira",
-    "model": "gemini-3.8-flash-lite-tts",
-    "duration": 5.36,
-    "match": 1
+    "duration": 1.65,
+    "match": 1.0
   },
   "ws_h_sway": {
-    "fp": "b05254e419a8",
+    "fp": "4630ceb6d076",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 4.66,
-    "match": 1
+    "duration": 6.82,
+    "match": 1.0
   },
   "ws_jaw": {
-    "fp": "7fb938f0ad5d",
+    "fp": "99aea2387237",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 5.89,
-    "match": 1
+    "duration": 8.38,
+    "match": 1.0
   },
-  "ws_lead": {
-    "fp": "b5bbce93b934",
+  "ws_lead_r2": {
+    "fp": "a58706e7d485",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 8.09,
+    "duration": 10.4,
+    "match": 1.0
+  },
+  "ws_long_check_r2": {
+    "fp": "436f70a57ffa",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 4.02,
+    "match": 1.0
+  },
+  "ws_long_r2": {
+    "fp": "7bd19e3a5a76",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 4.85,
     "match": 1.0
   },
   "ws_long_rest": {
@@ -1910,12 +1875,12 @@
     "duration": 4.81,
     "match": 1.0
   },
-  "ws_long_why": {
-    "fp": "5760916d40a9",
+  "ws_long_why_r2": {
+    "fp": "8922d9f22562",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 4.59,
-    "match": 1
+    "duration": 4.74,
+    "match": 1.0
   },
   "ws_neck": {
     "fp": "98c39a8776af",
@@ -1924,131 +1889,96 @@
     "duration": 6.7,
     "match": 1
   },
-  "ws_pain2": {
-    "fp": "75a84c216edf",
+  "ws_pause_intro_r2": {
+    "fp": "29146d5d7836",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 4.28,
+    "duration": 15.69,
     "match": 1.0
   },
-  "ws_pain_limit": {
-    "fp": "0c02613d3157",
+  "ws_pulse_r2": {
+    "fp": "6c72bfb130c7",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 3.72,
+    "duration": 8.07,
     "match": 1.0
   },
-  "ws_pain_out": {
-    "fp": "d329d0da1267",
+  "ws_release_r2": {
+    "fp": "b6cc9966d935",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 3.29,
-    "match": 0.8
-  },
-  "ws_pause_intro2": {
-    "fp": "c28883bb7ac0",
-    "voice": "mira",
-    "model": "gemini-3.8-flash-lite-tts",
-    "duration": 12.39,
-    "match": 0.958
-  },
-  "ws_release2": {
-    "fp": "80fb1ed497d7",
-    "voice": "mira",
-    "model": "gemini-3.8-flash-lite-tts",
-    "duration": 8.83,
+    "duration": 15.02,
     "match": 1.0
   },
   "ws_shoulders": {
-    "fp": "c7468a298eae",
+    "fp": "9fed7500d87a",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 4.04,
-    "match": 1
-  },
-  "ws_silent": {
-    "fp": "0b532a8daebf",
-    "voice": "mira",
-    "model": "gemini-3.8-flash-lite-tts",
-    "duration": 8.34,
-    "match": 1
-  },
-  "ws_skip": {
-    "fp": "4f5ae8641c21",
-    "voice": "mira",
-    "model": "gemini-3.8-flash-lite-tts",
-    "duration": 9,
-    "match": 1
-  },
-  "ws_small": {
-    "fp": "0795fff90122",
-    "voice": "mira",
-    "model": "gemini-3.8-flash-lite-tts",
-    "duration": 4.57,
-    "match": 1
-  },
-  "ws_stress2": {
-    "fp": "3be9f9aa6064",
-    "voice": "mira",
-    "model": "gemini-3.8-flash-lite-tts",
-    "duration": 3.01,
+    "duration": 5.45,
     "match": 1.0
   },
-  "ws_stress_limit": {
-    "fp": "cfdd3880ac43",
+  "ws_silent_r2": {
+    "fp": "39b7456048fe",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 4.08,
+    "duration": 13.88,
     "match": 1.0
   },
-  "ws_stress_time": {
-    "fp": "e166d769d415",
+  "ws_skip_r2": {
+    "fp": "a38da9125cbd",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 16.15,
+    "match": 1.0
+  },
+  "ws_slow_r2": {
+    "fp": "7c0edbdc2ba1",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 12.29,
+    "match": 1.0
+  },
+  "ws_t_anchor2": {
+    "fp": "f5dd9cf1daa8",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 3.75,
+    "match": 1.0
+  },
+  "ws_t_shoulders2": {
+    "fp": "84c607d1e972",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
     "duration": 2.9,
     "match": 1.0
   },
-  "ws_t_anchor2": {
-    "fp": "74ac9b2ce8bf",
-    "voice": "mira",
-    "model": "gemini-3.8-flash-lite-tts",
-    "duration": 2.78,
-    "match": 1.0
-  },
-  "ws_t_shoulders2": {
-    "fp": "7739676df2f0",
-    "voice": "mira",
-    "model": "gemini-3.8-flash-lite-tts",
-    "duration": 3.13,
-    "match": 1.0
-  },
   "ws_t_sounds2": {
-    "fp": "5ea97d2a6b78",
+    "fp": "69436ba2c42c",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 3.03,
+    "duration": 3.97,
     "match": 1.0
   },
   "ws_t_wander2": {
-    "fp": "eb51ea7430ab",
+    "fp": "13f41be0ec5e",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 3.11,
-    "match": 1.0
-  },
-  "ws_t_window2": {
-    "fp": "291a0dfbdae0",
-    "voice": "mira",
-    "model": "gemini-3.8-flash-lite-tts",
-    "duration": 3.19,
+    "duration": 3.04,
     "match": 1.0
   },
   "ws_tilt_r2": {
-    "fp": "9c4630d186e0",
+    "fp": "f0d73ae50c52",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 3.45,
+    "duration": 2.72,
     "match": 1.0
+  },
+  "ws_train_safety_r2": {
+    "fp": "137c0131e899",
+    "voice": "mira",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 4.61,
+    "match": 0.917
   },
   "ws_transition": {
     "fp": "32b23fdbf697",
@@ -2057,32 +1987,25 @@
     "duration": 4.53,
     "match": 1.0
   },
-  "ws_vagal2": {
-    "fp": "f27e053f6098",
+  "ws_urge_location_r2": {
+    "fp": "fe1ef9f28210",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 3.66,
-    "match": 0.842
-  },
-  "ws_vagal_limit": {
-    "fp": "c095e603aa20",
-    "voice": "mira",
-    "model": "gemini-3.8-flash-lite-tts",
-    "duration": 3.26,
+    "duration": 9.97,
     "match": 1.0
   },
-  "ws_vagus": {
-    "fp": "b6b7dc8ee38a",
+  "ws_urgent": {
+    "fp": "41b611828a5d",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 2.95,
+    "duration": 12.95,
     "match": 1.0
   },
-  "ws_welcome": {
-    "fp": "3fe49a17ba8f",
+  "ws_welcome_r2": {
+    "fp": "e3c381a1db18",
     "voice": "mira",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 13.77,
-    "match": 1
+    "duration": 16.26,
+    "match": 1.0
   }
 }

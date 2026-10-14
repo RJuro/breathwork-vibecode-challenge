@@ -49,8 +49,8 @@ export function dur(s) {
 
 /** Spoken time markers for long holds, for practising with eyes closed. */
 export const milestones = (seconds) => [
-  ...(seconds >= 55 ? [{ at: 30, say: say('Thirty seconds.') }] : []),
-  ...(seconds >= 80 ? [{ at: 60, say: say('One minute.') }] : []),
+  ...(seconds >= 55 ? [{ at: 30, say: say('Thirty seconds in.') }] : []),
+  ...(seconds >= 80 ? [{ at: 60, say: say('One minute in.') }] : []),
 ];
 
 /** Hold length for the chosen intensity, rounded to 5 s. */

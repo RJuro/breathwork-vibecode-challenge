@@ -10,7 +10,6 @@ const LEO = callsFor('leo');
 const MIRA = callsFor('mira');
 const tenMore = say('Ten more seconds.');
 const levelOf = (opts) => (opts.gentle ? 'gentle' : (opts.holdScale ?? 1) > 1 ? 'deeper' : 'standard');
-const STAY = line('tw_stay', 'Stay where you are for a minute before you get up. After holds, standing up fast can make you dizzy.');
 
 // ── Kumbhaka ───────────────────────────────────────────
 // Structure from a co-design pass with GPT Sol (docs/research/kumbhaka-plan-sol.md): a short arrival,
@@ -20,32 +19,33 @@ const STAY = line('tw_stay', 'Stay where you are for a minute before you get up.
 // step). Forty seconds of free breathing between steps. Nothing is said twice.
 const K = {
   welcome: line('kb_welcome2', "Get seated, or lie down somewhere comfortable. This is kumbhaka: a pause after breathing in, and another after breathing out."),
-  permission: line('kb_permission', "Breathe whenever you need to, even in the middle of a hold. If you feel dizzy or off, stop and breathe normally. And never do this in water."),
+  permission: line('kb_permission_r2', "Breathe at the first clear urge, even in the middle of a hold. If you feel dizzy or off, stop and breathe normally."),
   nose: line('kb_nose2', "Use your nose if it's comfortable, and keep the breathing quiet.", 'technique'),
   // Step intros, by role (first / middle / last step).
-  size: line('kb_size', "Use a comfortable breath. There's no need to fill all the way up.", 'technique'),
-  leadFirst: line('kb_lead_first', "We'll breathe in together, then all the way out. The next breath in starts round one."),
-  longer: line('kb_longer', 'The counts get longer here. Let the calls do the counting.'),
-  leadMiddle: line('kb_lead_middle', "One breath in together, one full breath out, and then we're into the rounds."),
-  finishOk: line('kb_finish_ok', 'If the last step was a lot, you can finish on natural breathing here. That counts.'),
-  leadLast: line('kb_lead_last', 'Before the last sequence, one breath in with me and all the way out. Round one follows.'),
+  size: line('kb_size_r2', "Use a comfortable breath, without filling to the top. If the breath after a pause is a gasp, take ordinary breaths instead of following the counts.", 'technique'),
+  leadFirst: line('kb_lead_first_r2', "We'll take an easy breath in together and let it out. The next breath in starts round one."),
+  longer: line('kb_longer_r2', "The counts get longer here. Spread the air across the whole inhale and exhale. If you finish early, slow the airflow on the next round.", 'technique'),
+  leadMiddle: line('kb_lead_middle_r2', "One easy breath in together and one easy breath out, and then we're into the rounds."),
+  finishOk: line('kb_finish_ok_r2', "If you gasped or had to break the rhythm in the last step, skip this one and breathe naturally for the rest of the session."),
+  leadLast: line('kb_lead_last_r2', 'Before the last sequence, one easy breath in with me and an easy breath out. Round one follows.'),
   // In the rounds, tied to their phase.
   shoulders: line('kb_shoulders', "Keep your shoulders loose while you hold. Don't bear down.", 'technique'),
   evenOut: line('kb_even_out', 'Let the air leave evenly, without pushing.', 'technique'),
-  belly: tip('kb_t_belly2', 'At the bottom, pause without pulling your belly in.'),
-  ribs: line('kb_ribs', 'Let your lower ribs widen as you breathe in.', 'technique'),
+  belly: tip('kb_t_belly2', "Let your belly soften as the air leaves."),
+  ribs: line('kb_ribs', 'Let your lower ribs widen as you inhale.', 'technique'),
   rejoin: line('kb_rejoin', "If you lose the rhythm, take a few ordinary breaths. Rejoin on a fresh breath in when it feels easy."),
-  noticePause: tip('kb_t_notice_pause', "Notice the pause once the air has left."),
-  hands: line('kb_hands', "These holds are a good time to check for extra effort. Start with your hands. If they're gripping, let them go.", 'technique'),
-  jaw: line('kb_jaw', 'Next, your jaw. If your teeth are pressed together, let them part. You can hold without clenching.', 'technique'),
-  body: line('kb_body', 'Last check: is your whole body braced? Small movements are fine. Only the air needs to pause.', 'technique'),
-  support: tip('kb_t_support2', 'Let your attention rest where your body meets the floor.'),
+  noticePause: tip('kb_t_notice_pause_r2', "Notice where the urge starts: throat, chest, or belly."),
+  hands: line('kb_hands_r2', "Check your hands for extra effort. If they're gripping, let them go while you hold.", 'technique'),
+  jaw: line('kb_jaw_r2', 'If your teeth are pressed together, let them part. You can hold without clenching your jaw.', 'technique'),
+  body: line('kb_body_r2', 'Is your whole body braced? Small movements are fine; only the air needs to pause.', 'technique'),
+  support: line('kb_empty_soft_r2', "Keep your belly soft, without pulling it in.", 'technique'),
+  halfway: line('kb_halfway_r2', "Keep the next exhale even across its whole count. If you need to rush it, return to ordinary breathing.", 'technique'),
   // Between steps, and the close.
   interval1: line('kb_interval_1', "That's the first step done. Breathe at your own pace now. No counts for the next forty seconds."),
   interval2: line('kb_interval_2', "That's the second step. Take forty seconds of normal breathing before we set up the longer one."),
   release: line('kb_release2', "That was the last hold. Let your breathing find its own pace. We'll stay here for a minute."),
-  nextTime: tip('kb_t_next_time', "Next time, pick the level you can finish without strain, empty holds included. Repeating a level is fine."),
-  close: line('kb_close2', "Open your eyes when you're ready, and take your time getting up."),
+  nextTime: tip('kb_t_next_time_r2', "Next time, stop at the step you could finish without strain, empty holds included. Repeating a step is fine."),
+  close: line('kb_close2', "Give your breathing time to settle before you get up."),
 };
 /** Steps per level: [unit in seconds, rounds]. A round is u in, 2u hold, 1.5u out, u hold. */
 const KB_STEPS = {
@@ -54,26 +54,28 @@ const KB_STEPS = {
   deeper: [[6, 6], [8, 8], [10, 12]],
 };
 const ratio = (u) => ({ inhale: u, holdIn: 2 * u, exhale: 1.5 * u, holdOut: u });
-/** One explanation told over the free full holds of the later steps, one part per hold, in order:
- *  what drives the urge, what slow breathing does to the heart, why the empty hold is harder. */
-const KB_THREAD = [
-  lesson('kb_a1', "While you hold, here's what's going on. Your body keeps making carbon dioxide, and with no air moving, it builds up."),
-  lesson('kb_a2', 'That rise makes your blood slightly more acidic. Sensors in your brainstem and in your neck pick it up, and the urge builds.'),
-  lesson('kb_a3', "At rest, after normal breaths, it's mostly carbon dioxide you feel, not low oxygen. Still, breathe at the first urge."),
-  lesson('kb_b1', 'When you breathe again, your heart rate follows the breath. It usually speeds up on the way in and slows on the way out.'),
-  lesson('kb_b2', "Slow breathing tends to make that swing bigger, especially around six breaths a minute. A bigger swing doesn't mean you'll feel calmer, though."),
-  lesson('kb_b3', "We're slower than that, and we're adding holds. So don't assume this gives you anything beyond slow breathing on its own."),
-  lesson('kb_c1', "The holds also depend on how much air you're holding. With less in your lungs, the urge can arrive sooner."),
-  lesson('kb_c2', 'With a full breath you carry more oxygen, and signals from your chest may help hold the urge off a little longer.'),
-  lesson('kb_c3', "With practice, holds may feel more familiar. Longer holds don't prove stronger lungs, though. Keep stopping at the urge."),
+// Debrief the first empty pauses while the listener is breathing freely.
+const KB_DEBRIEF = lesson('kb_debrief_r3', "You may have noticed the short empty pause feels harder than the long full one. With less air in, there's less lung stretch to quiet the urge.");
+// What's going on in the holds, told over consecutive full holds while the listener is feeling it:
+// the urge in the second step (the last step at Gentle), then, early in the top step, why the same
+// counts get harder, the heart on the long exhales, and what practice changes. The last rounds stay quiet.
+const KB_WHY = [
+  lesson('kb_why_1', "With no air moving, the carbon dioxide your body makes builds up. That's most of what you feel as the urge."),
+  lesson('kb_why_2', "Sensors in your brainstem and in your neck track that rise and turn the urge up. It's not an oxygen alarm."),
+  lesson('kb_why_3', "Holds this short barely move your blood oxygen, so the urge here is a nudge, not an emergency."),
+];
+const KB_DEEPER = [
+  lesson('kb_deep_1', "At these counts you're taking under two breaths a minute, so carbon dioxide creeps up from round to round. That's why the same count can feel harder later."),
+  lesson('kb_deep_2', "Your heart rate rises a little on each breath in and eases on each breath out. On these long exhales, you may feel it slow."),
+  lesson('kb_deep_3', "With practice, the urge usually feels more familiar. Use that to stay loose while it builds, not to stretch the holds."),
 ];
 const RATIO_LABELS = (ph) => ({ in: 'In', top: 'Hold', out: 'Out', bottom: 'Hold, empty' })[ph];
 const kbIntro = (n, u, r) => say(`Step ${num(n)}. ${Num(r)} rounds. ${Num(u)} in, ${num(2 * u)} hold, ${num(1.5 * u)} out, ${num(u)} hold.`);
 /** In-round content per role, as [round (0-based), phase, line]. `top` is the full hold, `bottom` the empty one. */
 const KB_ROUNDS = {
   first: [[0, 'top', K.shoulders], [2, 'out', K.evenOut], [4, 'out', K.belly]],
-  middle: [[0, 'in', K.ribs], [0, 'top', K.rejoin], [6, 'bottom', K.noticePause]],
-  last: [[0, 'top', K.hands], [1, 'top', K.jaw], [2, 'top', K.body], [3, 'bottom', K.support]],
+  middle: [[0, 'in', K.ribs], [0, 'top', K.rejoin], [6, 'top', K.noticePause]],
+  last: [[0, 'top', K.hands], [1, 'top', K.jaw], [2, 'top', K.body], [3, 'bottom', K.support], [6, 'top', K.halfway]],
 };
 
 export const kumbhaka = {
@@ -84,7 +86,7 @@ export const kumbhaka = {
   moment: 'retention',
   voice: 'leo',
   blurb: 'In, hold, out, hold at a fixed ratio, stepping up to 8 · 16 · 12 · 8.',
-  lede: 'Breath retention the classical way: in, hold, out, hold at a ratio of 1 : 2 : 1.5 : 1, through the nose. It starts at 4 · 8 · 6 · 4 and steps up twice.',
+  lede: 'Breath retention at a 1 : 2 : 1.5 : 1 ratio: in, hold, out, hold, through the nose if comfortable. This uses shorter holds relative to the inhale than the traditional 1 : 4 : 2. Standard starts at 4 · 8 · 6 · 4 and steps up twice.',
   music: ['mind', 'deep', 'building', 'current'],
   accent: ['#cfd3f2', '#4b4f9a'],
   sky: 'deep',
@@ -100,13 +102,8 @@ export const kumbhaka = {
     const steps = KB_STEPS[levelOf(opts)];
     const last = steps.length - 1;
     const role = (k) => (k === 0 ? 'first' : k === last ? 'last' : 'middle');
-    const intro = { first: [K.size, K.leadFirst], middle: [K.longer, K.leadMiddle], last: [K.finishOk, K.leadLast] };
+    const intro = { first: [K.size, K.leadFirst], middle: [K.longer, K.leadMiddle], last: [K.finishOk, ...(last === 1 ? [K.longer] : []), K.leadLast] };
     const intervals = [K.interval1, K.interval2];
-    // The thread runs on consecutive full holds, after each step's own coaching: rounds 2–4 of a middle
-    // step, rounds 5 onwards of the last (whose final round stays quiet).
-    const thread = [...KB_THREAD];
-    const SLOTS = { first: [], middle: [1, 2, 3], last: [4, 5, 6, 7, 8, 9] };
-    const lessons = (k, r) => SLOTS[role(k)].filter((n) => n < r - 1).flatMap((n) => (thread.length ? [{ breath: n, phase: 'top', say: thread.shift() }] : []));
     return [
       {
         id: 'deep-arrive',
@@ -124,7 +121,7 @@ export const kumbhaka = {
           steps: [
             { say: kbIntro(k + 1, u, r), bell: 'bell', gap: 0.8 },
             ...intro[role(k)].map((line) => ({ say: line, gap: 0.8 })),
-            // One breath together: in, then all the way out. The rounds start on the next breath in.
+            // One easy breath together; the rounds start on the next breath in.
             { pace: { inhale: u, exhale: 1.5 * u }, count: 1, style: 'count', calls: LEO },
             {
               pace: ratio(u),
@@ -134,7 +131,11 @@ export const kumbhaka = {
               calls: LEO,
               endOnHold: true,
               // Gentle has no middle step: its rejoin cue moves to the break (below).
-              cues: [...KB_ROUNDS[role(k)].map(([round, phase, line]) => ({ breath: round, phase, say: line })), ...lessons(k, r)],
+              cues: [
+                ...KB_ROUNDS[role(k)].map(([round, phase, line]) => ({ breath: round, phase, say: line })),
+                ...(role(k) === 'middle' ? KB_WHY.map((say, n) => ({ breath: 2 + n, phase: 'top', say })) : []),
+                ...(role(k) === 'last' ? (last === 1 ? KB_WHY : KB_DEEPER).map((say, n) => ({ breath: 3 + n, phase: 'top', say })) : []),
+              ],
             },
           ],
         },
@@ -145,7 +146,7 @@ export const kumbhaka = {
                 title: 'Own pace',
                 what: 'Forty seconds, no counts',
                 color: '#b9bde8',
-                steps: [{ rest: 40, label: 'Your own pace', cues: [{ at: 0.5, say: intervals[k] }, ...(last === 1 ? [{ at: 13, say: K.rejoin }] : [])] }],
+                steps: [{ rest: 40, label: 'Your own pace', cues: [{ at: 0.5, say: intervals[k] }, ...(k === 0 ? [{ at: 13, say: KB_DEBRIEF }] : []), ...(last === 1 ? [{ at: 29, say: K.rejoin }] : [])] }],
               },
             ]
           : []),
@@ -160,62 +161,65 @@ export const kumbhaka = {
     ];
   },
   learn: `
-<p>Kumbhaka means the held breath. Here it runs at a fixed ratio: in, hold full, out, hold empty, at 1 : 2 : 1.5 : 1. The counts get longer step by step while the rhythm stays the same.</p>
+<p>Kumbhaka means the held breath. Here it runs at a modern, shorter held ratio: in, hold full, out, hold empty, at 1 : 2 : 1.5 : 1. The full hold is twice the inhale, rather than four times as in the traditional 1 : 4 : 2. The counts get longer step by step while the rhythm stays the same.</p>
 <h3>The technique</h3>
 <ul>
-  <li>Sit tall. Nose only, the whole time, slow and quiet.</li>
+  <li>Sit comfortably or lie down. Use your nose if comfortable, and keep the breathing slow and quiet.</li>
   <li>Fill from the bottom: belly, then ribs, then chest. Not to the very top.</li>
   <li>The holds are a pause, not a squeeze: throat open, face and shoulders soft. Spread the out-breath over its whole count.</li>
   <li>Gentle tops out at 6 · 12 · 9 · 6, Standard at 8 · 16 · 12 · 8, Deeper at 10 · 20 · 15 · 10. If a hold gets too long, breathe and join the next round.</li>
+  <li>If you gasp or lose the rhythm, take ordinary breaths. Skip the next step if the current one requires either; choose shorter counts next time.</li>
 </ul>
 <h3>Why it works, and how well</h3>
 <ul>
-  <li>At these counts you take one to three breaths a minute. Slow breathing reliably shifts heart rhythm toward its "rest" pattern ${ev.solid}.</li>
-  <li>Reviews of slow-breathing studies report calmer mood and more alertness, mostly from small trials ${ev.some}.</li>
-  <li>Whether the holds add anything on top of the slow breathing, for example by getting you used to carbon dioxide, hasn't been tested ${ev.spec}.</li>
+  <li>The full cycle here is 22–55 seconds, about one to three breaths a minute. Carbon dioxide rises during a pause, and lung volume also affects when the urge arrives; an empty pause can feel harder despite being shorter.</li>
+  <li>Slow breathing increases the heart-rate changes that follow each breath ${ev.solid}; reviews also report calmer mood and more alertness ${ev.some}. Those studies mostly use about six breaths a minute and often small samples. Whether these slower cycles with full and empty holds add a benefit has not been established ${ev.spec}.</li>
 </ul>
 ${SAFETY_HTML}
 <h3>Sources</h3>
 <ul class="sources">
   <li>Zaccaro et al. 2018, <a href="https://doi.org/10.3389/fnhum.2018.00353" target="_blank" rel="noopener">How breath-control can change your life: a systematic review on psycho-physiological correlates of slow breathing</a>, Front Hum Neurosci.</li>
   <li>Laborde et al. 2022, <a href="https://eprints.bournemouth.ac.uk/38169/" target="_blank" rel="noopener">slow-paced breathing and vagally mediated HRV: meta-analysis</a>, Neurosci Biobehav Rev.</li>
+  <li>Parkes 2006, <a href="https://doi.org/10.1113/expphysiol.2005.031625" target="_blank" rel="noopener">Breath-holding and its breakpoint</a>, Exp Physiol.</li>
+  <li><a href="https://www.institutokamala.com.br/en/biblioteca/gheranda-samhita" target="_blank" rel="noopener">Gheranda Samhita, fifth teaching</a>: traditional inhalation, retention and exhalation counts of 16 : 64 : 32.</li>
 </ul>`,
 };
 
 // ── Hold Ladder ────────────────────────────────────────
 const H = {
-  welcome: line('hl_welcome', "Welcome. This is a breath-hold table, the way freedivers train on dry land. Sit or lie down somewhere you can't fall from. Never do this in water."),
-  plan: line('hl_plan', 'Eight holds, all the same length. The rests get shorter each time, so the urge to breathe tends to come sooner. Your job is to stay relaxed, and to end a hold early whenever you need to.'),
-  planUrge: line('hl_plan_urge', "Six holds, no target time. Hold until the first clear urge to breathe, then tap Breathe now. Two minutes of rest between holds. You're learning what a relaxed hold feels like."),
+  welcome: line('hl_welcome', "This is a breath-hold table from dry-land freediving practice. Sit or lie down somewhere you can't fall. Never do this in or near water."),
+  plan: (hold) => line(`hl_plan_${hold}_r2`, `Eight holds of ${dur(hold)}, with rests dropping from two minutes to thirty seconds. End any hold early when you need to. If the first isn't easy, stop and choose First urge next time.`),
+  planUrge: line('hl_plan_urge_r2', "Six holds ending at the first clear urge to breathe, with two minutes between them. Each has a ninety-second ceiling. Breathe first; when you can, tap Breathe now to move to recovery."),
   full: line('hl_full', 'Every hold starts from a comfortably full breath, not as full as you can get.', 'technique'),
-  noBig: line('hl_no_big', "In the rests, breathe normally. Big or fast breaths before a hold push the urge to breathe back, while your oxygen keeps dropping. That's how people black out.", 'technique'),
-  rule: line('hl_rule2', "Breathe whenever you need to. If you feel dizzy or find yourself straining, stop the table and breathe normally."),
+  noBig: line('hl_no_big', "Breathe normally in the rests. Big or fast breaths lower carbon dioxide and can delay the urge during the next hold, even as oxygen falls. That can lead to a blackout.", 'technique'),
+  rule: line('hl_rule_r2', "Stop the table if you feel dizzy, start straining, or your breathing hasn't settled before the next hold."),
   calm: line('hl_calm2', 'Breathe at your own pace for a minute before we start the table.'),
-  lead: line('hl_lead', 'One easy breath in together, then all the way out. The next breath in starts the first hold.'),
+  lead: line('hl_lead_r2', 'One easy breath in together and an easy breath out. The next breath in starts the first hold.'),
   in: say('Comfortably full breath in.'),
-  recovery: line('hl_recovery2', "After each hold, let the air out. Then I'll call three recovery breaths: in, a short pause, and out. After those, breathe normally.", 'technique'),
+  recovery: line('hl_recovery_r2', "After each hold, release a little air. Then I'll call three recovery breaths: a quick inhale, a short pause, and out. After those, breathe normally.", 'technique'),
   recoverIn: line('hl_recover_in', 'In.', 'count'),
   recoverHold: line('hl_recover_hold', 'Pause.', 'count'),
   recoverOut: line('hl_recover_out', 'Let it go.', 'count'),
-  soft: tip('hl_t_soft', 'Soften your face. Jaw loose, eyes soft.'),
+  soft: tip('hl_t_soft', "Let your jaw loosen without changing your breath hold."),
   co2: lesson('hl_co2', 'While you hold, your body keeps making carbon dioxide. Its rise usually drives the urge to breathe more than falling oxygen does.'),
-  dive: lesson('hl_dive2', 'Alongside that urge, your heart may slow as part of the diving response. Humans share this oxygen-conserving response with other mammals.'),
-  scan: tip('hl_t_scan', "Check for tension, and let go wherever you're still gripping."),
-  contract: line('hl_contract', "If your belly starts to twitch, those are contractions. They're normal. Today, treat them as your signal to stop."),
-  spleen: lesson('hl_spleen2', 'Another response involves your spleen. It can release extra red blood cells over several holds; the small effect fades within minutes.'),
-  ten: tip('hl_t_ten2', 'If you need air, end the hold now. You can leave the rest of the table for another day.'),
-  wave: tip('hl_t_wave2', "When the urge arrives, end the hold. There's no need to wait for the clock."),
-  last: line('hl_last', 'Last hold. Stay soft right to the end.'),
-  restOut: tip('hl_t_rest_out', 'Let each breath out be a little longer than the breath in.'),
-  restWhy: lesson('hl_rest_why2', 'Breathing between holds lets carbon dioxide fall again. As these rests get shorter, you may start with more, and notice the urge sooner.'),
+  dive: lesson('hl_dive_r2', "Your heart may slow a little during a dry hold. That helps conserve oxygen while you're not breathing."),
+  scan: tip('hl_t_scan', "Check whether your shoulders lifted with the inhale. Let them drop without letting air out."),
+  contract: line('hl_contract_r2', "Jerks under your ribs are breathing contractions. This table ends before you push through them: breathe at the first one, or sooner if you need air."),
+  spleen: lesson('hl_spleen2', "Over several holds, the spleen can release extra red blood cells. That temporarily adds a little to the oxygen your blood can carry."),
+  ten: line('hl_t_ten2', "If the first breath after that hold was a gasp, finish the table on normal breathing. The next hold can wait for another day.", 'guide'),
+  last: line('hl_last_r2', "This is the last hold. Keep your body loose."),
+  restWhy: lesson('hl_rest_why_r2', 'Breathing in the rests lets carbon dioxide fall again. A shorter rest leaves less time for that recovery, so the next urge can arrive sooner.'),
   urgeWhy: lesson('hl_urge_why', "Breathing between holds lets carbon dioxide fall again. Here the rests stay long, so you can notice the urge without chasing a time."),
-  study: lesson('hl_study2', 'Those responses help explain what researchers measure. In one small study, tables caused a smaller drop in blood oxygen than maximal holds.'),
-  studyLimit: lesson('hl_study_limit', "That comparison doesn't show that tables improve your maximum hold. Getting more familiar with the urge isn't proof of a training benefit."),
-  restUrge: tip('hl_t_rest_urge', "Take the whole rest. Start the next hold only when your breathing feels easy again."),
+  study: lesson('hl_lung_store_r2', "Your lungs store oxygen too. A comfortably full inhale gives you a reserve without the tension of forcing in extra air."),
+  earlierUrge: line('hl_earlier_urge_r2', "The shorter rests can bring the urge earlier now. End this hold when you need air, even if you finished the earlier ones."),
+  shortRest: line('hl_short_rest_r2', "After the next recovery, only a few breaths remain before the last hold. If you're not settled by its inhale, finish on normal breathing."),
+  restUrge: line('hl_t_rest_urge', "Take the whole rest. If your breathing is not easy again, stop here rather than starting another hold.", 'guide'),
   done: line('hl_done2', 'The table is done. Breathe at your own pace, and stay seated or lying down for this last minute.'),
-  close: line('hl_close', 'Two or three tables a week is plenty, with a day off in between.'),
+  close: line('hl_close_r2', "Leave a rest day between tables. When the last forty-five-second hold feels as easy as the first, you can try the one-minute setting next time."),
+  closeLong: line('hl_close_long_r2', "Leave a rest day between tables. Repeat this setting only while every hold stays easy, including the last. There's no need to extend the holds."),
+  closeUrge: line('hl_close_urge_r2', "Leave a rest day between tables. Before choosing forty-five-second holds, make sure that length feels easy when you stop at the first urge."),
 };
-const HOLD_TIPS = [H.soft, H.scan, null, H.contract, null, H.ten, H.wave];
+const HOLD_TIPS = [H.soft, H.scan];
 const HL_BREAKS = [
   line('hl_break_1', 'Breathe at your own pace now.'),
   line('hl_break_2', 'No counts here. Let your breathing settle.'),
@@ -223,7 +227,7 @@ const HL_BREAKS = [
   line('hl_break_4', 'Let the rhythm go and breathe normally.'),
   line('hl_break_5', 'Use this time to breathe however feels easy.'),
   line('hl_break_6', 'Rest on your own rhythm before the next hold.'),
-  line('hl_break_7', 'A short rest now. Breathe at your own pace.'),
+  line('hl_break_7_r2', 'Take these last few breaths at your own pace.'),
 ];
 const ORDINAL = ['First', 'Second', 'Third', 'Fourth', 'Fifth', 'Sixth'];
 const RECOVER = { inhale: 1.5, holdIn: 1.5, exhale: 3 };
@@ -244,18 +248,18 @@ export const holdLadder = {
   intensity: ['gentle', 'standard', 'deeper'],
   levelNames: { gentle: 'First urge', standard: '8 × 0:45', deeper: '8 × 1:00' },
   intensityNotes: {
-    gentle: 'Six holds to the first clear urge, two minutes apart. Start here.',
-    standard: 'Eight holds of 45 s. Suits a relaxed max hold of about 1:30.',
-    deeper: 'Eight holds of 1:00. Suits a relaxed max hold of 2:00 or more.',
+    gentle: 'Six holds to the first clear urge, each capped at 90 s, two minutes apart. Start here.',
+    standard: 'Eight holds of 45 s. Start with First urge; the first fixed hold should feel easy.',
+    deeper: 'Eight holds of 1:00. Choose this only after all eight 45 s holds stay easy, including the last.',
   },
   defaultLevel: 'gentle',
-  after: ['Two or three tables a week, with a rest day between.', 'Dry only. Never practise breath holds in or near water without trained supervision.'],
+  after: ['Two or three tables a week, with a rest day between.', 'Use this table on dry land, seated or lying down. Never in or near water.'],
   sections: (opts) => {
     const urge = levelOf(opts) === 'gentle';
     const hold = urge ? 90 : scaled(45, opts) > 45 ? 60 : 45;
     const n = urge ? 6 : 8;
     const rests = urge ? Array(n - 1).fill(120) : [120, 105, 90, 75, 60, 45, 30];
-    const thread = [H.co2, urge ? H.urgeWhy : H.restWhy, H.dive, H.spleen, H.study, H.studyLimit];
+    const thread = [H.co2, H.dive, H.spleen, H.study, ...(urge ? [] : [H.earlierUrge])];
     const holds = Array.from({ length: n }, (_, i) => {
       const last = i === n - 1;
       return [
@@ -279,7 +283,7 @@ export const holdLadder = {
         { pace: { exhale: 1.5 }, count: 1, style: 'slow', calls: () => LEO('out', 1) },
         { pace: RECOVER, count: 3, style: 'slow', label: 'Recovery', calls: recoveryCalls },
         // Include the release, recovery breaths and next four-second inhale in the advertised rest.
-        ...(last ? [] : [{ rest: rests[i] - 23.5, label: 'Your own pace', cues: [{ at: 0.5, say: HL_BREAKS[i] }, ...(i === 0 ? [{ at: 12, say: H.restOut }] : urge && i === 1 ? [{ at: 12, say: H.restUrge }] : [])] }]),
+        ...(last ? [] : [{ rest: rests[i] - 23.5, label: 'Your own pace', cues: [{ at: 0.5, say: HL_BREAKS[i] }, ...(i === 0 ? [{ at: 12, say: urge ? H.urgeWhy : H.restWhy }] : urge && i === 1 ? [{ at: 12, say: H.restUrge }] : i === 4 ? [{ at: 12, say: H.ten }] : !urge && i === 5 ? [{ at: 8, say: H.shortRest }] : [])] }]),
       ];
     }).flat();
     return [
@@ -288,7 +292,7 @@ export const holdLadder = {
         title: 'Arrive',
         what: 'How the table works',
         color: '#9fb6d8',
-        steps: [{ say: H.welcome, bell: 'low', lead: 2 }, { say: urge ? H.planUrge : H.plan }, { say: H.full }, { say: H.noBig }, { say: H.rule }, { say: H.recovery }, { say: H.calm, gap: 0.5 }, { rest: 60, label: 'Your own pace', cues: [{ at: 46, say: H.lead }] }],
+        steps: [{ say: H.welcome, bell: 'low', lead: 2 }, { say: urge ? H.planUrge : H.plan(hold) }, { say: H.full }, { say: H.noBig }, { say: H.rule }, { say: H.contract }, { say: H.recovery }, { say: H.calm, gap: 0.5 }, { rest: 60, label: 'Your own pace' }, { say: H.lead }],
       },
       {
         id: 'table',
@@ -302,22 +306,23 @@ export const holdLadder = {
         title: 'Recover',
         what: 'Natural breathing',
         color: '#a9c2e0',
-        steps: [{ rest: 60, label: 'Your own pace', bell: 'bell', cues: [{ at: 0.5, say: H.done }, { at: 50, say: H.close }] }, { rest: 4 }],
+        steps: [{ rest: 60, label: 'Your own pace', bell: 'bell', cues: [{ at: 0.5, say: H.done }, { at: 45, say: urge ? H.closeUrge : hold === 45 ? H.close : H.closeLong }] }, { rest: 4 }],
       },
     ];
   },
   learn: `
-<p>Freedivers train with "tables" on dry land. <strong>First urge</strong> is the beginner's version: each hold lasts until the first clear urge to breathe, with two minutes of rest. In a <strong>CO₂ table</strong> the hold stays fixed (about half your relaxed maximum) while the rest shrinks each round, so carbon dioxide builds a little more each time.</p>
+<p>Freedivers train with "tables" on dry land. <strong>First urge</strong> is the beginner's version: each hold ends at the first clear urge to breathe, with a ninety-second cap and two minutes between holds. In a <strong>CO₂ table</strong> the hold stays fixed while the rest shrinks each round, leaving less time to recover. Choose a hold length that feels easy on the first hold; there is no need to test an all-out maximum.</p>
 <h3>The technique</h3>
 <ul>
-  <li>Easy breathing between holds: normal-sized breaths, out a little longer than in. No fast or big breaths before a hold, ever.</li>
+  <li>Easy breathing between holds at your own pace. No fast or big breaths before a hold, ever.</li>
   <li>Each hold starts from a comfortable full breath, about 80%, not a maximal one. Relax the face, jaw and shoulders.</li>
-  <li>After each hold, three recovery breaths: a quick breath in, a short pause at the top, then let it go.</li>
+  <li>After each hold, release a little air, then take three recovery breaths: a quick breath in, a short pause at the top, then let it go.</li>
   <li>The CO₂ table has eight holds; rests go 2:00, 1:45, 1:30, 1:15, 1:00, 0:45, 0:30. If a hold starts to feel like a maximum effort, stop the table there.</li>
+  <li>Recovery breathing and the next inhale are included in each rest. The final 30-second interval leaves only a few own-pace breaths. If breathing has not settled, finish on ordinary breathing. Move from 45 s to 60 s only when all eight holds stay easy.</li>
 </ul>
 <h3>Why it works, and how well</h3>
 <ul>
-  <li>Tables lowered blood oxygen much less than maximal holds in novices, so they're a mild training stimulus ${ev.some}.</li>
+  <li>A study in 28 novices found smaller falls in blood and brain oxygenation during tables than during maximal holds. It measured immediate responses, not whether repeated tables improve performance ${ev.some}.</li>
   <li>The diving reflex slows the heart during a hold ${ev.solid}. The spleen contracts over several holds, releasing a few percent more red blood cells; this fades within minutes ${ev.solid}.</li>
   <li>Two weeks of daily holds lengthened max holds by about 44 s in a small, uncontrolled study ${ev.some}. That tables themselves improve your maximum isn't shown ${ev.spec}.</li>
   <li>Diaphragm contractions late in a hold are a response to rising CO₂ ${ev.solid}. In this app they're a good moment to end the hold, not something to push through.</li>
@@ -328,31 +333,31 @@ ${SAFETY_HTML}
   <li>Declercq et al. 2024, CO₂ and O₂ tables vs maximal apneas in novices, <a href="https://doi.org/10.1007/s00421-024-05563-7" target="_blank" rel="noopener">Eur J Appl Physiol</a>.</li>
   <li>Engan et al. 2013, two weeks of daily apnea training (max holds, diving response, spleen), Scand J Med Sci Sports: <a href="https://pubmed.ncbi.nlm.nih.gov/?term=Engan+2013+apnea+training+Scand+J+Med+Sci+Sports" target="_blank" rel="noopener">PubMed search</a>.</li>
   <li>RAID, <a href="https://gofreediving.co.uk/wp-content/uploads/2024/09/Static-Apnea-Management-Manual_V1.0.-1.pdf" target="_blank" rel="noopener">Static apnea management manual</a> (recovery breathing).</li>
+  <li>Vigetun-Haughey et al. 2015, <a href="https://pubmed.ncbi.nlm.nih.gov/25549785/" target="_blank" rel="noopener">voluntary apnea and diving responses</a>, Eur J Appl Physiol; healthy controls showed a smaller heart-rate response in air than with facial immersion.</li>
 </ul>`,
 };
 
 // ── Rounds ─────────────────────────────────────────────
 const R = {
-  welcome: line('rd_welcome', "Hey. Sit or lie down somewhere comfortable, where you can't fall. Never near water with this one."),
-  blackout: line('rd_blackout', "One important thing before we start. If you ever twitch, blank out, or lose track of time in a hold, your brain has run short of oxygen. That's not a release. Stop the session there."),
-  plan: line('rd_plan2', "Four rounds of full breaths, an empty hold, then one recovery breath held for up to fifteen seconds. Breathe whenever you need to; the times are limits, not targets."),
+  welcome: line('rd_welcome', "Sit or lie down somewhere comfortable, where you can't fall. Never do this standing, driving, or in or near water."),
+  blackout: line('rd_blackout', "Twitching, blanking out, or losing track of time during a hold can mean oxygen ran dangerously low. Stop the session if that happens."),
+  plan: line('rd_plan_r2', "Four rounds of full breaths, a pause after the air falls out, then one comfortable recovery breath held for up to fifteen seconds."),
   how: line('rd_how2', "Fill through your belly and chest, then let the air fall out without pushing.", 'technique'),
-  tingle: line('rd_tingle2', "Fast breathing can cause tingling or lightheadedness. If that happens, slow down or breathe normally."),
+  tingle: line('rd_tingle_r2', "Light tingling in your hands or face can happen during the fast breaths. If your hands cramp or you feel dizzy, breathe normally and skip the hold and recovery pause."),
   powerIn: line('rd_power_in', 'In.', 'count'),
   lastIn: line('rd_last_in', 'Last in.', 'count'),
-  lastBreath: line('rd_last_breath2', 'Let it all go.', 'count'),
-  tap: line('rd_tap', 'Whenever you need to breathe, tap Breathe now.'),
+  lastBreath: line('rd_last_breath_r2', 'Let it go.', 'count'),
+  tap: line('rd_tap_r2', "If you come up early, breathe normally and ignore the remaining hold and recovery calls. The phone can wait. Tapping Breathe now skips straight to the rest, including skipping the recovery breath and pause."),
   relax: tip('rd_t_relax', 'Let your shoulders drop and your hands go soft.'),
   letGo: line('rd_let_go', 'And let it go.', 'count'),
-  why: lesson('rd_why2', 'The fast breaths lowered carbon dioxide, which usually drives the urge to breathe. That can delay the urge during the empty hold.'),
-  oxygen: lesson('rd_oxygen', "Oxygen can still fall while the urge is delayed. Feeling comfortable, or stopping at the time limit, doesn't guarantee safety."),
-  study: lesson('rd_study2', 'With that limit in mind, one month-long study found improved mood and less anxiety after five daily minutes of fast breathing with short holds.'),
-  comparison: lesson('rd_study_comparison', "Slower practices helped too. That study doesn't establish a benefit from these longer empty holds, or a reason to push them."),
+  why: lesson('rd_why2', "An unusually quiet urge is expected here: the fast breaths lowered carbon dioxide, the main signal that normally prompts a breath."),
+  oxygen: line('rd_oxygen_r2', "Fast breathing delays the urge while oxygen can still run low. End a hold at the first clear urge or the time limit, whichever comes first; don't wait for a strong urge.", 'guide'),
+  check: line('rd_check_r2', "Check your hands and lips. If they're still tingling, keep breathing normally and stay here until the sensation and any dizziness settle."),
   recoveryIn: line('rd_recovery_in', 'Take one comfortable breath in.', 'count'),
   downRest: line('rd_down_rest', 'Before the slower breathing, take a few breaths at your own pace.'),
   slow: say('Now slow it down. In for four, out for six.'),
-  quiet: line('rd_quiet2', 'Let the count go and breathe at your own pace for this last minute.'),
-  close: line('rd_close', 'Open your eyes whenever you feel ready.'),
+  quiet: line('rd_quiet_r2', 'Let the count go and breathe at your own pace for this last minute. Stay seated or lying while you settle.'),
+  close: line('rd_close_r2', "That's the session. Take your time getting up, once your breathing and balance feel normal."),
 };
 const POWER = { inhale: 1.6, exhale: 1.6, level: 0.6 };
 const RD_HOLDS = [45, 60, 75, 75];
@@ -361,13 +366,15 @@ const RD_BREAKS = [
   line('rd_break_2', 'Another forty-five seconds of ordinary breathing. Let yourself settle before we continue.'),
   line('rd_break_3', 'No counts for this rest. Take forty-five seconds on your own rhythm.'),
 ];
-const RD_LEADS = [
-  line('rd_lead_1', "We'll take one easy breath in together, then all the way out. The next breath in starts the set."),
-  line('rd_lead_2', 'One breath in with me, and a full breath out. Then the next set begins.'),
-  line('rd_lead_3', 'Before round three, breathe in together and all the way out. We start again on the next inhale.'),
-  line('rd_lead_4', 'For the last set, one easy breath in, then all the way out. The next inhale starts the faster calls.'),
+const RD_THREAD = [
+  R.why,
+  lesson('rd_lung_reserve', 'This empty hold starts with less air in your lungs than a full hold. That leaves a smaller oxygen reserve to draw on.'),
+  line('rd_urge_returns_r2', 'Carbon dioxide is building back up. If the urge returns, end the hold.'),
+  line('rd_repeated_holds_r2', 'Later holds can feel easier after the breathing has lowered carbon dioxide. Keep the same time limit, however quiet the urge feels.'),
 ];
-const RD_THREAD = [R.why, R.oxygen, R.study, R.comparison];
+const RD_TINGLE = lesson('rd_tingle_why_r2', "Low carbon dioxide makes blood more alkaline and nerves more excitable. That's where light tingling can come from.");
+const RD_FLOW = lesson('rd_flow_why_r2', "Fast breathing can lower blood flow to your brain by lowering carbon dioxide. That can explain a light head.");
+const RD_TINGLE_REST = lesson('rd_tingle_fade_r2', 'If your hands are still tingling, notice whether it fades as you breathe normally and carbon dioxide returns toward its usual level.');
 
 function powerRound(n, opts) {
   const breaths = opts.gentle ? 20 : 30;
@@ -378,8 +385,8 @@ function powerRound(n, opts) {
     what: `${breaths} breaths · empty hold up to ${mmss(hold)}`,
     color: ['#ffb38a', '#ff9e7a', '#ff8a7a', '#f2777f'][n - 1],
     steps: [
-      { say: say(`Round ${num(n)}. ${Num(breaths)} breaths.`), bell: 'bell', gap: 0.6 },
-      ...(n === 1 ? [{ say: RD_LEADS[0], gap: 0.6 }] : []),
+      // The full lead-in instruction once; later rounds just name it.
+      { say: n === 1 ? line(`rd_round_1_${breaths}_r2`, `Round one. ${Num(breaths)} breaths. First, one easy breath in with me and an easy breath out. The next inhale starts the faster rhythm.`) : say(`Round ${num(n)}. ${Num(breaths)} breaths. One easy breath with me first.`), bell: 'bell', gap: 0.6 },
       { pace: { inhale: 4, exhale: 6 }, count: 1, style: 'count', calls: MIRA },
       {
         pace: POWER,
@@ -394,12 +401,14 @@ function powerRound(n, opts) {
           if (ph !== 'in') return null;
           return { 9: say('Ten.'), 19: say('Twenty.'), [breaths - 6]: say('Five more.') }[i] || null;
         },
+        // A complete explanation in the gap between markers, without removing any calls.
+        cues: n === 2 || n === 3 ? [{ at: (breaths === 20 ? 10 : 15) * 3.2, say: n === 2 ? RD_TINGLE : RD_FLOW }] : [],
       },
-      holdEmpty(hold, n === 2 ? [{ at: 9, say: R.relax }] : []),
-      { pace: { inhale: 6 }, count: 1, style: 'slow', calls: () => R.recoveryIn },
-      { hold: 'full', seconds: 15, tick: false, label: 'Recovery · up to 15 s', cues: [{ at: 0.3, say: MIRA('top') }, { at: 2, say: RD_THREAD[n - 1] }] },
-      { pace: { exhale: 3 }, count: 1, style: 'slow', calls: () => R.letGo },
-      ...(n < 4 ? [{ rest: 45, label: 'Your own pace', cues: [{ at: 0.5, say: RD_BREAKS[n - 1] }, { at: 31, say: RD_LEADS[n] }] }] : []),
+      holdEmpty(hold, [{ at: n === 3 ? (hold >= 60 ? 45 : 22) : 7, say: RD_THREAD[n - 1] }, ...(n === 2 ? [{ at: 20, say: R.relax }] : [])], { group: `rd${n}` }),
+      { pace: { inhale: 6 }, count: 1, style: 'slow', group: `rd${n}`, calls: () => R.recoveryIn },
+      { hold: 'full', seconds: 15, tick: false, group: `rd${n}`, label: 'Recovery · up to 15 s', cues: [{ at: 0.3, say: MIRA('top') }] },
+      { pace: { exhale: 3 }, count: 1, style: 'slow', group: `rd${n}`, calls: () => R.letGo },
+      ...(n < 4 ? [{ rest: 45, label: 'Your own pace', cues: [{ at: 0.5, say: RD_BREAKS[n - 1] }, ...(n === 1 ? [{ at: 12, say: RD_TINGLE_REST }] : [])] }] : []),
     ],
   };
 }
@@ -411,8 +420,8 @@ export const rounds = {
   tag: 'Retention',
   moment: 'retention',
   voice: 'mira',
-  blurb: 'Thirty full breaths, an empty hold, one recovery breath. Four rounds.',
-  lede: 'The rounds most people know: a set of full, rhythmic breaths, then a hold on empty lungs for as long as it’s comfortable, then one deep recovery breath held for fifteen seconds. The holds are capped, and you end each one when you choose.',
+  blurb: 'Twenty or thirty rhythmic breaths, an empty hold, one recovery breath. Four rounds.',
+  lede: 'Four sets of full, rhythmic breaths, each followed by an empty hold and one comfortable recovery breath held for up to fifteen seconds. End holds early; after fast breathing, a quiet urge does not tell you how much oxygen remains.',
   music: ['mind', 'deep', 'building', 'current'],
   accent: ['#ffe0cc', '#c8554f'],
   sky: 'round',
@@ -423,14 +432,14 @@ export const rounds = {
     deeper: 'Thirty breaths a round, empty holds of up to 1:00 → 1:40.',
   },
   defaultLevel: 'standard',
-  after: ['Twitching, blanking out or losing time in a hold means oxygen ran low. It is never a release; shorten the holds.', 'Never in or near water, and never standing. Give it a few minutes before you drive.'],
+  after: ['Twitching, blanking out or losing time during a hold can mean oxygen ran dangerously low. Stop the session.', 'Never in or near water, and never standing. Give it a few minutes before you drive.'],
   sections: (opts) => [
     {
       id: 'heat-arrive',
       title: 'Arrive',
       what: 'How a round works',
       color: '#ffc9a8',
-      steps: [{ say: R.welcome, bell: 'low', lead: 2 }, { say: R.plan }, { say: R.blackout }, { say: R.how }, { say: R.tingle }, { say: R.tap }, { rest: 6 }],
+      steps: [{ say: R.welcome, bell: 'low', lead: 2 }, { say: R.plan }, { say: R.blackout }, { say: R.how }, { say: R.tingle }, { say: R.oxygen }, { say: R.tap }, { rest: 6 }],
     },
     ...[1, 2, 3, 4].map((n) => powerRound(n, opts)),
     {
@@ -442,29 +451,28 @@ export const rounds = {
         { rest: 15, label: 'Your own pace', cues: [{ at: 0.5, say: R.downRest }] },
         { say: R.slow, bell: 'bell', gap: 0.6 },
         { pace: { inhale: 4, exhale: 6 }, count: 10, style: 'count', calls: MIRA },
-        { say: STAY },
         { say: R.quiet, bell: 'low' },
-        { rest: 60, label: 'Your own pace' },
+        { rest: 60, label: 'Your own pace', cues: [{ at: 12, say: R.check }] },
         { say: R.close },
         { rest: 4 },
       ],
     },
   ],
   learn: `
-<p>Rounds of full, rhythmic breathing followed by a hold on empty lungs, then one deep breath held for fifteen seconds. It's the most popular retention format online. This version caps the holds and lets you end each one with <em>Breathe now</em>.</p>
+<p>Four rounds of full, rhythmic breathing followed by an empty hold, then one comfortable breath held for up to fifteen seconds. If you end a hold early, breathe normally and tap <em>Breathe now</em> to skip the rest of that hold sequence. Time limits and a quiet urge do not guarantee safety after fast breathing.</p>
 <h3>The technique</h3>
 <ul>
   <li>Seated or lying, never standing, never in or near water.</li>
   <li>Full breaths in through the nose or mouth, belly then chest; let each one fall out without pushing.</li>
-  <li>After the last breath, let it all go and hold empty. When you need air, tap <em>Breathe now</em>: one big breath in, hold fifteen seconds, let go.</li>
-  <li>Tingling hands and lightheadedness come from the fast breathing. If they get strong, breathe slower.</li>
+  <li>After the last breath, let the air fall out without pushing and pause at the end of that exhale. To end early, breathe normally and tap <em>Breathe now</em>; this skips the recovery hold too. If you follow the full sequence, take one comfortable breath in and pause for up to fifteen seconds, breathing out sooner whenever needed.</li>
+  <li>Light tingling can occur during fast breathing. Cramping hands or dizziness mean normal breathing and skipping both the empty hold and recovery pause. Ignore their calls; the phone can wait. Tapping <em>Breathe now</em> during a hold skips to the rest.</li>
 </ul>
 <h3>Why it works, and how well</h3>
 <ul>
-  <li>The adrenaline rise comes mostly from the fast breathing itself; the long empty hold adds a deep drop in blood oxygen, to around 60–70% in lab studies ${ev.solid}. That's why the holds here are capped.</li>
-  <li>In a month-long trial, five minutes a day of fast breathing with short holds improved mood and anxiety, about as much as slower breathing practices ${ev.some}.</li>
+  <li>The adrenaline rise comes mostly from the fast breathing itself; the long empty hold adds a deep drop in blood oxygen, to around 60–70% in lab studies ${ev.solid}. A time cap does not prevent hypoxia or blackouts.</li>
+  <li>In a month-long trial of five daily minutes, fast breathing with short holds, slower breathing practices and mindfulness all reduced anxiety and negative affect. Cyclic sighing had the largest daily increase in positive affect ${ev.some}. These longer holds were not tested, and the trial does not establish an advantage for this session.</li>
   <li>Trained volunteers had less inflammation after an injected toxin in one small study that combined breathing, cold and meditation ${ev.some}. It doesn't show the breathing alone protects you from illness ${ev.spec}.</li>
-  <li>Twitching, blanking out or losing time in a hold is hypoxic fainting, not a release. Shorten the holds.</li>
+  <li>Twitching, blanking out or losing time in a hold can be signs of dangerously low oxygen. Stop the session.</li>
 </ul>
 ${SAFETY_HTML}
 <h3>Sources</h3>
@@ -472,17 +480,19 @@ ${SAFETY_HTML}
   <li>Zwaag et al. 2022, <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9071023/" target="_blank" rel="noopener">cold exposure training and a breathing exercise: effects on the inflammatory response</a>, Psychosom Med.</li>
   <li>Balban et al. 2023, <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9873947/" target="_blank" rel="noopener">Brief structured respiration practices enhance mood and reduce physiological arousal</a>, Cell Rep Med.</li>
   <li>Kox et al. 2014, <a href="https://doi.org/10.1073/pnas.1322174111" target="_blank" rel="noopener">Voluntary activation of the sympathetic nervous system and attenuation of the innate immune response in humans</a>, PNAS.</li>
+  <li>Macefield &amp; Burke 1991, <a href="https://pubmed.ncbi.nlm.nih.gov/2004255/" target="_blank" rel="noopener">paraesthesiae and tetany induced by voluntary hyperventilation</a>, Brain.</li>
+  <li>Debreczeni et al. 2009, <a href="https://pubmed.ncbi.nlm.nih.gov/19212108/" target="_blank" rel="noopener">hypocapnia induced by hyperventilation reduces cerebral blood-flow velocity</a>, Tohoku J Exp Med.</li>
 </ul>`,
 };
 
 // ── Alternate Nostril, with holds ──────────────────────
 const N = {
-  welcome: line('an_welcome2', 'Sit comfortably on a cushion or chair, and rest your left hand in your lap. Stay seated for the holds, and never practise them in water.'),
-  hand: line('an_hand', 'Bring your right hand up and fold your index and middle fingers down. Your thumb closes the right nostril. Your ring finger closes the left.', 'technique'),
-  plan: line('an_plan', "We'll warm up with plain alternate nostril breathing. Then we add a hold at the top. The old yoga texts use a ratio of one, four, two: you hold four times as long as you breathe in, and breathe out for twice as long. The counts are a guide. Breathe whenever you need to."),
-  blocked: line('an_blocked', "If one side is blocked, don't force it. Lower your hand and breathe normally for a few rounds.", 'technique'),
+  welcome: line('an_welcome_r2', 'Sit comfortably on a cushion or chair, and rest your left hand in your lap. Close your eyes if you like; the calls will tell you which side.'),
+  hand: line('an_hand_r2', 'Bring your right hand up and fold your index and middle fingers down. Your thumb closes the right nostril; your ring finger closes the left. Rest that hand in your lap until we start.', 'technique'),
+  plan: line('an_plan', "We'll warm up without holds, then add a pause after each inhale. The traditional ratio is one, four, two: hold four times the inhale, then breathe out for twice the inhale. Breathe whenever you need to."),
+  blocked: line('an_blocked_r2', "If one side stays blocked, keep your hand down and breathe through both sides with the calls. Don't force air through the blocked side.", 'technique'),
   even: say('Four in, four out. We start on the left.'),
-  ready: line('an_ready', 'Close the right nostril.', 'count'),
+  ready: line('an_ready', "Bring your right hand up and close the right nostril.", 'count'),
   rOut: line('an_r_out', 'Switch. Out through the right.', 'count'),
   rIn: line('an_r_in', 'In through the right.', 'count'),
   lOut: line('an_l_out', 'Switch. Out through the left.', 'count'),
@@ -491,31 +501,32 @@ const N = {
   rOutH: line('an_r_out_h', 'Release the right, and breathe out.', 'count'),
   lOutH: line('an_l_out_h', 'Release the left, and breathe out.', 'count'),
   holdSoft: line('an_hold_soft', 'Keep your face and throat soft on the hold, and your fingers light.', 'technique'),
-  track: tip('an_t_track', 'Lost track of the side? Breathe in on the side you just breathed out of.'),
-  ears: tip('an_t_ears', 'With headphones on, the breath sound follows the side. Left ear, left nostril.'),
-  arm: tip('an_t_arm', 'If your arm gets tired, drop your hand for a few breaths, then pick it back up.'),
-  air: line('an_air', 'If a hold feels too long, let the breath out early and join the next round.'),
-  rate: lesson('an_rate2', 'Slow breathing can increase the heart-rate changes that follow each breath. Most studies use about six breaths a minute.'),
-  slower: lesson('an_slower', "We're below that rate, and adding holds. So those results may not carry over to this particular pattern."),
-  bp: lesson('an_bp2', 'Studies of alternate nostril breathing are smaller. Some found a modest drop in blood pressure after practice.'),
-  comparison: lesson('an_comparison', "But many lacked a comparison group. That makes it hard to separate the nostril pattern from simply sitting and breathing slowly."),
-  holds: lesson('an_holds', "Adding holds is another question. We don't know whether they add anything to the effects of slow breathing alone."),
-  meaning: lesson('an_meaning', "So longer counts aren't evidence of a bigger benefit. Choose the rhythm you can keep without straining."),
-  wander: tip('an_t_wander', 'If your mind wanders, use the next switch to come back.'),
+  track: line('an_t_track', "After each exhale, inhale through the same side. Switch for the next exhale.", 'technique'),
+  ears: tip('an_t_ears_r2', 'With headphones, the breath sound follows the open side. Sound on the left means breathe through your left nostril.'),
+  arm: line('an_arm_r2', "If your arm tires, support your right elbow with your left hand, or lower your hand and breathe normally.", 'technique'),
+  air: line('an_air_r2', "Breathe at the first clear urge. If a hold feels too long, release both nostrils and breathe normally. Rejoin on a left-side inhale when ready."),
+  nasalCycle: lesson('an_nasal_cycle_r2', "Notice which side felt easier. The nasal lining naturally swells more on one side, then the other; that shift usually takes hours, so don't force equal airflow."),
+  exhaleCheck: line('an_exhale_check_r2', "If the next exhale rushes, the hold was too long. Release both nostrils and breathe normally for a round.", 'technique'),
+  holds: lesson('an_holds_r2', "The urge can build during these pauses because your body keeps making carbon dioxide, even while no air is moving."),
+  creep: lesson('an_creep', "At these counts carbon dioxide creeps up from round to round, so the urge can arrive earlier in each hold."),
+  resistance: lesson('an_resistance', "Breathing through one nostril roughly doubles your nose's resistance. That's what makes a long, even exhale easier to stretch."),
+  longerCheck: line('an_longer_check_r2', "If this longer rhythm makes you rush the exhale, breathe normally for a round, then rejoin on the left.", 'technique'),
+  deepestCheck: line('an_deepest_check_r2', "At these longest counts, let the exhale flow evenly. If it takes effort to keep pace, finish on ordinary breathing.", 'technique'),
+  lastExhale: line('an_last_exhale_r2', "This is the last hold. Let the next exhale leave steadily, without squeezing out the last bit of air.", 'technique'),
   last: say('Last round.'),
   // Own-pace breaks before each set of holds, and the shared breath that starts each set.
   breaks: [
     line('an_break_1', 'Lower your hand and breathe through both sides at your own pace for half a minute.'),
-    line('an_break_2', "Hand down for a bit. Breathe however you like. We'll go longer next."),
+    line('an_break_2_r2', "Lower your hand and breathe at your own pace for half a minute. We'll go longer next."),
     line('an_break_3', 'Rest your arm, and breathe at your own pace. One more set to go.'),
   ],
   leads: [
-    line('an_lead_1', 'Before the holds, one breath in through both sides with me, then all the way out. We start on the left.'),
-    line('an_lead_2b', 'Keep your hand down for one easy breath in together, then all the way out. The longer rounds start on the left.'),
-    line('an_lead_3', 'Last set. Breathe in with me, let it all go, and we begin again on the left.'),
+    line('an_lead_1_r2', 'Before the holds, one easy breath in through both sides with me, then an easy breath out. We start on the left.'),
+    line('an_lead_2_r2', 'Keep your hand down for one easy breath in together and an easy breath out. The longer rounds start on the left.'),
+    line('an_lead_3_r2', 'For the last set, take an easy breath in with me and let it out. We begin again on the left.'),
   ],
-  release: line('an_release', 'Release the hand. Breathe through both sides, and let the breath find its own pace.'),
-  close: line('an_close', 'Sit for a moment longer, then open your eyes.'),
+  release: line('an_release', "Lower your right hand into your lap. Breathe through both sides, and let the breath find its own pace."),
+  close: line('an_close_r2', "Check which side feels more open now. If your eyes were closed, open them when ready, and take your time standing up."),
 };
 /** Ratio steps per level: [unit, breaths]; two breaths (left, then right) make a round. */
 const AN_STEPS = {
@@ -548,7 +559,6 @@ const holdCalls = (first) => (ph, i) => {
   if (ph === 'out') return full ? (i % 2 ? N.lOutH : N.rOutH) : i % 2 ? OUT_L : OUT_R;
   return null;
 };
-const AN_THREAD = [N.rate, N.slower, N.bp, N.comparison, N.holds, N.meaning];
 
 export const alternate = {
   id: 'alternate',
@@ -578,7 +588,7 @@ export const alternate = {
         title: 'Set up',
         what: 'Hand position, the ratio',
         color: '#b3a8f0',
-        steps: [{ say: N.welcome, bell: 'low', lead: 2 }, { say: N.hand }, { say: N.plan }, { say: N.blocked }],
+        steps: [{ say: N.welcome, bell: 'low', lead: 2 }, { say: N.plan }, { say: N.blocked }, { say: N.hand }, { say: N.track }],
       },
       {
         id: 'balance-even',
@@ -605,7 +615,7 @@ export const alternate = {
           title: 'Own pace',
           what: 'Hand down, half a minute',
           color: '#c4bcef',
-          steps: [{ rest: 30, label: 'Your own pace', cues: [{ at: 0.5, say: N.breaks[k] }, ...(k === 0 ? [{ at: 13, say: N.track }, { at: 21, say: N.arm }] : [])] }],
+          steps: [{ rest: 30, label: 'Your own pace', cues: [{ at: 0.5, say: N.breaks[k] }, ...(k === 0 ? [{ at: 11, say: N.nasalCycle }] : [])] }],
         },
         {
           id: `balance-${k + 1}`,
@@ -614,8 +624,9 @@ export const alternate = {
           color: ['#857bdb', '#7067cc', '#5b52b8'][k],
           steps: [
             { say: say(`In for ${num(u)}, hold for ${num(4 * u)}, out for ${num(2 * u)}. ${Num(b / 2)} rounds.`), bell: 'bell', gap: 0.6 },
+            ...(k === 0 ? [{ say: N.air }] : []),
             { say: N.leads[k], gap: 0.6 },
-            // One breath together through both sides, all the way out; the set starts on the next breath in.
+            // One easy breath through both sides; the set starts on the next breath in.
             { pace: { inhale: u, exhale: 2 * u }, count: 1, style: 'count', calls: MIRA },
             { say: N.ready, gap: 0.6 },
             {
@@ -627,8 +638,13 @@ export const alternate = {
               calls: holdCalls(k === 0),
               cues: [
                 ...(k === 0
-                  ? [{ breath: 2, phase: 'top', say: N.holdSoft }, ...AN_THREAD.map((say, i) => ({ breath: 3 + i, phase: 'top', say })), { breath: 9, phase: 'top', say: N.air }, { breath: 11, phase: 'top', say: N.wander }]
+                  ? [{ breath: 2, phase: 'top', say: N.holdSoft }, { breath: 4, phase: 'top', say: N.exhaleCheck }, { breath: 6, phase: 'top', say: N.holds }]
                   : []),
+                ...(k === (steps.length === 1 ? 0 : 1) ? [{ breath: steps.length === 1 ? 8 : 2, phase: 'top', say: N.arm }] : []),
+                ...(k === (steps.length === 1 ? 0 : 1) ? [{ breath: steps.length === 1 ? 16 : 5, phase: 'top', say: N.longerCheck }] : []),
+                ...(k === 1 || steps.length === 1 ? [{ breath: steps.length === 1 ? 10 : 8, phase: 'top', say: N.creep }, { breath: steps.length === 1 ? 12 : 10, phase: 'top', say: N.resistance }] : []),
+                ...(k === 2 ? [{ breath: 4, phase: 'top', say: N.deepestCheck }] : []),
+                ...(k === steps.length - 1 ? [{ breath: b - 1, phase: 'top', say: N.lastExhale }] : []),
                 { breath: b - 2, phase: 'top', say: N.last },
               ],
             },
@@ -650,76 +666,76 @@ export const alternate = {
 <ul>
   <li>Right hand up, index and middle fingers folded. The thumb closes the right nostril, the ring finger the left.</li>
   <li>In through the left, close both and hold, out through the right. In through the right, close both and hold, out through the left. That's one round.</li>
-  <li>Holds stay soft: face and throat relaxed, fingers light. If a hold is too long, breathe out early and join the next round.</li>
+  <li>Holds stay soft: face and throat relaxed, fingers light. If a hold is too long, release both nostrils and breathe normally. Rejoin on a left-side inhale when ready. Support the right elbow with the left hand if needed.</li>
+  <li>A rushed exhale is a reason to sit out a round on ordinary breathing. If one side stays blocked, keep the hand down and follow the calls through both sides without forcing air.</li>
   <li>With headphones, the breath sound follows the open side.</li>
 </ul>
 <h3>Why it works, and how well</h3>
 <ul>
-  <li>At these counts you take two or three breaths a minute. Slow breathing shifts heart rhythm toward its "rest" pattern ${ev.solid}.</li>
+  <li>The held cycles here take 21–35 seconds per breath. Slow breathing increases the heart-rate changes linked to breathing, with most research using about six breaths a minute ${ev.solid}. The added holds and nostril pattern are less well studied.</li>
   <li>Small studies found alternate nostril breathing lowered blood pressure and raised heart-rate variability for a while, mostly without a comparison group ${ev.some}.</li>
-  <li>Claims about balancing the two halves of the brain aren't supported ${ev.spec}.</li>
+  <li>The nasal cycle naturally changes which side passes more air, through swelling and shrinking of the nasal lining. The aim here is to follow the switches without forcing equal airflow.</li>
 </ul>
 ${SAFETY_HTML}
 <h3>Sources</h3>
 <ul class="sources">
   <li>Zaccaro et al. 2018, <a href="https://doi.org/10.3389/fnhum.2018.00353" target="_blank" rel="noopener">systematic review on slow breathing</a>, Front Hum Neurosci.</li>
+  <li>Kahana-Zweig et al. 2016, <a href="https://doi.org/10.1371/journal.pone.0162918" target="_blank" rel="noopener">Measuring and Characterizing the Human Nasal Cycle</a>, PLOS One.</li>
   <li>Ghiya 2017, <a href="https://pubmed.ncbi.nlm.nih.gov/?term=alternate+nostril+breathing+blood+pressure+heart+rate+variability" target="_blank" rel="noopener">alternate nostril breathing, blood pressure and HRV (PubMed search)</a>.</li>
+  <li><a href="https://www.institutokamala.com.br/en/biblioteca/gheranda-samhita" target="_blank" rel="noopener">Gheranda Samhita, fifth teaching</a>: the traditional 1 : 4 : 2 ratio.</li>
 </ul>`,
 };
 
 // ── Window Seat ────────────────────────────────────────
-// A silent, seated practice for a headache on a plane or a train. Raised CO2 widens brain
-// vessels, so the "holds" are soft pauses, sized for where you are: Plane up to 15 s (cabin air
-// starts you lower), Train growing from 30 s to a minute, or none. Nose only, nothing audible.
+// Quiet seated breathing for travel discomfort. Optional pauses are breath-awareness work,
+// not a headache treatment. Plane pauses stay short because cabin pressure reduces oxygen
+// availability; Train also covers seated practice on the ground.
 const W = {
-  welcome: line('ws_welcome', "Hey. Sit back, with your head on the headrest if you can, and your feet flat on the floor. Eyes down, or closed. If you've got water, take a sip now."),
-  silent: line('ws_silent', 'Everything here is silent. Nose only, small breaths. Nobody around you needs to know.'),
-  jaw: line('ws_jaw', 'Lips together, teeth apart. Let your tongue rest on the floor of your mouth.', 'technique'),
+  welcome: line('ws_welcome_r2', "Sit back with your head supported if possible, and your feet on the floor. If you have water within reach, take a sip. If the window is bright, lower the shade or turn away before settling."),
+  urgent: line('ws_urgent', 'If the headache is sudden and severe, or comes with weakness, confusion, trouble speaking, or vision loss, stop and get help now. On a plane, tell the crew.'),
+  descent: line('ws_descent', 'During descent on a plane, skip any holds. Swallow whenever you need to; it helps your ears adjust to the pressure change.'),
+  descentNoHolds: line('ws_descent_no_holds_r2', 'If your plane is descending, swallow whenever you need to. It helps your ears adjust to the pressure change.'),
+  dry: lesson('ws_cabin_dry_r2', 'If you are flying, cabin humidity is often just ten to twenty percent, which can dry your eyes and nose. Aim a face-level vent away if you can.'),
+  cabin: lesson('ws_cabin_altitude_r2', 'Cabin pressure often matches six to eight thousand feet. The oxygen percentage is unchanged, but lower pressure means less oxygen in each breath.'),
+  silent: line('ws_silent_r2', "Now lower or close your eyes if comfortable. Keep the breathing quiet, through your nose if clear. If it's blocked, use your mouth without forcing it."),
+  jaw: line('ws_jaw', "Keep your teeth apart and your tongue resting comfortably. Let your lips touch lightly if you're breathing through your nose.", 'technique'),
   brow: line('ws_brow', 'Let your forehead go smooth. Soften around your eyes, and across your scalp.', 'technique'),
-  shoulders: line('ws_shoulders', 'Every time you breathe out, let your shoulders drop a little more.', 'technique'),
+  shoulders: line('ws_shoulders', "As you breathe out, let your shoulders rest instead of holding them up.", 'technique'),
   neck: line('ws_neck', "If it's comfortable, let the back of your neck get long, with your chin tipped down a little.", 'technique'),
-  faceWhy: line('ws_face_why', 'Your jaw, forehead and shoulders often tighten up around a headache. Letting them go may take off some of the pressure.', 'science'),
-  slow: say('In for four, out for six, small and quiet. About six minutes.'),
-  small: line('ws_small', 'Slower, not bigger. Big breaths can make you lightheaded.', 'technique'),
-  pain: lesson('ws_pain2', "In one lab study, slow breathing eased heat pain a little."),
-  painOut: lesson('ws_pain_out', "The long out-breath seemed to matter most."),
-  painLimit: lesson('ws_pain_limit', "Whether that carries over to headaches hasn't been tested."),
-  vagal: lesson('ws_vagal2', "Your heart also tends to slow on each out-breath."),
-  vagus: lesson('ws_vagus', "That change runs through the vagus nerve."),
-  vagalLimit: lesson('ws_vagal_limit', "The same nerve is involved in inflammation."),
+  faceWhy: lesson('ws_face_why_r2', "A headache can come with extra jaw and neck tension. We'll let those muscles rest first."),
+  slow: line('ws_slow_r2', 'In for four, out for six, for about six minutes. Let each breath be a little fuller than usual, without filling to the top.', 'technique'),
+  small: line('ws_breath_size_r2', "Use enough air to last comfortably through the exhale.", 'technique'),
+  airflow: line('ws_airflow_r2', "If you're empty early, slow the next exhale.", 'technique'),
+  pulse: lesson('ws_pulse_r2', "Your heart rate usually rises as you breathe in and falls as you breathe out, in time with the breathing."),
   twoMin: say('About two minutes to go.'),
-  stress: lesson('ws_stress2', "And stress can push inflammation up."),
-  stressLimit: lesson('ws_stress_limit', "Calmer breathing might help, but it's unproven."),
-  stressTime: lesson('ws_stress_time', "And one session wouldn't show it either way."),
-  pauseIntro: line('ws_pause_intro2', 'Now a few soft pauses with a relaxed throat, without pushing. Stay seated, and never practise holds in water. Breathe whenever you need to.'),
-  skip: line('ws_skip', 'If the throbbing gets worse, or your head feels fuller, skip the pauses for today and just make the breath out longer.'),
+  pauseIntro: line('ws_pause_intro_r2', "Next are five optional pauses after breathing in, to notice when your breath needs to resume. End each at the first clear urge; the time is a ceiling. Keep your throat loose without straining."),
+  trainSafety: line('ws_train_safety_r2', 'Stay seated for these longer pauses, and never practise them in water.'),
+  skip: line('ws_skip_r2', "Holding raises carbon dioxide, which widens blood vessels in your head. If a pause increases the throbbing or pressure, breathe normally through the remaining pauses and ignore their calls. There's no need to find the phone."),
   in: say('Breathe in, about two-thirds full.'),
   out: say('Let it out slowly.'),
-  long: say('Instead of pausing, make the breath out longer. In for four, out for eight.'),
+  long: line('ws_long_r2', 'Now stretch the breath out. In for four, out for eight.', 'technique'),
   inTrain: say('Breathe in, comfortably full. Not to the top.'),
-  trainCount: say('Five pauses, growing from thirty seconds to a minute.'),
+  trainCount: say('Five pauses, with limits growing from thirty seconds to a minute.'),
   transition: line('ws_transition', 'Breathe at your own pace for twenty seconds before the next part.'),
-  lead: line('ws_lead', 'One easy breath in together, then all the way out. The next breath in starts the first pause.'),
+  lead: line('ws_lead_r2', 'First, one easy breath in with me and an easy breath out. The breath in after that starts the first pause.'),
   longRest: line('ws_long_rest', 'Let the counts go for a bit and breathe normally before we finish.'),
-  window: tip('ws_t_window2', 'With eyes open, you can let the view pass.'),
-  sounds: tip('ws_t_sounds2', 'Let the sounds around you stay in the background.'),
-  shouldersAgain: tip('ws_t_shoulders2', "Let your shoulders drop if they've crept up."),
-  anchor: tip('ws_t_anchor2', 'Notice the air moving at your nostrils.'),
-  wander: tip('ws_t_wander2', 'If you lose track, follow this breath out.'),
-  hJaw: tip('ws_h_jaw', 'Let your jaw hang soft. Teeth apart.'),
-  hHands: tip('ws_h_hands', 'Let your hands get heavy in your lap.'),
-  hSway: tip('ws_h_sway', "On a train, let it rock you a little instead of bracing."),
-  hBrow: tip('ws_h_brow', 'Let your forehead soften, and the muscles around your eyes.'),
-  hLast: tip('ws_h_last', 'Last pause. Breathe whenever you like, even before the cue.'),
-  longWhy: line('ws_long_why', 'A longer breath out gives your heart more time to slow down.', 'science'),
-  release: line('ws_release2', 'Back to four in, six out. Gentle neck tilts next, if comfortable. You can keep your head still.'),
-  tiltR: line('ws_tilt_r2', 'Gently tip your head toward your right shoulder.', 'count'),
-  tiltL: say('And slowly toward the left.'),
-  centre: say('Back to center.'),
-  checkin: line('ws_checkin', 'Notice how your head and jaw feel now. If something has eased, let it stay that way.'),
-  close: line('ws_close', "That's it. Have some water. If the headache keeps going or gets worse, get it checked out. Come back to this whenever you need it."),
+  sounds: tip('ws_t_sounds2', 'Notice the sounds without interrupting your breathing.'),
+  shouldersAgain: tip('ws_t_shoulders2', "Rest against the seat as you exhale."),
+  anchor: tip('ws_t_anchor2', 'Notice the air without deepening your breath.'),
+  wander: tip('ws_t_wander2', 'If you lose track, follow this exhale.'),
+  hSway: tip('ws_h_sway', "If the seat is moving, let the support behind you take some of the work of steadying your head."),
+  hBrow: line('ws_urge_location_r2', "If you're still holding, notice whether the urge starts in your throat, chest, or belly. When it arrives, let go.", 'guide'),
+  hLast: line('ws_h_last_r2', "This is the last pause.", 'guide'),
+  longWhy: line('ws_long_why_r2', "Your lungs recoil on their own; let air leave without pushing.", 'technique'),
+  longCheck: line('ws_long_check_r2', "Keep the airflow even throughout this longer exhale.", 'technique'),
+  release: line('ws_release_r2', "Return to four in, six out. If you like, try a small head tilt to each side and return to center after each. Skip the movements if they hurt, or keep your head supported and still."),
+  tiltR: line('ws_tilt_r2', "Tilt a little toward your right shoulder.", 'count'),
+  tiltL: say('Tilt a little toward your left shoulder.'),
+  reset: say('Bring your head back to the center.'),
+  centre: say('Return to center and rest your neck.'),
+  checkin: line('ws_checkin_r2', "Let the counts go and breathe at your own pace. Notice how your head and jaw feel now."),
+  close: line('ws_close', "If your eyes were closed, open them slowly. If the headache persists or gets worse, tell the crew or seek medical advice when you can."),
 };
-const WS_THREAD = [W.pain, W.painOut, W.painLimit, W.vagal, W.vagus, W.vagalLimit, W.stress, W.stressLimit, W.stressTime];
 const WS_BREAKS = [
   line('ws_break_1', 'Breathe at your own pace before the second pause.'),
   line('ws_break_2', 'Let your breathing settle on its own rhythm now.'),
@@ -729,30 +745,33 @@ const WS_BREAKS = [
 ];
 
 function seatPauses(opts) {
+  const settle = { rest: 20, label: 'Your own pace', cues: [{ at: 0.5, say: W.transition }, { at: 8, say: W.pulse }] };
   if (opts.noHolds) {
     return {
       id: 'seat-holds',
       title: 'Long exhale',
       what: '4 in · 8 out, no pauses',
       color: '#6f7fc7',
-      steps: [{ rest: 20, label: 'Your own pace', cues: [{ at: 0.5, say: W.transition }] }, { say: W.long, bell: 'bell', gap: 0.6 }, { pace: { inhale: 4, exhale: 8 }, count: 20, style: 'count', calls: MIRA, cues: [{ breath: 3, phase: 'out', say: W.longWhy }] }],
+      steps: [settle, { say: W.long, bell: 'bell', gap: 0.6 }, { pace: { inhale: 4, exhale: 8 }, count: 20, style: 'count', calls: MIRA, cues: [{ breath: 3, phase: 'out', say: W.longWhy }, { breath: 11, phase: 'out', say: W.longCheck }] }],
     };
   }
-  // Plane: five 15 s pauses on two-thirds-full lungs (cabin air starts you lower).
+  // Plane: five 15 s ceilings on two-thirds-full lungs; shorter is not a safety guarantee.
   // Train: five pauses growing from 30 s to a minute, comfortably full.
   const plane = opts.gentle;
   const holds = plane ? Array(5).fill(15) : [30, 40, 50, 60, 60];
-  const scan = [W.hJaw, W.hHands, W.hSway, W.hBrow, W.hLast];
+  const scan = [null, null, W.hSway, W.hBrow, W.hLast];
   return {
     id: 'seat-holds',
     title: plane ? 'Soft pauses' : 'Long pauses',
     what: plane ? `5 pauses of up to ${holds[0]} s, two-thirds full` : '5 pauses, 0:30 → 1:00, comfortably full',
     color: '#6f7fc7',
     steps: [
+      settle,
+      ...(plane ? [{ say: W.cabin }] : [{ say: W.trainSafety }]),
       { say: W.pauseIntro, bell: 'bell' },
       { say: W.skip },
       { say: plane ? say(`${cap(num(5))} pauses of up to ${dur(holds[0])}.`) : W.trainCount, gap: 0.6 },
-      { rest: 20, label: 'Your own pace', cues: [{ at: 0.5, say: W.transition }, { at: 9, say: W.lead }] },
+      { say: W.lead },
       { pace: { inhale: 4, exhale: 6 }, count: 1, style: 'count', calls: MIRA },
       ...holds.flatMap((h, i) => [
         { pace: { inhale: plane ? 4 : 5.5 }, count: 1, style: 'slow', group: `p${i}`, bell: i ? 'low' : undefined, calls: () => plane ? W.in : W.inTrain },
@@ -763,9 +782,9 @@ function seatPauses(opts) {
           record: true,
           tick: false,
           group: `p${i}`,
-          cues: [{ at: 0.3, say: say(`And pause, up to ${dur(h)}. Throat soft.`) }, ...(plane ? [] : [{ at: 10, say: scan[i] }]), ...milestones(h), ...(h >= 40 ? [{ fromEnd: 11, say: tenMore }] : [])],
+          cues: [{ at: 0.3, say: say(`Pause for up to ${dur(h)}. Keep your throat soft.`) }, ...(!plane && scan[i] ? [{ at: 10, say: scan[i] }] : []), ...(plane && i === 4 ? [{ at: 7, say: W.hLast }] : [])],
         },
-        { pace: { exhale: 6 }, count: 1, style: 'slow', calls: () => W.out },
+        { pace: { exhale: 6 }, count: 1, style: 'slow', group: `p${i}`, calls: () => W.out },
         { rest: plane ? 24 : 34, label: 'Your own pace', cues: [{ at: 0.5, say: WS_BREAKS[i] }] },
       ]),
     ],
@@ -779,8 +798,8 @@ export const windowSeat = {
   tag: 'On the move',
   moment: 'move',
   voice: 'mira',
-  blurb: 'Silent, seated breathing for a headache on a plane or a train.',
-  lede: "For a headache when you're stuck in a seat. Soften the face, slow the breath, and add a few soft pauses sized for where you are. Silent, nose-only, no fast breathing.",
+  blurb: 'Quiet, seated breathing when travelling with a headache.',
+  lede: "For a headache when you're stuck in a seat. Rest the face and neck, then follow quiet, slow breaths. Optional pauses let you notice the urge to breathe; choose No pauses during descent or if holding worsens the headache.",
   music: ['transit', 'tide'],
   accent: ['#d8e1ff', '#5f74b8'],
   sky: 'seat',
@@ -789,13 +808,13 @@ export const windowSeat = {
   defaultLevel: 'gentle',
   intensityNotes: {
     none: 'No pauses: a long out-breath instead. Best if your headache throbs, or during descent.',
-    gentle: 'Plane: five soft pauses of up to 15 s. Cabin air holds less oxygen, so they stay short.',
+    gentle: 'Plane: five soft pauses of up to 15 s. Lower cabin pressure reduces available oxygen, so pauses stay short.',
     standard: 'Train or ground: five pauses that grow from 30 s to a full minute, on comfortably full lungs.',
   },
   after: [
-    'Drink some water. Cabin air is very dry.',
+    "Keep water within reach. If you're flying, cabin air is especially dry.",
     'Get help at once (tell the crew on a plane) for a sudden, severe "worst ever" headache, or one with weakness, confusion, trouble speaking, vision loss, or fever with a stiff neck.',
-    'A sharp pain around one eye during landing is usually sinus pressure from the descent. It tends to pass within half an hour.',
+    'Pressure changes during descent can cause pain around the forehead or an eye. Tell the crew about severe or unfamiliar pain rather than assuming the cause.',
   ],
   sections: (opts) => [
     {
@@ -803,14 +822,14 @@ export const windowSeat = {
       title: 'Settle',
       what: 'Headrest, feet flat, a sip of water',
       color: '#a9b8ec',
-      steps: [{ say: W.welcome, bell: 'low', lead: 2 }, { rest: 8 }, { say: W.silent }, { rest: 6 }],
+      steps: [{ say: W.welcome, bell: 'low', lead: 2 }, { say: W.dry }, { rest: 8 }, { say: W.urgent }, { say: W.silent }, { say: opts.noHolds ? W.descentNoHolds : W.descent }, { rest: 6 }],
     },
     {
       id: 'seat-soften',
       title: 'Soften',
       what: 'Jaw, brow, shoulders, neck',
       color: '#93a5e4',
-      steps: [{ say: W.jaw }, { rest: 12 }, { say: W.brow }, { rest: 12 }, { say: W.shoulders }, { rest: 16 }, { say: W.neck }, { rest: 10 }, { say: W.faceWhy, min: 4 }],
+      steps: [{ say: W.faceWhy }, { say: W.jaw }, { rest: 12 }, { say: W.brow }, { rest: 12 }, { say: W.shoulders }, { rest: 16 }, { say: W.neck }, { rest: 10 }],
     },
     {
       id: 'seat-slow',
@@ -826,8 +845,7 @@ export const windowSeat = {
           calls: MIRA,
           cues: [
             { breath: 2, phase: 'out', say: W.small },
-            { breath: 4, phase: 'out', say: W.window },
-            ...WS_THREAD.map((say, i) => ({ breath: [6, 7, 8, 12, 13, 14, 18, 19, 20][i], phase: 'out', say })),
+            { breath: 6, phase: 'out', say: W.airflow },
             { breath: 9, phase: 'out', say: W.anchor },
             { breath: 15, phase: 'out', say: W.wander },
             { breath: 21, phase: 'out', say: W.sounds },
@@ -846,7 +864,7 @@ export const windowSeat = {
       steps: [
         ...(opts.noHolds ? [{ rest: 20, label: 'Your own pace', cues: [{ at: 0.5, say: W.longRest }] }] : []),
         { say: W.release, bell: 'bell', gap: 0.6 },
-        { pace: { inhale: 4, exhale: 6 }, count: 12, style: 'count', calls: MIRA, cues: [{ breath: 2, phase: 'out', say: W.tiltR }, { breath: 6, phase: 'out', say: W.tiltL }, { breath: 10, phase: 'out', say: W.centre }] },
+        { pace: { inhale: 4, exhale: 6 }, count: 12, style: 'count', calls: MIRA, cues: [{ breath: 2, phase: 'out', say: W.tiltR }, { breath: 3, phase: 'out', say: W.reset }, { breath: 6, phase: 'out', say: W.tiltL }, { breath: 7, phase: 'out', say: W.centre }] },
       ],
     },
     {
@@ -858,28 +876,28 @@ export const windowSeat = {
     },
   ],
   learn: `
-<p>A seated, silent practice for a headache while travelling: relax the face and shoulders, breathe slowly with a long out-breath, and (optionally) a few soft pauses. It's comfort and settling, not treatment. Keep taking your usual medication as you normally would.</p>
+<p>A seated practice for a headache while travelling: relax the face and shoulders, breathe slowly with a long out-breath, and (optionally) a few soft pauses. It's comfort and settling, not treatment. Keep taking your usual medication as you normally would.</p>
 <h3>The technique</h3>
 <ul>
-  <li><strong>Soften:</strong> lips together, teeth apart, tongue resting; brow, eyes and scalp soft; shoulders dropping on each out-breath.</li>
-  <li><strong>Slow breathing:</strong> 4 in, 6 out through the nose, small and quiet. Slower, not bigger.</li>
-  <li><strong>Pauses:</strong> breathe in, then pause with a relaxed throat (never bearing down), and let go whenever you like. Plane: two-thirds full, up to 15 s. Train or ground: comfortably full, growing from 30 s to a minute. No empty-lung holds.</li>
+  <li><strong>Soften:</strong> teeth apart, tongue resting; lips together only for nasal breathing. Let the brow, eyes, scalp and shoulders rest.</li>
+  <li><strong>Slow breathing:</strong> 4 in, 6 out, quiet and a little fuller than usual, without filling to the top. Use the nose if clear, or the mouth if blocked. Spread the air over the whole exhale rather than pushing it out early.</li>
+  <li><strong>Pauses:</strong> optional practice noticing the urge to resume breathing. Breathe in, then pause with a relaxed throat (never bearing down), and end at the first clear urge. Plane: two-thirds full, up to 15 s. Train or ground: comfortably full, with ceilings growing from 30 s to a minute. No empty-lung holds. If pressure or throbbing increases, breathe normally through the remaining pause slots, ignoring their calls; there is no need to find the phone. During a pause, <em>Breathe now</em> skips to the own-pace rest.</li>
 </ul>
 <h3>Why the pauses stay soft, and why no fast breathing</h3>
 <ul>
   <li>Raised CO₂ widens the brain's blood vessels; headache from high CO₂ is a recognised diagnosis, and breath-holding divers get it ${ev.solid}. Pauses raise CO₂ a little, which might worsen a throbbing headache, so skip them if it does ${ev.spec}.</li>
   <li>Straining against a closed throat (Valsalva) is a known headache trigger, so pauses stay soft ${ev.solid}.</li>
-  <li>Cabins are pressurised to about 1,800–2,400 m; oxygen saturation drops by around four points ${ev.solid}. Holds start lower and fall faster there, which is why the Plane setting is shorter.</li>
+  <li>Cabins are pressurised to about 1,800–2,400 m; oxygen saturation drops by around four points ${ev.solid}. Oxygen starts from a lower level there; this is why the Plane setting is shorter. A short pause is not a guarantee of safety.</li>
   <li>Over-breathing causes light-headedness and tingling that can feel like a migraine aura; it's simply avoided here ${ev.some}.</li>
 </ul>
 <h3>Does it help?</h3>
 <ul>
   <li>For <strong>preventing</strong> migraine and tension-type headache, relaxation training and biofeedback are well supported, with moderate effects ${ev.solid}.</li>
-  <li>For <strong>relief during</strong> a headache, there are no controlled trials. In the lab, slow breathing with a longer exhale reduced experimental pain a little ${ev.some}.</li>
-  <li><strong>Inflammation:</strong> electrical vagus-nerve stimulation reduces inflammation in rheumatoid arthritis ${ev.solid}. Whether slow breathing engages the same pathway is inferred, not shown ${ev.spec}. One session won't change inflammation measurably; it can lower stress, and stress raises inflammatory signals ${ev.solid}.</li>
+  <li>A lab study found that paced breathing reduced experimental heat pain, with longer exhales helping most ${ev.some}. That does not establish headache relief, and these optional pauses have no established headache benefit.</li>
+  <li><strong>Travel comfort:</strong> cabin humidity is often 10–20%, which can dry the eyes and nose. During descent, swallowing helps equalize middle-ear pressure; breath holds are not a pressure-equalization technique.</li>
 </ul>
 <h3>Get help at once</h3>
-<p>Tell the crew or call for help for a sudden severe headache that peaks within a minute, the worst headache of your life, or a headache with weakness, trouble speaking, vision loss, confusion, fever with a stiff neck, or after a head injury. A severe pain around one eye during landing is usually descent-related sinus pressure and tends to pass within 30 minutes.</p>
+<p>Tell the crew or call for help for a sudden severe headache that peaks within a minute, the worst headache of your life, or a headache with weakness, trouble speaking, vision loss, confusion, fever with a stiff neck, or after a head injury. Pressure changes during descent can cause forehead or eye pain, but severe or unfamiliar pain still needs assessment; do not assume its cause from the timing alone.</p>
 ${SAFETY_HTML}
 <h3>Sources</h3>
 <ul class="sources">
@@ -887,7 +905,7 @@ ${SAFETY_HTML}
   <li>Jafari et al. 2020, <a href="https://cris.maastrichtuniversity.nl/en/publications/can-slow-deep-breathing-reduce-pain-an-experimental-study-explori/" target="_blank" rel="noopener">Can slow deep breathing reduce pain?</a>, J Pain.</li>
   <li>ICHD-3 <a href="https://ichd-3.org/10-headache-attributed-to-disorder-of-homoeostasis/10-1-headache-attributed-to-hypoxia-andor-hypercapnia/10-1-3-diving-headache/" target="_blank" rel="noopener">10.1.3 diving headache</a> and <a href="https://ichd-3.org/10-headache-attributed-to-disorder-of-homoeostasis/10-1-headache-attributed-to-hypoxia-andor-hypercapnia/10-1-2-headache-attributed-to-aeroplane-travel/" target="_blank" rel="noopener">10.1.2 headache attributed to aeroplane travel</a>.</li>
   <li>Hampson et al. 2013, <a href="https://asma.kglmeridian.com/view/journals/asem/84/1/article-p27.xml" target="_blank" rel="noopener">cabin pressure altitudes</a>; Muhm et al. 2007, <a href="https://www.nejm.org/doi/full/10.1056/NEJMoa062770" target="_blank" rel="noopener">effect of aircraft-cabin altitude</a>, NEJM.</li>
-  <li>Koopman et al. 2016, <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4961187/" target="_blank" rel="noopener">vagus nerve stimulation in rheumatoid arthritis</a>, PNAS; Marsland et al. 2017, <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5553449" target="_blank" rel="noopener">acute stress and inflammatory markers</a>.</li>
+  <li>CDC Yellow Book, <a href="https://www.cdc.gov/yellow-book/hcp/travel-air-sea/air-travel.html" target="_blank" rel="noopener">Air Travel</a>: cabin pressure, humidity and ear pressure.</li>
   <li>Do et al. 2019, <a href="https://doi.org/10.1212/WNL.0000000000006697" target="_blank" rel="noopener">SNNOOP10 headache red flags</a>, Neurology.</li>
 </ul>`,
 };
