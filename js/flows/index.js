@@ -5,10 +5,10 @@ import { box, coolDown } from './train.js';
 import { tide, clearNose } from './weather.js';
 import { kumbhaka, holdLadder, rounds, alternate, windowSeat } from './retain.js';
 import { ready, betweenSets, resonance, lightsOut, breathCheck, breatheLight, steady } from './daily.js';
-import { flow15 } from './yoga.js';
+import { flow15, heat } from './yoga.js';
 import { NOTES } from './notes.js';
 
-export const FLOWS = [kumbhaka, holdLadder, rounds, alternate, reps, box, ready, resonance, betweenSets, coolDown, land, lightsOut, breathCheck, breatheLight, steady, tide, clearNose, windowSeat, flow15];
+export const FLOWS = [kumbhaka, holdLadder, rounds, alternate, reps, box, ready, resonance, betweenSets, coolDown, land, lightsOut, breathCheck, breatheLight, steady, tide, clearNose, windowSeat, flow15, heat];
 for (const f of FLOWS) f.notes = NOTES[f.id];
 
 /** Shelf order and headers. `area` splits the library: breathwork (the default) and yoga. */

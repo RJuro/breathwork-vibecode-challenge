@@ -679,6 +679,126 @@
     "text": "Welcome. This is a breath-hold table, the way freedivers train on dry land. Sit or lie down somewhere you can't fall from. Never do this in water.",
     "kind": "guide"
   },
+  "ht_chair_low": {
+    "text": "Sit back like the chair's a little farther away. Whole foot grounded. Only as low as you can still breathe.",
+    "kind": "technique"
+  },
+  "ht_chair_name": {
+    "text": "Utkatasana usually gets translated as fierce pose. Some schools just call it awkward pose, which is also fair.",
+    "kind": "science"
+  },
+  "ht_child_reset": {
+    "text": "Child's pose for a few breaths. Your wrists get a break, and so do you.",
+    "kind": "guide"
+  },
+  "ht_close": {
+    "text": "That's it. Take your time coming up, and drink some water. Nice work today.",
+    "kind": "guide"
+  },
+  "ht_cross_intro": {
+    "text": "Core time. Knee across toward the opposite elbow, then back to dog. Right side first.",
+    "kind": "guide"
+  },
+  "ht_cross_shoulders": {
+    "text": "When the knee comes in, keep your shoulders over your wrists. Round your upper back a little and push the floor away.",
+    "kind": "tip"
+  },
+  "ht_crow_intro": {
+    "text": "Time to play a little. Wrists rest first, in child's pose. Then a squat, with crow if you want it.",
+    "kind": "guide"
+  },
+  "ht_crow_lean": {
+    "text": "Look just ahead of your hands. Lean until one foot gets light, maybe both. I'd rather you place them down than hop.",
+    "kind": "technique"
+  },
+  "ht_crow_name": {
+    "text": "Baka means crane, kaka means crow. A lot of teachers call the straight-arm version crane and the bent-arm one crow, but the names get mixed up.",
+    "kind": "science"
+  },
+  "ht_crow_set": {
+    "text": "For crow, bring your feet a little closer. Hands shoulder-width, hips up, elbows bent, knees high on your upper arms.",
+    "kind": "technique"
+  },
+  "ht_dog_pedal": {
+    "text": "Pedal your feet a few times. Let the backs of the legs wake up.",
+    "kind": "technique"
+  },
+  "ht_hips_intro": {
+    "text": "Okay. Let's take the heat out of the legs. Lizard, each side.",
+    "kind": "guide"
+  },
+  "ht_hm_set": {
+    "text": "Fingertips on the floor or a block. Let the top hip open, flex the lifted foot, gaze down.",
+    "kind": "technique"
+  },
+  "ht_hm_wobble": {
+    "text": "A little wobble is fine. I keep my gaze down here; it gives me one less thing to manage.",
+    "kind": "tip"
+  },
+  "ht_lizard_how": {
+    "text": "Back knee stays down. Hands inside your front foot, or on blocks. Forearms only if your hips settle there without strain.",
+    "kind": "technique"
+  },
+  "ht_lizard_press": {
+    "text": "Try a gentle press of the front foot into the floor for three seconds. Let go, take a breath, and see if the stretch eases.",
+    "kind": "tip"
+  },
+  "ht_lizard_sink": {
+    "text": "Let your hips lower a little, ribs easy. Stop before your lower back takes over.",
+    "kind": "tip"
+  },
+  "ht_plan": {
+    "text": "Core first, then salutations through a squat. Then knee taps, a balance, and a side plank that turns into wild thing. We slow it all down at the end.",
+    "kind": "guide"
+  },
+  "ht_r2": {
+    "text": "Round two. From the lunge, we lean out into warrior three and open up to half moon.",
+    "kind": "guide"
+  },
+  "ht_r3": {
+    "text": "Last round: side plank, then wild thing if it's familiar. Side plank or child's pose are good options too. We'll take our time.",
+    "kind": "guide"
+  },
+  "ht_rest": {
+    "text": "Let the heat settle. There's nothing to do now.",
+    "kind": "guide"
+  },
+  "ht_salute_intro": {
+    "text": "Now a few salutations, a little different from the usual. We step into a squat first.",
+    "kind": "guide"
+  },
+  "ht_stand_intro": {
+    "text": "Standing work. Three rounds, each with its own thing. Right side, then left.",
+    "kind": "guide"
+  },
+  "ht_tap_chest": {
+    "text": "Chest stays lifted while both knees bend and your hips lower. A light touch with the back knee, or a hover.",
+    "kind": "tip"
+  },
+  "ht_tap_why": {
+    "text": "Those taps work like a small split squat. Both legs do the work; the front thigh just complains first.",
+    "kind": "tip"
+  },
+  "ht_twist": {
+    "text": "Knees rest together, supported if you need it. Keep the opposite shoulder easy; a smaller twist is fine.",
+    "kind": "technique"
+  },
+  "ht_twist_intro": {
+    "text": "This round, a twist in the chair, both ways.",
+    "kind": "guide"
+  },
+  "ht_welcome": {
+    "text": "Hey. This one builds heat as it goes, and it's a little longer. Start seated at the back of your mat, block nearby if you have one.",
+    "kind": "guide"
+  },
+  "ht_wild_how": {
+    "text": "Press through your supporting hand and both feet. Lift your chest as the top arm reaches. No need for a bigger backbend.",
+    "kind": "technique"
+  },
+  "ht_wild_name": {
+    "text": "Wild thing caught on through Anusara yoga, so it is a modern pose. Its Sanskrit name, camatkarasana, comes from camatkara: astonishment, or wonder.",
+    "kind": "science"
+  },
   "kb_a1": {
     "text": "While you hold, here's what's going on. Your body keeps making carbon dioxide, and with no air moving, it builds up.",
     "kind": "lesson"
@@ -1099,32 +1219,52 @@
     "text": "Easy out.",
     "kind": "count"
   },
-  "n_exhale_arms_wide_and_let_both_knees_fall_over_to_the_left": {
-    "text": "Exhale, arms wide, and let both knees fall over to the left.",
-    "kind": "count"
-  },
   "n_exhale_arms_wide_and_let_both_knees_fall_over_to_the_right": {
     "text": "Exhale, arms wide, and let both knees fall over to the right.",
+    "kind": "count"
+  },
+  "n_exhale_back_heel_down_hips_open_warrior_two": {
+    "text": "Exhale, back heel down, hips open. Warrior two.",
+    "kind": "count"
+  },
+  "n_exhale_back_knee_taps": {
+    "text": "Exhale, back knee taps.",
     "kind": "count"
   },
   "n_exhale_back_to_dog": {
     "text": "Exhale, back to dog.",
     "kind": "count"
   },
+  "n_exhale_back_toes_tuck_hands_press_back_knee_lifts_left_leg_b": {
+    "text": "Exhale, back toes tuck, hands press, back knee lifts. Left leg back to dog.",
+    "kind": "count"
+  },
   "n_exhale_belly_down": {
     "text": "Exhale, belly down.",
     "kind": "count"
   },
-  "n_exhale_bend_your_left_knee_and_step_your_right_foot_back_ont": {
-    "text": "Exhale, bend your left knee and step your right foot back onto its toes. Hands beside your front foot.",
+  "n_exhale_bend_your_knees_and_step_your_feet_just_outside_your_": {
+    "text": "Exhale, bend your knees and step your feet just outside your hands. Lower into a squat, only as far as is comfortable.",
     "kind": "count"
   },
-  "n_exhale_bend_your_right_knee_and_step_your_left_foot_back_ont": {
-    "text": "Exhale, bend your right knee and step your left foot back onto its toes. Hands beside your front foot.",
+  "n_exhale_bend_your_left_knee_hips_turn_down_right_foot_steps_b": {
+    "text": "Exhale, bend your left knee, hips turn down, right foot steps back.",
+    "kind": "count"
+  },
+  "n_exhale_bend_your_right_knee_turn_your_hips_down_and_step_you": {
+    "text": "Exhale, bend your right knee, turn your hips down, and step your left foot back onto its toes. Hands beside your right foot.",
+    "kind": "count"
+  },
+  "n_exhale_both_knees_bend_and_the_back_knee_lowers_to_tap_the_f": {
+    "text": "Exhale, both knees bend, and the back knee lowers to tap the floor, lightly.",
     "kind": "count"
   },
   "n_exhale_cat_round_the_back_and_push_the_floor_away": {
     "text": "Exhale, cat. Round the back and push the floor away.",
+    "kind": "count"
+  },
+  "n_exhale_chair": {
+    "text": "Exhale, chair.",
     "kind": "count"
   },
   "n_exhale_come_forward_onto_all_fours_wrists_under_shoulders_kn": {
@@ -1135,36 +1275,96 @@
     "text": "Exhale, downward dog.",
     "kind": "count"
   },
+  "n_exhale_draw_your_left_knee_toward_your_left_ribs_squeeze_che": {
+    "text": "Exhale, draw your left knee toward your left ribs. Squeeze, chest stays open.",
+    "kind": "count"
+  },
+  "n_exhale_fold": {
+    "text": "Exhale, fold.",
+    "kind": "count"
+  },
+  "n_exhale_fold_over_your_legs": {
+    "text": "Exhale, fold over your legs.",
+    "kind": "count"
+  },
+  "n_exhale_hands_beside_your_front_foot": {
+    "text": "Exhale, hands beside your front foot.",
+    "kind": "count"
+  },
   "n_exhale_hands_beside_your_front_foot_back_heel_up": {
     "text": "Exhale, hands beside your front foot, back heel up.",
     "kind": "count"
   },
-  "n_exhale_hands_to_the_floor_either_side_of_your_left_foot": {
-    "text": "Exhale, hands to the floor, either side of your left foot.",
+  "n_exhale_hands_down": {
+    "text": "Exhale, hands down.",
+    "kind": "count"
+  },
+  "n_exhale_hands_down_hips_up_wide_forward_fold": {
+    "text": "Exhale, hands down, hips up. Wide forward fold.",
+    "kind": "count"
+  },
+  "n_exhale_hands_down_lift_your_hips_into_a_wide_forward_fold_kn": {
+    "text": "Exhale, hands down, lift your hips into a wide forward fold. Knees can stay bent.",
+    "kind": "count"
+  },
+  "n_exhale_hands_down_step_back_to_downward_dog": {
+    "text": "Exhale, hands down, step back to downward dog.",
+    "kind": "count"
+  },
+  "n_exhale_hands_down_step_to_plank_lower_to_your_belly": {
+    "text": "Exhale, hands down, step to plank, lower to your belly.",
+    "kind": "count"
+  },
+  "n_exhale_hands_to_heart_shift_onto_your_right_foot_and_lift_yo": {
+    "text": "Exhale, hands to heart, shift onto your right foot and lift your left leg behind you. Warrior three, right knee soft.",
+    "kind": "count"
+  },
+  "n_exhale_hands_to_heart_weight_into_your_left_foot_right_leg_l": {
+    "text": "Exhale, hands to heart, weight into your left foot, right leg lifts. Warrior three.",
     "kind": "count"
   },
   "n_exhale_hands_to_the_floor_either_side_of_your_right_foot": {
     "text": "Exhale, hands to the floor, either side of your right foot.",
     "kind": "count"
   },
-  "n_exhale_hips_up_and_back_dog": {
-    "text": "Exhale, hips up and back. Dog.",
+  "n_exhale_hips_lower_chest_turns_down_right_hand_and_foot_back_": {
+    "text": "Exhale, hips lower, chest turns down, right hand and foot back to plank.",
     "kind": "count"
   },
-  "n_exhale_knee_in_and_step_it_through": {
-    "text": "Exhale, knee in, and step it through.",
+  "n_exhale_hips_up_and_back_dog": {
+    "text": "Exhale, hips up and back. Dog.",
     "kind": "count"
   },
   "n_exhale_knees_down_hips_back_to_your_heels_child_s_pose": {
     "text": "Exhale, knees down, hips back to your heels. Child's pose.",
     "kind": "count"
   },
-  "n_exhale_left_foot_all_the_way_up_between_your_hands": {
-    "text": "Exhale, left foot all the way up between your hands.",
+  "n_exhale_knees_over_to_the_left": {
+    "text": "Exhale, knees over to the left.",
+    "kind": "count"
+  },
+  "n_exhale_left_foot_to_the_edge_hands_inside_lizard": {
+    "text": "Exhale, left foot to the edge, hands inside. Lizard.",
+    "kind": "count"
+  },
+  "n_exhale_left_hand_ahead_and_just_outside_your_left_foot_right": {
+    "text": "Exhale, left hand ahead and just outside your left foot, right hand to your hip.",
+    "kind": "count"
+  },
+  "n_exhale_left_hand_supports_roll_onto_your_left_foot_stack_the": {
+    "text": "Exhale, left hand supports, roll onto your left foot, stack the right foot, right arm up. Side plank.",
     "kind": "count"
   },
   "n_exhale_left_knee_behind_your_left_wrist_left_heel_toward_you": {
-    "text": "Exhale, left knee behind your left wrist, left heel toward your right hip. Slide the right leg back and lower down. Pigeon.",
+    "text": "Exhale, left knee behind your left wrist, left heel toward your right hip. Slide the right leg back. Pigeon.",
+    "kind": "count"
+  },
+  "n_exhale_left_knee_in_left_foot_between_your_hands": {
+    "text": "Exhale, left knee in, left foot between your hands.",
+    "kind": "count"
+  },
+  "n_exhale_left_toes_toward_the_long_edge_heel_down_warrior_two": {
+    "text": "Exhale, left toes toward the long edge, heel down. Warrior two.",
     "kind": "count"
   },
   "n_exhale_legs_long_arms_by_your_sides_palms_up_savasana": {
@@ -1183,8 +1383,16 @@
     "text": "Exhale, lower down to your belly, elbows close. Knees down if you want them.",
     "kind": "count"
   },
-  "n_exhale_open_up_warrior_two": {
-    "text": "Exhale, open up. Warrior two.",
+  "n_exhale_lower_slowly_to_your_belly": {
+    "text": "Exhale, lower slowly to your belly.",
+    "kind": "count"
+  },
+  "n_exhale_lower_your_hips_a_little_turn_your_chest_to_the_floor": {
+    "text": "Exhale, lower your hips a little, turn your chest to the floor, left hand down, left foot back. Plank.",
+    "kind": "count"
+  },
+  "n_exhale_plant_your_hands_step_back_to_plank_then_lower_to_you": {
+    "text": "Exhale, plant your hands, step back to plank, then lower to your belly. Knees first if you like.",
     "kind": "count"
   },
   "n_exhale_press_back_hips_high": {
@@ -1195,48 +1403,84 @@
     "text": "Exhale, push back to downward dog.",
     "kind": "count"
   },
+  "n_exhale_push_the_floor_away_and_spread_your_shoulder_blades": {
+    "text": "Exhale, push the floor away and spread your shoulder blades.",
+    "kind": "count"
+  },
   "n_exhale_right_foot_all_the_way_up_between_your_hands": {
     "text": "Exhale, right foot all the way up between your hands.",
+    "kind": "count"
+  },
+  "n_exhale_right_foot_steps_out_toward_the_edge_of_the_mat_hands": {
+    "text": "Exhale, right foot steps out toward the edge of the mat, hands inside it. Lizard.",
+    "kind": "count"
+  },
+  "n_exhale_right_knee_across_to_your_left_elbow": {
+    "text": "Exhale, right knee across to your left elbow.",
     "kind": "count"
   },
   "n_exhale_right_knee_behind_your_right_wrist_right_heel_toward_": {
     "text": "Exhale, right knee behind your right wrist, right heel toward your left hip. Slide the left leg back and lower down. Pigeon.",
     "kind": "count"
   },
+  "n_exhale_right_knee_toward_your_ribs_squeeze": {
+    "text": "Exhale, right knee toward your ribs. Squeeze.",
+    "kind": "count"
+  },
+  "n_exhale_right_shoulder_over_your_hand_roll_onto_the_outer_edg": {
+    "text": "Exhale, right shoulder over your hand, roll onto the outer edge of your right foot, stack your left foot on top, left arm up. Side plank.",
+    "kind": "count"
+  },
   "n_exhale_round_it_out": {
     "text": "Exhale, round it out.",
     "kind": "count"
   },
-  "n_exhale_shift_forward_left_knee_to_your_nose_and_step_that_fo": {
-    "text": "Exhale, shift forward, left knee to your nose, and step that foot up between your hands.",
+  "n_exhale_shift_forward_and_cross_your_right_knee_under_you_tow": {
+    "text": "Exhale, shift forward, and cross your right knee under you toward your left elbow.",
+    "kind": "count"
+  },
+  "n_exhale_shift_forward_left_knee_toward_your_right_elbow": {
+    "text": "Exhale, shift forward, left knee toward your right elbow.",
     "kind": "count"
   },
   "n_exhale_shift_forward_right_knee_to_your_nose_and_step_that_f": {
     "text": "Exhale, shift forward, right knee to your nose, and step that foot up between your hands.",
     "kind": "count"
   },
-  "n_exhale_slow_on_the_way_down": {
-    "text": "Exhale, slow on the way down.",
+  "n_exhale_sit_your_hips_back_into_chair_arms_stay_up_whole_feet": {
+    "text": "Exhale, sit your hips back into chair. Arms stay up, whole feet grounded.",
+    "kind": "count"
+  },
+  "n_exhale_step_your_feet_outside_your_hands_squat": {
+    "text": "Exhale, step your feet outside your hands. Squat.",
+    "kind": "count"
+  },
+  "n_exhale_tap_the_back_knee_down": {
+    "text": "Exhale, tap the back knee down.",
     "kind": "count"
   },
   "n_exhale_tuck_the_toes_and_send_your_hips_up_and_back_downward": {
     "text": "Exhale, tuck the toes and send your hips up and back. Downward dog.",
     "kind": "count"
   },
-  "n_exhale_tuck_your_back_toes_and_step_your_left_leg_back_downw": {
-    "text": "Exhale, tuck your back toes and step your left leg back. Downward dog.",
-    "kind": "count"
-  },
-  "n_exhale_tuck_your_back_toes_and_step_your_right_leg_back_down": {
-    "text": "Exhale, tuck your back toes and step your right leg back. Downward dog.",
+  "n_exhale_tuck_your_back_toes_press_into_your_hands_and_lift_th": {
+    "text": "Exhale, tuck your back toes, press into your hands and lift the back knee. Draw your right leg back to downward dog.",
     "kind": "count"
   },
   "n_exhale_tuck_your_toes_and_press_back_to_downward_dog": {
     "text": "Exhale, tuck your toes and press back to downward dog.",
     "kind": "count"
   },
-  "n_exhale_turn_your_back_toes_toward_the_long_edge_and_drop_the": {
-    "text": "Exhale, turn your back toes toward the long edge and drop the heel. Warrior two, arms wide.",
+  "n_exhale_turn_your_back_toes_toward_the_long_edge_heel_down_hi": {
+    "text": "Exhale, turn your back toes toward the long edge, heel down, hips open. Warrior two, arms wide.",
+    "kind": "count"
+  },
+  "n_exhale_twist_left_right_elbow_outside_your_left_knee": {
+    "text": "Exhale, twist left, right elbow outside your left knee.",
+    "kind": "count"
+  },
+  "n_exhale_twist_right_left_elbow_outside_your_right_knee": {
+    "text": "Exhale, twist right, left elbow outside your right knee.",
     "kind": "count"
   },
   "n_exhale_walk_the_hands_out_and_fold": {
@@ -1245,10 +1489,6 @@
   },
   "n_exhale_walk_your_hands_forward_and_fold_over_your_front_shin": {
     "text": "Exhale, walk your hands forward and fold over your front shin.",
-    "kind": "count"
-  },
-  "n_exhale_windmill_your_left_hand_down_to_the_floor_or_a_block_": {
-    "text": "Exhale, windmill your left hand down to the floor or a block, a foot ahead of your left foot. Right hand to your hip.",
     "kind": "count"
   },
   "n_exhale_windmill_your_right_hand_down_to_the_floor_or_a_block": {
@@ -1261,6 +1501,10 @@
   },
   "n_first_hold": {
     "text": "First hold.",
+    "kind": "count"
+  },
+  "n_five_four_three_two_one": {
+    "text": "Five, four, three, two, one.",
     "kind": "count"
   },
   "n_five_more": {
@@ -1439,24 +1683,72 @@
     "text": "In for three, hold for twelve, out for six. Sixteen rounds.",
     "kind": "count"
   },
+  "n_inhale_arms_straight_let_your_chest_sink_between_your_should": {
+    "text": "Inhale, arms straight, let your chest sink between your shoulders.",
+    "kind": "count"
+  },
+  "n_inhale_back_knee_lifts": {
+    "text": "Inhale, back knee lifts.",
+    "kind": "count"
+  },
   "n_inhale_back_to_center": {
     "text": "Inhale, back to center.",
     "kind": "count"
   },
-  "n_inhale_chest_forward_and_up": {
-    "text": "Inhale, chest forward and up.",
+  "n_inhale_back_to_dog": {
+    "text": "Inhale, back to dog.",
+    "kind": "count"
+  },
+  "n_inhale_back_to_downward_dog": {
+    "text": "Inhale, back to downward dog.",
+    "kind": "count"
+  },
+  "n_inhale_back_up_to_high_lunge": {
+    "text": "Inhale, back up to high lunge.",
+    "kind": "count"
+  },
+  "n_inhale_bend_your_left_knee_and_place_the_ball_of_your_left_f": {
+    "text": "Inhale, bend your left knee and place the ball of your left foot behind your right leg. Lift your hips, left arm overhead. Wild thing.",
+    "kind": "count"
+  },
+  "n_inhale_bend_your_right_knee_right_toes_land_behind_you_hips_": {
+    "text": "Inhale, bend your right knee, right toes land behind you. Hips lift, arm overhead. Wild thing.",
+    "kind": "count"
+  },
+  "n_inhale_center": {
+    "text": "Inhale, center.",
     "kind": "count"
   },
   "n_inhale_chest_forward_belly_soft": {
     "text": "Inhale, chest forward, belly soft.",
     "kind": "count"
   },
+  "n_inhale_chest_forward_cobra": {
+    "text": "Inhale, chest forward. Cobra.",
+    "kind": "count"
+  },
+  "n_inhale_chest_forward_cobra_or_up_dog": {
+    "text": "Inhale, chest forward. Cobra or up dog.",
+    "kind": "count"
+  },
+  "n_inhale_chest_sinks": {
+    "text": "Inhale, chest sinks.",
+    "kind": "count"
+  },
   "n_inhale_cobra": {
     "text": "Inhale, cobra.",
     "kind": "count"
   },
-  "n_inhale_come_all_the_way_up": {
-    "text": "Inhale, come all the way up.",
+  "n_inhale_cobra_or_up_dog": {
+    "text": "Inhale, cobra or up dog.",
+    "kind": "count"
+  },
+  "n_inhale_come_forward_onto_all_fours_tuck_your_toes_and_lift_b": {
+    "text": "Inhale, come forward onto all fours, tuck your toes, and lift back to downward dog.",
+    "kind": "count"
+  },
+  "n_inhale_come_up_into_high_lunge_arms_up": {
+    "text": "Inhale, come up into high lunge, arms up.",
     "kind": "count"
   },
   "n_inhale_cow": {
@@ -1467,16 +1759,72 @@
     "text": "Inhale, cow. Belly drops, chest lifts, tailbone up.",
     "kind": "count"
   },
-  "n_inhale_front_foot_back_plank": {
-    "text": "Inhale, front foot back. Plank.",
+  "n_inhale_drive_it_back_up_into_high_lunge": {
+    "text": "Inhale, drive it back up into high lunge.",
+    "kind": "count"
+  },
+  "n_inhale_extend_the_right_leg_back": {
+    "text": "Inhale, extend the right leg back.",
+    "kind": "count"
+  },
+  "n_inhale_extend_your_left_leg_back_slowly": {
+    "text": "Inhale, extend your left leg back, slowly.",
+    "kind": "count"
+  },
+  "n_inhale_feet_down_in_your_squat_and_lift_your_chest": {
+    "text": "Inhale, feet down in your squat, and lift your chest.",
+    "kind": "count"
+  },
+  "n_inhale_float_the_right_leg_up_half_moon": {
+    "text": "Inhale, float the right leg up. Half moon.",
+    "kind": "count"
+  },
+  "n_inhale_halfway_lift_long_spine_hands_on_your_shins": {
+    "text": "Inhale, halfway lift. Long spine, hands on your shins.",
+    "kind": "count"
+  },
+  "n_inhale_halfway_up": {
+    "text": "Inhale, halfway up.",
     "kind": "count"
   },
   "n_inhale_hands_back_chest_up": {
     "text": "Inhale, hands back, chest up.",
     "kind": "count"
   },
+  "n_inhale_hands_to_heart_chest_lifts": {
+    "text": "Inhale, hands to heart, chest lifts.",
+    "kind": "count"
+  },
+  "n_inhale_hands_to_your_heart": {
+    "text": "Inhale, hands to your heart.",
+    "kind": "count"
+  },
+  "n_inhale_hands_to_your_heart_knees_follow_your_toes_chest_lift": {
+    "text": "Inhale, hands to your heart, knees follow your toes, chest lifts.",
+    "kind": "count"
+  },
+  "n_inhale_heels_up_look_forward": {
+    "text": "Inhale, heels up, look forward.",
+    "kind": "count"
+  },
+  "n_inhale_hold_your_plank_long_through_the_heels": {
+    "text": "Inhale, hold your plank, long through the heels.",
+    "kind": "count"
+  },
   "n_inhale_knees_back_to_center": {
     "text": "Inhale, knees back to center.",
+    "kind": "count"
+  },
+  "n_inhale_left_fingertips_ahead_and_outside_your_foot_right_hip": {
+    "text": "Inhale, left fingertips ahead and outside your foot. Right hip opens. Half moon.",
+    "kind": "count"
+  },
+  "n_inhale_left_foot_back_plank": {
+    "text": "Inhale, left foot back. Plank.",
+    "kind": "count"
+  },
+  "n_inhale_left_foot_back_to_plank": {
+    "text": "Inhale, left foot back to plank.",
     "kind": "count"
   },
   "n_inhale_left_leg_reaches_high": {
@@ -1487,10 +1835,6 @@
     "text": "Inhale, left leg up.",
     "kind": "count"
   },
-  "n_inhale_lift_the_chest": {
-    "text": "Inhale, lift the chest.",
-    "kind": "count"
-  },
   "n_inhale_lift_the_left_leg": {
     "text": "Inhale, lift the left leg.",
     "kind": "count"
@@ -1499,16 +1843,56 @@
     "text": "Inhale, lift the right leg.",
     "kind": "count"
   },
-  "n_inhale_reverse_it": {
-    "text": "Inhale, reverse it.",
+  "n_inhale_lift_your_chest_into_cobra": {
+    "text": "Inhale, lift your chest into cobra.",
     "kind": "count"
   },
-  "n_inhale_reverse_warrior_left_arm_sweeps_up_and_back_right_han": {
-    "text": "Inhale, reverse warrior. Left arm sweeps up and back, right hand slides down the back leg.",
+  "n_inhale_lift_your_heels_and_look_up_between_your_hands": {
+    "text": "Inhale, lift your heels and look up between your hands.",
+    "kind": "count"
+  },
+  "n_inhale_lower_your_back_knee_and_untuck_the_toes_hands_to_you": {
+    "text": "Inhale, lower your back knee and untuck the toes. Hands to your front thigh, chest lifts.",
+    "kind": "count"
+  },
+  "n_inhale_palms_down_right_knee_lifts_left_foot_back_dog": {
+    "text": "Inhale, palms down, right knee lifts, left foot back. Dog.",
+    "kind": "count"
+  },
+  "n_inhale_palms_down_tuck_your_left_toes_and_lift_your_left_kne": {
+    "text": "Inhale, palms down, tuck your left toes and lift your left knee. Right foot steps back, hips lift into downward dog.",
+    "kind": "count"
+  },
+  "n_inhale_plank": {
+    "text": "Inhale, plank.",
+    "kind": "count"
+  },
+  "n_inhale_press_back_to_dog": {
+    "text": "Inhale, press back to dog.",
+    "kind": "count"
+  },
+  "n_inhale_reverse_warrior": {
+    "text": "Inhale, reverse warrior.",
+    "kind": "count"
+  },
+  "n_inhale_reverse_warrior_left_arm_up_and_back": {
+    "text": "Inhale, reverse warrior, left arm up and back.",
     "kind": "count"
   },
   "n_inhale_reverse_warrior_right_arm_sweeps_up_and_back_left_han": {
     "text": "Inhale, reverse warrior. Right arm sweeps up and back, left hand slides down the back leg.",
+    "kind": "count"
+  },
+  "n_inhale_right_fingertips_ahead_and_just_outside_your_right_fo": {
+    "text": "Inhale, right fingertips ahead and just outside your right foot, on a block or the floor. Left hip opens, left arm up if you're steady. Half moon.",
+    "kind": "count"
+  },
+  "n_inhale_right_foot_back_plank": {
+    "text": "Inhale, right foot back. Plank.",
+    "kind": "count"
+  },
+  "n_inhale_right_knee_down_untuck_the_toes_hands_to_your_left_th": {
+    "text": "Inhale, right knee down, untuck the toes, hands to your left thigh.",
     "kind": "count"
   },
   "n_inhale_right_leg_reaches_high": {
@@ -1519,8 +1903,16 @@
     "text": "Inhale, right leg up.",
     "kind": "count"
   },
-  "n_inhale_rise_up": {
-    "text": "Inhale, rise up.",
+  "n_inhale_rise_all_the_way_up_feet_hip_width_arms_overhead": {
+    "text": "Inhale, rise all the way up, feet hip-width, arms overhead.",
+    "kind": "count"
+  },
+  "n_inhale_rise_feet_hip_width_arms_up": {
+    "text": "Inhale, rise, feet hip-width, arms up.",
+    "kind": "count"
+  },
+  "n_inhale_rise_into_high_lunge": {
+    "text": "Inhale, rise into high lunge.",
     "kind": "count"
   },
   "n_inhale_rise_up_into_high_lunge_arms_reach": {
@@ -1529,10 +1921,6 @@
   },
   "n_inhale_shift_forward_and_float_your_left_leg_up_half_moon_to": {
     "text": "Inhale, shift forward and float your left leg up. Half moon. Top arm up if you want it.",
-    "kind": "count"
-  },
-  "n_inhale_shift_forward_and_float_your_right_leg_up_half_moon_t": {
-    "text": "Inhale, shift forward and float your right leg up. Half moon. Top arm up if you want it.",
     "kind": "count"
   },
   "n_inhale_sit_over_to_one_side_bring_your_legs_around_and_lie_b": {
@@ -1547,10 +1935,6 @@
     "text": "Inhale, step back to plank.",
     "kind": "count"
   },
-  "n_inhale_step_your_left_foot_back_to_plank": {
-    "text": "Inhale, step your left foot back to plank.",
-    "kind": "count"
-  },
   "n_inhale_step_your_right_foot_back_to_plank": {
     "text": "Inhale, step your right foot back to plank.",
     "kind": "count"
@@ -1559,12 +1943,16 @@
     "text": "Inhale, untuck your toes. Cobra: press lightly through your hands and lift your chest.",
     "kind": "count"
   },
-  "n_inhale_walk_your_hands_back_in_and_lift_your_chest": {
-    "text": "Inhale, walk your hands back in and lift your chest.",
+  "n_inhale_untuck_your_toes_cobra_with_the_pelvis_down_or_up_dog": {
+    "text": "Inhale, untuck your toes. Cobra with the pelvis down, or up dog with the thighs lifted if your arms are happy.",
     "kind": "count"
   },
-  "n_inhale_your_left_leg_lifts_high_behind_you": {
-    "text": "Inhale, your left leg lifts, high behind you.",
+  "n_inhale_up_you_come_high_lunge": {
+    "text": "Inhale, up you come. High lunge.",
+    "kind": "count"
+  },
+  "n_inhale_walk_your_hands_back_in_and_lift_your_chest": {
+    "text": "Inhale, walk your hands back in and lift your chest.",
     "kind": "count"
   },
   "n_inhale_your_right_leg_lifts_high_behind_you": {
@@ -2600,11 +2988,11 @@
     "kind": "guide"
   },
   "yg_child_history2": {
-    "text": "The sun salutation routines we know spread in the 1920s and thirties, alongside the physical culture of the time. The sun worship behind them is much older.",
+    "text": "Exercise versions of sun salutations were promoted in the 1920s and thirties. The sun worship is far older, and the flowing sequences we do today have changed since.",
     "kind": "science"
   },
   "yg_child_knees2": {
-    "text": "Knees wide or together. Whatever your hips vote for.",
+    "text": "Knees wide or together, whichever lets your hips settle.",
     "kind": "tip"
   },
   "yg_close2": {
@@ -2620,7 +3008,7 @@
     "kind": "technique"
   },
   "yg_dog_serratus2": {
-    "text": "Pushing the floor away is serratus anterior, the muscle that keeps your shoulder blades on your ribs. You'll want it in every plank today.",
+    "text": "Pushing the floor away recruits serratus anterior, among others. It holds your shoulder blades against your ribs, and you want it in every plank today.",
     "kind": "science"
   },
   "yg_hips2": {
@@ -2656,7 +3044,7 @@
     "kind": "science"
   },
   "yg_pigeon_rotators2": {
-    "text": "Piriformis gets all the credit, but it's one of several deep hip muscles. Which ones you feel depends on your hip angle.",
+    "text": "Piriformis gets all the credit, but several muscles share the work around your hip. Your hip angle changes how they're loaded.",
     "kind": "science"
   },
   "yg_pigeon_set2": {
@@ -2668,7 +3056,7 @@
     "kind": "tip"
   },
   "yg_pigeon_stretch2": {
-    "text": "A short stretch like this mostly eases stiffness for now. Doing it regularly is what makes the range stick, partly because you get more comfortable with the stretch.",
+    "text": "A stretch can give you a little more range for now. Regular practice builds that range over time, partly by changing how much stretch you tolerate.",
     "kind": "science"
   },
   "yg_plan2": {
@@ -2680,11 +3068,11 @@
     "kind": "guide"
   },
   "yg_r2b": {
-    "text": "Round two. Same way in, and we add warrior two. You know the way by now.",
+    "text": "Round two. Same start, then warrior two. I'll call the feet as we go.",
     "kind": "guide"
   },
   "yg_r3c": {
-    "text": "Last round, and we add half moon. This is the fun one.",
+    "text": "Last round, and half moon joins in. Keep your block close.",
     "kind": "guide"
   },
   "yg_rest_text2": {
@@ -2719,8 +3107,8 @@
     "text": "The warriors are named for Virabhadra, a fierce warrior in a story about Shiva. Some teachers read warrior one, two and three as his fight, in order.",
     "kind": "science"
   },
-  "yg_welcome2": {
-    "text": "Hey, it's Leo. This one's a short flow, about fifteen minutes. Grab a block or a cushion if you have one, and sit at the back of your mat.",
+  "yg_welcome3": {
+    "text": "Hey. This one's a short flow, about fifteen minutes. Grab a block or a cushion if you have one, and sit at the back of your mat.",
     "kind": "guide"
   }
 }

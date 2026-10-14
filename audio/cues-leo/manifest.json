@@ -783,6 +783,216 @@
     "duration": 12.94,
     "match": 0.947
   },
+  "ht_chair_low": {
+    "fp": "45ab7d684d1e",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 9.4,
+    "match": 0.927
+  },
+  "ht_chair_name": {
+    "fp": "68e2e17b0b83",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 8.62,
+    "match": 0.919
+  },
+  "ht_child_reset": {
+    "fp": "ccc1abcf2ca6",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 5.26,
+    "match": 1.0
+  },
+  "ht_close": {
+    "fp": "b96d89bfb04a",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 5.95,
+    "match": 1.0
+  },
+  "ht_cross_intro": {
+    "fp": "2b752087ac27",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 7.34,
+    "match": 1.0
+  },
+  "ht_cross_shoulders": {
+    "fp": "521bb85a284f",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 7.4,
+    "match": 1.0
+  },
+  "ht_crow_intro": {
+    "fp": "999718791e76",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 8.07,
+    "match": 1.0
+  },
+  "ht_crow_lean": {
+    "fp": "cb7cce978dc3",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 9.03,
+    "match": 1.0
+  },
+  "ht_crow_name": {
+    "fp": "c56444557921",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 13.85,
+    "match": 1.0
+  },
+  "ht_crow_set": {
+    "fp": "44d1ef335031",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 11.22,
+    "match": 1.0
+  },
+  "ht_dog_pedal": {
+    "fp": "97e8791ea9ba",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 5.05,
+    "match": 1.0
+  },
+  "ht_hips_intro": {
+    "fp": "779b50a73740",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 5.34,
+    "match": 1.0
+  },
+  "ht_hm_set": {
+    "fp": "9626cec4a7da",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 8.13,
+    "match": 1.0
+  },
+  "ht_hm_wobble": {
+    "fp": "7c53c429e147",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 7.02,
+    "match": 1.0
+  },
+  "ht_lizard_how": {
+    "fp": "492b9a22e5cc",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 8.96,
+    "match": 1.0
+  },
+  "ht_lizard_press": {
+    "fp": "4e644bc31cec",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 10.92,
+    "match": 1.0
+  },
+  "ht_lizard_sink": {
+    "fp": "e478043d4d75",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 7.4,
+    "match": 1.0
+  },
+  "ht_plan": {
+    "fp": "c13af8734210",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 13.96,
+    "match": 1.0
+  },
+  "ht_r2": {
+    "fp": "c9bc8c04a5a6",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 8.03,
+    "match": 1.0
+  },
+  "ht_r3": {
+    "fp": "609ca35b4382",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 11.37,
+    "match": 1.0
+  },
+  "ht_rest": {
+    "fp": "f94d0127f740",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 3.33,
+    "match": 1.0
+  },
+  "ht_salute_intro": {
+    "fp": "9b604806f114",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 6.35,
+    "match": 1.0
+  },
+  "ht_stand_intro": {
+    "fp": "295459135c40",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 7.8,
+    "match": 1.0
+  },
+  "ht_tap_chest": {
+    "fp": "936cabf01b90",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 9.74,
+    "match": 1.0
+  },
+  "ht_tap_why": {
+    "fp": "2d6886226249",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 8.83,
+    "match": 1.0
+  },
+  "ht_twist": {
+    "fp": "4eb602f14567",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 8.24,
+    "match": 1.0
+  },
+  "ht_twist_intro": {
+    "fp": "3af61e4b80d9",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 3.51,
+    "match": 1.0
+  },
+  "ht_welcome": {
+    "fp": "a25567856243",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 9.74,
+    "match": 1.0
+  },
+  "ht_wild_how": {
+    "fp": "802e1da06924",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 11.11,
+    "match": 1.0
+  },
+  "ht_wild_name": {
+    "fp": "4af67f118399",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 13.56,
+    "match": 0.913
+  },
   "kb_a1": {
     "fp": "570f7c742818",
     "voice": "leo",
@@ -1168,18 +1378,25 @@
     "duration": 0.89,
     "match": 1.0
   },
-  "n_exhale_arms_wide_and_let_both_knees_fall_over_to_the_left": {
-    "fp": "f41d67771477",
-    "voice": "leo",
-    "model": "gemini-3.8-flash-lite-tts",
-    "duration": 5.87,
-    "match": 1.0
-  },
   "n_exhale_arms_wide_and_let_both_knees_fall_over_to_the_right": {
     "fp": "6ca4f3bf0cd2",
     "voice": "leo",
     "model": "gemini-3.8-flash-lite-tts",
     "duration": 7.22,
+    "match": 1.0
+  },
+  "n_exhale_back_heel_down_hips_open_warrior_two": {
+    "fp": "e0ac84523545",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 4.8,
+    "match": 1.0
+  },
+  "n_exhale_back_knee_taps": {
+    "fp": "d8acc4f850bd",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 2.54,
     "match": 1.0
   },
   "n_exhale_back_to_dog": {
@@ -1189,6 +1406,13 @@
     "duration": 2.72,
     "match": 1.0
   },
+  "n_exhale_back_toes_tuck_hands_press_back_knee_lifts_left_leg_b": {
+    "fp": "fa223be5325b",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 8.14,
+    "match": 1.0
+  },
   "n_exhale_belly_down": {
     "fp": "0d13c2812176",
     "voice": "leo",
@@ -1196,18 +1420,32 @@
     "duration": 2.12,
     "match": 1.0
   },
-  "n_exhale_bend_your_left_knee_and_step_your_right_foot_back_ont": {
-    "fp": "efbbdd6daeeb",
+  "n_exhale_bend_your_knees_and_step_your_feet_just_outside_your_": {
+    "fp": "f189108990f1",
     "voice": "leo",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 8.43,
+    "duration": 9.68,
     "match": 1.0
   },
-  "n_exhale_bend_your_right_knee_and_step_your_left_foot_back_ont": {
-    "fp": "ab42f866097b",
+  "n_exhale_bend_your_left_knee_hips_turn_down_right_foot_steps_b": {
+    "fp": "422f20fd405b",
     "voice": "leo",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 7.75,
+    "duration": 6.2,
+    "match": 1.0
+  },
+  "n_exhale_bend_your_right_knee_turn_your_hips_down_and_step_you": {
+    "fp": "7bc197fc83ef",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 9.43,
+    "match": 1.0
+  },
+  "n_exhale_both_knees_bend_and_the_back_knee_lowers_to_tap_the_f": {
+    "fp": "305805584924",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 6.53,
     "match": 1.0
   },
   "n_exhale_cat_round_the_back_and_push_the_floor_away": {
@@ -1215,6 +1453,13 @@
     "voice": "leo",
     "model": "gemini-3.8-flash-lite-tts",
     "duration": 4.99,
+    "match": 1.0
+  },
+  "n_exhale_chair": {
+    "fp": "d09edfe55f9b",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 2.15,
     "match": 1.0
   },
   "n_exhale_come_forward_onto_all_fours_wrists_under_shoulders_kn": {
@@ -1231,6 +1476,34 @@
     "duration": 2.53,
     "match": 1.0
   },
+  "n_exhale_draw_your_left_knee_toward_your_left_ribs_squeeze_che": {
+    "fp": "327d2144ada9",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 8.21,
+    "match": 1.0
+  },
+  "n_exhale_fold": {
+    "fp": "52f2c142e2ac",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 2.21,
+    "match": 1.0
+  },
+  "n_exhale_fold_over_your_legs": {
+    "fp": "825d83bf36fc",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 2.83,
+    "match": 1.0
+  },
+  "n_exhale_hands_beside_your_front_foot": {
+    "fp": "eab692b3fbff",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 3.21,
+    "match": 1.0
+  },
   "n_exhale_hands_beside_your_front_foot_back_heel_up": {
     "fp": "a987fcd5b81c",
     "voice": "leo",
@@ -1238,11 +1511,53 @@
     "duration": 4.41,
     "match": 1.0
   },
-  "n_exhale_hands_to_the_floor_either_side_of_your_left_foot": {
-    "fp": "4729cf679081",
+  "n_exhale_hands_down": {
+    "fp": "a996db610427",
     "voice": "leo",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 4.91,
+    "duration": 2.26,
+    "match": 1.0
+  },
+  "n_exhale_hands_down_hips_up_wide_forward_fold": {
+    "fp": "66342ced5427",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 6.42,
+    "match": 1.0
+  },
+  "n_exhale_hands_down_lift_your_hips_into_a_wide_forward_fold_kn": {
+    "fp": "391d8c1cb1da",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 7.31,
+    "match": 1.0
+  },
+  "n_exhale_hands_down_step_back_to_downward_dog": {
+    "fp": "e4d52aaf5273",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 4.97,
+    "match": 1.0
+  },
+  "n_exhale_hands_down_step_to_plank_lower_to_your_belly": {
+    "fp": "58883f1a04fe",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 5.9,
+    "match": 1.0
+  },
+  "n_exhale_hands_to_heart_shift_onto_your_right_foot_and_lift_yo": {
+    "fp": "d4ae6b1b09c1",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 11.46,
+    "match": 1.0
+  },
+  "n_exhale_hands_to_heart_weight_into_your_left_foot_right_leg_l": {
+    "fp": "66ceeaba340b",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 8.5,
     "match": 1.0
   },
   "n_exhale_hands_to_the_floor_either_side_of_your_right_foot": {
@@ -1252,18 +1567,18 @@
     "duration": 4.28,
     "match": 1.0
   },
+  "n_exhale_hips_lower_chest_turns_down_right_hand_and_foot_back_": {
+    "fp": "35546d863fae",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 8.1,
+    "match": 1.0
+  },
   "n_exhale_hips_up_and_back_dog": {
     "fp": "fea01c09ea28",
     "voice": "leo",
     "model": "gemini-3.8-flash-lite-tts",
     "duration": 3.6,
-    "match": 1.0
-  },
-  "n_exhale_knee_in_and_step_it_through": {
-    "fp": "7987f3305611",
-    "voice": "leo",
-    "model": "gemini-3.8-flash-lite-tts",
-    "duration": 3.74,
     "match": 1.0
   },
   "n_exhale_knees_down_hips_back_to_your_heels_child_s_pose": {
@@ -1273,18 +1588,53 @@
     "duration": 6.57,
     "match": 1.0
   },
-  "n_exhale_left_foot_all_the_way_up_between_your_hands": {
-    "fp": "a2e122f38261",
+  "n_exhale_knees_over_to_the_left": {
+    "fp": "8030c874d3f3",
     "voice": "leo",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 3.94,
+    "duration": 2.86,
+    "match": 1.0
+  },
+  "n_exhale_left_foot_to_the_edge_hands_inside_lizard": {
+    "fp": "95e53f1d5599",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 5.79,
+    "match": 1.0
+  },
+  "n_exhale_left_hand_ahead_and_just_outside_your_left_foot_right": {
+    "fp": "436fc68f0055",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 6.23,
+    "match": 1.0
+  },
+  "n_exhale_left_hand_supports_roll_onto_your_left_foot_stack_the": {
+    "fp": "2cd6cb05f13a",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 8.71,
     "match": 1.0
   },
   "n_exhale_left_knee_behind_your_left_wrist_left_heel_toward_you": {
-    "fp": "1fabe77f0c3f",
+    "fp": "b4976ec064e0",
     "voice": "leo",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 11.29,
+    "duration": 9.93,
+    "match": 1.0
+  },
+  "n_exhale_left_knee_in_left_foot_between_your_hands": {
+    "fp": "69fca03e5c92",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 5.27,
+    "match": 1.0
+  },
+  "n_exhale_left_toes_toward_the_long_edge_heel_down_warrior_two": {
+    "fp": "838e29669077",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 6.1,
     "match": 1.0
   },
   "n_exhale_legs_long_arms_by_your_sides_palms_up_savasana": {
@@ -1315,11 +1665,25 @@
     "duration": 5.96,
     "match": 1.0
   },
-  "n_exhale_open_up_warrior_two": {
-    "fp": "7ef73e487ddd",
+  "n_exhale_lower_slowly_to_your_belly": {
+    "fp": "323bad7688d4",
     "voice": "leo",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 3.64,
+    "duration": 3.75,
+    "match": 1.0
+  },
+  "n_exhale_lower_your_hips_a_little_turn_your_chest_to_the_floor": {
+    "fp": "1192f46958f9",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 9.49,
+    "match": 1.0
+  },
+  "n_exhale_plant_your_hands_step_back_to_plank_then_lower_to_you": {
+    "fp": "8397bce21b97",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 8.58,
     "match": 1.0
   },
   "n_exhale_press_back_hips_high": {
@@ -1336,11 +1700,32 @@
     "duration": 3.59,
     "match": 1.0
   },
+  "n_exhale_push_the_floor_away_and_spread_your_shoulder_blades": {
+    "fp": "e4ee14211b07",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 4.86,
+    "match": 1.0
+  },
   "n_exhale_right_foot_all_the_way_up_between_your_hands": {
     "fp": "bd5460eb396a",
     "voice": "leo",
     "model": "gemini-3.8-flash-lite-tts",
     "duration": 4.15,
+    "match": 1.0
+  },
+  "n_exhale_right_foot_steps_out_toward_the_edge_of_the_mat_hands": {
+    "fp": "61512119c9dc",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 7.26,
+    "match": 1.0
+  },
+  "n_exhale_right_knee_across_to_your_left_elbow": {
+    "fp": "12d9ce70445f",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 3.66,
     "match": 1.0
   },
   "n_exhale_right_knee_behind_your_right_wrist_right_heel_toward_": {
@@ -1350,6 +1735,20 @@
     "duration": 10.8,
     "match": 1.0
   },
+  "n_exhale_right_knee_toward_your_ribs_squeeze": {
+    "fp": "9c1a0038b7f0",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 5.04,
+    "match": 1.0
+  },
+  "n_exhale_right_shoulder_over_your_hand_roll_onto_the_outer_edg": {
+    "fp": "210dcfec0fff",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 10.97,
+    "match": 1.0
+  },
   "n_exhale_round_it_out": {
     "fp": "98cdf9158fcd",
     "voice": "leo",
@@ -1357,11 +1756,18 @@
     "duration": 2.33,
     "match": 1.0
   },
-  "n_exhale_shift_forward_left_knee_to_your_nose_and_step_that_fo": {
-    "fp": "b7cccc649c9a",
+  "n_exhale_shift_forward_and_cross_your_right_knee_under_you_tow": {
+    "fp": "6d43aa3024e7",
     "voice": "leo",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 7.3,
+    "duration": 6.83,
+    "match": 1.0
+  },
+  "n_exhale_shift_forward_left_knee_toward_your_right_elbow": {
+    "fp": "8843e1508770",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 4.88,
     "match": 1.0
   },
   "n_exhale_shift_forward_right_knee_to_your_nose_and_step_that_f": {
@@ -1371,11 +1777,25 @@
     "duration": 7.34,
     "match": 1.0
   },
-  "n_exhale_slow_on_the_way_down": {
-    "fp": "6917a55c7982",
+  "n_exhale_sit_your_hips_back_into_chair_arms_stay_up_whole_feet": {
+    "fp": "7ae7b72350fb",
     "voice": "leo",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 3.08,
+    "duration": 7.85,
+    "match": 1.0
+  },
+  "n_exhale_step_your_feet_outside_your_hands_squat": {
+    "fp": "2540bed9d5ca",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 4.79,
+    "match": 1.0
+  },
+  "n_exhale_tap_the_back_knee_down": {
+    "fp": "dec93a0c71da",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 2.81,
     "match": 1.0
   },
   "n_exhale_tuck_the_toes_and_send_your_hips_up_and_back_downward": {
@@ -1385,18 +1805,11 @@
     "duration": 6.64,
     "match": 1.0
   },
-  "n_exhale_tuck_your_back_toes_and_step_your_left_leg_back_downw": {
-    "fp": "4c582f6acc94",
+  "n_exhale_tuck_your_back_toes_press_into_your_hands_and_lift_th": {
+    "fp": "1eee821005fe",
     "voice": "leo",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 5.98,
-    "match": 1.0
-  },
-  "n_exhale_tuck_your_back_toes_and_step_your_right_leg_back_down": {
-    "fp": "47673bfba3f6",
-    "voice": "leo",
-    "model": "gemini-3.8-flash-lite-tts",
-    "duration": 5.72,
+    "duration": 9.78,
     "match": 1.0
   },
   "n_exhale_tuck_your_toes_and_press_back_to_downward_dog": {
@@ -1406,11 +1819,25 @@
     "duration": 4.93,
     "match": 1.0
   },
-  "n_exhale_turn_your_back_toes_toward_the_long_edge_and_drop_the": {
-    "fp": "15dc0458228f",
+  "n_exhale_turn_your_back_toes_toward_the_long_edge_heel_down_hi": {
+    "fp": "9c8d6c8500bf",
     "voice": "leo",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 8.36,
+    "duration": 9.02,
+    "match": 1.0
+  },
+  "n_exhale_twist_left_right_elbow_outside_your_left_knee": {
+    "fp": "6e66a5168dcd",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 5.49,
+    "match": 1.0
+  },
+  "n_exhale_twist_right_left_elbow_outside_your_right_knee": {
+    "fp": "6bb790085c8a",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 4.76,
     "match": 1.0
   },
   "n_exhale_walk_the_hands_out_and_fold": {
@@ -1425,13 +1852,6 @@
     "voice": "leo",
     "model": "gemini-3.8-flash-lite-tts",
     "duration": 5.38,
-    "match": 1.0
-  },
-  "n_exhale_windmill_your_left_hand_down_to_the_floor_or_a_block_": {
-    "fp": "45ec40576702",
-    "voice": "leo",
-    "model": "gemini-3.8-flash-lite-tts",
-    "duration": 8.94,
     "match": 1.0
   },
   "n_exhale_windmill_your_right_hand_down_to_the_floor_or_a_block": {
@@ -1454,6 +1874,13 @@
     "model": "gemini-3.8-flash-lite-tts",
     "duration": 1.07,
     "match": 1
+  },
+  "n_five_four_three_two_one": {
+    "fp": "596729a437f7",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 6.63,
+    "match": 1.0
   },
   "n_four_in_eight_out_five_breaths": {
     "fp": "2d8af0c2036c",
@@ -1616,6 +2043,20 @@
     "duration": 3.11,
     "match": 1
   },
+  "n_inhale_arms_straight_let_your_chest_sink_between_your_should": {
+    "fp": "769abf2a4e5b",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 5.51,
+    "match": 1.0
+  },
+  "n_inhale_back_knee_lifts": {
+    "fp": "dbf6749fa999",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 2.95,
+    "match": 1.0
+  },
   "n_inhale_back_to_center": {
     "fp": "94c1f6d25d6e",
     "voice": "leo",
@@ -1623,11 +2064,46 @@
     "duration": 2.11,
     "match": 1.0
   },
-  "n_inhale_chest_forward_and_up": {
-    "fp": "c3d3c27bd01a",
+  "n_inhale_back_to_dog": {
+    "fp": "0e810c67f5e1",
     "voice": "leo",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 3.48,
+    "duration": 2.51,
+    "match": 1.0
+  },
+  "n_inhale_back_to_downward_dog": {
+    "fp": "ba008c5ca15a",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 3.11,
+    "match": 1.0
+  },
+  "n_inhale_back_up_to_high_lunge": {
+    "fp": "b49c0a5537bc",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 2.73,
+    "match": 1.0
+  },
+  "n_inhale_bend_your_left_knee_and_place_the_ball_of_your_left_f": {
+    "fp": "ffeb95a66f04",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 10.99,
+    "match": 1.0
+  },
+  "n_inhale_bend_your_right_knee_right_toes_land_behind_you_hips_": {
+    "fp": "3f44a8c9925f",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 9.59,
+    "match": 1.0
+  },
+  "n_inhale_center": {
+    "fp": "63784084d318",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 1.79,
     "match": 1.0
   },
   "n_inhale_chest_forward_belly_soft": {
@@ -1637,6 +2113,27 @@
     "duration": 4.27,
     "match": 1.0
   },
+  "n_inhale_chest_forward_cobra": {
+    "fp": "fc41467c05c7",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 3.64,
+    "match": 1.0
+  },
+  "n_inhale_chest_forward_cobra_or_up_dog": {
+    "fp": "3cf5bb2b2860",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 4.78,
+    "match": 1.0
+  },
+  "n_inhale_chest_sinks": {
+    "fp": "63fad2015bbb",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 2.76,
+    "match": 1.0
+  },
   "n_inhale_cobra": {
     "fp": "128a93e95e76",
     "voice": "leo",
@@ -1644,11 +2141,25 @@
     "duration": 2.32,
     "match": 1.0
   },
-  "n_inhale_come_all_the_way_up": {
-    "fp": "b3bf27751690",
+  "n_inhale_cobra_or_up_dog": {
+    "fp": "2cf01260da9a",
     "voice": "leo",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 2.26,
+    "duration": 4.26,
+    "match": 1.0
+  },
+  "n_inhale_come_forward_onto_all_fours_tuck_your_toes_and_lift_b": {
+    "fp": "8b0abc41b69e",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 7.1,
+    "match": 1.0
+  },
+  "n_inhale_come_up_into_high_lunge_arms_up": {
+    "fp": "688f99854d6a",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 3.83,
     "match": 1.0
   },
   "n_inhale_cow": {
@@ -1665,11 +2176,53 @@
     "duration": 5.98,
     "match": 1.0
   },
-  "n_inhale_front_foot_back_plank": {
-    "fp": "5340d641672a",
+  "n_inhale_drive_it_back_up_into_high_lunge": {
+    "fp": "08ef50d64551",
     "voice": "leo",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 3.35,
+    "duration": 3.21,
+    "match": 1.0
+  },
+  "n_inhale_extend_the_right_leg_back": {
+    "fp": "cbca5e3c6d74",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 3.37,
+    "match": 1.0
+  },
+  "n_inhale_extend_your_left_leg_back_slowly": {
+    "fp": "66b74a829682",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 4.61,
+    "match": 1.0
+  },
+  "n_inhale_feet_down_in_your_squat_and_lift_your_chest": {
+    "fp": "062fb72a5e0f",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 5.67,
+    "match": 1.0
+  },
+  "n_inhale_float_the_right_leg_up_half_moon": {
+    "fp": "f0b44e03fd8d",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 3.98,
+    "match": 1.0
+  },
+  "n_inhale_halfway_lift_long_spine_hands_on_your_shins": {
+    "fp": "af62a3e90842",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 5.67,
+    "match": 1.0
+  },
+  "n_inhale_halfway_up": {
+    "fp": "247d8edf305b",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 2.13,
     "match": 1.0
   },
   "n_inhale_hands_back_chest_up": {
@@ -1679,11 +2232,67 @@
     "duration": 4.24,
     "match": 1.0
   },
+  "n_inhale_hands_to_heart_chest_lifts": {
+    "fp": "3ed51950b68c",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 4.38,
+    "match": 1.0
+  },
+  "n_inhale_hands_to_your_heart": {
+    "fp": "4532ea52c65a",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 2.63,
+    "match": 1.0
+  },
+  "n_inhale_hands_to_your_heart_knees_follow_your_toes_chest_lift": {
+    "fp": "e43bd4bad65a",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 7.02,
+    "match": 1.0
+  },
+  "n_inhale_heels_up_look_forward": {
+    "fp": "2d061a6f2760",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 3.06,
+    "match": 1.0
+  },
+  "n_inhale_hold_your_plank_long_through_the_heels": {
+    "fp": "78788e357e40",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 4.65,
+    "match": 1.0
+  },
   "n_inhale_knees_back_to_center": {
     "fp": "6f72f1c5a789",
     "voice": "leo",
     "model": "gemini-3.8-flash-lite-tts",
     "duration": 2.57,
+    "match": 1.0
+  },
+  "n_inhale_left_fingertips_ahead_and_outside_your_foot_right_hip": {
+    "fp": "5cab9e6d1dcb",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 7.81,
+    "match": 1.0
+  },
+  "n_inhale_left_foot_back_plank": {
+    "fp": "c88e348f9b2f",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 4.28,
+    "match": 1.0
+  },
+  "n_inhale_left_foot_back_to_plank": {
+    "fp": "9be98171fb02",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 3.16,
     "match": 1.0
   },
   "n_inhale_left_leg_reaches_high": {
@@ -1700,13 +2309,6 @@
     "duration": 2.05,
     "match": 1.0
   },
-  "n_inhale_lift_the_chest": {
-    "fp": "595b70ae3451",
-    "voice": "leo",
-    "model": "gemini-3.8-flash-lite-tts",
-    "duration": 2.27,
-    "match": 1.0
-  },
   "n_inhale_lift_the_left_leg": {
     "fp": "6eb02e48dd1e",
     "voice": "leo",
@@ -1721,18 +2323,67 @@
     "duration": 2.56,
     "match": 1.0
   },
-  "n_inhale_reverse_it": {
-    "fp": "45f688dc2906",
+  "n_inhale_lift_your_chest_into_cobra": {
+    "fp": "1a33cfe9fd34",
     "voice": "leo",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 2.08,
+    "duration": 3.08,
     "match": 1.0
   },
-  "n_inhale_reverse_warrior_left_arm_sweeps_up_and_back_right_han": {
-    "fp": "a7772d9ed071",
+  "n_inhale_lift_your_heels_and_look_up_between_your_hands": {
+    "fp": "0af2513276ea",
     "voice": "leo",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 8.25,
+    "duration": 4.25,
+    "match": 1.0
+  },
+  "n_inhale_lower_your_back_knee_and_untuck_the_toes_hands_to_you": {
+    "fp": "31658a16a339",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 8.42,
+    "match": 1.0
+  },
+  "n_inhale_palms_down_right_knee_lifts_left_foot_back_dog": {
+    "fp": "91166b8067b3",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 6.52,
+    "match": 1.0
+  },
+  "n_inhale_palms_down_tuck_your_left_toes_and_lift_your_left_kne": {
+    "fp": "d92e3e8b7fd5",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 9.83,
+    "match": 1.0
+  },
+  "n_inhale_plank": {
+    "fp": "d04097ba7f25",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 1.95,
+    "match": 1.0
+  },
+  "n_inhale_press_back_to_dog": {
+    "fp": "e40cd965d75d",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 2.45,
+    "match": 1.0
+  },
+  "n_inhale_reverse_warrior": {
+    "fp": "c820e4efc555",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 2.82,
+    "match": 1.0
+  },
+  "n_inhale_reverse_warrior_left_arm_up_and_back": {
+    "fp": "0cb059409404",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 5.16,
     "match": 1.0
   },
   "n_inhale_reverse_warrior_right_arm_sweeps_up_and_back_left_han": {
@@ -1740,6 +2391,27 @@
     "voice": "leo",
     "model": "gemini-3.8-flash-lite-tts",
     "duration": 8.49,
+    "match": 1.0
+  },
+  "n_inhale_right_fingertips_ahead_and_just_outside_your_right_fo": {
+    "fp": "f9f9d22f699d",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 12.45,
+    "match": 1.0
+  },
+  "n_inhale_right_foot_back_plank": {
+    "fp": "750fd2e30565",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 3.53,
+    "match": 1.0
+  },
+  "n_inhale_right_knee_down_untuck_the_toes_hands_to_your_left_th": {
+    "fp": "87a86f425fbc",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 6.11,
     "match": 1.0
   },
   "n_inhale_right_leg_reaches_high": {
@@ -1756,11 +2428,25 @@
     "duration": 2.23,
     "match": 1.0
   },
-  "n_inhale_rise_up": {
-    "fp": "3f301d43e68d",
+  "n_inhale_rise_all_the_way_up_feet_hip_width_arms_overhead": {
+    "fp": "a7d6b83bea47",
     "voice": "leo",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 2.11,
+    "duration": 5.42,
+    "match": 1.0
+  },
+  "n_inhale_rise_feet_hip_width_arms_up": {
+    "fp": "531c3a9376da",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 5.15,
+    "match": 1.0
+  },
+  "n_inhale_rise_into_high_lunge": {
+    "fp": "1c01c19fd71a",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 3.02,
     "match": 1.0
   },
   "n_inhale_rise_up_into_high_lunge_arms_reach": {
@@ -1775,13 +2461,6 @@
     "voice": "leo",
     "model": "gemini-3.8-flash-lite-tts",
     "duration": 7.7,
-    "match": 1.0
-  },
-  "n_inhale_shift_forward_and_float_your_right_leg_up_half_moon_t": {
-    "fp": "34a2a79db8be",
-    "voice": "leo",
-    "model": "gemini-3.8-flash-lite-tts",
-    "duration": 7.53,
     "match": 1.0
   },
   "n_inhale_sit_over_to_one_side_bring_your_legs_around_and_lie_b": {
@@ -1805,13 +2484,6 @@
     "duration": 2.61,
     "match": 1.0
   },
-  "n_inhale_step_your_left_foot_back_to_plank": {
-    "fp": "e4335dab8648",
-    "voice": "leo",
-    "model": "gemini-3.8-flash-lite-tts",
-    "duration": 3.53,
-    "match": 1.0
-  },
   "n_inhale_step_your_right_foot_back_to_plank": {
     "fp": "6c3fb0856919",
     "voice": "leo",
@@ -1826,18 +2498,25 @@
     "duration": 7.63,
     "match": 1.0
   },
+  "n_inhale_untuck_your_toes_cobra_with_the_pelvis_down_or_up_dog": {
+    "fp": "aa276f94c544",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 9.65,
+    "match": 1.0
+  },
+  "n_inhale_up_you_come_high_lunge": {
+    "fp": "ff1a528a220d",
+    "voice": "leo",
+    "model": "gemini-3.8-flash-lite-tts",
+    "duration": 3.56,
+    "match": 1.0
+  },
   "n_inhale_walk_your_hands_back_in_and_lift_your_chest": {
     "fp": "f7e9fa6c28fc",
     "voice": "leo",
     "model": "gemini-3.8-flash-lite-tts",
     "duration": 3.86,
-    "match": 1.0
-  },
-  "n_inhale_your_left_leg_lifts_high_behind_you": {
-    "fp": "f9b63c19cf3d",
-    "voice": "leo",
-    "model": "gemini-3.8-flash-lite-tts",
-    "duration": 4.26,
     "match": 1.0
   },
   "n_inhale_your_right_leg_lifts_high_behind_you": {
@@ -2527,17 +3206,17 @@
     "match": 1.0
   },
   "yg_child_history2": {
-    "fp": "71ec58a64051",
+    "fp": "d2b9a525caef",
     "voice": "leo",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 12.25,
-    "match": 0.963
+    "duration": 13.51,
+    "match": 0.964
   },
   "yg_child_knees2": {
-    "fp": "8050afbe56d4",
+    "fp": "2fbc6839317e",
     "voice": "leo",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 4.46,
+    "duration": 4.39,
     "match": 1.0
   },
   "yg_close2": {
@@ -2562,10 +3241,10 @@
     "match": 1.0
   },
   "yg_dog_serratus2": {
-    "fp": "0b16b8b1d788",
+    "fp": "e257d0b78cbb",
     "voice": "leo",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 9.68,
+    "duration": 10.4,
     "match": 1.0
   },
   "yg_hips2": {
@@ -2625,10 +3304,10 @@
     "match": 1.0
   },
   "yg_pigeon_rotators2": {
-    "fp": "4a7357dd0ee0",
+    "fp": "03632d27a7f6",
     "voice": "leo",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 9.3,
+    "duration": 8.09,
     "match": 1.0
   },
   "yg_pigeon_set2": {
@@ -2646,10 +3325,10 @@
     "match": 1.0
   },
   "yg_pigeon_stretch2": {
-    "fp": "363b1952c9ac",
+    "fp": "02ae94160a2e",
     "voice": "leo",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 12.03,
+    "duration": 10.01,
     "match": 1.0
   },
   "yg_plan2": {
@@ -2667,17 +3346,17 @@
     "match": 1.0
   },
   "yg_r2b": {
-    "fp": "aa3644092754",
+    "fp": "e9a5edb9810e",
     "voice": "leo",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 6.67,
+    "duration": 6.11,
     "match": 1.0
   },
   "yg_r3c": {
-    "fp": "055dd3b56501",
+    "fp": "47effa45c668",
     "voice": "leo",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 4.95,
+    "duration": 5.69,
     "match": 1.0
   },
   "yg_rest2": {
@@ -2736,11 +3415,11 @@
     "duration": 11.94,
     "match": 1.0
   },
-  "yg_welcome2": {
-    "fp": "a827b0a4b649",
+  "yg_welcome3": {
+    "fp": "55c4cedc1ac4",
     "voice": "leo",
     "model": "gemini-3.8-flash-lite-tts",
-    "duration": 10.17,
-    "match": 0.982
+    "duration": 10.32,
+    "match": 1.0
   }
 }

@@ -12,14 +12,14 @@ import { PROGRAMS } from '../js/flows/yoga.js';
 const quiet = process.argv.includes('--quiet');
 const f = new URL('../audio/cues-leo/manifest.json', import.meta.url);
 const durs = existsSync(f) ? Object.fromEntries(Object.entries(JSON.parse(readFileSync(f))).map(([k, v]) => [k, v.duration])) : {};
-const fmt = (t) => `${Math.floor(t / 60)}:${String(Math.round(t % 60)).padStart(2, '0')}`;
+const fmt = (t) => ((s) => `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`)(Math.round(t));
 let bad = 0;
 for (const [id, program] of Object.entries(PROGRAMS)) {
   const talk = process.argv.includes('--full') ? 'full' : process.argv.includes('--quiet-voice') ? 'quiet' : 'guided';
   const built = build(program, durs, talk);
   const { problems, sides, wrists } = check(built);
   const plan = compile(FLOWS.find((x) => x.id === id), durs, { talk });
-  console.log(`\n=== ${id} · ${talk} · ${fmt(plan.total)} · right ${fmt(sides.R)} / left ${fmt(sides.L)} · wrists ${fmt(wrists.total)} (longest ${fmt(wrists.longest)})`);
+  console.log(`\n=== ${id} · ${talk} · ${fmt(plan.total)} · held right ${fmt(sides.R)} / left ${fmt(sides.L)} · wrists ${fmt(wrists.total)} (longest ${fmt(wrists.longest)})`);
   if (!quiet) {
     let t = 0;
     for (const s of built.trace) {

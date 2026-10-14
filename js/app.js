@@ -243,8 +243,7 @@ function syncIntensity() {
   $('#intensity-note').textContent = (flow.intensityNotes || {})[lv] || '';
 }
 
-// Every practice has its own instructor and voice pack (flow.voice).
-const VOICES = { leo: 'Leo', mira: 'Mira' };
+// Every practice has its own voice pack (flow.voice).
 const durOf = (m = {}) => Object.fromEntries(Object.entries(m).map(([k, v]) => [k, v.duration]));
 
 function renderMap() {
@@ -750,7 +749,7 @@ function addReminder() {
     'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Breathe-up//EN', 'BEGIN:VEVENT',
     `UID:kumbha-${flow.id}-${Date.now()}`, `DTSTAMP:${new Date().toISOString().replace(/[-:]/g, '').slice(0, 15)}Z`,
     `DTSTART:${local(start)}`, `DTEND:${local(end)}`, 'RRULE:FREQ=DAILY',
-    `SUMMARY:${flow.title} with ${VOICES[flow.voice]}`, `URL:${url}`, `DESCRIPTION:${url}`,
+    `SUMMARY:${flow.title}`, `URL:${url}`, `DESCRIPTION:${url}`,
     'BEGIN:VALARM', 'TRIGGER:PT0M', 'ACTION:DISPLAY', `DESCRIPTION:${flow.title}`, 'END:VALARM',
     'END:VEVENT', 'END:VCALENDAR',
   ].join('\r\n');

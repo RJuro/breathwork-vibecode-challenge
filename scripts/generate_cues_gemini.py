@@ -250,8 +250,13 @@ def main():
     print(f"{args.flow}: {len(ids)} lines, {len(todo)} to record with {args.model} / {args.voice}"
           + (f", {len(stale)} stale removed" if stale else ""))
     OUT.mkdir(parents=True, exist_ok=True)
-    if stale:
-        MANIFEST.write_text(json.dumps(dict(sorted(manifest.items())), indent=2) + "\n")
+    if stale:  # merge with what's on disk now: another recorder may have added entries since we read it
+        current = json.loads(MANIFEST.read_text()) if MANIFEST.exists() else {}
+        for k in stale:
+            current.pop(k, None)
+        tmp = MANIFEST.with_suffix(f".{os.getpid()}.tmp")
+        tmp.write_text(json.dumps(dict(sorted(current.items())), indent=2) + "\n")
+        os.replace(tmp, MANIFEST)
     failures = []
     with tempfile.TemporaryDirectory() as tmp:
         for cid in todo:

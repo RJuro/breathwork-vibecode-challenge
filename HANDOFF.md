@@ -60,8 +60,15 @@ account is on Gemini tier 3, so the old ~100 requests/day cap no longer bites.
 ## Yoga (14 Oct 2026)
 
 A separate library area (`#/yoga`, tabs at the top of the library; `MOMENTS[].area`, `AREAS` in
-js/flows/index.js). First practice: **Fifteen** (js/flows/yoga.js), Leo, about 15 min, music off
-unless switched on per practice (the practice page has a No music / Music switch, `musicFor` in settings).
+js/flows/index.js). Practices (js/flows/yoga.js, both voiced by Leo, music off unless switched on per
+practice: the practice page has a No music / Music switch, `musicFor` in settings):
+
+- **Fifteen**: the basic flow, about 15 min.
+- **Heat**: warming, about 22 min. Crossunders, squat-and-chair salutations, standing rounds (knee
+  taps; warrior three to half moon with a squeeze; side plank flipped into wild thing), crow or a
+  squat, lizard, twist, savasana. Reviewed by Sol for eyes-off clarity, facts and voice.
+
+Coach names are internal: never in spoken lines or UI copy.
 
 It runs on a deterministic model of the practitioner (js/yoga.js): a body state (base, each foot,
 each hand, heel, spine), moves with preconditions and a next state, cues that name the side from the
@@ -73,8 +80,11 @@ cue lengths and to the talk level.
 node scripts/yoga_check.mjs [--full]   # pose and side after every move, and the checks
 ```
 
-Checks: every move follows from the state, breath alternates in a flowing run, sides within 10%,
-the longest stretch on the wrists, savasana at least 90 s, every hold line spoken in its pose.
+Checks: every move follows from the state, breath alternates in a flowing run, the same moves and
+held time on both sides (mirrored holds are paired), the longest stretch on the wrists, savasana at
+least 90 s, every hold line spoken in its pose. A move's full cue plays the first time it's made; the
+second side and later rounds get short ones that still name the side; `min` keeps technical
+transitions from being rushed.
 Research behind it (local only, not in git): `docs/research/yoga/maps/` (16 classes, mapped from captions:
 transitions, arcs, cue patterns). Not yet: a visual builder, more programs, options/branches.
 
