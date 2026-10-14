@@ -3,7 +3,7 @@
 // pauses for a headache on a plane or a train.
 // Voice tags are placed by hand; captions and on-device speech drop them.
 
-import { line, say, tip, lesson, num, Num, dur, mmss, scaled, milestones, holdEmpty, holdFull, callsFor, SAFETY_HTML, ev } from './lib.js';
+import { line, say, tip, lesson, num, Num, dur, mmss, scaled, milestones, holdEmpty, callsFor, SAFETY_HTML, ev } from './lib.js';
 
 const cap = (s) => s[0].toUpperCase() + s.slice(1);
 const LEO = callsFor('leo');
@@ -189,33 +189,45 @@ const H = {
   planUrge: line('hl_plan_urge', "Six holds, no target time. Hold until the first clear urge to breathe, then tap Breathe now. Two minutes of rest between holds. You're learning what a relaxed hold feels like."),
   full: line('hl_full', 'Every hold starts from a comfortably full breath, not as full as you can get.', 'technique'),
   noBig: line('hl_no_big', "In the rests, breathe normally. Big or fast breaths before a hold push the urge to breathe back, while your oxygen keeps dropping. That's how people black out.", 'technique'),
-  rule: line('hl_rule', "If you ever feel dizzy or find yourself straining, stop the table there. You can end any hold early."),
-  calm: line('hl_calm', 'A minute of easy breathing first. Then the first hold.'),
+  rule: line('hl_rule2', "Breathe whenever you need to. If you feel dizzy or find yourself straining, stop the table and breathe normally."),
+  calm: line('hl_calm2', 'Breathe at your own pace for a minute before we start the table.'),
+  lead: line('hl_lead', 'One easy breath in together, then all the way out. The next breath in starts the first hold.'),
   in: say('Comfortably full breath in.'),
-  recovery: line('hl_recovery', 'Recovery breaths. A quick breath in, a short pause at the top, and let it go.', 'technique'),
-  recoveryShort: say('Recovery breaths.'),
+  recovery: line('hl_recovery2', "After each hold, let the air out. Then I'll call three recovery breaths: in, a short pause, and out. After those, breathe normally.", 'technique'),
+  recoverIn: line('hl_recover_in', 'In.', 'count'),
+  recoverHold: line('hl_recover_hold', 'Pause.', 'count'),
+  recoverOut: line('hl_recover_out', 'Let it go.', 'count'),
   soft: tip('hl_t_soft', 'Soften your face. Jaw loose, eyes soft.'),
-  dive: line('hl_dive', "Your heart may slow down during the hold, as part of the diving reflex. Every mammal has it.", 'science'),
+  co2: lesson('hl_co2', 'While you hold, your body keeps making carbon dioxide. Its rise usually drives the urge to breathe more than falling oxygen does.'),
+  dive: lesson('hl_dive2', 'Alongside that urge, your heart may slow as part of the diving response. Humans share this oxygen-conserving response with other mammals.'),
   scan: tip('hl_t_scan', "Check for tension, and let go wherever you're still gripping."),
   contract: line('hl_contract', "If your belly starts to twitch, those are contractions. They're normal. Today, treat them as your signal to stop."),
-  spleen: line('hl_spleen', "After a few holds, your spleen can release some extra red blood cells. It's a small effect, and it fades within minutes.", 'science'),
-  ten: tip('hl_t_ten', 'If you need to breathe, breathe. The table will wait.'),
-  wave: tip('hl_t_wave', "Notice the urge when it comes. You can stop there, or stay a little longer if you're still relaxed."),
+  spleen: lesson('hl_spleen2', 'Another response involves your spleen. It can release extra red blood cells over several holds; the small effect fades within minutes.'),
+  ten: tip('hl_t_ten2', 'If you need air, end the hold now. You can leave the rest of the table for another day.'),
+  wave: tip('hl_t_wave2', "When the urge arrives, end the hold. There's no need to wait for the clock."),
   last: line('hl_last', 'Last hold. Stay soft right to the end.'),
   restOut: tip('hl_t_rest_out', 'Let each breath out be a little longer than the breath in.'),
-  restWhy: line('hl_rest_why', 'Each rest is a bit shorter than the one before, so you start the next hold with more carbon dioxide on board.', 'science'),
-  study: line('hl_study', "In one small study, tables like this dropped blood oxygen less than max holds did. Whether they make your max hold longer hasn't been shown.", 'science'),
-  urgeAgain: line('hl_t_urge', 'Same as before. Breathe at the first clear urge, or sooner if you like.'),
+  restWhy: lesson('hl_rest_why2', 'Breathing between holds lets carbon dioxide fall again. As these rests get shorter, you may start with more, and notice the urge sooner.'),
+  urgeWhy: lesson('hl_urge_why', "Breathing between holds lets carbon dioxide fall again. Here the rests stay long, so you can notice the urge without chasing a time."),
+  study: lesson('hl_study2', 'Those responses help explain what researchers measure. In one small study, tables caused a smaller drop in blood oxygen than maximal holds.'),
+  studyLimit: lesson('hl_study_limit', "That comparison doesn't show that tables improve your maximum hold. Getting more familiar with the urge isn't proof of a training benefit."),
   restUrge: tip('hl_t_rest_urge', "Take the whole rest. Start the next hold only when your breathing feels easy again."),
-  done: line('hl_done', 'That was the last one. Let your breathing settle.'),
-  stayLeo: line('hl_stay', 'Stay sitting or lying for a minute before you get up.'),
+  done: line('hl_done2', 'The table is done. Breathe at your own pace, and stay seated or lying down for this last minute.'),
   close: line('hl_close', 'Two or three tables a week is plenty, with a day off in between.'),
 };
-const HOLD_TIPS = [H.soft, H.dive, H.scan, H.contract, H.spleen, H.ten, H.wave];
-const REST_TIPS = [H.restOut, H.restWhy, null, H.study, null, null];
-const REST_TIPS_URGE = [H.restOut, H.restUrge, H.urgeAgain, H.study, H.urgeAgain];
+const HOLD_TIPS = [H.soft, H.scan, null, H.contract, null, H.ten, H.wave];
+const HL_BREAKS = [
+  line('hl_break_1', 'Breathe at your own pace now.'),
+  line('hl_break_2', 'No counts here. Let your breathing settle.'),
+  line('hl_break_3', 'Take this rest on ordinary, unhurried breaths.'),
+  line('hl_break_4', 'Let the rhythm go and breathe normally.'),
+  line('hl_break_5', 'Use this time to breathe however feels easy.'),
+  line('hl_break_6', 'Rest on your own rhythm before the next hold.'),
+  line('hl_break_7', 'A short rest now. Breathe at your own pace.'),
+];
 const ORDINAL = ['First', 'Second', 'Third', 'Fourth', 'Fifth', 'Sixth'];
 const RECOVER = { inhale: 1.5, holdIn: 1.5, exhale: 3 };
+const recoveryCalls = (ph) => ({ in: H.recoverIn, top: H.recoverHold, out: H.recoverOut })[ph];
 
 export const holdLadder = {
   id: 'hold-ladder',
@@ -243,11 +255,12 @@ export const holdLadder = {
     const hold = urge ? 90 : scaled(45, opts) > 45 ? 60 : 45;
     const n = urge ? 6 : 8;
     const rests = urge ? Array(n - 1).fill(120) : [120, 105, 90, 75, 60, 45, 30];
+    const thread = [H.co2, urge ? H.urgeWhy : H.restWhy, H.dive, H.spleen, H.study, H.studyLimit];
     const holds = Array.from({ length: n }, (_, i) => {
       const last = i === n - 1;
-      const tipAt = urge ? 12 : 10;
       return [
-        { pace: { inhale: 4 }, count: 1, style: 'slow', bell: 'low', group: `h${i}`, cues: [{ at: 0, say: H.in }] },
+        ...(i === 0 ? [{ pace: { inhale: 4, exhale: 6 }, count: 1, style: 'count', calls: LEO }] : []),
+        { pace: { inhale: 4 }, count: 1, style: 'slow', bell: 'low', group: `h${i}`, calls: () => H.in },
         {
           hold: 'full',
           seconds: hold,
@@ -257,13 +270,16 @@ export const holdLadder = {
           group: `h${i}`,
           cues: [
             { at: 0.3, say: urge ? say(`${ORDINAL[i]} hold.`) : say(`Hold ${num(i + 1)} of ${num(n)}. ${cap(dur(hold))}.`) },
-            { at: last ? 5 : tipAt, say: last ? H.last : HOLD_TIPS[i] },
-            ...milestones(hold),
+            ...(last || HOLD_TIPS[i] ? [{ at: 6.5, say: last ? H.last : HOLD_TIPS[i] }] : []),
+            ...(thread[i] ? [{ at: 18, say: thread[i] }] : []),
+            ...(urge ? [] : milestones(hold)),
             ...(urge ? [] : [{ fromEnd: 11, say: tenMore }]), // First urge has no target to reach
           ],
         },
-        { pace: RECOVER, count: 3, style: 'slow', label: 'Recovery', cues: [{ at: 0, say: i === 0 ? H.recovery : H.recoveryShort }] },
-        ...(last ? [] : [{ rest: rests[i] - 22, label: 'Rest', cues: (urge ? REST_TIPS_URGE : REST_TIPS)[i] ? [{ at: 6, say: (urge ? REST_TIPS_URGE : REST_TIPS)[i] }] : [] }]),
+        { pace: { exhale: 1.5 }, count: 1, style: 'slow', calls: () => LEO('out', 1) },
+        { pace: RECOVER, count: 3, style: 'slow', label: 'Recovery', calls: recoveryCalls },
+        // Include the release, recovery breaths and next four-second inhale in the advertised rest.
+        ...(last ? [] : [{ rest: rests[i] - 23.5, label: 'Your own pace', cues: [{ at: 0.5, say: HL_BREAKS[i] }, ...(i === 0 ? [{ at: 12, say: H.restOut }] : urge && i === 1 ? [{ at: 12, say: H.restUrge }] : [])] }]),
       ];
     }).flat();
     return [
@@ -272,7 +288,7 @@ export const holdLadder = {
         title: 'Arrive',
         what: 'How the table works',
         color: '#9fb6d8',
-        steps: [{ say: H.welcome, bell: 'low', lead: 2 }, { say: urge ? H.planUrge : H.plan }, { say: H.full }, { say: H.noBig }, { say: H.rule }, { say: H.calm, gap: 0.5 }, { rest: 60, label: 'Rest' }],
+        steps: [{ say: H.welcome, bell: 'low', lead: 2 }, { say: urge ? H.planUrge : H.plan }, { say: H.full }, { say: H.noBig }, { say: H.rule }, { say: H.recovery }, { say: H.calm, gap: 0.5 }, { rest: 60, label: 'Your own pace', cues: [{ at: 46, say: H.lead }] }],
       },
       {
         id: 'table',
@@ -286,7 +302,7 @@ export const holdLadder = {
         title: 'Recover',
         what: 'Natural breathing',
         color: '#a9c2e0',
-        steps: [{ say: H.done, bell: 'bell' }, { rest: 45 }, { say: H.stayLeo }, { rest: 12 }, { say: H.close }, { rest: 4 }],
+        steps: [{ rest: 60, label: 'Your own pace', bell: 'bell', cues: [{ at: 0.5, say: H.done }, { at: 50, say: H.close }] }, { rest: 4 }],
       },
     ];
   },
@@ -319,32 +335,43 @@ ${SAFETY_HTML}
 const R = {
   welcome: line('rd_welcome', "Hey. Sit or lie down somewhere comfortable, where you can't fall. Never near water with this one."),
   blackout: line('rd_blackout', "One important thing before we start. If you ever twitch, blank out, or lose track of time in a hold, your brain has run short of oxygen. That's not a release. Stop the session there."),
-  plan: line('rd_plan', "Four rounds. Each one starts with a set of full breaths. Then you breathe out and hold with your lungs empty, for as long as it's comfortable. When you need air, take one big breath in and hold it for fifteen seconds. Then a short rest, and we go again."),
-  how: line('rd_how', "Breathe in deep, into your belly and then your chest. Then just let it fall out. Don't push the breath out.", 'technique'),
-  tingle: line('rd_tingle', "You might get tingly hands or a tingly face, or feel a bit lightheaded. That's the fast breathing. If it gets strong, slow down, or just breathe normally."),
-  lastBreath: line('rd_last_breath', 'Last one. Let it go.', 'count'),
+  plan: line('rd_plan2', "Four rounds of full breaths, an empty hold, then one recovery breath held for up to fifteen seconds. Breathe whenever you need to; the times are limits, not targets."),
+  how: line('rd_how2', "Fill through your belly and chest, then let the air fall out without pushing.", 'technique'),
+  tingle: line('rd_tingle2', "Fast breathing can cause tingling or lightheadedness. If that happens, slow down or breathe normally."),
+  powerIn: line('rd_power_in', 'In.', 'count'),
+  lastIn: line('rd_last_in', 'Last in.', 'count'),
+  lastBreath: line('rd_last_breath2', 'Let it all go.', 'count'),
   tap: line('rd_tap', 'Whenever you need to breathe, tap Breathe now.'),
   relax: tip('rd_t_relax', 'Let your shoulders drop and your hands go soft.'),
   letGo: line('rd_let_go', 'And let it go.', 'count'),
-  rest: tip('rd_t_rest', 'Breathe normally for a bit, and let yourself settle before the next round.'),
-  why: line('rd_why', "Fast breathing lowers carbon dioxide, so the urge to breathe comes later than usual, while oxygen keeps falling. That's why the holds here have a cap.", 'science'),
-  study: line('rd_study', 'In a month-long study, five minutes a day of fast breathing with short holds lifted mood and eased anxiety. The slower practices did about as well.', 'science'),
+  why: lesson('rd_why2', 'The fast breaths lowered carbon dioxide, which usually drives the urge to breathe. That can delay the urge during the empty hold.'),
+  oxygen: lesson('rd_oxygen', "Oxygen can still fall while the urge is delayed. Feeling comfortable, or stopping at the time limit, doesn't guarantee safety."),
+  study: lesson('rd_study2', 'With that limit in mind, one month-long study found improved mood and less anxiety after five daily minutes of fast breathing with short holds.'),
+  comparison: lesson('rd_study_comparison', "Slower practices helped too. That study doesn't establish a benefit from these longer empty holds, or a reason to push them."),
+  recoveryIn: line('rd_recovery_in', 'Take one comfortable breath in.', 'count'),
+  downRest: line('rd_down_rest', 'Before the slower breathing, take a few breaths at your own pace.'),
   slow: say('Now slow it down. In for four, out for six.'),
-  quiet: line('rd_quiet', 'Let the count go. Rest here for a minute.'),
+  quiet: line('rd_quiet2', 'Let the count go and breathe at your own pace for this last minute.'),
   close: line('rd_close', 'Open your eyes whenever you feel ready.'),
 };
 const POWER = { inhale: 1.6, exhale: 1.6, level: 0.6 };
 const RD_HOLDS = [45, 60, 75, 75];
-const RD_REST = [
-  [{ at: 4, say: R.rest }],
-  [{ at: 4, say: R.why }],
-  [{ at: 4, say: R.study }],
+const RD_BREAKS = [
+  line('rd_break_1', 'Breathe at your own pace for forty-five seconds before round two.'),
+  line('rd_break_2', 'Another forty-five seconds of ordinary breathing. Let yourself settle before we continue.'),
+  line('rd_break_3', 'No counts for this rest. Take forty-five seconds on your own rhythm.'),
 ];
+const RD_LEADS = [
+  line('rd_lead_1', "We'll take one easy breath in together, then all the way out. The next breath in starts the set."),
+  line('rd_lead_2', 'One breath in with me, and a full breath out. Then the next set begins.'),
+  line('rd_lead_3', 'Before round three, breathe in together and all the way out. We start again on the next inhale.'),
+  line('rd_lead_4', 'For the last set, one easy breath in, then all the way out. The next inhale starts the faster calls.'),
+];
+const RD_THREAD = [R.why, R.oxygen, R.study, R.comparison];
 
 function powerRound(n, opts) {
   const breaths = opts.gentle ? 20 : 30;
   const hold = scaled(RD_HOLDS[n - 1], opts);
-  const first = n === 1;
   return {
     id: `round-${n}`,
     title: `Round ${n}`,
@@ -352,17 +379,27 @@ function powerRound(n, opts) {
     color: ['#ffb38a', '#ff9e7a', '#ff8a7a', '#f2777f'][n - 1],
     steps: [
       { say: say(`Round ${num(n)}. ${Num(breaths)} breaths.`), bell: 'bell', gap: 0.6 },
+      ...(n === 1 ? [{ say: RD_LEADS[0], gap: 0.6 }] : []),
+      { pace: { inhale: 4, exhale: 6 }, count: 1, style: 'count', calls: MIRA },
       {
         pace: POWER,
         count: breaths,
         style: 'tally',
         lastExhale: 3,
-        cues: [...(first ? [{ breath: 2, say: R.how }, { breath: 12, say: R.tingle }] : []), { breath: breaths - 1, say: R.lastBreath }],
+        // Called breath by breath until the rhythm is set; after that the pump sound carries it and
+        // only the markers are spoken, not sixty identical calls a round.
+        calls: (ph, i) => {
+          if (i === breaths - 1) return ph === 'in' ? R.lastIn : R.lastBreath;
+          if (i < 5) return ph === 'in' ? R.powerIn : say('Out.');
+          if (ph !== 'in') return null;
+          return { 9: say('Ten.'), 19: say('Twenty.'), [breaths - 6]: say('Five more.') }[i] || null;
+        },
       },
-      holdEmpty(hold, first ? [{ at: 6, say: R.tap }] : n === 2 ? [{ at: 8, say: R.relax }] : []),
-      ...holdFull(15, [], { inhale: 6 }),
-      { say: R.letGo, gap: 0.5 },
-      ...(n < 4 ? [{ rest: 45, label: 'Rest', cues: RD_REST[n - 1] }] : []),
+      holdEmpty(hold, n === 2 ? [{ at: 9, say: R.relax }] : []),
+      { pace: { inhale: 6 }, count: 1, style: 'slow', calls: () => R.recoveryIn },
+      { hold: 'full', seconds: 15, tick: false, label: 'Recovery · up to 15 s', cues: [{ at: 0.3, say: MIRA('top') }, { at: 2, say: RD_THREAD[n - 1] }] },
+      { pace: { exhale: 3 }, count: 1, style: 'slow', calls: () => R.letGo },
+      ...(n < 4 ? [{ rest: 45, label: 'Your own pace', cues: [{ at: 0.5, say: RD_BREAKS[n - 1] }, { at: 31, say: RD_LEADS[n] }] }] : []),
     ],
   };
 }
@@ -393,7 +430,7 @@ export const rounds = {
       title: 'Arrive',
       what: 'How a round works',
       color: '#ffc9a8',
-      steps: [{ say: R.welcome, bell: 'low', lead: 2 }, { say: R.plan }, { say: R.blackout }, { rest: 6 }],
+      steps: [{ say: R.welcome, bell: 'low', lead: 2 }, { say: R.plan }, { say: R.blackout }, { say: R.how }, { say: R.tingle }, { say: R.tap }, { rest: 6 }],
     },
     ...[1, 2, 3, 4].map((n) => powerRound(n, opts)),
     {
@@ -402,12 +439,13 @@ export const rounds = {
       what: '4 in · 6 out, then quiet',
       color: '#8fcfb8',
       steps: [
+        { rest: 15, label: 'Your own pace', cues: [{ at: 0.5, say: R.downRest }] },
         { say: R.slow, bell: 'bell', gap: 0.6 },
-        { pace: { inhale: 4, exhale: 6 }, count: 12, style: 'count', calls: MIRA },
-        { say: R.quiet, bell: 'low' },
-        { rest: 60 },
-        { say: R.close },
+        { pace: { inhale: 4, exhale: 6 }, count: 10, style: 'count', calls: MIRA },
         { say: STAY },
+        { say: R.quiet, bell: 'low' },
+        { rest: 60, label: 'Your own pace' },
+        { say: R.close },
         { rest: 4 },
       ],
     },
@@ -439,26 +477,30 @@ ${SAFETY_HTML}
 
 // ── Alternate Nostril, with holds ──────────────────────
 const N = {
-  welcome: line('an_welcome', 'Hey. Sit up tall, on a cushion or a chair, and rest your left hand in your lap.'),
+  welcome: line('an_welcome2', 'Sit comfortably on a cushion or chair, and rest your left hand in your lap. Stay seated for the holds, and never practise them in water.'),
   hand: line('an_hand', 'Bring your right hand up and fold your index and middle fingers down. Your thumb closes the right nostril. Your ring finger closes the left.', 'technique'),
   plan: line('an_plan', "We'll warm up with plain alternate nostril breathing. Then we add a hold at the top. The old yoga texts use a ratio of one, four, two: you hold four times as long as you breathe in, and breathe out for twice as long. The counts are a guide. Breathe whenever you need to."),
   blocked: line('an_blocked', "If one side is blocked, don't force it. Lower your hand and breathe normally for a few rounds.", 'technique'),
   even: say('Four in, four out. We start on the left.'),
-  lIn: line('an_l_in', 'Thumb on the right. In through the left.'),
-  rOut: line('an_r_out', 'Switch. Out through the right.'),
-  rIn: line('an_r_in', 'In through the right.'),
-  lOut: line('an_l_out', 'Switch. Out through the left.'),
-  both: line('an_both', 'Close both sides, and hold.'),
-  lInH: line('an_l_in_h', 'In through the left.'),
-  rOutH: line('an_r_out_h', 'Release the right, and breathe out.'),
-  lOutH: line('an_l_out_h', 'Release the left, and breathe out.'),
+  ready: line('an_ready', 'Close the right nostril.', 'count'),
+  rOut: line('an_r_out', 'Switch. Out through the right.', 'count'),
+  rIn: line('an_r_in', 'In through the right.', 'count'),
+  lOut: line('an_l_out', 'Switch. Out through the left.', 'count'),
+  both: line('an_both', 'Close both sides, and hold.', 'count'),
+  lInH: line('an_l_in_h', 'In through the left.', 'count'),
+  rOutH: line('an_r_out_h', 'Release the right, and breathe out.', 'count'),
+  lOutH: line('an_l_out_h', 'Release the left, and breathe out.', 'count'),
   holdSoft: line('an_hold_soft', 'Keep your face and throat soft on the hold, and your fingers light.', 'technique'),
   track: tip('an_t_track', 'Lost track of the side? Breathe in on the side you just breathed out of.'),
   ears: tip('an_t_ears', 'With headphones on, the breath sound follows the side. Left ear, left nostril.'),
   arm: tip('an_t_arm', 'If your arm gets tired, drop your hand for a few breaths, then pick it back up.'),
   air: line('an_air', 'If a hold feels too long, let the breath out early and join the next round.'),
-  rate: line('an_rate', "Most slow-breathing research is at about six breaths a minute. This is slower, and with holds, so we know less about it.", 'science'),
-  bp: line('an_bp', "A few small trials found alternate nostril breathing lowered blood pressure a little. Whether the holds add anything isn't known.", 'science'),
+  rate: lesson('an_rate2', 'Slow breathing can increase the heart-rate changes that follow each breath. Most studies use about six breaths a minute.'),
+  slower: lesson('an_slower', "We're below that rate, and adding holds. So those results may not carry over to this particular pattern."),
+  bp: lesson('an_bp2', 'Studies of alternate nostril breathing are smaller. Some found a modest drop in blood pressure after practice.'),
+  comparison: lesson('an_comparison', "But many lacked a comparison group. That makes it hard to separate the nostril pattern from simply sitting and breathing slowly."),
+  holds: lesson('an_holds', "Adding holds is another question. We don't know whether they add anything to the effects of slow breathing alone."),
+  meaning: lesson('an_meaning', "So longer counts aren't evidence of a bigger benefit. Choose the rhythm you can keep without straining."),
   wander: tip('an_t_wander', 'If your mind wanders, use the next switch to come back.'),
   last: say('Last round.'),
   // Own-pace breaks before each set of holds, and the shared breath that starts each set.
@@ -469,7 +511,7 @@ const N = {
   ],
   leads: [
     line('an_lead_1', 'Before the holds, one breath in through both sides with me, then all the way out. We start on the left.'),
-    line('an_lead_2', 'Hand back up. One easy breath in together, all the way out, and the longer rounds start on the left.'),
+    line('an_lead_2b', 'Keep your hand down for one easy breath in together, then all the way out. The longer rounds start on the left.'),
     line('an_lead_3', 'Last set. Breathe in with me, let it all go, and we begin again on the left.'),
   ],
   release: line('an_release', 'Release the hand. Breathe through both sides, and let the breath find its own pace.'),
@@ -498,7 +540,7 @@ const sides = (ph, i) => {
 const OUT_R = say('Out through the right.');
 const OUT_L = say('Out through the left.');
 const evenCalls = (ph, i) =>
-  ph === 'in' ? (i === 0 ? N.lIn : i % 2 ? N.rIn : N.lInH) : ph === 'out' ? (i === 0 ? N.rOut : i === 1 ? N.lOut : i % 2 ? OUT_L : OUT_R) : null;
+  ph === 'in' ? (i % 2 ? N.rIn : N.lInH) : ph === 'out' ? (i === 0 ? N.rOut : i === 1 ? N.lOut : i % 2 ? OUT_L : OUT_R) : null;
 const holdCalls = (first) => (ph, i) => {
   const full = first && i < 2;
   if (ph === 'in') return i % 2 ? N.rIn : N.lInH;
@@ -506,6 +548,7 @@ const holdCalls = (first) => (ph, i) => {
   if (ph === 'out') return full ? (i % 2 ? N.lOutH : N.rOutH) : i % 2 ? OUT_L : OUT_R;
   return null;
 };
+const AN_THREAD = [N.rate, N.slower, N.bp, N.comparison, N.holds, N.meaning];
 
 export const alternate = {
   id: 'alternate',
@@ -543,7 +586,9 @@ export const alternate = {
         what: '4 in · 4 out, six rounds',
         color: '#9d93e8',
         steps: [
+          { say: N.ears },
           { say: N.even, gap: 0.6 },
+          { say: N.ready, gap: 0.6 },
           {
             pace: { inhale: 4, exhale: 4 },
             count: 12,
@@ -551,7 +596,6 @@ export const alternate = {
             labels: sides,
             pan: sidePan,
             calls: evenCalls,
-            cues: [{ breath: 4, say: N.ears }, { breath: 8, say: N.track }],
           },
         ],
       },
@@ -561,33 +605,34 @@ export const alternate = {
           title: 'Own pace',
           what: 'Hand down, half a minute',
           color: '#c4bcef',
-          steps: [{ rest: 30, label: 'Your own pace', cues: [{ at: 0.5, say: N.breaks[k] }] }],
+          steps: [{ rest: 30, label: 'Your own pace', cues: [{ at: 0.5, say: N.breaks[k] }, ...(k === 0 ? [{ at: 13, say: N.track }, { at: 21, say: N.arm }] : [])] }],
         },
         {
-        id: `balance-${k + 1}`,
-        title: k ? 'Longer' : 'With holds',
-        what: `${u} · ${4 * u} · ${2 * u}, ${b / 2} rounds`,
-        color: ['#857bdb', '#7067cc', '#5b52b8'][k],
-        steps: [
-          { say: say(`In for ${num(u)}, hold for ${num(4 * u)}, out for ${num(2 * u)}. ${Num(b / 2)} rounds.`), bell: 'bell', gap: 0.6 },
-          { say: N.leads[k], gap: 0.6 },
-          // One breath together through both sides, all the way out; the set starts on the next breath in.
-          { pace: { inhale: u, exhale: 2 * u }, count: 1, style: 'count', calls: MIRA },
-          {
-            pace: { inhale: u, holdIn: 4 * u, exhale: 2 * u },
-            count: b,
-            style: 'count',
-            labels: sides,
-            pan: sidePan,
-            calls: holdCalls(k === 0),
-            cues: [
-              ...(k === 0
-                ? [{ breath: 2, phase: 'top', say: N.holdSoft }, { breath: 4, say: N.arm }, { breath: 6, phase: 'top', say: N.air }, { breath: 8, phase: 'top', say: N.rate }, { breath: 11, say: N.wander }, ...(b > 16 ? [{ breath: 16, say: N.track }] : [])]
-                : [{ breath: 2, phase: 'top', say: N.bp }, { breath: 5, say: N.wander }]),
-              { breath: b - 2, offset: u + 1, say: N.last },
-            ],
-          },
-        ],
+          id: `balance-${k + 1}`,
+          title: k ? 'Longer' : 'With holds',
+          what: `${u} · ${4 * u} · ${2 * u}, ${b / 2} rounds`,
+          color: ['#857bdb', '#7067cc', '#5b52b8'][k],
+          steps: [
+            { say: say(`In for ${num(u)}, hold for ${num(4 * u)}, out for ${num(2 * u)}. ${Num(b / 2)} rounds.`), bell: 'bell', gap: 0.6 },
+            { say: N.leads[k], gap: 0.6 },
+            // One breath together through both sides, all the way out; the set starts on the next breath in.
+            { pace: { inhale: u, exhale: 2 * u }, count: 1, style: 'count', calls: MIRA },
+            { say: N.ready, gap: 0.6 },
+            {
+              pace: { inhale: u, holdIn: 4 * u, exhale: 2 * u },
+              count: b,
+              style: 'count',
+              labels: sides,
+              pan: sidePan,
+              calls: holdCalls(k === 0),
+              cues: [
+                ...(k === 0
+                  ? [{ breath: 2, phase: 'top', say: N.holdSoft }, ...AN_THREAD.map((say, i) => ({ breath: 3 + i, phase: 'top', say })), { breath: 9, phase: 'top', say: N.air }, { breath: 11, phase: 'top', say: N.wander }]
+                  : []),
+                { breath: b - 2, phase: 'top', say: N.last },
+              ],
+            },
+          ],
         },
       ]),
       {
@@ -595,7 +640,7 @@ export const alternate = {
         title: 'Release',
         what: 'Both nostrils, quiet',
         color: '#b9b0e6',
-        steps: [{ say: N.release, bell: 'bell' }, { rest: 60 }, { say: N.close, bell: 'low' }, { rest: 4 }],
+        steps: [{ say: N.release, bell: 'bell' }, { rest: 60, label: 'Your own pace' }, { say: N.close, bell: 'low' }, { rest: 4 }],
       },
     ];
   },
@@ -636,35 +681,52 @@ const W = {
   faceWhy: line('ws_face_why', 'Your jaw, forehead and shoulders often tighten up around a headache. Letting them go may take off some of the pressure.', 'science'),
   slow: say('In for four, out for six, small and quiet. About six minutes.'),
   small: line('ws_small', 'Slower, not bigger. Big breaths can make you lightheaded.', 'technique'),
-  pain: line('ws_pain', 'In a lab study, slow breathing with a longer breath out made heat pain a little easier to bear. Whether it helps a headache, nobody knows.', 'science'),
-  vagal: line('ws_vagal', "Your heart slows a little as you breathe out, partly through the vagus nerve. Whether that does anything for inflammation isn't known.", 'science'),
+  pain: lesson('ws_pain2', "In one lab study, slow breathing eased heat pain a little."),
+  painOut: lesson('ws_pain_out', "The long out-breath seemed to matter most."),
+  painLimit: lesson('ws_pain_limit', "Whether that carries over to headaches hasn't been tested."),
+  vagal: lesson('ws_vagal2', "Your heart also tends to slow on each out-breath."),
+  vagus: lesson('ws_vagus', "That change runs through the vagus nerve."),
+  vagalLimit: lesson('ws_vagal_limit', "The same nerve is involved in inflammation."),
   twoMin: say('About two minutes to go.'),
-  stress: line('ws_stress', "Stress can raise inflammation. If slow breathing helps there, it's probably by lowering stress, and over weeks, not in one session.", 'science'),
-  pauseIntro: line('ws_pause_intro', 'Now a few soft pauses. Breathe in to about two-thirds full, then just pause. Throat relaxed, nothing pushing. Let your jaw and shoulders go.'),
+  stress: lesson('ws_stress2', "And stress can push inflammation up."),
+  stressLimit: lesson('ws_stress_limit', "Calmer breathing might help, but it's unproven."),
+  stressTime: lesson('ws_stress_time', "And one session wouldn't show it either way."),
+  pauseIntro: line('ws_pause_intro2', 'Now a few soft pauses with a relaxed throat, without pushing. Stay seated, and never practise holds in water. Breathe whenever you need to.'),
   skip: line('ws_skip', 'If the throbbing gets worse, or your head feels fuller, skip the pauses for today and just make the breath out longer.'),
   in: say('Breathe in, about two-thirds full.'),
   out: say('Let it out slowly.'),
   long: say('Instead of pausing, make the breath out longer. In for four, out for eight.'),
   inTrain: say('Breathe in, comfortably full. Not to the top.'),
   trainCount: say('Five pauses, growing from thirty seconds to a minute.'),
-  window: tip('ws_t_window', 'If your eyes are open, let them rest on the window. Let the view go by without following it.'),
-  sounds: tip('ws_t_sounds', 'Let the engine and the voices around you carry on in the background while you follow your breath.'),
-  shouldersAgain: tip('ws_t_shoulders', "Check your shoulders again, and let them drop if they've crept up."),
-  anchor: tip('ws_t_anchor', 'Keep your attention on the air moving at the tip of your nose.'),
-  wander: tip('ws_t_wander', "If your mind wanders off, that's fine. Come back on the next breath out."),
+  transition: line('ws_transition', 'Breathe at your own pace for twenty seconds before the next part.'),
+  lead: line('ws_lead', 'One easy breath in together, then all the way out. The next breath in starts the first pause.'),
+  longRest: line('ws_long_rest', 'Let the counts go for a bit and breathe normally before we finish.'),
+  window: tip('ws_t_window2', 'With eyes open, you can let the view pass.'),
+  sounds: tip('ws_t_sounds2', 'Let the sounds around you stay in the background.'),
+  shouldersAgain: tip('ws_t_shoulders2', "Let your shoulders drop if they've crept up."),
+  anchor: tip('ws_t_anchor2', 'Notice the air moving at your nostrils.'),
+  wander: tip('ws_t_wander2', 'If you lose track, follow this breath out.'),
   hJaw: tip('ws_h_jaw', 'Let your jaw hang soft. Teeth apart.'),
   hHands: tip('ws_h_hands', 'Let your hands get heavy in your lap.'),
   hSway: tip('ws_h_sway', "On a train, let it rock you a little instead of bracing."),
   hBrow: tip('ws_h_brow', 'Let your forehead soften, and the muscles around your eyes.'),
   hLast: tip('ws_h_last', 'Last pause. Breathe whenever you like, even before the cue.'),
   longWhy: line('ws_long_why', 'A longer breath out gives your heart more time to slow down.', 'science'),
-  release: say('Back to four in, six out.'),
-  tiltR: say('Slowly let your head tip toward your right shoulder.'),
+  release: line('ws_release2', 'Back to four in, six out. Gentle neck tilts next, if comfortable. You can keep your head still.'),
+  tiltR: line('ws_tilt_r2', 'Gently tip your head toward your right shoulder.', 'count'),
   tiltL: say('And slowly toward the left.'),
   centre: say('Back to center.'),
   checkin: line('ws_checkin', 'Notice how your head and jaw feel now. If something has eased, let it stay that way.'),
   close: line('ws_close', "That's it. Have some water. If the headache keeps going or gets worse, get it checked out. Come back to this whenever you need it."),
 };
+const WS_THREAD = [W.pain, W.painOut, W.painLimit, W.vagal, W.vagus, W.vagalLimit, W.stress, W.stressLimit, W.stressTime];
+const WS_BREAKS = [
+  line('ws_break_1', 'Breathe at your own pace before the second pause.'),
+  line('ws_break_2', 'Let your breathing settle on its own rhythm now.'),
+  line('ws_break_3', 'No counts here. Take a few ordinary breaths.'),
+  line('ws_break_4', 'Breathe normally for a bit before the last pause.'),
+  line('ws_break_5', 'The pauses are done. Rest on your own breathing.'),
+];
 
 function seatPauses(opts) {
   if (opts.noHolds) {
@@ -673,13 +735,13 @@ function seatPauses(opts) {
       title: 'Long exhale',
       what: '4 in · 8 out, no pauses',
       color: '#6f7fc7',
-      steps: [{ say: W.long, bell: 'bell', gap: 0.6 }, { pace: { inhale: 4, exhale: 8 }, count: 20, style: 'count', calls: MIRA, cues: [{ breath: 3, say: W.longWhy }] }],
+      steps: [{ rest: 20, label: 'Your own pace', cues: [{ at: 0.5, say: W.transition }] }, { say: W.long, bell: 'bell', gap: 0.6 }, { pace: { inhale: 4, exhale: 8 }, count: 20, style: 'count', calls: MIRA, cues: [{ breath: 3, phase: 'out', say: W.longWhy }] }],
     };
   }
   // Plane: five 15 s pauses on two-thirds-full lungs (cabin air starts you lower).
   // Train: five pauses growing from 30 s to a minute, comfortably full.
   const plane = opts.gentle;
-  const holds = plane ? Array(5).fill(scaled(25, opts)) : [30, 40, 50, 60, 60];
+  const holds = plane ? Array(5).fill(15) : [30, 40, 50, 60, 60];
   const scan = [W.hJaw, W.hHands, W.hSway, W.hBrow, W.hLast];
   return {
     id: 'seat-holds',
@@ -690,8 +752,10 @@ function seatPauses(opts) {
       { say: W.pauseIntro, bell: 'bell' },
       { say: W.skip },
       { say: plane ? say(`${cap(num(5))} pauses of up to ${dur(holds[0])}.`) : W.trainCount, gap: 0.6 },
+      { rest: 20, label: 'Your own pace', cues: [{ at: 0.5, say: W.transition }, { at: 9, say: W.lead }] },
+      { pace: { inhale: 4, exhale: 6 }, count: 1, style: 'count', calls: MIRA },
       ...holds.flatMap((h, i) => [
-        { pace: { inhale: plane ? 4 : 5.5 }, count: 1, style: 'slow', group: `p${i}`, bell: i ? 'low' : undefined, cues: [{ at: 0, say: plane ? W.in : W.inTrain }] },
+        { pace: { inhale: plane ? 4 : 5.5 }, count: 1, style: 'slow', group: `p${i}`, bell: i ? 'low' : undefined, calls: () => plane ? W.in : W.inTrain },
         {
           hold: 'full',
           seconds: h,
@@ -701,7 +765,8 @@ function seatPauses(opts) {
           group: `p${i}`,
           cues: [{ at: 0.3, say: say(`And pause, up to ${dur(h)}. Throat soft.`) }, ...(plane ? [] : [{ at: 10, say: scan[i] }]), ...milestones(h), ...(h >= 40 ? [{ fromEnd: 11, say: tenMore }] : [])],
         },
-        { pace: { inhale: 4, exhale: 6 }, count: plane ? 3 : 4, style: 'count', cues: [{ at: 0, say: W.out }] },
+        { pace: { exhale: 6 }, count: 1, style: 'slow', calls: () => W.out },
+        { rest: plane ? 24 : 34, label: 'Your own pace', cues: [{ at: 0.5, say: WS_BREAKS[i] }] },
       ]),
     ],
   };
@@ -760,16 +825,14 @@ export const windowSeat = {
           style: 'count',
           calls: MIRA,
           cues: [
-            { breath: 2, say: W.small },
-            { breath: 4, say: W.window },
-            { breath: 6, say: W.pain },
-            { breath: 9, say: W.anchor },
-            { breath: 12, say: W.vagal },
-            { breath: 15, say: W.wander },
-            { breath: 18, say: W.stress },
-            { breath: 20, say: W.sounds },
-            { breath: 23, say: W.twoMin },
-            { breath: 28, say: W.shouldersAgain },
+            { breath: 2, phase: 'out', say: W.small },
+            { breath: 4, phase: 'out', say: W.window },
+            ...WS_THREAD.map((say, i) => ({ breath: [6, 7, 8, 12, 13, 14, 18, 19, 20][i], phase: 'out', say })),
+            { breath: 9, phase: 'out', say: W.anchor },
+            { breath: 15, phase: 'out', say: W.wander },
+            { breath: 21, phase: 'out', say: W.sounds },
+            { breath: 23, phase: 'out', say: W.twoMin },
+            { breath: 28, phase: 'out', say: W.shouldersAgain },
           ],
         },
       ],
@@ -781,8 +844,9 @@ export const windowSeat = {
       what: 'Slow breathing, gentle neck tilts',
       color: '#9a8fd6',
       steps: [
+        ...(opts.noHolds ? [{ rest: 20, label: 'Your own pace', cues: [{ at: 0.5, say: W.longRest }] }] : []),
         { say: W.release, bell: 'bell', gap: 0.6 },
-        { pace: { inhale: 4, exhale: 6 }, count: 12, style: 'count', calls: MIRA, cues: [{ breath: 2, say: W.tiltR }, { breath: 6, say: W.tiltL }, { breath: 10, say: W.centre }] },
+        { pace: { inhale: 4, exhale: 6 }, count: 12, style: 'count', calls: MIRA, cues: [{ breath: 2, phase: 'out', say: W.tiltR }, { breath: 6, phase: 'out', say: W.tiltL }, { breath: 10, phase: 'out', say: W.centre }] },
       ],
     },
     {

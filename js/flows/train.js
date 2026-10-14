@@ -4,7 +4,7 @@
 // Voice tags (<exhales>, <chuckle>, <sighs>) are placed by hand; captions and the other
 // voices drop them.
 
-import { line, say, tip, num, Num, callsFor, SAFETY_HTML, ev } from './lib.js';
+import { line, say, tip, lesson, num, Num, callsFor, SAFETY_HTML, ev } from './lib.js';
 
 const LEO = callsFor('leo');
 const MIRA = callsFor('mira');
@@ -12,19 +12,22 @@ const MIRA = callsFor('mira');
 // ── Box ────────────────────────────────────────────────
 export const B = {
   welcome: line('box_welcome', 'Welcome. Sit tall, feet flat on the floor. Close your eyes, or rest them on a spot in front of you.'),
-  plan: line('box_plan', "Here's the plan. Two drills. First, a long breath out, twice as long as the breath in. Then the box: in, hold, out, hold, all the same length. Nothing to win here. Just get the rhythm."),
-  planNone: line('box_plan_none', "Here's the plan. No holds today. One drill: breathe out twice as long as you breathe in. The long breath out does most of the work."),
-  empty: line('box_empty', 'Before we start, empty out. One long breath through the mouth. <exhales> Good.'),
+  plan: line('box_plan2', "Two drills today. First, a longer breath out. Then equal counts for breathing in, holding, breathing out and pausing empty."),
+  planNone: line('box_plan_none2', "No holds today. We'll breathe out twice as long as we breathe in, with a break between sequences."),
+  permission: line('box_permission', 'Stay seated or lying down, never in water. Breathe whenever you need to, and stop if you feel dizzy or unwell.'),
+  permissionNone: line('box_permission_none', 'Keep the breaths comfortable. If the pace feels too slow, breathe normally instead.'),
   drillOne: say('Drill one. In through the nose for four, out for eight. Six breaths.'),
-  layers: line('box_layers', 'On the way in, fill from the bottom. Belly, then ribs, then chest.', 'technique'),
-  throat: line('box_throat', 'On the way out, narrow the back of the throat a little, so the air leaves slow and even.', 'technique'),
-  lever: line('box_lever', "A long breath out can slow your heart a little. That's why we're lengthening it.", 'science'),
-  stay: say('Stay with it. Ten more.'),
+  layers: line('box_layers2', 'Expand your ribs.', 'technique'),
+  throat: line('box_throat2', 'Narrow the back of your throat a little, so the air leaves evenly.', 'technique'),
+  lever: line('box_lever2', "A long breath out can slow your heart a little. We're lengthening it.", 'science'),
+  stay: say('Back to four in, eight out. Ten breaths.'),
   hold: line('box_hold', 'Hold.', 'count'),
   softHold: line('box_soft_hold', 'The holds are a pause, not a squeeze. Throat open, shoulders down.', 'technique'),
   where: line('box_where', "Police and military teach this one. It's easy to count, and you can do it without anyone noticing."),
   exact: tip('box_t_exact', "Don't chase the exact count. Just keep all four sides even."),
-  study: line('box_study', 'In a month-long study, five minutes of box breathing a day eased anxiety about as much as the other breathing methods tested. Slowing down may be part of why it helps.', 'science'),
+  study: lesson('box_study2', "A month-long study had people do five minutes of box breathing a day. I'll tell you what it found over the next few holds."),
+  evenOut: tip('box_t_even_out', 'Let the air leave evenly, without forcing it.'),
+  lastA: say('Last round.'),
   lastOne: say('Last one.'),
   breakOne: line('box_break_1', 'Let the count go for a few breaths. Breathe at your own pace.'),
   leadA: line('box_lead_a', 'One breath in with me, all the way out, and the box starts on the next breath in.'),
@@ -37,6 +40,13 @@ export const B = {
 const boxIntro = (s) => say(`Drill two. The box. In, hold, out, hold. ${Num(s)} counts each side.`);
 const boxUp = (s) => say(`Now ${num(s)} each side. Same shape, a little longer.`);
 const BOX_LABELS = (ph) => ({ in: 'In', top: 'Hold', out: 'Out', bottom: 'Hold' })[ph];
+// One connected explanation, one short sentence per consecutive full hold.
+const BOX_THREAD = [
+  lesson('box_study_anxiety', "They reported less anxiety."),
+  lesson('box_study_comparison', "Other methods did as well."),
+  lesson('box_study_pace', "Maybe it's just the pace."),
+  lesson('box_study_holds', "Nobody tested the holds on their own."),
+];
 
 export const box = {
   id: 'box',
@@ -57,14 +67,14 @@ export const box = {
     standard: 'A box of 4 counts a side, then 5.',
     deeper: 'A box of 5 counts a side, then 6.',
   },
-  after: ['Five minutes a day on calm days is how it becomes automatic on hard ones.', 'The four-in, eight-out breath works on its own: before a call, a talk, or a start line.'],
+  after: ['A few minutes on calm days can make the rhythm more familiar under pressure.', 'The four-in, eight-out breath works on its own: before a call, a talk, or a start line.'],
   sections: (opts) => {
     const arrive = {
       id: 'box-arrive',
       title: 'Arrive',
-      what: 'The plan, one breath out',
+      what: 'The plan, comfortable breathing',
       color: '#9fb1c8',
-      steps: [{ say: B.welcome, bell: 'low', lead: 2 }, { say: opts.noHolds ? B.planNone : B.plan }, { say: B.empty }, { rest: 3 }],
+      steps: [{ say: B.welcome, bell: 'low', lead: 2 }, { say: opts.noHolds ? B.planNone : B.plan }, { say: opts.noHolds ? B.permissionNone : B.permission }, { rest: 3 }],
     };
     const tactical = {
       id: 'box-tactical',
@@ -73,7 +83,7 @@ export const box = {
       color: '#7f95b3',
       steps: [
         { say: B.drillOne, gap: 0.6 },
-        { pace: { inhale: 4, exhale: 8 }, count: 6, style: 'count', calls: LEO, cues: [{ breath: 1, say: B.layers }, { breath: 3, phase: 'out', say: B.throat }, { breath: 5, say: B.lever }] },
+        { pace: { inhale: 4, exhale: 8 }, count: 6, style: 'count', calls: LEO, cues: [{ breath: 0, phase: 'in', say: B.layers }, { breath: 3, phase: 'out', say: B.throat }, { breath: 5, phase: 'out', say: B.lever }] },
       ],
     };
     const close = {
@@ -83,6 +93,7 @@ export const box = {
       color: '#b8c4d4',
       steps: [{ say: B.release, bell: 'bell' }, { rest: 15 }, { say: B.check }, { rest: 6 }, { say: B.close }, { rest: 4 }],
     };
+    const breather = (id, line, extra = []) => ({ id, title: 'Own pace', what: 'Twenty seconds', color: '#b8c4d4', steps: [{ rest: 20, label: 'Your own pace', cues: [{ at: 0.5, say: line }, ...extra] }] });
     if (opts.noHolds) {
       const stay = {
         id: 'box-long',
@@ -91,17 +102,16 @@ export const box = {
         color: '#4a5d78',
         steps: [
           { say: B.stay, gap: 0.6 },
-          { pace: { inhale: 4, exhale: 8 }, count: 10, style: 'count', calls: LEO, cues: [{ breath: 2, say: B.where }, { breath: 5, say: B.exact }, { breath: 8, offset: 5.6, say: B.lastOne }] },
+          { pace: { inhale: 4, exhale: 8 }, count: 10, style: 'count', calls: LEO, cues: [{ breath: 5, phase: 'out', say: B.evenOut }, { breath: 8, phase: 'out', say: B.lastOne }] },
         ],
       };
-      return [arrive, tactical, stay, close];
+      return [arrive, tactical, breather('box-break-1', B.breakOne), stay, close];
     }
     const [a, b] = opts.gentle ? [3, 4] : (opts.holdScale ?? 1) > 1 ? [5, 6] : [4, 5];
     const rounds = (s, secs) => Math.round(secs / (4 * s));
     const ra = rounds(a, 128);
     const rb = rounds(b, 120);
     const pace = (s) => ({ inhale: s, holdIn: s, exhale: s, holdOut: s });
-    const breather = (id, line) => ({ id, title: 'Own pace', what: 'Twenty seconds', color: '#b8c4d4', steps: [{ rest: 20, label: 'Your own pace', cues: [{ at: 0.5, say: line }] }] });
     // One breath together, all the way out; the box starts on the next breath in.
     const leadIn = (s) => ({ pace: { inhale: s, exhale: 2 * s }, count: 1, style: 'count', calls: LEO });
     return [
@@ -115,6 +125,9 @@ export const box = {
         color: '#5f7596',
         steps: [
           { say: boxIntro(a), gap: 0.6 },
+          // This shared line is too long for a three-second hold; explain it before pacing.
+          { say: B.softHold, gap: 0.6 },
+          { say: B.exact, gap: 0.6 },
           { say: B.leadA, gap: 0.6 },
           leadIn(a),
           {
@@ -123,11 +136,12 @@ export const box = {
             style: 'count',
             labels: BOX_LABELS,
             calls: LEO,
-            cues: [{ breath: 2, say: B.softHold }, { breath: Math.min(5, ra - 3), say: B.where }, { breath: ra - 2, offset: 3 * a + 1.9, say: B.lastOne }],
+            endOnHold: true,
+            cues: [{ breath: ra - 2, phase: 'bottom', say: B.lastA }],
           },
         ],
       },
-      breather('box-break-2', B.breakTwo),
+      breather('box-break-2', B.breakTwo, [{ at: 8, say: B.where }]),
       {
         id: 'box-b',
         title: 'Bigger box',
@@ -135,9 +149,16 @@ export const box = {
         color: '#4a5d78',
         steps: [
           { say: boxUp(b), gap: 0.6 },
+          { say: B.study, gap: 0.6 },
           { say: B.leadB, gap: 0.6 },
           leadIn(b),
-          { pace: pace(b), count: rb, style: 'count', labels: BOX_LABELS, calls: LEO, cues: [{ breath: 1, say: B.exact }, { breath: 3, say: B.study }, { breath: rb - 2, offset: 3 * b + 1.9, say: B.lastOne }] },
+          {
+            pace: pace(b), count: rb, style: 'count', labels: BOX_LABELS,
+            // The short Hold call leaves room even in Gentle's four-second full holds.
+            calls: (phase, breath) => phase === 'top' && breath < BOX_THREAD.length ? B.hold : LEO(phase, breath),
+            endOnHold: true,
+            cues: [...BOX_THREAD.map((say, breath) => ({ breath, phase: 'top', say })), { breath: rb - 2, phase: 'bottom', say: B.lastOne }],
+          },
         ],
       },
       close,
@@ -171,21 +192,28 @@ const C = {
   welcome: line('cd_welcome', "Welcome. You've done the work. Now we bring it down."),
   setup: line('cd_setup', 'Lie on your back and rest your calves on a chair or a bench, knees and hips bent at right angles. No chair? Just lie flat.'),
   free: line('cd_free', 'For the first minute, breathe however you need to. Mouth is fine. Let the panting settle on its own.'),
-  sigh: line('cd_sigh', "If a big sigh wants to come out, let it. <sighs> That's allowed."),
+  sigh: line('cd_sigh2', "If a sigh comes naturally, let it happen. You don't need to make one."),
   heavy: tip('cd_t_heavy', 'Let the floor take your weight. Heels heavy, hands open.'),
-  stepOne: say('In through the nose for four, out through the mouth for six. Six breaths.'),
-  low: line('cd_low', 'Breathe low. Let the belly rise. The chest can stay quiet.', 'technique'),
+  stepOne: say('The next breath in starts six breaths: nose in for four, mouth out for six.'),
+  low: line('cd_low2', "Let your belly move as you breathe. There's no need for a big breath.", 'technique'),
+  permission: line('cd_permission', "If you're still panting, keep breathing at your own pace. You can leave the count whenever you need to."),
+  interval: line('cd_interval', 'Take twenty seconds at your own pace. Then we can try a longer breath out.'),
   stepTwo: say('Now stretch the breath out. Four in, eight out.'),
-  why: line('cd_why', 'A long breath out can slow your heart a little. It helps your body settle after training.', 'science'),
+  why: line('cd_why2', "Your heart rate often slows during an exhale. We're extending that breath out.", 'science'),
   jaw: tip('cd_t_jaw', 'Unclench the jaw. Let the tongue rest.'),
-  nose: line('cd_nose', 'If it feels easy now, close your mouth. Nose in, nose out.', 'technique'),
-  study: line('cd_study', "In a small lab study, slow breathing after cycling brought heart rate down faster than just resting. A bigger trial found no boost to the training itself. So this is for coming down, not for gains.", 'science'),
+  nose: line('cd_nose2', "Let this breath leave through your nose, if it's comfortable.", 'technique'),
+  noseIn: line('cd_nose_in', 'Nose in.', 'technique'),
+  study: line('cd_study2', 'A small cycling study tested slow breathing just after exercise.', 'science'),
+  studyResult: line('cd_study_result', 'Heart rate fell faster than with rest alone. Only nine people took part.', 'science'),
+  studyLink: line('cd_study_link', 'That tells us about the minutes after exercise, rather than later training gains.', 'science'),
+  studyTraining: line('cd_study_training', 'A larger trial added daily slow breathing to four weeks of sprint training.', 'science'),
+  studyLimit: line('cd_study_limit', "It found no extra performance gains, so don't count on this improving your training.", 'science'),
   twoMore: say('Two more.'),
-  quiet: line('cd_quiet', "I'll stop talking now. Keep the long breath out, and follow the circle."),
-  ret: line('cd_return', 'Let go of the count. Breathe on your own.'),
+  quiet: line('cd_quiet2', "Two quiet minutes now. Breathe at your own pace, and let the breath out stay easy."),
+  ret: line('cd_return2', "Stay lying here a little longer. Notice how you're breathing now."),
   check: line('cd_check', 'Check your heart rate, breath and head. Notice if anything settled.'),
   up: line('cd_up', 'Take your legs down, roll onto your side, and get up slowly. Blood pressure can dip after this.'),
-  close: line('cd_close', "That's the cool-down. Water, food and sleep help you recover from training."),
+  close: line('cd_close2', 'Give yourself time for water and food after this. Sleep matters for recovery too.'),
 };
 
 export const coolDown = {
@@ -196,7 +224,7 @@ export const coolDown = {
   moment: 'after',
   voice: 'mira',
   blurb: 'After training: legs up, long breaths out, then quiet.',
-  lede: 'For straight after training. Legs up, let the panting settle, then long breaths out that bring the heart rate down, and a couple of quiet minutes.',
+  lede: 'For straight after training. Legs up, let the panting settle, then comfortable longer breaths out, and two quiet minutes at your own pace.',
   music: ['terrace', 'night'],
   accent: ['#d8efe4', '#3f8f7a'],
   sky: 'calm',
@@ -211,7 +239,7 @@ export const coolDown = {
         { say: C.welcome, bell: 'low', lead: 2 },
         { say: C.setup },
         { say: C.free },
-        { rest: 60, cues: [{ at: 18, say: C.sigh }, { at: 40, say: C.heavy }] },
+        { rest: 60, label: 'Your own pace', cues: [{ at: 18, say: C.sigh }, { at: 28, say: C.low }, { at: 40, say: C.heavy }, { at: 48, say: C.permission }] },
       ],
     },
     {
@@ -221,8 +249,12 @@ export const coolDown = {
       color: '#6bbaa0',
       steps: [
         { say: C.stepOne, gap: 0.6 },
-        { pace: { inhale: 4, exhale: 6 }, count: 6, style: 'count', calls: MIRA, cues: [{ breath: 2, say: C.low }] },
+        { pace: { inhale: 4, exhale: 6 }, count: 6, style: 'count', calls: MIRA },
       ],
+    },
+    {
+      id: 'cd-break', title: 'Own pace', what: 'Twenty seconds, no counts', color: '#a9d6c6',
+      steps: [{ rest: 20, label: 'Your own pace', cues: [{ at: 0.5, say: C.interval }] }],
     },
     {
       id: 'cd-long',
@@ -237,11 +269,13 @@ export const coolDown = {
           style: 'count',
           calls: MIRA,
           cues: [
-            { breath: 1, say: C.why },
-            { breath: 4, say: C.jaw },
-            { breath: 7, say: C.nose },
-            { breath: 10, say: C.study },
-            { breath: 12, offset: 5.3, say: C.twoMore },
+            { breath: 1, phase: 'out', say: C.why },
+            { breath: 3, phase: 'out', say: C.jaw },
+            { breath: 5, phase: 'out', say: C.nose },
+            { breath: 6, phase: 'in', say: C.noseIn },
+            // No holds here: the explanation runs over five consecutive out-breaths.
+            ...[C.study, C.studyResult, C.studyLink, C.studyTraining, C.studyLimit].map((say, i) => ({ breath: 8 + i, phase: 'out', say })),
+            { breath: 13, phase: 'in', say: C.twoMore },
           ],
         },
       ],
@@ -249,9 +283,9 @@ export const coolDown = {
     {
       id: 'cd-quiet',
       title: 'Quiet',
-      what: '4 in · 8 out, no talking',
+      what: 'Two minutes at your own pace, no talking',
       color: '#3f8f7a',
-      steps: [{ say: C.quiet, gap: 0.8 }, { pace: { inhale: 4, exhale: 8 }, count: 10, style: 'slow', calls: MIRA }],
+      steps: [{ say: C.quiet, gap: 0.8 }, { rest: 120, label: 'Your own pace' }],
     },
     {
       id: 'cd-return',
@@ -266,7 +300,8 @@ export const coolDown = {
 <h3>The technique</h3>
 <ul>
   <li>Lie on your back with your calves on a chair or bench, hips and knees at about 90°, or lie flat.</li>
-  <li>First minute: breathe however you need to. Then in through the nose for 4, out through the mouth for 6; then 4 in, 8 out, moving to the nose as it gets easy.</li>
+  <li>First minute: breathe however you need to. Join the counts only once breathing feels easy. Then in through the nose for 4, out through the mouth for 6; take twenty seconds at your own pace before 4 in, 8 out, moving to the nose as it gets easy.</li>
+  <li>Finish with two quiet minutes of natural breathing. Leave the count whenever you need to.</li>
   <li>Get up slowly at the end: roll to your side first.</li>
 </ul>
 <h3>Why it works, and how well</h3>

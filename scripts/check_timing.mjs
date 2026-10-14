@@ -12,7 +12,7 @@ const pack = (voice) => {
   const f = new URL(`../audio/cues-${voice}/manifest.json`, import.meta.url);
   return existsSync(f) ? Object.fromEntries(Object.entries(JSON.parse(readFileSync(f))).map(([k, v]) => [k, v.duration])) : {};
 };
-const fmt = (s) => `${Math.floor(s / 60)}:${String(Math.round(s % 60)).padStart(2, '0')}`;
+const fmt = (t) => ((s) => `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`)(Math.round(t));
 let problems = 0;
 for (const flow of FLOWS) {
   if (only && flow.id !== only) continue;
@@ -21,6 +21,7 @@ for (const flow of FLOWS) {
     const plan = compile(flow, durs, { ...optsOf(level), talk });
     const issues = [];
     for (const id of plan.dropped) issues.push(`repeat dropped ${id}`);
+    for (const id of plan.misfit) issues.push(`off-phase ${id}`);
     for (const v of plan.voice) {
       if (!durs[v.id]) issues.push(`unrecorded ${v.id}`);
       if (v.late > 0.3) issues.push(`late ${v.late.toFixed(1)}s ${v.id}`);

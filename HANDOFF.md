@@ -35,8 +35,22 @@
 export GEMINI_API_KEY=…      # Roman's key: ~/.config/lidtdansk/gemini.env (never commit it)
 node scripts/export_cues.mjs
 python3 scripts/generate_cues_gemini.py --flow reps --voice leo --pack leo --model gemini-3.8-flash-lite-tts
-node scripts/check_timing.mjs
+node scripts/check_timing.mjs            # late / spills / repeat dropped / off-phase
+node scripts/session_script.mjs box --level standard   # a practice as heard, phase by phase
 ```
+
+Several recorders can share a pack (manifest writes merge), e.g. one `--flow` per process.
+
+**Session rules** (Roman, 13 Oct 2026, after a Kumbhaka run; every practice was rebuilt to them on
+14 Oct, Kumbhaka as the model):
+
+- Phase calls on every slow breath (`calls: LEO` / `MIRA`). Each coach has four wordings per phase that
+  rotate. Fast breathing is called only until the rhythm is set, then the coach gives markers.
+- Before a hold sequence: one breath in together, all the way out; the next breath in starts it.
+- Named own-pace breaks between sequences (labelled rests, `label: 'Your own pace'`).
+- Nothing said twice (the engine drops repeats; only `count` lines repeat).
+- Every content line fits its breath phase (`phase:` on the cue; `off-phase` in check_timing if not).
+- Deeper content is a connected `lesson` thread over consecutive holds or breaths. Keep the science, extend it.
 
 Voice specs (design text, stored ids, style, Leo's de-noise filter) are in
 `scripts/voices/gemini_voices.json`; new voices are designed with the Danish reader's

@@ -28,6 +28,7 @@ export function compile(flow, durs = {}, opts = {}) {
   // Nothing but counts and calls is ever said twice in one session.
   const said = new Set();
   const dropped = new Set(); // lines silenced as repeats (diagnostics: scripts/check_timing.mjs)
+  const misfit = new Set(); // phase-bound lines that found no window of their phase long enough
   const again = (c) => c.kind !== 'count' && said.has(c.id) && !!dropped.add(c.id);
   // `lesson`: a science thread told across holds, heard at Guided and Full.
   const skip = (c) => (c.kind === 'science' && talk !== 'full') || ((c.kind === 'tip' || c.kind === 'lesson') && talk === 'quiet') || again(c);
@@ -53,21 +54,26 @@ export function compile(flow, durs = {}, opts = {}) {
     const free = (a, b) => !taken.some(([x, y]) => a < y && b > x);
     const callsIn = (a, b) => list.filter((k) => !k.off && k.t >= a && k.t < b);
     const cost = (a, b) => callsIn(a, b).reduce((n, k) => n + k.w, 0);
+    let after = -Infinity; // phase-bound lines keep their written order (a thread reads in sequence)
     for (const x of cues.sort((p, q) => p.t - q.t)) {
       const d = lineDur(x.c) + 0.4;
       // A cue tied to a phase ("out", "top" = full hold, "bottom" = empty hold) waits for that phase,
       // starting just after its call, and must end before the phase does.
       if (x.phase) {
-        const ph = phases.find((p) => p.phase === x.phase && p.start >= x.t - 0.01 && p.end - p.start >= d + 1 && free(p.start + 1, p.start + 1 + d));
-        if (ph) {
-          const call = list.find((k) => Math.abs(k.t - ph.start) < 0.01);
-          const at = ph.start + (call ? lineDur(call.c) + 0.3 : 0.3);
-          if (at + d <= ph.end + 0.1) {
-            taken.push([at, at + d]);
-            speak(x.c, at);
-            continue;
-          }
+        const fit = phases
+          .filter((p) => p.phase === x.phase && p.start >= x.t - 0.01 && p.start > after)
+          .map((p) => {
+            const call = list.find((k) => Math.abs(k.t - p.start) < 0.01);
+            return { p, at: p.start + (call ? lineDur(call.c) + 0.3 : 0.3) };
+          })
+          .find(({ p, at }) => at + d <= p.end + 0.1 && free(at, at + d));
+        if (fit) {
+          after = fit.p.start;
+          taken.push([fit.at, fit.at + d]);
+          speak(x.c, fit.at);
+          continue;
         }
+        misfit.add(x.c.id); // falls back to the first free gap, whatever the phase there
       }
       const tries = [x.t, ...list.filter((k) => k.t >= x.t - 0.01).map((k) => k.t + lineDur(k.c) + 0.3)].filter((w) => w >= x.t && w - x.t <= 2 * cycle && w + d <= end + 0.5 && free(w, w + d));
       let at = x.t;
@@ -169,7 +175,7 @@ export function compile(flow, durs = {}, opts = {}) {
     return { id: s.id, title: s.title, what: s.what, color: s.color, start: own[0].start, end: own[own.length - 1].end };
   });
 
-  return { segs, voice, sounds, sections, total: t, dropped: [...dropped] };
+  return { segs, voice, sounds, sections, total: t, dropped: [...dropped], misfit: [...misfit] };
 }
 
 /** End of the retention block a hold belongs to: "Breathe now" skips the rest of it

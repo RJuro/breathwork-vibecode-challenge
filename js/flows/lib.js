@@ -67,7 +67,12 @@ const CALL = {
     hold: [C('box_hold', 'Hold.'), C('leo_hold_there', 'Hold it there.'), C('leo_hold_and', 'And hold.'), C('leo_hold_pause', 'Pause.')],
     out: [C('box_out', 'Out.'), C('leo_out_let', 'Let it out.'), C('leo_out_and', 'And out.'), C('leo_out_slow', 'Slowly out.')],
   },
-  mira: { in: [say('And breathe in.')], hold: [C('st_hold', 'Hold.')], out: [say('Out.')] },
+  // Not a bare "Breathe in." for Mira: her take of it carries a long pause after "Breathe".
+  mira: {
+    in: [say('And breathe in.'), C('mira_in_nose', 'In through your nose.'), C('mira_in_gently', 'Gently in.'), C('mira_in_now', 'Now breathe in.')],
+    hold: [C('st_hold', 'Hold.'), C('mira_hold_and', 'And hold.'), C('mira_hold_there', 'Hold it there.'), C('mira_hold_pause', 'Pause here.')],
+    out: [say('Out.'), C('mira_out_and', 'And out.'), C('mira_out_breathe', 'Breathe out.'), C('mira_out_let', 'Let it out.')],
+  },
 };
 /** Different wordings rotate breath by breath in a fixed shuffle (never the same one twice in a row,
  *  and the two holds of one breath differ), so the calls don't sound copy-pasted. */

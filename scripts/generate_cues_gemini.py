@@ -278,13 +278,22 @@ def main():
             (OUT / f"{cid}.mp3").write_bytes(path.read_bytes())
             manifest[cid] = {"fp": fingerprint(text, args.voice, args.model), "voice": args.voice,
                              "model": args.model, "duration": dur, "match": score}
-            print(f"  {'✓' if ok else '!'} {cid}  {note}")
-            MANIFEST.write_text(json.dumps(dict(sorted(manifest.items())), indent=2) + "\n")
+            print(f"  {'✓' if ok else '!'} {cid}  {note}", flush=True)
+            save_entry(MANIFEST, cid, manifest[cid])
             if not ok:
                 failures.append(cid)
     report()
     if failures:
         sys.exit(f"{len(failures)} line(s) need a listen: {', '.join(failures)}")
+
+
+def save_entry(path, cid, entry):
+    """Merge one entry into the manifest on disk, so several recorders can share a pack."""
+    current = json.loads(path.read_text()) if path.exists() else {}
+    current[cid] = entry
+    tmp = path.with_suffix(f".{os.getpid()}.tmp")
+    tmp.write_text(json.dumps(dict(sorted(current.items())), indent=2) + "\n")
+    os.replace(tmp, path)
 
 
 def report():
