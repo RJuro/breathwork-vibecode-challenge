@@ -20,6 +20,7 @@ for (const flow of FLOWS) {
   for (const [level, talk] of intensitiesOf(flow).flatMap((l) => ['quiet', 'guided', 'full'].map((t) => [l, t]))) {
     const plan = compile(flow, durs, { ...optsOf(level), talk });
     const issues = [];
+    for (const id of plan.dropped) issues.push(`repeat dropped ${id}`);
     for (const v of plan.voice) {
       if (!durs[v.id]) issues.push(`unrecorded ${v.id}`);
       if (v.late > 0.3) issues.push(`late ${v.late.toFixed(1)}s ${v.id}`);

@@ -27,8 +27,10 @@ export function compile(flow, durs = {}, opts = {}) {
   const talk = opts.talk || (opts.explain ? 'full' : 'guided');
   // Nothing but counts and calls is ever said twice in one session.
   const said = new Set();
+  const dropped = new Set(); // lines silenced as repeats (diagnostics: scripts/check_timing.mjs)
+  const again = (c) => c.kind !== 'count' && said.has(c.id) && !!dropped.add(c.id);
   // `lesson`: a science thread told across holds, heard at Guided and Full.
-  const skip = (c) => (c.kind === 'science' && talk !== 'full') || ((c.kind === 'tip' || c.kind === 'lesson') && talk === 'quiet') || (c.kind !== 'count' && said.has(c.id));
+  const skip = (c) => (c.kind === 'science' && talk !== 'full') || ((c.kind === 'tip' || c.kind === 'lesson') && talk === 'quiet') || again(c);
   const speak = (c, at) => {
     if (!c || !c.id || !c.text) throw new Error(`bad spoken line: ${JSON.stringify(c)}`);
     if (skip(c)) return 0;
@@ -167,7 +169,7 @@ export function compile(flow, durs = {}, opts = {}) {
     return { id: s.id, title: s.title, what: s.what, color: s.color, start: own[0].start, end: own[own.length - 1].end };
   });
 
-  return { segs, voice, sounds, sections, total: t };
+  return { segs, voice, sounds, sections, total: t, dropped: [...dropped] };
 }
 
 /** End of the retention block a hold belongs to: "Breathe now" skips the rest of it
